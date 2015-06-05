@@ -20,11 +20,17 @@ module.exports = function(grunt) {
 
     //Configure grunt
     grunt.initConfig({
+      //tell Compass to use the Production configs
       compass: {
-        dist: {
+        prod: {
           options: {
-            sassDir: 'scss',
-            cssDir: 'css'
+            config: 'config.rb',
+            environment: 'production'
+          }
+        },
+        server: {
+          options: {
+            debugInfo: false
           }
         }
       },
@@ -37,10 +43,17 @@ module.exports = function(grunt) {
         dev: {},
 
         //additional options for the "build" variation
-        build: {
+        prod: {
           plugins: [
             new webpack.optimize.DedupePlugin(),
-            new webpack.optimize.UglifyJsPlugin()
+            new webpack.optimize.UglifyJsPlugin({
+              //Uglify is pretty aggressive with its code cleanup. 
+              //Ask it to leave our "dead" and "unused" code alone
+              compress: {
+                dead_code: false,
+                unused: false
+              }            
+            })
           ]
         }
       },
@@ -75,5 +88,5 @@ module.exports = function(grunt) {
     grunt.registerTask("dev", ["webpack:dev", "watch:app", "watch:css"]);
 
     //Stuff that runs when calling "grunt build" on command line
-    grunt.registerTask("build", ["webpack:build"])
+    grunt.registerTask("build", ["webpack:prod", "compass:prod"])
 };
