@@ -64,7 +64,9 @@ ENBeautifier.prototype.tagFieldContainers = function() {
         .parent().closest('div').addClass(this.fieldContainerClass);
 
     fields.each(function() {
-        $(this).addClass('js-' + $(this).attr('name').toLowerCase().replace(/[^a-z0-9-]/g, '-'));
+        var $this = $(this);
+        var fieldName = (typeof $this.attr('name') !== 'undefined') ? $this.attr('name') : 'unnamed';
+        $(this).addClass('js-' + fieldName.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
     });
 }
 

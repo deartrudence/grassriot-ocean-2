@@ -1,5 +1,6 @@
 //Beautifier configuration
 var leftColumnSelector = '.js-left-column';
+var formSelector = '.form';
 var formFieldContainerClass = 'js-form-field-container';
 var formFieldContainerIgnoreClass = 'is-selfHandling';
 var formFieldWrapperClass = 'js-form-field-wrapper';
@@ -13,15 +14,15 @@ var enbeautifier;
 var Stringer = require('./modules/Stringer');
 var stringer;
 
-require('jquery');
-require('raygun');
-require('jqueryvalidate');
+var $ = require('jquery');
+require('tota11y');
 
 
 //Main event
 $(document).ready(function() {
 	try {
 		init();
+		init_validation();
 	}
 	catch(error) {
 		raygunSendError(error);
@@ -137,6 +138,7 @@ function analyticsGetSection(container) {
 // ---------------------------------------
 function raygunSendError(error, options) {
 	try {
+		require('raygun');		
 		var data = { };
 		if(!options instanceof Object || typeof options == 'undefined') {
 			options = { };
@@ -209,4 +211,51 @@ function getURLParameter(name){
        return results[1] || 0;
     }
 }
-        
+
+function init_validation(){
+	try{
+		require('jqueryvalidate');
+
+		$.validator.addMethod("emailTLD", function (value, element) {
+      return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+      }, "Invalid email address");
+
+		var validation_rules = {
+			"Email": {
+				emailTLD: true
+			}
+		}
+
+		var settings = {
+	    ignore: [],
+	    rules: validation_rules,
+	    invalidHandler: function(e, validator) {
+        try {
+          throw new Error("Validation Failure");
+        }
+        catch (error) {
+          raygunSendError(error, {
+          	data: {
+          		errors: validator.invalid
+          	},
+          	forms: [formSelector]
+          });
+        }
+	    },
+	    submitHandler: function (form) {
+        $(form).attr('action', formAction+"?s="+analyticsGetSection(leftColumnSelector));
+        form.submit();
+      }
+		};
+
+    $form = $(formSelector);
+    $form.validate(settings);
+
+    $form.find("input").each( function(){
+    	$(this).rules("add","required");
+    });
+	}
+	catch(error){
+		raygunSendError(error);
+	}
+}

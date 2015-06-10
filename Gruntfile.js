@@ -40,7 +40,8 @@ module.exports = function(grunt) {
         options: webpackConfig,
 
         //additional options for the "dev" variation
-        dev: {},
+        dev: {
+        },
 
         //additional options for the "build" variation
         prod: {
@@ -52,7 +53,7 @@ module.exports = function(grunt) {
               compress: {
                 dead_code: false,
                 unused: false
-              }            
+              }
             })
           ]
         }
@@ -82,7 +83,7 @@ module.exports = function(grunt) {
 
 
     //Stuff that runs when calling "grunt" on command line
-    grunt.registerTask("default", ["webpack:dev", "compass"]);
+    grunt.registerTask("default", ["webpack:dev"]);
 
     //Stuff that runs when calling "grunt dev" on command line
     grunt.registerTask("dev", ["webpack:dev", "watch:app", "watch:css"]);
