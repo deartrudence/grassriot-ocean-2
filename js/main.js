@@ -15,8 +15,11 @@ var Stringer = require('./modules/Stringer');
 var stringer;
 
 var $ = require('jquery');
-require('tota11y');
 
+if(__DEV__){
+	init_devtools();
+	console.log("hello");
+}
 
 //Main event
 $(document).ready(function() {
@@ -57,6 +60,14 @@ function init() {
 		campaignId: $('input[name="ea.campaign.id"]').val(),
 		callback: addStringerStat
 	});
+}
+
+/**
+ * [init_devtools description]
+ * @return {[type]} [description]
+ */
+function init_devtools(){
+	require('tota11y');
 }
 
 /**

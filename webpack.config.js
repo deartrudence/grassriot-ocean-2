@@ -4,11 +4,15 @@ Note: Register external JS files below!
 
 var webpack = require("webpack");
 var path = require("path");
+
+
+//try to fence tota11y behind process.env
+
  
 var config = {
-  opt: {
-    build_dev: true
-  },
+  // opt: {
+  //   build_dev: true
+  // },
   //handy vendor adding function!
   //Thanks http://christianalfoni.github.io/javascript/2014/12/13/did-you-know-webpack-and-react-is-awesome.html
   addVendor: function (name, relpath) {
@@ -36,14 +40,17 @@ var config = {
   //JS chunker
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(
-      'vendors',
+      'vendor',
       './js/vendors.js'
       ),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       "window.jQuery": 'jquery'
-    })
+    }),
+    // new webpack.DefinePlugin({
+    //   __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true' ))
+    // })
   ],
   //output naming
   output: {
@@ -60,7 +67,11 @@ var config = {
 config.addVendor('jquery', "vendor/jquery-1.11.3.min.js");
 config.addVendor('jqueryvalidate', "vendor/jquery.validate.min.js");
 config.addVendor('raygun', "vendor/raygun/raygun.min.js");
-config.addVendor('tota11y',"vendor/tota11y.min.js");
+
+if(process.env.BUILD_DEV === "true"){
+  config.addVendor('tota11y',"vendor/tota11y.min.js");
+}
+
 
 
 module.exports = config;

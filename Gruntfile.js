@@ -41,6 +41,14 @@ module.exports = function(grunt) {
 
         //additional options for the "dev" variation
         dev: {
+          plugins: [
+            new webpack.DefinePlugin({
+              __DEV__: true,
+              "process.env":{
+                "BUILD_DEV": 'true'
+              }
+            })
+          ]
         },
 
         //additional options for the "build" variation
@@ -51,8 +59,12 @@ module.exports = function(grunt) {
               //Uglify is pretty aggressive with its code cleanup. 
               //Ask it to leave our "dead" and "unused" code alone
               compress: {
-                dead_code: false,
-                unused: false
+              }
+            }),
+            new webpack.DefinePlugin({
+              __DEV__: false,
+              "process.env":{
+                "BUILD_DEV": 'false'
               }
             })
           ]
