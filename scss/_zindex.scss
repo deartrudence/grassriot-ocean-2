@@ -1,0 +1,15 @@
+@mixin z-base{
+  z-index: 10;
+}
+@mixin z-high{
+  z-index: 30;
+}
+@mixin z-higher{
+  z-index: 50;
+}
+@mixin z-muchHigher{
+  z-index: 70;
+}
+@mixin z-highest{
+  z-index: 90;
+}

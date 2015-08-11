@@ -1,0 +1,102 @@
+//CDN
+
+//local
+// @font-face {
+// 	font-family: 'AlternateGothic';
+// 	src: url('../fonts/AlternateGotNo2D.eot');
+// 	src: url('../fonts/AlternateGotNo2D.eot') format('embedded-opentype'),
+// 		 url('../fonts/AlternateGotNo2D.woff') format('woff'),
+// 		 url('../fonts/AlternateGotNo2D.svg') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+//CDN
+@font-face {
+	font-family: 'AlternateGothic';
+	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000');
+	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000') format('embedded-opentype'),
+		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.woff?v=1436817139000') format('woff'),
+		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.svg?v=1436817136000') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+strong{
+	font-weight: 700;
+}
+
+em{
+	font-style: italic;
+}
+
+
+// @font-face {
+// 	font-family: 'ATG';
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic.eot?v=1433425825000');
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic.eot?v=1433425825000#iefix') format('embedded-opentype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic.woff?v=1433425830000') format('woff'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic.ttf?v=1433425828000') format('truetype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic.svg?v=1433425827000#AmnestyTradeGothic') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: 'ATG-BdCn20';
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-BdCn20.eot?v=1433425810000');
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-BdCn20.eot?v=1433425810000#iefix') format('embedded-opentype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-BdCn20.woff?v=1433425817000') format('woff'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-BdCn20.ttf?v=1433425815000') format('truetype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-BdCn20.svg?v=1433425812000') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// 	text-rendering: optimizeLegibility;
+// }
+
+// @font-face {
+// 	font-family: 'ATG-Cn18';
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-Cn18.eot?v=1433425820000');
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-Cn18.eot?v=1433425820000?#iefix') format('embedded-opentype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-Cn18.woff?v=1433425824000') format('woff'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-Cn18.ttf?v=1433425822000') format('truetype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AmnestyTradeGothic-Cn18.svg?v=1433425821000') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+
+// Local
+// @font-face {
+// 	font-family: 'ATG';
+// 	src: url('../fonts/AmnestyTradeGothic.eot');
+// 	src: url('../fonts/AmnestyTradeGothic?#iefix') format('embedded-opentype'),
+// 		 url('../fonts/AmnestyTradeGothic.woff') format('woff'),
+// 		 url('../fonts/AmnestyTradeGothic.ttf') format('truetype'),
+// 		 url('../fonts/AmnestyTradeGothic.svg#AmnestyTradeGothic') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: 'ATG-BdCn20';
+// 	src: url('../fonts/AmnestyTradeGothic-BdCn20.eot');
+// 	src: url('../fonts/AmnestyTradeGothic-BdCn20.eot?#iefix') format('embedded-opentype'),
+// 		 url('../fonts/AmnestyTradeGothic-BdCn20.woff') format('woff'),
+// 		 url('../fonts/AmnestyTradeGothic-BdCn20.ttf') format('truetype'),
+// 		 url('../fonts/AmnestyTradeGothic-BdCn20.svg#AmnestyTradeGothic-BdCn20') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// 	text-rendering: optimizeLegibility;
+// }
+
+// @font-face {
+// 	font-family: 'ATG-Cn18';
+// 	src: url('../fonts/AmnestyTradeGothic-Cn18.eot');
+// 	src: url('../fonts/AmnestyTradeGothic-Cn18.eot?#iefix') format('embedded-opentype'),
+// 		 url('../fonts/AmnestyTradeGothic-Cn18.woff') format('woff'),
+// 		 url('../fonts/AmnestyTradeGothic-Cn18.ttf') format('truetype'),
+// 		 url('../fonts/AmnestyTradeGothic-Cn18.svg#AmnestyTradeGothic-Cn18') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }

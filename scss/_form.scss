@@ -1,0 +1,21 @@
+@media screen and (min-width: $screen-md){
+$form-horizontal-padding: 30px;
+$form-vertical-padding: 30px;
+   
+.form{
+  position: fixed;
+  top: 0;
+  width: 365px;
+  height: 100%;
+  right: 40px;
+  padding: $form-vertical-padding $form-horizontal-padding;
+  background-color: $yellow;
+}
+
+}
+
+@media screen and (min-width: $screen-lg){
+  .form{
+    right: 80px;
+  }
+}

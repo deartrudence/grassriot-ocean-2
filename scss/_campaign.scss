@@ -1,0 +1,9 @@
+.campaign{
+  max-width: $page-text-max-width;
+}
+
+@media screen and (min-width:$screen-md){
+  .campaign{
+    padding-left: $page-left-padding-md;
+  }
+}

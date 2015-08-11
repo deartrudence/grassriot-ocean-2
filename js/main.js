@@ -5,6 +5,12 @@ var formFieldContainerClass = 'js-form-field-container';
 var formFieldContainerIgnoreClass = 'is-selfHandling';
 var formFieldWrapperClass = 'js-form-field-wrapper';
 
+var ENBeautifierFillers = {
+	".js-page-title": ".js-heroTitle",
+	".js-hero-text": ".js-heroText",
+	".js-hero-image": ".js-heroImage"
+}
+
 var ENcrementData = require('./modules/ENcrementData'); 
 var encrementdata; 
 
@@ -18,7 +24,6 @@ var $ = require('jquery');
 
 if(__DEV__){
 	init_devtools();
-	console.log("hello");
 }
 
 //Main event
@@ -39,27 +44,39 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
-	//form beauitfication
-	enbeautifier = new ENBeautifier({
-		form: $(formSelector),
-		fieldWrapperClass: formFieldWrapperClass,
-		fieldContainerClass: formFieldContainerClass
-	});
-	enbeautifier.tagFieldContainers();
-	enbeautifier.usePlaceholders();
-	enbeautifier.buildColumns({
-		leftColumn:  leftColumnSelector
-	});
+	//determine if we're actually on an action page
+	setupAction();
 
-	//stringer
-	stringer = new Stringer({
-		clientId: '1770'
-	})
-	stringer.getStat({
-		datapoint: 'participations',
-		campaignId: $('input[name="ea.campaign.id"]').val(),
-		callback: addStringerStat
-	});
+	//otherwise, setup post-action
+
+}
+
+/**
+ * [setupAction description]
+ * @return {[type]} [description]
+ */
+function setupAction(){
+	try{
+		//form beauitfication
+		enbeautifier = new ENBeautifier({
+			form: $(formSelector),
+			fieldWrapperClass: formFieldWrapperClass,
+			fieldContainerClass: formFieldContainerClass
+		});
+		enbeautifier.tagFieldContainers();
+		enbeautifier.usePlaceholders();
+		enbeautifier.buildColumns({
+			leftColumn:  leftColumnSelector
+		});
+
+		//move text to the right places
+		$.each(ENBeautifierFillers, function(target,source){
+			$(target).append($(source).contents());
+		});
+	
+	} catch(error) {
+		raygunSendError(error);
+	}
 }
 
 /**
@@ -67,7 +84,6 @@ function init() {
  * @return {[type]} [description]
  */
 function init_devtools(){
-	require('tota11y');
 }
 
 /**
@@ -189,7 +205,6 @@ function raygunSendError(error, options) {
 	catch(error) {
 		if(typeof Raygun !== 'undefined')
 			Raygun.send(error);
-		console.log(error);
 	}
 }
 
@@ -227,44 +242,44 @@ function init_validation(){
 	try{
 		require('jqueryvalidate');
 
-		$.validator.addMethod("emailTLD", function (value, element) {
-      return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-      }, "Invalid email address");
+		// $.validator.addMethod("emailTLD", function (value, element) {
+  //     return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+  //     }, "Invalid email address");
 
-		var validation_rules = {
-			"Email": {
-				emailTLD: true
-			}
-		}
+		// var validation_rules = {
+		// 	"Email": {
+		// 		emailTLD: true
+		// 	}
+		// }
 
-		var settings = {
-	    ignore: [],
-	    rules: validation_rules,
-	    invalidHandler: function(e, validator) {
-        try {
-          throw new Error("Validation Failure");
-        }
-        catch (error) {
-          raygunSendError(error, {
-          	data: {
-          		errors: validator.invalid
-          	},
-          	forms: [formSelector]
-          });
-        }
-	    },
-	    submitHandler: function (form) {
-        $(form).attr('action', formAction+"?s="+analyticsGetSection(leftColumnSelector));
-        form.submit();
-      }
-		};
+		// var settings = {
+	 //    ignore: [],
+	 //    rules: validation_rules,
+	 //    invalidHandler: function(e, validator) {
+  //       try {
+  //         throw new Error("Validation Failure");
+  //       }
+  //       catch (error) {
+  //         raygunSendError(error, {
+  //         	data: {
+  //         		errors: validator.invalid
+  //         	},
+  //         	forms: [formSelector]
+  //         });
+  //       }
+	 //    },
+	 //    submitHandler: function (form) {
+  //       $(form).attr('action', formAction+"?s="+analyticsGetSection(leftColumnSelector));
+  //       form.submit();
+  //     }
+		// };
 
-    $form = $(formSelector);
-    $form.validate(settings);
+  //   $form = $(formSelector);
+  //   $form.validate(settings);
 
-    $form.find("input").each( function(){
-    	$(this).rules("add","required");
-    });
+  //   $form.find("input").each( function(){
+  //   	$(this).rules("add","required");
+  //   });
 	}
 	catch(error){
 		raygunSendError(error);

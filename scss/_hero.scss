@@ -1,0 +1,52 @@
+.hero{
+  position: relative; //for the overflow control
+  overflow: hidden;
+  background: $orange;
+  height: 500px;
+
+}
+
+.page-title{
+  color: $white;
+  position: relative;
+  @include z-high;
+}
+
+.hero-text{
+  color: $white;
+  position: relative;
+  @include z-high;
+}
+
+.hero-content{
+  max-width: $page-text-max-width;
+}
+
+
+@media screen and (min-width: $screen-md){
+  $image-width: 90%; //TODO: this should correspond with the actual width to the form
+  .hero img{
+    height: auto;
+    width: 100%;
+  }
+
+  .hero-image{
+    position: absolute;
+    width: $image-width; 
+    top: 0px;
+  }
+
+  .hero-side-image{
+    position: absolute;
+    width: $image-width;
+    top: 0;
+    left: 100%;
+    margin-left: -1*$page-right-padding-md;
+  }
+
+  .hero-content{
+    position: absolute;
+    bottom: 65px;
+    left: $page-left-padding-md;
+  }
+}
