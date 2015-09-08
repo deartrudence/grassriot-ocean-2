@@ -56,7 +56,11 @@
   }
 
   @media screen and (min-width: $screen-md){
-    padding-right: $form-width-md;
+    padding-right: $form-width-md + $content-overlap-md;
+    padding-left: $content-overlap-md;
+    margin-left: -1 * $content-overlap-md;
+    margin-right: -1 * $content-overlap-md;
+
   }
 
   @media screen and (min-width: $screen-lg){
@@ -64,6 +68,9 @@
   }
 
   @media screen and (min-width: $screen-xl){
-
+    padding-right: $form-width-xl + $content-overlap-xl;
+    padding-left: $content-overlap-xl;
+    margin-left: -1 * $content-overlap-xl;
+    margin-right: -1 * $content-overlap-xl;
   }  
 }

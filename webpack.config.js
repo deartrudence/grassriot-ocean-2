@@ -66,7 +66,8 @@ var config = {
 
 config.addVendor('jquery', "vendor/jquery-1.11.3.min.js");
 config.addVendor('jqueryvalidate', "vendor/jquery.validate.min.js");
-config.addVendor('raygun', "vendor/raygun/raygun.min.js");
+// config.addVendor('raygun', "vendor/raygun/raygun.min.js");
+config.addVendor('modernizr',"vendor/modernizr.min.js");
 
 if(process.env.BUILD_DEV === "true"){
   config.addVendor('tota11y',"vendor/tota11y.min.js");

@@ -6,21 +6,29 @@ var formFieldContainerIgnoreClass = 'is-selfHandling';
 var formFieldWrapperClass = 'js-form-field-wrapper';
 
 var ENBeautifierFillers = {
-	".js-page-title": ".js-heroTitle",
-	".js-hero-text": ".js-heroText",
+	".js-hero": ".js-heroContent",
+	".js-campaign": ".js-campaignText",
+	".js-highlights": ".js-highlightsText",
 	".js-hero-image": ".js-heroImage"
 }
-
-var ENcrementData = require('./modules/ENcrementData'); 
-var encrementdata; 
 
 var ENBeautifier = require('./modules/ENBeautifier');
 var enbeautifier;
 
-var Stringer = require('./modules/Stringer');
-var stringer;
+//hero configuration
+var hero = ".hero-image";
+var heroImage = ".js-hero-image img";
+var heroText = ".js-hero-text";
+var heroImageRatio = false;
+
+//mobile form button
+var form = ".form";
+var formOpenButton = ".js-formOpen";
+var formOpenButtonLabel = ".js-formOpen-label";
+var windowSize;
 
 var $ = require('jquery');
+require("modernizr");
 
 if(__DEV__){
 	init_devtools();
@@ -44,11 +52,26 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
-	//determine if we're actually on an action page
+	//determine if we're on a thank you page
+	if($('input[name="ea.submitted.page"]').length && $('input[name="ea.submitted.page"]').val() === "2"){
+		ty = true;
+		setupTY();
+	}
+
+	//do everything else
 	setupAction();
+	modernize();
+	raygunCheckErrorContainer("#eaerrors", [formSelector]);
+}
 
-	//otherwise, setup post-action
-
+/**
+ * [modernize description]
+ * @return {[type]} [description]
+ */
+function modernize(){
+	if(!window.Modernizr.input.placeholder){
+		$("html").addClass("no-placeholder");
+	}
 }
 
 /**
@@ -70,9 +93,7 @@ function setupAction(){
 		});
 
 		//move text to the right places
-		$.each(ENBeautifierFillers, function(target,source){
-			$(target).append($(source).contents());
-		});
+		enbeautifier.moveToTargets(ENBeautifierFillers);
 	
 	} catch(error) {
 		raygunSendError(error);

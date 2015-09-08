@@ -127,7 +127,24 @@ em {
 }
 @media screen and (min-width: 992px) {
   .campaign {
-    padding-right: 435px;
+    padding-right: 445px;
+    padding-left: 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+@media screen and (min-width: 2100px) {
+  .campaign {
+    padding-right: 665px;
+    padding-left: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .col-form {
+    margin-top: 105px;
   }
 }
 
@@ -154,22 +171,16 @@ em {
   }
 }
 
-.identity {
-  position: absolute;
-  top: 0px;
-  z-index: 90;
-  background: #aed100;
+@media screen and (min-width: 992px) {
+  .page-title {
+    border-top: 5px solid #5d8200;
+    background-color: #313131;
+    height: 100px;
+  }
 }
 
-@media screen and (min-width: 992px) {
-  .identity {
-    left: 80px;
-  }
-}
-@media screen and (min-width: 992px) {
-  .page-footer {
-    padding-right: 435px;
-  }
+.page-footer {
+  background-color: #313131;
 }
 
 /*# sourceMappingURL=app.css.map */

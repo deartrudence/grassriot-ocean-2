@@ -1,1 +1,568 @@
-webpackJsonp([1],[function(e,t,n){function r(){l=new p({form:g(d),fieldWrapperClass:h,fieldContainerClass:f}),l.tagFieldContainers(),l.usePlaceholders(),l.buildColumns({leftColumn:c}),u=new m({clientId:"1770"}),u.getStat({datapoint:"participations",campaignId:g('input[name="ea.campaign.id"]').val(),callback:i})}function i(e){if("success"==e.status)try{var t,n=parseInt(e.data);g(counterSelector).text(n.toLocaleString()),g(counterRangeSelector).find("div").each(function(){var e=g(this).find(counterRangeLimitSelector).text();return n<parseInt(e)?!1:void(t=g(this).find(counterRangeTextSelector).html())}),g(counterTextSelector).html(t)}catch(r){a(r,{data:{response:e,range:limit}})}}function o(e){var t=null;return g(e).children().each(function(){g(window).scrollTop()>g(this).offset().top&&(t=g(this).attr("data-section"))}),t}function a(e,t){try{n(4);var r={};if((!t instanceof Object||"undefined"==typeof t)&&(t={}),t.forms&&t.forms.length){for(var i={},o=0;o<t.forms.length;o++){var a=g(t.forms[o]);i[t.forms[o]]=a.map(function(e,t){return[g(t).serializeArray().map(function(e){var t={};return t[e.name]=e.value,t})]})}g.extend(!0,r,{forms:i})}t.data&&g.extend(!0,r,t.data),console.log(e),console.log(r)}catch(e){"undefined"!=typeof Raygun&&Raygun.send(e),console.log(e)}}function s(){try{n(3),g.validator.addMethod("emailTLD",function(e,t){return this.optional(t)||/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e)},"Invalid email address");var e={Email:{emailTLD:!0}},t={ignore:[],rules:e,invalidHandler:function(e,t){try{throw new Error("Validation Failure")}catch(n){a(n,{data:{errors:t.invalid},forms:[d]})}},submitHandler:function(e){g(e).attr("action",formAction+"?s="+o(c)),e.submit()}};$form=g(d),$form.validate(t),$form.find("input").each(function(){g(this).rules("add","required")})}catch(r){a(r)}}var l,u,c=".js-left-column",d=".form",f="js-form-field-container",h="js-form-field-wrapper",p=(n(5),n(7)),m=n(6),g=n(1);g(document).ready(function(){try{r(),s()}catch(e){a(e)}})},,,,,function(e,t,n){(function(t){function r(e){if(!this.hasRequiredOptions(e))throw new Error("[ENcrementData] Missing required options: "+this.missingOptions.join(", "));this.clientId=e.clientId,this.resultCampaignId=e.campaignId,this.resultFormId=e.formId,this.desiredFormFields=e.formFields,this.emailFieldName=e.emailField?e.emailField:this.desiredFormFields[0],this.formFieldContainer=e.fieldContainer?e.fieldContainer:"js-form-field-container",this.formFieldIgnoreContainer=e.ignoreContainer?e.ignoreContainer:"is-selfHandling",this.targetForm=e.form,this.init()}function o(e){if(l=!0,"success"==e.status)for(i=0;i<this.desiredFormFields.length;i++)if(!t(this.targetForm).find('[name="'+this.desiredFormFields[i]+'"]').not('[disabled="disabled"]').length&&"N"==e.data[this.desiredFormFields[i]])return void this.activateField(this.desiredFormFields[i])}var a,s=["clientId","campaignId","formId","formFields","fieldContainer","form"],l=!1,u=n(6);r.prototype.init=function(){for(var e=t(this.targetForm).find(this.formFieldContainer),n=0;n<e.length;n++)t(e[n]).find(".eaMandatoryFieldMarker").length||"undefined"!=typeof this.formFieldIgnoreContainer&&t(e[n]).hasClass(this.formFieldIgnoreContainer)?t(this).trigger("left.active.ENcrement"):this.dectivateField(t(e[n]).find("input, select, textarea").attr("name"));a=new u({clientId:this.clientId})},r.prototype.hasRequiredOptions=function(e){for(var t=[],n=0;n<s.length;n++)"undefined"==typeof e[s[n]]&&t.push(s[n]);return t.length?(this.missingOptions=t,!1):!0},r.prototype.showNextField=function(e){""==e||l||a.getUserData({email:e,context:this,callback:o})},r.prototype.activateField=function(e){t(this.targetForm).find('[name="'+e+'"]').removeAttr("disabled").trigger("made.active.ENcrement").closest(this.formFieldContainer).show(200)},r.prototype.dectivateField=function(e){t(this.targetForm).find('[name="'+e+'"]').attr("disabled","disabled").trigger("made.inactive.ENcrement").closest(this.formFieldContainer).hide()},e.exports=r}).call(t,n(1))},function(e,t,n){(function(t){function n(e){if(!this.hasRequiredOptions(e))throw new Error("[Stringer] Missing required options: "+this.missingOptions.join(", "));this.clientId=e.clientId}function r(e,n,r){t.ajax({type:"GET",url:e,dataType:"jsonp",cache:!1,context:r?r:this,crossDomain:!0,error:function(){},success:n})}var i=["clientId"],o="http://stringer.grassriots.com/api/v1";n.prototype.hasRequiredOptions=function(e){for(var t=[],n=0;n<i.length;n++)"undefined"==typeof e[i[n]]&&t.push(i[n]);return t.length?(this.missingOptions=t,!1):!0},n.prototype.getStat=function(e){if("undefined"==typeof e.datapoint||"undefined"==typeof e.callback)throw new Error("[Stringer.getStat] A datapoint and callback are required");var t=o+"/stats/client/"+encodeURIComponent(this.clientId)+(e.campaignId?"/campaign/"+encodeURIComponent(e.campaignId):"")+"/datapoint/"+encodeURIComponent(e.datapoint);r(t,e.callback)},n.prototype.getUserData=function(e){if("undefined"==typeof e.email||"undefined"==typeof e.callback)throw new Error("[Stringer.getUserData] An email and callback are required");var t=o+"/encrementer/client/"+encodeURIComponent(this.clientId)+"/email/"+encodeURIComponent(e.email);r(t,e.callback,e.context)},e.exports=n}).call(t,n(1))},function(e,t,n){(function(t){function n(e){if(!this.hasRequiredOptions(e))throw new Error("[ENBeautifier] Missing required options: "+this.missingOptions.join(", "));this.targetForm=e.form,this.fieldWrapperClass=e.fieldWrapperClass?e.fieldWrapperClass:"js-form-field-wrapper",this.fieldContainerClass=e.fieldContainerClass?e.fieldContainerClass:"js-form-field-container",this.willBuildColumns="undefined"!=typeof e.willBuildColumns?e.willBuildColumns:!1,this.init()}var r=["form"];n.prototype.hasRequiredOptions=function(e){for(var t=[],n=0;n<r.length;n++)"undefined"==typeof e[r[n]]&&t.push(r[n]);return t.length?(this.missingOptions=t,!1):!0},n.prototype.init=function(){this.willBuildColumns&&t(".eaLeftColumnContent, .eaRightColumnContent").addClass("hide")},n.prototype.tagFieldContainers=function(){var e=t(this.targetForm).find("input, select, textarea").not('[type="hidden"], .eaSubmitButton');e.closest("div").addClass(this.fieldWrapperClass).parent().closest("div").addClass(this.fieldContainerClass),e.each(function(){var e=t(this),n="undefined"!=typeof e.attr("name")?e.attr("name"):"unnamed";t(this).addClass("js-"+n.toLowerCase().replace(/[^a-z0-9-]/g,"-"))})},n.prototype.buildColumns=function(e){var n,r;"undefined"!=typeof e.leftColumn?(n=e.leftColumn,r=".eaLeftColumnContent"):"undefined"!=typeof e.rightColumn&&(n=e.rightColumn,r=".eaRightColumnContent"),t(r).appendTo(n),t(".eaLeftColumnFiller, .eaRightColumnFiller").remove(),t(".eaLeftColumnContent, .eaRightColumnContent").removeClass("hide")},n.prototype.usePlaceholders=function(){var e=t(this.targetForm).find("."+this.fieldContainerClass);e.length||(this.tagFieldContainers(),e=t(this.targetForm).find("."+this.fieldContainerClass)),t(e).each(function(){var e=t(this).find("label");t(this).find("input, textarea").attr("placeholder",e.text()),e.closest(".eaFormElementLabel").hide()})},e.exports=n}).call(t,n(1))}]);
+webpackJsonp([0],[
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//Beautifier configuration
+	var leftColumnSelector = '.js-left-column';
+	var formSelector = '.form';
+	var formFieldContainerClass = 'js-form-field-container';
+	var formFieldContainerIgnoreClass = 'is-selfHandling';
+	var formFieldWrapperClass = 'js-form-field-wrapper';
+
+	var ENBeautifierFillers = {
+		".js-hero": ".js-heroContent",
+		".js-campaign": ".js-campaignText",
+		".js-highlights": ".js-highlightsText",
+		".js-hero-image": ".js-heroImage"
+	}
+
+	var ENBeautifier = __webpack_require__(1);
+	var enbeautifier;
+
+	//hero configuration
+	var hero = ".hero-image";
+	var heroImage = ".js-hero-image img";
+	var heroText = ".js-hero-text";
+	var heroImageRatio = false;
+
+	//mobile form button
+	var form = ".form";
+	var formOpenButton = ".js-formOpen";
+	var formOpenButtonLabel = ".js-formOpen-label";
+	var windowSize;
+
+	var $ = __webpack_require__(2);
+	__webpack_require__(4);
+
+	if(true){
+		init_devtools();
+	}
+
+	//Main event
+	$(document).ready(function() {
+		try {
+			init();
+			init_validation();
+		}
+		catch(error) {
+			raygunSendError(error);
+		} 
+
+
+	});
+
+	/**
+	 * [init description]
+	 * @return {[type]} [description]
+	 */
+	function init() {
+		//determine if we're on a thank you page
+		if($('input[name="ea.submitted.page"]').length && $('input[name="ea.submitted.page"]').val() === "2"){
+			ty = true;
+			setupTY();
+		}
+
+		//do everything else
+		setupAction();
+		modernize();
+		raygunCheckErrorContainer("#eaerrors", [formSelector]);
+	}
+
+	/**
+	 * [modernize description]
+	 * @return {[type]} [description]
+	 */
+	function modernize(){
+		if(!window.Modernizr.input.placeholder){
+			$("html").addClass("no-placeholder");
+		}
+	}
+
+	/**
+	 * [setupAction description]
+	 * @return {[type]} [description]
+	 */
+	function setupAction(){
+		try{
+			//form beauitfication
+			enbeautifier = new ENBeautifier({
+				form: $(formSelector),
+				fieldWrapperClass: formFieldWrapperClass,
+				fieldContainerClass: formFieldContainerClass
+			});
+			enbeautifier.tagFieldContainers();
+			enbeautifier.usePlaceholders();
+			enbeautifier.buildColumns({
+				leftColumn:  leftColumnSelector
+			});
+
+			//move text to the right places
+			enbeautifier.moveToTargets(ENBeautifierFillers);
+		
+		} catch(error) {
+			raygunSendError(error);
+		}
+	}
+
+	/**
+	 * [init_devtools description]
+	 * @return {[type]} [description]
+	 */
+	function init_devtools(){
+	}
+
+	/**
+	 * [addStringerStat description]
+	 * @param {[type]} response [description]
+	 */
+	function addStringerStat(response){
+		if(response.status == "success") {
+			try {
+				var actions = parseInt(response.data);
+				var useText;
+				$(counterSelector).text(actions.toLocaleString());
+				$(counterRangeSelector).find('div').each(function() {
+					var limit = $(this).find(counterRangeLimitSelector).text();
+					if(actions < parseInt(limit))
+						return false;
+					useText = $(this).find(counterRangeTextSelector).html();
+				});
+				$(counterTextSelector).html(useText);
+			}
+			catch(error) {
+				raygunSendError(error, {
+					data: {
+						response: response,
+						range: limit
+					}
+				});
+			}
+		}
+	}
+
+	//////////////////////////////
+	// Everything else goes here
+	//////////////////////////////
+
+	// Tracking
+	//---------------------------------------
+	function analyticsReport( event, title ){
+		try {
+			//UA
+			if( typeof ga !== 'undefined' ){
+			  
+			    var data = {};
+			    if( event ){
+			      data[ 'page'] = '/virtual/'+event;
+			    }
+			    if( title ){
+			      data[ 'title' ] = title;
+			    }
+
+			    ga( 'send', 'pageview', data );
+
+			}
+
+			//Traditional GA
+			if( typeof _gaq !== 'undefined' ){
+			    _gaq.push(['_trackPageview', '/virtual/'+event]);
+			}
+
+			//Tag Manager
+			if( typeof _gaq !== 'undefined' ){
+
+			}       
+		} catch (err) {
+			raygunSendError(err);
+		}
+	}
+
+	function analyticsGetSection(container) {
+		var currentSection = null;
+		$(container).children().each(function() {
+			if($(window).scrollTop() > $(this).offset().top)
+				currentSection = $(this).attr("data-section");
+		});
+		return currentSection;
+	}
+
+	// Error Reporting
+	// ---------------------------------------
+	function raygunSendError(error, options) {
+		try {
+			__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"raygun\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));		
+			var data = { };
+			if(!options instanceof Object || typeof options == 'undefined') {
+				options = { };
+			}
+
+			//if forms are defined, pull in the form data for each listed form selector and store as an array of
+			if(options.forms && options.forms.length) {
+				var formDataCollection = { };
+				for(var i = 0; i < options.forms.length; i++) {
+					var $forms = $(options.forms[i]);
+					formDataCollection[options.forms[i]] = $forms.map(function(index, form) {
+						return [$(form).serializeArray().map(
+							function(obj) {
+								var returnObj = { };
+								returnObj[obj.name] = obj.value;
+								return returnObj;
+							}
+						)];
+						return [];
+					});
+				}
+				//console.log(formDataCollection);
+				$.extend(true, data, {forms: formDataCollection});
+			}
+
+			if(options.data) {
+				$.extend(true, data, options.data);
+			}
+
+			/*if(typeof Raygun !== 'undefined')
+				Raygun.send(error, data);
+			else {*/
+				console.log(error);
+				console.log(data);
+			//}
+		}
+		catch(error) {
+			if(typeof Raygun !== 'undefined')
+				Raygun.send(error);
+		}
+	}
+
+	function raygunCheckErrorContainer(selector, formSelectors) {
+		try {
+			if($(selector).length) {
+				try { throw new Error("EA Processing Error");}
+				catch(error) {
+					analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+					var data = {};
+					data[selector] = $(selector).text();
+					raygunSendError(error, {
+						data: data,
+						forms: formSelectors
+					});
+				}
+			}
+		}
+		catch(error) {
+			raygunSendError(error);
+		}
+	}
+
+	function getURLParameter(name){
+	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	    if (results==null){
+	       return null;
+	    }
+	    else{
+	       return results[1] || 0;
+	    }
+	}
+
+	function init_validation(){
+		try{
+			__webpack_require__(5);
+
+			// $.validator.addMethod("emailTLD", function (value, element) {
+	  //     return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+	  //     }, "Invalid email address");
+
+			// var validation_rules = {
+			// 	"Email": {
+			// 		emailTLD: true
+			// 	}
+			// }
+
+			// var settings = {
+		 //    ignore: [],
+		 //    rules: validation_rules,
+		 //    invalidHandler: function(e, validator) {
+	  //       try {
+	  //         throw new Error("Validation Failure");
+	  //       }
+	  //       catch (error) {
+	  //         raygunSendError(error, {
+	  //         	data: {
+	  //         		errors: validator.invalid
+	  //         	},
+	  //         	forms: [formSelector]
+	  //         });
+	  //       }
+		 //    },
+		 //    submitHandler: function (form) {
+	  //       $(form).attr('action', formAction+"?s="+analyticsGetSection(leftColumnSelector));
+	  //       form.submit();
+	  //     }
+			// };
+
+	  //   $form = $(formSelector);
+	  //   $form.validate(settings);
+
+	  //   $form.find("input").each( function(){
+	  //   	$(this).rules("add","required");
+	  //   });
+		}
+		catch(error){
+			raygunSendError(error);
+		}
+	}
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {/**
+	 * ENBeautifier module
+	 * requires jQuery, jQuery Placeholder
+	 */
+	var requiredOptions = [
+	    'form'
+	];
+
+	var fieldObtained = false;
+
+	/**
+	 * ENBeautifier constructor
+	 * @param Object options with the following properties:
+	 *        string clientId - unique EN client id
+	 *        string campaignId - unique EN campaign id to pull user data
+	 *        array formField - collection of form field names desired in the order of preference - Email should always be included and be the first in the array
+	 *        jQuery form - a jQuery object of the form where the fields will be added 
+	 *
+	 *        It can optionally include these additional properties:
+	 *        string fieldWrapperClass - the class to be added to the wrapper div for each input (default: "js-form-field-wrapper")
+	 *        string fieldContainerClass - the class to be added to the broader wrapper (including the label) (default: "js-form-field-container")
+	 *        boolean willBuildColumns - whether to hide content with EN's left/right column classes (default: false)
+	 *        string errorContainer - the selector for EN errors (default: #eaerrors)
+	 *        string pageSelector - the selector for the input with the page number
+	 *        string postactionIndicator - the variable name to check for explicit post-action selection
+	 *        string postactionClass - the class name to add to the body if it's a post-action page
+	 */
+	function ENBeautifier(options) {
+	    if(this.hasRequiredOptions(options)) {
+	        this.targetForm = options.form;
+	        this.fieldWrapperClass = (options.fieldWrapperClass ? options.fieldWrapperClass : 'js-form-field-wrapper');
+	        this.fieldContainerClass = (options.fieldContainerClass ? options.fieldContainerClass : 'js-form-field-container');
+	        this.willBuildColumns = (typeof options.willBuildColumns != 'undefined' ? options.willBuildColumns : false);
+	        this.errorContainer = (options.errorContainer ? options.errorContainer : '#eaerrors');
+	        this.pageSelector = (options.pageSelector ? options.pageSelector : 'input[name="ea.submitted.page"]');
+	        this.postactionIndicator = (options.postactionIndicator ? options.postactionIndicator : 'isPostaction');
+	        this.postactionClass = (options.postactionClass ? options.postactionClass : 'is-postAction')
+
+	        //default values
+	        this.reportedErrors = [];
+	        this.currentPage = false;
+	        this.isPostaction = false;
+
+	        this.init();
+	    }
+	    else
+	        throw new Error("[ENBeautifier] Missing required options: " + this.missingOptions.join(', '));
+	}
+
+	/**
+	 * ENBeautifier hasRequiredOptions
+	 * @param {Object} options list of options
+	 *
+	 * @return {bool} whether all necessary fields are provided in the options
+	 */
+	ENBeautifier.prototype.hasRequiredOptions = function(options) {
+	    var missingOptions = [ ];
+	    for(var i = 0; i < requiredOptions.length; i++) {
+	        if(typeof options[requiredOptions[i]] === 'undefined') {
+	            missingOptions.push(requiredOptions[i]);
+	        }
+	    }
+	    if(missingOptions.length) {
+	        this.missingOptions = missingOptions;
+	        return false;
+	    }
+	    return true;
+	}
+
+	ENBeautifier.prototype.init = function() {
+	    if(this.willBuildColumns) {
+	        $('.eaLeftColumnContent, .eaRightColumnContent').addClass('hide');
+	    }
+	    this.checkErrors();
+	}
+
+	ENBeautifier.prototype.tagFieldContainers = function() {
+	    var fields = $(this.targetForm).find('input, select, textarea').not('[type="hidden"], .eaSubmitButton');
+	    fields
+	        .closest('div').addClass(this.fieldWrapperClass)
+	        .parent().closest('div').addClass(this.fieldContainerClass);
+
+	    fields.each(function() {
+	        var $this = $(this);
+	        var fieldName = (typeof $this.attr('name') !== 'undefined') ? $this.attr('name') : 'unnamed';
+	        $(this).addClass('js-' + fieldName.toLowerCase().replace(/[^a-z0-9-]/g, '-'));
+	    });
+	}
+
+	/**
+	 * Puts everything in its right place
+	 * @param  Object options An object - Names are selectors for the destination, values are selectors for the content. Values can be arrays of selectors
+	 */
+	ENBeautifier.prototype.moveToTargets = function(fillers, includeSource){
+	    if(typeof includeSource == 'undefined') includeSource = false;
+	    //move text to the right places
+	    $.each(fillers, function(target,source){
+	        //if we just have a simple selector, select it and let's get going
+	        if(typeof source === "string" ){
+	            $(target).append( (includeSource ? $(source) : $(source).contents()) );    
+	        }
+	        //but if we have an array of selectors, loop through that array
+	        else if (Array.isArray(source)){
+	            var $target = $(target);
+	            for (var i = 0; i < source.length; i++){
+	                $target.append( (includeSource ? $(source[i]) : $(source[i]).contents()) );
+	            }
+	        }
+
+	        //Something else? ¯\_(ツ)_/¯        
+	    });
+	}
+
+	/**
+	 * Adds classes to a bulk collection
+	 * @param  Object fieldCollection An object - selectors as the key and an object containing the target element and classes to add to it
+	 */
+	ENBeautifier.prototype.addClasses = function(elementCollection) {
+	    var $form = this.targetForm;
+	    $.each(elementCollection, function (selector, data) {
+	        $form.find(selector).closest(data.targetElement).addClass(data.classes);
+	    });
+	}
+
+
+	/**
+	 * [buildColumns description]
+	 * @param  {[type]} options [description]
+	 * @return {[type]}         [description]
+	 */
+	ENBeautifier.prototype.buildColumns = function(options) {
+	    // var target, source;
+	    // if(typeof options.leftColumn != "undefined") {
+	    //     target = options.leftColumn;
+	    //     source = '.eaLeftColumnContent';
+	    // }
+	    // else if(typeof options.rightColumn != "undefined") {
+	    //     target = options.rightColumn;
+	    //     source = '.eaRightColumnContent';
+	    // }
+	    // $(source).appendTo(target);
+	    // $('.eaLeftColumnFiller, .eaRightColumnFiller').remove();
+	    // $('.eaLeftColumnContent, .eaRightColumnContent').removeClass('hide');
+	     
+	    var fillers = {};
+	    if(typeof options.leftColumn !== "undefined"){
+	        fillers[options.leftColumn] = ".eaLeftColumnContent";
+	    }
+
+	    if(typeof options.rightColumn !== "undefined"){
+	        fillers[options.rightColumn] = ".eaRightColumnContent";
+	    }
+
+	    this.moveToTargets(fillers);    
+	}
+
+	/**
+	 * Takes labels provided by Engaging Networks and sets them as the field's placeholder attribute instead
+	 * @return {[type]} [description]
+	 */
+	ENBeautifier.prototype.usePlaceholders = function() {
+	    var fieldContainers = $(this.targetForm).find('.'+this.fieldContainerClass);
+	    if(!fieldContainers.length) {
+	        this.tagFieldContainers();
+	        fieldContainers = $(this.targetForm).find('.'+this.fieldContainerClass);
+	    }
+
+	    $(fieldContainers).each(function() {
+	        var label = $(this).find('label');
+	        var asterisk = /( )+\*/;
+	        $(this)
+	            .find('input, textarea')
+	            .attr('placeholder', label.text().replace(asterisk,''));
+	        if(
+	            typeof window.Modernizr === 'undefined'
+	            || window.Modernizr.input.placeholder
+	            ){
+	            label.closest('.eaFormElementLabel').hide();    
+	        }
+	    });
+	}
+
+	/**
+	 * Finds errors reported by Engaging Networks and reports them 
+	 * It 1) Emits an event on the form, 2) Stores the contents for later use
+	 * @return {[type]} [description]
+	 */
+	ENBeautifier.prototype.checkErrors = function(){
+	    var $errors = $(this.errorContainer);
+	    if( $errors.length > 0){
+	        var errors = $errors.map(function(){
+	            return $(this).contents();
+	        });
+
+	        //Let the rest of the page know there's an error
+	        $(this.targetForm).trigger("error.enbeautifier", errors);
+
+	        //store it for later use
+	        this.reportedErrors = this.reportedErrors.concat(errors);
+	    }
+	}
+
+	/**
+	 * An accessor function for recorded EN errors
+	 * @param  {boolean} preserveErrors True by default; if false, it will empty the array after
+	 * @return {array}                The reported errors
+	 */
+	ENBeautifier.prototype.getErrors = function(preserveErrors){
+	    if(typeof preserveErrors !== "boolean"){
+	        preserveErrors = true;
+	    }
+
+	    var errors = this.reportedErrors;
+
+	    if(!preserveErrors){
+	        this.reportedErrors = [];
+	    }
+
+	    return errors;
+	}
+
+	/**
+	 * Gets and stores the page count and whether it's a post-action page
+	 * If the current page is a post-action page, add the class to the page
+	 */
+	ENBeautifier.prototype.checkPage = function(){
+	    //get the page number
+	    var pageInput = $(this.pageSelector);
+	    this.currentPage = pageInput.length ? parseInt(pageInput.val()) : 0;
+
+	    //determine if we're on a post-action page
+	    //if there's an explicit post-action indicator, then we've got an answer
+	    if(typeof window[this.thankyouIndicator] === "boolean"){
+	        this.isPostaction = window[this.thankyouIndicator];
+	    }
+	    //if not, then we should just assume that any page > 1 is a post-action
+	    else if(this.currentPage > 1){
+	        this.isPostaction = true;
+	    }
+
+	    //if it's the post-action, add the post-action class
+	    if(this.isPostaction){
+	        $("body").addClass(this.postactionClass);
+	    }
+	}
+
+	module.exports = ENBeautifier;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ }
+]);

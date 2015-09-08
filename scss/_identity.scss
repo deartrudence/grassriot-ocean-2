@@ -1,12 +1,9 @@
-.identity{
-  position: absolute;
-  top: 0px;
-  @include z-highest;
-  background: $green;
-}
-
-@media screen and (min-width: $screen-md){
-  .identity{
-    left: $page-left-padding-md;
+.page-title{
+  @media screen and (min-width: $screen-md){
+    $border-height: 5px;
+    border-top: $border-height solid $dark-green;
+    background-color: $vdark-grey;
+    height: $header-height-md - $border-height;
   }
+
 }
