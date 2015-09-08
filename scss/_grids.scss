@@ -1,0 +1,69 @@
+/**
+ * formContainer
+ * Container styling for wherever the form is supposed to go
+ */
+@mixin formContainer{
+  
+  @media screen and (max-width: $screen-xs-max){
+    position: fixed;
+    width: 100%;
+    bottom: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;    
+  }
+
+
+  @media screen and (min-width: $screen-xs){
+    
+  }
+
+  @media screen and (min-width: $screen-sm){
+
+  }
+
+  @media screen and (min-width: $screen-md){
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $form-width-md;
+    height: 100%;
+  }
+
+  @media screen and (min-width: $screen-lg){
+
+  }
+
+  @media screen and (min-width: $screen-xl){
+
+  }
+}
+
+/**
+ * contentContainer
+ */
+@mixin contentContainer{
+  @media screen and (max-width: $screen-xs-max){
+  }
+
+
+  @media screen and (min-width: $screen-xs){
+    
+  }
+
+  @media screen and (min-width: $screen-sm){
+
+  }
+
+  @media screen and (min-width: $screen-md){
+    padding-right: $form-width-md;
+  }
+
+  @media screen and (min-width: $screen-lg){
+
+  }
+
+  @media screen and (min-width: $screen-xl){
+
+  }  
+}

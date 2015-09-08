@@ -1,12 +1,43 @@
-$yellow: #fecf50;
-$blue: #5e82ac;
-$dark-grey: #676d76;
-$light-grey: #545a63;
-$orange: #e8361b;
-$green: #1d4d28;
+$vlight-green: #c8e03b;
+$light-green: #bad80a;
+$green: #aed100;
+$brand-green: #709202;
+$dark-green: #5d8200;
+$vdark-green: #21633d;
+
+$turquoise: #0cacbd;
+$dark-turquoise: #257488;
+
+$beige: #d6ccaf;
+$dark-beige: #958f72;
+
 $white: #fff;
-$primary-colour: $dark-grey;
-$action-colour: $orange;
+$light-grey: #bcbec0;
+$vdark-grey: #313131;
+$black: #000;
+
+$modal-overlay-opacity: 0.65;
+
+//-----------
+//sections
+//-----------
+
+//Header
+$heaer-bgcolour: $vdark-grey;
+
+//Hero
+$hero-background: $white;
+
+//form
+$form-width-md: 435px;
+$form-width-xl: 650px;
+$form-background: $green;
+
+//-----------
+//screen sizes
+//-----------
+$screen-xxs-max: ($screen-xs-min - 1) !default;
+$screen-xl: 2100px;
 
 //spacing
 $page-left-padding-md: 80px;
