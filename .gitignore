@@ -4,7 +4,7 @@
 .sass-cache
 codekit*
 
-node_modules/
+
 wp-content/cache/tmp
 object-cache.php
 *.sublime-workspace
@@ -59,3 +59,5 @@ queries.html
 wp-content/plugins/gr_donation/includes/class_gr_leaderboard-working.php
 KhpTestDatabase.sql
 .idea
+
+fonts/

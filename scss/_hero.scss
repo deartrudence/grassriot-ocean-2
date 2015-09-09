@@ -25,7 +25,14 @@
 @media screen and (min-width: $screen-md){
   $image-width: 90%; //TODO: this should correspond with the actual width to the form
 
-
+  .hero {
+    padding: 25%;
+  }
+  .heroTitle {
+    position: relative;
+    color: $white;
+    font-size: $hero-fontsize;
+  }
   .hero-image{
     width: $image-width;
     position: absolute;

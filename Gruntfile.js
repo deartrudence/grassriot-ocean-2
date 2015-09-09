@@ -56,7 +56,7 @@ module.exports = function(grunt) {
           plugins: [
             new webpack.optimize.DedupePlugin(),
             new webpack.optimize.UglifyJsPlugin({
-              //Uglify is pretty aggressive with its code cleanup. 
+              //Uglify is pretty aggressive with its code cleanup.
               //Ask it to leave our "dead" and "unused" code alone
               compress: {
               }
