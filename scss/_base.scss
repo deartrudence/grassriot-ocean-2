@@ -23,11 +23,14 @@ $modal-overlay-opacity: 0.65;
 //-----------
 
 //Header
-$heaer-bgcolour: $vdark-grey;
+$header-bgcolour: $vdark-grey;
 $header-height-md: 105px;
+$header-padding: 15px 0px 15px 100px;
 
 //Hero
 $hero-background: $white;
+$hero-bgimage: url(../img/hero-bg.jpg);
+$hero-height-md: 600px;
 
 //form
 $form-width-md: 435px;

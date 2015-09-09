@@ -1,4 +1,14 @@
-//CDN
+
+//local
+@font-face {
+	font-family: 'DagnyOT';
+	src: url('../fonts/DagnyOT.otf') format('opentype');
+	// src: url('../fonts/AlternateGotNo2D.eot') format('embedded-opentype'),
+	// 	 url('../fonts/AlternateGotNo2D.woff') format('woff'),
+	// 	 url('../fonts/AlternateGotNo2D.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 //local
 // @font-face {
@@ -12,15 +22,15 @@
 // }
 
 //CDN
-@font-face {
-	font-family: 'AlternateGothic';
-	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000');
-	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000') format('embedded-opentype'),
-		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.woff?v=1436817139000') format('woff'),
-		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.svg?v=1436817136000') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+// @font-face {
+// 	font-family: 'AlternateGothic';
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000');
+// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.eot?v=1436817133000') format('embedded-opentype'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.woff?v=1436817139000') format('woff'),
+// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/AlternateGotNo2D.svg?v=1436817136000') format('svg');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
 
 strong{
 	font-weight: 700;

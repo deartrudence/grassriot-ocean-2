@@ -2,8 +2,7 @@
   position: relative; //for the overflow control
   overflow: hidden;
   background: $hero-background;
-  height: 500px;
-
+  height: 100%;
 }
 
 .page-title{
@@ -25,15 +24,27 @@
 
 @media screen and (min-width: $screen-md){
   $image-width: 90%; //TODO: this should correspond with the actual width to the form
-  .hero img{
-    height: auto;
-    width: 100%;
-  }
+
 
   .hero-image{
+    width: $image-width;
     position: absolute;
-    width: $image-width; 
+    height: 100%;
     top: 0px;
+
+
+    // transform: translate3d(-50%,-50%,0);
+    // -webkit-transform: translate3d(-50%,-50%,0);
+    // -ms-transform: translate3d(-50%,-50%,0);
+  }
+  .hero-image img{
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+
   }
 
   .hero-side-image{
@@ -48,5 +59,18 @@
     position: absolute;
     bottom: 65px;
     left: $page-left-padding-md;
+  }
+
+  // better centering for browsers that support CSS transforms
+  html.csstransforms {
+    @include z-high;
+  }
+
+  .hero img {
+    left: 50%;
+    top: 50%;
+    transform: translate3d(-50%,-50%,0);
+    -webkit-transform: translate3d(-50%,-50%,0);
+    -ms-transform: translate(-50%,-50%,0);
   }
 }

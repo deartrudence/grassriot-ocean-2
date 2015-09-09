@@ -1,9 +1,16 @@
-.page-title{
-  @media screen and (min-width: $screen-md){
+@media screen and (min-width: $screen-md){
+  .page-header{
+    width: 100%;
     $border-height: 5px;
     border-top: $border-height solid $dark-green;
     background-color: $vdark-grey;
     height: $header-height-md - $border-height;
+  
   }
+  .page-title {
+      width: 250px;
+      height: 63px;
+      padding: $header-padding;
+    }
 
 }

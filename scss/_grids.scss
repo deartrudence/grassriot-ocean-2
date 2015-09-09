@@ -3,19 +3,19 @@
  * Container styling for wherever the form is supposed to go
  */
 @mixin formContainer{
-  
+
   @media screen and (max-width: $screen-xs-max){
     position: fixed;
     width: 100%;
     bottom: -100%;
     left: 0;
     height: 100%;
-    width: 100%;    
+    width: 100%;
   }
 
 
   @media screen and (min-width: $screen-xs){
-    
+
   }
 
   @media screen and (min-width: $screen-sm){
@@ -24,7 +24,7 @@
 
   @media screen and (min-width: $screen-md){
     position: fixed;
-    top: 0;
+    top: $header-height-md;
     right: 0;
     width: $form-width-md;
     height: 100%;
@@ -48,7 +48,7 @@
 
 
   @media screen and (min-width: $screen-xs){
-    
+
   }
 
   @media screen and (min-width: $screen-sm){
@@ -72,5 +72,5 @@
     padding-left: $content-overlap-xl;
     margin-left: -1 * $content-overlap-xl;
     margin-right: -1 * $content-overlap-xl;
-  }  
+  }
 }
