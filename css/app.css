@@ -127,7 +127,7 @@ em {
 }
 @media screen and (min-width: 992px) {
   .campaign {
-    padding-right: 445px;
+    padding-right: 435px;
     padding-left: 10px;
     margin-left: -10px;
     margin-right: -10px;
@@ -135,7 +135,7 @@ em {
 }
 @media screen and (min-width: 2100px) {
   .campaign {
-    padding-right: 665px;
+    padding-right: 650px;
     padding-left: 15px;
     margin-left: -15px;
     margin-right: -15px;
