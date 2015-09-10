@@ -11,6 +11,9 @@ fonts_dir = "fonts"
 #include bootstrap partials for import
 add_import_path "vendor/bootstrap/assets/stylesheets"
 
+#include slick partial for import
+add_import_path "vendor/slick/"
+
 # You can select your preferred output style here (can be overridden via the command line):
 output_style = (environment == :production) ? :compressed : :expanded;
 sourcemap = (environment == :production) ? false : true;

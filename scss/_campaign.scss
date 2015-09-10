@@ -1,3 +1,20 @@
+// Mixin for call to action button
+$calltoaction-buttonpadding-md: 20px 20px;
+
+//Todo: move clearfix somewhere better
+.clearfix:after {
+   content: " ";
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+@mixin calltoaction-button--red {
+  background-color: $dark-red;
+  padding: $calltoaction-buttonpadding-md;
+  border-radius: 10px 10px 0 0;
+}
+
 //Every row on the left starting from the turquoise
 .campaign{
   @include contentContainer;
@@ -16,8 +33,19 @@
     @include fontSize-larger;
 
   }
+  // .campaignText-sub {
+  //   @include dagny-light;
+  //   @include fontSize-small;
+  //   color: $white;
+  //   text-transform: uppercase;
+  // }
   .highlightsText-wrapper {
-    padding: 60px 30px;
+    position: relative;
+    padding: $highlights-padding-md;
+    min-height: 250px;
+  }
+  .highlights-title {
+    float: left;
   }
   .highlights-title--number {
     @include dagny-heavy;
@@ -29,5 +57,88 @@
     @include dagny-light;
     @include fontSize-medium;
     text-transform: uppercase;
+  }
+  .highlights-subtitle {
+    @include dagny-heavy;
+    text-transform: uppercase;
+    color: $turquoise;
+  }
+  .highlights-events {
+    @include dagny;
+  }
+  .highlights-cta {
+    @include dagny;
+    @include fontSize-base;
+    @include calltoaction-button--red;
+    position: absolute;
+    color: $white;
+    display: inline;
+    text-align: center;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto 5px auto;
+    text-transform: uppercase;
+    width: 560px;
+  }
+  .financialText-wrapper {
+    position: relative;
+    height: $financial-height-md;
+    background: $financial-bgimage;
+    background-size: cover;
+    padding: $financial-padding-md;
+    img { // for retina
+      width: 821.5px;
+      height: 401.5px;
+    }
+  }
+  .financialCaption {
+    @extend .heroCaption;
+  }
+  .supportersText-wrapper {
+    background-color: $dark-turquoise;
+    font-size: 0; // used to eliminate small white space under photo
+    // padding: $supporters-padding-md;
+    h4 {
+      @include dagny-light;
+      @include fontSize-base;
+      padding: $supportersHeader-padding-md;
+      text-transform: uppercase;
+      background-color: $turquoise;
+      color: $white;
+
+    }
+
+  .profile-photo {
+  float: left;
+  width: 40%;
+    img {
+      width: 361px;
+      height: 375px;
+    }
+  }
+  .profile-description {
+    @include dagny;
+    width: 40%;
+    color: $white;
+    float: left;
+    padding: $supporterProfile-padding-md;
+    // padding: $supportersText-padding-md;
+
+    .supporter-name {
+      @include dagny-heavy;
+      @include fontSize-larger;
+    }
+    .supporter-caption {
+      @include dagny-light;
+      @include fontSize-medium;
+      margin-bottom: 20px;
+    }
+    .supporter-description {
+      @include fontSize-base;
+
+    }
+  }
+
   }
 }

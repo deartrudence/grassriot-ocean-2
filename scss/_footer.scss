@@ -1,3 +1,15 @@
 .page-footer{
   background-color: $vdark-grey;
+  padding: $footer-padding-md;
+}
+.footer-legal {
+  @include footer-font;
+  text-transform: uppercase;
+  line-height: 20px;
+  color: #d6ccaf;
+  .logo {
+    width: 250px;
+    height: 62.5px;
+    padding-bottom: 10px;
+  }
 }

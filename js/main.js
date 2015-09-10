@@ -10,11 +10,16 @@ var ENBeautifierFillers = {
 	".js-hero": ".js-heroContent",
 	".js-campaign": ".js-campaignText",
 	".js-highlights": ".js-highlightsText",
-	".js-hero-image": ".js-heroImage"
+	".js-hero-image": ".js-heroImage",
+	".js-financial": ".js-financialText",
+	".js-supporters": ".js-supportersText"
 }
 
 var ENBeautifier = require('./modules/ENBeautifier');
 var enbeautifier;
+
+// slick carousel slider
+var slick = require('slick');
 
 //hero configuration
 var hero = ".hero-image";
@@ -43,7 +48,7 @@ $(document).ready(function() {
 	}
 	catch(error) {
 		raygunSendError(error);
-	} 
+	}
 
 
 });
@@ -95,7 +100,10 @@ function setupAction(){
 
 		//move text to the right places
 		enbeautifier.moveToTargets(ENBeautifierFillers);
-	
+
+		// slick
+		// $('.supporters-carousel').slick();
+
 	} catch(error) {
 		raygunSendError(error);
 	}
@@ -147,7 +155,7 @@ function analyticsReport( event, title ){
 	try {
 		//UA
 		if( typeof ga !== 'undefined' ){
-		  
+
 		    var data = {};
 		    if( event ){
 		      data[ 'page'] = '/virtual/'+event;
@@ -168,7 +176,7 @@ function analyticsReport( event, title ){
 		//Tag Manager
 		if( typeof _gaq !== 'undefined' ){
 
-		}       
+		}
 	} catch (err) {
 		raygunSendError(err);
 	}
@@ -187,7 +195,7 @@ function analyticsGetSection(container) {
 // ---------------------------------------
 function raygunSendError(error, options) {
 	try {
-		require('raygun');		
+		require('raygun');
 		var data = { };
 		if(!options instanceof Object || typeof options == 'undefined') {
 			options = { };

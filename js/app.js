@@ -14,11 +14,16 @@ webpackJsonp([0],[
 		".js-hero": ".js-heroContent",
 		".js-campaign": ".js-campaignText",
 		".js-highlights": ".js-highlightsText",
-		".js-hero-image": ".js-heroImage"
+		".js-hero-image": ".js-heroImage",
+		".js-financial": ".js-financialText",
+		".js-supporters": ".js-supportersText"
 	}
 
 	var ENBeautifier = __webpack_require__(1);
 	var enbeautifier;
+
+	// slick carousel slider
+	var slick = __webpack_require__(4);
 
 	//hero configuration
 	var hero = ".hero-image";
@@ -33,7 +38,7 @@ webpackJsonp([0],[
 	var windowSize;
 
 	var $ = __webpack_require__(2);
-	__webpack_require__(4);
+	__webpack_require__(5);
 
 	if(true){
 		init_devtools();
@@ -47,7 +52,7 @@ webpackJsonp([0],[
 		}
 		catch(error) {
 			raygunSendError(error);
-		} 
+		}
 
 
 	});
@@ -99,7 +104,10 @@ webpackJsonp([0],[
 
 			//move text to the right places
 			enbeautifier.moveToTargets(ENBeautifierFillers);
-		
+
+			// slick
+			// $('.supporters-carousel').slick();
+
 		} catch(error) {
 			raygunSendError(error);
 		}
@@ -151,7 +159,7 @@ webpackJsonp([0],[
 		try {
 			//UA
 			if( typeof ga !== 'undefined' ){
-			  
+
 			    var data = {};
 			    if( event ){
 			      data[ 'page'] = '/virtual/'+event;
@@ -172,7 +180,7 @@ webpackJsonp([0],[
 			//Tag Manager
 			if( typeof _gaq !== 'undefined' ){
 
-			}       
+			}
 		} catch (err) {
 			raygunSendError(err);
 		}
@@ -191,7 +199,7 @@ webpackJsonp([0],[
 	// ---------------------------------------
 	function raygunSendError(error, options) {
 		try {
-			__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"raygun\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));		
+			__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"raygun\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 			var data = { };
 			if(!options instanceof Object || typeof options == 'undefined') {
 				options = { };
@@ -266,7 +274,7 @@ webpackJsonp([0],[
 
 	function init_validation(){
 		try{
-			__webpack_require__(5);
+			__webpack_require__(6);
 
 			// $.validator.addMethod("emailTLD", function (value, element) {
 	  //     return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
@@ -311,6 +319,7 @@ webpackJsonp([0],[
 			raygunSendError(error);
 		}
 	}
+
 
 /***/ },
 /* 1 */

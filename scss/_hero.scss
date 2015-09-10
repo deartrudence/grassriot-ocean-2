@@ -21,6 +21,9 @@
 .hero-content{
   max-width: $page-text-max-width;
 }
+.heroContent-wrapper {
+
+}
 
 
 @media screen and (min-width: $screen-md){
@@ -28,14 +31,17 @@
 
   .hero {
     height: 500px;
+    background: $hero-bgimage;
+    background-size: cover;
 
   }
   .heroTitle {
     @include dagny-light;
-    padding: 100px 15% 0 15%;
+    padding: 100px 20% 0 20%;
     position: relative;
     color: $white;
-    @include fontSize-largerish;
+    @include fontSize-large;
+    line-height: 34px;
 
     strong, em {
       @include dagny-heavy;
@@ -96,7 +102,7 @@
     @include z-high;
   }
 
-  .hero img {
+  .hero-image img {
     left: 50%;
     top: 50%;
     transform: translate3d(-50%,-50%,0);

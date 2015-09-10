@@ -9,9 +9,12 @@ $vdark-green: #21633d;
 
 $turquoise: #0cacbd;
 $dark-turquoise: #257488;
+$navy-blue: #336699;
 
 $beige: #d6ccaf;
 $dark-beige: #958f72;
+
+$dark-red: #cc3300;
 
 $white: #fff;
 $light-grey: #bcbec0;
@@ -39,14 +42,30 @@ $hero-captionpadding-md: 10px 15px;
 $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
 
+//Highlights
+$highlights-padding-md: 100px 50px;
+
+//Financial
+$financial-height-md: 400px;
+$financial-bgimage: url("../img/financial-bg.jpg");
+$financial-padding-md: 100px 20px;
+
+//Supporters
+$supportersText-height-md: 400px;
+$supportersHeader-padding-md: 15px 20px;
+$supporterProfile-padding-md: 20px 15px;
+
 //form
-$form-width-md: 350px;
+$form-width-md: 242.5px;
 $form-width-xl: 650px;
 $form-background: $green;
 
 //text
 $content-overlap-md: 10px;
 $content-overlap-xl: 15px;
+
+//footer
+$footer-padding-md: 80px;
 
 //-----------
 //screen sizes
