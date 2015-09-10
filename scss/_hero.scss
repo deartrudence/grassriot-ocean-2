@@ -3,6 +3,7 @@
   overflow: hidden;
   background: $hero-background;
   height: 100%;
+
 }
 
 .page-title{
@@ -23,15 +24,36 @@
 
 
 @media screen and (min-width: $screen-md){
-  $image-width: 90%; //TODO: this should correspond with the actual width to the form
+  $image-width: 100%; //TODO: this should correspond with the actual width to the form
 
   .hero {
-    padding: 25%;
+    height: 500px;
+
   }
   .heroTitle {
+    @include dagny-light;
+    padding: 100px 15% 0 15%;
     position: relative;
     color: $white;
-    font-size: $hero-fontsize;
+    @include fontSize-largerish;
+
+    strong, em {
+      @include dagny-heavy;
+      text-transform: uppercase;
+    }
+    em {
+      color: $mlight-green;
+    }
+
+  }
+  .heroCaption {
+    @include fontSize-smallest;
+    @include dagny;
+    position: absolute;
+    bottom: 0;
+    color: $white;
+    padding: $hero-captionpadding-md;
+
   }
   .hero-image{
     width: $image-width;
@@ -48,6 +70,7 @@
     right: 0;
     min-width: 100%;
     min-height: 100%;
+    max-width: 100%;
     width: auto;
     height: auto;
     position: absolute;
@@ -68,7 +91,7 @@
     left: $page-left-padding-md;
   }
 
-  // better centering for browsers that support CSS transforms
+  // better centering for browsers that  CSS transforms
   html.csstransforms {
     @include z-high;
   }

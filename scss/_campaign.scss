@@ -1,4 +1,33 @@
 //Every row on the left starting from the turquoise
 .campaign{
   @include contentContainer;
+  // padding-right: 248px; // TODO: talk to Senning about this
+}
+@media screen and (min-width: $screen-md){
+  .campaignText-wrapper {
+  background-color: $turquoise;
+  color: $green;
+  padding: 150px 15%;
+  height: $campaign-height-md;
+  position: relative;
+  }
+  .campaignText-main {
+    @include dagny-light;
+    @include fontSize-larger;
+
+  }
+  .highlightsText-wrapper {
+    padding: 60px 30px;
+  }
+  .highlights-title--number {
+    @include dagny-heavy;
+    color: $green;
+    @include fontSize-massive;
+    display: block;
+  }
+  .highlights-title--text {
+    @include dagny-light;
+    @include fontSize-medium;
+    text-transform: uppercase;
+  }
 }

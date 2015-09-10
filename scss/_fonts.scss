@@ -1,14 +1,89 @@
+@mixin dagny-heavy{
+	font-family: "DagnyOT-Bold";
+	font-weight: 700;
+	font-style: normal;
+}
+@mixin dagny{
+	font-family: 'DagnyOT';
+	font-weight: 400;
+	font-style: normal;
+}
+@mixin dagny-light{
+	font-family: "DagnyOT-light";
+	font-weight: 200;
+	font-style: normal;
+}
+
+
+//Sizes
+@mixin fontSize-smallest {
+	font-size: 10px;
+}
+@mixin fontSize-smaller{
+  font-size: 14px;
+}
+@mixin fontSize-small{
+  font-size: 16px;
+}
+@mixin fontSize-base{
+  font-size: 18px;
+}
+@mixin fontSize-medium {
+	font-size: 25px;
+}
+@mixin fontSize-large{
+  font-size: 30px;
+}
+@mixin fontSize-largerish{
+  font-size: 37px;
+}
+@mixin fontSize-larger{
+  font-size: 43px;
+}
+@mixin fontSize-titleLarge{
+  font-size: 53px;
+}
+@mixin fontSize-xlarge{
+  font-size: 55px;
+}
+@mixin fontSize-huge{
+  font-size: 65px;
+}
+@mixin fontSize-massive{
+  font-size: 200px;
+}
 
 //local
+@font-face {
+	font-family: 'DagnyOT-Light';
+	src: url('../fonts/DagnyOT-Light.otf') format('opentype');
+	// src: url('../fonts/AlternateGotNo2D.eot') format('embedded-opentype'),
+	// 	 url('../fonts/AlternateGotNo2D.woff') format('woff'),
+	// 	 url('../fonts/AlternateGotNo2D.svg') format('svg');
+	font-weight: 200;
+	font-style: normal;
+}
 @font-face {
 	font-family: 'DagnyOT';
 	src: url('../fonts/DagnyOT.otf') format('opentype');
 	// src: url('../fonts/AlternateGotNo2D.eot') format('embedded-opentype'),
 	// 	 url('../fonts/AlternateGotNo2D.woff') format('woff'),
 	// 	 url('../fonts/AlternateGotNo2D.svg') format('svg');
-	font-weight: normal;
+	font-weight: 500;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'DagnyOT-Bold';
+	src: url('../fonts/DagnyOT-Bold.otf') format('opentype');
+	// src: url('../fonts/AlternateGotNo2D.eot') format('embedded-opentype'),
+	// 	 url('../fonts/AlternateGotNo2D.woff') format('woff'),
+	// 	 url('../fonts/AlternateGotNo2D.svg') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+
+
 
 //local
 // @font-face {

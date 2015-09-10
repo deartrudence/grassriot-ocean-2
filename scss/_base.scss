@@ -1,5 +1,7 @@
 $vlight-green: #c8e03b;
+$mlight-green: #cccc00;
 $light-green: #bad80a;
+
 $green: #aed100;
 $brand-green: #709202;
 $dark-green: #5d8200;
@@ -30,11 +32,15 @@ $header-padding: 15px 0px 15px 100px;
 //Hero
 $hero-background: $white;
 $hero-bgimage: url(../img/hero-bg.jpg);
-$hero-height-md: 600px;
-$hero-fontsize: 30px;
+$hero-height-md: 400px;
+$hero-captionpadding-md: 10px 15px;
+
+//Campaign
+$campaign-paddingtop-md: 30px;
+$campaign-height-md: 250px;
 
 //form
-$form-width-md: 435px;
+$form-width-md: 350px;
 $form-width-xl: 650px;
 $form-background: $green;
 
