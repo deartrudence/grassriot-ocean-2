@@ -102,7 +102,7 @@ function setupAction(){
 		enbeautifier.moveToTargets(ENBeautifierFillers);
 
 		// slick
-		// $('.supporters-carousel').slick();
+		$('.supporters-carousel').slick();
 
 	} catch(error) {
 		raygunSendError(error);

@@ -6,7 +6,7 @@ css_dir = "css"
 sass_dir = "scss"
 images_dir = "img"
 javascripts_dir = "js"
-fonts_dir = "fonts"
+fonts_dir = "./fonts"
 
 #include bootstrap partials for import
 add_import_path "vendor/bootstrap/assets/stylesheets"

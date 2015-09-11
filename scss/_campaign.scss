@@ -1,24 +1,16 @@
 // Mixin for call to action button
 $calltoaction-buttonpadding-md: 20px 20px;
 
-//Todo: move clearfix somewhere better
-.clearfix:after {
-   content: " ";
-   display: block;
-   height: 0;
-   clear: both;
-}
-
 @mixin calltoaction-button--red {
   background-color: $dark-red;
   padding: $calltoaction-buttonpadding-md;
   border-radius: 10px 10px 0 0;
 }
 
+
 //Every row on the left starting from the turquoise
 .campaign{
   @include contentContainer;
-  // padding-right: 248px; // TODO: talk to Senning about this
 }
 @media screen and (min-width: $screen-md){
   .campaignText-wrapper {
@@ -33,12 +25,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
     @include fontSize-larger;
 
   }
-  // .campaignText-sub {
-  //   @include dagny-light;
-  //   @include fontSize-small;
-  //   color: $white;
-  //   text-transform: uppercase;
-  // }
   .highlightsText-wrapper {
     position: relative;
     padding: $highlights-padding-md;
@@ -46,25 +32,34 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
   .highlights-title {
     float: left;
+    padding-right: 30px;
   }
   .highlights-title--number {
     @include dagny-heavy;
-    color: $green;
     @include fontSize-massive;
+    color: $green;
+    line-height: 90px;
     display: block;
   }
   .highlights-title--text {
     @include dagny-light;
     @include fontSize-medium;
     text-transform: uppercase;
+    line-height: 150px;
   }
+
   .highlights-subtitle {
     @include dagny-heavy;
+    padding-bottom: 5px;
     text-transform: uppercase;
     color: $turquoise;
   }
+  .highlights-year {
+    @include dagny-heavy;
+  }
   .highlights-events {
     @include dagny;
+    line-height: 24px;
   }
   .highlights-cta {
     @include dagny;

@@ -6,18 +6,30 @@
 
 .form{
   @include formContainer;
-  background: $green;
   @include z-highest;
-  padding: 30px;
+
+}
+form {
+  background: $green;
+
+}
+.form-navbar {
+  background: $form-navbar-bgimage;
+  width: 432px;
+  height: 53px;
 
 }
 .form-header{
+  padding: 30px;
+
   h3 {
     @include dagny-heavy;
     color: $white;
     @include fontSize-medium;
+    text-transform: uppercase;
   }
   em {
+    text-transform: none;
     color: $vdark-green;
   }
 }
