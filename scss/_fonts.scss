@@ -59,6 +59,21 @@
   font-size: 200px;
 }
 
+//line-heights {
+
+@mixin lineHeight-title--number {
+	line-height: 0.45em;
+}
+@mixin lineHeight-hero {
+	line-height: 1.2em;
+}
+@mixin lineHeight-higlights {
+	line-height: 1.5em;
+}
+@mixin lineHeight-title--text {
+	line-height: 6em;
+}
+
 //local
 @font-face {
 	font-family: 'DagnyOT-Light';

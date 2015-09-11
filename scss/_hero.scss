@@ -30,18 +30,17 @@
   $image-width: 100%; //TODO: this should correspond with the actual width to the form
 
   .hero {
-    height: 500px;
     background: $hero-bgimage;
     background-size: cover;
 
   }
   .heroTitle {
     @include dagny-light;
-    padding: 100px 20% 0 20%;
+    @include fontSize-large;
+    @include lineHeight-hero;
+    padding: $heroTitle-padding-md;
     position: relative;
     color: $white;
-    @include fontSize-large;
-    line-height: 34px;
 
     strong, em {
       @include dagny-heavy;

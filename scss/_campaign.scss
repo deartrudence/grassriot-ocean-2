@@ -28,7 +28,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlightsText-wrapper {
     position: relative;
     padding: $highlights-padding-md;
-    min-height: 250px;
   }
   .highlights-title {
     float: left;
@@ -37,15 +36,17 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-title--number {
     @include dagny-heavy;
     @include fontSize-massive;
+    @include lineHeight-title--number;
     color: $green;
-    line-height: 90px;
+
     display: block;
   }
   .highlights-title--text {
     @include dagny-light;
     @include fontSize-medium;
+    @include lineHeight-title--text;
     text-transform: uppercase;
-    line-height: 150px;
+
   }
 
   .highlights-subtitle {
@@ -59,7 +60,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
   .highlights-events {
     @include dagny;
-    line-height: 24px;
+    @include lineHeight-higlights;
   }
   .highlights-cta {
     @include dagny;
@@ -91,9 +92,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
     @extend .heroCaption;
   }
   .supportersText-wrapper {
-    background-color: $dark-turquoise;
-    // font-size: 0; // used to eliminate small white space under photo
-    // padding: $supporters-padding-md;
+
     h4 {
       @include dagny-light;
       @include fontSize-base;
@@ -112,13 +111,60 @@ $calltoaction-buttonpadding-md: 20px 20px;
       height: 375px;
     }
   }
-  .profile-description {
+  // slick styles below
+  .slick-slider {
+    padding: 0;
+  }
+  .slick-track {
+    background-color: $dark-turquoise;
+  }
+  .slick-arrow {
+    position: absolute;
+    @include z-highest;
+  }
+  .slick-prev {
+    top: calc(50% - 27px);
+    background: url('../img/slickLeft.png');
+    background-size: 17px 27px;
+    height: 27px;
+    width: 17px;
+    border: 0;
+  }
+  .slick-next {
+    right: 0;
+    background: url('../img/slickRight.png');
+    background-size: 18px 28px;
+    top: calc(50% - 28px);
+    height: 28px;
+    border: 0;
+    margin-right: 30px;
+    width: 17px;
+  }
+  .slick-dots {
+    text-align: center;
+    li {
+      display: inline-block;
+      margin-right: 5px;
+    }
+    button {
+      font-size: 0;
+      padding: 0;
+      outline: 0;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      border: 0;
+      background-color: $turquoise;
+    }
+    .slick-active button {
+      background-color: $dark-red;
+    }
+  }
+  .supporters-carousel {
     @include dagny;
-    width: 40%;
     color: $white;
-    float: left;
     padding: $supporterProfile-padding-md;
-    // padding: $supportersText-padding-md;
+
 
     .supporter-name {
       @include dagny-heavy;

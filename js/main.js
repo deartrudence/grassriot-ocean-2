@@ -103,7 +103,11 @@ function setupAction(){
 
 		// slick
 		$('.supporters-carousel').slick({
-			dots: true
+			dots: true,
+			arrows: true,
+			appendArrows: '.slick-list',
+			prevArrow: '<button type="button" class="slick-prev"></button>',
+			nextArrow: '<button type="button" class="slick-next"></button>'
 		});
 
 	} catch(error) {
