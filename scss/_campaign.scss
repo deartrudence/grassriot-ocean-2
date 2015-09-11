@@ -12,6 +12,10 @@ $calltoaction-buttonpadding-md: 20px 20px;
 .campaign{
   @include contentContainer;
 }
+
+.financialCaption {
+  @extend .heroCaption;
+}
 @media screen and (min-width: $screen-md){
   .campaignText-wrapper {
   background-color: $turquoise;
@@ -87,9 +91,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
       height: 401.5px;
     }
   }
-  .financialCaption {
-    @extend .heroCaption;
-  }
+
   .supportersText-wrapper {
 
     h4 {
@@ -200,4 +202,13 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-cta {
     @include fontSize-responsive-base;
   }
+}
+
+// for mobile
+@media screen and (max-width: $screen-xs-max),
+  screen and (max-device-width:$screen-xs-max){
+  body:after{
+    content:"mobile";
+  }
+
 }
