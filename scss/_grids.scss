@@ -9,18 +9,23 @@
  }
 @mixin formContainer{
 
-  @media screen and (max-width: $screen-xs-max){
-    position: fixed;
+  @media screen and (min-width: $screen-xxs-max){
+    position: absolute;
     width: 100%;
-    bottom: -100%;
-    left: 0;
+    top: $header-height-xxs;
+    right: 0;
     height: 100%;
-    width: 100%;
+    width: $form-width-xxs;
   }
 
 
   @media screen and (min-width: $screen-xs){
-
+    position: absolute;
+    width: 100%;
+    top: $header-height-xs;
+    right: 0;
+    height: 100%;
+    width: $form-width-xs;
   }
 
   @media screen and (min-width: $screen-sm){
@@ -49,6 +54,12 @@
  * contentContainer
  */
 @mixin contentContainer{
+  @media screen and (min-width: $screen-xxs-max){
+    padding-right: $form-width-xxs;
+    padding-left: $content-overlap-md;
+    margin-left: -1 * $content-overlap-md;
+    margin-right: -1 * $content-overlap-md;
+  }
   @media screen and (max-width: $screen-xs-max){
   }
 

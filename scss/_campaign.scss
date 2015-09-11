@@ -12,85 +12,87 @@ $calltoaction-buttonpadding-md: 20px 20px;
 .campaign{
   @include contentContainer;
 }
-
-.financialCaption {
-  @extend .heroCaption;
-}
-@media screen and (min-width: $screen-md){
-  .campaignText-wrapper {
+.campaignText-wrapper {
   background-color: $turquoise;
   color: $green;
-  padding: 150px 15%;
-  height: $campaign-height-md;
+  padding: $campaignText-wrapper;
   position: relative;
-  }
-  .campaignText-main {
-    @include dagny;
-    @include fontSize-larger;
+}
+.campaignText-main {
+  @include dagny;
+}
+.highlightsText-wrapper {
+  position: relative;
 
+}
+.highlights-title {
+  padding-right: 30px;
+  padding-bottom: 30%;
+}
+.highlights-title--number {
+  @include dagny-heavy;
+  @include fontSize-massive;
+  @include lineHeight-title--number;
+  color: $green;
+  display: block;
+}
+.highlights-title--text {
+  @include dagny-light;
+  @include fontSize-medium;
+  @include lineHeight-title--text;
+  text-transform: uppercase;
+}
+.highlights-subtitle {
+  @include dagny-heavy;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  color: $turquoise;
+}
+.highlights-year {
+  @include dagny-heavy;
+}
+.highlights-events {
+  @include dagny;
+  @include lineHeight-higlights;
+  @include fontSize-events;
+}
+.highlights-cta {
+  @include dagny;
+  @include fontSize-base;
+  @include calltoaction-button--red;
+  position: absolute;
+  color: $white;
+  display: inline;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 5% 0.5% 5%;
+  text-transform: uppercase;
+}
+.financialText-wrapper {
+  position: relative;
+  background: $financial-bgimage;
+  background-size: cover;
+  img { // for retina
+    width: 821.5px;
+    height: 401.5px;
+  }
+}
+// .financialCaption {
+//   @extend .heroCaption;
+// }
+@media screen and (min-width: $screen-md){
+  .campaignText-main {
+    @include fontSize-larger;
   }
   .highlightsText-wrapper {
-    position: relative;
-    padding: $highlights-padding-md;
+    padding: $highlightsText-padding-md;
   }
   .highlights-title {
     float: left;
-    padding-right: 30px;
-    padding-bottom: 30%;
-  }
-  .highlights-title--number {
-    @include dagny-heavy;
-    @include fontSize-massive;
-    @include lineHeight-title--number;
-    color: $green;
-
-    display: block;
-  }
-  .highlights-title--text {
-    @include dagny-light;
-    @include fontSize-medium;
-    @include lineHeight-title--text;
-    text-transform: uppercase;
-
   }
 
-  .highlights-subtitle {
-    @include dagny-heavy;
-    padding-bottom: 5px;
-    text-transform: uppercase;
-    color: $turquoise;
-  }
-  .highlights-year {
-    @include dagny-heavy;
-  }
-  .highlights-events {
-    @include dagny;
-    @include lineHeight-higlights;
-    @include fontSize-events;
-  }
-  .highlights-cta {
-    @include dagny;
-    @include fontSize-base;
-    @include calltoaction-button--red;
-    position: absolute;
-    color: $white;
-    display: inline;
-    text-align: center;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 0 5% 0.5% 5%;
-    text-transform: uppercase;
-  }
-  .financialText-wrapper {
-    position: relative;
-    background: $financial-bgimage;
-    background-size: cover;
-    img { // for retina
-      width: 821.5px;
-      height: 401.5px;
-    }
-  }
 
   .supportersText-wrapper {
 
@@ -204,11 +206,39 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
 }
 
-// for mobile
+// for tablet
 @media screen and (max-width: $screen-xs-max),
   screen and (max-device-width:$screen-xs-max){
   body:after{
     content:"mobile";
+  }
+  .heroTitle {
+    @include fontSize-medium;
+  }
+  .campaignText-main {
+    @include fontSize-medium;
+  }
+  .highlightsText-wrapper {
+    padding: $highlightsText-padding-xs;
+  }
+  .highlights-title {
+    text-align: center;
+    padding-bottom: 0;
+    @include fontSize-larger;
+  }
+  .highlights-title--number {
+    @include fontSize-massive-xs;
+  }
+  .highlights-events {
+    @include fontSize-small;
+  }
+  .highlights-cta {
+    display: block;
+    margin: $highlights-margintop-xs $content-overlap-xs 5px 0;
+    position: relative;
+  }
+  .supportersText-wrapper {
+    display: none;
   }
 
 }

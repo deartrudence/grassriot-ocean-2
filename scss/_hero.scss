@@ -91,12 +91,7 @@ html.csstransforms {
   -ms-transform: translate(-50%,-50%,0);
 }
 
-.form {
-  display: none // TODO: remove this when done mobile stylings
-}
-.affix {
-  display: none !important; // TODO: remove this when done mobile stylings
-}
+
 
 @media screen and (min-width: $screen-md){
 

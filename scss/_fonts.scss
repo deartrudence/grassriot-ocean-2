@@ -58,6 +58,9 @@
 @mixin fontSize-huge{
   font-size: 65px;
 }
+@mixin fontSize-massive-xs {
+  font-size: 150px;
+}
 @mixin fontSize-massive{
   font-size: 210px;
 }

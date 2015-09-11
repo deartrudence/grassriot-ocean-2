@@ -29,8 +29,10 @@ $modal-overlay-opacity: 0.65;
 
 //Header
 $header-bgcolour: $vdark-grey;
+$header-height-xxs: 105px;
+$header-height-xs: 76px;
 $header-height-md: 105px;
-$header-padding: 15px 0px 15px 100px;
+$header-padding: 15px 0 15px 5%;
 
 //Hero
 $hero-background: $white;
@@ -39,11 +41,14 @@ $heroTitle-padding: 16% 20% 23% 16%;
 $hero-captionpadding-md: 10px 15px;
 
 //Campaign
+$campaignText-wrapper: 20% 15%;
 $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
 
 //Highlights
-$highlights-padding-md: 14% 4.5%;
+$highlightsText-padding-md: 14% 4.5%;
+$highlights-margintop-xs: 20px;
+$highlightsText-padding-xs: 14% 4.5% 2% 4.5%;
 
 //Financial
 $financial-height-md: 400px;
@@ -56,11 +61,14 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
 $form-navbar-bgimage: url("../img/transparent-flag.png");
+$form-width-xxs: 300px;
+$form-width-xs: 300px;
 $form-width-md: 435px;
 $form-width-xl: 650px;
 $form-background: $green;
 
 //text
+$content-overlap-xs: 20px;
 $content-overlap-md: 20px;
 $content-overlap-xl: 30px;
 
@@ -71,8 +79,9 @@ $footer-height-md: 200px;
 //-----------
 //screen sizes
 //-----------
-$screen-lg: 1360px;
 $screen-xxs-max: ($screen-xs-min - 1) !default;
+$screen-xs-min: 620px;
+$screen-lg: 1360px;
 $screen-xl: 2100px;
 
 //spacing

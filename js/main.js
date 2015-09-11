@@ -109,6 +109,11 @@ function setupAction(){
 			prevArrow: '<button type="button" class="slick-prev"></button>',
 			nextArrow: '<button type="button" class="slick-next"></button>'
 		});
+		$('.form').affix({
+      offset: {
+        top: $('header').height()
+      }
+		}); 
 
 	} catch(error) {
 		raygunSendError(error);
