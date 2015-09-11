@@ -2,6 +2,11 @@
  * formContainer
  * Container styling for wherever the form is supposed to go
  */
+ .affix {
+   position: fixed !important;
+   top: 0 !important;
+   bottom: 0 !important;
+ }
 @mixin formContainer{
 
   @media screen and (max-width: $screen-xs-max){
@@ -23,11 +28,12 @@
   }
 
   @media screen and (min-width: $screen-md){
-    position: fixed;
+    position: absolute;
     top: $header-height-md;
     right: 0;
     width: $form-width-md;
     height: 100%;
+
   }
 
   @media screen and (min-width: $screen-lg){

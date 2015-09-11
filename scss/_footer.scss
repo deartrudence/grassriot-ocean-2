@@ -3,6 +3,7 @@
   padding: $footer-padding-md;
   @include footer-font;
   color: $beige;
+  height: $footer-height-md;
 }
 .footer-legal {
   float: left;
