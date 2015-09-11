@@ -109,3 +109,8 @@
     -ms-transform: translate(-50%,-50%,0);
   }
 }
+@media screen and (min-width: $screen-lg){
+  .heroTitle {
+    @include fontSize-responsive-large;
+  }
+}

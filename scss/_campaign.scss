@@ -21,7 +21,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   position: relative;
   }
   .campaignText-main {
-    @include dagny-light;
+    @include dagny;
     @include fontSize-larger;
 
   }
@@ -32,6 +32,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-title {
     float: left;
     padding-right: 30px;
+    padding-bottom: 30%;
   }
   .highlights-title--number {
     @include dagny-heavy;
@@ -61,6 +62,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-events {
     @include dagny;
     @include lineHeight-higlights;
+    @include fontSize-events;
   }
   .highlights-cta {
     @include dagny;
@@ -73,16 +75,13 @@ $calltoaction-buttonpadding-md: 20px 20px;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: 0 auto 5px auto;
+    margin: 0 5% 0.5% 5%;
     text-transform: uppercase;
-    width: 560px;
   }
   .financialText-wrapper {
     position: relative;
-    height: $financial-height-md;
     background: $financial-bgimage;
     background-size: cover;
-    padding: $financial-padding-md;
     img { // for retina
       width: 821.5px;
       height: 401.5px;
@@ -181,5 +180,24 @@ $calltoaction-buttonpadding-md: 20px 20px;
     }
   }
 
+  }
+}
+// for larger desktop monitors
+@media screen and (min-width: $screen-lg){
+  .financialText-wrapper {
+    text-align: center;
+  }
+  .highlights-title--number {
+    @include fontSize-responsive-massive;
+  }
+  .highlights-title--text {
+    @include fontSize-responsive-medium;
+    line-height: 6em;
+  }
+  .highlights-events {
+    @include fontSize-responsive-events;
+  }
+  .highlights-cta {
+    @include fontSize-responsive-base;
   }
 }

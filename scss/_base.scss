@@ -43,17 +43,16 @@ $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
 
 //Highlights
-$highlights-padding-md: 14%;
+$highlights-padding-md: 14% 4.5%;
 
 //Financial
 $financial-height-md: 400px;
 $financial-bgimage: url("../img/financial-bg.jpg");
-$financial-padding-md: 100px 20px;
 
 //Supporters
 $supportersText-height-md: 400px;
 $supportersHeader-padding-md: 15px 20px;
-$supporterProfile-padding-md: 0px 0px 10px 0px;
+$supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
 $form-navbar-bgimage: url("../img/transparent-flag.png");
@@ -72,6 +71,7 @@ $footer-height-md: 200px;
 //-----------
 //screen sizes
 //-----------
+$screen-lg: 1360px;
 $screen-xxs-max: ($screen-xs-min - 1) !default;
 $screen-xl: 2100px;
 
