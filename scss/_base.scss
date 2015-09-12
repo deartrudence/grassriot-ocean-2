@@ -29,8 +29,9 @@ $modal-overlay-opacity: 0.65;
 
 //Header
 $header-bgcolour: $vdark-grey;
-$header-height-xxs: 105px;
-$header-height-xs: 76px;
+$header-height-xxs: 76px;
+$header-height-xs: 97px;
+$header-height-sm: 105px;
 $header-height-md: 105px;
 $header-padding: 15px 0 15px 5%;
 
@@ -46,13 +47,26 @@ $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
 
 //Highlights
-$highlightsText-padding-md: 14% 4.5%;
 $highlights-margintop-xs: 20px;
+$highlights-marginbottom-sm: 50px;
+$highlightsText-padding-sm: 14% 4.5%;
+$highlightsText-padding-md: 14% 4.5%;
 $highlightsText-padding-xs: 14% 4.5% 2% 4.5%;
+$highlights-titlepadding-lg: 0 30px 30% 0;
+
 
 //Financial
 $financial-height-md: 400px;
+$financialText-padding-sm: 5%;
+$financialText-padding-xs: 10%;
+$financialText-padding-md: 15%;
+
 $financial-bgimage: url("../img/financial-bg.jpg");
+$financial-chart1: url("../img/allocation1.png");
+$financial-chart2: url("../img/allocation2.png");
+
+
+
 
 //Supporters
 $supportersText-height-md: 400px;
@@ -63,6 +77,7 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 $form-navbar-bgimage: url("../img/transparent-flag.png");
 $form-width-xxs: 300px;
 $form-width-xs: 300px;
+$form-width-sm: 400px;
 $form-width-md: 435px;
 $form-width-xl: 650px;
 $form-background: $green;
@@ -81,6 +96,10 @@ $footer-height-md: 200px;
 //-----------
 $screen-xxs-max: ($screen-xs-min - 1) !default;
 $screen-xs-min: 620px;
+$screen-xs-max: ($screen-sm - 1);
+$screen-sm: 768px;
+$screen-sm-max: ($screen-md - 1);
+$screen-md: 992px;
 $screen-lg: 1360px;
 $screen-xl: 2100px;
 

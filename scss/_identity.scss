@@ -7,7 +7,13 @@
     height: 63px;
     padding: $header-padding;
   }
-
+@media screen and (min-width: $screen-sm){
+  $border-height: 5px;
+  .page-header {
+    border-top: $border-height solid $dark-green;
+    height: $header-height-md - $border-height;
+  }
+}
 @media screen and (min-width: $screen-md){
   $border-height: 5px;
   .page-header {

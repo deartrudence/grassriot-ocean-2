@@ -91,10 +91,25 @@ html.csstransforms {
   -ms-transform: translate(-50%,-50%,0);
 }
 
+@media screen and (max-width: $screen-xs-max),
+  screen and (max-device-width:$screen-xs-max){
+  body:after{
+    content:"mobile";
+  }
+  .heroTitle {
+    @include fontSize-medium;
+  }
+}
+@media screen and (min-width: $screen-sm){
+  .heroTitle {
+    @include fontSize-small;
+  }
 
-
+}
 @media screen and (min-width: $screen-md){
-
+  .heroTitle {
+    @include fontSize-medium;
+  }
 
 }
 @media screen and (min-width: $screen-lg){

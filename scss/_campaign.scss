@@ -20,18 +20,15 @@ $calltoaction-buttonpadding-md: 20px 20px;
 }
 .campaignText-main {
   @include dagny;
+
 }
 .highlightsText-wrapper {
   position: relative;
 
 }
-.highlights-title {
-  padding-right: 30px;
-  padding-bottom: 30%;
-}
+
 .highlights-title--number {
   @include dagny-heavy;
-  @include fontSize-massive;
   @include lineHeight-title--number;
   color: $green;
   display: block;
@@ -74,23 +71,148 @@ $calltoaction-buttonpadding-md: 20px 20px;
   position: relative;
   background: $financial-bgimage;
   background-size: cover;
-  img { // for retina
-    width: 821.5px;
-    height: 401.5px;
+  .financial-chart1 {
+    display:inline-block;
+
+  }
+  .financial-chart2 {
+    display: inline-block;
+  }
+
+}
+.financialCaption {
+  @include fontSize-smallest;
+  @include dagny;
+  position: absolute;
+  left: 2%;
+  bottom: 0;
+  color: $white;
+  padding: 0 0 2% 0;
+}
+
+// for mobile
+@media screen and (max-width: $screen-xs-max),
+  screen and (max-device-width:$screen-xs-max){
+  body:after{
+    content:"mobile";
+  }
+
+  .campaignText-main {
+    @include fontSize-medium;
+  }
+  .highlightsText-wrapper {
+    padding: $highlightsText-padding-xs;
+  }
+  .highlights-title {
+    text-align: center;
+    padding-bottom: 0;
+    @include fontSize-larger;
+  }
+  .highlights-title--number {
+    @include fontSize-massive-xs;
+  }
+  .highlights-events {
+    @include fontSize-small;
+  }
+  .highlights-cta {
+    display: block;
+    margin: $highlights-margintop-xs $content-overlap-xs 5px 0;
+    position: relative;
+  }
+  .financialText-wrapper {
+    padding: $financialText-padding-xs;
+    text-align: center;
+  }
+  .financial-chart1 {
+    background: $financial-chart1;
+    background-size: 347px 268px;
+    width: 347px;
+    height: 268px;
+  }
+  .financial-chart2 {
+    background: $financial-chart2;
+    background-size: 347px 268px;
+    width: 347px;
+    height: 268px;
+  }
+  .supportersText-wrapper {
+    display: none;
+  }
+
+}
+
+// for tablet
+@media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max){
+  .campaignText-main {
+    @include fontSize-medium;
+  }
+  .highlightsText-wrapper {
+    padding: $highlightsText-padding-sm;
+  }
+  .highlights-title {
+    text-align: center;
+
+  }
+  .highlights-events {
+
+  }
+  .financialText-wrapper {
+    padding: $financialText-padding-sm;
+    text-align: center;
+  }
+  .financial-chart1 {
+    background: $financial-chart1;
+    background-size: 347px 273px;
+    width: 347px;
+    height: 273px;
+
+  }
+  .financial-chart2 {
+    background: $financial-chart2;
+    background-size: 347px 268px;
+    width: 347px;
+    height: 268px;
+  }
+  .supportersText-wrapper {
+    display: none;
+  }
+  .highlights-cta {
+    margin: 0px 20px 5px 0px;
   }
 }
-// .financialCaption {
-//   @extend .heroCaption;
-// }
-@media screen and (min-width: $screen-md){
+
+// for medium devices
+@media screen and (min-width: $screen-md) {
+
+
   .campaignText-main {
-    @include fontSize-larger;
+    @include fontSize-large;
   }
   .highlightsText-wrapper {
     padding: $highlightsText-padding-md;
   }
   .highlights-title {
-    float: left;
+    float: none;
+    text-align: center;
+  }
+  .highlights-title--number {
+    @include fontSize-massive;
+  }
+  .financialText-wrapper {
+    padding: $financialText-padding-md;
+  }
+  .financial-chart1 {
+    background: $financial-chart1;
+    background-size: 347px 273px;
+    width: 347px;
+    height: 273px;
+
+  }
+  .financial-chart2 {
+    background: $financial-chart2;
+    background-size: 347px 268px;
+    width: 347px;
+    height: 268px;
   }
 
 
@@ -191,6 +313,9 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .financialText-wrapper {
     text-align: center;
   }
+  .highlights-title {
+    padding: $highlights-titlepadding-lg;
+  }
   .highlights-title--number {
     @include fontSize-responsive-massive;
   }
@@ -204,41 +329,4 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-cta {
     @include fontSize-responsive-base;
   }
-}
-
-// for tablet
-@media screen and (max-width: $screen-xs-max),
-  screen and (max-device-width:$screen-xs-max){
-  body:after{
-    content:"mobile";
-  }
-  .heroTitle {
-    @include fontSize-medium;
-  }
-  .campaignText-main {
-    @include fontSize-medium;
-  }
-  .highlightsText-wrapper {
-    padding: $highlightsText-padding-xs;
-  }
-  .highlights-title {
-    text-align: center;
-    padding-bottom: 0;
-    @include fontSize-larger;
-  }
-  .highlights-title--number {
-    @include fontSize-massive-xs;
-  }
-  .highlights-events {
-    @include fontSize-small;
-  }
-  .highlights-cta {
-    display: block;
-    margin: $highlights-margintop-xs $content-overlap-xs 5px 0;
-    position: relative;
-  }
-  .supportersText-wrapper {
-    display: none;
-  }
-
 }
