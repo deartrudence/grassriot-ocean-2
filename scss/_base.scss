@@ -51,8 +51,9 @@ $highlights-margintop-xs: 20px;
 $highlights-marginbottom-sm: 50px;
 $highlightsText-padding-sm: 14% 4.5%;
 $highlightsText-padding-md: 14% 4.5%;
+$highlightsText-padding-lg: 10% 4.5%;
 $highlightsText-padding-xs: 14% 4.5% 2% 4.5%;
-$highlights-titlepadding-lg: 0 30px 30% 0;
+$highlights-titlepadding-lg: 0 30px 0 0;
 
 
 //Financial
@@ -100,7 +101,7 @@ $screen-xs-max: ($screen-sm - 1);
 $screen-sm: 768px;
 $screen-sm-max: ($screen-md - 1);
 $screen-md: 992px;
-$screen-lg: 1360px;
+$screen-lg: 1300px;
 $screen-xl: 2100px;
 
 //spacing

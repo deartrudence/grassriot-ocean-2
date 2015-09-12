@@ -89,6 +89,58 @@ $calltoaction-buttonpadding-md: 20px 20px;
   color: $white;
   padding: 0 0 2% 0;
 }
+// slick styles below
+.slick-slider {
+  padding: 0;
+}
+.slick-track {
+  background-color: $dark-turquoise;
+}
+.slick-arrow {
+  position: absolute;
+  @include z-highest;
+}
+.slick-prev {
+  top: calc(50% - 27px);
+  background: url('../img/slickLeft.png');
+  background-size: 17px 27px;
+  height: 27px;
+  width: 17px;
+  border: 0;
+}
+.slick-next {
+  right: 0;
+  background: url('../img/slickRight.png');
+  background-size: 18px 28px;
+  top: calc(50% - 28px);
+  height: 28px;
+  border: 0;
+  margin-right: 30px;
+  width: 17px;
+}
+.slick-slide {
+  padding: 1%;
+}
+.slick-dots {
+  text-align: center;
+  li {
+    display: inline-block;
+    margin-right: 5px;
+  }
+  button {
+    font-size: 0;
+    padding: 0;
+    outline: 0;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    border: 0;
+    background-color: $turquoise;
+  }
+  .slick-active button {
+    background-color: $dark-red;
+  }
+}
 
 // for mobile
 @media screen and (max-width: $screen-xs-max),
@@ -153,9 +205,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
     text-align: center;
 
   }
-  .highlights-events {
-
-  }
   .financialText-wrapper {
     padding: $financialText-padding-sm;
     text-align: center;
@@ -215,7 +264,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
     height: 268px;
   }
 
-
   .supportersText-wrapper {
 
     h4 {
@@ -236,55 +284,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
       height: 375px;
     }
   }
-  // slick styles below
-  .slick-slider {
-    padding: 0;
-  }
-  .slick-track {
-    background-color: $dark-turquoise;
-  }
-  .slick-arrow {
-    position: absolute;
-    @include z-highest;
-  }
-  .slick-prev {
-    top: calc(50% - 27px);
-    background: url('../img/slickLeft.png');
-    background-size: 17px 27px;
-    height: 27px;
-    width: 17px;
-    border: 0;
-  }
-  .slick-next {
-    right: 0;
-    background: url('../img/slickRight.png');
-    background-size: 18px 28px;
-    top: calc(50% - 28px);
-    height: 28px;
-    border: 0;
-    margin-right: 30px;
-    width: 17px;
-  }
-  .slick-dots {
-    text-align: center;
-    li {
-      display: inline-block;
-      margin-right: 5px;
-    }
-    button {
-      font-size: 0;
-      padding: 0;
-      outline: 0;
-      border-radius: 50%;
-      width: 10px;
-      height: 10px;
-      border: 0;
-      background-color: $turquoise;
-    }
-    .slick-active button {
-      background-color: $dark-red;
-    }
-  }
+
   .supporters-carousel {
     @include dagny;
     color: $white;
@@ -313,8 +313,15 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .financialText-wrapper {
     text-align: center;
   }
+  .campaignText-main {
+    @include fontSize-responsive-larger;
+  }
+  .highlightsText-wrapper {
+    padding: $highlightsText-padding-lg;
+  }
   .highlights-title {
     padding: $highlights-titlepadding-lg;
+    float: left;
   }
   .highlights-title--number {
     @include fontSize-responsive-massive;
@@ -329,4 +336,10 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-cta {
     @include fontSize-responsive-base;
   }
+  .supportersText-wrapper {
+    h4 {
+      @include fontSize-responsive-medium;
+    }
+  }
+
 }
