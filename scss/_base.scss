@@ -30,14 +30,16 @@ $modal-overlay-opacity: 0.65;
 //Header
 $header-bgcolour: $vdark-grey;
 $header-height-xxs: 76px;
-$header-height-xs: 97px;
+$header-height-xs: 80px;
 $header-height-sm: 105px;
 $header-height-md: 105px;
+$header-height-xl: 205px;
 $header-padding: 15px 0 15px 5%;
 
 //Hero
 $hero-background: $white;
 $hero-bgimage: url(../img/hero-bg.jpg);
+$hero-bgimage-xl: url(../img/herobgimage-xl.jpg);
 $heroTitle-padding: 16% 20% 23% 16%;
 $hero-captionpadding-md: 10px 15px;
 
@@ -50,8 +52,7 @@ $campaign-height-md: 250px;
 $highlights-margintop-xs: 20px;
 $highlights-marginbottom-sm: 50px;
 $highlightsText-padding-sm: 14% 4.5%;
-$highlightsText-padding-md: 14% 4.5%;
-$highlightsText-padding-lg: 10% 4.5%;
+$highlightsText-padding-md: 10% 4.5% 5% 4.5%;
 $highlightsText-padding-xs: 14% 4.5% 2% 4.5%;
 $highlights-titlepadding-lg: 0 30px 0 0;
 
@@ -60,11 +61,11 @@ $highlights-titlepadding-lg: 0 30px 0 0;
 $financial-height-md: 400px;
 $financialText-padding-sm: 5%;
 $financialText-padding-xs: 10%;
-$financialText-padding-md: 15%;
+$financialText-padding-md: 5%;
 
 $financial-bgimage: url("../img/financial-bg.jpg");
-$financial-chart1: url("../img/allocation1.png");
-$financial-chart2: url("../img/allocation2.png");
+$financial-chart1: url("../img/allocation1-2x.png");
+$financial-chart2: url("../img/allocation2-2x.png");
 
 
 
@@ -76,6 +77,7 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
 $form-navbar-bgimage: url("../img/transparent-flag.png");
+$form-navbar-bgimage-xl: url("../img/transparent-flagxl.svg");
 $form-width-xxs: 300px;
 $form-width-xs: 300px;
 $form-width-sm: 400px;
@@ -85,6 +87,7 @@ $form-background: $green;
 
 //text
 $content-overlap-xs: 20px;
+$content-overlap-sm: 20px;
 $content-overlap-md: 20px;
 $content-overlap-xl: 30px;
 
@@ -100,7 +103,7 @@ $screen-xs-min: 620px;
 $screen-xs-max: ($screen-sm - 1);
 $screen-sm: 768px;
 $screen-sm-max: ($screen-md - 1);
-$screen-md: 992px;
+$screen-md: 990px;
 $screen-lg: 1300px;
 $screen-xl: 2100px;
 

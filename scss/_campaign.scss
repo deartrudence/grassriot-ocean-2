@@ -24,7 +24,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
 }
 .highlightsText-wrapper {
   position: relative;
-
 }
 
 .highlights-title--number {
@@ -57,27 +56,37 @@ $calltoaction-buttonpadding-md: 20px 20px;
   @include dagny;
   @include fontSize-base;
   @include calltoaction-button--red;
-  position: absolute;
   color: $white;
-  display: inline;
   text-align: center;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0 5% 0.5% 5%;
+  margin: 0 calc(#{$content-overlap-md} + 5%) 0.5% 5%; // interpolating to use calc function in sass
   text-transform: uppercase;
 }
 .financialText-wrapper {
   position: relative;
   background: $financial-bgimage;
   background-size: cover;
+  .financial-col {
+    float: left;
+    width: 50%;
+  }
   .financial-chart1 {
-    display:inline-block;
+    background: $financial-chart1 no-repeat;
+    background-size: contain;
+    padding: 50%;
+    // background-size: 393px 334px;
+    // width: 393px;
+    // height: 334px;
 
   }
   .financial-chart2 {
-    display: inline-block;
+    background: $financial-chart2 no-repeat;
+    background-size: contain;
+    padding: 50%;
   }
+
 
 }
 .financialCaption {
@@ -105,6 +114,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   background: url('../img/slickLeft.png');
   background-size: 17px 27px;
   height: 27px;
+  margin-left: 10px;
   width: 17px;
   border: 0;
 }
@@ -177,9 +187,9 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
   .financial-chart1 {
     background: $financial-chart1;
-    background-size: 347px 268px;
-    width: 347px;
-    height: 268px;
+    background-size: 393px 334px;
+    width: 393px;
+    height: 334px;
   }
   .financial-chart2 {
     background: $financial-chart2;
@@ -203,30 +213,36 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
   .highlights-title {
     text-align: center;
-
+    float: none;
+  }
+  .highlights-title--number {
+    @include fontSize-massive;
   }
   .financialText-wrapper {
     padding: $financialText-padding-sm;
     text-align: center;
+    .financial-col {
+      float: none;
+      width: 100%;
+    }
+    .financial-chart1 {
+      padding: 30%;
+      background-position: center;
+    }
+    .financial-chart2 {
+      padding: 30%;
+      background-position: center;
+    }
   }
-  .financial-chart1 {
-    background: $financial-chart1;
-    background-size: 347px 273px;
-    width: 347px;
-    height: 273px;
 
-  }
-  .financial-chart2 {
-    background: $financial-chart2;
-    background-size: 347px 268px;
-    width: 347px;
-    height: 268px;
-  }
+
   .supportersText-wrapper {
     display: none;
   }
   .highlights-cta {
-    margin: 0px 20px 5px 0px;
+    @include fontSize-base;
+    margin: 0 $content-overlap-sm 0 0;
+    border-radius: 0;
   }
 }
 
@@ -240,28 +256,22 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlightsText-wrapper {
     padding: $highlightsText-padding-md;
   }
-  .highlights-title {
-    float: none;
-    text-align: center;
+  .highlights-colleft {
+    float: left;
+    padding-right: 2em;
+  }
+  .highlights-colright {
+    float: left;
+    width: 60%;
   }
   .highlights-title--number {
     @include fontSize-massive;
   }
+  .highlights-cta {
+    @include fontSize-base;
+  }
   .financialText-wrapper {
     padding: $financialText-padding-md;
-  }
-  .financial-chart1 {
-    background: $financial-chart1;
-    background-size: 347px 273px;
-    width: 347px;
-    height: 273px;
-
-  }
-  .financial-chart2 {
-    background: $financial-chart2;
-    background-size: 347px 268px;
-    width: 347px;
-    height: 268px;
   }
 
   .supportersText-wrapper {
@@ -315,9 +325,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
   }
   .campaignText-main {
     @include fontSize-responsive-larger;
-  }
-  .highlightsText-wrapper {
-    padding: $highlightsText-padding-lg;
   }
   .highlights-title {
     padding: $highlights-titlepadding-lg;

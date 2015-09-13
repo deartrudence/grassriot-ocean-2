@@ -31,8 +31,9 @@ $image-width: 100%; //TODO: this should correspond with the actual width to the 
 .hero{
   position: relative; //for the overflow control
   overflow: hidden;
-  background: $hero-background;
   height: 100%;
+  background: $hero-bgimage;
+  background-size: cover;
 
 }
 
@@ -52,8 +53,7 @@ $image-width: 100%; //TODO: this should correspond with the actual width to the 
   max-width: $page-text-max-width;
 }
 .hero {
-  background: $hero-bgimage;
-  background-size: cover;
+
 }
 .heroTitle {
   @include dagny-light;
@@ -102,7 +102,7 @@ html.csstransforms {
 }
 @media screen and (min-width: $screen-sm){
   .heroTitle {
-    @include fontSize-small;
+    @include fontSize-medium;
   }
 
 }

@@ -17,12 +17,7 @@ form {
 
 
 }
-.form-navbar {
-  background: $form-navbar-bgimage;
-  width: 432px;
-  height: 53px;
 
-}
 .form-header{
   padding: 30px;
 
@@ -35,5 +30,30 @@ form {
   em {
     text-transform: none;
     color: $vdark-green;
+  }
+}
+
+
+@media screen and (min-width: $screen-xs){
+  .affix {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+  .form-navbar {
+    background: $form-navbar-bgimage;
+    background-size: 435px 53px;
+    width: 435px;
+    height: 53px;
+
+  }
+}
+@media screen and (min-width: $screen-xl) {
+  .form-navbar {
+    background: $form-navbar-bgimage-xl;
+    background-size: 650px 54px;
+    width: 650px;
+    height: 53px;
+
   }
 }
