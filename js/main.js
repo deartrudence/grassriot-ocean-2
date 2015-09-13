@@ -4,6 +4,8 @@ var formSelector = '.form';
 var formFieldContainerClass = 'js-form-field-container';
 var formFieldContainerIgnoreClass = 'is-selfHandling';
 var formFieldWrapperClass = 'js-form-field-wrapper';
+var footer = $('footer');
+var header = $('header');
 
 //Key:Value :: Target:Content
 var ENBeautifierFillers = {
@@ -112,12 +114,15 @@ function setupAction(){
 			nextArrow: '<button type="button" class="slick-next"></button>'
 		});
 
-		$('.form').affix({
-      offset: {
-        top: $('header').height(),
-				bottom: $('footer').height()
-      }
-		});
+		// we handle the mobile form (<620px) without use of affix
+		if (header.width() > 620) {
+			$('.form').affix({
+	      offset: {
+	        top: $('header').height(),
+					bottom: $('footer').height()
+	      }
+			});
+		}
 
 		//things to do just on load
 		setupMobileButton();
@@ -192,7 +197,7 @@ function handleDrag(e){
 
 			if( Math.abs(topMove / windowHeight ) > 0.25 ){
 				$(".form")
-					.addClass("is-active")
+					.addClass("is-active");
 			}
 		})
 

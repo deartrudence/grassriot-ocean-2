@@ -176,11 +176,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .highlights-events {
     @include fontSize-small;
   }
-  .highlights-cta {
-    display: block;
-    margin: $highlights-margintop-xs $content-overlap-xs 5px 0;
-    position: relative;
-  }
   .financialText-wrapper {
     padding: $financialText-padding-xs;
     text-align: center;
@@ -198,18 +193,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
     }
   }
 
-  // .financial-chart1 {
-  //   background: $financial-chart1;
-  //   background-size: 393px 334px;
-  //   width: 393px;
-  //   height: 334px;
-  // }
-  // .financial-chart2 {
-  //   background: $financial-chart2;
-  //   background-size: 347px 268px;
-  //   width: 347px;
-  //   height: 268px;
-  // }
   .supportersText-wrapper {
     display: none;
   }
@@ -253,9 +236,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
     display: none;
   }
   .highlights-cta {
-    @include fontSize-base;
-    margin: 0 $content-overlap-sm 0 0;
-    border-radius: 0;
+
   }
 }
 

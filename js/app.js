@@ -2,12 +2,14 @@ webpackJsonp([0],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	//Beautifier configuration
+	/* WEBPACK VAR INJECTION */(function($) {//Beautifier configuration
 	var leftColumnSelector = '.js-left-column';
 	var formSelector = '.form';
 	var formFieldContainerClass = 'js-form-field-container';
 	var formFieldContainerIgnoreClass = 'is-selfHandling';
 	var formFieldWrapperClass = 'js-form-field-wrapper';
+	var footer = $('footer');
+	var header = $('header');
 
 	//Key:Value :: Target:Content
 	var ENBeautifierFillers = {
@@ -19,7 +21,7 @@ webpackJsonp([0],[
 		".js-supporters": ".js-supportersText"
 	}
 
-	var ENBeautifier = __webpack_require__(1);
+	var ENBeautifier = __webpack_require__(3);
 	var enbeautifier;
 
 	// slick carousel slider
@@ -37,7 +39,7 @@ webpackJsonp([0],[
 	var formOpenButtonLabel = ".js-formOpen-label";
 	var windowSize;
 
-	var $ = __webpack_require__(2);
+	var $ = __webpack_require__(1);
 	__webpack_require__(5);
 
 	if(true){
@@ -116,12 +118,15 @@ webpackJsonp([0],[
 				nextArrow: '<button type="button" class="slick-next"></button>'
 			});
 
-			$('.form').affix({
-	      offset: {
-	        top: $('header').height(),
-					bottom: $('footer').height()
-	      }
-			});
+			// we handle the mobile form (<620px) without use of affix
+			if (header.width() > 620) {
+				$('.form').affix({
+		      offset: {
+		        top: $('header').height(),
+						bottom: $('footer').height()
+		      }
+				});
+			}
 
 			//things to do just on load
 			setupMobileButton();
@@ -196,7 +201,7 @@ webpackJsonp([0],[
 
 				if( Math.abs(topMove / windowHeight ) > 0.25 ){
 					$(".form")
-						.addClass("is-active")
+						.addClass("is-active");
 				}
 			})
 
@@ -411,9 +416,12 @@ webpackJsonp([0],[
 		}
 	}
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -663,7 +671,7 @@ webpackJsonp([0],[
 	}
 
 	module.exports = ENBeautifier;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }
 ]);

@@ -33,7 +33,60 @@ form {
   }
 }
 
+@media screen and (max-width: $screen-xxs-max) {
+    .form {
+        &.is-active{
+        overflow-x: hidden;
+        overflow-y: auto;
+        top: 0;
+      }
 
+      &.is-dragging{
+        transition: none;
+      }
+    }
+  .formOpen {
+    @include dagny-heavy;
+    @include fontSize-base;
+    display: block;
+    position: absolute;
+    top: -3em;
+    left: 0px;
+    width: 100%;
+    text-transform: uppercase;
+    color: white;
+    height: 3em;
+    background: $green;
+    border: 0;
+
+
+  }
+  .formClose {
+    @include dagny-heavy;
+    @include fontSize-medium;
+    display: block;
+    position: absolute;
+    border: 0;
+    color: $white;
+    right: 20px;
+    top: 20px;
+    width: auto;
+    background: rgba($white,0.6);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.6;
+    cursor: pointer;
+
+    &:hover{
+      opacity: 0.8;
+    }
+
+    &:active{
+      opacity: 1;
+    }
+  }
+}
 @media screen and (min-width: $screen-xs-min){
   .affix {
     position: fixed;
@@ -44,7 +97,8 @@ form {
     background: $form-navbar-bgimage;
     background-size: 435px 53px;
     width: 435px;
-    height: 53px;
+    height: 52px;
+    @include z-highest;
 
   }
 }
