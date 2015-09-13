@@ -6,25 +6,19 @@
 @mixin formContainer{
 
   @media screen and (max-width: $screen-xxs-max){
-    // position: absolute;
-    // width: 100%;
-    // top: $header-height-xxs;
-    // right: 0;
-    // height: 100%;
-    // width: $form-width-xxs;
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      width: 100%;
+      // padding: 20px;
 
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    bottom: -100%;
-    left: 0;
-    background-color: yellow;
+      @include z-highest;
+      -webkit-backface-visibility: hidden; //may improve rendering of the fixed form
+      translate: transform3d(0,0,0);
   }
 
-
-  @media screen and (max-width: $screen-xs-max){
+  @media screen and (min-width: $screen-xs-min){
     position: absolute;
-    width: 100%;
     top: $header-height-xs;
     right: 0;
     height: 100%;
@@ -67,17 +61,17 @@
  */
 @mixin contentContainer{
   @media screen and (min-width: $screen-xxs-max){
-    padding-right: $form-width-xxs;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+
   }
   @media screen and (max-width: $screen-xs-max){
   }
 
 
-  @media screen and (min-width: $screen-xs){
-
+  @media screen and (min-width: $screen-xs-min){
+    padding-right: $form-width-xs;
+    padding-left: $content-overlap-md;
+    margin-left: -1 * $content-overlap-md;
+    margin-right: -1 * $content-overlap-md;
   }
 
   @media screen and (min-width: $screen-sm){

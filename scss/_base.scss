@@ -73,6 +73,7 @@ $financial-chart2: url("../img/allocation2-2x.png");
 //Supporters
 $supportersText-height-md: 400px;
 $supportersHeader-padding-md: 15px 20px;
+$supporterPicture-height-md: 300px;
 $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
@@ -98,7 +99,7 @@ $footer-height-md: 200px;
 //-----------
 //screen sizes
 //-----------
-$screen-xxs-max: ($screen-xs-min - 1) !default;
+$screen-xxs-max: 619px;
 $screen-xs-min: 620px;
 $screen-xs-max: ($screen-sm - 1);
 $screen-sm: 768px;

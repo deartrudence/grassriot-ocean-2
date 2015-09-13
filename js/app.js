@@ -105,6 +105,8 @@ webpackJsonp([0],[
 			//move text to the right places
 			enbeautifier.moveToTargets(ENBeautifierFillers);
 
+
+
 			// slick
 			$('.supporters-carousel').slick({
 				dots: true,
@@ -113,17 +115,94 @@ webpackJsonp([0],[
 				prevArrow: '<button type="button" class="slick-prev"></button>',
 				nextArrow: '<button type="button" class="slick-next"></button>'
 			});
-			
+
 			$('.form').affix({
 	      offset: {
-	        top: $('header').height()
+	        top: $('header').height(),
+					bottom: $('footer').height()
 	      }
 			});
+
+			//things to do just on load
+			setupMobileButton();
+
 
 		} catch(error) {
 			raygunSendError(error);
 		}
 	}
+
+	/**
+	 * [setupMobileButton description]
+	 * @return {[type]} [description]
+	 */
+	function setupMobileButton(){
+		var actionButton = $(formSelector).find(".button");
+		var mobileButton = $(formOpenButton);
+
+		//Set the open button to use the same copy as the action button
+		mobileButton.find(formOpenButtonLabel).text(actionButton.text());
+		mobileButton
+			.on("click",function(){
+				$(formSelector).toggleClass("is-active");
+			})
+			.on("mousedown touchstart", handleDrag);
+
+		$(".formClose").on("click",function(){
+			$(this).parent().removeClass("is-active");
+		});
+	}
+
+	/**
+	 * [handleDrag description]
+	 * Based on https://gist.github.com/Arty2/11199162
+	 * @param  {[type]} e [description]
+	 * @return {[type]}   [description]
+	 */
+	function handleDrag(e){
+		var $this = $(this);
+		var $pane = $this.parent();
+
+		var $window = $(window);
+		var windowHeight = $window.outerHeight();
+		var scrollTop = $window.scrollTop();
+
+		var topMove = 0;
+
+		$(window)
+			.on("mousemove.draggable touchmove.draggable", function(e){
+
+				$pane.addClass("is-dragging");
+
+				if( e.originalEvent.touches ){
+					var touch = e.originalEvent.touches[0];
+				}
+
+				var posY = e.pageY || touch.pageY;
+				topMove = (posY - scrollTop) - windowHeight;
+
+				$(".form").css("top", windowHeight + topMove);
+
+				e.preventDefault();
+			})
+			.one("mouseup touchend touchcancel",function(){
+				$(window).off("mousemove touchmove");
+
+				$pane.removeClass("is-dragging");
+
+				//if the user has dragged the panel more than halfway, open it
+				$(".form")
+						.removeAttr("style");
+
+				if( Math.abs(topMove / windowHeight ) > 0.25 ){
+					$(".form")
+						.addClass("is-active")
+				}
+			})
+
+		e.preventDefault();
+	}
+
 
 	/**
 	 * [init_devtools description]

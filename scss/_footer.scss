@@ -3,7 +3,6 @@
   padding: $footer-padding-md;
   @include footer-font;
   color: $beige;
-  height: $footer-height-md;
 }
 .footer-legal {
   float: left;
@@ -49,5 +48,15 @@
   }
   li {
     display: inline-block;
+  }
+}
+
+@media screen and (max-width: $screen-sm){
+  .footer-legal {
+    float:none;
+    margin-bottom: 10%;
+  }
+  .footer-links {
+    float:none;
   }
 }

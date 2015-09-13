@@ -129,7 +129,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
   width: 17px;
 }
 .slick-slide {
-  padding: 1%;
+
 }
 .slick-dots {
   text-align: center;
@@ -184,19 +184,32 @@ $calltoaction-buttonpadding-md: 20px 20px;
   .financialText-wrapper {
     padding: $financialText-padding-xs;
     text-align: center;
+    .financial-col {
+      float: none;
+      width: 100%;
+    }
+    .financial-chart1 {
+      padding: 40%;
+      background-position: center;
+    }
+    .financial-chart2 {
+      padding: 40%;
+      background-position: center;
+    }
   }
-  .financial-chart1 {
-    background: $financial-chart1;
-    background-size: 393px 334px;
-    width: 393px;
-    height: 334px;
-  }
-  .financial-chart2 {
-    background: $financial-chart2;
-    background-size: 347px 268px;
-    width: 347px;
-    height: 268px;
-  }
+
+  // .financial-chart1 {
+  //   background: $financial-chart1;
+  //   background-size: 393px 334px;
+  //   width: 393px;
+  //   height: 334px;
+  // }
+  // .financial-chart2 {
+  //   background: $financial-chart2;
+  //   background-size: 347px 268px;
+  //   width: 347px;
+  //   height: 268px;
+  // }
   .supportersText-wrapper {
     display: none;
   }
@@ -300,7 +313,19 @@ $calltoaction-buttonpadding-md: 20px 20px;
     color: $white;
     padding: $supporterProfile-padding-md;
 
+    .supporter-picture-glen {
+      background: url("../img/glen.png");
+      background-size: contain;
+      padding: 20%;
+      float: left;
 
+
+    }
+    .supporter-bio {
+      float: left;
+      width: 45%;
+      padding: 5%;
+    }
     .supporter-name {
       @include dagny-heavy;
       @include fontSize-larger;
@@ -320,6 +345,20 @@ $calltoaction-buttonpadding-md: 20px 20px;
 }
 // for larger desktop monitors
 @media screen and (min-width: $screen-lg){
+  .supportersText-wrapper {
+    .supporters-carousel {
+      .supporter-name {
+        @include fontSize-responsive-larger;
+      }
+      .supporter-caption {
+        @include fontSize-responsive-medium;
+      }
+      .supporter-description {
+        @include fontSize-responsive-base;
+      }
+    }
+  }
+
   .financialText-wrapper {
     text-align: center;
   }

@@ -34,7 +34,7 @@ form {
 }
 
 
-@media screen and (min-width: $screen-xs){
+@media screen and (min-width: $screen-xs-min){
   .affix {
     position: fixed;
     top: 0;
