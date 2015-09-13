@@ -99,14 +99,15 @@ $footer-height-md: 200px;
 //-----------
 //screen sizes
 //-----------
+$screen-sm: 768px;
+$screen-md: 1160px;
+$screen-lg: 1300px;
+$screen-xl: 2100px;
+
 $screen-xxs-max: 619px;
 $screen-xs-min: 620px;
 $screen-xs-max: ($screen-sm - 1);
-$screen-sm: 768px;
 $screen-sm-max: ($screen-md - 1);
-$screen-md: 990px;
-$screen-lg: 1300px;
-$screen-xl: 2100px;
 
 //spacing
 $page-left-padding-md: 80px;
