@@ -902,25 +902,19 @@ function init_validation(){
             unhighlight: function (element, errorClass, validClass) {
                 var $el = $(element);
                 if($el.attr("type")=="checkbox") return;
-                $el.parent().find('.glyphicon').remove();
                 $el.removeClass(validClass).removeClass(errorClass);
 
                 if ($el.val() != ''&& ($el.attr('id') !== 'setcurrency')) {
-                    $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
                     $el.addClass(validClass);
                 }
             },
             highlight: function (element, errorClass, validClass) {
                 var $el = $(element);
                 if($el.attr("type")=="checkbox") return;
-                $el.parent().find('.glyphicon').remove();
-                $el.before($('<span class="glyphicon glyphicon-remove"></span>'));
                 $el.removeClass(validClass).addClass(errorClass);
             },
             success: function (element, label) {
                 var $el = $(element);
-                $el.parent().find('.glyphicon').remove();
-                $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
             },
             groups: {
                 demoGroup: "First Name",
