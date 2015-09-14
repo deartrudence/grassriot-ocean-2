@@ -70,6 +70,7 @@ config.addVendor('jqueryvalidate', "vendor/jquery.validate.min.js");
 config.addVendor('modernizr',"vendor/modernizr.min.js");
 config.addVendor('slick', "vendor/slick/slick.min.js");
 config.addVendor('affix', "vendor/bootstrap/assets/javascripts/bootstrap/affix.js");
+config.addVendor('modal', "vendor/bootstrap/assets/javascripts/bootstrap/modal.js");
 
 if(process.env.BUILD_DEV === "true"){
   config.addVendor('tota11y',"vendor/tota11y.min.js");

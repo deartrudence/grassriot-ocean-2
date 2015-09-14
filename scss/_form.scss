@@ -19,7 +19,7 @@ form {
 }
 
 .form-header{
-  padding: 30px;
+  padding: $form-padding;
 
   h3 {
     @include dagny-heavy;
@@ -101,6 +101,11 @@ form {
     @include z-highest;
 
   }
+
+  .formOpen,
+  .formClose{
+    display: none;
+  }
 }
 @media screen and (min-width: $screen-xl) {
   .form-navbar {
@@ -110,4 +115,16 @@ form {
     height: 53px;
 
   }
+}
+
+#grdonation .page{
+  padding: 0 $form-padding;
+}
+
+.eaErrorMessage{
+  display: none;
+}
+
+#Payment_CurrencyField{
+  display:none;
 }
