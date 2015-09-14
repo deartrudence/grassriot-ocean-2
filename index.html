@@ -503,7 +503,7 @@
               </div>
             </div>
             <div id='Recurring_PaymentDiv' class='eaFullWidthContent'><div id='Recurring_PaymentError' class='eaErrorMessage'></div>
-              <span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'>Recurring</a></label></span>
+              <span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'>Make your gift recurring</a></label></span>
               <div id='Recurring_PaymentField' class='eaFormField'>
                  <input id='Recurring_Payment' type='text' class='eaFormTextfield' name='Recurring Payment' value='' onblur='validatefield(this);' onchange='checkdep(this);' />
               </div>
@@ -696,6 +696,11 @@
       ( typeof validateEAform === "undefined" )
       ? function(){}
       : validateEAform;
+
+    checkdep =
+      ( typeof checkdep === "undefined" )
+      ? function(){}
+      : checkdep;      
     </script>
   </body>
 </html>

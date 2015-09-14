@@ -389,10 +389,12 @@ GRGivingSupport.prototype.updateAskString = function() {
             askStringIndex[index] = getAskString(index);
         
         if(askStringIndex[index]) {
+            var $container = $('.'+options.askStringContainerClass);
             if(!askStringIndex[index].buttons)
                 askStringIndex[index].buttons = getAskButtons(askStringIndex[index].amounts);
-            $('.'+options.askStringContainerClass).children().remove();
-            $('.'+options.askStringContainerClass).append(askStringIndex[index].buttons);
+            $container.children().remove();
+            $container.append(askStringIndex[index].buttons);
+            this.showLabel.call($container);
         }
         else
             throw new Error('[GRGivingSupport] No ask string defined for: '+index.toString());
@@ -544,6 +546,7 @@ function getAskButtons(amounts) {
             })
         );
     }
+
     return selectorButtons;
 }
 
@@ -563,8 +566,19 @@ GRGivingSupport.prototype.buildRecurrenceSelector = function(opt) {
                 })
             );
         }
+
+        //get and show the label for this
+        this.showLabel.call($recurrence);
+
         $recurrence.replaceWith(selectorButtons);
+
     }
+}
+
+GRGivingSupport.prototype.showLabel = function(){
+    this.closest(".eaFormField")
+        .prev(".eaFormElementLabel")
+        .show();
 }
 
 module.exports = GRGivingSupport;

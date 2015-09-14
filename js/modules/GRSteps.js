@@ -137,7 +137,6 @@ GRSteps.prototype.switchTo = function(stepNumber){
   
   //run any interrupting processes
   //prevent the panel from proceeding if it returns false
-  console.log(this.options.stepHandler, this.options.currentStep);
   if(
     typeof this.options.stepHandler[this.options.currentStep] === "function"
     && this.options.stepHandler[this.options.currentStep].call(this.$container) === false
@@ -178,8 +177,6 @@ GRSteps.prototype.switchTo = function(stepNumber){
  * [addButtons description]
  */
 GRSteps.prototype.buttonify = function(){
-  console.log(this);
-
   this
     .append(
       '<p class="pull-right"> \
