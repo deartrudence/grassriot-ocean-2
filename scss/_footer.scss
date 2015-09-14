@@ -15,7 +15,7 @@
 }
 .logo {
   width: $footer-logowidth-base;
-  height: $footer-logoheight-base;
+  height: auto;
   padding-bottom: 10px;
 }
 
@@ -109,7 +109,7 @@
 
 @media screen and (min-width: $screen-xl) {
   .logo {
-    width: $footer-logowidth-base;
-    height: $footer-logoheight-base;
+    width: $footer-logowidth-xl;
+    height: auto;
   }
 }

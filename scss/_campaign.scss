@@ -53,7 +53,8 @@
   @include dagny;
   @include fontSize-base;
   @include calltoaction-button--red;
-  margin: $highlights-margin-md;
+  margin-left: 30px;
+  margin-right: 50px;
   color: $white;
   text-align: center;
   left: 0;
@@ -68,25 +69,12 @@
   background-size: cover;
 }
 
-.financial-col {
-  float: left;
-  width: 50%;
-}
 
-.financial-chart1 {
-  background: $financial-chart1 no-repeat;
-  background-size: contain;
-  padding: 50%;
+.financial-chart {
 
-  // background-size: 393px 334px;
-  // width: 393px;
-  // height: 334px;
-}
-
-.financial-chart2 {
-  background: $financial-chart2 no-repeat;
-  background-size: contain;
-  padding: 50%;
+  display: inline-block;
+  width: 384px;
+  height: auto;
 }
 
 .financialCaption {
@@ -206,17 +194,6 @@ screen and (max-device-width:$screen-xs-max) {
     float: none;
     width: 100%;
   }
-
-  .financial-chart1 {
-    padding: 40%;
-    background-position: center;
-  }
-
-  .financial-chart2 {
-    padding: 40%;
-    background-position: center;
-  }
-
   .supportersText-wrapper {
     display: none;
   }
@@ -370,19 +347,45 @@ screen and (max-device-width:$screen-xs-max) {
       @include fontSize-responsive-base;
     }
   }
-
   .financialText-wrapper {
     text-align: center;
   }
 
   .campaignText-main {
     @include fontSize-responsive-larger;
+    @include lineHeight-campaigntext-main;
   }
 
+  .js-highlights {
+    text-align: center;
+  }
+
+  .highlightsText-wrapper {
+    display: inline-block;
+  }
+  .highlights-cta {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 40px;
+    width: 90%;
+  }
   .highlights-title {
+    text-align: left;
     padding: $highlights-titlepadding-lg;
     float: left;
   }
+  .highlights-subtitle {
+    @include fontSize-responsive-base;
+  }
+
+  .highlights-colleft {
+    text-align: left;
+  }
+
+  .highlights-colright {
+    text-align: left;
+  }
+
 
   .highlights-title--number {
     @include fontSize-responsive-massive;
@@ -399,6 +402,10 @@ screen and (max-device-width:$screen-xs-max) {
 
   .highlights-cta {
     @include fontSize-responsive-base;
+  }
+
+  .financial-chart {
+    width: 768px;
   }
 
   .supportersText-wrapper {
