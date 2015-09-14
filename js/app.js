@@ -161,7 +161,7 @@ webpackJsonp([0],[
 	      activeClass: 'active',
 	      useCSSAnimation: false,
 	      indicatorTarget: '.steps-list ul',
-	      steps: $("#gr_donation,#gr_details,#gr_payment,#gr_sharing"),
+	      steps: $("#gr_donation,#gr_details,#gr_payment"),
 	      addButtons: true,
 	      target: "#window",
 	      stepHandler:[
@@ -214,10 +214,13 @@ webpackJsonp([0],[
 	            amount: {
 	                selector: '[name="Donation Amount"][type!="text"]:not(a)',
 	                urlParam: 'amt',
-	                defaultVal: '35'
+	                defaultVal: '35',
+	                name: 'Donation Amount'
 	            },
 	            other: {
-	                selector: '[name="Donation Amount"][type="text"]:not(a)'
+	                selector: '[name="Donation Amount Other"][type="text"]:not(a)',
+	                name: 'Donation Amount Other',
+	                targetName: 'Donation Amount'
 	            },
 	            processor: {
 	                selector: '[name="Payment Type"]:not(a)',
@@ -246,6 +249,11 @@ webpackJsonp([0],[
 	        }
 
 	    });
+	    
+	    //Remove the original donate input
+	    //TODO: integrate this in to the actual form code
+	    $('input[name="Donation Amount"][type="text"]').remove();
+
 
 	    grupsell = new GRUpsell({
 	        form: $form,
@@ -890,11 +898,109 @@ webpackJsonp([0],[
 	            },
 	            "Donation Amount": {
 	                required: true,
-	                // isValidDonation: true
+	                isValidDonation: true
 	            }
 	        };
 	        $form.validate({
-	            rules: validation_rules
+	            rules: validation_rules,
+	            unhighlight: function (element, errorClass, validClass) {
+	                var $el = $(element);
+	                if($el.attr("type")=="checkbox") return;
+	                $el.removeClass(validClass).removeClass(errorClass);
+
+	                if ($el.val() != ''&& ($el.attr('id') !== 'setcurrency')) {
+	                    $el.addClass(validClass);
+	                }
+	            },
+	            highlight: function (element, errorClass, validClass) {
+	                var $el = $(element);
+	                if($el.attr("type")=="checkbox") return;
+	                $el.removeClass(validClass).addClass(errorClass);
+	            },
+	            success: function (element, label) {
+	                var $el = $(element);
+	            },
+	            groups: {
+	                demoGroup: "First Name",
+	                ccExpiryDate: "Credit Card Expiration 1 "
+	            },
+	            invalidHandler: function(e, validator) {
+	                var errors = validator.errorList,
+	                    $errorList = $('<ul>');
+
+	                // Used for customization of input names in error message.
+	                var inputNamesMapper = {
+	                    'Postal Code': 'Postal Code',
+	                    'City': 'City / Town',
+	                    'Address 1': 'Address 1',
+	                    'Payment Type': 'Payment Option',
+	                    'Province': 'State / Province / Region',
+	                    'Credit Card Expiration1': 'Credit Card Expiration MM',
+	                    'Credit Card Expiration2': 'Credit Card Expiration YYYY',
+	                    'Credit Card Verification Value': 'CVV2 Code'
+	                };
+
+	                for (var i in errors) {
+	                    var inputName = $(errors[i].element)
+	                            .attr('id')
+	                            .replace(/_/g, ' '),
+	                        errorType = errors[i].method,
+	                        errorMessage = '';
+
+	                    inputName = inputNamesMapper[inputName] || inputName;
+
+	                    // Checking and replacing standart error message.
+	                    if (errorType === 'required'
+	                        && errors[i].message === 'This field is required.') {
+	                        errorMessage = inputName + ' is required.';
+	                    } else {
+	                        errorMessage = errors[i].message;
+	                    }
+
+	                    var $error = $('<li>')
+	                        .html(errorMessage);
+
+	                    $errorList
+	                        .append($error)
+	                }
+
+	                $validErrModal
+	                    .find('.error-list')
+	                    .html($errorList);
+
+	                $validErrModal
+	                    .modal('show'); 
+
+
+	                //console.log(validator);
+	                try {
+	                    throw new Error("failed validation");
+	                }
+	                catch (err) {
+	                    var fieldData = $(this).serializeArray();
+	                    for(var i = 0; i < fieldData.length; i++ ) {
+	                        if(fieldData[i].name == "Credit Card Number")
+	                            fieldData.splice(i, 1);
+	                    }
+	                    Raygun.send(err, {errors: validator.invalid, values: fieldData});
+	                }
+	            },
+	            showErrors: function (errorMap, errorList) {
+	                if (this.numberOfInvalids() > 0) {
+	                    $("#donor_errors").html("<div class='alert alert-danger'><i class='glyphicon glyphicon-exclamation-sign'></i> Please correct the <b>" + this.numberOfInvalids() + "</b> errors indicated below.</div>").show(300);
+
+	                    if (typeof errorMap['Donation Amount'] !== 'undefined') {
+	                        $("#donor_errors").append("<div class='alert alert-warning' role='alert'><i class='glyphicon glyphicon-info-sign'></i><a class='btn-prev' href='#'>" + errorMap['Donation Amount'] + "</a></div>");
+	                    }
+
+	                } else {
+	                    $("#donor_errors").hide(300);
+	                }
+	                this.defaultShowErrors();
+	            },
+	            errorPlacement: function () {
+	                return false; // <- kill default error labels
+	            }            
 	        });
 
 		}
@@ -1030,7 +1136,6 @@ webpackJsonp([0],[
 	 */
 	ENBeautifier.prototype.addClasses = function(elementCollection) {
 	    var $form = this.targetForm;
-	    console.log($form);
 	    $.each(elementCollection, function (selector, data) {
 	        $form.find(selector).closest(data.targetElement).addClass(data.classes);
 	    });
@@ -1450,9 +1555,10 @@ webpackJsonp([0],[
 	  //TODO: validate the current panel
 	  
 	  //run any interrupting processes
-	  //prevent the panel from proceeding if it returns false
+	  //prevent the panel from advancing if it returns false (going back should be OK)
 	  if(
 	    typeof this.options.stepHandler[this.options.currentStep] === "function"
+	    && this.options.currentStep < stepNumber
 	    && this.options.stepHandler[this.options.currentStep].call(this.$container) === false
 	    ){
 	    return;
@@ -1733,6 +1839,13 @@ webpackJsonp([0],[
 	        }
 	    }
 
+	    //check if recurrence should be setup
+	    if(isActive(options.components.recurrence)) { 
+	        if(options.recurrenceOptions.length)
+	            this.buildRecurrenceSelector(options.recurrenceOptions);
+	        $form.find(options.components.recurrence.selector).on('change', $.proxy(this.updateAskString, this));
+	    }
+
 	    //if processorFields setup field hide and show on processor change
 	    if(isActive(options.components.processor)) {
 	        if(options.processorFields)
@@ -1751,11 +1864,18 @@ webpackJsonp([0],[
 	    if(isActive(options.components.amount) || isActive(options.components.other)) {
 	        var $amountInput = $form.find(options.components.amount.selector+','+options.components.other.selector);
 	        $amountInput.first().wrap('<div class="'+options.askStringContainerClass+'"></div>');
-	        $form.on('change', options.components.amount.selector, function(e) { //clear other box when not selected
-	            e.stopPropagation();
-	            if($form.find(options.components.amount.selector).val() != 'other')
-	                $form.find(options.components.other.selector).val('');
-	        });
+	        $form
+	            .on('change', options.components.amount.selector, function(e) { //clear other box when not selected
+	                e.stopPropagation();
+	                if($form.find(options.components.amount.selector).val() != 'other')
+	                    $form.find(options.components.other.selector).val('');
+	            })
+	            .on('change','#Donation-Amount-Other', function(e){
+	                e.stopPropagation();
+	                console.log(this);
+
+	                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+	            });
 	    }
 
 	    //when other is active, ensure clicking on the field selects the 'other' radio
@@ -1764,13 +1884,6 @@ webpackJsonp([0],[
 	            e.preventDefault();
 	            $form.find('#'+$(this).parent().attr('for')).prop('checked',true);
 	        });
-	    }
-
-	    //check if recurrence should be setup
-	    if(isActive(options.components.recurrence)) { 
-	        if(options.recurrenceOptions.length)
-	            this.buildRecurrenceSelector(options.recurrenceOptions);
-	        $form.find(options.components.recurrence.selector).on('change', $.proxy(this.updateAskString, this));
 	    }
 
 	    //check if currency is available and add change event
@@ -1845,7 +1958,6 @@ webpackJsonp([0],[
 	            if(availableRegionLists.indexOf(countries[i]) != -1) {
 	                //include region object
 	                var regions = __webpack_require__(11)("./GRRegions-"+countries[i]);
-	                console.log(options.components.region.selector, $(options.components.region.selector));
 	                //build selector and assign to 
 	                regionLists[countries[i]] = grHelpers.createSelectComponent({
 	                    name: $region.attr('name'),
@@ -1921,8 +2033,11 @@ webpackJsonp([0],[
 	            var $container = $('.'+options.askStringContainerClass);
 	            if(!askStringIndex[index].buttons)
 	                askStringIndex[index].buttons = getAskButtons(askStringIndex[index].amounts);
+	            
 	            $container.children().remove();
 	            $container.append(askStringIndex[index].buttons);
+	            
+	            //Show the label for this group of fields
 	            this.showLabel.call($container);
 	        }
 	        else
@@ -2037,13 +2152,14 @@ webpackJsonp([0],[
 
 	function getAskButtons(amounts) {
 	    var selectorButtons = [ ];
-	    var $amount = $form.find(options.components.amount.selector);
+	    // var $amount = $form.find(options.components.amount.selector);
+
 	    if(typeof amounts != "undefined" && amounts) {
-	            for(var i=0; i<amounts.length; i++) {
+	        for(var i=0; i<amounts.length; i++) {
 	            var choice = amounts[i];
 	            selectorButtons.push(
 	                grHelpers.createRadioComponent({
-	                    name:  $amount.attr('name'),
+	                    name:  options.components.amount.name,
 	                    label: choice,
 	                    value: choice.replace(/[^0-9\.]/g,''),
 	                    wrap:  "<div class='amountbutton'></div>"
@@ -2054,7 +2170,7 @@ webpackJsonp([0],[
 	    if(exists(options.components.other)) {
 	        selectorButtons.push(
 	            grHelpers.createRadioComponent({
-	                name:  $form.find(options.components.other.selector).attr('name'),
+	                name:  options.components.other.targetName,
 	                label: $('<div>').append($form.find(options.components.other.selector).clone()).html(),
 	                value: 'other',
 	                wrap:  "<div class='amountbutton'></div>"
@@ -2063,12 +2179,12 @@ webpackJsonp([0],[
 	    }
 	    else if(isActive(options.components.other) && !exists(options.components.other)) {
 	        var textInput = grHelpers.createTextComponent({
-	            name: $amount.attr('name'), 
-	            id: ($amount.attr('name')+'_OtherAmount').replace(/[^a-zA-Z0-9\-\_]/g,'-')
+	            name: options.components.other.name, 
+	            id: (options.components.other.name).replace(/[^a-zA-Z0-9\-\_]/g,'-')
 	        });
 	        selectorButtons.push(
 	            grHelpers.createRadioComponent({
-	                name:  $amount.attr('name'),
+	                name:  options.components.other.targetName,
 	                label: $('<div>').append(textInput.clone()).html(),
 	                value: 'other',
 	                wrap:  "<div class='amountbutton'></div>"
