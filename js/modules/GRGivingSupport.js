@@ -205,6 +205,13 @@ GRGivingSupport.prototype.init = function() {
         }
     }
 
+    //check if recurrence should be setup
+    if(isActive(options.components.recurrence)) { 
+        if(options.recurrenceOptions.length)
+            this.buildRecurrenceSelector(options.recurrenceOptions);
+        $form.find(options.components.recurrence.selector).on('change', $.proxy(this.updateAskString, this));
+    }
+
     //if processorFields setup field hide and show on processor change
     if(isActive(options.components.processor)) {
         if(options.processorFields)
@@ -236,13 +243,6 @@ GRGivingSupport.prototype.init = function() {
             e.preventDefault();
             $form.find('#'+$(this).parent().attr('for')).prop('checked',true);
         });
-    }
-
-    //check if recurrence should be setup
-    if(isActive(options.components.recurrence)) { 
-        if(options.recurrenceOptions.length)
-            this.buildRecurrenceSelector(options.recurrenceOptions);
-        $form.find(options.components.recurrence.selector).on('change', $.proxy(this.updateAskString, this));
     }
 
     //check if currency is available and add change event
@@ -317,7 +317,6 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
             if(availableRegionLists.indexOf(countries[i]) != -1) {
                 //include region object
                 var regions = require('./GRRegions-'+countries[i]);
-                console.log(options.components.region.selector, $(options.components.region.selector));
                 //build selector and assign to 
                 regionLists[countries[i]] = grHelpers.createSelectComponent({
                     name: $region.attr('name'),
@@ -393,8 +392,11 @@ GRGivingSupport.prototype.updateAskString = function() {
             var $container = $('.'+options.askStringContainerClass);
             if(!askStringIndex[index].buttons)
                 askStringIndex[index].buttons = getAskButtons(askStringIndex[index].amounts);
+            
             $container.children().remove();
             $container.append(askStringIndex[index].buttons);
+            
+            //Show the label for this group of fields
             this.showLabel.call($container);
         }
         else
@@ -509,13 +511,14 @@ function getAskString(index) {
 
 function getAskButtons(amounts) {
     var selectorButtons = [ ];
-    var $amount = $form.find(options.components.amount.selector);
+    // var $amount = $form.find(options.components.amount.selector);
+
     if(typeof amounts != "undefined" && amounts) {
-            for(var i=0; i<amounts.length; i++) {
+        for(var i=0; i<amounts.length; i++) {
             var choice = amounts[i];
             selectorButtons.push(
                 grHelpers.createRadioComponent({
-                    name:  $amount.attr('name'),
+                    name:  options.components.amount.name,
                     label: choice,
                     value: choice.replace(/[^0-9\.]/g,''),
                     wrap:  "<div class='amountbutton'></div>"
@@ -526,7 +529,7 @@ function getAskButtons(amounts) {
     if(exists(options.components.other)) {
         selectorButtons.push(
             grHelpers.createRadioComponent({
-                name:  $form.find(options.components.other.selector).attr('name'),
+                name:  options.components.other.targetName,
                 label: $('<div>').append($form.find(options.components.other.selector).clone()).html(),
                 value: 'other',
                 wrap:  "<div class='amountbutton'></div>"
@@ -535,12 +538,12 @@ function getAskButtons(amounts) {
     }
     else if(isActive(options.components.other) && !exists(options.components.other)) {
         var textInput = grHelpers.createTextComponent({
-            name: $amount.attr('name'), 
-            id: ($amount.attr('name')+'_OtherAmount').replace(/[^a-zA-Z0-9\-\_]/g,'-')
+            name: options.components.other.name, 
+            id: (options.components.other.name).replace(/[^a-zA-Z0-9\-\_]/g,'-')
         });
         selectorButtons.push(
             grHelpers.createRadioComponent({
-                name:  $amount.attr('name'),
+                name:  options.components.other.targetName,
                 label: $('<div>').append(textInput.clone()).html(),
                 value: 'other',
                 wrap:  "<div class='amountbutton'></div>"

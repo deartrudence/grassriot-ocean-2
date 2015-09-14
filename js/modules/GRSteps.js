@@ -136,9 +136,10 @@ GRSteps.prototype.switchTo = function(stepNumber){
   //TODO: validate the current panel
   
   //run any interrupting processes
-  //prevent the panel from proceeding if it returns false
+  //prevent the panel from advancing if it returns false (going back should be OK)
   if(
     typeof this.options.stepHandler[this.options.currentStep] === "function"
+    && this.options.currentStep < stepNumber
     && this.options.stepHandler[this.options.currentStep].call(this.$container) === false
     ){
     return;
