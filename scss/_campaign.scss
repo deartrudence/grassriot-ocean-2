@@ -1,18 +1,19 @@
-
 //Every row on the left starting from the turquoise
-.campaign{
+.campaign {
   @include contentContainer;
 }
+
 .campaignText-wrapper {
   background-color: $turquoise;
   color: $green;
   padding: $campaignText-wrapper;
   position: relative;
 }
+
 .campaignText-main {
   @include dagny;
-
 }
+
 .highlightsText-wrapper {
   position: relative;
 }
@@ -23,63 +24,71 @@
   color: $green;
   display: block;
 }
+
 .highlights-title--text {
   @include dagny-light;
   @include fontSize-medium;
   @include lineHeight-title--text;
   text-transform: uppercase;
 }
+
 .highlights-subtitle {
   @include dagny-heavy;
   padding-bottom: 5px;
   text-transform: uppercase;
   color: $turquoise;
 }
+
 .highlights-year {
   @include dagny-heavy;
 }
+
 .highlights-events {
   @include dagny;
   @include lineHeight-higlights;
   @include fontSize-events;
 }
+
 .highlights-cta {
   @include dagny;
   @include fontSize-base;
   @include calltoaction-button--red;
+  margin: $highlights-margin-md;
   color: $white;
   text-align: center;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0 calc(#{$content-overlap-md} + 5%) 0.5% 5%; // interpolating to use calc function in sass
   text-transform: uppercase;
 }
+
 .financialText-wrapper {
   position: relative;
   background: $financial-bgimage;
   background-size: cover;
+
   .financial-col {
     float: left;
     width: 50%;
   }
+
   .financial-chart1 {
     background: $financial-chart1 no-repeat;
     background-size: contain;
     padding: 50%;
+
     // background-size: 393px 334px;
     // width: 393px;
     // height: 334px;
-
   }
+
   .financial-chart2 {
     background: $financial-chart2 no-repeat;
     background-size: contain;
     padding: 50%;
   }
-
-
 }
+
 .financialCaption {
   @include fontSize-smallest;
   @include dagny;
@@ -87,31 +96,36 @@
   left: 2%;
   bottom: 0;
   color: $white;
-  padding: 0 0 2% 0;
+  padding: 0 0 2%;
 }
+
 // slick styles below
 .slick-slider {
   padding: 0;
 }
+
 .slick-track {
   background-color: $dark-turquoise;
 }
+
 .slick-arrow {
   position: absolute;
   @include z-highest;
 }
+
 .slick-prev {
   top: calc(50% - 27px);
-  background: url('../img/slickLeft.png');
+  background: url("../img/slickLeft.png");
   background-size: 17px 27px;
   height: 27px;
   margin-left: 10px;
   width: 17px;
   border: 0;
 }
+
 .slick-next {
   right: 0;
-  background: url('../img/slickRight.png');
+  background: url("../img/slickRight.png");
   background-size: 18px 28px;
   top: calc(50% - 28px);
   height: 28px;
@@ -119,15 +133,19 @@
   margin-right: 30px;
   width: 17px;
 }
+
 .slick-slide {
 
 }
+
 .slick-dots {
   text-align: center;
+
   li {
     display: inline-block;
     margin-right: 5px;
   }
+
   button {
     cursor: pointer;
     font-size: 0;
@@ -139,6 +157,7 @@
     border: 0;
     background-color: $turquoise;
   }
+
   .slick-active button {
     background-color: $dark-red;
   }
@@ -146,39 +165,47 @@
 
 // for mobile
 @media screen and (max-width: $screen-xs-max),
-  screen and (max-device-width:$screen-xs-max){
-  body:after{
-    content:"mobile";
+screen and (max-device-width:$screen-xs-max) {
+  body:after {
+    content: "mobile";
   }
 
   .campaignText-main {
     @include fontSize-medium;
   }
+
   .highlightsText-wrapper {
     padding: $highlightsText-padding-xs;
   }
+
   .highlights-title {
     text-align: center;
     padding-bottom: 0;
     @include fontSize-larger;
   }
+
   .highlights-title--number {
     @include fontSize-massive-xs;
   }
+
   .highlights-events {
     @include fontSize-small;
   }
+
   .financialText-wrapper {
     padding: $financialText-padding-xs;
     text-align: center;
+
     .financial-col {
       float: none;
       width: 100%;
     }
+
     .financial-chart1 {
       padding: 40%;
       background-position: center;
     }
+
     .financial-chart2 {
       padding: 40%;
       background-position: center;
@@ -188,80 +215,85 @@
   .supportersText-wrapper {
     display: none;
   }
-
 }
 
 // for tablet
-@media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max){
+@media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max) {
   .campaignText-main {
     @include fontSize-medium;
   }
+
   .highlightsText-wrapper {
     padding: $highlightsText-padding-sm;
   }
+
   .highlights-title {
     text-align: center;
     float: none;
   }
+
   .highlights-title--number {
     @include fontSize-massive;
   }
+
   .financialText-wrapper {
     padding: $financialText-padding-sm;
     text-align: center;
+
     .financial-col {
       float: none;
       width: 100%;
     }
+
     .financial-chart1 {
       padding: 30%;
       background-position: center;
     }
+
     .financial-chart2 {
       padding: 30%;
       background-position: center;
     }
   }
 
-
   .supportersText-wrapper {
     display: none;
-  }
-  .highlights-cta {
-
   }
 }
 
 // for medium devices
 @media screen and (min-width: $screen-md) {
-
-
   .campaignText-main {
     @include fontSize-large;
   }
+
   .highlightsText-wrapper {
     padding: $highlightsText-padding-md;
   }
+
   .highlights-colleft {
     float: left;
     padding-right: 2em;
   }
+
   .highlights-colright {
     float: left;
     width: 60%;
   }
+
   .highlights-title--number {
     @include fontSize-massive;
   }
+
   .highlights-cta {
     @include fontSize-base;
   }
+
   .financialText-wrapper {
     padding: $financialText-padding-md;
   }
 
   .supportersText-wrapper {
-
     h4 {
       @include dagny-light;
       @include fontSize-base;
@@ -269,63 +301,66 @@
       text-transform: uppercase;
       background-color: $turquoise;
       color: $white;
-
     }
 
-  .profile-photo {
-  float: left;
-  width: 40%;
-    img {
-      width: 361px;
-      height: 375px;
-    }
-  }
-
-  .supporters-carousel {
-    @include dagny;
-    color: $white;
-    padding: $supporterProfile-padding-md;
-
-    .supporter-picture-glen {
-      background: url("../img/glen.png");
-      background-size: contain;
-      padding: 20%;
+    .profile-photo {
       float: left;
+      width: 40%;
 
+      img {
+        width: 361px;
+        height: 375px;
+      }
+    }
 
-    }
-    .supporter-bio {
-      float: left;
-      width: 45%;
-      padding: 5%;
-    }
-    .supporter-name {
-      @include dagny-heavy;
-      @include fontSize-larger;
-    }
-    .supporter-caption {
-      @include dagny-light;
-      @include fontSize-medium;
-      margin-bottom: 20px;
-    }
-    .supporter-description {
-      @include fontSize-base;
+    .supporters-carousel {
+      @include dagny;
+      color: $white;
+      padding: $supporterProfile-padding-md;
 
-    }
-  }
+      .supporter-picture-glen {
+        background: url("../img/glen.png");
+        background-size: contain;
+        padding: 20%;
+        float: left;
+      }
 
+      .supporter-bio {
+        float: left;
+        width: 45%;
+        padding: 5%;
+      }
+
+      .supporter-name {
+        @include dagny-heavy;
+        @include fontSize-larger;
+      }
+
+      .supporter-caption {
+        @include dagny-light;
+        @include fontSize-medium;
+        margin-bottom: 20px;
+      }
+
+      .supporter-description {
+        @include fontSize-base;
+      }
+    }
   }
 }
+
 // for larger desktop monitors
-@media screen and (min-width: $screen-lg){
+@media screen and (min-width: $screen-lg) {
   .supportersText-wrapper {
     .supporters-carousel {
       .supporter-name {
         @include fontSize-responsive-larger;
       }
+
       .supporter-caption {
         @include fontSize-responsive-medium;
       }
+
       .supporter-description {
         @include fontSize-responsive-base;
       }
@@ -335,26 +370,33 @@
   .financialText-wrapper {
     text-align: center;
   }
+
   .campaignText-main {
     @include fontSize-responsive-larger;
   }
+
   .highlights-title {
     padding: $highlights-titlepadding-lg;
     float: left;
   }
+
   .highlights-title--number {
     @include fontSize-responsive-massive;
   }
+
   .highlights-title--text {
     @include fontSize-responsive-medium;
     line-height: 6em;
   }
+
   .highlights-events {
     @include fontSize-responsive-base;
   }
+
   .highlights-cta {
     @include fontSize-responsive-base;
   }
+
   .supportersText-wrapper {
     h4 {
       @include fontSize-responsive-medium;
@@ -364,8 +406,12 @@
 
 // for extra large desktop monitors
 @media screen and (min-width: $screen-xl) {
+  .highlights-cta {
+    margin: $highlights-margin-xl;
+  }
   .slick-dots {
     text-align: center;
+
     button {
       cursor: pointer;
       font-size: 0;

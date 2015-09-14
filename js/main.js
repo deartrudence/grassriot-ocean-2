@@ -199,7 +199,7 @@ function handleDrag(e){
 				$(".form")
 					.addClass("is-active");
 			}
-		})
+		});
 
 	e.preventDefault();
 }

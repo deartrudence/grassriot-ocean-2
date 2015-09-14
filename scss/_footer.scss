@@ -1,7 +1,7 @@
-.page-footer{
-  background-color: $vdark-grey;
-  padding: $footer-padding-md;
+.page-footer {
   @include footer-font;
+  padding: $footer-padding-md;
+  background-color: $vdark-grey;
   color: $beige;
 }
 
@@ -9,92 +9,106 @@
   float: left;
   width: 50%;
   text-transform: uppercase;
-
-  .accreditation {
-    margin-top: 20px;
-  }
+}
+.accreditation {
+  margin-top: 20px;
 }
 .logo {
-  width: 250px;
-  height: 62.5px;
+  width: $footer-logowidth-base;
+  height: $footer-logoheight-base;
   padding-bottom: 10px;
 }
+
 .footer-links {
   float: left;
   width: 50%;
   margin-top: 27px;
+
   a {
     text-decoration: none;
+
     &:visited {
       color: $brand-green;
     }
   }
 }
+
 .footer-links--main {
   @include fontSize-small;
   display: inline-block;
   color: $brand-green;
   text-transform: uppercase;
+
   li {
     display: inline-block;
     margin-right: 11px;
   }
 }
+
 .footer-links--secondary {
   a {
     text-transform: uppercase;
     color: $beige;
+
     &:visited {
       color: $beige;
     }
   }
+
   li {
     display: inline-block;
   }
 }
+
 @media screen and (max-width: $screen-xs-max) {
   .page-footer {
     padding: $footer-padding-xs;
   }
+
   .footer-legal {
     width: 100%;
   }
+
   .footer-links {
     float: left;
     width: 50%;
     margin-top: 27px;
+
     li {
       display: block;
       margin-bottom: 5px;
     }
+
     a:visited {
-        color: $beige;
+      color: $beige;
     }
   }
 }
-@media screen and (max-width: $screen-sm){
+
+@media screen and (max-width: $screen-sm) {
   .footer-legal {
-    float:none;
+    float: none;
     margin-bottom: 10%;
   }
+
   .footer-links {
-    float:none;
+    float: none;
   }
 }
+
 @media screen and (min-width: $screen-lg) {
   .page-footer {
     @include fontSize-responsive-smaller;
   }
-  .footer-legal {
 
-  }
   .footer-links--main {
     @include fontSize-responsive-small;
   }
 }
+
 @media screen and (min-width: $screen-xl) {
   .logo {
-    width: 500px;
-    height: 125px;
+    width: $footer-logowidth-base;
+    height: $footer-logoheight-base;
   }
 }

@@ -1,60 +1,53 @@
-$image-width: 100%; //TODO: this should correspond with the actual width to the form
+// TODO: I think this can all be cleared out
+// $image-width: 100%; //TODO: this should correspond with the actual width to the form
+// .hero-image{
+//   width: $image-width;
+//   position: absolute;
+//   height: 100%;
+//   top: 0px;
+//
+//
+//   transform: translate3d(-50%,-50%,0);
+//   -webkit-transform: translate3d(-50%,-50%,0);
+//   -ms-transform: translate3d(-50%,-50%,0);
+// }
+// .hero-side-image{
+//   position: absolute;
+//   width: $image-width;
+//   top: 0;
+//   left: 100%;
+//   margin-left: -1*$page-right-padding-md;
+// }
+// .hero-content{
+//   position: absolute;
+//   bottom: 65px;
+//   left: $page-left-padding-md;
+// }
 
-
-
-.hero-image{
-  width: $image-width;
-  position: absolute;
-  height: 100%;
-  top: 0px;
-
-
-  transform: translate3d(-50%,-50%,0);
-  -webkit-transform: translate3d(-50%,-50%,0);
-  -ms-transform: translate3d(-50%,-50%,0);
-}
-
-.hero-side-image{
-  position: absolute;
-  width: $image-width;
-  top: 0;
-  left: 100%;
-  margin-left: -1*$page-right-padding-md;
-}
-
-.hero-content{
-  position: absolute;
-  bottom: 65px;
-  left: $page-left-padding-md;
-}
-
-.hero{
+.hero {
   position: relative; //for the overflow control
   overflow: hidden;
   height: 100%;
   background: $hero-bgimage;
   background-size: cover;
-
 }
 
-.page-title{
+.page-title {
   color: $white;
   position: relative;
   @include z-high;
 }
 
-.hero-text{
+.hero-text {
   color: $white;
   position: relative;
   @include z-high;
 }
 
-.hero-content{
+.hero-content {
   max-width: $page-text-max-width;
 }
-.hero {
 
-}
 .heroTitle {
   @include dagny-light;
   @include fontSize-large;
@@ -62,14 +55,18 @@ $image-width: 100%; //TODO: this should correspond with the actual width to the 
   position: relative;
   color: $white;
   padding: $heroTitle-padding;
-  strong, em {
+
+  strong,
+  em {
     @include dagny-heavy;
     text-transform: uppercase;
   }
+
   em {
     color: $mlight-green;
   }
 }
+
 .heroCaption {
   @include fontSize-smallest;
   @include dagny;
@@ -78,6 +75,7 @@ $image-width: 100%; //TODO: this should correspond with the actual width to the 
   color: $white;
   padding: $hero-captionpadding-md;
 }
+
 // better centering for browsers that  CSS transforms
 html.csstransforms {
   @include z-high;
@@ -92,27 +90,29 @@ html.csstransforms {
 }
 
 @media screen and (max-width: $screen-xs-max),
-  screen and (max-device-width:$screen-xs-max){
-  body:after{
-    content:"mobile";
-  }
-  .heroTitle {
-    @include fontSize-medium;
-  }
-}
-@media screen and (min-width: $screen-sm){
-  .heroTitle {
-    @include fontSize-medium;
+screen and (max-device-width:$screen-xs-max) {
+  body:after {
+    content: "mobile";
   }
 
-}
-@media screen and (min-width: $screen-md){
   .heroTitle {
     @include fontSize-medium;
   }
-
 }
-@media screen and (min-width: $screen-lg){
+
+@media screen and (min-width: $screen-sm) {
+  .heroTitle {
+    @include fontSize-medium;
+  }
+}
+
+@media screen and (min-width: $screen-md) {
+  .heroTitle {
+    @include fontSize-medium;
+  }
+}
+
+@media screen and (min-width: $screen-lg) {
   .heroTitle {
     @include fontSize-responsive-large;
   }

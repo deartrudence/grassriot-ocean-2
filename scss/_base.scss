@@ -27,6 +27,12 @@ $modal-overlay-opacity: 0.65;
 //sections
 //-----------
 
+//text
+$content-overlap-xs: 20px;
+$content-overlap-sm: 20px;
+$content-overlap-md: 20px;
+$content-overlap-xl: 30px;
+
 //Header
 $header-bgcolour: $vdark-grey;
 $header-height-xxs: 76px;
@@ -61,6 +67,8 @@ $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
 
 //Highlights
+$highlights-margin-md: 0px 30px 5px 10px;
+$highlights-margin-xl: 0px 40px 10px 10px;
 $highlights-margintop-xs: 20px;
 $highlights-marginbottom-sm: 50px;
 $highlightsText-padding-sm: 14% 4.5%;
@@ -80,8 +88,6 @@ $financial-chart1: url("../img/allocation1-2x.png");
 $financial-chart2: url("../img/allocation2-2x.png");
 
 
-
-
 //Supporters
 $supportersText-height-md: 400px;
 $supportersHeader-padding-md: 15px 20px;
@@ -98,16 +104,16 @@ $form-width-md: 435px;
 $form-width-xl: 650px;
 $form-background: $green;
 
-//text
-$content-overlap-xs: 20px;
-$content-overlap-sm: 20px;
-$content-overlap-md: 20px;
-$content-overlap-xl: 30px;
+
 
 //footer
 $footer-padding-xs: 40px;
 $footer-padding-md: 80px;
 $footer-height-md: 200px;
+$footer-logoheight-base: 62.5px;
+$footer-logowidth-base: 250px;
+$footer-logoheight-xl: ($footer-logoheight-base * 2);
+$footer-logowidth-xl: ($footer-logowidth-base * 2);
 
 //-----------
 //screen sizes
