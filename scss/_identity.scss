@@ -1,21 +1,35 @@
 .page-header{
+  position: relative;
   width: 100%;
   background-color: $vdark-grey;
+  .row {
+    position: absolute;
+    top: 50%;
 
+  }
 }
+
 .page-title {
+    margin-left: 70px;
+    margin-top: -31px;
     background: url('../img/ecojustice.png');
     width: 250px;
     height: 62px;
     background-size: contain;
     background-repeat: no-repeat;
-    margin: 1% 3%;
   }
-@media screen and (min-width: $screen-xs){
+
+@media screen and (max-width: $screen-xs-max){
   $border-height: 5px;
   .page-header {
     border-top: $border-height solid $dark-green;
     height: $header-height-xs - $border-height;
+  }
+  .page-title {
+    margin-top: -21px;
+    margin-left: 50px;
+    width: 166px;
+    height: 42px;
   }
 }
 @media screen and (min-width: $screen-sm){
@@ -39,27 +53,13 @@
     height: $header-height-xl - $border-height;
   }
   .page-title {
-      background: url('../img/ecojustice.png');
+      margin-top: -62px;
+      background: url('../img/ecojustice.svg');
       width: 500px;
       height: 124px;
       background-size: contain;
       background-repeat: no-repeat;
-      margin: 1% 3%;
+
     }
 
-}
-
-// Small Devices
-@media screen and (max-width: $screen-xs-max),
-  screen and (max-device-width:$screen-xs-max){
-    $border-height: 5px;
-    .page-header {
-      border-top: $border-height solid $dark-green;
-      height: $header-height-xs - $border-height;
-    }
-  .page-title {
-    width: 166px;
-    height: 42px;
-    margin: 2% 3%;
-  }
 }

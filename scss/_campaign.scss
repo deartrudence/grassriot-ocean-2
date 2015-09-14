@@ -358,7 +358,7 @@ $calltoaction-buttonpadding-md: 20px 20px;
     line-height: 6em;
   }
   .highlights-events {
-    @include fontSize-responsive-events;
+    @include fontSize-responsive-base;
   }
   .highlights-cta {
     @include fontSize-responsive-base;

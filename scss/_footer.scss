@@ -60,3 +60,14 @@
     float:none;
   }
 }
+@media screen and (min-width: $screen-lg) {
+  .footer-legal {
+    .logo {
+      width: 500px;
+      height: 125px;
+    }
+    .footer-links--main {
+      @include fontSize-responsive-small;
+    }
+  }
+}

@@ -65,8 +65,8 @@
   font-size: 210px;
 }
 
-@mixin fontSize-responsive-events {
-	font-size: 1.3vw;
+@mixin fontSize-responsive-small {
+	font-size: 0.7vw;
 }
 @mixin fontSize-responsive-base {
 	font-size: 1.3vw;
