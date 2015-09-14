@@ -124,43 +124,44 @@ webpackJsonp([0],[
 			enbeautifier.moveToTargets(ENBeautifierFillers);
 
 	    enbeautifier.addClasses({
-	        '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFullWidthContent"},
-	        '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFullWidthContent"},
-	        '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFullWidthContent"},
-	        '[name="Postal Code"]': { classes: "inline-block-field half last", targetElement: "div.eaFullWidthContent"},
-	        '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFullWidthContent"},
-	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFullWidthContent"},
-	        '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFullWidthContent"},
-	        '[name="Credit Card Verification Value"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFullWidthContent"},
-	        '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: "div.easplit"},
-	        '[name="Credit Card Expiration2"]': { classes: "inline-block-field half", targetElement: "div.easplit"},
+	        '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	        '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	        '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	        '[name="Postal Code"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	        '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	        '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFormField"},
+	        '[name="Credit Card Verification Value"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
+	        '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
+	        '[name="Credit Card Expiration2"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
 	        '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
 	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
 	    });
-
-			console.log("classes added");
 
 			//Set up panel steps
 	    formSteps = new GRSteps({
 	      activeClass: 'active',
 	      useCSSAnimation: false,
 	      indicatorTarget: '.steps-list ul',
-	      steps: $("#gr_donation,#gr_details,#gr_payment"),
+	      steps: $("#gr_donation,#gr_details,#gr_payment,#gr_sharing"),
+	      addButtons: true,
 	      target: "#window",
 	      stepHandler:[
 	        //step 1 handler
 	        function(){
-	          // return $firstStepForm.valid();
+	          return $("#gr_donation").find("input,select,textarea").valid();
 	        },
 
 	        //step 2 handler
 	        function(){
-	          return $("#deteailsStep").find("input,select,textarea").valid();
+	          return $("#gr_details").find("input,select,textarea").valid();
 	        },
 
 	        //step 3 handler
 	        function(){
-	          return $("#paymentStep").find("input,select,textarea").valid();
+	          return $("#gr_payment").find("input,select,textarea").valid();
+
+	          //send the donation
 	        }
 	      ]
 	    });
@@ -1210,7 +1211,8 @@ webpackJsonp([0],[
 	    'stepHandler': [],
 	    'currentStep': false,
 	    'startStep': 0,
-	    'useCSSAnimation': true
+	    'useCSSAnimation': true,
+	    'addButtons': false
 	};
 
 	var protect = {
@@ -1243,8 +1245,15 @@ webpackJsonp([0],[
 	  this.$container = $(this.options.target);
 	  this.addSteps(this.options.steps);
 
-	  console.log(this.options);
+	  //add a frame to the parent
+	  this.$container.parent().addClass("window--frame");
 
+	  //add step buttons if so configured
+	  if(this.options.addButtons){
+	    this.buttonify.call(this.options.steps);
+	  }
+
+	  //button handlers
 	  this.$container
 	    .on("click", ".btn-next", function(e){
 	      e.stopPropagation();
@@ -1357,6 +1366,25 @@ webpackJsonp([0],[
 
 	  //let the world know what's happened
 	  this.$container.trigger("stepChanged.grsteps",{currentStep:this.options.currentStep});
+	}
+
+	/**
+	 * [addButtons description]
+	 */
+	GRSteps.prototype.buttonify = function(){
+	  console.log(this);
+
+	  this
+	    .append(
+	      '<p class="pull-right"> \
+	        <button type="button" class="btn btn-danger btn-lg btn-next">NEXT <span class="glyphicon glyphicon-chevron-right"></span></button> \
+	      </p>'
+	    )
+	    .append(
+	      '<p class="pull-left back-button"> \
+	        <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
+	      </p>'
+	    );
 	}
 
 	/**

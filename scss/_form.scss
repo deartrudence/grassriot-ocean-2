@@ -24,7 +24,7 @@ form {
 
 }
 .form-header{
-  padding: 30px;
+  padding: $form-padding;
 
   h3 {
     @include dagny-heavy;
@@ -36,4 +36,12 @@ form {
     text-transform: none;
     color: $vdark-green;
   }
+}
+
+#grdonation .page{
+  padding: 0 $form-padding;
+}
+
+.eaErrorMessage{
+  display: none;
 }

@@ -3,8 +3,17 @@
 @import "compass/css3";
 @import "bootstrap/variables";
 @import "slick";
-// @import "slick-theme";
-// @import 'modals';
+
+//bootstrap donation imports
+@import "bootstrap/mixins";
+@import "bootstrap/scaffolding";
+@import 'bootstrap/modals';
+@import 'bootstrap/grid';
+@import 'bootstrap/forms';
+@import 'bootstrap/utilities';
+@import 'bootstrap/responsive-utilities';
+@import 'bootstrap/buttons';
+
 @import "base";
 @import "donation";
 @import "global";
