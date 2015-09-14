@@ -36,6 +36,18 @@ $header-height-md: 105px;
 $header-height-xl: 205px;
 $header-padding: 15px 0 15px 5%;
 
+// Page Title
+$pagetitle-height-xs: 42px;
+$pagetitle-height-base: 62px;
+$pagetitle-height-xl: 124px;
+
+$pagetitle-marginleft-xs: 50px;
+$pagetitle-marginleft-base: 70px;
+
+
+$pagetitle-img-base: url('../img/ecojustice.png');
+$pagetitle-img-xl: url('../img/ecojustice.svg');
+
 //Hero
 $hero-background: $white;
 $hero-bgimage: url(../img/hero-bg.jpg);
@@ -93,6 +105,7 @@ $content-overlap-md: 20px;
 $content-overlap-xl: 30px;
 
 //footer
+$footer-padding-xs: 40px;
 $footer-padding-md: 80px;
 $footer-height-md: 200px;
 

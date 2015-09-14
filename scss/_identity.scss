@@ -1,20 +1,19 @@
-.page-header{
+.page-header {
   position: relative;
   width: 100%;
   background-color: $vdark-grey;
   .row {
     position: absolute;
     top: 50%;
-
   }
 }
 
 .page-title {
-    margin-left: 70px;
-    margin-top: -31px;
-    background: url('../img/ecojustice.png');
+    margin-left: $pagetitle-marginleft-base;
+    margin-top: -($pagetitle-height-base / 2);
+    background: $pagetitle-img-base;
     width: 250px;
-    height: 62px;
+    height: $pagetitle-height-base;
     background-size: contain;
     background-repeat: no-repeat;
   }
@@ -26,10 +25,10 @@
     height: $header-height-xs - $border-height;
   }
   .page-title {
-    margin-top: -21px;
-    margin-left: 50px;
+    margin-top: -($pagetitle-height-xs / 2);
+    margin-left: $pagetitle-marginleft-xs;
     width: 166px;
-    height: 42px;
+    height: $pagetitle-height-xs;
   }
 }
 @media screen and (min-width: $screen-sm){
@@ -53,13 +52,12 @@
     height: $header-height-xl - $border-height;
   }
   .page-title {
-      margin-top: -62px;
-      background: url('../img/ecojustice.svg');
+      margin-top: -($pagetitle-height-xl / 2);
+      background: $pagetitle-img-xl;
       width: 500px;
-      height: 124px;
+      height: $pagetitle-height-xl;
       background-size: contain;
       background-repeat: no-repeat;
-
-    }
+  }
 
 }

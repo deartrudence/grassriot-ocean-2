@@ -16,7 +16,7 @@
 @mixin footer-font {
 	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
 	font-size: 13px;
-	line-height: 20px;
+	line-height: 2em;
 	font-weight: bolder;
 }
 
@@ -65,8 +65,11 @@
   font-size: 210px;
 }
 
+@mixin fontSize-responsive-smaller {
+	font-size: 0.8vw;
+}
 @mixin fontSize-responsive-small {
-	font-size: 0.7vw;
+	font-size: 0.9vw;
 }
 @mixin fontSize-responsive-base {
 	font-size: 1.3vw;

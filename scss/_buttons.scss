@@ -1,0 +1,8 @@
+// Mixin for call to action button
+$calltoaction-buttonpadding-md: 20px 20px;
+
+@mixin calltoaction-button--red {
+  background-color: $dark-red;
+  padding: $calltoaction-buttonpadding-md;
+  border-radius: 10px 10px 0 0;
+}

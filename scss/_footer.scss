@@ -4,18 +4,20 @@
   @include footer-font;
   color: $beige;
 }
+
 .footer-legal {
   float: left;
   width: 50%;
   text-transform: uppercase;
-  .logo {
-    width: 250px;
-    height: 62.5px;
-    padding-bottom: 10px;
-  }
+
   .accreditation {
     margin-top: 20px;
   }
+}
+.logo {
+  width: 250px;
+  height: 62.5px;
+  padding-bottom: 10px;
 }
 .footer-links {
   float: left;
@@ -50,7 +52,26 @@
     display: inline-block;
   }
 }
-
+@media screen and (max-width: $screen-xs-max) {
+  .page-footer {
+    padding: $footer-padding-xs;
+  }
+  .footer-legal {
+    width: 100%;
+  }
+  .footer-links {
+    float: left;
+    width: 50%;
+    margin-top: 27px;
+    li {
+      display: block;
+      margin-bottom: 5px;
+    }
+    a:visited {
+        color: $beige;
+    }
+  }
+}
 @media screen and (max-width: $screen-sm){
   .footer-legal {
     float:none;
@@ -61,13 +82,19 @@
   }
 }
 @media screen and (min-width: $screen-lg) {
+  .page-footer {
+    @include fontSize-responsive-smaller;
+  }
   .footer-legal {
-    .logo {
-      width: 500px;
-      height: 125px;
-    }
-    .footer-links--main {
-      @include fontSize-responsive-small;
-    }
+
+  }
+  .footer-links--main {
+    @include fontSize-responsive-small;
+  }
+}
+@media screen and (min-width: $screen-xl) {
+  .logo {
+    width: 500px;
+    height: 125px;
   }
 }
