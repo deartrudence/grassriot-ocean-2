@@ -906,25 +906,19 @@ webpackJsonp([0],[
 	            unhighlight: function (element, errorClass, validClass) {
 	                var $el = $(element);
 	                if($el.attr("type")=="checkbox") return;
-	                $el.parent().find('.glyphicon').remove();
 	                $el.removeClass(validClass).removeClass(errorClass);
 
 	                if ($el.val() != ''&& ($el.attr('id') !== 'setcurrency')) {
-	                    $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
 	                    $el.addClass(validClass);
 	                }
 	            },
 	            highlight: function (element, errorClass, validClass) {
 	                var $el = $(element);
 	                if($el.attr("type")=="checkbox") return;
-	                $el.parent().find('.glyphicon').remove();
-	                $el.before($('<span class="glyphicon glyphicon-remove"></span>'));
 	                $el.removeClass(validClass).addClass(errorClass);
 	            },
 	            success: function (element, label) {
 	                var $el = $(element);
-	                $el.parent().find('.glyphicon').remove();
-	                $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
 	            },
 	            groups: {
 	                demoGroup: "First Name",
@@ -1870,11 +1864,18 @@ webpackJsonp([0],[
 	    if(isActive(options.components.amount) || isActive(options.components.other)) {
 	        var $amountInput = $form.find(options.components.amount.selector+','+options.components.other.selector);
 	        $amountInput.first().wrap('<div class="'+options.askStringContainerClass+'"></div>');
-	        $form.on('change', options.components.amount.selector, function(e) { //clear other box when not selected
-	            e.stopPropagation();
-	            if($form.find(options.components.amount.selector).val() != 'other')
-	                $form.find(options.components.other.selector).val('');
-	        });
+	        $form
+	            .on('change', options.components.amount.selector, function(e) { //clear other box when not selected
+	                e.stopPropagation();
+	                if($form.find(options.components.amount.selector).val() != 'other')
+	                    $form.find(options.components.other.selector).val('');
+	            })
+	            .on('change','#Donation-Amount-Other', function(e){
+	                e.stopPropagation();
+	                console.log(this);
+
+	                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+	            });
 	    }
 
 	    //when other is active, ensure clicking on the field selects the 'other' radio

@@ -230,11 +230,18 @@ GRGivingSupport.prototype.init = function() {
     if(isActive(options.components.amount) || isActive(options.components.other)) {
         var $amountInput = $form.find(options.components.amount.selector+','+options.components.other.selector);
         $amountInput.first().wrap('<div class="'+options.askStringContainerClass+'"></div>');
-        $form.on('change', options.components.amount.selector, function(e) { //clear other box when not selected
-            e.stopPropagation();
-            if($form.find(options.components.amount.selector).val() != 'other')
-                $form.find(options.components.other.selector).val('');
-        });
+        $form
+            .on('change', options.components.amount.selector, function(e) { //clear other box when not selected
+                e.stopPropagation();
+                if($form.find(options.components.amount.selector).val() != 'other')
+                    $form.find(options.components.other.selector).val('');
+            })
+            .on('change','[name="'+options.components.other.name+'"]', function(e){
+                e.stopPropagation();
+                console.log(this);
+
+                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+            });
     }
 
     //when other is active, ensure clicking on the field selects the 'other' radio
