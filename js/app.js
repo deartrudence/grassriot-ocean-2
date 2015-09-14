@@ -122,8 +122,8 @@ webpackJsonp([0],[
 			if (header.width() > 620) {
 				$('.form').affix({
 		      offset: {
-		        top: $('header').height(),
-						bottom: $('footer').height()
+		        top: header.outerHeight(),
+						bottom: footer.outerHeight()
 		      }
 				});
 			}
@@ -203,7 +203,7 @@ webpackJsonp([0],[
 					$(".form")
 						.addClass("is-active");
 				}
-			})
+			});
 
 		e.preventDefault();
 	}

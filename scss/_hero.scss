@@ -1,29 +1,3 @@
-// TODO: I think this can all be cleared out
-// $image-width: 100%; //TODO: this should correspond with the actual width to the form
-// .hero-image{
-//   width: $image-width;
-//   position: absolute;
-//   height: 100%;
-//   top: 0px;
-//
-//
-//   transform: translate3d(-50%,-50%,0);
-//   -webkit-transform: translate3d(-50%,-50%,0);
-//   -ms-transform: translate3d(-50%,-50%,0);
-// }
-// .hero-side-image{
-//   position: absolute;
-//   width: $image-width;
-//   top: 0;
-//   left: 100%;
-//   margin-left: -1*$page-right-padding-md;
-// }
-// .hero-content{
-//   position: absolute;
-//   bottom: 65px;
-//   left: $page-left-padding-md;
-// }
-
 .hero {
   position: relative; //for the overflow control
   overflow: hidden;

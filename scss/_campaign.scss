@@ -66,27 +66,27 @@
   position: relative;
   background: $financial-bgimage;
   background-size: cover;
+}
 
-  .financial-col {
-    float: left;
-    width: 50%;
-  }
+.financial-col {
+  float: left;
+  width: 50%;
+}
 
-  .financial-chart1 {
-    background: $financial-chart1 no-repeat;
-    background-size: contain;
-    padding: 50%;
+.financial-chart1 {
+  background: $financial-chart1 no-repeat;
+  background-size: contain;
+  padding: 50%;
 
-    // background-size: 393px 334px;
-    // width: 393px;
-    // height: 334px;
-  }
+  // background-size: 393px 334px;
+  // width: 393px;
+  // height: 334px;
+}
 
-  .financial-chart2 {
-    background: $financial-chart2 no-repeat;
-    background-size: contain;
-    padding: 50%;
-  }
+.financial-chart2 {
+  background: $financial-chart2 no-repeat;
+  background-size: contain;
+  padding: 50%;
 }
 
 .financialCaption {
@@ -109,6 +109,8 @@
 }
 
 .slick-arrow {
+  cursor: pointer;
+  outline: none;
   position: absolute;
   @include z-highest;
 }
@@ -192,29 +194,33 @@ screen and (max-device-width:$screen-xs-max) {
     @include fontSize-small;
   }
 
+  .highlights-cta {
+    margin: $highlights-margin-xs;
+  }
+
   .financialText-wrapper {
     padding: $financialText-padding-xs;
     text-align: center;
+  }
+  .financial-col {
+    float: none;
+    width: 100%;
+  }
 
-    .financial-col {
-      float: none;
-      width: 100%;
-    }
+  .financial-chart1 {
+    padding: 40%;
+    background-position: center;
+  }
 
-    .financial-chart1 {
-      padding: 40%;
-      background-position: center;
-    }
-
-    .financial-chart2 {
-      padding: 40%;
-      background-position: center;
-    }
+  .financial-chart2 {
+    padding: 40%;
+    background-position: center;
   }
 
   .supportersText-wrapper {
     display: none;
   }
+
 }
 
 // for tablet
@@ -239,26 +245,27 @@ screen and (max-device-width:$screen-xs-max) {
   .financialText-wrapper {
     padding: $financialText-padding-sm;
     text-align: center;
+  }
 
-    .financial-col {
-      float: none;
-      width: 100%;
-    }
+  .financial-col {
+    float: none;
+    width: 100%;
+  }
 
-    .financial-chart1 {
-      padding: 30%;
-      background-position: center;
-    }
+  .financial-chart1 {
+    padding: 30%;
+    background-position: center;
+  }
 
-    .financial-chart2 {
-      padding: 30%;
-      background-position: center;
-    }
+  .financial-chart2 {
+    padding: 30%;
+    background-position: center;
   }
 
   .supportersText-wrapper {
     display: none;
   }
+
 }
 
 // for medium devices
@@ -302,68 +309,65 @@ screen and (max-device-width:$screen-xs-max) {
       background-color: $turquoise;
       color: $white;
     }
-
-    .profile-photo {
-      float: left;
-      width: 40%;
-
-      img {
-        width: 361px;
-        height: 375px;
-      }
-    }
-
-    .supporters-carousel {
-      @include dagny;
-      color: $white;
-      padding: $supporterProfile-padding-md;
-
-      .supporter-picture-glen {
-        background: url("../img/glen.png");
-        background-size: contain;
-        padding: 20%;
-        float: left;
-      }
-
-      .supporter-bio {
-        float: left;
-        width: 45%;
-        padding: 5%;
-      }
-
-      .supporter-name {
-        @include dagny-heavy;
-        @include fontSize-larger;
-      }
-
-      .supporter-caption {
-        @include dagny-light;
-        @include fontSize-medium;
-        margin-bottom: 20px;
-      }
-
-      .supporter-description {
-        @include fontSize-base;
-      }
+  }
+  .profile-photo {
+    float: left;
+    width: 40%;
+    img {
+      width: 361px;
+      height: 375px;
     }
   }
+  .supporters-carousel {
+    @include dagny;
+    color: $white;
+    padding: $supporterProfile-padding-md;
+
+    .supporter-picture-glen {
+      background: url("../img/glen.png");
+      background-size: contain;
+      padding: 20%;
+      float: left;
+    }
+
+    .supporter-bio {
+      float: left;
+      width: 45%;
+      padding: 5%;
+    }
+
+    .supporter-name {
+      @include dagny-heavy;
+      @include fontSize-larger;
+    }
+
+    .supporter-caption {
+      @include dagny-light;
+      @include fontSize-medium;
+      margin-bottom: 20px;
+    }
+
+    .supporter-description {
+      @include fontSize-base;
+    }
+  }
+
 }
 
 // for larger desktop monitors
 @media screen and (min-width: $screen-lg) {
-  .supportersText-wrapper {
-    .supporters-carousel {
-      .supporter-name {
-        @include fontSize-responsive-larger;
-      }
 
-      .supporter-caption {
-        @include fontSize-responsive-medium;
-      }
+  .supporters-carousel {
+    .supporter-name {
+      @include fontSize-responsive-larger;
+    }
 
-      .supporter-description {
-        @include fontSize-responsive-base;
-      }
+    .supporter-caption {
+      @include fontSize-responsive-medium;
+    }
+
+    .supporter-description {
+      @include fontSize-responsive-base;
     }
   }
 
