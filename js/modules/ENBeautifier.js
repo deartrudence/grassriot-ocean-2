@@ -117,6 +117,7 @@ ENBeautifier.prototype.moveToTargets = function(fillers, includeSource){
  */
 ENBeautifier.prototype.addClasses = function(elementCollection) {
     var $form = this.targetForm;
+    console.log($form);
     $.each(elementCollection, function (selector, data) {
         $form.find(selector).closest(data.targetElement).addClass(data.classes);
     });

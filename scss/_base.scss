@@ -22,6 +22,7 @@ $vdark-grey: #313131;
 $black: #000;
 
 $modal-overlay-opacity: 0.65;
+$text-colour: $vdark-grey;
 
 //-----------
 //sections
@@ -60,6 +61,13 @@ $form-navbar-bgimage: url("../img/transparent-flag.png");
 $form-width-md: 350px;
 $form-width-xl: 650px;
 $form-background: $green;
+
+$steps_colour: $vdark-grey;
+$steps_background: $light-grey;
+$steps_border: none;
+$stepsActive_background: $light-green;
+$stepsActive_border: none;
+$stepsActive_colour: $vdark-grey;
 
 //text
 $content-overlap-md: 20px;

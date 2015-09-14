@@ -146,6 +146,390 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: none;
 }
 
+#gr_giving .secure-form {
+  background: none;
+  border: none;
+  color: #939598;
+  font-size: 11px;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  font-style: normal;
+  z-index: 10;
+  border-radius: 4px;
+}
+#gr_giving .secure-form:hover {
+  cursor: pointer;
+}
+#gr_giving .secure-form span.lock img {
+  width: 10px;
+  position: relative;
+  top: -1px;
+  margin-right: 2px;
+}
+#gr_giving div.radiobutton label {
+  background-color: transparent;
+  background-image: linear-gradient(#f5f5f5 0%, #cecece 100%);
+  color: #888;
+  font-weight: normal;
+}
+#gr_giving div.radiobutton input[type='radio']:hover:not(:checked) ~ label {
+  color: #888;
+}
+#gr_giving div.radiobutton input[type='radio']:checked ~ label {
+  color: #222;
+}
+
+.popover {
+  width: 400px;
+}
+
+#deteailsStep h3, #paymentStep h3 {
+  color: #535456;
+  text-align: center;
+  font-size: 16px;
+  margin: 5px 0px 20px;
+}
+
+.mod-button {
+  padding: 0px;
+  margin: -10px 0px 0px;
+}
+.mod-button a {
+  margin: 0px;
+  font-size: 10px;
+}
+.mod-button a:hover {
+  text-decoration: underline;
+  color: #666;
+}
+
+#gr_donation {
+  position: relative;
+}
+#gr_donation h2, #gr_donation h3 {
+  color: #535456;
+  font-size: 13px;
+}
+#gr_donation h2 {
+  text-align: center;
+  font-size: 16px;
+  margin: 5px;
+}
+#gr_donation .levels label {
+  background-color: #CECECE;
+  background-image: linear-gradient(#f5f5f5 0%, #cecece 100%);
+  color: #313131;
+}
+#gr_donation .levels label:hover {
+  background-color: #B2B2B2;
+  background-image: linear-gradient(#f5f5f5 10%, #cecece 50%);
+  color: #313131;
+}
+#gr_donation .levels input[type='radio']:checked + label {
+  background: #21633d;
+  color: #fff;
+  cursor: default;
+}
+
+#gr_details, #gr_payment {
+  background: #aed100;
+  border-radius: 0 0 15px 15px;
+}
+
+#gr_details input.eaSubmitButton {
+  margin-top: 20px;
+  width: 100%;
+  display: block;
+}
+#gr_details select {
+  padding-right: 0;
+}
+
+#donation-ranges {
+  display: none;
+}
+
+.popover-content {
+  width: 100%;
+}
+
+.eaFormField {
+  position: relative;
+}
+.eaFormField .glyphicon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -7px;
+}
+.eaFormField input {
+  padding-right: 36px;
+}
+
+.easplit .glyphicon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -11px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.steps-list {
+  position: relative;
+}
+.steps-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 25px;
+  text-align: left;
+  font-size: 0;
+}
+.steps-list ul li {
+  color: #313131;
+  background: #bcbec0;
+  border: none;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 9px 10px 10px;
+  text-align: center;
+  position: relative;
+  padding-left: 1px;
+}
+.steps-list ul li.current, .steps-list ul li.active {
+  background: #bad80a;
+  border: none;
+  color: #313131;
+}
+.steps-list ul li span {
+  color: #313131;
+  font-size: 14px;
+  position: absolute;
+  left: -5px;
+  top: 100%;
+  width: 36px;
+}
+
+.top-wrap {
+  border-radius: 15px 15px 0 0;
+  position: relative;
+  z-index: 2;
+}
+
+.giving-security {
+  background: #21633d;
+  color: #fff;
+  padding: 15px;
+}
+
+.text-field {
+  background: #535456;
+  padding: 10px 20px;
+  margin: 0 -10px;
+  position: relative;
+  z-index: 1;
+}
+.text-field h2 {
+  color: #ffc550;
+  text-align: left;
+  line-height: 1.2em;
+  font-size: 22px;
+  margin: 0;
+  padding: 5px 0px 10px;
+}
+.text-field:before, .text-field:after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 10px solid #636466;
+  border-left: 10px solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+.text-field:after {
+  left: auto;
+  right: 0;
+  border-left: none;
+  border-right: 10px solid transparent;
+}
+
+#guarantee {
+  margin-top: 10px;
+  background: #ef4236;
+  overflow: hidden;
+}
+#guarantee .guarantee {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #ef4236;
+}
+#guarantee .guarantee h3, #guarantee .guarantee p {
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px 0px 10px;
+}
+#guarantee .guarantee p {
+  font-size: 14px;
+}
+#guarantee .guarantee h3 {
+  font-size: 24px;
+}
+#guarantee .guarantee span.quote {
+  color: #fac1bf;
+  font-size: 11px;
+}
+#guarantee .guarantee blockquote {
+  margin-top: 30px;
+  padding-top: 5px;
+  color: white;
+}
+
+.go-back {
+  color: #939598;
+  display: inline-block;
+  margin: 12px 0;
+}
+.go-back:hover {
+  color: #939598;
+  text-decoration: none;
+}
+
+.mobile-logo {
+  width: 100%;
+}
+
+#gr_donation form {
+  display: block;
+}
+
+.lt-ie9 #gr_giving label, .ie9 #gr_giving label {
+  display: inline-block;
+}
+
+#Credit_Card_Verification_ValueField input {
+  padding-right: 12px;
+}
+
+@media only screen and (max-width: 1200px) {
+  #gr_giving .contain {
+    max-width: 374px;
+  }
+
+  #gr_content {
+    padding: 10px 20px 50px;
+  }
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px) {
+  #gr_giving .contain {
+    max-width: 345px;
+  }
+
+  #gr_header {
+    min-height: 200px;
+  }
+}
+/* Small Devices, Tablets */
+@media only screen and (max-width: 767px) {
+  ul {
+    padding-left: 1em;
+  }
+
+  .mob-but-wrap {
+    position: fixed;
+  }
+
+  .scroll .mobile-logo {
+    margin-bottom: 54px;
+  }
+
+  #gr_header {
+    background: none;
+    min-height: 0;
+    margin-top: 53px;
+  }
+
+  #gr_giving {
+    display: none;
+  }
+  #gr_giving .contain {
+    margin: 0;
+    position: fixed;
+    max-width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+  }
+  #gr_giving .contain .top-wrap,
+  #gr_giving .contain #window article.page,
+  #gr_giving .contain #gr_details form > div {
+    border-radius: 0;
+  }
+  #gr_giving .slider-wrap {
+    background: #f1eeed;
+    padding-top: 60px;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+  }
+
+  .text-field {
+    display: none;
+  }
+
+  .text-field h2 {
+    font-size: 20px;
+  }
+
+  #window {
+    height: 100%;
+  }
+  #window article.page {
+    margin: 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .mobile-button {
+    display: inline-block;
+  }
+
+  #gr_content {
+    padding: 10px 20px 10px;
+  }
+  #gr_content h1, #gr_content h2 {
+    font-size: 20px;
+    line-height: 21px;
+  }
+  #gr_content h1 span, #gr_content h2 span {
+    font-size: 30px;
+  }
+  #gr_content p {
+    font-size: 14px;
+  }
+}
+/* Extra Small Devices, Phones */
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+  select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select:focus {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-height: 768px) and (min-width: 768px) {
+  #gr_giving .contain {
+    position: absolute;
+  }
+}
 body {
   overflow-x: hidden;
 }
