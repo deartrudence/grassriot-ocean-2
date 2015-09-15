@@ -24,13 +24,6 @@ width: 15px !important;
 padding-bottom: 30px;
 }
 
-.eaSubmitButton, .eaResetButton{
-background: #709302 !important;
-color: #ffffff !important;
-padding: 15px  !important;
-font-weight: bold  !important;
-}
-
 .boarder{
 border-top:10px solid;
 border-right:10px solid;
@@ -43,6 +36,7 @@ border-top-left-radius: 6em;
 
 //custom items
 .hero {
+    background-image: none;
     background-position: 0 0;
     background-size: auto;
     background-repeat: no-repeat;
@@ -64,6 +58,11 @@ border-top-left-radius: 6em;
 
 .heroCaption {
     display: none;
+}
+
+.row {
+    width: 100%;
+    margin: 0;
 }
 
 .en_wrapper {
@@ -119,6 +118,12 @@ border-top-left-radius: 6em;
 
 #Accepts_Electronic_CommunicationsDiv {
     display: none;
+}
+
+.eaSubmitResetButtonGroup {
+    .eaSubmitButton {
+        @include cta-button-gradient--red;
+    }
 }
 
 @media screen and (max-width: $screen-xxs-max){
