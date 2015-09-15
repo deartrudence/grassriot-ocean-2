@@ -19,12 +19,13 @@
 //foundation
 @import "base";
 @import "buttons";
-@import "donation";
 @import "grids";
 @import "fonts";
 @import "zindex";
 
 //styles
+@import "donation";
+@import "upsell";
 @import "global";
 @import "hero";
 @import "campaign";

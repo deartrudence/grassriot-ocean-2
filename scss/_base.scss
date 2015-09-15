@@ -15,6 +15,8 @@ $navy-blue: #336699;
 $beige: #d6ccaf;
 $dark-beige: #958f72;
 
+$brown: #663f47;
+
 $vdark-red: #861214;
 $dark-red: #cc3300;
 $light-red: #a0151b;
@@ -125,7 +127,12 @@ $stepsActive_border: none;
 $stepsActive_colour: $vdark-grey;
 $stepsActive_arrowBackground: $green;
 
-
+$amount-active-advancedBackground: linear-gradient($turquoise 0%, darken($turquoise,5%) 100%);
+$amount-hover-advancedBackground: linear-gradient(lighten($vlight-grey,5%) 0%, $vlight-grey 100%);
+$amount-normal-advancedBackground: linear-gradient($vlight-grey 0%, darken($vlight-grey, 5%) 100%);
+$amount-active-background: $turquoise;
+$amount-hover-background: lighten($vlight-grey, 5%);
+$amount-normal-background: $vlight-grey;
 
 //footer
 $footer-padding-xs: 40px;
@@ -136,6 +143,11 @@ $footer-logowidth-base: 250px;
 $footer-logowidth-xl: 500px;
 $footer-logoheight-xl: ($footer-logoheight-base * 2);
 $footer-logowidth-xl: ($footer-logowidth-base * 2);
+
+//upsell
+$upsell-background: $dark-turquoise;
+$upsell-cta-colour: $turquoise;
+$upsell-colour: $white;
 
 //-----------
 //screen sizes

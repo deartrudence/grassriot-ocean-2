@@ -1,0 +1,230 @@
+.upsell-modal--body{
+  background: $upsell-background;
+  border-radius: 0;
+  border: 0;
+  padding: 0;
+}
+
+.upsell-container{
+  display: table-row;
+}
+
+.upsell-panel{
+  display: table-cell;
+  vertical-align: middle;
+  padding: 45px 35px 25px;
+}
+
+.upsell-cta{
+  color: $upsell-cta-colour;
+  text-transform: uppercase;
+  width: 55.5555%;
+  font-size: 3.6em;
+  line-height: .8;
+}
+.upsell-title{
+  font-size: 1em; //override bootstrap's sizes
+}
+
+.upsell-copy{
+  width: 44.4445%;
+  // background: url($body_background);
+  position: relative;
+
+  // &:after{
+  //   content:"";
+  //   display: block;
+  //   height:54px;
+  //   width: 25px;
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 0;
+  //   margin-top: -27px;
+  //   // background: url($upsell-arrow);
+  // }
+}
+
+.upsell-subtitle{
+  font-size: 2em;
+}
+
+$upsell-recommendation-padding: 5px;
+.upsell-recommendation{
+  // background: lighten($colour_purple, 20%);
+  color: $upsell-colour;
+  padding: $upsell-recommendation-padding;
+  border-radius: $upsell-recommendation-padding;
+  overflow: hidden;
+  font-size: 1.2em;
+  margin-top: 2em;
+}
+
+.upsell-recommendation--amount{
+  background: $white;
+  color: $black;
+  padding: 10px;
+  border-radius: 3px;
+  margin-right: 10px;
+  float: left;
+  min-height: 1em;
+  font-size: 1.5em;
+  line-height: 1;
+  @include font-primaryN7;
+}
+
+.upsell-recommendation--label{
+  
+}
+
+button.upsell-modal--close{
+  position: absolute;
+  height: 38px;
+  width: 38px;
+  // background: url($upsell-close);
+  top: 0;
+  right: 0;
+  margin-top: -19px;
+  margin-right: -19px;
+  opacity: 1;
+  text-indent: -99px;
+  overflow: hidden;
+
+  &:hover{
+    opacity: 0.8;
+  }
+
+  &:active{
+    opacity: 0.7;
+  }
+}
+
+.upsell-confirm{
+  display: block;
+  background: $upsell-background;
+  margin:0 -1*$upsell-recommendation-padding -1*$upsell-recommendation-padding;
+  text-align: center;
+  padding: 1em;
+  color: $upsell-colour;
+  @include font-primaryN7;
+
+  &:hover{
+    opacity: 0.8;
+    color: $upsell-colour;
+  }
+  &:active{
+    opacity: 0.7;
+  }
+}
+
+.upsell-deny{
+  margin: 3em -10px 1em;
+
+  a{
+    color: $black;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (min-width: $screen-sm){
+  .upsell-modal--body{
+    width: 720px;
+  }
+}
+
+@media screen and (max-width: $screen-xs-max){
+  .upsell-container{
+    display: block;
+  }
+
+  .upsell-cta,
+  .upsell-copy{
+    display: block;
+    width: 100%;
+  }
+
+
+  .upsell-cta{
+    font-size: 3em;
+    padding-top: 25px;
+    padding-top: 25px;
+  }
+
+  .upsell-copy{
+    padding-top: 25px;
+    &:after{
+      display: none;
+    }
+  }
+
+  .upsell-title{
+    margin-top: 0;
+  }
+
+  .upsell-subtitle{
+    margin-top: 0;
+  }
+
+  button.upsell-modal--close{
+    margin: 0;
+    text-indent: 0;
+    background: none;
+    color: $upsell-colour;
+    text-shadow: 0 -2px 0 $black;
+    opacity: 0.4;
+
+    &:hover{
+      opacity: 0.6;
+    }
+
+    &:active{
+      opacity: 0.8;
+    }
+  }
+
+}
+
+@media screen and (max-width: 340px),
+screen and (max-width: $screen-xs-max) and (max-height: 565px){
+  .upsell-cta{
+    font-size: 1.8em;
+    padding: 25px 20px;
+  }
+  .upsell-title{
+    width: 7em;
+  }
+  
+  .upsell-copy{
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .upsell-subtitle{
+    display: none;
+  }
+  .upsell-recommendation{
+    margin-top: 5px;
+    font-size: 1em;
+  }
+  .upsell-recommendation--label{
+    padding-bottom: 5px;
+    min-height: 3.2em;
+  }
+  .upsell-confirm{
+    padding: 0.5em;
+  }
+  .upsell-deny{
+    margin: 2em 0 0;
+  }
+}
+
+//nicer modal positioning for flexbox-supporting browsers
+html.flexbox{
+  #upsell-modal.in{
+    display: flex !important;
+    height: 100%;
+  }
+
+  .upsell-modal--body{
+    margin: auto;
+  }
+}
