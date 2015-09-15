@@ -1,0 +1,163 @@
+//from original template
+#Title_and_preambleDiv li{
+  list-style: disc;
+}
+
+
+label{
+font-size: 0.8em !important;
+}
+
+.en_right_wrapper {
+    padding-left: 15px;
+}
+
+.eaQuestionCheckboxFormFieldContainer{
+clear: none;
+}
+
+.eaQuestionLabel{
+width: 15px !important;
+}
+
+.en_wrapper{
+padding-bottom: 30px;
+}
+
+.eaSubmitButton, .eaResetButton{
+background: #709302 !important;
+color: #ffffff !important;
+padding: 15px  !important;
+font-weight: bold  !important;
+}
+
+.boarder{
+border-top:10px solid;
+border-right:10px solid;
+border-left: 10px solid;    
+border-color: #78A22F;
+border-top-right-radius: 6em;
+border-top-left-radius: 6em;
+}
+
+
+//custom items
+.hero {
+    background-position: 0 0;
+    background-size: auto;
+    background-repeat: no-repeat;
+    > .wrapper {
+        padding: 0;
+    }
+}
+
+.heroTitle {
+    font-size: 25px;
+    padding: 0;
+    strong {
+        color: $mlight-green;
+    }
+    em {
+        color: $dark-turquoise;
+    }
+}
+
+.heroCaption {
+    display: none;
+}
+
+.en_wrapper {
+    float: none;
+    padding: 1% 0;
+    text-align: center;
+    input[type="text"] {
+        padding: 8px;
+        font-size: 15px;
+        font-family: "DagnyOT";
+    }
+}
+
+.en_left_wrapper, .en_right_wrapper {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    text-align: left;
+    
+}
+
+.en_left_wrapper {
+    max-width: 300px;
+}
+
+.en_right_wrapper {
+    max-width: 350px;
+}
+
+.en_right_wrapper .eaRightColumnContent, .en_left_wrapper .eaLeftColumnContent {
+    float: none;
+    padding-left: 0;
+    position: relative;
+    width: 100%;
+}
+
+.en_left_wrapper .eaLeftColumnContent {
+    display: none;
+}
+
+.en_left_wrapper .eaLeftColumnContent + .eaLeftColumnContent, .en_right_wrapper .eaRightColumnContent {
+    display: block;
+}
+
+.eaLeftColumnFiller {
+    display: none;
+}
+
+.en_right_wrapper .eaSubmitResetButtonGroup {
+    float: none;
+    padding-top: 0;
+}
+
+#Accepts_Electronic_CommunicationsDiv {
+    display: none;
+}
+
+@media screen and (max-width: $screen-xxs-max){
+      
+}
+
+@media screen and (min-width: $screen-xs-min){
+
+}
+
+@media screen and (min-width: $screen-sm){
+    .heroCaption {
+        display: block;
+    }
+    .en_left_wrapper, .en_right_wrapper {
+        width: 49%;
+    }
+}
+
+@media screen and (min-width: $screen-md){
+    .hero {
+        background-position: bottom;
+        background-size: cover;
+    }
+    .en_wrapper {
+        padding: 17% 0%;
+        margin-right: 39%;
+        float: right;
+        text-align: left;
+    }
+    heroTitle {
+        font-size: 2.0vw;
+    }
+}
+
+@media screen and (min-width: $screen-lg){
+
+}
+
+@media screen and (min-width: $screen-xl){
+
+}
