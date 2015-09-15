@@ -2407,35 +2407,11 @@ input[type="button"].btn-block {
 #gr_donation div.radiobutton label {
   display: block;
   float: none;
-  border-bottom-color: rgba(0, 0, 0, 0.24706);
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-image-outset: 0px;
-  border-image-repeat: stretch;
-  border-image-slice: 100%;
-  border-image-source: none;
-  border-image-width: 1;
-  border-left-color: rgba(0, 0, 0, 0.14902);
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-color: rgba(0, 0, 0, 0.14902);
-  border-right-style: none;
-  border-right-width: 0px;
-  border-top-color: rgba(0, 0, 0, 0.14902);
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
-  border-top-style: none;
-  border-top-width: 0px;
-  box-shadow: rgba(0, 0, 0, 0.49804) 0px 1px 1px 0px;
-  box-sizing: border-box;
-  color: #363636;
-  width: 140px;
+  background: #edf0ea;
   border-radius: 3px;
-  border: 1px solid #D1D3D4;
-  background-color: transparent;
-  background-image: linear-gradient(#f5f5f5 0%, #cecece 100%);
+  color: #6e6f71;
+  box-shadow: 1px 1px 2px #000;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 #gr_donation div.radiobutton *:focus {
   outline: 0;
@@ -2479,11 +2455,12 @@ input[type="button"].btn-block {
 #gr_donation div.radiobutton input[type='radio']:checked ~ label:before {
   content: '\2714';
   text-indent: .9em;
-  color: #9CE2AE;
-  background-color: #69ad6c;
+  color: #fff;
+  background-color: #21633d;
 }
 #gr_donation div.radiobutton input[type='radio']:checked ~ label {
-  color: #777;
+  color: #fff;
+  background-color: #5d8200;
 }
 #gr_donation div.radiobutton input[type='radio']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
@@ -2539,6 +2516,9 @@ input[type="button"].btn-block {
   background: #21633d;
   color: #fff;
   cursor: default;
+}
+#gr_donation .btn-prev {
+  display: none;
 }
 
 .window--frame {
@@ -2708,13 +2688,14 @@ input[type="button"].btn-block {
 }
 
 .go-back {
-  color: #939598;
+  color: #fff;
   display: inline-block;
-  margin: 12px 0;
+  opacity: 0.8;
+  background: none;
+  border: none;
 }
 .go-back:hover {
-  color: #939598;
-  text-decoration: none;
+  opacity: 1;
 }
 
 .mobile-logo {
@@ -2784,7 +2765,7 @@ input[type="button"].btn-block {
     height: 100%;
   }
   #gr_giving .contain .top-wrap,
-  #gr_giving .contain #window article.page,
+  #gr_giving .contain #window .page,
   #gr_giving .contain #gr_details form > div {
     border-radius: 0;
   }
@@ -2807,7 +2788,7 @@ input[type="button"].btn-block {
   #window {
     height: 100%;
   }
-  #window article.page {
+  #window .page {
     margin: 0;
     height: 100%;
     overflow-y: auto;
@@ -2838,6 +2819,13 @@ input[type="button"].btn-block {
 }
 #grdonation .btn-next {
   margin-top: 20px;
+  border-radius: 3px;
+  border: 0;
+  background-color: #a0151b;
+  background-image: linear-gradient(#a0151b 50%, #861214 100%);
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 5px;
 }
 #grdonation .btn-next .glyphicon-chevron-right {
   font-size: 80%;
@@ -3007,8 +2995,17 @@ select.error {
 }
 .inline-block-field.last {
   margin-left: 2%;
-  text-align: right;
   clear: none;
+}
+
+#Credit_Card_ExpirationField:after {
+  display: block;
+  content: " ";
+  clear: both;
+}
+
+#paypal {
+  float: right;
 }
 
 /* Extra Small Devices, Phones */

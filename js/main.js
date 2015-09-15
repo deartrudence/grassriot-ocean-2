@@ -57,7 +57,7 @@ var $ = require('jquery');
 require("modernizr");
 require("modal");
 
-var $submit = $(".eaSubmitButton");
+// var $submit = $(".eaSubmitButton");
 
 if(__DEV__){
 	init_devtools();
@@ -108,6 +108,7 @@ function modernize(){
  * @return {[type]} [description]
  */
 function setupAction(){
+
 	try{
 		//form beauitfication
 		enbeautifier = new ENBeautifier({
@@ -152,7 +153,7 @@ function setupAction(){
 
     });
 
-		//Set up panel steps
+	//Set up panel steps
     formSteps = new GRSteps({
       activeClass: 'active',
       useCSSAnimation: false,
@@ -245,6 +246,16 @@ function setupAction(){
         }
 
     });
+
+    //change the submit button when the amount changes
+    $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");
+    $form.on(
+        'change',
+        'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+        function(e) {
+            $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
+        });
+    $submit.attr("name", "submitter");
     
     //Remove the original donate input
     //TODO: integrate this in to the actual form code
@@ -280,11 +291,6 @@ function setupAction(){
         ]*/
     });
 
-    $form.on('change', 'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)', function(e) {
-        $submit.val("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
-    });
-
-    $submit.attr("name", "submitter");
     $form.removeAttr('onsubmit');
 
 		// we handle the mobile form (<620px) without use of affix

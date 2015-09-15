@@ -14,8 +14,9 @@ function createSelectComponent(opts) {
                 .replace(/%name%/g, (opts.name ? opts.name : ''))
                 .replace(/%id%/g, (opts.id ? 'id="'+opts.id+'"' : 'id="'+opts.name.replace(/[^a-zA-Z0-9\-\_]/g, '-')+'"'))
                 .replace(/%placeholder%/g, (opts.placeholder ? '<option value="">'+opts.placeholder+'</option>' : '<option value="">'+opts.label+'</option>' ))
-                .replace(/%class%/g, (opts.classNames ? 'class="'+opts.classNames.join(' ')+'"' : ''))
+                .replace(/%class%/g, (opts.classes ? 'class="'+opts.classes+'"' : ''))
                 .replace(/%atts%/g, (opts.atts ? opts.atts.join(' ') : ''));
+                
     var select;
     if(typeof opts.wrap != "undefined")
         select = $(opts.wrap).html(html);         

@@ -61,7 +61,7 @@ webpackJsonp([0],[
 	__webpack_require__(14);
 	__webpack_require__(15);
 
-	var $submit = $(".eaSubmitButton");
+	// var $submit = $(".eaSubmitButton");
 
 	if(true){
 		init_devtools();
@@ -112,6 +112,7 @@ webpackJsonp([0],[
 	 * @return {[type]} [description]
 	 */
 	function setupAction(){
+
 		try{
 			//form beauitfication
 			enbeautifier = new ENBeautifier({
@@ -156,7 +157,7 @@ webpackJsonp([0],[
 
 	    });
 
-			//Set up panel steps
+		//Set up panel steps
 	    formSteps = new GRSteps({
 	      activeClass: 'active',
 	      useCSSAnimation: false,
@@ -249,6 +250,16 @@ webpackJsonp([0],[
 	        }
 
 	    });
+
+	    //change the submit button when the amount changes
+	    $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");
+	    $form.on(
+	        'change',
+	        'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+	        function(e) {
+	            $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
+	        });
+	    $submit.attr("name", "submitter");
 	    
 	    //Remove the original donate input
 	    //TODO: integrate this in to the actual form code
@@ -284,11 +295,6 @@ webpackJsonp([0],[
 	        ]*/
 	    });
 
-	    $form.on('change', 'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)', function(e) {
-	        $submit.val("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
-	    });
-
-	    $submit.attr("name", "submitter");
 	    $form.removeAttr('onsubmit');
 
 			// we handle the mobile form (<620px) without use of affix
@@ -1600,7 +1606,7 @@ webpackJsonp([0],[
 	  this
 	    .append(
 	      '<p class="pull-right"> \
-	        <button type="button" class="btn btn-danger btn-lg btn-next">NEXT <span class="glyphicon glyphicon-chevron-right"></span></button> \
+	        <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
 	      </p>'
 	    )
 	    .append(
@@ -1872,7 +1878,6 @@ webpackJsonp([0],[
 	            })
 	            .on('change','[name="'+options.components.other.name+'"]', function(e){
 	                e.stopPropagation();
-	                console.log(this);
 
 	                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
 	            });
@@ -2546,8 +2551,9 @@ webpackJsonp([0],[
 	                .replace(/%name%/g, (opts.name ? opts.name : ''))
 	                .replace(/%id%/g, (opts.id ? 'id="'+opts.id+'"' : 'id="'+opts.name.replace(/[^a-zA-Z0-9\-\_]/g, '-')+'"'))
 	                .replace(/%placeholder%/g, (opts.placeholder ? '<option value="">'+opts.placeholder+'</option>' : '<option value="">'+opts.label+'</option>' ))
-	                .replace(/%class%/g, (opts.classNames ? 'class="'+opts.classNames.join(' ')+'"' : ''))
+	                .replace(/%class%/g, (opts.classes ? 'class="'+opts.classes+'"' : ''))
 	                .replace(/%atts%/g, (opts.atts ? opts.atts.join(' ') : ''));
+	                
 	    var select;
 	    if(typeof opts.wrap != "undefined")
 	        select = $(opts.wrap).html(html);         
