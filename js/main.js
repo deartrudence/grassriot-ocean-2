@@ -15,9 +15,9 @@ var ENBeautifierFillers = {
 	".js-hero-image": ".js-heroImage",
 	".js-financial": ".js-financialText",
 	".js-supporters": ".js-supportersText",
-  '#gr_donation': ['#Payment_CurrencyDiv', '#Recurring_PaymentDiv', '#Donation_AmountDiv'],
-  '#gr_details': ['#Your_DetailsDiv', '#First_NameDiv', '#Last_NameDiv', '#EmailDiv', '#Address_1Div', '#CityDiv','#Postal_CodeDiv', '#CountryDiv', '#StateDiv', '#Opt_In_-_ENDiv'],
-  '#gr_payment': ['#Payment_DetailsDiv', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationDiv', '.eaSubmitButton'],
+  '#gr_donation': [/*'#Payment_CurrencyDiv',*/ '#Recurring_PaymentDiv', '#Donation_AmountDiv'],
+  '#gr_details': ['.js-billingDetails', '#First_NameDiv', '#Last_NameDiv', '#Email_AddressDiv', '#Address_1Div', '#CityDiv','#PostcodeDiv', '#CountryDiv', '#ProvinceField', '#Accepts_Electronic_CommunicationsDiv'],
+  '#gr_payment': ['.js-paymentDetails', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Card_CVVDiv', '#Credit_Card_ExpirationField', '.eaSubmitButton'],
 }
 
 var ENBeautifier = require('./modules/ENBeautifier');
@@ -62,6 +62,7 @@ require("popover");
 // var $submit = $(".eaSubmitButton");
 var $validErrModal = $("#validErrModal");
 var formErrors = [ ];
+var validatorObj;
 
 if(__DEV__){
 	init_devtools();
@@ -128,7 +129,7 @@ function setupAction(){
 
 		//move text to the right places
 		enbeautifier.moveToTargets(ENBeautifierFillers);
-
+        enbeautifier.clearFillers();
 
 		// slick
 		$('.supporters-carousel').slick({
@@ -143,11 +144,11 @@ function setupAction(){
         '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFormField"},
         '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
         '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
-        '[name="Postal Code"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+        '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
         '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
         '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
         '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFormField"},
-        '[name="Credit Card Verification Value"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
+        '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
         '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
         '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
         '[name="Country"]': {classes: "inline-block-field half", targetElement: ".eaFormField"},
@@ -222,7 +223,7 @@ function setupAction(){
                 selector: '[name="Province"]:not(a)'
             },
             currency: {
-                selector: '[name="Payment Currency"]:not(a)',
+                // selector: '[name="Payment Currency"]:not(a)',
                 urlParam: 'curr',
                 defaultVal: 'CAD'
             },
@@ -245,7 +246,7 @@ function setupAction(){
             processor: {
                 selector: '[name="Payment Type"]:not(a)',
                 urlParam: 'country',
-                defaultVal: 'US'
+                defaultVal: 'CA'
             }
         },
         activeRegionLists: ['CA'],
@@ -257,13 +258,13 @@ function setupAction(){
         ],
         processorFields: { 
             'PayPal': {
-                hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationDiv']
+                hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
             },
             'Visa': {
-                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationDiv']
+                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
             },
             'MasterCard': {
-                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationDiv']
+                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
             }
 
         }
@@ -448,225 +449,6 @@ function addStringerStat(response){
 // Everything else goes here
 //////////////////////////////
 
-//Donation handler
-// var validation_rules = [{
-        
-//     }, {
-//         "First Name": "required",
-//         "Last Name": "required",
-//         "Address 1": {
-//             required: true
-//         },
-//         "City": "required",
-//         "Province": "required",
-//         "Country": "required",
-//         "Email": {
-//             required: true,
-//             emailTLD: true
-//         },
-//         "Postal Code": {
-//             required: true
-//         }
-//     }, {
-//         "Payment Type": "required",
-//         "Credit Card Number": {
-//             required: true,
-//             creditcard: true
-//         },
-//         "Credit Card Verification Value": {
-//             required: true,
-//             isCVV: true //note: AMEX CVVs are 4 digits but currently handled through PayPal
-//         },
-//         "Credit Card Expiration1": {
-//             required: true,
-//             isMonth: true
-//         },
-//         "Credit Card Expiration2": {
-//             required: true,
-//             isNowOrFutureYear: true,
-//             isFuture: true
-//         },
-//         "Donation Amount": {
-//             required: true,
-//             isValidDonation: true
-//         }
-//     }
-// ];
-
-// var donation, country, payment;
-// var currency, ref, sym, donation_type = 'single';
-
-// var stepValidator = (function(){            
-//     var settings = {
-//         ignore: [],
-//         rules: validation_rules[0],
-//         unhighlight: function (element, errorClass, validClass) {
-//             var $el = $(element);
-//             if($el.attr("type")=="checkbox") return;
-//             $el.parent().find('.glyphicon').remove();
-//             $el.removeClass(validClass).removeClass(errorClass);
-
-//             if ($el.val() != ''&& ($el.attr('id') !== 'setcurrency')) {
-//                 $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
-//                 $el.addClass(validClass);
-//             }
-//         },
-//         highlight: function (element, errorClass, validClass) {
-//             var $el = $(element);
-//             if($el.attr("type")=="checkbox") return;
-//             $el.parent().find('.glyphicon').remove();
-//             $el.before($('<span class="glyphicon glyphicon-remove"></span>'));
-//             $el.removeClass(validClass).addClass(errorClass);
-//         },
-//         success: function (element, label) {
-//             var $el = $(element);
-//             $el.parent().find('.glyphicon').remove();
-//             $el.before($('<span class="glyphicon glyphicon-ok"></span>'));
-//         },
-//         groups: {
-//             demoGroup: "First Name",
-//             ccExpiryDate: "Credit Card Expiration 1 "
-//         },
-//         invalidHandler: function(e, validator) {
-//             var errors = validator.errorList,
-//                 $errorList = $('<ul>');
-
-//             // Used for customization of input names in error message.
-//             var inputNamesMapper = {
-//                 'Postal Code': 'Postal Code',
-//                 'City': 'City / Town',
-//                 'Address 1': 'Address 1',
-//                 'Payment Type': 'Payment Option',
-//                 'Province': 'State / Province / Region',
-//                 'Credit Card Expiration1': 'Credit Card Expiration MM',
-//                 'Credit Card Expiration2': 'Credit Card Expiration YYYY',
-//                 'Credit Card Verification Value': 'CVV2 Code'
-//             };
-
-//             for (var i in errors) {
-//                 var inputName = $(errors[i].element)
-//                         .attr('id')
-//                         .replace(/_/g, ' '),
-//                     errorType = errors[i].method,
-//                     errorMessage = '';
-
-//                 inputName = inputNamesMapper[inputName] || inputName;
-
-//                 // Checking and replacing standart error message.
-//                 if (errorType === 'required'
-//                     && errors[i].message === 'This field is required.') {
-//                     errorMessage = inputName + ' is required.';
-//                 } else {
-//                     errorMessage = errors[i].message;
-//                 }
-
-//                 var $error = $('<li>')
-//                     .html(errorMessage);
-
-//                 $errorList
-//                     .append($error)
-//             }
-
-//             $validErrModal
-//                 .find('.error-list')
-//                 .html($errorList);
-
-//             $validErrModal
-//                 .modal('show');
-
-//             //console.log(validator);
-//             try {
-//                 throw new Error("failed validation");
-//             }
-//             catch (err) {
-//                 var fieldData = $(this).serializeArray();
-//                 for(var i = 0; i < fieldData.length; i++ ) {
-//                     if(fieldData[i].name == "Credit Card Number")
-//                         fieldData.splice(i, 1);
-//                 }
-//                 Raygun.send(err, {errors: validator.invalid, values: fieldData});
-//             }
-//         },
-//         showErrors: function (errorMap, errorList) {
-//             if (this.numberOfInvalids() > 0) {
-//                 $("#donor_errors").html("<div class='alert alert-danger'><i class='glyphicon glyphicon-exclamation-sign'></i> Please correct the <b>" + this.numberOfInvalids() + "</b> errors indicated below.</div>").show(300);
-
-//                 if (typeof errorMap['Donation Amount'] !== 'undefined') {
-//                     $("#donor_errors").append("<div class='alert alert-warning' role='alert'><i class='glyphicon glyphicon-info-sign'></i><a class='btn-prev' href='#'>" + errorMap['Donation Amount'] + "</a></div>");
-//                 }
-
-//             } else {
-//                 $("#donor_errors").hide(300);
-//             }
-//             this.defaultShowErrors();
-//         },
-//         errorPlacement: function () {
-//             return false; // <- kill default error labels
-//         },
-//         submitHandler: function (form) {
-//             $('[name="Credit Card Number"]').val($('[name="Credit Card Number"]').val().replace(/[\-\s]/g,''));
-//             processForm();
-//             if(grupsell.launch())
-//                 return false;
-//             else
-//                 sendDonation(form);
-//         }
-//     };
-
-//     $form.validate(settings);
-
-//     settings.rules = {};
-//     settings.ignore = ['#setcurrency'];
-//     // $firstStepForm.validate(settings);
-
-//     $form
-//         .on("change", "input,select", function (e) {
-//             $(e.target).valid();
-//         })
-//         .on("change", "#Credit_Card_Expiration1", function ( ) {
-//             var ccExpiryYear = $("#Credit_Card_Expiration2");
-//             if (ccExpiryYear.val()) {
-//                 $("#Credit_Card_Expiration2").valid();
-//             }
-
-//         })
-//         .on("keypress", function(e) { //disables Enter key for form
-//             if (e.which == 13) {
-//                 e.preventDefault();
-//                 return false;
-//             }
-//         })
-//         .on("grupsell.upsold", function(e, initialAmount, upsellAmount) {
-//             $upsellTrackingField.val('YES: '+initialAmount.toString());
-//             donation_type = 'monthly';
-//             grAnalytics.analyticsReport( 'payment/upsell' );
-//         });
-//     $firstStepForm.on("keypress", function(e) { //disables Enter key for form
-//         if (e.which == 13) {
-//             e.preventDefault();
-//             return false;
-//         }
-//     });
-
-//     function addRules(newRules) {
-//         for (var i in newRules) {
-//             var $elem = $('[name="' + i + '"]').not("a");
-//             $elem.rules('add', newRules[i]);
-//         }
-//     }
-//     function removeRules(existingRules) {
-//         for (var i in existingRules) {
-//             var $elem = $('[name="' + i + '"]').not("a");
-//             $elem.rules('remove');
-//         }
-//     }
-
-//     return {
-//         addRules: addRules,
-//         removeRules: removeRules
-//     };
-// })();      
-
 /**
  * [sendDonation description]
  * @param  {[type]} form [description]
@@ -772,8 +554,18 @@ function analyticsReport( event, title ){
     }, errorMessages.invalidMonth);
 
     $.validator.addMethod('isNowOrFutureYear', function (value, element) {
-        return value.length >= 4
-            && parseInt(value) >= nowDate.getFullYear();
+        var year = '';
+        if(value.length >= 4){
+            year = parseInt(value);
+        }
+        else if(value.length == 2){
+            year = parseInt('20'+value);
+        }
+        else{
+            return false;
+        }
+
+        return year >= nowDate.getFullYear();
     }, errorMessages.invalidDate);
 
     $.validator.addMethod('isFuture', function (value, element) {
@@ -782,6 +574,11 @@ function analyticsReport( event, title ){
             .closest("form")
             .find("#Credit_Card_Expiration1")
             .val();
+
+        //for two-digit years, assume it's in this century
+        if(value.length === 2){
+            value = '20'+value;
+        }
 
         if (parseInt(value) == nowDate.getFullYear()
             && parseInt(month) < nowDate.getMonth() + 1) {
@@ -897,7 +694,7 @@ function init_validation(){
             "City": "required",
             "Province": "required",
             "Country": "required",
-            "Email": {
+            "Email Address": {
                 required: true,
                 emailTLD: true
             },
@@ -953,7 +750,8 @@ function init_validation(){
             invalidHandler: function(e, validator) {
                 var errors = validator.errorList;
                     //$errorList = $('<ul>');
-                handleErrors(errors);
+                handleErrors(errors, validator);
+                validatorObj = validator;
                 
             },
             showErrors: function (errorMap, errorList) {
@@ -983,7 +781,7 @@ function init_validation(){
 	}
 }
 
-function handleErrors(errors) {
+function handleErrors(errors, validator) {
     var errorElements = [ ];
     $errorList = $('<ul>');
 
@@ -1045,6 +843,11 @@ function handleErrors(errors) {
             if(fieldData[i].name == "Credit Card Number")
                 fieldData.splice(i, 1);
         }
-        Raygun.send(err, {errors: validator.invalid, values: fieldData});
+        if(typeof validator !== "undefined"){
+            Raygun.send(err, {errors: validator.invalid, values: fieldData});    
+        }
+        else{
+            Raygun.send(err, {values: fieldData});
+        }
     }
 }

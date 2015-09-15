@@ -107,7 +107,6 @@ GRSteps.prototype.addSteps = function(newSteps){
   //here, we loop from the the current length of the list to the length including the new items
   
   var currentLength = this.stepIndicators.length;
-  console.log(this.options);
 
   for(
     var i = currentLength;

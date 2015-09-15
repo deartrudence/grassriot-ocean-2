@@ -154,6 +154,10 @@ ENBeautifier.prototype.buildColumns = function(options) {
     this.moveToTargets(fillers);    
 }
 
+ENBeautifier.prototype.clearFillers = function(){
+  $('.eaLeftColumnFiller, .eaRightColumnFiller').remove();
+}
+
 /**
  * Takes labels provided by Engaging Networks and sets them as the field's placeholder attribute instead
  * @return {[type]} [description]
