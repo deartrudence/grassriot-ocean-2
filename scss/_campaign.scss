@@ -26,7 +26,7 @@
 }
 
 .highlights-title--number {
-  @include dagny-heavy;
+  @include font-sansN7;
   @include lineHeight-title--number;
   color: $green;
   display: block;

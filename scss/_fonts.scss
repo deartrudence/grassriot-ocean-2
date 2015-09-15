@@ -21,6 +21,19 @@
 	font-weight: bolder;
 }
 
+@mixin font-sansN4{
+	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	font-weight: 400;
+}
+
+@mixin font-sansN7{
+	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	font-weight: 700;
+}
+
+@mixin font-primaryN7{
+	@include dagny-heavy;
+}
 
 //Sizes
 @mixin fontSize-smallest {

@@ -11,6 +11,11 @@
   
 }
 
+//override bootstrap
+label{
+  font-weight: inherit;
+}
+
 .navbar-stepcontainer {
   padding-left: 60px;
 }
