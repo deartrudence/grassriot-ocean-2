@@ -14,14 +14,18 @@
 @import 'bootstrap/responsive-utilities';
 @import 'bootstrap/buttons';
 @import 'bootstrap/close';
+@import 'bootstrap/popovers';
 
+//foundation
 @import "base";
 @import "buttons";
 @import "donation";
-@import "global";
 @import "grids";
 @import "fonts";
 @import "zindex";
+
+//styles
+@import "global";
 @import "hero";
 @import "campaign";
 @import "form";

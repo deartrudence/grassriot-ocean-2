@@ -1,1 +1,90 @@
-body{overflow-x:hidden}.clearfix:after{content:" ";display:block;height:0;clear:both}@font-face{font-family:'DagnyOT-Light';src:url("../fonts/DagnyOT-Light.otf") format("opentype");font-weight:200;font-style:normal}@font-face{font-family:'DagnyOT';src:url("../fonts/DagnyOT.otf") format("opentype");font-weight:500;font-style:normal}@font-face{font-family:'DagnyOT-Bold';src:url("../fonts/DagnyOT-Bold.otf") format("opentype");font-weight:700;font-style:normal}strong{font-weight:700}em{font-style:italic}.hero{position:relative;overflow:hidden;height:100%;background:url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/hero-bg.jpg");background-size:cover;background-position:center}.page-title{color:#fff;position:relative;z-index:30}.hero-text{color:#fff;position:relative;z-index:30}.hero-content{max-width:600px}.heroTitle{font-family:"DagnyOT-light";font-weight:200;font-style:normal;font-size:30px;line-height:1.2em;position:relative;color:#fff;padding:16% 20% 23% 16%}.heroTitle strong,.heroTitle em{font-family:"DagnyOT-Bold";font-weight:700;font-style:normal;text-transform:uppercase}.heroTitle em{color:#cc0}.heroCaption{font-size:10px;font-family:'DagnyOT';font-weight:400;font-style:normal;position:absolute;bottom:0;color:#fff;padding:10px 15px}html.csstransforms{z-index:30}.hero-image img{left:50%;top:50%;transform:translate3d(-50%, -50%, 0);-webkit-transform:translate3d(-50%, -50%, 0);-ms-transform:translate(-50%, -50%, 0)}@media screen and (max-width: 767px), screen and (max-device-width: 767px){body:after{content:"mobile"}.heroTitle{font-size:25px}}@media screen and (min-width: 768px){.heroTitle{font-size:25px}}@media screen and (min-width: 1160px){.heroTitle{font-size:25px}}@media screen and (min-width: 1300px){.heroTitle{font-size:2.4vw}}#Title_and_preambleDiv li{list-style:disc}label{font-size:0.8em !important}.en_right_wrapper{padding-left:15px}.eaQuestionCheckboxFormFieldContainer{clear:none}.eaQuestionLabel{width:15px !important}.en_wrapper{padding-bottom:30px}.boarder{border-top:10px solid;border-right:10px solid;border-left:10px solid;border-color:#78A22F;border-top-right-radius:6em;border-top-left-radius:6em}.hero{background-image:none;background-position:0 0;background-size:auto;background-repeat:no-repeat}.hero>.wrapper{padding:0}.heroTitle{font-size:25px;padding:0}.heroTitle strong{color:#cc0}.heroTitle em{color:#257488}.heroCaption{display:none}.row{width:100%;margin:0}.en_wrapper{float:none;padding:1% 0;text-align:center}.en_wrapper input[type="text"]{padding:8px;font-size:15px;font-family:"DagnyOT"}.en_left_wrapper,.en_right_wrapper{display:inline-block;width:100%;vertical-align:top;text-align:left}.en_left_wrapper{max-width:300px}.en_right_wrapper{max-width:350px}.en_right_wrapper .eaRightColumnContent,.en_left_wrapper .eaLeftColumnContent{float:none;padding-left:0;position:relative;width:100%}.en_left_wrapper .eaLeftColumnContent{display:none}.en_left_wrapper .eaLeftColumnContent+.eaLeftColumnContent,.en_right_wrapper .eaRightColumnContent{display:block}.eaLeftColumnFiller{display:none}.en_right_wrapper .eaSubmitResetButtonGroup{float:none;padding-top:0}#Accepts_Electronic_CommunicationsDiv{display:none}.eaSubmitResetButtonGroup .eaSubmitButton{padding:10px 20px;font-weight:bold;text-transform:uppercase;border:none;font-size:20px;color:#fff;border-radius:6px;border:none;background:#993333;background:-moz-linear-gradient(top, #933 0%, #b02216 50%, #991d16 100%);background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #933), color-stop(50%, #b02216), color-stop(100%, #991d16));background:-webkit-linear-gradient(top, #933 0%, #b02216 50%, #991d16 100%);background:-o-linear-gradient(top, #933 0%, #b02216 50%, #991d16 100%);background:-ms-linear-gradient(top, #933 0%, #b02216 50%, #991d16 100%);background:linear-gradient(to bottom, #993333 0%,#b02216 50%,#991d16 100%);filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#993333', endColorstr='#991d16',GradientType=0 )}@media screen and (min-width: 768px){.heroCaption{display:block}.en_left_wrapper,.en_right_wrapper{width:49%}}@media screen and (min-width: 1160px){.hero{background-position:bottom;background-size:cover}.en_wrapper{padding:17% 0%;margin-right:39%;float:right;text-align:left}heroTitle{font-size:2.0vw}}
+/*
+Error: Undefined mixin 'dagny'.
+        on line 4 of /Users/senning/Sites/ecojustice/scss/_global.scss, in `dagny'
+        from line 4 of /Users/senning/Sites/ecojustice/scss/_global.scss
+        from line 15 of /Users/senning/Sites/ecojustice/scss/subscribe-main.scss
+
+1: //@import "compass/reset";
+2: //@import "compass/typography";
+3: @import "compass/css3";
+4: //@import "bootstrap/variables";
+5: //@import "slick";
+6: 
+7: //@import 'bootstrap/mixins';
+8: //@import 'bootstrap/grid';
+9: //@import 'bootstrap/forms';
+
+Backtrace:
+/Users/senning/Sites/ecojustice/scss/_global.scss:4:in `dagny'
+/Users/senning/Sites/ecojustice/scss/_global.scss:4
+/Users/senning/Sites/ecojustice/scss/subscribe-main.scss:15
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:98:in `block in with_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:98:in `with_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block (2 levels) in visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:325:in `block in visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:88:in `block in with_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:88:in `with_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `block in with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:115:in `with_frame'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/stack.rb:79:in `with_base'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `map'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `each'
+/Library/Ruby/Gems/2.0.0/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/sass_compiler.rb:40:in `compile!'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/commands/update_project.rb:49:in `perform'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/commands/base.rb:18:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/commands/project_base.rb:19:in `execute'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/bin/compass:30:in `block in <top (required)>'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/bin/compass:44:in `call'
+/Library/Ruby/Gems/2.0.0/gems/compass-1.0.1/bin/compass:44:in `<top (required)>'
+/usr/bin/compass:23:in `load'
+/usr/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'dagny'.\A         on line 4 of /Users/senning/Sites/ecojustice/scss/_global.scss, in `dagny'\A         from line 4 of /Users/senning/Sites/ecojustice/scss/_global.scss\A         from line 15 of /Users/senning/Sites/ecojustice/scss/subscribe-main.scss\A \A 1: //@import \"compass/reset\";\A 2: //@import \"compass/typography\";\A 3: @import \"compass/css3\";\A 4: //@import \"bootstrap/variables\";\A 5: //@import \"slick\";\A 6: \A 7: //@import 'bootstrap/mixins';\A 8: //@import 'bootstrap/grid';\A 9: //@import 'bootstrap/forms';"; }

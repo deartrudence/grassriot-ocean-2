@@ -1,28 +1,5 @@
 #gr_donation {
   
-  .secure-form {
-    
-    &:hover {
-      cursor: pointer;
-    }
-    background: none;
-    border: none;
-    color: #939598;
-    font-size: 11px;
-    position: absolute;
-    top: 22px;
-    right: 20px;
-    font-style: normal;
-    z-index: 10;
-    border-radius: 4px;
-    span.lock img {
-      width: 10px;
-      position: relative;
-      top: -1px;
-      margin-right: 2px;
-    }
-  }
-
   // div.radiobutton {
   //   label {
   //     background-color: rgba(0, 0, 0, 0);
@@ -142,6 +119,30 @@
     }
   }
 }
+
+.security-text {
+  background: none;
+  border: none;
+  color: #939598;
+  font-size: 11px;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  font-style: normal;
+  z-index: 10;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.security-image {
+    width: 10px;
+    position: relative;
+    top: -1px;
+    margin-right: 2px;
+  }
 
 .popover {
   width: 400px;
@@ -265,46 +266,65 @@
   padding: 0;
 }
 
+@mixin pellet-indicator{
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 24px;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  margin: 9px 10px 10px;
+  text-align: center;
+  position: relative;
+  padding-left: 1px;
+}
+
+@mixin text-indicator{
+  padding: 5px 10px;
+  font-size: 10px;
+  line-height: 16px;
+  display: inline-block;
+  position: relative;
+}
+
 .steps-list {
   position: relative;
   ul {
     list-style: none;
     margin: 0;
-    padding: 5px 0 25px 25px;
+    padding: 13px 0 13px 30px;
     text-align: left;
     font-size: 0;
     li {
       color: $steps_colour;
       background: $steps_background;
+      background: $steps_advancedBackground;
       border: $steps_border;      
-      border-radius: 50%;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 24px;
-      display: inline-block;
-      width: 26px;
-      height: 26px;
-      margin: 9px 10px 10px;
-      text-align: center;
-      position: relative;
-      padding-left: 1px;
+      @include text-indicator;
 
       &.current,
+      &.is-complete,
       &.active {
         background: $stepsActive_background;
+        background: $stepsActive_advancedBackground;
         border: $stepsActive_border;
         color: $stepsActive_colour;
-        // &:before {
-        //  background: $stepsActive_before;
-        // }
       }
-      span {
-        color: $text-colour;
-        font-size: 14px;
+
+      &.active:after{
+        $triangle-height: 10px;
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        border-width: $triangle-height;
+        border-color: $stepsActive_arrowBackground transparent transparent;
+        border-style: solid;
         position: absolute;
-        left: -5px;
-        top: 100%;
-        width: 36px;
+        bottom: -2 * $triangle-height;
+        left: 50%;
+        margin-left: -0.5 * $triangle-height; 
       }
     }
     // .second,
@@ -743,6 +763,22 @@ select {
 
 #paypal{
   float: right;
+}
+
+////////////////
+//Popover
+////////////////
+.popover {
+  width: 400px;
+  font-size: 12px;
+}
+
+.popover-content {
+  width: 100%;
+}
+
+.popover.left {
+  width: 100%;
 }
 
 /* Extra Small Devices, Phones */

@@ -1,3 +1,16 @@
+@mixin formPadding{
+  @media screen and (max-width: $screen-xxs-max){
+    padding-left: 20px;  
+    padding-right: 20px;
+  }
+
+  @media screen and (min-width: $screen-xs-min){
+    padding-left: 2*$form-padding;  
+    padding-right: 2*$form-padding;
+  }
+  
+}
+
 .navbar-stepcontainer {
   padding-left: 60px;
 }
@@ -10,39 +23,58 @@
 .form{
   @include formContainer;
   @include z-highest;
-
 }
+
 #grdonation form {
   background: $green;
 }
 
 .form-header{
-  padding: $form-padding;
+  padding-top: $form-padding;
+  padding-bottom: $form-padding;
+  @include formPadding;
 
   h3 {
-    @include dagny-heavy;
+    @include dagny;
     color: $white;
     @include fontSize-medium;
+    @include lineHeight-hero;
     text-transform: uppercase;
   }
+  
+  strong{
+    @include dagny-heavy;
+  }
+
   em {
     text-transform: none;
+    font-style: normal;
     color: $vdark-green;
   }
 }
 
 @media screen and (max-width: $screen-xxs-max) {
-    .form {
-        &.is-active{
-        overflow-x: hidden;
-        overflow-y: auto;
-        top: 0;
-      }
+  .form {
+    background-color: $form-background;
 
-      &.is-dragging{
-        transition: none;
-      }
+    &.is-active{
+      overflow-x: hidden;
+      overflow-y: auto;
+      top: 0;
     }
+
+    &.is-dragging{
+      transition: none;
+    }
+  }
+  .form-navbar{
+    background-color: $xlight-green;
+  }
+  
+  .form-header{
+    padding-right: $form-padding + 30px; //for the close button
+  }
+
   .formOpen {
     @include dagny-heavy;
     @include fontSize-base;
@@ -65,9 +97,9 @@
     display: block;
     position: absolute;
     border: 0;
-    color: $white;
+    color: $dark-green;
     right: 20px;
-    top: 20px;
+    top: 82px; //top par + form padding
     width: auto;
     background: rgba($white,0.6);
     width: 40px;
@@ -96,6 +128,7 @@
     top: 0;
     bottom: 0;
   }
+
   .form-navbar {
     background: $form-navbar-bgimage;
     background-size: 435px 53px;
@@ -121,7 +154,7 @@
 }
 
 #grdonation .page{
-  padding: 0 $form-padding;
+  @include formPadding;
 }
 
 .eaErrorMessage{
