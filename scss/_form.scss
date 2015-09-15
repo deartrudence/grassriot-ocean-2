@@ -12,10 +12,8 @@
   @include z-highest;
 
 }
-form {
+#grdonation form {
   background: $green;
-
-
 }
 
 .form-header{
@@ -88,6 +86,11 @@ form {
   }
 }
 @media screen and (min-width: $screen-xs-min){
+  #grdonation,
+  .form form{
+    height: 100%;
+  }
+
   .affix {
     position: fixed;
     top: 0;

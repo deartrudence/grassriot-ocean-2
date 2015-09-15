@@ -86,7 +86,7 @@
   }
 }
 
-@media screen and (max-width: $screen-sm) {
+@media screen and (max-width: $screen-xs-max) {
   .footer-legal {
     float: none;
     margin-bottom: 10%;
@@ -94,6 +94,13 @@
 
   .footer-links {
     float: none;
+  }
+}
+
+@media screen and (min-width: $screen-sm){
+  .page-footer{
+    position: relative;
+    @include z-highest;
   }
 }
 

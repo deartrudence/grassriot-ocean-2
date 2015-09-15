@@ -22,7 +22,7 @@
   $border-height: 5px;
   .page-header {
     border-top: $border-height solid $dark-green;
-    height: $header-height-xs - $border-height;
+    height: $header-height-xs;
   }
   .page-title {
     margin-top: -($pagetitle-height-xs / 2);
@@ -35,21 +35,21 @@
   $border-height: 5px;
   .page-header {
     border-top: $border-height solid $dark-green;
-    height: $header-height-md - $border-height;
+    height: $header-height-md;
   }
 }
 @media screen and (min-width: $screen-md){
   $border-height: 5px;
   .page-header {
     border-top: $border-height solid $dark-green;
-    height: $header-height-md - $border-height;
+    height: $header-height-md;
   }
 }
 @media screen and (min-width: $screen-xl){
   $border-height: 5px;
   .page-header {
     border-top: $border-height solid $dark-green;
-    height: $header-height-xl - $border-height;
+    height: $header-height-xl;
   }
   .page-title {
       margin-top: -($pagetitle-height-xl / 2);
