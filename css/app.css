@@ -2084,6 +2084,9 @@ input[type="button"].btn-block {
 #gr_donation .btn-prev {
   display: none;
 }
+<<<<<<< HEAD
+>>>>>>> origin/ecojustice
+=======
 >>>>>>> origin/ecojustice
 
 .window--frame {
@@ -2227,11 +2230,14 @@ input[type="button"].btn-block {
   color: #fff;
   display: inline-block;
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin: 12px 0; }
   .go-back:hover {
     color: #939598;
     text-decoration: none; }
 =======
+=======
+>>>>>>> origin/ecojustice
   opacity: 0.8;
   background: none;
   border: none;
@@ -2561,6 +2567,16 @@ select.error {
   clear: none;
 }
 >>>>>>> origin/ecojustice
+
+#Credit_Card_ExpirationField:after {
+  display: block;
+  content: " ";
+  clear: both;
+}
+
+#paypal {
+  float: right;
+}
 
 #Credit_Card_ExpirationField:after {
   display: block;
