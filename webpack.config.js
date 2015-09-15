@@ -25,6 +25,7 @@ var config = {
   //The base JS file that requires everything
   entry: {
    app: "./js/main",
+   'subscribe-app': "./js/subscribe-main",
    vendor: []
   },
 
@@ -41,7 +42,7 @@ var config = {
   plugins: [
     new webpack.optimize.CommonsChunkPlugin(
       'vendor',
-      './js/vendors.js'
+      'vendors.js'
       ),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -55,7 +56,8 @@ var config = {
   //output naming
   output: {
     publicPath: "js/",
-    filename: "./js/app.js"
+    path: "./js",
+    filename: "[name].js"
   },
 
   //placeholder for the vendor file adder to tell Grunt to ignore external files

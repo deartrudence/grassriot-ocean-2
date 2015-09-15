@@ -545,13 +545,14 @@
 
   .btn-next {
     margin-top: 20px;
-    border-radius: 3px;
-    border: 0;
-    background-color: $light-red;
-    background-image: linear-gradient($light-red 50%, $vdark-red 100%);
-    color: $white;
-    text-transform: uppercase;
-    border-radius: 5px;
+    // border-radius: 3px;
+    // border: 0;
+    // background-color: $light-red;
+    // background-image: linear-gradient($light-red 50%, $vdark-red 100%);
+    // color: $white;
+    // text-transform: uppercase;
+    // border-radius: 5px;
+    @include cta-button-gradient--red;
 
     .glyphicon-chevron-right {
       font-size: 80%;
