@@ -67,12 +67,16 @@
   position: relative;
   background: $financial-bgimage;
   background-size: cover;
+  font-size: 0;
 }
 
-
-.financial-chart {
-
+.financial-col {
   display: inline-block;
+  width: 49%;
+  padding: 5%;
+}
+.financial-chart {
+  max-width: 100%;
   width: 384px;
   height: auto;
 }
@@ -274,8 +278,9 @@ screen and (max-device-width:$screen-xs-max) {
   }
 
   .financialText-wrapper {
-    padding: $financialText-padding-md;
+    // padding: $financialText-padding-md;
   }
+
 
   .supportersText-wrapper {
     h4 {

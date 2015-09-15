@@ -1870,7 +1870,7 @@ webpackJsonp([0],[
 	                if($form.find(options.components.amount.selector).val() != 'other')
 	                    $form.find(options.components.other.selector).val('');
 	            })
-	            .on('change','#Donation-Amount-Other', function(e){
+	            .on('change','[name="'+options.components.other.name+'"]', function(e){
 	                e.stopPropagation();
 	                console.log(this);
 
