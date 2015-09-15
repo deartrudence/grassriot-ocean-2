@@ -57,6 +57,9 @@ var $ = require('jquery');
 require("modernizr");
 require("modal");
 
+var $validErrModal = $("#validErrModal");
+var formErrors = [ ];
+
 var $submit = $(".eaSubmitButton");
 
 if(__DEV__){
@@ -163,18 +166,35 @@ function setupAction(){
       stepHandler:[
         //step 1 handler
         function(){
-          return $("#gr_donation").find("input,select,textarea").valid();
+          formErrors = [ ];
+          $("#gr_donation").find("input,select,textarea").valid();
+          if(formErrors.length) {
+            handleErrors(formErrors);
+            return false;
+          } else {
+            return true;
+          }
+           
         },
 
         //step 2 handler
         function(){
-          return $("#gr_details").find("input,select,textarea").valid();
+          formErrors = [ ];
+          $("#gr_details").find("input,select,textarea").valid();
+          if(formErrors.length) {
+            handleErrors(formErrors);
+            return false;
+          } else {
+            return true;
+          }
         },
 
         //step 3 handler
         function(){
+          formErrors = [ ];
           //let the stepper handle any errors
           if( !$("#gr_payment").find("input,select,textarea").valid() ){
+            handleErrors(formErrors);
             return false;
           } 
           //If there are no errors, send the form
@@ -216,7 +236,8 @@ function setupAction(){
             other: {
                 selector: '[name="Donation Amount Other"][type="text"]:not(a)',
                 name: 'Donation Amount Other',
-                targetName: 'Donation Amount'
+                targetName: 'Donation Amount',
+                label: 'Other amount'
             },
             processor: {
                 selector: '[name="Payment Type"]:not(a)',
@@ -921,68 +942,16 @@ function init_validation(){
                 ccExpiryDate: "Credit Card Expiration 1 "
             },
             invalidHandler: function(e, validator) {
-                var errors = validator.errorList,
-                    $errorList = $('<ul>');
-
-                // Used for customization of input names in error message.
-                var inputNamesMapper = {
-                    'Postal Code': 'Postal Code',
-                    'City': 'City / Town',
-                    'Address 1': 'Address 1',
-                    'Payment Type': 'Payment Option',
-                    'Province': 'State / Province / Region',
-                    'Credit Card Expiration1': 'Credit Card Expiration MM',
-                    'Credit Card Expiration2': 'Credit Card Expiration YYYY',
-                    'Credit Card Verification Value': 'CVV2 Code'
-                };
-
-                for (var i in errors) {
-                    var inputName = $(errors[i].element)
-                            .attr('id')
-                            .replace(/_/g, ' '),
-                        errorType = errors[i].method,
-                        errorMessage = '';
-
-                    inputName = inputNamesMapper[inputName] || inputName;
-
-                    // Checking and replacing standart error message.
-                    if (errorType === 'required'
-                        && errors[i].message === 'This field is required.') {
-                        errorMessage = inputName + ' is required.';
-                    } else {
-                        errorMessage = errors[i].message;
-                    }
-
-                    var $error = $('<li>')
-                        .html(errorMessage);
-
-                    $errorList
-                        .append($error)
-                }
-
-                $validErrModal
-                    .find('.error-list')
-                    .html($errorList);
-
-                $validErrModal
-                    .modal('show'); 
-
-
-                //console.log(validator);
-                try {
-                    throw new Error("failed validation");
-                }
-                catch (err) {
-                    var fieldData = $(this).serializeArray();
-                    for(var i = 0; i < fieldData.length; i++ ) {
-                        if(fieldData[i].name == "Credit Card Number")
-                            fieldData.splice(i, 1);
-                    }
-                    Raygun.send(err, {errors: validator.invalid, values: fieldData});
-                }
+                var errors = validator.errorList;
+                    //$errorList = $('<ul>');
+                handleErrors(errors);
+                
             },
             showErrors: function (errorMap, errorList) {
-                if (this.numberOfInvalids() > 0) {
+                if(errorList.length) {
+                    formErrors = formErrors.concat(errorList);
+                }
+                /*if (this.numberOfInvalids() > 0) {
                     $("#donor_errors").html("<div class='alert alert-danger'><i class='glyphicon glyphicon-exclamation-sign'></i> Please correct the <b>" + this.numberOfInvalids() + "</b> errors indicated below.</div>").show(300);
 
                     if (typeof errorMap['Donation Amount'] !== 'undefined') {
@@ -991,7 +960,7 @@ function init_validation(){
 
                 } else {
                     $("#donor_errors").hide(300);
-                }
+                }*/
                 this.defaultShowErrors();
             },
             errorPlacement: function () {
@@ -1003,4 +972,70 @@ function init_validation(){
 	catch(error){
 		raygunSendError(error);
 	}
+}
+
+function handleErrors(errors) {
+    var errorElements = [ ];
+    $errorList = $('<ul>');
+
+    // Used for customization of input names in error message.
+    var inputNamesMapper = {
+        'Postal Code': 'Postal Code',
+        'City': 'City / Town',
+        'Address 1': 'Address 1',
+        'Payment Type': 'Payment Option',
+        'Province': 'State / Province / Region',
+        'Credit Card Expiration1': 'Credit Card Expiration MM',
+        'Credit Card Expiration2': 'Credit Card Expiration YYYY',
+        'Credit Card Verification Value': 'CVV2 Code'
+    };
+
+    for (var i in errors) {
+        var inputName = $(errors[i].element)
+                .attr('id')
+                .replace(/_/g, ' '),
+            errorType = errors[i].method,
+            errorMessage = '';
+
+        inputName = inputNamesMapper[inputName] || inputName;
+
+        if(errorElements.indexOf(inputName) != -1) {
+            continue;
+        } else {
+            errorElements.push(inputName);
+        }
+
+        // Checking and replacing standart error message.
+        if (errorType === 'required'
+            && errors[i].message === 'This field is required.') {
+            errorMessage = inputName + ' is required.';
+        } else {
+            errorMessage = errors[i].message;
+        }
+
+        var $error = $('<li>')
+            .html(errorMessage);
+
+        $errorList
+            .append($error)
+    }
+
+    $validErrModal
+        .find('.error-list')
+        .html($errorList);
+
+    $validErrModal
+        .modal('show'); 
+
+    try {
+        throw new Error("failed validation");
+    }
+    catch (err) {
+        var fieldData = $(this).serializeArray();
+        for(var i = 0; i < fieldData.length; i++ ) {
+            if(fieldData[i].name == "Credit Card Number")
+                fieldData.splice(i, 1);
+        }
+        Raygun.send(err, {errors: validator.invalid, values: fieldData});
+    }
 }
