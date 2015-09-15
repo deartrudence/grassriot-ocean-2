@@ -58,9 +58,13 @@ var setDefaultsOrder = [
 ];
 
 function isActive(component) {
-    if(typeof component !="undefined" && typeof component.selector != "undefined")
-        return true;
-    return false;
+    if(
+      typeof component !="undefined" 
+      && typeof component.selector != "undefined"
+      ){
+      return true;  
+    }
+    else return false;
 }
 
 function exists(component) {
@@ -389,11 +393,12 @@ GRGivingSupport.prototype.setAmount = function(amt, currency) {
 
 
 GRGivingSupport.prototype.updateAskString = function() {
+
     if(isActive(options.components.amount)) {
         var index = getAskStringIndex();
         if(!askStringIndex[index])
             askStringIndex[index] = getAskString(index);
-        
+
         if(askStringIndex[index]) {
             var $container = $('.'+options.askStringContainerClass);
             if(!askStringIndex[index].buttons)
@@ -413,10 +418,17 @@ GRGivingSupport.prototype.updateAskString = function() {
 function getAskStringIndex() {
     var index = [ ];
     var currency, recurrence;
-    if(isActive(options.components.currency) && (currency = $form.find(options.components.currency.selector).val()))
+    if(isActive(options.components.currency) && (currency = $form.find(options.components.currency.selector).val())){
         index.push(currency);
+    }
+    else if(typeof options.components.currency.defaultVal !== "undefined"){
+        currency = options.components.currency.defaultVal;
+        index.push(currency);
+    }
+
     if(isActive(options.components.recurrence) && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase()))
         index.push(recurrence);
+
     if(index.length == 0)
         return 'default';
     else
