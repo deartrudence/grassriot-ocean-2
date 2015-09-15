@@ -17,16 +17,23 @@
 }
 
 .form-header{
-  padding: $form-padding;
+  padding: $form-padding 2*$form-padding;
 
   h3 {
-    @include dagny-heavy;
+    @include dagny;
     color: $white;
     @include fontSize-medium;
+    @include lineHeight-hero;
     text-transform: uppercase;
   }
+  
+  strong{
+    @include dagny-heavy;
+  }
+
   em {
     text-transform: none;
+    font-style: normal;
     color: $vdark-green;
   }
 }
@@ -43,6 +50,9 @@
         transition: none;
       }
     }
+  .form-navbar{
+    background-color: $xlight-green;
+  }
   .formOpen {
     @include dagny-heavy;
     @include fontSize-base;
@@ -96,6 +106,7 @@
     top: 0;
     bottom: 0;
   }
+
   .form-navbar {
     background: $form-navbar-bgimage;
     background-size: 435px 53px;
@@ -121,7 +132,7 @@
 }
 
 #grdonation .page{
-  padding: 0 $form-padding;
+  padding: 0 2*$form-padding;
 }
 
 .eaErrorMessage{

@@ -2371,27 +2371,133 @@ input[type="button"].btn-block {
   width: 100%;
 }
 
-#gr_donation .secure-form {
-  background: none;
-  border: none;
-  color: #939598;
-  font-size: 11px;
+.popover {
   position: absolute;
-  top: 22px;
-  right: 20px;
-  font-style: normal;
-  z-index: 10;
-  border-radius: 4px;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 1px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857;
+  text-align: left;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  white-space: normal;
 }
-#gr_donation .secure-form:hover {
-  cursor: pointer;
+.popover.top {
+  margin-top: -10px;
 }
-#gr_donation .secure-form span.lock img {
-  width: 10px;
-  position: relative;
-  top: -1px;
-  margin-right: 2px;
+.popover.right {
+  margin-left: 10px;
 }
+.popover.bottom {
+  margin-top: 10px;
+}
+.popover.left {
+  margin-left: -10px;
+}
+
+.popover-title {
+  margin: 0;
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+}
+
+.popover-content {
+  padding: 9px 14px;
+}
+
+.popover > .arrow, .popover > .arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.popover > .arrow {
+  border-width: 11px;
+}
+
+.popover > .arrow:after {
+  border-width: 10px;
+  content: "";
+}
+
+.popover.top > .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-bottom-width: 0;
+  border-top-color: #999999;
+  border-top-color: rgba(0, 0, 0, 0.25);
+  bottom: -11px;
+}
+.popover.top > .arrow:after {
+  content: " ";
+  bottom: 1px;
+  margin-left: -10px;
+  border-bottom-width: 0;
+  border-top-color: #fff;
+}
+.popover.right > .arrow {
+  top: 50%;
+  left: -11px;
+  margin-top: -11px;
+  border-left-width: 0;
+  border-right-color: #999999;
+  border-right-color: rgba(0, 0, 0, 0.25);
+}
+.popover.right > .arrow:after {
+  content: " ";
+  left: 1px;
+  bottom: -10px;
+  border-left-width: 0;
+  border-right-color: #fff;
+}
+.popover.bottom > .arrow {
+  left: 50%;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #999999;
+  border-bottom-color: rgba(0, 0, 0, 0.25);
+  top: -11px;
+}
+.popover.bottom > .arrow:after {
+  content: " ";
+  top: 1px;
+  margin-left: -10px;
+  border-top-width: 0;
+  border-bottom-color: #fff;
+}
+.popover.left > .arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999999;
+  border-left-color: rgba(0, 0, 0, 0.25);
+}
+.popover.left > .arrow:after {
+  content: " ";
+  right: 1px;
+  border-right-width: 0;
+  border-left-color: #fff;
+  bottom: -10px;
+}
+
 #gr_donation div.radiobutton {
   clear: none;
   float: left;
@@ -2464,6 +2570,29 @@ input[type="button"].btn-block {
 }
 #gr_donation div.radiobutton input[type='radio']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
+}
+
+.security-text {
+  background: none;
+  border: none;
+  color: #939598;
+  font-size: 11px;
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  font-style: normal;
+  z-index: 10;
+  border-radius: 4px;
+}
+.security-text:hover {
+  cursor: pointer;
+}
+
+.security-image {
+  width: 10px;
+  position: relative;
+  top: -1px;
+  margin-right: 2px;
 }
 
 .popover {
@@ -2577,38 +2706,39 @@ input[type="button"].btn-block {
 .steps-list ul {
   list-style: none;
   margin: 0;
-  padding: 5px 0 25px 25px;
+  padding: 13px 0 13px 30px;
   text-align: left;
   font-size: 0;
 }
 .steps-list ul li {
   color: #313131;
   background: #bcbec0;
+  background: linear-gradient(#d5d6d9 40%, #cdcdcd 60%);
   border: none;
-  border-radius: 50%;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 24px;
+  padding: 5px 10px;
+  font-size: 10px;
+  line-height: 16px;
   display: inline-block;
-  width: 26px;
-  height: 26px;
-  margin: 9px 10px 10px;
-  text-align: center;
   position: relative;
-  padding-left: 1px;
 }
-.steps-list ul li.current, .steps-list ul li.active {
+.steps-list ul li.current, .steps-list ul li.is-complete, .steps-list ul li.active {
   background: #bad80a;
+  background: linear-gradient(#bad80a 40%, #aed100 60%);
   border: none;
   color: #313131;
 }
-.steps-list ul li span {
-  color: #313131;
-  font-size: 14px;
+.steps-list ul li.active:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-width: 10px;
+  border-color: #aed100 transparent transparent;
+  border-style: solid;
   position: absolute;
-  left: -5px;
-  top: 100%;
-  width: 36px;
+  bottom: -20px;
+  left: 50%;
+  margin-left: -5px;
 }
 
 .top-wrap {
@@ -3025,6 +3155,19 @@ select.error {
   float: right;
 }
 
+.popover {
+  width: 400px;
+  font-size: 12px;
+}
+
+.popover-content {
+  width: 100%;
+}
+
+.popover.left {
+  width: 100%;
+}
+
 /* Extra Small Devices, Phones */
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {
@@ -3108,7 +3251,7 @@ em {
 
 .heroTitle {
   font-family: "DagnyOT-light";
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
   font-size: 30px;
   line-height: 1.2em;
@@ -3119,7 +3262,7 @@ em {
 .heroTitle strong,
 .heroTitle em {
   font-family: "DagnyOT-Bold";
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
 }
@@ -3220,13 +3363,21 @@ html.csstransforms {
   font-style: normal;
 }
 
+.campaignText-sub {
+  font-family: "DagnyOT-light";
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+  text-transform: uppercase;
+}
+
 .highlightsText-wrapper {
   position: relative;
 }
 
 .highlights-title--number {
   font-family: "DagnyOT-Bold";
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   line-height: 0.45em;
   color: #aed100;
@@ -3235,7 +3386,7 @@ html.csstransforms {
 
 .highlights-title--text {
   font-family: "DagnyOT-light";
-  font-weight: 200;
+  font-weight: 400;
   font-style: normal;
   font-size: 25px;
   line-height: 5.4em;
@@ -3244,7 +3395,7 @@ html.csstransforms {
 
 .highlights-subtitle {
   font-family: "DagnyOT-Bold";
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   padding-bottom: 5px;
   text-transform: uppercase;
@@ -3253,7 +3404,7 @@ html.csstransforms {
 
 .highlights-year {
   font-family: "DagnyOT-Bold";
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -3381,6 +3532,10 @@ html.csstransforms {
     font-size: 25px;
   }
 
+  .campaignText-sub {
+    font-size: 16px;
+  }
+
   .highlightsText-wrapper {
     padding: 14% 4.5% 5% 4.5%;
   }
@@ -3420,6 +3575,10 @@ html.csstransforms {
 @media screen and (min-width: 768px) and (max-width: 1159px) {
   .campaignText-main {
     font-size: 25px;
+  }
+
+  .campaigntext-sub {
+    font-size: 16px;
   }
 
   .highlightsText-wrapper {
@@ -3464,6 +3623,10 @@ html.csstransforms {
     font-size: 30px;
   }
 
+  .campaigntext-small {
+    font-size: 16px;
+  }
+
   .highlightsText-wrapper {
     padding: 10% 4.5% 5% 4.5%;
   }
@@ -3488,7 +3651,7 @@ html.csstransforms {
 
   .supportersText-wrapper h4 {
     font-family: "DagnyOT-light";
-    font-weight: 200;
+    font-weight: 400;
     font-style: normal;
     font-size: 18px;
     padding: 15px 20px;
@@ -3526,13 +3689,13 @@ html.csstransforms {
   }
   .supporters-carousel .supporter-name {
     font-family: "DagnyOT-Bold";
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     font-size: 43px;
   }
   .supporters-carousel .supporter-caption {
     font-family: "DagnyOT-light";
-    font-weight: 200;
+    font-weight: 400;
     font-style: normal;
     font-size: 25px;
     margin-bottom: 20px;
@@ -3559,6 +3722,11 @@ html.csstransforms {
   .campaignText-main {
     font-size: 2.9vw;
     line-height: 1em;
+  }
+
+  .campaignText-sub {
+    font-size: 1.45vw;
+    line-height: 1.5em;
   }
 
   .js-highlights {
@@ -3701,18 +3869,25 @@ html.csstransforms {
 }
 
 .form-header {
-  padding: 30px;
+  padding: 30px 60px;
 }
 .form-header h3 {
-  font-family: "DagnyOT-Bold";
-  font-weight: 700;
+  font-family: 'DagnyOT';
+  font-weight: 400;
   font-style: normal;
   color: #fff;
   font-size: 25px;
+  line-height: 1.2em;
   text-transform: uppercase;
+}
+.form-header strong {
+  font-family: "DagnyOT-Bold";
+  font-weight: 400;
+  font-style: normal;
 }
 .form-header em {
   text-transform: none;
+  font-style: normal;
   color: #21633d;
 }
 
@@ -3726,9 +3901,13 @@ html.csstransforms {
     transition: none;
   }
 
+  .form-navbar {
+    background-color: #d3e090;
+  }
+
   .formOpen {
     font-family: "DagnyOT-Bold";
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     font-size: 18px;
     display: block;
@@ -3745,7 +3924,7 @@ html.csstransforms {
 
   .formClose {
     font-family: "DagnyOT-Bold";
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     font-size: 25px;
     display: block;
@@ -3803,7 +3982,7 @@ html.csstransforms {
   }
 }
 #grdonation .page {
-  padding: 0 30px;
+  padding: 0 60px;
 }
 
 .eaErrorMessage {

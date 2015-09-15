@@ -14,6 +14,13 @@
   @include dagny;
 }
 
+
+.campaignText-sub{
+  @include dagny-light;
+  color: $white;
+  text-transform: uppercase;
+}
+
 .highlightsText-wrapper {
   position: relative;
 }
@@ -168,6 +175,10 @@ screen and (max-device-width:$screen-xs-max) {
     @include fontSize-medium;
   }
 
+  .campaignText-sub{
+    @include fontSize-small;
+  }
+
   .highlightsText-wrapper {
     padding: $highlightsText-padding-xs;
   }
@@ -208,6 +219,10 @@ screen and (max-device-width:$screen-xs-max) {
 @media screen and (min-width: $screen-sm) and (max-width: $screen-sm-max) {
   .campaignText-main {
     @include fontSize-medium;
+  }
+
+  .campaigntext-sub{
+    @include fontSize-small;
   }
 
   .highlightsText-wrapper {
@@ -253,6 +268,10 @@ screen and (max-device-width:$screen-xs-max) {
 @media screen and (min-width: $screen-md) {
   .campaignText-main {
     @include fontSize-large;
+  }
+
+  .campaigntext-small{
+    @include fontSize-small;
   }
 
   .highlightsText-wrapper {
@@ -359,6 +378,11 @@ screen and (max-device-width:$screen-xs-max) {
   .campaignText-main {
     @include fontSize-responsive-larger;
     @include lineHeight-campaigntext-main;
+  }
+
+  .campaignText-sub{
+    @include fontSize-responsive-halfLarger;
+    @include lineHeight-higlights;
   }
 
   .js-highlights {

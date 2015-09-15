@@ -60,6 +60,8 @@ webpackJsonp([0],[
 	var $ = __webpack_require__(1);
 	__webpack_require__(14);
 	__webpack_require__(15);
+	__webpack_require__(16);
+	__webpack_require__(17);
 
 	// var $submit = $(".eaSubmitButton");
 
@@ -163,6 +165,7 @@ webpackJsonp([0],[
 	      useCSSAnimation: false,
 	      indicatorTarget: '.steps-list ul',
 	      steps: $("#gr_donation,#gr_details,#gr_payment"),
+	      stepLabels: ['1. Donate', '2. Details', '3. Payment'],
 	      addButtons: true,
 	      target: "#window",
 	      stepHandler:[
@@ -296,6 +299,7 @@ webpackJsonp([0],[
 	    });
 
 	    $form.removeAttr('onsubmit');
+	    $('[data-toggle="popover"]').popover();
 
 			// we handle the mobile form (<620px) without use of affix
 			if (header.width() > 620) {
@@ -866,7 +870,7 @@ webpackJsonp([0],[
 
 	function init_validation(){
 		try{
-			__webpack_require__(16);
+			__webpack_require__(18);
 
 	        var validation_rules = {
 	            "First Name": "required",
@@ -1188,6 +1192,7 @@ webpackJsonp([0],[
 	    'completeClass': "is-complete",
 	    'target': '.js-formSteps',
 	    'stepHandler': [],
+	    'stepLabels': [],
 	    'currentStep': false,
 	    'startStep': 0,
 	    'useCSSAnimation': true,
@@ -1279,12 +1284,21 @@ webpackJsonp([0],[
 	  //here, we loop from the the current length of the list to the length including the new items
 	  
 	  var currentLength = this.stepIndicators.length;
+	  console.log(this.options);
+
 	  for(
 	    var i = currentLength;
 	    i < currentLength + newSteps.length;
 	    i++
 	    ){
-	    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+'">'+(i+1)+'</li>');
+
+	    //set the indicator label as either an integer or the indicated label
+	    var label = i+1;
+	    if(typeof this.options.stepLabels[i] !== 'undefined'){
+	      label = this.options.stepLabels[i];
+	    }
+
+	    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+'">'+label+'</li>');
 	  }
 
 	  //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)

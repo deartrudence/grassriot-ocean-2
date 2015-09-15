@@ -56,6 +56,8 @@ var grGiving;
 var $ = require('jquery');
 require("modernizr");
 require("modal");
+require("tooltip");
+require("popover");
 
 // var $submit = $(".eaSubmitButton");
 
@@ -159,6 +161,7 @@ function setupAction(){
       useCSSAnimation: false,
       indicatorTarget: '.steps-list ul',
       steps: $("#gr_donation,#gr_details,#gr_payment"),
+      stepLabels: ['1. Donate', '2. Details', '3. Payment'],
       addButtons: true,
       target: "#window",
       stepHandler:[
@@ -292,6 +295,7 @@ function setupAction(){
     });
 
     $form.removeAttr('onsubmit');
+    $('[data-toggle="popover"]').popover();
 
 		// we handle the mobile form (<620px) without use of affix
 		if (header.width() > 620) {

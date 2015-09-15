@@ -1,7 +1,7 @@
 //Fonts
 @mixin dagny-heavy{
 	font-family: "DagnyOT-Bold";
-	font-weight: 700;
+	font-weight: 400;
 	font-style: normal;
 }
 @mixin dagny{
@@ -11,7 +11,7 @@
 }
 @mixin dagny-light{
 	font-family: "DagnyOT-light";
-	font-weight: 200;
+	font-weight: 400;
 	font-style: normal;
 }
 @mixin footer-font {
@@ -74,6 +74,9 @@
 }
 @mixin fontSize-responsive-base {
 	font-size: 1.3vw;
+}
+@mixin fontSize-responsive-halfLarger{
+	font-size: 1.45vw;
 }
 @mixin fontSize-responsive-medium {
 	font-size: 1.8vw;
