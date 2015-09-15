@@ -181,7 +181,7 @@ GRSteps.prototype.buttonify = function(){
   this
     .append(
       '<p class="pull-right"> \
-        <button type="button" class="btn btn-danger btn-lg btn-next">NEXT <span class="glyphicon glyphicon-chevron-right"></span></button> \
+        <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
       </p>'
     )
     .append(

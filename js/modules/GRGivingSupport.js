@@ -238,7 +238,6 @@ GRGivingSupport.prototype.init = function() {
             })
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
-                console.log(this);
 
                 $(this).closest("label").siblings("input[type=radio]").val($(this).val());
             });
