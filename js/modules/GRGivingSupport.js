@@ -545,7 +545,8 @@ function getAskButtons(amounts) {
     else if(isActive(options.components.other) && !exists(options.components.other)) {
         var textInput = grHelpers.createTextComponent({
             name: options.components.other.name, 
-            id: (options.components.other.name).replace(/[^a-zA-Z0-9\-\_]/g,'-')
+            id: (options.components.other.name).replace(/[^a-zA-Z0-9\-\_]/g,'-'),
+            placeholder: (typeof options.components.other.label !== "undefined" ? options.components.other.label : '')
         });
         selectorButtons.push(
             grHelpers.createRadioComponent({
