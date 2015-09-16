@@ -2,11 +2,11 @@
 
 # Set this to the root of your project when deployed:
 http_path = (environment == :production) ? "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/" : "./" 
-css_dir = "css"
-sass_dir = "scss"
-images_dir = "img"
-javascripts_dir = "js"
-fonts_dir = "fonts"
+css_dir = (environment == :production) ? "css" : "css"
+sass_dir = (environment == :production) ? "scss" : "scss"
+images_dir = (environment == :production) ? "" : "img"
+javascripts_dir = (environment == :production) ? "" : "js"
+fonts_dir = (environment == :production) ? "" : "fonts"
 relative_assets = (environment == :production) ? false : true
 
 
