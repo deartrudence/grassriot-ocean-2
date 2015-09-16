@@ -31,4 +31,14 @@ function init() {
     $('.hero').css('background-image', 'url('+$leftColumn.children("div:first").find("img").attr("src")+')');
     $('.hero').append($leftColumn.children("div:first").find("p").addClass("heroCaption"));
     //$leftColumn.children("div:first").remove();
+    
+    console.log(window.unsubscribePage);
+    if(typeof window.unsubscribePage !== "undefined" && window.unsubscribePage == true) {
+        init_unsubscribe();
+    }
+}
+
+function init_unsubscribe() {
+    $form.find('input[name="Accepts Electronic Communications"]').not('[type="hidden"]').remove();
+    $form.find('input[type="checkbox"]').prop("checked", true);
 }
