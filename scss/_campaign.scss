@@ -95,7 +95,7 @@
   left: 2%;
   bottom: 0;
   color: $white;
-  padding: 0 0 2%;
+  padding: 0 15px 2%;
 }
 
 // slick styles below
@@ -167,9 +167,6 @@
 // for mobile
 @media screen and (max-width: $screen-xs-max),
 screen and (max-device-width:$screen-xs-max) {
-  body:after {
-    content: "mobile";
-  }
 
   .campaignText-main {
     @include fontSize-medium;

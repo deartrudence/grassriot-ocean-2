@@ -102,7 +102,7 @@ $financial-chart2: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8
 
 //Supporters
 $supportersText-height-md: 400px;
-$supportersHeader-padding-md: 15px 20px;
+$supportersHeader-padding-md: 15px 1em;
 $supporterPicture-height-md: 300px;
 $supporterProfile-padding-md: 0px 0px 60px 0px;
 
@@ -116,6 +116,7 @@ $form-width-md: 435px;
 $form-width-xl: 650px;
 $form-background: $green;
 $form-padding: 30px;
+$form-navbar-height: 52px;
 
 $steps_colour: $vdark-grey;
 $steps_background: $light-grey;
@@ -148,6 +149,11 @@ $footer-logowidth-xl: ($footer-logowidth-base * 2);
 $upsell-background: $dark-turquoise;
 $upsell-cta-colour: $turquoise;
 $upsell-colour: $white;
+$upsell-overlay-background: rgba($beige, $modal-overlay-opacity);
+$upsell-highlight-colour: $light-green;
+$upsell-action-background: $dark-red;
+$upsell-close-colour: $black;
+$upsell-close-background: $light-grey;
 
 //-----------
 //screen sizes
@@ -159,8 +165,11 @@ $screen-xl: 2100px;
 
 $screen-xxs-max: 619px;
 $screen-xs-min: 620px;
+$screen-xl-min: $screen-xl;
 $screen-xs-max: ($screen-sm - 1);
 $screen-sm-max: ($screen-md - 1);
+$screen-md-max: ($screen-lg - 1);
+$screen-lg-max: ($screen-xl - 1);
 
 //spacing
 $page-left-padding-md: 80px;

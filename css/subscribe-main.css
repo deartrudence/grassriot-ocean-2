@@ -30,12 +30,46 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+body:after {
+  display: none;
+}
 
 .clearfix:after {
   content: " ";
   display: block;
   height: 0;
   clear: both;
+}
+
+@media screen and (max-width: 619px) {
+  body:after {
+    content: "phone";
+  }
+}
+@media screen and (max-width: 767px) {
+  body:after {
+    content: "mobile";
+  }
+}
+@media screen and (max-width: 1159px) {
+  body:after {
+    content: "tablet";
+  }
+}
+@media screen and (max-width: 1299px) {
+  body:after {
+    content: "small-desktop";
+  }
+}
+@media screen and (max-width: 2099px) {
+  body:after {
+    content: "medium-desktop";
+  }
+}
+@media screen and (min-width: 2100px) {
+  body:after {
+    content: "large-desktop";
+  }
 }
 
 .hero {
@@ -264,8 +298,6 @@ label {
   background: -moz-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
   background: -webkit-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
   background: linear-gradient(to bottom, #993333 0%, #b02216 50%, #991d16 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#993333', endColorstr='#991d16',GradientType=0 );
-  /* IE6-9 */
 }
 
 @media screen and (min-width: 768px) {

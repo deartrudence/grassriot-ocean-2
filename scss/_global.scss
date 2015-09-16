@@ -1,11 +1,41 @@
-
 body {
   overflow-x:hidden;
   @include dagny;
+
+  &:after{
+    display: none;
+  }
 }
 .clearfix:after {
    content: " ";
    display: block;
    height: 0;
    clear: both;
+}
+
+
+body:after{
+  @media screen and (max-width:$screen-xxs-max){
+    content: "phone"
+  }
+
+  @media screen and (max-width:$screen-xs-max){
+    content: "mobile"
+  }
+
+  @media screen and (max-width: $screen-sm-max){
+    content: "tablet"
+  }
+
+  @media screen and (max-width: $screen-md-max){
+    content: "small-desktop";
+  }
+
+  @media screen and (max-width: $screen-lg-max){
+    content: "medium-desktop";
+  }
+
+  @media screen and (min-width: $screen-xl-min){
+    content: "large-desktop";
+  }
 }

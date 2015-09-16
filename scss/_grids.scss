@@ -6,16 +6,16 @@
 @mixin formContainer{
 
   @media screen and (max-width: $screen-xxs-max){
-      position: fixed;
-      bottom: -100%;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      // padding: 20px;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    // padding: 20px;
 
-      @include z-highest;
-      -webkit-backface-visibility: hidden; //may improve rendering of the fixed form
-      translate: transform3d(0,0,0);
+    @include z-highest;
+    -webkit-backface-visibility: hidden; //may improve rendering of the fixed form
+    translate: transform3d(0,0,0);
   }
 
   @media screen and (min-width: $screen-xs-min){

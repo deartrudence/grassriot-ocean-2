@@ -13,12 +13,13 @@ webpackJsonp([0],[
 
 	//Key:Value :: Target:Content
 	var ENBeautifierFillers = {
-		".js-hero": ".js-heroContent",
-		".js-campaign": ".js-campaignText",
-		".js-highlights": ".js-highlightsText",
-		".js-hero-image": ".js-heroImage",
-		".js-financial": ".js-financialText",
-		".js-supporters": ".js-supportersText",
+	  ".js-hero": ".js-heroContent",
+	  ".js-campaign": ".js-campaignText",
+	  ".js-highlights": ".js-highlightsText",
+	  ".js-hero-image": ".js-heroImage",
+	  ".js-financial": ".js-financialText",
+	  ".js-supporters": ".js-supportersText",
+	  ".js-formOpen-label": ".js-formOpen-labelText",
 	  '#gr_donation': [/*'#Payment_CurrencyDiv',*/ '#Recurring_PaymentDiv', '#Donation_AmountDiv'],
 	  '#gr_details': ['.js-billingDetails', '#First_NameDiv', '#Last_NameDiv', '#Email_AddressDiv', '#Address_1Div', '#CityDiv','#PostcodeDiv', '#CountryDiv', '#ProvinceField', '#Accepts_Electronic_CommunicationsDiv'],
 	  '#gr_payment': ['.js-paymentDetails', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Card_CVVDiv', '#Credit_Card_ExpirationField', '.eaSubmitButton'],
@@ -57,11 +58,14 @@ webpackJsonp([0],[
 	var GRGivingSupport = __webpack_require__(7);
 	var grGiving;
 
+	var GRAnalytics = __webpack_require__(14);
+	var grAnalytics;
+
 	var $ = __webpack_require__(1);
-	__webpack_require__(14);
-	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(17);
+	__webpack_require__(18);
+	__webpack_require__(19);
 
 	// var $submit = $(".eaSubmitButton");
 	var $validErrModal = $("#validErrModal");
@@ -100,6 +104,42 @@ webpackJsonp([0],[
 		setupAction();
 		modernize();
 		raygunCheckErrorContainer("#eaerrors", [formSelector]);
+
+	    function handleSizing(){
+	        getBrowserSize();
+	        makeAffix();
+	    }
+
+	    handleSizing();
+	    $(window).on("resize",handleSizing());
+	}
+
+	/**
+	 * [makeAffix description]
+	 * @return {[type]} [description]
+	 */
+	function makeAffix(){
+	    // we handle the mobile form without use of affix
+	    var $affixForm = $(".form");
+	    $(window).off(".affix");
+	    $affixForm
+	        .removeClass("affix affix-top affix-bottom")
+	        .removeData("bs.affix");
+	        
+	    if (windowSize !== "phone") {
+	        $affixForm
+	            // .filter(":not(.affix-top, .affix, .affix-bottom)")
+	            .affix({
+	                offset: {
+	                    top: header.outerHeight(),
+	                    bottom: footer.outerHeight()
+	                }
+	            });
+
+	        // $affixForm.affix('checkPosition');
+	    }
+	    else{
+	    }
 	}
 
 	/**
@@ -144,197 +184,211 @@ webpackJsonp([0],[
 				nextArrow: '<button type="button" class="slick-next"></button>'
 			});
 
-	    enbeautifier.addClasses({
-	        '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFormField"},
-	        '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-	        '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
-	        '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-	        '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
-	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-	        '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFormField"},
-	        '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
-	        '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
-	        '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
-	        '[name="Country"]': {classes: "inline-block-field half", targetElement: ".eaFormField"},
-	        '[name="Province"]': {classes: "inline-block-field half last", targetElement: ".eaFormField"},
-	        '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
-	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
+	        enbeautifier.addClasses({
+	            '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	            '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	            '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	            '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	            '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
+	            '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	            '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFormField"},
+	            '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
+	            '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
+	            '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
+	            '[name="Country"]': {classes: "inline-block-field half", targetElement: ".eaFormField"},
+	            '[name="Province"]': {classes: "inline-block-field half last", targetElement: ".eaFormField"},
+	            '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
+	            'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
 
-	    });
-
-		//Set up panel steps
-	    formSteps = new GRSteps({
-	      activeClass: 'active',
-	      useCSSAnimation: false,
-	      indicatorTarget: '.steps-list ul',
-	      steps: $("#gr_donation,#gr_details,#gr_payment"),
-	      stepLabels: ['1. Donate', '2. Details', '3. Payment'],
-	      addButtons: true,
-	      target: "#window",
-	      stepHandler:[
-	        //step 1 handler
-	        function(){
-	          formErrors = [ ];
-	          $("#gr_donation").find("input,select,textarea").valid();
-	          if(formErrors.length) {
-	            handleErrors(formErrors);
-	            return false;
-	          } else {
-	            return true;
-	          }
-	           
-	        },
-
-	        //step 2 handler
-	        function(){
-	          formErrors = [ ];
-	          $("#gr_details").find("input,select,textarea").valid();
-	          if(formErrors.length) {
-	            handleErrors(formErrors);
-	            return false;
-	          } else {
-	            return true;
-	          }
-	        },
-
-	        //step 3 handler
-	        function(){
-	          formErrors = [ ];
-	          //let the stepper handle any errors
-	          if( !$("#gr_payment").find("input,select,textarea").valid() ){
-	            handleErrors(formErrors);
-	            return false;
-	          } 
-	          //If there are no errors, send the form
-	          else {
-	            $form.submit();
-	          }
-
-	        }
-	      ]
-	    });
-
-	    // Setup Campaign Page
-	    grGiving = new GRGivingSupport({
-	        form: $form,
-	        components: {
-	            country: {
-	                selector: '[name="Country"]:not(a)',
-	                urlParam: 'country',
-	                defaultVal: 'CA'
-	            },
-	            region: {
-	                selector: '[name="Province"]:not(a)'
-	            },
-	            currency: {
-	                // selector: '[name="Payment Currency"]:not(a)',
-	                urlParam: 'curr',
-	                defaultVal: 'CAD'
-	            },
-	            recurrence: {
-	                selector: '[name="Recurring Payment"]:not(a)',
-	                defaultVal: ''
-	            },
-	            amount: {
-	                selector: '[name="Donation Amount"]:not(a)',
-	                urlParam: 'amt',
-	                defaultVal: '35',
-	                name: 'Donation Amount'
-	            },
-	            other: {
-	                selector: '[name="Donation Amount Other"][type="text"]:not(a)',
-	                name: 'Donation Amount Other',
-	                targetName: 'Donation Amount',
-	                label: 'Other amount'
-	            },
-	            processor: {
-	                selector: '[name="Payment Type"]:not(a)',
-	                urlParam: 'country',
-	                defaultVal: 'CA'
-	            }
-	        },
-	        activeRegionLists: ['CA'],
-	        askStringSelector: '#donation-ranges',
-	        askStringContainerClass: 'levels',
-	        recurrenceOptions: [
-	            {label: 'Single', 'value': ''},
-	            {label: 'Monthly', 'value': 'Y'}
-	        ],
-	        processorFields: { 
-	            'PayPal': {
-	                hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
-	            },
-	            'Visa': {
-	                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
-	            },
-	            'MasterCard': {
-	                show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
-	            }
-
-	        }
-
-	    });
-
-	    //change the submit button when the amount changes
-	    $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");
-	    $form.on(
-	        'change',
-	        'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
-	        function(e) {
-	            $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
 	        });
-	    $submit.attr("name", "submitter");
-	    
-	    //Remove the original donate input
-	    //TODO: integrate this in to the actual form code
-	    $('input[name="Donation Amount"][type="text"]').remove();
 
+	    	//Set up panel steps
+	        formSteps = new GRSteps({
+	          activeClass: 'active',
+	          useCSSAnimation: false,
+	          indicatorTarget: '.steps-list ul',
+	          steps: $("#gr_donation,#gr_details,#gr_payment"),
+	          stepLabels: ['1. Donate', '2. Details', '3. Payment'],
+	          addButtons: true,
+	          target: "#window",
+	          stepHandler:[
+	            //step 1 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_donation").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
+	                return true;
+	              }
+	               
+	            },
 
-	    grupsell = new GRUpsell({
-	        form: $form,
-	        recurringField: $('[name="Recurring Payment"]:not(a)'),
-	        donationAmountField: $('[name="Donation Amount"]:not(a)'),
-	        upsellContentSelector: upsellContentSelector,
-	        upsellMethod: 'function',
-	        maxGift: 500,
-	        calcFunction: function( amount ) {
+	            //step 2 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_details").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
+	                return true;
+	              }
+	            },
 
-	            var amount = Math.floor(amount);
-	            var ret = amount;
-	            var mlt = 1.2;
-	            var min_week = 1;
+	            //step 3 handler
+	            function(){
+	              formErrors = [ ];
+	              //let the stepper handle any errors
+	              if( !$("#gr_payment").find("input,select,textarea").valid() ){
+	                handleErrors(formErrors);
+	                return false;
+	              } 
+	              //If there are no errors, send the form
+	              else {
+	                $form.submit();
+	              }
+
+	            }
+	          ]
+	        });
+
+	        // Setup Campaign Page
+	        grGiving = new GRGivingSupport({
+	            form: $form,
+	            components: {
+	                country: {
+	                    selector: '[name="Country"]:not(a)',
+	                    urlParam: 'country',
+	                    defaultVal: 'CA'
+	                },
+	                region: {
+	                    selector: '[name="Province"]:not(a)'
+	                },
+	                currency: {
+	                    // selector: '[name="Payment Currency"]:not(a)',
+	                    urlParam: 'curr',
+	                    defaultVal: 'CAD'
+	                },
+	                recurrence: {
+	                    selector: '[name="Recurring Payment"]:not(a)',
+	                    defaultVal: ''
+	                },
+	                amount: {
+	                    selector: '[name="Donation Amount"]:not(a)',
+	                    urlParam: 'amt',
+	                    defaultVal: '35',
+	                    name: 'Donation Amount'
+	                },
+	                other: {
+	                    selector: '[name="Donation Amount Other"][type="text"]:not(a)',
+	                    name: 'Donation Amount Other',
+	                    targetName: 'Donation Amount',
+	                    label: 'Other amount'
+	                },
+	                processor: {
+	                    selector: '[name="Payment Type"]:not(a)',
+	                    urlParam: 'country',
+	                    defaultVal: 'CA'
+	                }
+	            },
+	            activeRegionLists: ['CA'],
+	            askStringSelector: '#donation-ranges',
+	            askStringContainerClass: 'levels',
+	            recurrenceOptions: [
+	                {label: 'Single', 'value': ''},
+	                {label: 'Monthly', 'value': 'Y'}
+	            ],
+	            processorFields: { 
+	                'PayPal': {
+	                    hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                },
+	                'Visa': {
+	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                },
+	                'MasterCard': {
+	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                }
+
+	            }
+
+	        });
+
+	        //change the submit button when the amount changes
+	        $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");
+	        $form
+	          .on(
+	            'change',
+	            'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+	            function(e) {
+	                $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
+	            })
+	          .on('submit', sendDonation);
+
+	        //add name to submit button for EN
+	        $submit.attr("name", "submitter");
 	        
-	            ret = Math.max(Math.round(Math.sqrt(amount/4.33)*mlt),min_week);        
-	            ret = Math.min(Math.round(ret*4.33),amount);        
+	        //Remove the original donate input
+	        //TODO: integrate this in to the actual form code
+	        $('input[name="Donation Amount"][type="text"]').remove();
 
-	            return ret;
-	        }
-	        /*range: [ //min is inclusive, max is not inclusive
-	            {min: 0, max: 20, amount: 6},
-	            {min: 20, max: 50, amount: 8},
-	            {min: 50, max: 80, amount: 10},
-	            {min: 80, max: 120, amount: 15},
-	            {min: 120, max: 200, amount: 25},
-	            {min: 200, max: 300, amount: 30}
-	        ]*/
-	    });
 
-	    $form.removeAttr('onsubmit');
-	    $('[data-toggle="popover"]').popover();
+	        grupsell = new GRUpsell({
+	            form: $form,
+	            recurringField: $('[name="Recurring Payment"]:not(a)'),
+	            donationAmountField: $('[name="Donation Amount"]:not(a)'),
+	            upsellContentSelector: upsellContentSelector,
+	            upsellMethod: 'function',
+	            maxGift: 500,
+	            calcFunction: function( amount ) {
 
-			// we handle the mobile form (<620px) without use of affix
-			if (header.width() > 620) {
-				$('.form').affix({
-		      offset: {
-		        top: header.outerHeight(),
-						bottom: footer.outerHeight()
-		      }
-				});
-			}
+	                var amount = Math.floor(amount);
+	                var ret = amount;
+	                var mlt = 1.2;
+	                var min_week = 1;
+	            
+	                ret = Math.max(Math.round(Math.sqrt(amount/4.33)*mlt),min_week);        
+	                ret = Math.min(Math.round(ret*4.33),amount);        
+
+	                return ret;
+	            }
+	            /*range: [ //min is inclusive, max is not inclusive
+	                {min: 0, max: 20, amount: 6},
+	                {min: 20, max: 50, amount: 8},
+	                {min: 50, max: 80, amount: 10},
+	                {min: 80, max: 120, amount: 15},
+	                {min: 120, max: 200, amount: 25},
+	                {min: 200, max: 300, amount: 30}
+	            ]*/
+	        });
+
+	        $form.removeAttr('onsubmit');
+	        $('[data-toggle="popover"]').popover();
 
 			//things to do just on load
 			setupMobileButton();
 
+	        grAnalytics = new GRAnalytics({
+	            form: $form,
+	            'events': [ 
+	                {   
+	                    'selector': '[name="Payment Currency"]:not(a)', 
+	                    'event': 'change',
+	                    'virtualPageview': 'payment/currency-changed'
+	                },
+	                {   
+	                    'selector': '[name="Donation Amount"]:not(a)', 
+	                    'event': 'change',
+	                    'virtualPageview': 'payment/donation-changed'
+	                },
+	                {   
+	                    'selector': '[name="Recurring Payment"]:not(a)', 
+	                    'event': 'change',
+	                    'virtualPageview': 'payment/recurrence-changed'
+	                }
+	            ]
+	        });
 
 		} catch(error) {
 			raygunSendError(error);
@@ -346,11 +400,13 @@ webpackJsonp([0],[
 	 * @return {[type]} [description]
 	 */
 	function setupMobileButton(){
-		var actionButton = $(formSelector).find(".button");
+		// var actionButton = $(formSelector).find(".button");
 		var mobileButton = $(formOpenButton);
 
 		//Set the open button to use the same copy as the action button
-		mobileButton.find(formOpenButtonLabel).text(actionButton.text());
+		// mobileButton.find(formOpenButtonLabel).text(actionButton.text());
+	    //***Not required, or good, for donation forms 
+
 		mobileButton
 			.on("click",function(){
 				$(formSelector).toggleClass("is-active");
@@ -458,18 +514,31 @@ webpackJsonp([0],[
 	 * @param  {[type]} form [description]
 	 * @return {[type]}      [description]
 	 */
-	function sendDonation(form) {
+	function sendDonation(e) {
 	  
 	    grAnalytics.analyticsReport( 'payment/donate-'+grGiving.getProcessor().toLowerCase() );
-	    if (payment == "PayPal") {
-	        $paypalForm = $('.js-paypal-'+donation_type+'-form');
-	        for(var i=0; i < paypal_field_map.length; i++) {
-	            $paypalForm.find('[name="'+paypal_field_map[i]['pp-'+donation_type]+'"]').val($(form).find('[name="'+paypal_field_map[i].en+'"]').not('a').val());
-	        }
-	        $paypalForm.submit();
+	    // if (payment == "PayPal") {
+	    //     $paypalForm = $('.js-paypal-'+donation_type+'-form');
+	    //     for(var i=0; i < paypal_field_map.length; i++) {
+	    //         $paypalForm.find('[name="'+paypal_field_map[i]['pp-'+donation_type]+'"]').val($(form).find('[name="'+paypal_field_map[i].en+'"]').not('a').val());
+	    //     }
+	    //     $paypalForm.submit();
+	    // }
+	    // else
+	    //     form.submit();
+	    e.preventDefault();
+
+	    //detach ourselves
+	    $form.off("submit");
+
+	    //if not a recurring donation, launch the upsell.
+	    if(!grGiving.isRecurring()){
+	        grupsell.launch();
 	    }
-	    else
-	        form.submit();
+	    //if it is a recurring donation already, submit
+	    else{
+	        $form.submit();
+	    }
 	    return false;
 	}
 
@@ -687,7 +756,7 @@ webpackJsonp([0],[
 
 	function init_validation(){
 		try{
-			__webpack_require__(18);
+			__webpack_require__(20);
 
 	        var validation_rules = {
 	            "First Name": "required",
@@ -856,6 +925,18 @@ webpackJsonp([0],[
 	    }
 	}
 
+	/**
+	 * [getBrowserSize description]
+	 * @return {[type]} [description]
+	 */
+	function getBrowserSize(){
+	    if(window.getComputedStyle){
+	        windowSize = window
+	            .getComputedStyle(document.body,':after')
+	            .getPropertyValue('content');
+	        windowSize = windowSize.replace(/["']/g,'');
+	    }           
+	}
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
@@ -2610,6 +2691,258 @@ webpackJsonp([0],[
 
 	    ]
 	};
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {/**
+	 * GRAnalytics module.
+	 * 
+	 * Uses for interaction whith Google Analytics service.
+	 * 
+	 * @requires jQuery
+	 */
+	var requiredOptions = [ ];
+
+	var defaults = {
+	    'prefix': '/virtual',
+	    'events': [ ],
+	    'trackingPixels': { }
+	};
+
+	var protect = {
+	    'prependPath': [ ]
+	};
+
+	var options;
+
+	/**
+	 * GRAnalytics constructor
+	 * @param Object opt options with the following properties:
+	 *        string prefix prepended to the beginning of pageview sent to GA
+	 *        array events a collection of objects defining events that should trigger a GA pageview
+	 *        object trackingPixels a collection of tracking pixels to register
+	 */
+	function GRAnalytics(opt) {
+	    if(this.hasRequiredOptions(opt)) {
+	        options = $.extend(true, {}, defaults, opt, protect);
+	        this.init();
+	    }
+	    else
+	        throw new Error("[GRAnalytics] Missing required options: " + this.missingOptions.join(', '));
+	}
+
+	/**
+	 * GRAnalytics hasRequiredOptions
+	 * @param {Object} options list of options
+	 *
+	 * @return {bool} whether all necessary fields are provided in the options
+	 */
+	GRAnalytics.prototype.hasRequiredOptions = function(options, req) {
+	    var missingOptions = [ ];
+	    if(typeof req == "undefined") req = requiredOptions;
+	    for(var i = 0; i < req.length; i++) {
+	        if(typeof options[req[i]] === 'undefined') {
+	            missingOptions.push(req[i]);
+	        }
+	    }
+	    if(missingOptions.length) {
+	        this.missingOptions = missingOptions;
+	        return false;
+	    }
+	    return true;
+	}
+
+	GRAnalytics.prototype.init = function() {
+	    setPrefix(options.prefix);
+	    
+	    //activate all event-based analytics reports passed on initialization
+	    if(options.events.length)
+	        this.setEventListeners(options.events);
+
+	    //register all tracking pixels passed on initialization
+	    for(var pixel in options.trackingPixels) {
+	        if(options.trackingPixels[pixel] instanceof Object && this.hasRequiredOptions(options.trackingPixels[pixel], pixelRequiredOptions)) {
+	            this.registerPixel(pixel, options.trackingPixels[pixel].id.toString(), options.trackingPixels[pixel].showPixel);
+	        }
+	        else if(['string','number'].indexOf((typeof options.trackingPixels[pixel]).toLowerCase()) != -1) {
+	            this.registerPixel(pixel, options.trackingPixels[pixel].toString());
+	        }
+	    }
+	}
+
+	function setPrefix(prefix) {
+	    if(options.prefix.charAt(0) != "/")
+	        options.prefix = "/" + options.prefix;
+	    options.prependPath[0] = options.prefix;
+	}
+	    
+	/**
+	 * Initialization of pageviews which will be 
+	 * automatically executed when some event triggered.
+	 * 
+	 * @param (Array) views An array of options. 
+	 * Each options should contain parameters:
+	 * - 'event': event name (click, scroll, etc.)
+	 * - 'selector': Element's selector.
+	 * - 'virtualPageview': Name of virtualPageview.
+	 * @public
+	 */
+	GRAnalytics.prototype.setEventListeners = function( views ) {
+	    if(typeof options.form == 'undefined') 
+	        throw new Error('"form" option needs to be specified to use the auto-event-listener functionality');
+	    var analyticsReport = this.analyticsReport;
+	    for(var i=0; i<views.length; i++) {
+	        var view = views[i];
+
+	        options.form.on(view['event'], view.selector, function(e) { analyticsReport( view.virtualPageview ); });
+	    }
+	}
+
+	GRAnalytics.prototype.addToPrefix = function( toAdd ) {
+	    options.prepend.push(toAdd.toString());
+	}
+
+	/**
+	 * Makes call to Google Analytics (virtual eComerce reort).
+	 * 
+	 * @param Object transactionData
+	 * @param Object itemData
+	 * @public
+	 */
+	GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
+	    // Universal GA
+	    if (typeof ga !== 'undefined') {
+	        ga('ecommerce:addTransaction', transactionData);
+
+	        for (var i = 0; i < itemData.length; i++) {
+	            ga('ecommerce:addItem', itemData[i]);
+	        }
+
+	        ga('ecommerce:send');
+	    }
+
+	    // Traditional GA
+	    if (typeof _gaq !== 'undefined') {
+	        _gaq.push(['_set', 'currencyCode', transactionData.currency]);
+	        _gaq.push(['_trackPageview']);
+	        _gaq.push(['_addTrans',
+	            transactionData.id, // transaction ID - required
+	            transactionData.affiliation, // affiliation or store name
+	            transactionData.revenue, // total - required
+	            '0', // tax
+	            '0'
+	        ]);
+
+	        for (var i = 0; i < itemData.length; i++) {
+	            _gaq.push(['_addItem',
+	                itemData[i].id, // transaction ID - required
+	                itemData[i].sku, // SKU/code - required
+	                itemData[i].name, // product name
+	                itemData[i].category, // category or variation
+	                itemData[i].price, // unit price - required
+	                itemData[i].quantity // quantity - required
+	            ]);
+	        }
+
+	        // Submits transaction to the Analytics servers.
+	        _gaq.push(['_trackTrans']); 
+	    }
+	}
+
+	/**
+	 * Makes call to Google Analytics (virtual page view).
+	 * 
+	 * @param String viewName Page view name.
+	 * @param String title Event title.
+	 * @public
+	 */
+	GRAnalytics.prototype.analyticsReport = function(viewName, title) {
+	    var fullPageViewName = options.prependPath.join('/') + '/' + viewName,
+	        data = {};
+	        
+	    data['page'] = fullPageViewName;
+
+	    if ( title ){
+	        data['title'] = title;
+	    }
+
+	    // Universal GA
+	    if( typeof ga !== 'undefined' ) {
+	        
+	        ga( 'send', 'pageview', data );
+	    }
+
+	    // Traditional GA
+	    if( typeof _gaq !== 'undefined' ){
+	        _gaq.push( ['_trackPageview', fullPageViewName ] ); 
+	    }
+	}
+
+	var pixelRequiredOptions = [
+	    'id',
+	    'showPixel'
+	];
+
+	var supportedPixels = [
+	    'facebook'
+	];
+
+	var registeredPixels = { };
+
+	var firePixelQueue = { };
+
+
+	GRAnalytics.prototype.registerPixel = function(name, id, callback) {
+	    if(typeof callback == "function") {
+	        registeredPixels[name] = {id: id, showPixel: callback};
+	    }
+	    else if(supportedPixels.indexOf(name.toLowerCase()) != -1 ) {
+	        registeredPixels[name] = 'pending';
+	        __webpack_require__.e/* nsure */(1, function(require) {
+	            var pixel = !(function webpackMissingModule() { var e = new Error("Cannot find module \".\""); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+	            registeredPixels[name] = {id: id,
+	                showPixel: pixel.showPixel};
+	            if(typeof firePixelQueue[name] != "undefined") {
+	                for(var i=0; i<firePixelQueue[name].length; i++) {
+	                    console.log(firePixelQueue[name][i]);
+	                    registeredPixels[name].showPixel(registeredPixels[name].id, firePixelQueue[name][i]);
+	                }
+	            }
+	        });
+	    }
+	}
+
+
+	GRAnalytics.prototype.fireTrackingPixels = function(pixels, data) {
+	    var toProcess = pixels;
+	    if(pixels == null) {
+	        toProcess = registeredPixels.keys;
+	    }
+	    else if(typeof toProcess == "string") {
+	        toProcess = [toProcess];
+	    }
+
+	    for(var i=0; i<toProcess.length; i++) {
+	        if(typeof registeredPixels[toProcess[i]] == "undefined") continue;
+	        else if(typeof registeredPixels[toProcess[i]] == "string") {
+	            if(typeof firePixelQueue[toProcess[i]] == "undefined")
+	                firePixelQueue[toProcess[i]] = [ ];
+	            firePixelQueue[toProcess[i]].push(data);
+	            console.log(firePixelQueue);
+	        }
+	        else if(typeof registeredPixels[toProcess[i]].showPixel == "function") {
+	            registeredPixels[toProcess[i]].showPixel(registeredPixels[toProcess[i]].id, data);
+	        }
+	    }
+	}
+
+	/**
+	 * Public interface.
+	 */
+	module.exports = GRAnalytics;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }
 ]);

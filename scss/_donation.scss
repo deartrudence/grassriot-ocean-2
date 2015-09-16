@@ -95,9 +95,15 @@
   }
 
   .eaFormElementLabel{
+    margin-top: 1.5em;
     @include fontSize-base;
     @include dagny-light;
+    display: block !important;
     color: $brown;
+  }
+
+  .eaMandatoryFieldMarker{
+    display: none;
   }
 }
 

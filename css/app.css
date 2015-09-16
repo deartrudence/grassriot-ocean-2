@@ -2631,11 +2631,16 @@ em {
   box-shadow: 0 0 0 3px #999;
 }
 #gr_donation .eaFormElementLabel {
+  margin-top: 1.5em;
   font-size: 18px;
   font-family: "DagnyOT-light";
   font-weight: 400;
   font-style: normal;
+  display: block !important;
   color: #663f47;
+}
+#gr_donation .eaMandatoryFieldMarker {
+  display: none;
 }
 
 .security-text {
@@ -3034,8 +3039,6 @@ em {
   background: -moz-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
   background: -webkit-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
   background: linear-gradient(to bottom, #993333 0%, #b02216 50%, #991d16 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#993333', endColorstr='#991d16',GradientType=0 );
-  /* IE6-9 */
 }
 #grdonation .btn-next .glyphicon-chevron-right {
   font-size: 80%;
@@ -3235,15 +3238,28 @@ select.error {
     position: absolute;
   }
 }
+#upsell-modal {
+  background: rgba(214, 204, 175, 0.65);
+}
+
+.upsell-container {
+  display: table-row;
+}
+
 .upsell-modal--body {
   background: #257488;
   border-radius: 0;
   border: 0;
   padding: 0;
+  top: 100px;
 }
 
-.upsell-container {
-  display: table-row;
+html.csstransforms .modal.fade .upsell-modal--body {
+  top: 50%;
+  -moz-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 .upsell-panel {
@@ -3255,18 +3271,34 @@ select.error {
 .upsell-cta {
   color: #0cacbd;
   text-transform: uppercase;
-  width: 55.5555%;
+  width: 40%;
   font-size: 3.6em;
   line-height: .8;
 }
 
 .upsell-title {
   font-size: 1em;
+  color: #fff;
+  font-family: "DagnyOT-Bold";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2em;
+}
+
+.upsell-title--highlight {
+  color: #bad80a;
 }
 
 .upsell-copy {
-  width: 44.4445%;
+  width: 60%;
   position: relative;
+  color: #fff;
+  font-size: 18px;
+}
+
+.upsell-copy--cta {
+  color: #bad80a;
+  margin-top: 1.2em;
 }
 
 .upsell-subtitle {
@@ -3275,26 +3307,31 @@ select.error {
 
 .upsell-recommendation {
   color: #fff;
-  padding: 5px;
   border-radius: 5px;
   overflow: hidden;
-  font-size: 1.2em;
-  margin-top: 2em;
+  margin-top: .6em;
+  box-shadow: 1px 1px 2px #000;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .upsell-recommendation--amount {
   background: #fff;
   color: #000;
-  padding: 10px;
+  padding: 0 10px;
   border-radius: 3px;
   margin-right: 10px;
   float: left;
-  min-height: 1em;
-  font-size: 1.5em;
-  line-height: 1;
-  font-family: "DagnyOT-Bold";
-  font-weight: 400;
+  min-height: 2.4em;
+  line-height: 2.4em;
+}
+.upsell-recommendation--amount em {
   font-style: normal;
+}
+
+.upsell-recommendation--label {
+  background: #0cacbd;
+  padding: 10px 4em;
+  line-height: 1.2em;
 }
 
 button.upsell-modal--close {
@@ -3306,8 +3343,12 @@ button.upsell-modal--close {
   margin-top: -19px;
   margin-right: -19px;
   opacity: 1;
-  text-indent: -99px;
   overflow: hidden;
+  border-radius: 50%;
+  background: #bcbec0;
+  color: #000;
+  font-size: 30px;
+  text-shadow: none;
 }
 button.upsell-modal--close:hover {
   opacity: 0.8;
@@ -3318,8 +3359,23 @@ button.upsell-modal--close:active {
 
 .upsell-confirm {
   display: block;
-  background: #257488;
-  margin: 0 -5px -5px;
+  background: #cc3300;
+  margin-top: -2px;
+  font-family: 'DagnyOT';
+  font-weight: 400;
+  font-style: normal;
+  padding: 0.5em 4em;
+  text-transform: uppercase;
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5MzMzMyIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjYjAyMjE2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTkxZDE2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #993333), color-stop(50%, #b02216), color-stop(100%, #991d16));
+  background: -moz-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
+  background: -webkit-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
+  background: linear-gradient(to bottom, #993333 0%, #b02216 50%, #991d16 100%);
   text-align: center;
   padding: 1em;
   color: #fff;
@@ -3336,16 +3392,27 @@ button.upsell-modal--close:active {
 }
 
 .upsell-deny {
-  margin: 3em -10px 1em;
+  margin: 1.5em 0 1em;
 }
 .upsell-deny a {
-  color: #000;
+  color: #d6ccaf;
   text-decoration: underline;
 }
 
 @media screen and (min-width: 768px) {
   .upsell-modal--body {
     width: 720px;
+  }
+}
+@media screen and (min-width: 1160px) {
+  .upsell-modal--body {
+    width: 800px;
+  }
+}
+@media screen and (max-width: 1159px) {
+  .upsell-recommendation {
+    max-width: 350px;
+    margin: 1.5em auto;
   }
 }
 @media screen and (max-width: 767px) {
@@ -3378,6 +3445,11 @@ button.upsell-modal--close:active {
 
   .upsell-subtitle {
     margin-top: 0;
+  }
+
+  .upsell-modal--body {
+    max-height: 100%;
+    overflow-y: auto;
   }
 
   button.upsell-modal--close {
@@ -3446,12 +3518,46 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+body:after {
+  display: none;
+}
 
 .clearfix:after {
   content: " ";
   display: block;
   height: 0;
   clear: both;
+}
+
+@media screen and (max-width: 619px) {
+  body:after {
+    content: "phone";
+  }
+}
+@media screen and (max-width: 767px) {
+  body:after {
+    content: "mobile";
+  }
+}
+@media screen and (max-width: 1159px) {
+  body:after {
+    content: "tablet";
+  }
+}
+@media screen and (max-width: 1299px) {
+  body:after {
+    content: "small-desktop";
+  }
+}
+@media screen and (max-width: 2099px) {
+  body:after {
+    content: "medium-desktop";
+  }
+}
+@media screen and (min-width: 2100px) {
+  body:after {
+    content: "large-desktop";
+  }
 }
 
 .hero {
@@ -3691,7 +3797,7 @@ html.csstransforms {
   left: 2%;
   bottom: 0;
   color: #fff;
-  padding: 0 0 2%;
+  padding: 0 15px 2%;
 }
 
 .slick-slider {
@@ -3753,10 +3859,6 @@ html.csstransforms {
 }
 
 @media screen and (max-width: 767px), screen and (max-device-width: 767px) {
-  body:after {
-    content: "mobile";
-  }
-
   .campaignText-main {
     font-size: 25px;
   }
@@ -3883,7 +3985,7 @@ html.csstransforms {
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
-    padding: 15px 20px;
+    padding: 15px 1em;
     text-transform: uppercase;
     background-color: #0cacbd;
     color: #fff;
@@ -4104,7 +4206,7 @@ label {
 
 .form-header {
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 0;
 }
 @media screen and (max-width: 619px) {
   .form-header {
@@ -4113,6 +4215,12 @@ label {
   }
 }
 @media screen and (min-width: 620px) {
+  .form-header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
   .form-header {
     padding-left: 60px;
     padding-right: 60px;
@@ -4172,8 +4280,18 @@ label {
     text-transform: uppercase;
     color: white;
     height: 3em;
-    background: #aed100;
     border: 0;
+    padding: 0 10px;
+    background: none;
+  }
+
+  .js-formOpen-label {
+    display: block;
+    line-height: 3em;
+    background: #aed100;
+    border-radius: 5px 5px 0 0;
+    box-shadow: -1px -1px 2px #000;
+    box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.3);
   }
 
   .formClose {
@@ -4206,6 +4324,14 @@ label {
   #grdonation,
   .form form {
     height: 100%;
+  }
+
+  #grdonation {
+    padding-top: 52px;
+  }
+
+  #grdonation form {
+    margin-top: -52px;
   }
 
   .affix {
@@ -4242,6 +4368,12 @@ label {
   }
 }
 @media screen and (min-width: 620px) {
+  #grdonation .page {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media screen and (min-width: 992px) {
   #grdonation .page {
     padding-left: 60px;
     padding-right: 60px;

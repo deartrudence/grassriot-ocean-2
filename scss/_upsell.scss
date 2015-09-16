@@ -1,12 +1,25 @@
+#upsell-modal{
+  @include background($upsell-overlay-background);
+}
+
+.upsell-container{
+  display: table-row;
+}
+
+//position
 .upsell-modal--body{
   background: $upsell-background;
   border-radius: 0;
   border: 0;
   padding: 0;
+  top: 100px;
 }
 
-.upsell-container{
-  display: table-row;
+html.csstransforms{
+  .modal.fade .upsell-modal--body{
+    top: 50%;
+    @include transform(translate(0, -50%));
+  }
 }
 
 .upsell-panel{
@@ -18,30 +31,32 @@
 .upsell-cta{
   color: $upsell-cta-colour;
   text-transform: uppercase;
-  width: 55.5555%;
+  width: 40%;
   font-size: 3.6em;
   line-height: .8;
 }
+
 .upsell-title{
   font-size: 1em; //override bootstrap's sizes
+  color: $upsell-colour;
+  @include dagny-heavy;
+  @include lineHeight-hero;
+}
+
+.upsell-title--highlight{
+  color: $upsell-highlight-colour;
 }
 
 .upsell-copy{
-  width: 44.4445%;
-  // background: url($body_background);
+  width: 60%;
   position: relative;
+  color: $white;
+  @include fontSize-base;
+}
 
-  // &:after{
-  //   content:"";
-  //   display: block;
-  //   height:54px;
-  //   width: 25px;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 0;
-  //   margin-top: -27px;
-  //   // background: url($upsell-arrow);
-  // }
+.upsell-copy--cta{
+  color: $upsell-highlight-colour;
+  margin-top: 1.2em;
 }
 
 .upsell-subtitle{
@@ -52,28 +67,35 @@ $upsell-recommendation-padding: 5px;
 .upsell-recommendation{
   // background: lighten($colour_purple, 20%);
   color: $upsell-colour;
-  padding: $upsell-recommendation-padding;
+  // padding: $upsell-recommendation-padding;
   border-radius: $upsell-recommendation-padding;
   overflow: hidden;
-  font-size: 1.2em;
-  margin-top: 2em;
+  // font-size: 1.2em;
+  margin-top: .6em;
+  box-shadow: 1px 1px 2px $black;
+  box-shadow: 1px 1px 2px rgba($black, 0.3);
 }
 
 .upsell-recommendation--amount{
   background: $white;
   color: $black;
-  padding: 10px;
+  padding: 0 10px;
   border-radius: 3px;
   margin-right: 10px;
   float: left;
-  min-height: 1em;
-  font-size: 1.5em;
-  line-height: 1;
-  @include font-primaryN7;
+  min-height: 2.4em;
+  // font-size: 1.5em;
+  line-height: 2.4em;
+
+  em{
+    font-style: normal;
+  }
 }
 
 .upsell-recommendation--label{
-  
+  @include background($upsell-cta-colour);
+  padding: 10px 4em;
+  @include lineHeight-hero;
 }
 
 button.upsell-modal--close{
@@ -86,8 +108,13 @@ button.upsell-modal--close{
   margin-top: -19px;
   margin-right: -19px;
   opacity: 1;
-  text-indent: -99px;
+  // text-indent: -99px;
   overflow: hidden;
+  border-radius: 50%;
+  @include background($upsell-close-background);
+  color: $upsell-close-colour;
+  font-size: 30px;
+  text-shadow: none;
 
   &:hover{
     opacity: 0.8;
@@ -100,8 +127,10 @@ button.upsell-modal--close{
 
 .upsell-confirm{
   display: block;
-  background: $upsell-background;
-  margin:0 -1*$upsell-recommendation-padding -1*$upsell-recommendation-padding;
+  background: $upsell-action-background;
+  // margin:0 -1*$upsell-recommendation-padding -1*$upsell-recommendation-padding;
+  margin-top: -2px;
+  @include cta-button-gradient--red;
   text-align: center;
   padding: 1em;
   color: $upsell-colour;
@@ -117,10 +146,10 @@ button.upsell-modal--close{
 }
 
 .upsell-deny{
-  margin: 3em -10px 1em;
+  margin: 1.5em 0 1em;
 
   a{
-    color: $black;
+    color: $beige;
     text-decoration: underline;
   }
 }
@@ -128,6 +157,19 @@ button.upsell-modal--close{
 @media screen and (min-width: $screen-sm){
   .upsell-modal--body{
     width: 720px;
+  }
+}
+
+@media screen and (min-width: $screen-md){
+  .upsell-modal--body{
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: $screen-sm-max){
+  .upsell-recommendation{
+    max-width: 350px;
+    margin: 1.5em auto;
   }
 }
 
@@ -162,6 +204,11 @@ button.upsell-modal--close{
 
   .upsell-subtitle{
     margin-top: 0;
+  }
+
+  .upsell-modal--body{
+    max-height: 100%;
+    overflow-y: auto;
   }
 
   button.upsell-modal--close{
