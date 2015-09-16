@@ -559,6 +559,10 @@
     display: none;
   }
 
+  #Credit_Card_ExpirationDiv {
+    clear: both;
+  }
+
   label[for="Donation-Amountother"] {
     background-image: none;
     input[type="text"] {

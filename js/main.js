@@ -16,11 +16,12 @@ var ENBeautifierFillers = {
   ".js-hero-image": ".js-heroImage",
   ".js-financial": ".js-financialText",
   ".js-supporters": ".js-supportersText",
-  ".js-formOpen-label": ".js-formOpen-labelText",
+  ".js-formOpen-label": ".js-formOpen-labelText" };
+var ENBeautifierFillersContainers = {
   '#gr_donation': [/*'#Payment_CurrencyDiv',*/ '#Recurring_PaymentDiv', '#Donation_AmountDiv'],
-  '#gr_details': ['.js-billingDetails', '#First_NameDiv', '#Last_NameDiv', '#Email_AddressDiv', '#Address_1Div', '#CityDiv','#PostcodeDiv', '#CountryDiv', '#ProvinceField', '#Accepts_Electronic_CommunicationsDiv'],
-  '#gr_payment': ['.js-paymentDetails', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Card_CVVDiv', '#Credit_Card_ExpirationField', '.eaSubmitButton'],
-}
+  '#gr_details': ['.js-billingDetails', '#First_NameDiv', '#Last_NameDiv', '#Email_AddressDiv', '#Address_1Div', '#CityDiv','#PostcodeDiv', '#CountryDiv', '#ProvinceDiv', '#Accepts_Electronic_CommunicationsDiv'],
+  '#gr_payment': ['.js-paymentDetails', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Card_CVVDiv', '#Credit_Card_ExpirationDiv'],
+};
 
 var ENBeautifier = require('./modules/ENBeautifier');
 var enbeautifier;
@@ -207,6 +208,7 @@ function setupPage(){
         //move text to the right places
         enbeautifier.moveToTargets(ENBeautifierFillers);
         enbeautifier.clearFillers();
+        enbeautifier.moveToTargets(ENBeautifierFillersContainers,true);
 
         grAnalytics = new GRAnalytics({
             form: $form,
@@ -254,22 +256,25 @@ function setupAction(){
 		});
 
         enbeautifier.addClasses({
-            '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaFormField"},
-            '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-            '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
-            '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-            '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaFormField"},
+            '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
+            '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
+            '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
+            '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
+            '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
             '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-            '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaFormField"},
-            '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaFormField"},
+            '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaRightColumnContent"},
+            '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaRightColumnContent"},
             '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
             '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
-            '[name="Country"]': {classes: "inline-block-field half", targetElement: ".eaFormField"},
-            '[name="Province"]': {classes: "inline-block-field half last", targetElement: ".eaFormSelect"},
+            '[name="Country"]': {classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
+            '[name="Province"]': {classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
             '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
             'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
-
         });
+
+        $("#Credit_Card_ExpirationDiv").html( function(i,h) { 
+                    return h.replace(/&nbsp;/g,'');
+                });
 
     	//Set up panel steps
         formSteps = new GRSteps({
