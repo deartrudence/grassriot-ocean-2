@@ -95,6 +95,8 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
+  setupPage();
+
 
     $(formSelector).on('formError.enbeautifier', function(e, errors) {
         $error_modal
@@ -103,9 +105,18 @@ function init() {
         
         $error_modal.modal( {
             show:true
-        } );       
+        } );
+
+        //handle errors
+        try { throw new Error("EA Processing Error");}
+        catch(error) {
+            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+            graygunner.sendError(error, {
+                data: errors,
+                forms: [ENFormSelector]
+            });
+        }
     });
-    setupPage();
 
   if(
     $('input[name="ea.submitted.page"]').length 
@@ -126,16 +137,6 @@ function init() {
 
 	modernize();
     
-    //handle errors
-    try { throw new Error("EA Processing Error");}
-    catch(error) {
-        grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-        graygunner.sendError(error, {
-            data: errors,
-            forms: [ENFormSelector]
-        });
-    }    
-
     function handleSizing(){
         getBrowserSize();
         makeAffix();
@@ -143,6 +144,7 @@ function init() {
 
     handleSizing();
     $(window).on("resize",handleSizing());
+
 }
 
 /**
@@ -893,7 +895,7 @@ function init_validation(){
                 required: true,
                 emailTLD: true
             },
-            "Postal Code": {
+            "Postcode": {
                 required: true
             },
             "Payment Type": "required",

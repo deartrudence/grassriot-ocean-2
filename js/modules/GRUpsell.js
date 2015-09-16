@@ -120,7 +120,7 @@ function getUpsellFromRange(amt) {
 
 function handleDecline(e) {
     e.preventDefault();
-    options.recurringField.val('');
+    options.recurringField.val('N');
     options.form.trigger("grupsell.declined", [initialAmount, upsellAmount]);
     $(options.upsellContentSelector).modal('hide');
 

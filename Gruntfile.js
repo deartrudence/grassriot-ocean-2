@@ -25,7 +25,8 @@ module.exports = function(grunt) {
         prod: {
           options: {
             config: 'config.rb',
-            environment: 'production'
+            environment: 'production',
+            force: true
           }
         },
         dev: {
