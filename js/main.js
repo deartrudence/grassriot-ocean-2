@@ -95,16 +95,15 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
-    $(formSelector).on('error.enbeautifier', function(errors) {
-        /*console.log('error');
+    $(formSelector).on('error.enbeautifier', function(e, errors) {
         $error_modal
             .find(".modalErrorMessage")
-            .html(errors.join("<br>"));
+            .html(errors);
         
         $error_modal.modal( {
             show:true
         } );
-
+        
         try { throw new Error("EA Processing Error");}
         catch(error) {
             analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
@@ -112,7 +111,7 @@ function init() {
                 data: errors,
                 forms: [ENFormSelector]
             });
-        }*/
+        }
     });
 
 
