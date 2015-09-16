@@ -324,13 +324,14 @@
 	 */
 	ENBeautifier.prototype.checkErrors = function(){
 	    var $errors = $(this.errorContainer);
+
 	    if( $errors.length > 0 && $.trim($errors.text()) != ""){
 	        var errors = $errors.map(function(){
 	            return $(this).contents();
 	        });
 
 	        //Let the rest of the page know there's an error
-	        $(this.targetForm).trigger("error.enbeautifier", errors);
+	        $(this.targetForm).trigger("formError.enbeautifier", errors);
 
 	        //store it for later use
 	        this.reportedErrors = this.reportedErrors.concat(errors);

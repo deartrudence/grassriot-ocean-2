@@ -99,26 +99,17 @@ webpackJsonp([0],[
 	 * @return {[type]} [description]
 	 */
 	function init() {
-	    $(formSelector).on('error.enbeautifier', function(e, errors) {
+
+	    $(formSelector).on('formError.enbeautifier', function(e, errors) {
 	        $error_modal
 	            .find(".modalErrorMessage")
 	            .html(errors);
 	        
 	        $error_modal.modal( {
 	            show:true
-	        } );
-	        
-	        try { throw new Error("EA Processing Error");}
-	        catch(error) {
-	            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-	            graygunner.sendError(error, {
-	                data: errors,
-	                forms: [ENFormSelector]
-	            });
-	        }
+	        } );       
 	    });
-
-	  setupPage();
+	    setupPage();
 
 	  if(
 	    $('input[name="ea.submitted.page"]').length 
@@ -139,8 +130,16 @@ webpackJsonp([0],[
 
 		modernize();
 	    
-		//raygunCheckErrorContainer("#eaerrors", [formSelector]);
-	    
+	    //handle errors
+	    try { throw new Error("EA Processing Error");}
+	    catch(error) {
+	        grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+	        graygunner.sendError(error, {
+	            data: errors,
+	            forms: [ENFormSelector]
+	        });
+	    }    
+
 	    function handleSizing(){
 	        getBrowserSize();
 	        makeAffix();
@@ -194,6 +193,7 @@ webpackJsonp([0],[
 	 */
 	function setupPage(){
 	    try{
+
 	        //form beauitfication
 	        enbeautifier = new ENBeautifier({
 	            form: $(formSelector),
@@ -213,23 +213,24 @@ webpackJsonp([0],[
 	        grAnalytics = new GRAnalytics({
 	            form: $form,
 	            'events': [ 
-	                {   
-	                    'selector': '[name="Payment Currency"]:not(a)', 
-	                    'event': 'change',
-	                    'virtualPageview': 'payment/currency-changed'
-	                },
-	                {   
-	                    'selector': '[name="Donation Amount"]:not(a)', 
-	                    'event': 'change',
-	                    'virtualPageview': 'payment/donation-changed'
-	                }//,
+	                // {   
+	                //     'selector': '[name="Payment Currency"]:not(a)', 
+	                //     'event': 'change',
+	                //     'virtualPageview': 'payment/currency-changed'
+	                // },
+	                // {   
+	                //     'selector': '[name="Donation Amount"]:not(a)', 
+	                //     'event': 'change',
+	                //     'virtualPageview': 'payment/donation-changed'
+	                // },
 	                // {   
 	                //     'selector': '[name="Recurring Payment"]:not(a)', 
 	                //     'event': 'change',
 	                //     'virtualPageview': 'payment/recurrence-changed'
 	                // }
 	            ]
-	        });        
+	        });
+
 	    }
 	    catch(error){
 	        graygunner.sendError(error);
