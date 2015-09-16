@@ -116,6 +116,8 @@ GRAnalytics.prototype.addToPrefix = function( toAdd ) {
 GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
     // Universal GA
     if (typeof ga !== 'undefined') {
+        ga('require','ecommerce');
+        
         ga('ecommerce:addTransaction', transactionData);
 
         for (var i = 0; i < itemData.length; i++) {
