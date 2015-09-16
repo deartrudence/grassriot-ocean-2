@@ -85,6 +85,9 @@
 @mixin fontSize-responsive-small {
 	font-size: 0.9vw;
 }
+@mixin fontSize-responsive-smallish{
+	font-size: 1.2vw;
+}
 @mixin fontSize-responsive-base {
 	font-size: 1.3vw;
 }

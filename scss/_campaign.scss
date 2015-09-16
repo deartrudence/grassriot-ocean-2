@@ -340,17 +340,21 @@ screen and (max-device-width:$screen-xs-max) {
 
     .supporter-name {
       @include dagny-heavy;
-      @include fontSize-larger;
+      @include fontSize-small;
+      @include lineHeight-higlights;
     }
 
     .supporter-caption {
       @include dagny-light;
-      @include fontSize-medium;
-      margin-bottom: 20px;
+      @include fontSize-small;
+      @include lineHeight-higlights;
+      // margin-bottom: 20px;
     }
 
     .supporter-description {
-      @include fontSize-base;
+      @include fontSize-larger;
+      @include dagny-light;
+      margin-bottom: 1em;
     }
   }
 
@@ -361,15 +365,15 @@ screen and (max-device-width:$screen-xs-max) {
 
   .supporters-carousel {
     .supporter-name {
-      @include fontSize-responsive-larger;
+      @include fontSize-responsive-smallish;
     }
 
     .supporter-caption {
-      @include fontSize-responsive-medium;
+      @include fontSize-responsive-smallish;
     }
 
     .supporter-description {
-      @include fontSize-responsive-base;
+      @include fontSize-responsive-medium;
     }
   }
   .financialText-wrapper {
