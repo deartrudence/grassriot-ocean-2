@@ -95,27 +95,19 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
-    $(formSelector).on('error.enbeautifier', function(e, errors) {
+
+    $(formSelector).on('formError.enbeautifier', function(e, errors) {
         $error_modal
             .find(".modalErrorMessage")
             .html(errors);
         
         $error_modal.modal( {
             show:true
-        } );
-        
-        try { throw new Error("EA Processing Error");}
-        catch(error) {
-            analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-            graygunner.sendError(error, {
-                data: errors,
-                forms: [ENFormSelector]
-            });
-        }
+        } );       
     });
+    setupPage();
 
-
-   if(
+  if(
     $('input[name="ea.submitted.page"]').length 
     && parseInt($('input[name="ea.submitted.page"]').val()) > 1
     && (
@@ -134,8 +126,16 @@ function init() {
 
 	modernize();
     
-	//raygunCheckErrorContainer("#eaerrors", [formSelector]);
-    
+    //handle errors
+    try { throw new Error("EA Processing Error");}
+    catch(error) {
+        grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+        graygunner.sendError(error, {
+            data: errors,
+            forms: [ENFormSelector]
+        });
+    }    
+
     function handleSizing(){
         getBrowserSize();
         makeAffix();
@@ -184,27 +184,63 @@ function modernize(){
 }
 
 /**
+ * [setupPage description]
+ * @return {[type]} [description]
+ */
+function setupPage(){
+    try{
+
+        //form beauitfication
+        enbeautifier = new ENBeautifier({
+            form: $(formSelector),
+            fieldWrapperClass: formFieldWrapperClass,
+            fieldContainerClass: formFieldContainerClass
+        });
+        enbeautifier.tagFieldContainers();
+        enbeautifier.usePlaceholders();
+        enbeautifier.buildColumns({
+            leftColumn:  leftColumnSelector
+        });
+
+        //move text to the right places
+        enbeautifier.moveToTargets(ENBeautifierFillers);
+        enbeautifier.clearFillers();
+
+        grAnalytics = new GRAnalytics({
+            form: $form,
+            'events': [ 
+                // {   
+                //     'selector': '[name="Payment Currency"]:not(a)', 
+                //     'event': 'change',
+                //     'virtualPageview': 'payment/currency-changed'
+                // },
+                // {   
+                //     'selector': '[name="Donation Amount"]:not(a)', 
+                //     'event': 'change',
+                //     'virtualPageview': 'payment/donation-changed'
+                // },
+                // {   
+                //     'selector': '[name="Recurring Payment"]:not(a)', 
+                //     'event': 'change',
+                //     'virtualPageview': 'payment/recurrence-changed'
+                // }
+            ]
+        });
+
+    }
+    catch(error){
+        graygunner.sendError(error);
+    }
+}
+
+/**
  * [setupAction description]
  * @return {[type]} [description]
  */
 function setupAction(){
 
 	try{
-		//form beauitfication
-		enbeautifier = new ENBeautifier({
-			form: $(formSelector),
-			fieldWrapperClass: formFieldWrapperClass,
-			fieldContainerClass: formFieldContainerClass
-		});
-		enbeautifier.tagFieldContainers();
-		enbeautifier.usePlaceholders();
-		enbeautifier.buildColumns({
-			leftColumn:  leftColumnSelector
-		});
 
-		//move text to the right places
-		enbeautifier.moveToTargets(ENBeautifierFillers);
-        enbeautifier.clearFillers();
 
 		// slick
 		$('.supporters-carousel').slick({
@@ -251,6 +287,7 @@ function setupAction(){
                 handleErrors(formErrors);
                 return false;
               } else {
+                grAnalytics.analyticsReport( 'payment/page1-complete' );
                 return true;
               }
                
@@ -264,6 +301,7 @@ function setupAction(){
                 handleErrors(formErrors);
                 return false;
               } else {
+                grAnalytics.analyticsReport( 'payment/page2-complete' );
                 return true;
               }
             },
@@ -383,6 +421,12 @@ function setupAction(){
                 ret = Math.min(Math.round(ret*4.33),amount);        
 
                 return ret;
+            },
+            declineCallback: function(){
+                grAnalytics.analyticsReport( 'payment/upsell-declined' );
+            },
+            upsellCallback: function(){
+                grAnalytics.analyticsReport( 'payment/upsell-accepted' );
             }
             /*range: [ //min is inclusive, max is not inclusive
                 {min: 0, max: 20, amount: 6},
@@ -400,27 +444,6 @@ function setupAction(){
 		//things to do just on load
 		setupMobileButton();
 
-        grAnalytics = new GRAnalytics({
-            form: $form,
-            'events': [ 
-                {   
-                    'selector': '[name="Payment Currency"]:not(a)', 
-                    'event': 'change',
-                    'virtualPageview': 'payment/currency-changed'
-                },
-                {   
-                    'selector': '[name="Donation Amount"]:not(a)', 
-                    'event': 'change',
-                    'virtualPageview': 'payment/donation-changed'
-                },
-                {   
-                    'selector': '[name="Recurring Payment"]:not(a)', 
-                    'event': 'change',
-                    'virtualPageview': 'payment/recurrence-changed'
-                }
-            ]
-        });
-
 	} catch(error) {
 		graygunner.sendError(error);
 	}
@@ -432,34 +455,41 @@ function setupAction(){
  */
 function setupTY(){
     try{
-        //get the social links module
-        var GRSocialize = require('./modules/GRSocialize');
-        
         //add the post-action class
         $("body").addClass("post-action");
-        
+        $transaction_details = $(".js-transactionDetails");
+
+
+        var transactionData = {
+            'id': $transaction_details.find(".transaction_id").text(),
+            'affiliation': 'Engaging Networks', // any extra piece of information can be stored here
+            'revenue': $transaction_details.find(".donation_amount").text().replace(/[^0-9\.]/g, ""),
+            'currency': $transaction_details.find(".currency").text().toUpperCase()
+        };
+
+        var campaignData = {
+            'id': $transaction_details.find(".transaction_id").text(),
+            'name': $transaction_details.find(".campaign_name").text(),
+            'sku': $transaction_details.find(".campaign_id").text(),
+            'category': ($transaction_details.find(".frequency").length ? ($transaction_details.find(".frequency").text() === "ACTIVE" ? "Monthly" : "Single") : "Single"),
+            'price': $transaction_details.find(".donation_amount").text().replace(/[^0-9\.]/g, ""),
+            'quantity': 1
+        };
+
+        var itemData = [campaignData];
+
+        //get the social links module
+        var GRSocialize = require('./modules/GRSocialize');
+                
         var section = getURLParameter('s');
-        analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
-        $('.main').addClass('post-action');
-        $('.js-form').removeClass('js-form').removeClass('form-wrap').addClass('content-wrap');
+        grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
+        //Ecommerce not installed on client's analytics
+        // grAnalytics.eCommerceReport(transactionData, itemData);
+
 
         $(leftColumnSelector).find('header .logo').after($(leftColumnSelector).children("div:first").children());
         $(leftColumnSelector).children("div:first").remove();    
-        //form beauitfication
-        enbeautifier = new ENBeautifier({
-            form: $(formSelector),
-            fieldWrapperClass: formFieldWrapperClass,
-            fieldContainerClass: formFieldContainerClass
-        });
-        enbeautifier.tagFieldContainers();
-        enbeautifier.usePlaceholders();
-        enbeautifier.buildColumns({
-            leftColumn:  leftColumnSelector
-        });
 
-        //move text to the right places
-        enbeautifier.moveToTargets(ENBeautifierFillers);
-        enbeautifier.clearFillers();
 
         //init social links
         socialbuttons = new GRSocialize({
@@ -633,36 +663,36 @@ function processForm() {
 
 // Tracking
 //---------------------------------------
-function analyticsReport( event, title ){
-	try {
-		//UA
-		if( typeof ga !== 'undefined' ){
+// function analyticsReport( event, title ){
+// 	try {
+// 		//UA
+// 		if( typeof ga !== 'undefined' ){
 
-		    var data = {};
-		    if( event ){
-		      data[ 'page'] = '/virtual/'+event;
-		    }
-		    if( title ){
-		      data[ 'title' ] = title;
-		    }
+// 		    var data = {};
+// 		    if( event ){
+// 		      data[ 'page'] = '/virtual/'+event;
+// 		    }
+// 		    if( title ){
+// 		      data[ 'title' ] = title;
+// 		    }
 
-		    ga( 'send', 'pageview', data );
+// 		    ga( 'send', 'pageview', data );
 
-		}
+// 		}
 
-		//Traditional GA
-		if( typeof _gaq !== 'undefined' ){
-		    _gaq.push(['_trackPageview', '/virtual/'+event]);
-		}
+// 		//Traditional GA
+// 		if( typeof _gaq !== 'undefined' ){
+// 		    _gaq.push(['_trackPageview', '/virtual/'+event]);
+// 		}
 
-		//Tag Manager
-		if( typeof _gaq !== 'undefined' ){
+// 		//Tag Manager
+// 		if( typeof _gaq !== 'undefined' ){
 
-		}
-	} catch (error) {
-		graygunner.sendError(error);
-	}
-}
+// 		}
+// 	} catch (error) {
+// 		graygunner.sendError(error);
+// 	}
+// }
 
 // Initiating of custom validation methods.
 (function(){
@@ -821,7 +851,7 @@ function raygunCheckErrorContainer(selector, formSelectors) {
 
             try { throw new Error("EA Processing Error");}
 			catch(error) {
-				analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+				grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
 				var data = {};
 				data[selector] = $(selector).text();
 				raygunSendError(error, {
@@ -997,7 +1027,9 @@ function handleErrors(errors, validator) {
         .html($errorList);
 
     $validErrModal
-        .modal('show'); 
+        .modal('show');
+
+    grAnalytics.analyticsReport("payment/validation-error");
 
     try {
         throw new Error("failed validation");
