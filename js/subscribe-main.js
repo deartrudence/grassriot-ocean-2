@@ -32,7 +32,6 @@ function init() {
     $('.hero').append($leftColumn.children("div:first").find("p").addClass("heroCaption"));
     //$leftColumn.children("div:first").remove();
     
-    console.log(window.unsubscribePage);
     if(typeof window.unsubscribePage !== "undefined" && window.unsubscribePage == true) {
         init_unsubscribe();
     }
