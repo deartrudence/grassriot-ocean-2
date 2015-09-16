@@ -78,7 +78,6 @@ GRUpsell.prototype.launch = function() {
     $(options.upsellContentSelector).find("."+options.donationAmountClass).text(initialAmount.toLocaleString());
     $(options.upsellContentSelector).find("."+options.upsellAmountClass).text(upsellAmount.toLocaleString());
 
-    console.log('launching upsell');
     $(options.upsellContentSelector).modal({
         backdrop: 'static',
         keyboard: false
@@ -124,6 +123,11 @@ function handleDecline(e) {
     options.recurringField.val('');
     options.form.trigger("grupsell.declined", [initialAmount, upsellAmount]);
     $(options.upsellContentSelector).modal('hide');
+
+    if(typeof options.declineCallback === "function"){
+        options.declineCallback.call(this);
+    }
+
     options.form.submit();
 }
 
@@ -133,6 +137,11 @@ function handleUpsell(e) {
     options.donationAmountField.val(upsellAmount);
     options.form.trigger("grupsell.upsold", [initialAmount, upsellAmount]);
     $(options.upsellContentSelector).modal('hide');
+
+    if(typeof options.upsellCallback === "function"){
+        options.upsellCallback.call(this);
+    }
+
     options.form.submit();
 }
 
