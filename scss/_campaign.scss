@@ -62,6 +62,7 @@
   @include calltoaction-button--red;
   margin-left: 30px;
   margin-right: 50px;
+  margin-bottom: 5px;
   color: $white;
   text-align: center;
   left: 0;
@@ -92,10 +93,10 @@
   @include fontSize-smallest;
   @include dagny;
   position: absolute;
-  left: 2%;
+  left: 3%;
   bottom: 0;
   color: $white;
-  padding: 0 15px 2%;
+  padding: 0 0 2%;
 }
 
 // slick styles below
@@ -119,7 +120,7 @@
   background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/slickLeft.png");
   background-size: 17px 27px;
   height: 27px;
-  margin-left: 10px;
+  margin-left: 30px;
   width: 17px;
   border: 0;
 }
@@ -131,7 +132,7 @@
   top: calc(50% - 28px);
   height: 28px;
   border: 0;
-  margin-right: 30px;
+  margin-right: 50px;
   width: 17px;
 }
 
@@ -321,16 +322,18 @@ screen and (max-device-width:$screen-xs-max) {
     color: $white;
     padding: $supporterProfile-padding-md;
 
-    .supporter-picture-glen {
-      background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/glen.png");
-      background-size: contain;
-      padding: 20%;
+    .supporter-picture {
+      width: 35%;
       float: left;
+
+      img{
+        width: 100%;
+      }
     }
 
     .supporter-bio {
       float: left;
-      width: 45%;
+      width: 65%;
       padding: 5%;
     }
 

@@ -40,12 +40,17 @@
   em {
     color: $mlight-green;
   }
+
+  @media screen and (max-width: $screen-sm-max){
+    padding: $heroTitle-padding-sm;
+  }
 }
 
 .heroCaption {
   @include fontSize-smallest;
   @include dagny;
   position: absolute;
+  left: 3%;
   bottom: 0;
   color: $white;
   padding: $hero-captionpadding-md;
