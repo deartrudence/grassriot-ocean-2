@@ -4562,5 +4562,100 @@ label {
     height: auto;
   }
 }
+.row {
+  margin: 0;
+}
+
+.col-form {
+  display: none;
+}
+
+.campaign {
+  padding: 0;
+  margin: 0;
+}
+
+.hero {
+  padding: 80px 40px;
+}
+@media screen and (min-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 80px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .hero {
+    padding: 10% 25%;
+    min-height: 500px;
+    min-height: 80vh;
+  }
+}
+
+.heroTitle {
+  padding: 0 0 .5em;
+}
+
+.post-action p {
+  font-size: 18px;
+  color: #fff;
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+.social-block {
+  margin-top: 2em;
+  margin-bottom: 8em;
+}
+.social-block .caption {
+  font: 38px/38px "AlternateGothic";
+  padding: 0 15px 30px 49px;
+  position: relative;
+}
+.social-block .social {
+  padding: 20px 34px 30px 34px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 0;
+}
+.social-block .social li {
+  display: inline-block;
+  margin-right: 25px;
+}
+.social-block .social li:last-child {
+  margin-right: 0 !important;
+}
+.social-block .social li a {
+  display: block;
+  width: 44px;
+  height: 45px;
+}
+.social-block .social .facebook {
+  background: url('../img/fb-2015.png?v=1433429099000') no-repeat center;
+}
+.social-block .social .twitter {
+  background: url('../img/tw-2015.png?v=1433429100000') no-repeat center;
+}
+.social-block .social .googleplus {
+  background: url('../img/gp.png?v=1433428755000') no-repeat center;
+}
+.social-block .social .linkedin {
+  background: url('../img/in.png?v=1433428756000') no-repeat center;
+}
+.social-block .social .email {
+  width: 51px;
+  background: url('../img/ml.png?v=1433428757000') no-repeat center;
+}
+
+.social-title {
+  color: #fff;
+  font-size: 25px;
+  text-align: center;
+}
+@media screen and (min-width: 1300px) {
+  .social-title {
+    font-size: 1.8vw;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */
