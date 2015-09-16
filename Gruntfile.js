@@ -28,6 +28,12 @@ module.exports = function(grunt) {
             environment: 'production'
           }
         },
+        dev: {
+          options: {
+            config: 'config.rb',
+            environment: 'development'
+          }
+        },
         server: {
           options: {
             debugInfo: false
@@ -88,7 +94,7 @@ module.exports = function(grunt) {
         },
         css: {
           files: '**/*.scss',
-          tasks: ['compass']
+          tasks: ['compass:dev']
         }
       }
     });

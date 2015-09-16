@@ -90,14 +90,23 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
-	//determine if we're on a thank you page
-	if($('input[name="ea.submitted.page"]').length && $('input[name="ea.submitted.page"]').val() === "2"){
+   if(
+    $('input[name="ea.submitted.page"]').length 
+    && parseInt($('input[name="ea.submitted.page"]').val()) > 1
+    && (
+        typeof isPostaction === "undefined"
+        || isPostaction === true
+        )
+    ){
 		ty = true;
 		setupTY();
 	}
+    else{
+        setupAction();        
+    }
 
 	//do everything else
-	setupAction();
+
 	modernize();
 	raygunCheckErrorContainer("#eaerrors", [formSelector]);
 
@@ -121,7 +130,7 @@ function makeAffix(){
     $affixForm
         .removeClass("affix affix-top affix-bottom")
         .removeData("bs.affix");
-        
+
     if (windowSize !== "phone") {
         $affixForm
             // .filter(":not(.affix-top, .affix, .affix-bottom)")
@@ -389,6 +398,58 @@ function setupAction(){
 	} catch(error) {
 		raygunSendError(error);
 	}
+}
+
+/**
+ * [setupTY description]
+ * @return {[type]} [description]
+ */
+function setupTY(){
+    try{
+        //get the social links module
+        var GRSocialize = require('./modules/GRSocialize');
+        
+        //add the post-action class
+        $("body").addClass("post-action");
+        
+        var section = getURLParameter('s');
+        analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
+        $('.main').addClass('post-action');
+        $('.js-form').removeClass('js-form').removeClass('form-wrap').addClass('content-wrap');
+
+        $(leftColumnSelector).find('header .logo').after($(leftColumnSelector).children("div:first").children());
+        $(leftColumnSelector).children("div:first").remove();    
+        //form beauitfication
+        enbeautifier = new ENBeautifier({
+            form: $(formSelector),
+            fieldWrapperClass: formFieldWrapperClass,
+            fieldContainerClass: formFieldContainerClass
+        });
+        enbeautifier.tagFieldContainers();
+        enbeautifier.usePlaceholders();
+        enbeautifier.buildColumns({
+            leftColumn:  leftColumnSelector
+        });
+
+        //move text to the right places
+        enbeautifier.moveToTargets(ENBeautifierFillers);
+        enbeautifier.clearFillers();
+
+        //init social links
+        socialbuttons = new GRSocialize({
+            target: ".social",
+            newWindow: true,
+            facebook: {
+                appID: 1003792509664879
+            },
+            onOpen: function(network, spec, target){
+                //do tracking stuff
+            }
+        });
+    } catch(error) {
+        raygunSendError(error);
+    }
+
 }
 
 /**

@@ -138,6 +138,8 @@ GRSocialize.prototype.handleClick = function(e){
     network,
     networkClass;
 
+  e.preventDefault();
+
   //loop through each registered network and assemble the right spec
   $.each(self.networks,function(className,networkSpec){
     if($this.hasClass(className)){
@@ -147,6 +149,8 @@ GRSocialize.prototype.handleClick = function(e){
       return false;
     }
   });
+
+  console.log(self.options.newWindow);
 
   //quit if the specified network wasn't actually defined
   if(
