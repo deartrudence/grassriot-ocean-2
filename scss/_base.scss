@@ -1,7 +1,7 @@
 $xlight-green: #d3e090;
 $vlight-green: #c8e03b;
 $mlight-green: #cccc00;
-$light-green: #bad80a;
+$light-green: #b9d709;
 
 $green: #aed100;
 $brand-green: #709202;
@@ -19,6 +19,7 @@ $brown: #663f47;
 
 $vdark-red: #861214;
 $dark-red: #cc3300;
+$medium-red: #b32317;
 $light-red: #a0151b;
 
 $white: #fff;
@@ -68,7 +69,8 @@ $pagetitle-img-xl: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8
 $hero-background: $white;
 $hero-bgimage: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/hero-bg.jpg');
 $hero-bgimage-xl: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/herobgimage-xl.jpg');
-$heroTitle-padding: 16% 20% 23% 16%;
+$heroTitle-padding: 16% 25% 23% 25%;
+$heroTitle-padding-sm: 16% 20% 23%;
 $hero-captionpadding-md: 10px 15px;
 
 //Campaign
@@ -102,7 +104,7 @@ $financial-chart2: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8
 
 //Supporters
 $supportersText-height-md: 400px;
-$supportersHeader-padding-md: 15px 1em;
+$supportersHeader-padding-md: 15px 3%;
 $supporterPicture-height-md: 300px;
 $supporterProfile-padding-md: 0px 0px 60px 0px;
 
