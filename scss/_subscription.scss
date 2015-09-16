@@ -67,6 +67,7 @@ border-top-left-radius: 6em;
 
 .en_wrapper {
     float: none;
+    color: #fff;
     padding: 1% 0;
     text-align: center;
     input[type="text"] {
@@ -81,6 +82,9 @@ border-top-left-radius: 6em;
     width: 100%;
     vertical-align: top;
     text-align: left;
+    p {
+        margin-top: 0;
+    }
     
 }
 
@@ -99,8 +103,10 @@ border-top-left-radius: 6em;
     width: 100%;
 }
 
-.en_left_wrapper .eaLeftColumnContent {
-    display: none;
+.en_left_wrapper {
+    .eaLeftColumnContent {
+        display: none;
+    }
 }
 
 .en_left_wrapper .eaLeftColumnContent + .eaLeftColumnContent, .en_right_wrapper .eaRightColumnContent {
@@ -111,10 +117,28 @@ border-top-left-radius: 6em;
     display: none;
 }
 
-.en_right_wrapper .eaSubmitResetButtonGroup {
-    float: none;
-    padding-top: 0;
+.en_right_wrapper {
+    .eaSubmitResetButtonGroup {
+        float: none;
+        padding-top: 0;
+    }
+    .eaFormField {
+        float: none;
+        padding-right: 0; 
+        input[type="text"] {
+            width: 100% !important;
+        }
+    }
+    .eaErrorMessage {
+        background-color: #993333;
+        color: #fff;
+        font-size: .6em;
+        overflow: hidden;
+        width: 100%;
+        padding: 0 4px;
+    }
 }
+
 
 #Accepts_Electronic_CommunicationsDiv {
     display: none;

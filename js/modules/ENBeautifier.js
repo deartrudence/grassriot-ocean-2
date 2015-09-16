@@ -195,7 +195,7 @@ ENBeautifier.prototype.checkErrors = function(){
         var errors = $errors.map(function(){
             return $(this).contents();
         });
-
+        console.log('has errors');
         //Let the rest of the page know there's an error
         $(this.targetForm).trigger("error.enbeautifier", errors);
 

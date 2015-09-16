@@ -414,6 +414,7 @@
     opacity: 0.8;
     background: none;
     border: none;
+    margin-top: 30px;
 
     &:hover {
       opacity: 1;
@@ -544,6 +545,18 @@
 }
 
 #grdonation {
+  .eaQuestionLabel {
+    display: none;
+  }
+
+  label[for="Donation-Amountother"] {
+    background-image: none;
+    input[type="text"] {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+
   #setcurrency {
     width: 100%;
     margin: 0;
@@ -637,6 +650,9 @@
       border-radius: 5px;
       box-shadow: none;
       @include fontSize-base;
+      padding: 8px;
+      font-size: 15px;
+      font-family: "DagnyOT";
     }
   }
 }

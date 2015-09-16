@@ -1,6 +1,7 @@
 //Beautifier configuration
 var leftColumnSelector = '.js-left-column';
 var formSelector = '.form';
+var ENFormSelector = '.eaform';
 var formFieldContainerClass = 'js-form-field-container';
 var formFieldContainerIgnoreClass = 'is-selfHandling';
 var formFieldWrapperClass = 'js-form-field-wrapper';
@@ -57,6 +58,9 @@ var grGiving;
 var GRAnalytics = require('./modules/GRAnalytics');
 var grAnalytics;
 
+var GRaygun = require('./modules/GRaygun');
+var graygunner = new GRaygun();
+
 var $ = require('jquery');
 require("modernizr");
 require("modal");
@@ -64,6 +68,7 @@ require("tooltip");
 require("popover");
 
 // var $submit = $(".eaSubmitButton");
+var $error_modal = $("#error-modal");
 var $validErrModal = $("#validErrModal");
 var formErrors = [ ];
 var validatorObj;
@@ -79,7 +84,7 @@ $(document).ready(function() {
 		init_validation();
 	}
 	catch(error) {
-		raygunSendError(error);
+		graygunner.sendError(error);
 	}
 
 
@@ -90,6 +95,27 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
+    $(formSelector).on('error.enbeautifier', function(errors) {
+        /*console.log('error');
+        $error_modal
+            .find(".modalErrorMessage")
+            .html(errors.join("<br>"));
+        
+        $error_modal.modal( {
+            show:true
+        } );
+
+        try { throw new Error("EA Processing Error");}
+        catch(error) {
+            analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+            graygunner.sendError(error, {
+                data: errors,
+                forms: [ENFormSelector]
+            });
+        }*/
+    });
+
+
    if(
     $('input[name="ea.submitted.page"]').length 
     && parseInt($('input[name="ea.submitted.page"]').val()) > 1
@@ -108,8 +134,9 @@ function init() {
 	//do everything else
 
 	modernize();
-	raygunCheckErrorContainer("#eaerrors", [formSelector]);
-
+    
+	//raygunCheckErrorContainer("#eaerrors", [formSelector]);
+    
     function handleSizing(){
         getBrowserSize();
         makeAffix();
@@ -201,7 +228,7 @@ function setupAction(){
             '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
             '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
             '[name="Country"]': {classes: "inline-block-field half", targetElement: ".eaFormField"},
-            '[name="Province"]': {classes: "inline-block-field half last", targetElement: ".eaFormField"},
+            '[name="Province"]': {classes: "inline-block-field half last", targetElement: ".eaFormSelect"},
             '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
             'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
 
@@ -298,7 +325,7 @@ function setupAction(){
                     defaultVal: 'CA'
                 }
             },
-            activeRegionLists: ['CA'],
+            //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
             recurrenceOptions: [
@@ -396,7 +423,7 @@ function setupAction(){
         });
 
 	} catch(error) {
-		raygunSendError(error);
+		graygunner.sendError(error);
 	}
 }
 
@@ -447,7 +474,7 @@ function setupTY(){
             }
         });
     } catch(error) {
-        raygunSendError(error);
+        graygunner.sendError(error);
     }
 
 }
@@ -552,7 +579,7 @@ function addStringerStat(response){
 			$(counterTextSelector).html(useText);
 		}
 		catch(error) {
-			raygunSendError(error, {
+			graygunner.sendError(error, {
 				data: {
 					response: response,
 					range: limit
@@ -633,8 +660,8 @@ function analyticsReport( event, title ){
 		if( typeof _gaq !== 'undefined' ){
 
 		}
-	} catch (err) {
-		raygunSendError(err);
+	} catch (error) {
+		graygunner.sendError(error);
 	}
 }
 
@@ -783,8 +810,17 @@ function raygunSendError(error, options) {
 
 function raygunCheckErrorContainer(selector, formSelectors) {
 	try {
-		if($(selector).length) {
-			try { throw new Error("EA Processing Error");}
+		if($(selector).length && $.trim($(selector).text()) != '') {
+			$error_modal
+                .find(".modalErrorMessage")
+                .html($('#eaerrors')
+                .html());
+            
+            $error_modal.modal( {
+                show:true
+            } );
+
+            try { throw new Error("EA Processing Error");}
 			catch(error) {
 				analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
 				var data = {};
@@ -907,7 +943,7 @@ function init_validation(){
 
 	}
 	catch(error){
-		raygunSendError(error);
+		graygunner.sendError(error);
 	}
 }
 
@@ -967,8 +1003,15 @@ function handleErrors(errors, validator) {
     try {
         throw new Error("failed validation");
     }
-    catch (err) {
-        var fieldData = $(this).serializeArray();
+    catch (error) {
+        graygunner.sendError(error, {
+            data: {
+                errors: $errorList.text()
+            },
+            forms: [ENFormSelector]
+        });
+
+        /*var fieldData = $(this).serializeArray();
         for(var i = 0; i < fieldData.length; i++ ) {
             if(fieldData[i].name == "Credit Card Number")
                 fieldData.splice(i, 1);
@@ -978,7 +1021,7 @@ function handleErrors(errors, validator) {
         }
         else{
             Raygun.send(err, {values: fieldData});
-        }
+        }*/
     }
 }
 

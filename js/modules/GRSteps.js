@@ -187,17 +187,30 @@ GRSteps.prototype.switchTo = function(stepNumber){
  * [addButtons description]
  */
 GRSteps.prototype.buttonify = function(){
-  this
-    .append(
-      '<p class="pull-right"> \
-        <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
-      </p>'
-    )
-    .append(
-      '<p class="pull-left back-button"> \
-        <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
-      </p>'
-    );
+  var lastIndex = this.length-1;
+  this.each(function(index, step) {
+    if(index == lastIndex) {
+      $(step).append(
+        '<p class="pull-right"> \
+          <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
+        </p>'
+      );
+    } else {
+      $(step).append(
+        '<p class="pull-right"> \
+          <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
+        </p>'
+      );
+    }
+
+    if(index>0) {
+      $(step).append(
+        '<p class="pull-left back-button"> \
+          <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
+        </p>'
+      );
+    }
+  });
 }
 
 /**

@@ -1,105 +1,108 @@
 //clear out everything we don't need
-.row{
-  margin: 0;
-}
-
-.col-form{
-  display: none;
-}
-
-.campaign{
-  padding: 0;
-  margin: 0;
-}
-
-.hero{
-
-  padding: $page-padding-xs;
-
-  @media screen and (min-width: $screen-sm){
-    text-align: center;
-    padding: $page-left-padding-md;
+.post-action {
+  .row{
+    margin: 0;
   }
-  @media screen and (min-width: $screen-lg){
-    padding: 10% 25%;
-    min-height: 500px; //fallback
-    min-height: 80vh;
+
+  .col-form{
+    display: none;
   }
-}
 
-.heroTitle{
-  padding: 0 0 .5em;
-}
-
-.post-action p{
-  @include fontSize-base;
-  color: $white;
-  max-width: 40em;
-  margin: 0 auto;
-}
-
-
-.social-block {
-  margin-top: 2em;
-  margin-bottom: 8em;
-  // overflow: hidden;
-  .caption {
-    font: 38px/38px "AlternateGothic";
-    padding: 0 15px 30px 49px;
-    position: relative;
-    // &:after {
-    //  background: linear-gradient(to bottom, rgba(196,196,196,0.65) 0%,rgba(0,0,0,0) 100%);
-    //  content: "";
-    //  position: absolute;
-    //  height: 20px;
-    //  bottom: 0;
-    //  left: 0;
-    //  right: 2px;
-    // }
+  .campaign{
+    padding: 0;
+    margin: 0;
+    p{
+      @include fontSize-base;
+      color: $white;
+      max-width: 40em;
+      margin: 0 auto;
+    }
   }
-  .social {
-    padding: 20px 34px 30px 34px;
-    overflow: hidden;
-    text-align: center;
-    font-size: 0;
-    li {
-      display: inline-block;
-      margin-right: 25px;
-      &:last-child {
-        margin-right: 0 !important;
+
+  .hero{
+
+    padding: $page-padding-xs;
+
+    @media screen and (min-width: $screen-sm){
+      text-align: center;
+      padding: $page-left-padding-md;
+    }
+    @media screen and (min-width: $screen-lg){
+      padding: 10% 25%;
+      min-height: 500px; //fallback
+      min-height: 80vh;
+    }
+  }
+
+  .heroTitle{
+    padding: 0 0 .5em;
+  }
+
+  
+
+
+  .social-block {
+    margin-top: 2em;
+    margin-bottom: 8em;
+    // overflow: hidden;
+    .caption {
+      font: 38px/38px "AlternateGothic";
+      padding: 0 15px 30px 49px;
+      position: relative;
+      // &:after {
+      //  background: linear-gradient(to bottom, rgba(196,196,196,0.65) 0%,rgba(0,0,0,0) 100%);
+      //  content: "";
+      //  position: absolute;
+      //  height: 20px;
+      //  bottom: 0;
+      //  left: 0;
+      //  right: 2px;
+      // }
+    }
+    .social {
+      padding: 20px 34px 30px 34px;
+      overflow: hidden;
+      text-align: center;
+      font-size: 0;
+      li {
+        display: inline-block;
+        margin-right: 25px;
+        &:last-child {
+          margin-right: 0 !important;
+        }
+        a {
+          display: block;
+          width: 44px;
+          height: 45px;
+        }
       }
-      a {
-        display: block;
-        width: 44px;
-        height: 45px;
+
+      .facebook {
+        background: image-url("fb-2015.png?v=1433429099000") no-repeat center;
+      }
+      .twitter {
+        background: image-url("tw-2015.png?v=1433429100000") no-repeat center;
+      }
+      .googleplus {
+        background: image-url("gp.png?v=1433428755000") no-repeat center;
+      }
+      .linkedin {
+        background: image-url("in.png?v=1433428756000") no-repeat center;
+      }
+      .email {
+        width: 51px;
+        background: image-url("ml.png?v=1433428757000") no-repeat center;
       }
     }
-
-    .facebook {
-      background: image-url("fb-2015.png?v=1433429099000") no-repeat center;
-    }
-    .twitter {
-      background: image-url("tw-2015.png?v=1433429100000") no-repeat center;
-    }
-    .googleplus {
-      background: image-url("gp.png?v=1433428755000") no-repeat center;
-    }
-    .linkedin {
-      background: image-url("in.png?v=1433428756000") no-repeat center;
-    }
-    .email {
-      width: 51px;
-      background: image-url("ml.png?v=1433428757000") no-repeat center;
-    }
   }
-}
 
-.social-title{
-  color: $white;
-  @include fontSize-medium;
-  text-align: center;
+  .social-title{
+    color: $white;
+    @include fontSize-medium;
+    text-align: center;
 
-  @media screen and (min-width: $screen-lg){
-    @include fontSize-responsive-medium;
+    @media screen and (min-width: $screen-lg){
+      @include fontSize-responsive-medium;
+    }
   }
 }
