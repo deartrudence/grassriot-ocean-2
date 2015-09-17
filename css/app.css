@@ -4162,6 +4162,11 @@ em {
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-weight: 400;
 }
+@media only screen and (max-width: 619px) {
+  #grdonation .levels label {
+    line-height: 34px;
+  }
+}
 #grdonation .levels label:hover {
   cursor: pointer;
   background: #fafbf9;
@@ -4209,6 +4214,11 @@ em {
   padding: 8px;
   font-size: 15px;
   font-family: "DagnyOT";
+}
+@media only screen and (max-width: 619px) {
+  #grdonation .levels input[type="text"] {
+    line-height: 34px;
+  }
 }
 
 input[type=text], select, textarea {
@@ -5336,6 +5346,9 @@ label {
   background: #aed100;
   overflow-y: auto;
 }
+#grdonation form.is-active {
+  top: 0;
+}
 
 .form-header {
   padding-top: 30px;
@@ -5398,6 +5411,9 @@ label {
 
   .form-header {
     padding-right: 60px;
+  }
+  .form-header h3 {
+    font-size: 16px;
   }
 
   .formOpen {

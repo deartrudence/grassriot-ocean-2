@@ -39,6 +39,10 @@ label{
 #grdonation form {
   background: $green;
   overflow-y: auto;
+
+  &.is-active{
+    top: 0;
+  }
 }
 
 .form-header{
@@ -85,6 +89,10 @@ label{
   
   .form-header{
     padding-right: $form-padding + 30px; //for the close button
+
+    h3{
+      @include fontSize-small;
+    }
   }
 
   .formOpen {

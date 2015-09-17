@@ -617,9 +617,13 @@
       box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px 0px;
       box-sizing: border-box;
       color: rgb(54, 54, 54);
-
       @include font-sansN4;
       
+
+      @media only screen and (max-width: $screen-xxs-max){
+        line-height: 34px;
+      }
+
       &:hover {
         cursor: pointer;
         background: $amount-hover-background;
@@ -667,6 +671,11 @@
       padding: 8px;
       font-size: 15px;
       font-family: "DagnyOT";
+
+      @media only screen and (max-width: $screen-xxs-max){
+        line-height: 34px;
+      }
+
     }
   }
 }
@@ -794,7 +803,6 @@ select {
 @media only screen and (max-width: 320px) {
   select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], select:focus
   { font-size: 16px; }
-
 }
 
 @media only screen and (max-height: 768px) and (min-width: 768px) {
