@@ -100,28 +100,11 @@ webpackJsonp([0],[
 	 * @return {[type]} [description]
 	 */
 	function init() {
+
+	  setupTracking();
+
+	  //listener above must be active to listen to ENBeautifier in setupPage
 	  setupPage();
-
-
-	    $(formSelector).on('formError.enbeautifier', function(e, errors) {
-	        $error_modal
-	            .find(".modalErrorMessage")
-	            .html(errors);
-	        
-	        $error_modal.modal( {
-	            show:true
-	        } );
-
-	        //handle errors
-	        try { throw new Error("EA Processing Error");}
-	        catch(error) {
-	            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-	            graygunner.sendError(error, {
-	                data: errors,
-	                forms: [ENFormSelector]
-	            });
-	        }
-	    });
 
 	  if(
 	    $('input[name="ea.submitted.page"]').length 
@@ -150,6 +133,53 @@ webpackJsonp([0],[
 	    handleSizing();
 	    $(window).on("resize",handleSizing());
 
+	}
+
+	/**
+	 * [setupTracking description]
+	 * @return {[type]} [description]
+	 */
+	function setupTracking(){
+	    grAnalytics = new GRAnalytics({
+	        form: $form,
+	        'events': [ 
+	            // {   
+	            //     'selector': '[name="Payment Currency"]:not(a)', 
+	            //     'event': 'change',
+	            //     'virtualPageview': 'payment/currency-changed'
+	            // },
+	            // {   
+	            //     'selector': '[name="Donation Amount"]:not(a)', 
+	            //     'event': 'change',
+	            //     'virtualPageview': 'payment/donation-changed'
+	            // },
+	            // {   
+	            //     'selector': '[name="Recurring Payment"]:not(a)', 
+	            //     'event': 'change',
+	            //     'virtualPageview': 'payment/recurrence-changed'
+	            // }
+	        ]
+	    });
+
+	    $(formSelector).on('formError.enbeautifier', function(e, errors) {
+	        $error_modal
+	            .find(".modalErrorMessage")
+	            .html(errors);
+	        
+	        $error_modal.modal( {
+	            show:true
+	        } );
+
+	        // handle errors
+	        try { throw new Error("EA Processing Error");}
+	        catch(error) {
+	            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+	            graygunner.sendError(error, {
+	                data: errors,
+	                forms: [ENFormSelector]
+	            });
+	        }
+	    });    
 	}
 
 	/**
@@ -213,27 +243,6 @@ webpackJsonp([0],[
 	        enbeautifier.moveToTargets(ENBeautifierFillers);
 	        enbeautifier.clearFillers();
 	        enbeautifier.moveToTargets(ENBeautifierFillersContainers,true);
-
-	        grAnalytics = new GRAnalytics({
-	            form: $form,
-	            'events': [ 
-	                // {   
-	                //     'selector': '[name="Payment Currency"]:not(a)', 
-	                //     'event': 'change',
-	                //     'virtualPageview': 'payment/currency-changed'
-	                // },
-	                // {   
-	                //     'selector': '[name="Donation Amount"]:not(a)', 
-	                //     'event': 'change',
-	                //     'virtualPageview': 'payment/donation-changed'
-	                // },
-	                // {   
-	                //     'selector': '[name="Recurring Payment"]:not(a)', 
-	                //     'event': 'change',
-	                //     'virtualPageview': 'payment/recurrence-changed'
-	                // }
-	            ]
-	        });
 
 	    }
 	    catch(error){
@@ -400,7 +409,7 @@ webpackJsonp([0],[
 	        $form
 	          .on(
 	            'change',
-	            'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+	            'input[name="Donation Amount"], input[name="Donation Amount Other"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
 	            function(e) {
 	                $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
 	            })
@@ -1833,8 +1842,17 @@ webpackJsonp([0],[
 	    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
 	        amt = $form.find(options.components.amount.selector).filter(':checked').val();
 
+	    console.log(
+	        "amount logic",
+	        exists(options.components.amount),
+	        $form.find(options.components.amount.selector).filter(':checked').length,
+	        (!exists(options.components.amount) && exists(options.components.other))
+	        );
+
 	    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
 	        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
+
+	    console.log("retrieved amount", amt);
 
 	    if(isNaN(parseFloat(amt)))
 	        amt = 0;

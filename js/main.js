@@ -96,28 +96,11 @@ $(document).ready(function() {
  * @return {[type]} [description]
  */
 function init() {
+
+  setupTracking();
+
+  //listener above must be active to listen to ENBeautifier in setupPage
   setupPage();
-
-
-    $(formSelector).on('formError.enbeautifier', function(e, errors) {
-        $error_modal
-            .find(".modalErrorMessage")
-            .html(errors);
-        
-        $error_modal.modal( {
-            show:true
-        } );
-
-        //handle errors
-        try { throw new Error("EA Processing Error");}
-        catch(error) {
-            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-            graygunner.sendError(error, {
-                data: errors,
-                forms: [ENFormSelector]
-            });
-        }
-    });
 
   if(
     $('input[name="ea.submitted.page"]').length 
@@ -146,6 +129,53 @@ function init() {
     handleSizing();
     $(window).on("resize",handleSizing());
 
+}
+
+/**
+ * [setupTracking description]
+ * @return {[type]} [description]
+ */
+function setupTracking(){
+    grAnalytics = new GRAnalytics({
+        form: $form,
+        'events': [ 
+            // {   
+            //     'selector': '[name="Payment Currency"]:not(a)', 
+            //     'event': 'change',
+            //     'virtualPageview': 'payment/currency-changed'
+            // },
+            // {   
+            //     'selector': '[name="Donation Amount"]:not(a)', 
+            //     'event': 'change',
+            //     'virtualPageview': 'payment/donation-changed'
+            // },
+            // {   
+            //     'selector': '[name="Recurring Payment"]:not(a)', 
+            //     'event': 'change',
+            //     'virtualPageview': 'payment/recurrence-changed'
+            // }
+        ]
+    });
+
+    $(formSelector).on('formError.enbeautifier', function(e, errors) {
+        $error_modal
+            .find(".modalErrorMessage")
+            .html(errors);
+        
+        $error_modal.modal( {
+            show:true
+        } );
+
+        // handle errors
+        try { throw new Error("EA Processing Error");}
+        catch(error) {
+            grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
+            graygunner.sendError(error, {
+                data: errors,
+                forms: [ENFormSelector]
+            });
+        }
+    });    
 }
 
 /**
@@ -209,27 +239,6 @@ function setupPage(){
         enbeautifier.moveToTargets(ENBeautifierFillers);
         enbeautifier.clearFillers();
         enbeautifier.moveToTargets(ENBeautifierFillersContainers,true);
-
-        grAnalytics = new GRAnalytics({
-            form: $form,
-            'events': [ 
-                // {   
-                //     'selector': '[name="Payment Currency"]:not(a)', 
-                //     'event': 'change',
-                //     'virtualPageview': 'payment/currency-changed'
-                // },
-                // {   
-                //     'selector': '[name="Donation Amount"]:not(a)', 
-                //     'event': 'change',
-                //     'virtualPageview': 'payment/donation-changed'
-                // },
-                // {   
-                //     'selector': '[name="Recurring Payment"]:not(a)', 
-                //     'event': 'change',
-                //     'virtualPageview': 'payment/recurrence-changed'
-                // }
-            ]
-        });
 
     }
     catch(error){
@@ -396,7 +405,7 @@ function setupAction(){
         $form
           .on(
             'change',
-            'input[name="Donation Amount"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+            'input[name="Donation Amount"], input[name="Donation Amount Other"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
             function(e) {
                 $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
             })
