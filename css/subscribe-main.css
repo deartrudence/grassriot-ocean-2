@@ -46,22 +46,22 @@ body:after {
     content: "phone";
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 620px) {
   body:after {
     content: "mobile";
   }
 }
-@media screen and (max-width: 1159px) {
+@media screen and (min-width: 768px) {
   body:after {
     content: "tablet";
   }
 }
-@media screen and (max-width: 1299px) {
+@media screen and (min-width: 1160px) {
   body:after {
     content: "small-desktop";
   }
 }
-@media screen and (max-width: 2099px) {
+@media screen and (min-width: 1300px) {
   body:after {
     content: "medium-desktop";
   }

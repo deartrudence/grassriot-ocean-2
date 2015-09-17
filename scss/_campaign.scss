@@ -98,6 +98,10 @@
   bottom: 0;
   color: $white;
   padding: 0 0 2%;
+
+  @media screen and (max-width: $screen-xs-max){
+    left: 9%;
+  }
 }
 
 // slick styles below
@@ -190,6 +194,10 @@ screen and (max-device-width:$screen-xs-max) {
 
   .highlights-title--number {
     @include fontSize-massive-xs;
+  }
+
+  .highlights-subtitle{
+    padding-left: 1em;
   }
 
   .highlights-events {

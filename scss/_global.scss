@@ -16,26 +16,26 @@ body {
 
 body:after{
   @media screen and (max-width:$screen-xxs-max){
-    content: "phone"
+    content: "phone";
   }
 
-  @media screen and (max-width:$screen-xs-max){
-    content: "mobile"
+  @media screen and (min-width:$screen-xs-min){
+    content: "mobile";
   }
 
-  @media screen and (max-width: $screen-sm-max){
-    content: "tablet"
+  @media screen and (min-width: $screen-sm){
+    content: "tablet";
   }
 
-  @media screen and (max-width: $screen-md-max){
+  @media screen and (min-width: $screen-md){
     content: "small-desktop";
   }
 
-  @media screen and (max-width: $screen-lg-max){
+  @media screen and (min-width: $screen-lg){
     content: "medium-desktop";
   }
 
-  @media screen and (min-width: $screen-xl-min){
+  @media screen and (min-width: $screen-xl){
     content: "large-desktop";
   }
 }

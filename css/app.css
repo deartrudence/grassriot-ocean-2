@@ -4354,6 +4354,14 @@ html.csstransforms .modal.fade .upsell-modal--body {
   -webkit-transform: translate(0, -100%);
   transform: translate(0, -100%);
 }
+@media screen and (max-width: 619px) {
+  html.csstransforms .modal.fade .upsell-modal--body {
+    -moz-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+  }
+}
 
 .upsell-panel {
   display: table-cell;
@@ -4425,6 +4433,12 @@ html.csstransforms .modal.fade .upsell-modal--body {
   background: #0cacbd;
   padding: 10px 4em;
   line-height: 1.1;
+}
+@media screen and (max-width: 619px) {
+  .upsell-recommendation--label {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
 }
 
 button.upsell-modal--close {
@@ -4627,22 +4641,22 @@ body:after {
     content: "phone";
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 620px) {
   body:after {
     content: "mobile";
   }
 }
-@media screen and (max-width: 1159px) {
+@media screen and (min-width: 768px) {
   body:after {
     content: "tablet";
   }
 }
-@media screen and (max-width: 1299px) {
+@media screen and (min-width: 1160px) {
   body:after {
     content: "small-desktop";
   }
 }
-@media screen and (max-width: 2099px) {
+@media screen and (min-width: 1300px) {
   body:after {
     content: "medium-desktop";
   }
@@ -4900,6 +4914,11 @@ html.csstransforms {
   color: #fff;
   padding: 0 0 2%;
 }
+@media screen and (max-width: 767px) {
+  .financialCaption {
+    left: 9%;
+  }
+}
 
 .slick-slider {
   padding: 0;
@@ -4980,6 +4999,10 @@ html.csstransforms {
 
   .highlights-title--number {
     font-size: 150px;
+  }
+
+  .highlights-subtitle {
+    padding-left: 1em;
   }
 
   .highlights-events {

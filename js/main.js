@@ -160,7 +160,9 @@ function makeAffix(){
         .removeClass("affix affix-top affix-bottom")
         .removeData("bs.affix");
 
-    if (windowSize !== "phone") {
+    console.log(windowSize);
+
+    if (windowSize !== "phone" && windowSize !== "mobile") {
         $affixForm
             // .filter(":not(.affix-top, .affix, .affix-bottom)")
             .affix({

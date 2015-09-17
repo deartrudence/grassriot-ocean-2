@@ -20,7 +20,10 @@ html.csstransforms{
   .modal.fade .upsell-modal--body{
     top: 50%;
     @include transform(translate(0, -100%));
-    
+  
+    @media screen and (max-width: $screen-xxs-max){
+      @include transform(translate(0,-50%));
+    }
   }
 }
 
@@ -98,6 +101,11 @@ $upsell-recommendation-padding: 5px;
   @include background($upsell-cta-colour);
   padding: 10px 4em;
   @include lineHeight-hero;
+
+  @media screen and (max-width: $screen-xxs-max){
+    padding-left: 2em;
+    padding-right: 2em;
+  }
 }
 
 button.upsell-modal--close{
