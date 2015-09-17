@@ -246,13 +246,12 @@ screen and (max-width: $screen-xs-max) and (max-height: 565px){
     font-size: 1.8em;
     padding: 25px 20px;
   }
-  .upsell-title{
-    width: 7em;
-  }
   
   .upsell-copy{
     padding-left: 20px;
     padding-right: 20px;
+    padding-top: 0;
+    @include fontSize-small;
   }
 
   .upsell-subtitle{
