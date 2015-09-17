@@ -38,7 +38,7 @@ label{
 
 #grdonation form {
   background: $green;
-  overflow-y: auto;
+  // overflow-y: auto;
 
   &.is-active{
     top: 0;
@@ -122,7 +122,7 @@ label{
 
   .formClose {
     @include dagny-heavy;
-    @include fontSize-medium;
+    @include fontSize-small;
     display: block;
     position: absolute;
     border: 0;
