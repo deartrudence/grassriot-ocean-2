@@ -4766,6 +4766,9 @@ html.csstransforms {
     font-size: 2.4vw;
   }
 }
+.campaign {
+  overflow: hidden;
+}
 @media screen and (min-width: 620px) {
   .campaign {
     padding-right: 300px;
