@@ -318,7 +318,7 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
     //add to object regionLists
     if(isActive(options.components.region)) {
         var $region = $form.find(options.components.region.selector);
-
+        
         regionLists = { 
             "default": $('<div>').append($region.clone()).html()
         };

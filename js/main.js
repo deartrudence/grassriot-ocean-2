@@ -83,6 +83,9 @@ $(document).ready(function() {
 	try {
 		init();
 		init_validation();
+
+        //set pcode validation to Canadian at the start
+        handleCountryChange({target: 'select[name="Country"]'});
 	}
 	catch(error) {
 		graygunner.sendError(error);
@@ -409,6 +412,10 @@ function setupAction(){
             function(e) {
                 $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
             })
+          .on(
+            'change',
+            'select[name="Country"]',
+            handleCountryChange)
           .on('submit', sendDonation);
 
         //add name to submit button for EN
@@ -463,6 +470,27 @@ function setupAction(){
 	} catch(error) {
 		graygunner.sendError(error);
 	}
+}
+
+function handleCountryChange(e){
+    var countryField = $(e.target);
+    var countryCode = countryField.val();
+    var regionField = $('[name="Province"]:not(a)');
+    var countriesRequiringPcodes = ['US', 'CA'];
+
+    if(countryCode == 'CA'){
+        $('input[name="Postcode"]').rules("add","isPostcodeCA");
+    }
+    else{
+        $('input[name="Postcode"]').rules("remove","isPostcodeCA");
+    }
+
+    if(countriesRequiringPcodes.indexOf(countryCode) !== -1){
+        regionField.rules("add",{required: true});
+    }
+    else{
+        regionField.rules("remove","required");
+    }
 }
 
 /**
@@ -713,93 +741,6 @@ function processForm() {
 // 	}
 // }
 
-// Initiating of custom validation methods.
-(function(){
-    var errorMessages = {
-            invalidMonth: 'Invalid month',
-            invalidCVV: 'Invalid verification number',
-            invalidAmount: 'Invalid donation amount',
-            invalidDate: 'Date is invalid',
-            invalidEmail: 'Please enter a valid email address.'
-        },
-        nowDate = new Date();
-
-    $.validator.addMethod('isValidDonation', function (value, element) {
-        // Converts to string for processing.
-        value += '';
-
-        // Only numbers or digits. 
-        // Allows use currency symbol in the start of line or in the end.
-        var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s]+\.?\d+|\d+)|(\d+[\d\s]+\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
-
-        if (!regExp.test(value)) {
-            return false;
-        }
-
-        // Removes all wrong symbols.
-        value = parseFloat(
-            value.replace(/[$£€\s]/g, '')
-        );
-
-        // var min = + $ranges.find('ul.'+currency).find('li').first().html();;
-        var min = 5,
-            max = 10000;
-
-        return (value >= min && value <= max);
-    }, errorMessages.invalidAmount);
-
-    $.validator.addMethod("emailTLD", function (value, element) {
-        return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
-    }, errorMessages.invalidEmail);
-    
-    $.validator.addMethod('isMonth', function (value, element) {
-        return value.length == 2
-            && parseInt(value) > 0
-            && parseInt(value) <= 12;
-    }, errorMessages.invalidMonth);
-
-    $.validator.addMethod('isNowOrFutureYear', function (value, element) {
-        var year = '';
-        if(value.length >= 4){
-            year = parseInt(value);
-        }
-        else if(value.length == 2){
-            year = parseInt('20'+value);
-        }
-        else{
-            return false;
-        }
-
-        return year >= nowDate.getFullYear();
-    }, errorMessages.invalidDate);
-
-    $.validator.addMethod('isFuture', function (value, element) {
-        //Reject if the month and year together are in the past
-        var month = $(element)
-            .closest("form")
-            .find("#Credit_Card_Expiration1")
-            .val();
-
-        //for two-digit years, assume it's in this century
-        if(value.length === 2){
-            value = '20'+value;
-        }
-
-        if (parseInt(value) == nowDate.getFullYear()
-            && parseInt(month) < nowDate.getMonth() + 1) {
-            return false;
-        }
-
-        //Looks like the future
-        return true;
-    }, errorMessages.invalidDate);
-
-    $.validator.addMethod('isCVV', function (value, element) {
-        var regexCVV = /^\d{3}$/;
-        return regexCVV.test(value);
-    }, errorMessages.invalidCVV);
-})();
-
 //Get the active section for analytics reporting
 function analyticsGetSection(container) {
 	var currentSection = null;
@@ -898,6 +839,96 @@ function getURLParameter(name){
 function init_validation(){
 	try{
 		require('jqueryvalidate');
+
+        var errorMessages = {
+                invalidMonth: 'Invalid month',
+                invalidCVV: 'Invalid verification number',
+                invalidAmount: 'Invalid donation amount',
+                invalidDate: 'Date is invalid',
+                invalidEmail: 'Please enter a valid email address.',
+                invalidPcode: 'Please enter a valid postcode'
+            },
+            nowDate = new Date();
+
+        $.validator.addMethod('isValidDonation', function (value, element) {
+            // Converts to string for processing.
+            value += '';
+
+            // Only numbers or digits. 
+            // Allows use currency symbol in the start of line or in the end.
+            var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s]+\.?\d+|\d+)|(\d+[\d\s]+\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
+
+            if (!regExp.test(value)) {
+                return false;
+            }
+
+            // Removes all wrong symbols.
+            value = parseFloat(
+                value.replace(/[$£€\s]/g, '')
+            );
+
+            // var min = + $ranges.find('ul.'+currency).find('li').first().html();;
+            var min = 5,
+                max = 10000;
+
+            return (value >= min && value <= max);
+        }, errorMessages.invalidAmount);
+
+        $.validator.addMethod("emailTLD", function (value, element) {
+            return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
+        }, errorMessages.invalidEmail);
+        
+        $.validator.addMethod('isMonth', function (value, element) {
+            return value.length == 2
+                && parseInt(value) > 0
+                && parseInt(value) <= 12;
+        }, errorMessages.invalidMonth);
+
+        $.validator.addMethod('isNowOrFutureYear', function (value, element) {
+            var year = '';
+            if(value.length >= 4){
+                year = parseInt(value);
+            }
+            else if(value.length == 2){
+                year = parseInt('20'+value);
+            }
+            else{
+                return false;
+            }
+
+            return year >= nowDate.getFullYear();
+        }, errorMessages.invalidDate);
+
+        $.validator.addMethod('isFuture', function (value, element) {
+            //Reject if the month and year together are in the past
+            var month = $(element)
+                .closest("form")
+                .find("#Credit_Card_Expiration1")
+                .val();
+
+            //for two-digit years, assume it's in this century
+            if(value.length === 2){
+                value = '20'+value;
+            }
+
+            if (parseInt(value) == nowDate.getFullYear()
+                && parseInt(month) < nowDate.getMonth() + 1) {
+                return false;
+            }
+
+            //Looks like the future
+            return true;
+        }, errorMessages.invalidDate);
+
+        $.validator.addMethod('isCVV', function (value, element) {
+            var regexCVV = /^\d{3}$/;
+            return regexCVV.test(value);
+        }, errorMessages.invalidCVV);
+
+        $.validator.addMethod('isPostcodeCA', function (value, element) {
+            var regexPcode = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
+            return regexPcode.test(value);
+        }, errorMessages.invalidPcode);
 
         var validation_rules = {
             "First Name": "required",
