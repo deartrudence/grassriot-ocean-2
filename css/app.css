@@ -4587,8 +4587,7 @@ button.upsell-modal--close:active {
   button.upsell-modal--close:active {
     opacity: 0.8;
   }
-}
-@media screen and (max-width: 340px), screen and (max-width: 767px) and (max-height: 565px) {
+
   .upsell-cta {
     font-size: 1.8em;
     padding: 25px 20px;

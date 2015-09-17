@@ -238,10 +238,6 @@ button.upsell-modal--close{
     }
   }
 
-}
-
-@media screen and (max-width: 340px),
-screen and (max-width: $screen-xs-max) and (max-height: 565px){
   .upsell-cta{
     font-size: 1.8em;
     padding: 25px 20px;
