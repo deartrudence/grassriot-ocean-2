@@ -581,7 +581,10 @@ function handleDrag(e){
 			$(".form")
 					.removeAttr("style");
 
-			if( Math.abs(topMove / windowHeight ) > 0.25 ){
+			if( 
+                Math.abs(topMove / windowHeight ) > 0.25 
+                || Math.abs(topMove / windowHeight ) < 0.02
+                ){
 				$(".form")
 					.addClass("is-active");
 			}
