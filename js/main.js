@@ -160,8 +160,6 @@ function makeAffix(){
         .removeClass("affix affix-top affix-bottom")
         .removeData("bs.affix");
 
-    console.log(windowSize);
-
     if (windowSize !== "phone" && windowSize !== "mobile") {
         $affixForm
             // .filter(":not(.affix-top, .affix, .affix-bottom)")
@@ -531,7 +529,7 @@ function setupMobileButton(){
 
 	mobileButton
 		.on("click",function(){
-			$(formSelector).toggleClass("is-active");
+			$(formSelector).addClass("is-active");
 		})
 		.on("mousedown touchstart", handleDrag);
 
@@ -583,7 +581,7 @@ function handleDrag(e){
 
 			if( 
                 Math.abs(topMove / windowHeight ) > 0.25 
-                || Math.abs(topMove / windowHeight ) < 0.02
+                || Math.abs(topMove / windowHeight ) < 0.05
                 ){
 				$(".form")
 					.addClass("is-active");

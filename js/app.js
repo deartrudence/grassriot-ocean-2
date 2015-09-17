@@ -164,8 +164,6 @@ webpackJsonp([0],[
 	        .removeClass("affix affix-top affix-bottom")
 	        .removeData("bs.affix");
 
-	    console.log(windowSize);
-
 	    if (windowSize !== "phone" && windowSize !== "mobile") {
 	        $affixForm
 	            // .filter(":not(.affix-top, .affix, .affix-bottom)")
@@ -535,7 +533,7 @@ webpackJsonp([0],[
 
 		mobileButton
 			.on("click",function(){
-				$(formSelector).toggleClass("is-active");
+				$(formSelector).addClass("is-active");
 			})
 			.on("mousedown touchstart", handleDrag);
 
@@ -587,7 +585,7 @@ webpackJsonp([0],[
 
 				if( 
 	                Math.abs(topMove / windowHeight ) > 0.25 
-	                || Math.abs(topMove / windowHeight ) < 0.02
+	                || Math.abs(topMove / windowHeight ) < 0.05
 	                ){
 					$(".form")
 						.addClass("is-active");
