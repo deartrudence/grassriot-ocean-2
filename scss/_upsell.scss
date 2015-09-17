@@ -247,7 +247,7 @@ button.upsell-modal--close{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 0;
-    @include fontSize-small;
+    @include fontSize-smaller;
   }
 
   .upsell-subtitle{
