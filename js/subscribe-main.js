@@ -34,6 +34,10 @@ function init() {
     
     if(typeof window.unsubscribePage !== "undefined" && window.unsubscribePage == true) {
         init_unsubscribe();
+        $("body").addClass("is-unsubscribe");
+    }
+    else{
+        $("body").addClass("not-unsubscribe");
     }
 }
 
