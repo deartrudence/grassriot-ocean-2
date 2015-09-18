@@ -341,6 +341,34 @@ function setupAction(){
             }
           ]
         });
+        
+        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
+            if(e.which == 9) {
+                var $stepPanel = $(this).parents('.page').first();
+                var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
+                var $firstTabbable = $stepPanel.find('input, select, textarea, button').filter(":first");
+                if(!e.shiftKey && $(this).is($lastTabbable)) {
+                    e.preventDefault();
+                    $firstTabbable.focus();
+                    //formSteps.nextStep();
+                } else if(e.shiftKey && $(this).is($firstTabbable)) {
+                    e.preventDefault();
+                    $lastTabbable.focus();
+                    //formSteps.previousStep();
+                }
+            }
+        });
+        $("#window").on('stepChanged.grsteps', function(e, step) {
+            $("#window").promise().done(function() {
+                $("#gr_donation,#gr_details,#gr_payment")
+                    .filter(function(index) {
+                        return (step.currentStep == index);
+                    })
+                    .find('input, select, textarea, button')
+                    .first()
+                    .focus();
+            });
+        });
 
         // Setup Campaign Page
         grGiving = new GRGivingSupport({
