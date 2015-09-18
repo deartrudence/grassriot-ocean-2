@@ -515,9 +515,12 @@ function handleCountryChange(e){
 
     if(countriesRequiringPcodes.indexOf(countryCode) !== -1){
         regionField.rules("add",{required: true});
+        regionField.show();
     }
     else{
         regionField.rules("remove","required");
+        regionField.hide();
+        regionField.val('');
     }
 }
 
