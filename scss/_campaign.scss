@@ -293,7 +293,8 @@ screen and (max-device-width:$screen-xs-max) {
 
   .highlights-colright {
     float: left;
-    width: 60%;
+    // width: 60%;
+    width: auto;
   }
 
   .highlights-title--number {

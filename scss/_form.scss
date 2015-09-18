@@ -69,6 +69,18 @@ label{
   }
 }
 
+//override bootstrap styling for more readable forms
+.form-control{
+  padding-top: 3px;
+  padding-bottom: 3px;
+  @include fontSize-base;
+}
+
+//increase the size of the error modal text
+#validErrModal{
+  @include fontSize-base;
+}
+
 @media screen and (max-width: $screen-xxs-max) {
   .form {
     background-color: $form-background;
