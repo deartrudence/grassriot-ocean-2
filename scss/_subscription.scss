@@ -3,11 +3,6 @@
   list-style: disc;
 }
 
-
-label{
-font-size: 0.8em !important;
-}
-
 .en_right_wrapper {
     padding-left: 15px;
 }
@@ -35,6 +30,12 @@ border-top-left-radius: 6em;
 
 
 //custom items
+.form-control, .eaQuestionCheckbox label{
+  padding-top: 8px;
+  padding-bottom: 8px;
+  @include fontSize-base;
+}
+
 .hero {
     background-image: none;
     background-position: 0 0;
@@ -71,8 +72,6 @@ border-top-left-radius: 6em;
     padding: 1% 0;
     text-align: center;
     input[type="text"] {
-        padding: 8px;
-        font-size: 15px;
         font-family: "DagnyOT";
     }
 }
@@ -139,6 +138,11 @@ border-top-left-radius: 6em;
     }
     .eaQuestionLabel {
         display: none;
+    }
+    .eaQuestionCheckbox {
+        input, label {
+            vertical-align: middle;
+        }
     }
 }
 
