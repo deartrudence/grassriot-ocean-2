@@ -27,6 +27,10 @@ function init() {
     });
     beautifier.usePlaceholders(false);
 
+    beautifier.addClasses({
+        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
+    });
+
     //handle image and caption
     $('.hero').css('background-image', 'url('+$leftColumn.children("div:first").find("img").attr("src")+')');
     $('.hero').append($leftColumn.children("div:first").find("p").addClass("heroCaption"));
