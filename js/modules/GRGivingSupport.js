@@ -539,7 +539,8 @@ function getAskButtons(amounts) {
                     name:  options.components.amount.name,
                     label: choice,
                     value: choice.replace(/[^0-9\.]/g,''),
-                    wrap:  "<div class='amountbutton'></div>"
+                    wrap:  "<div class='amountbutton'></div>",
+                    atts: (i==1 ? ['checked="checked"'] : '')
                 })
             );
         }
