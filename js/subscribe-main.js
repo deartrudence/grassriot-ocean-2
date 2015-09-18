@@ -25,7 +25,7 @@ function init() {
     beautifier = new ENBeautifier({
         form: $form
     });
-    beautifier.usePlaceholders();
+    beautifier.usePlaceholders(false);
 
     //handle image and caption
     $('.hero').css('background-image', 'url('+$leftColumn.children("div:first").find("img").attr("src")+')');

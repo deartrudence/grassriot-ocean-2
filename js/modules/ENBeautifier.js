@@ -162,7 +162,10 @@ ENBeautifier.prototype.clearFillers = function(){
  * Takes labels provided by Engaging Networks and sets them as the field's placeholder attribute instead
  * @return {[type]} [description]
  */
-ENBeautifier.prototype.usePlaceholders = function() {
+ENBeautifier.prototype.usePlaceholders = function(removeAsterisk) {
+    if(typeof removeAsterisk === "undefined") {
+        removeAsterisk = true;
+    }
     var fieldContainers = $(this.targetForm).find('.'+this.fieldContainerClass);
     if(!fieldContainers.length) {
         this.tagFieldContainers();
@@ -172,9 +175,16 @@ ENBeautifier.prototype.usePlaceholders = function() {
     $(fieldContainers).each(function() {
         var label = $(this).find('label');
         var asterisk = /( )+\*/;
+        var labelText = '';
+        if(removeAsterisk) {
+            labelText = label.text().replace(asterisk,'');
+        } else {
+            labelText = label.text();
+        }
+
         $(this)
             .find('input, textarea')
-            .attr('placeholder', label.text().replace(asterisk,''));
+            .attr('placeholder', labelText);
         if(
             typeof window.Modernizr === 'undefined'
             || window.Modernizr.input.placeholder
