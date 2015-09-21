@@ -13,7 +13,7 @@ var $form = $('.eaform');
 var $columnContainer;
 var $leftColumn;
 var $rightColumn;
-var $validErrModal = $("#validErrModal");
+var $validErrModal;
 var isUnsubscribe = false;
 
 //Main event
@@ -26,6 +26,7 @@ function init() {
         ]
     });
 
+    $validErrModal = $("#validErrModal");
 
     sortTwoColumn();
     $columnContainer = $(".en_wrapper");
