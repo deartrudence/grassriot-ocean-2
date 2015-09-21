@@ -123,6 +123,9 @@
 @mixin lineHeight-title--text {
 	line-height: 5.4em;
 }
+@mixin lineHeight-tight{
+	line-height: 1.4;
+}
 
 //Local Fonts
 @font-face {

@@ -1,7 +1,10 @@
 //bootstrap override
-.viewport [role*="navigation"]{
-  z-index: 10 !important;
+@media screen and (min-width: $screen-md){
+  .viewport [role*="navigation"]{
+    z-index: 10 !important;
+  }  
 }
+
 
 .modal-backdrop{
   @include z-high;
