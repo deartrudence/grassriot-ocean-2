@@ -187,6 +187,39 @@ stbUserOptions = {"mode":"css","cssOptions":{"roundedCorners":true,"mbottom":10,
 <script type='text/javascript' src='https://www.ecojustice.ca/wp-content/plugins/wp-special-textboxes/js/wstb.min.js?ver=5.3.95'></script>
 <script type='text/javascript' src='js/vendors.js'></script>
 <script type='text/javascript' src='js/subscribe-app.js'></script>
+<script type="text/javascript">
+validatefield =
+  ( typeof validatefield === "undefined" )
+  ? function(){}
+  : validatefield;
+
+
+validateEAform =
+  ( typeof validateEAform === "undefined" )
+  ? function(){}
+  : validateEAform;
+
+checkdep =
+  ( typeof checkdep === "undefined" )
+  ? function(){}
+  : checkdep;
+</script>
+
+    <div class="modal fade" id="validErrModal" tabindex='-1'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Please correct the errors indicated below.</h4>
+                </div>
+                <div class="modal-body error-list"><!-- dynamic content --></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
 </html>
 <script type='text/javascript'> 

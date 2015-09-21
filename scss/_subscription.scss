@@ -146,6 +146,17 @@ border-top-left-radius: 6em;
     }
 }
 
+input[type=text],
+select {
+  &.valid {
+    background: #E0FCE1;
+    border: 2px solid #62C166;
+  }
+  &.error {
+    background: #FFEDED;
+    border: 2px solid #e80300;
+  }
+}
 
 #Accepts_Electronic_CommunicationsDiv {
     display: none;
@@ -200,5 +211,13 @@ border-top-left-radius: 6em;
 
 //adjust the bird photo for larger monitors
 @media screen and (min-width: 1600px){
-    background-position: 50% 75%;
+    .not-unsubscribe .hero{
+        background-position: 50% 75%;   
+    }
+}
+
+@media screen and (min-width: 1990px){
+    .not-unsubscribe .hero{
+        background-position: 50% 60%;   
+    }
 }

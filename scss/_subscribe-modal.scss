@@ -1,0 +1,30 @@
+//bootstrap override
+.viewport [role*="navigation"]{
+  z-index: 10 !important;
+}
+
+.modal-backdrop{
+  @include z-high;
+  
+}
+
+#validErrModal{
+  @include fontSize-base;
+  @include z-highest;
+
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+
+  .close{
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}
+
+.modal-title{
+  @include fontSize-base;
+  font-weight: normal;
+}
