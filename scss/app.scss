@@ -16,7 +16,6 @@
 @import 'bootstrap/buttons';
 @import 'bootstrap/close';
 @import 'bootstrap/popovers';
-@import 'bootstrap/glyphicons';
 
 //foundation
 @import "base";
@@ -26,12 +25,12 @@
 @import "zindex";
 
 //styles
-@import "donation";
 @import "upsell";
 @import "global";
 @import "hero";
 @import "campaign";
 @import "form";
+@import "donation";
 @import "media";
 @import "identity";
 @import "footer";

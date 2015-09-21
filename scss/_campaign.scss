@@ -362,7 +362,7 @@ screen and (max-device-width:$screen-xs-max) {
     }
 
     .supporter-description {
-      @include fontSize-larger;
+      @include fontSize-medium;
       @include dagny-light;
       margin-bottom: 1em;
     }
