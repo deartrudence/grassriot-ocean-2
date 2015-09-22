@@ -394,7 +394,7 @@ function setupAction(){
                 amount: {
                     selector: '[name="Donation Amount"]:not(a)',
                     urlParam: 'amt',
-                    defaultVal: '35',
+                    defaultVal: '50',
                     name: 'Donation Amount'
                 },
                 other: {
