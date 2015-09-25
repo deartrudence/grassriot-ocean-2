@@ -161,6 +161,10 @@ GRSteps.prototype.switchTo = function(stepNumber){
       .addClass(this.options.completeClass);
   }
 
+  if(stepNumber > this.stepIndicators.length || stepNumber < 0){
+    return;
+  }
+
   //switch the indicator
   this.options.currentStep = stepNumber;
   this.stepIndicators.eq(this.options.currentStep)

@@ -68,7 +68,17 @@ GRUpsell.prototype.init = function() {
 }
 
 GRUpsell.prototype.launch = function() {
-    initialAmount = parseFloat(options.donationAmountField.val());
+    var field = options.donationAmountField;
+
+    //get the active field
+    if( field.length > 1){
+        checkedField = field.filter(":checked");
+        if(checkedField.length === 1){
+            field = checkedField;
+        }
+    }
+
+    initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
 
     if(options.enabled === false || initialAmount >= options.maxGift || options.recurringField.val()=='Y') 
         return false;
@@ -107,7 +117,7 @@ function calculateUpsell(amt) {
 
 function getUpsellFromRange(amt) {
     try {
-        amt = parseFloat(amt);
+        amt = parseFloat(amt.replace(/[^0-9\.]/g, ''));
         for(var i = 0; i < options.range.length; i++) {
             if(amt >= options.range[i].min && amt < options.range[i].max)
                 return options.range[i].amount;

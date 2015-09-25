@@ -243,7 +243,9 @@ GRGivingSupport.prototype.init = function() {
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
 
-                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+                var donationValue = parseFloat($(this).val().replace(/[^0-9.]/g,''));
+
+                $(this).closest("label").siblings("input[type=radio]").val(donationValue);
             });
     }
 
@@ -344,13 +346,13 @@ GRGivingSupport.prototype.getAmount = function(formatted) {
 
     var amt = 0;
     var symbol = options.currencySymbol;
-    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
+    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length){
         amt = $form.find(options.components.amount.selector).filter(':checked').val();
+    }
 
-    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
-        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
+    amt = parseFloat(amt.replace(/[^0-9.]/g,''));
 
-    if(isNaN(parseFloat(amt)))
+    if(isNaN(amt))
         amt = 0;
 
     if(exists(options.components.currency)) {

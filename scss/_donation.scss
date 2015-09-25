@@ -806,7 +806,7 @@ select {
   width: 100%;
   text-align: right;
   @include dagny-light;
-
+  @include fontSize-small;
   @include formPadding;
 }
 

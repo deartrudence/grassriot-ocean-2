@@ -22,7 +22,7 @@ padding-bottom: 30px;
 .boarder{
 border-top:10px solid;
 border-right:10px solid;
-border-left: 10px solid;    
+border-left: 10px solid;
 border-color: #78A22F;
 border-top-right-radius: 6em;
 border-top-left-radius: 6em;
@@ -30,6 +30,9 @@ border-top-left-radius: 6em;
 
 
 //custom items
+.main{
+  background-color: $black;
+}
 .form-control, .eaQuestionCheckbox label{
   padding-top: 8px;
   padding-bottom: 8px;
@@ -211,13 +214,13 @@ select {
 
 //adjust the bird photo for larger monitors
 @media screen and (min-width: 1600px){
-    .not-unsubscribe .hero{
+    .hero{
         background-position: 50% 75%;   
     }
 }
 
 @media screen and (min-width: 1990px){
-    .not-unsubscribe .hero{
+    .hero{
         background-position: 50% 60%;   
     }
 }

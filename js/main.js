@@ -342,6 +342,7 @@ function setupAction(){
           ]
         });
         
+        //prevent tabbing to next step
         $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
             if(e.which == 9) {
                 var $stepPanel = $(this).parents('.page').first();
@@ -358,6 +359,7 @@ function setupAction(){
                 }
             }
         });
+
         $("#window").on('stepChanged.grsteps', function(e, step) {
             $("#window").promise().done(function() {
                 $("#gr_donation,#gr_details,#gr_payment")
@@ -462,7 +464,6 @@ function setupAction(){
             upsellMethod: 'function',
             maxGift: 500,
             calcFunction: function( amount ) {
-
                 var amount = Math.floor(amount);
                 var ret = amount;
                 var mlt = 1.2;
@@ -649,7 +650,7 @@ function handleDrag(e){
 
 			if( 
                 Math.abs(topMove / windowHeight ) > 0.25 
-                || Math.abs(topMove / windowHeight ) < 0.05
+                || Math.abs(topMove / windowHeight ) < 0.1
                 ){
 				$(".form")
 					.addClass("is-active");
@@ -874,7 +875,7 @@ function init_validation(){
         var errorMessages = {
                 invalidMonth: 'Invalid month',
                 invalidCVV: 'Invalid verification number',
-                invalidAmount: 'Invalid donation amount',
+                invalidAmount: 'We only accept online donations between $5 and $10,000',
                 invalidDate: 'Date is invalid',
                 invalidEmail: 'Please enter a valid email address.',
                 invalidPcode: 'Please enter a valid postcode'
@@ -887,7 +888,7 @@ function init_validation(){
 
             // Only numbers or digits. 
             // Allows use currency symbol in the start of line or in the end.
-            var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s]+\.?\d+|\d+)|(\d+[\d\s]+\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
+            var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s,]+\.?\d+|\d+)|(\d+[\d\s,]+\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
 
             if (!regExp.test(value)) {
                 return false;
@@ -895,7 +896,7 @@ function init_validation(){
 
             // Removes all wrong symbols.
             value = parseFloat(
-                value.replace(/[$£€\s]/g, '')
+                value.replace(/[$£€,\s]/g, '')
             );
 
             // var min = + $ranges.find('ul.'+currency).find('li').first().html();;
