@@ -60,6 +60,7 @@ function init() {
         isUnsubscribe = true;
     }
     else{
+        init_subscribe();
         $("body").addClass("not-unsubscribe");
     }
 
@@ -73,6 +74,14 @@ function init() {
 function init_unsubscribe() {
     $form.find('input[name="Accepts Electronic Communications"]').not('[type="hidden"]').remove();
     $form.find('input[type="checkbox"]').prop("checked", true);
+}
+
+/**
+ * [init_unsubscribe description]
+ * @return {[type]} [description]
+ */
+function init_subscribe() {
+    $form.find('input[name="Accepts Electronic Communications"]').not('[type="hidden"]').prop("checked", true);
 }
 
 /**
