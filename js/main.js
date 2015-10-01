@@ -60,7 +60,8 @@ var GRAnalytics = require('./modules/GRAnalytics');
 var grAnalytics;
 
 var GRaygun = require('./modules/GRaygun');
-var graygunner = new GRaygun();
+var raygunFilterFields = ['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV'];
+var graygunner = new GRaygun({filter: raygunFilterFields});
 
 var $ = require('jquery');
 require("modernizr");
