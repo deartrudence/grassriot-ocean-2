@@ -26,10 +26,10 @@
   <script>
     Raygun.init('uiv4Ngo9EFGKmmfVfksyaA==', {
       excludedHostnames: [],
-      ignore3rdPartyErrors: true
+      ignore3rdPartyErrors: false
     }).attach();
     Raygun.setFilterScope('all');
-    Raygun.filterSensitiveData(['password', 'credit_card']);
+    Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);
   </script>
   </head>
   <body>
