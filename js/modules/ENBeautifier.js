@@ -99,6 +99,14 @@ ENBeautifier.prototype.moveToTargets = function(fillers, includeSource){
         if(typeof source === "string" ){
             $(target).append( (includeSource ? $(source) : $(source).contents()) );    
         }
+
+        //polyfill isArray; from MDN
+        if(!Array.isArray){
+            Array.isArray = function(arg){
+                return Object.prototype.toString.call(arg) === '[object Array]';
+            }
+        }
+
         //but if we have an array of selectors, loop through that array
         else if (Array.isArray(source)){
             var $target = $(target);
