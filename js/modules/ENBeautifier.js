@@ -190,13 +190,21 @@ ENBeautifier.prototype.usePlaceholders = function(removeAsterisk) {
             labelText = label.text();
         }
 
+        var hasPlaceholder = false;
+        if(typeof window.Modernizr !== 'undefined'){
+            hasPlaceholder = window.Modernizr.input.placeholder;
+        }
+        else{
+            var test = document.createElement('input');
+            return ('placeholder' in test);
+        }
+
         $(this)
             .find('input, textarea')
             .attr('placeholder', labelText);
-        if(
-            typeof window.Modernizr === 'undefined'
-            || window.Modernizr.input.placeholder
-            ){
+            
+        if(hasPlaceholder)
+        {
             label.closest('.eaFormElementLabel').hide();    
         }
     });

@@ -828,3 +828,22 @@ select {
     }
   }
 }
+
+@media only screen and (max-height:701px) and (min-width: $screen-xs-min){
+  .form-header h3{
+    font-size: 20px;
+  }
+
+  .form-control{
+    font-size: 12px;
+  }
+
+  #grdonation .levels label{
+    font-size: 16px;
+    line-height: 36px;
+  }
+
+  #gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label{
+    font-size: 14px;
+  }
+}

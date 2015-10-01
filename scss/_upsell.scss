@@ -16,15 +16,9 @@
   top: 100px;
 }
 
-html.csstransforms{
-  .modal.fade .upsell-modal--body{
-    top: 50%;
-    @include transform(translate(0, -100%));
-  
-    @media screen and (max-width: $screen-xxs-max){
-      @include transform(translate(0,-50%));
-    }
-  }
+.upsell-modal--body{
+  @include transform(translate(0,0));
+  top: 0 !important;
 }
 
 .upsell-panel{
