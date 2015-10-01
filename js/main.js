@@ -170,12 +170,17 @@ function setupTracking(){
             show:true
         } );
 
+        var error_text = '';
+        errors.each(function() {
+            error_text += $(this).text();
+        });
+
         // handle errors
         try { throw new Error("EA Processing Error");}
         catch(error) {
             grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
             graygunner.sendError(error, {
-                data: errors,
+                data: {'error': error_text},
                 forms: [ENFormSelector]
             });
         }
