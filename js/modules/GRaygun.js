@@ -82,7 +82,6 @@ function _prepareFormsData( forms ) {
                         var returnObj = { };
                         returnObj[obj.name] = "";
                         if(typeof options.filter != "undefined" && options.filter.indexOf(obj.name) == -1 ) {
-                            console.log('valid: '+obj.name);
                             returnObj[obj.name] = obj.value;
                         }
                         return returnObj;
