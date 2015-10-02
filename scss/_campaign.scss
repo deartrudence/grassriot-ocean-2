@@ -15,6 +15,11 @@
   @include dagny;
 }
 
+.js-supporters,
+.js-highlights{
+  background: $white;
+}
+
 
 .campaignText-sub{
   @include dagny-light;

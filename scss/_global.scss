@@ -1,6 +1,7 @@
 body {
   overflow-x:hidden;
   @include dagny;
+  background-color: $green;
 
   &:after{
     display: none;

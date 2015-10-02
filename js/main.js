@@ -214,6 +214,7 @@ function makeAffix(){
         }
         else {
             $("#grdonation").css('height','auto');
+            $affixForm.addClass("no-affix");
         }
     }
     else{
@@ -986,6 +987,12 @@ function init_validation(){
             return regexPcode.test(value);
         }, errorMessages.invalidPcode);
 
+        $.validator.addMethod('stripspaces', function (value,element) {
+            value = value.replace(/\s/g, '');
+            $(element).val(value);
+            return true
+        });
+
         var validation_rules = {
             "First Name": "required",
             "Last Name": "required",
@@ -1005,6 +1012,7 @@ function init_validation(){
             "Payment Type": "required",
             "Credit Card Number": {
                 required: true,
+                stripspaces: true,
                 creditcard: true
             },
             "Credit Card Verification Value": {

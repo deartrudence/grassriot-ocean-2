@@ -14,7 +14,6 @@
     padding-right: 2*$form-padding;
 
   }
-  
 }
 
 //override bootstrap
@@ -34,6 +33,29 @@ label{
 .form{
   @include formContainer;
   @include z-highest;
+}
+
+//simplification for small monitors
+.form.no-affix{
+  @media screen and (min-width: $screen-sm){
+    width: $form-width-sm - 35px;
+  }
+
+  @media screen and (min-width: $screen-md){
+    width: $form-width-md - 35px;
+  }
+
+  @media screen and (min-width: $screen-lg){
+
+  }
+
+  @media screen and (min-width: $screen-xl){
+    width: $form-width-xl - 45px;
+  }
+
+  .form-navbar{
+    background: $xlight-green;
+  }
 }
 
 #grdonation form {
@@ -183,7 +205,7 @@ label{
   .form-navbar {
     background: $form-navbar-bgimage;
     background-size: 435px 53px;
-    width: 435px;
+    width: 100%;
     height: $form-navbar-height;
     @include z-highest;
 
