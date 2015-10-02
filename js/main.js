@@ -200,19 +200,33 @@ function makeAffix(){
         .removeData("bs.affix");
 
     if (windowSize !== "phone" && windowSize !== "mobile") {
-        $affixForm
-            // .filter(":not(.affix-top, .affix, .affix-bottom)")
-            .affix({
-                offset: {
-                    top: header.outerHeight(),
-                    bottom: footer.outerHeight()
-                }
-            });
+        if($(window).height() >  getFormHeight($affixForm)) {
+            $affixForm
+                // .filter(":not(.affix-top, .affix, .affix-bottom)")
+                .affix({
+                    offset: {
+                        top: header.outerHeight(),
+                        bottom: footer.outerHeight()
+                    }
+                });
 
-        // $affixForm.affix('checkPosition');
+            // $affixForm.affix('checkPosition');
+        }
+        else {
+            $("#grdonation").css('height','auto');
+        }
     }
     else{
     }
+}
+
+function getFormHeight($sourceForm) {
+    var height = 0;
+    $sourceForm
+        .css('height', 'auto')
+    height = $sourceForm.outerHeight();
+    $sourceForm.css('height', '');
+    return height;
 }
 
 /**
@@ -913,6 +927,8 @@ function init_validation(){
         }, errorMessages.invalidAmount);
 
         $.validator.addMethod("emailTLD", function (value, element) {
+            value = value.replace(/\s/g,'');
+            $(element).val(value);
             return this.optional(element) || /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value);
         }, errorMessages.invalidEmail);
         
@@ -964,6 +980,8 @@ function init_validation(){
         }, errorMessages.invalidCVV);
 
         $.validator.addMethod('isPostcodeCA', function (value, element) {
+            value = $.trim(value);
+            $(element).val(value);
             var regexPcode = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
             return regexPcode.test(value);
         }, errorMessages.invalidPcode);
@@ -1055,6 +1073,11 @@ function init_validation(){
             },
             errorPlacement: function () {
                 return false; // <- kill default error labels
+            },
+            onkeyup: function(element, event) {
+                var rules = $(element).rules();
+                if(typeof rules.isPostcodeCA == "undefined" && typeof rules.emailTLD == "undefined" && event.which != 9)
+                    $(element).valid();
             }            
         });
 
