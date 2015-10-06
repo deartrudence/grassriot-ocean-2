@@ -150,8 +150,6 @@ GRSocialize.prototype.handleClick = function(e){
     }
   });
 
-  console.log(self.options.newWindow);
-
   //quit if the specified network wasn't actually defined
   if(
     typeof spec === "undefined" 

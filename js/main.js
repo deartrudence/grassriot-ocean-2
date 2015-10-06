@@ -101,6 +101,17 @@ $(document).ready(function() {
  */
 function init() {
 
+  //redirect older browsers
+  var browser = require('bowser');
+  if(
+    (browser.firefox && parseFloat(browser.version) < 9)
+    || (browser.chrome && parseFloat(browser.version) < 16)
+    ){
+    var backupForm = backupForm ? backupForm : "https://www.support.ecojustice.ca/ea-action/action?ea.campaign.id=40221&ea.client.id=1943&ea-account.campaign.id=40221";
+    window.location = backupForm;
+  }
+
+
   setupTracking();
 
   //listener above must be active to listen to ENBeautifier in setupPage
@@ -122,7 +133,6 @@ function init() {
     }
 
 	//do everything else
-
 	modernize();
     
     function handleSizing(){
@@ -592,11 +602,8 @@ function setupTY(){
         socialbuttons = new GRSocialize({
             target: ".social",
             newWindow: true,
-            facebook: {
-                appID: 1003792509664879
-            },
             onOpen: function(network, spec, target){
-                //do tracking stuff
+                grAnalytics.analyticsReport('share/'+network);
             }
         });
     } catch(error) {
@@ -935,17 +942,17 @@ function init_validation(){
         
         $.validator.addMethod('isMonth', function (value, element) {
             return value.length == 2
-                && parseInt(value) > 0
-                && parseInt(value) <= 12;
+                && parseInt(value, 10) > 0
+                && parseInt(value, 10) <= 12;
         }, errorMessages.invalidMonth);
 
         $.validator.addMethod('isNowOrFutureYear', function (value, element) {
             var year = '';
             if(value.length >= 4){
-                year = parseInt(value);
+                year = parseInt(value, 10);
             }
             else if(value.length == 2){
-                year = parseInt('20'+value);
+                year = parseInt('20'+value, 10);
             }
             else{
                 return false;
@@ -976,7 +983,7 @@ function init_validation(){
         }, errorMessages.invalidDate);
 
         $.validator.addMethod('isCVV', function (value, element) {
-            var regexCVV = /^\d{3}$/;
+            var regexCVV = /^\d{3,4}$/;
             return regexCVV.test(value);
         }, errorMessages.invalidCVV);
 
@@ -1015,7 +1022,7 @@ function init_validation(){
                 stripspaces: true,
                 creditcard: true
             },
-            "Credit Card Verification Value": {
+            "Card CVV": {
                 required: true,
                 isCVV: true //note: AMEX CVVs are 4 digits but currently handled through PayPal
             },

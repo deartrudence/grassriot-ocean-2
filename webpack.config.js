@@ -66,6 +66,7 @@ var config = {
   }
 };
 
+config.addVendor('bowser', "vendor/bowser.js");
 config.addVendor('jquery', "vendor/jquery-1.11.3.min.js");
 config.addVendor('jqueryvalidate', "vendor/jquery.validate.min.js");
 // config.addVendor('raygun', "vendor/raygun/raygun.min.js");
