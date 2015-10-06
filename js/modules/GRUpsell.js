@@ -31,6 +31,7 @@ var options;
  *        jQuery form - a jQuery object of the form where the fields will be added 
  */
 function GRUpsell(opt) {
+    this.exists = false;
 
     if(this.hasRequiredOptions(opt)) {
 
@@ -62,9 +63,16 @@ GRUpsell.prototype.hasRequiredOptions = function(options) {
 }
 
 GRUpsell.prototype.init = function() {
-    $(options.upsellContentSelector).appendTo($('body'));
-    $('body').on('click', "."+options.declineClass, $.proxy(handleDecline, this));
-    $('body').on('click', "."+options.upsellClass, $.proxy(handleUpsell, this));
+    var upsellContent = $(options.upsellContentSelector);
+    if(upsellContent.length > 0){
+        this.exists = true;
+        upsellContent.appendTo($('body'));
+        $('body').on('click', "."+options.declineClass, $.proxy(handleDecline, this));
+        $('body').on('click', "."+options.upsellClass, $.proxy(handleUpsell, this));
+    }
+    else{
+        this.exists = false;
+    }
 }
 
 GRUpsell.prototype.launch = function() {

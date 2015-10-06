@@ -752,7 +752,10 @@ function sendDonation(e) {
     $form.off("submit");
 
     //if not a recurring donation, launch the upsell.
-    if(!grGiving.isRecurring()){
+    if(
+        !grGiving.isRecurring()
+        && grupsell.exists
+    ){
         grupsell.launch();
     }
     //if it is a recurring donation already, submit
