@@ -2,7 +2,8 @@
  * GRRegions module.
  * 
  * A list of US states
- * 
+ *
+ * @version  0.1
  */
 
 module.exports = {

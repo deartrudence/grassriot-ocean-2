@@ -25,7 +25,6 @@ var config = {
   //The base JS file that requires everything
   entry: {
    app: "./js/main",
-   'subscribe-app': "./js/subscribe-main",
    vendor: []
   },
 
@@ -55,9 +54,10 @@ var config = {
   ],
   //output naming
   output: {
-    publicPath: "js/",
-    path: "./js",
-    filename: "[name].js"
+    publicPath: "output/",
+    path: "./output",
+    filename: "[name].js",
+    chunkFilename: "[name].js"
   },
 
   //placeholder for the vendor file adder to tell Grunt to ignore external files

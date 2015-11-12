@@ -74,7 +74,10 @@ module.exports = function(grunt) {
                 "BUILD_DEV": 'false'
               }
             })
-          ]
+          ],
+          output: {
+            publicPath: "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1955/",
+          }
         }
       },
 
@@ -102,7 +105,7 @@ module.exports = function(grunt) {
 
 
     //Stuff that runs when calling "grunt" on command line
-    grunt.registerTask("default", ["webpack:dev"]);
+    grunt.registerTask("default", ["webpack:dev", "compass:dev"]);
 
     //Stuff that runs when calling "grunt dev" on command line
     grunt.registerTask("dev", ["webpack:dev", "watch:app", "watch:css"]);

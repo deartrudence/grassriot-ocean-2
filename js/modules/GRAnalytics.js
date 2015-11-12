@@ -1,8 +1,9 @@
 /**
  * GRAnalytics module.
  * 
- * Uses for interaction whith Google Analytics service.
- * 
+ * Used for interaction whith Google Analytics service.
+ *
+ * @version  0.4
  * @requires jQuery
  */
 var requiredOptions = [ ];
@@ -10,7 +11,17 @@ var requiredOptions = [ ];
 var defaults = {
     'prefix': '/virtual',
     'events': [ ],
-    'trackingPixels': { }
+    'trackingPixels': { },
+    'gtm': {
+        'socialAction': 'socialAction',
+        'socialNetwork': 'socialNetwork',
+        'socialTarget': 'socialTarget',
+        'virtualPageURL': 'virtualPageURL',
+        'virtualPageTitle': 'virtualPageTitle',
+        'eCommerceEvent': 'eCommerceTransaction',
+        'virtualPageviewEvent': 'VirtualPageview',
+        'socialActivityEvent': 'SocialActivity'
+    }
 };
 
 var protect = {
@@ -103,7 +114,7 @@ GRAnalytics.prototype.setEventListeners = function( views ) {
 }
 
 GRAnalytics.prototype.addToPrefix = function( toAdd ) {
-    options.prepend.push(toAdd.toString());
+    options.prependPath.push(toAdd.toString());
 }
 
 /**
@@ -114,6 +125,22 @@ GRAnalytics.prototype.addToPrefix = function( toAdd ) {
  * @public
  */
 GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
+    //@since 0.4
+    //GTM
+    if(typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+            'transactionId': transactionData.id,
+            'transactionAffiliation': transactionData.affiliation,
+            'transactionTotal': transactionData.revenue,
+            'transactionTax': 0,
+            'transactionShipping': 0,
+            'transactionProducts': itemData,
+            'event': options.gtm.eCommerceEvent
+        });
+        return;
+        
+    }
+
     // Universal GA
     if (typeof ga !== 'undefined') {
         ga('require','ecommerce');
@@ -165,11 +192,24 @@ GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
 GRAnalytics.prototype.analyticsReport = function(viewName, title) {
     var fullPageViewName = options.prependPath.join('/') + '/' + viewName,
         data = {};
-        
+
     data['page'] = fullPageViewName;
 
     if ( title ){
         data['title'] = title;
+    }
+
+    //@since 0.4
+    //GTM
+    if(typeof dataLayer !== 'undefined') {
+        var gtmData = {
+            'event': options.gtm.virtualPageviewEvent
+        };
+        gtmData[options.gtm.virtualPageURL] = fullPageViewName;
+        gtmData[options.gtm.virtualPageTitle] = title;
+        
+        dataLayer.push(gtmData);
+        return;
     }
 
     // Universal GA
@@ -184,13 +224,43 @@ GRAnalytics.prototype.analyticsReport = function(viewName, title) {
     }
 }
 
+/**
+ * Makes call to Google Analytics (social).
+ * 
+ * @param Object networkDetails should include socialNetwork, socialAction, and socialTarget properties
+ * @public
+ * @since  0.2
+ */
+GRAnalytics.prototype.socialReport = function(networkDetails) {
+    //@since 0.4
+    //GTM
+    if(typeof dataLayer !== 'undefined') {
+         var gtmData = {
+            'event': options.gtm.socialActivityEvent
+        };
+
+        gtmData[options.gtm.socialNetwork] = networkDetails.socialNetwork;
+        gtmData[options.gtm.socialAction] = networkDetails.socialAction;
+        gtmData[options.gtm.socialTarget] = networkDetails.socialTarget;
+
+        dataLayer.push(gtmData);
+        return;
+    }
+
+    // Universal GA only
+    if( typeof ga !== 'undefined' ) {
+        ga( 'send', 'social', networkDetails.socialNetwork, networkDetails.socialAction, networkDetails.socialTarget);
+    }
+}
+
 var pixelRequiredOptions = [
     'id',
     'showPixel'
 ];
 
 var supportedPixels = [
-    'facebook'
+    'facebook',
+    'facebookv2' //@since 0.3
 ];
 
 var registeredPixels = { };
@@ -210,7 +280,6 @@ GRAnalytics.prototype.registerPixel = function(name, id, callback) {
                 showPixel: pixel.showPixel};
             if(typeof firePixelQueue[name] != "undefined") {
                 for(var i=0; i<firePixelQueue[name].length; i++) {
-                    console.log(firePixelQueue[name][i]);
                     registeredPixels[name].showPixel(registeredPixels[name].id, firePixelQueue[name][i]);
                 }
             }
@@ -234,7 +303,6 @@ GRAnalytics.prototype.fireTrackingPixels = function(pixels, data) {
             if(typeof firePixelQueue[toProcess[i]] == "undefined")
                 firePixelQueue[toProcess[i]] = [ ];
             firePixelQueue[toProcess[i]].push(data);
-            console.log(firePixelQueue);
         }
         else if(typeof registeredPixels[toProcess[i]].showPixel == "function") {
             registeredPixels[toProcess[i]].showPixel(registeredPixels[toProcess[i]].id, data);

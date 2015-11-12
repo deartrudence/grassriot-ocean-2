@@ -1,8 +1,11 @@
 /**
- * GRSocialize
+ * GRSocialize module
  *
+ * Interacts with share buttons to generate a pop-up dialog
  * Note: For the Facebook Share Dialog, your app will need to use the same domain for the hosting page and the sharing link (which should be specified as the Site URL)
- * 
+ *
+ * @version  0.2
+ * @requires jQuery
  */
 
 var defaults = {
@@ -16,32 +19,63 @@ var defaults = {
 var networks = {
   'pinterest': {
     name: 'Pinterest',
+    action: 'Pin',
     height: 333,
-    width: 783
+    width: 783,
+    baseURL: '',
+    elements: [ ]
   },
   'gplus': {
     name: 'Google+',
+    action: 'Share',
     height: 341,
-    width: 482
+    width: 482,
+    baseURL: '',
+    elements: [ ]
   },
   'facebook': {
     name: 'Facebook',
+    action: 'Share',
     height: 217,
-    width: 521
+    width: 521,
+    baseURL: 'https://www.facebook.com/sharer/sharer.php?',
+    elements: [
+      'u'
+    ]
   },
   'twitter': {
     name: 'Twitter',
+    action: 'Tweet',
     height: 300,
-    width: 498
+    width: 498,
+    baseURL: 'https://twitter.com/intent/tweet?',
+    elements: [
+      'text',
+      'url'
+    ]
   },
-  "linkedin": {
-    name:"LinkedIn",
+  'linkedin': {
+    name: 'LinkedIn',
+    action: 'Share',
     width: 783,
-    height: 538
+    height: 538,
+    baseURL: 'https://www.linkedin.com/shareArticle?mini=true&',
+    elements: [ ]
+  },
+  'mail': {
+    name: 'Email',
+    action: 'Share',
+    baseURL: 'mailto:your@friends.com?',
+    elements: [
+      'subject',
+      'body'
+    ]
   }
-}
+};
 
-var requiredOptions = {};
+var requiredOptions = [
+  'target'
+];
 var protect = {};
 var self;
 
@@ -86,6 +120,10 @@ GRSocialize.prototype.init = function(){
   $(this.options.target)
     .on("click","a",this.handleClick);
 
+  if(typeof this.options.source !== "undefined") {
+    this.buildURLs(this.options.source);
+  }
+
   if(typeof this.options.facebook !== "undefined"){
     this.facebookInit();
   }
@@ -118,7 +156,11 @@ GRSocialize.prototype.facebookInit = function(){
           response && !response.error_code //submitted without error
           && typeof self.options.onOpen !== "undefined"
         ){
-          self.options.onOpen.call(clickEvent,'facebook','',url);
+          self.options.onOpen.call(clickEvent, {
+            network: 'Facebook',
+            action: 'Post',
+            className: 'facebook',
+          },'',url);
         }
       })
 
@@ -136,16 +178,16 @@ GRSocialize.prototype.handleClick = function(e){
   var $this = $(this);
   var spec,
     network,
+    action,
     networkClass;
-
-  e.preventDefault();
 
   //loop through each registered network and assemble the right spec
   $.each(self.networks,function(className,networkSpec){
     if($this.hasClass(className)){
       spec = "height="+networkSpec.height+",width="+networkSpec.width;
       network = networkSpec.name;
-      networkClass = className
+      action = networkSpec.action;
+      networkClass = className;
       return false;
     }
   });
@@ -187,9 +229,53 @@ GRSocialize.prototype.handleClick = function(e){
   //call any registered callbacks
   //NOTE: will only fire for open options that don't redirect the browser
   if(typeof self.options.onOpen === "function"){
-    self.options.onOpen.call(this,network,spec,target);
+    self.options.onOpen.call(this,{
+      network: network,
+      action: action,
+      className: networkClass
+    },spec,target);
   }
 
+}
+
+/**
+ * buildURLs takes content-based unordered lists and turns them into proper share links
+ * @param  {[type]} e [description]
+ * @return {[type]}   [description]
+ */
+GRSocialize.prototype.buildURLs = function(source) {
+  var self = this;
+
+  //cycle through ul and look for social class
+  $(source).children('li').each(function() {
+    var network = false;
+    var networkData = this;
+    //check if class corresponds to an existing network 
+    $(networkData).attr('class').replace(/\s/g,' ').split(' ').forEach(function(className) {
+      if(typeof self.networks[className] != 'undefined') {
+        network = className;
+      }
+    });
+    if(network === false) {
+      return false;
+    }
+
+    if(typeof self.networks[network].elements !== 'undefined' && typeof self.networks[network].baseURL !== "undefined") {
+      var networkURL = self.networks[network].baseURL;
+      self.networks[network].elements.forEach(function(element) {
+        if($(networkData).find('.'+element).length > 0) {
+          if(network == 'facebook' && typeof self.options.facebook != "undefined") { //don't url encode the facebook element since it is a standalone URL
+            networkURL = $(networkData).find('.'+element).text();
+          } else {
+            networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&amp;';
+          }
+        }
+      });
+      if($(self.options.target).find('a.'+network).length > 0) {
+        $(self.options.target).find('a.'+network).attr('href', networkURL);
+      }
+    }
+  });
 }
 
 module.exports = GRSocialize;

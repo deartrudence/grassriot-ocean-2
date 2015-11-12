@@ -2,14 +2,16 @@
  * GRGivingSupport module
  *
  * Manages common aspects required for building a donation form
- * 
- * requires jQuery
+ *
+ * @version  0.3
+ * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
 
 //expected
 var defaults = {
     autoSelectCurrency: false,
+    autoBuildCurrencyList: false,  //@since 0.3
     components: {
         country: {  },
         region: {  },
@@ -27,6 +29,7 @@ var defaults = {
     processorFields: { }
 };
 
+//prevent user from defining these
 var protect = {
     components: {
         other: { urlParam: null, defaultVal: null }
@@ -37,14 +40,17 @@ var options;
 
 var $form;
 var askStringIndex = { };
+var processorMasterOptions; //@since 0.3
 var availableRegionLists = [
     'US',
     'CA',
     'AU',
     'IN'
 ];
+//TODO: Consider making these two conditional for when they are used
 var currencyMap = require('./GRCurrencies');
 var currencySymbols = require('./GRCurrencySymbols');
+
 var grHelpers = require('./GRHelpers');
 var processorFields = { };
 var regionLists = { };
@@ -73,7 +79,14 @@ function exists(component) {
     return false;
 }
 
-
+/**
+ * Sets an input value based on the tagname or type values
+ * @param {Object}       component   Standard component object used throughout the module
+ * @param {string|float} value       the value that the component should be set to
+ * @param {boolean}      strict      In the case of <select> fields where the passed {value} doesn't have a corresponding <option>, it will add the <option> if set to false [default], or not do anything if set to true
+ *
+ * @return {boolean}                 true if the value was able to be set, false if it failed
+ */
 function setValue(component, value, strict) {
     if(strict == null) strict = false;
     var $component = $form.find(component.selector);
@@ -105,8 +118,9 @@ function setValue(component, value, strict) {
 
 /**
  * getValue gets the current value after any DOM manipulation
- * @param Object component
- * @return Array|string|null
+ * @param  {Object} component  Standard component object used throughout the module
+ * 
+ * @return {Array|string|null}
  */
 function getValue(component) {
     var $component = $form.find(component.selector);
@@ -135,7 +149,9 @@ function getValue(component) {
 }
 /**
  * getHTMLValue gets the value from the html code regardless of DOM manipulation
- * @param Object component
+ * @param  {Object} component  Standard component object used throughout the module
+ * 
+ * @return {Array|string|null}
  */
 function getHTMLValue(component) {
     var $component = $form.find(component.selector);
@@ -170,9 +186,15 @@ function getHTMLValue(component) {
 /**
  * GRGivingSupport constructor
  * @param Object opt options with the following properties:
- *        string donationCampaignId - The campaign id of the donation form to be embedded
- *        pageTargetContainer
- *        donationFormContainer
+ *                   {jQuery Object}    form                    [required] The form that will be used with this module
+ *                   {Object}           components              Object with sub-Objects each that contain the properties: selector, urlParam, defaultVal; 'amount' and 'other' components accept the property 'name' and 'other' accepts the property 'targetName'
+ *                   {Array}            activeRegionLists       Array of ISO-2 Country Codes of desired, pre-defined region lists to support
+ *                   {string}           askStringSelector       Container that holds the unordered lists of ask amounts
+ *                   {string}           askStringContainerClass Class to be added to the container of the generated ask amount buttons/fields
+ *                   {Array}            recurrenceOptions       Array of Objects specifying the options available for the Recurrence input - each object has the properties: label and value
+ *                   {Object}           processorFields         Object with keys matching values of the 'processor' component and specifying which fields to hide or show when the processor is selected
+ *
+ * 
  */
 function GRGivingSupport(opts) {
     if((missing = grHelpers.hasMissingOptions(opts, requiredOptions))) {
@@ -190,10 +212,12 @@ GRGivingSupport.prototype.init = function() {
     this.getDefaults();
     if(isActive(options.components.region)) {
         //attach region input details onchange
-        if(options.activeRegionLists) 
+        if(options.activeRegionLists) {
             this.activateCountryRegions(options.activeRegionLists);
-        else
+        }
+        else {
             regionLists["default"] = $('<div>').append($form.find(options.components.region.selector).clone()).html();
+        }
         if(isActive(options.components.country)) {
             $form.find(options.components.country.selector).on('change', function(e) {
                 e.preventDefault();
@@ -211,23 +235,61 @@ GRGivingSupport.prototype.init = function() {
 
     //check if recurrence should be setup
     if(isActive(options.components.recurrence)) { 
-        if(options.recurrenceOptions.length)
+        if(options.recurrenceOptions.length) {
             this.buildRecurrenceSelector(options.recurrenceOptions);
+        }
         $form.find(options.components.recurrence.selector).on('change', $.proxy(this.updateAskString, this));
     }
 
     //if processorFields setup field hide and show on processor change
     if(isActive(options.components.processor)) {
-        if(options.processorFields)
+        if(options.processorFields) {
             this.setProcessorFields(options.processorFields);
+        }
         $form.find(options.components.processor.selector).on('change', function(e) {
             if(typeof processorFields[$(this).val()] != "undefined") {
-                if(processorFields[$(this).val()]['hide'])
+                if(processorFields[$(this).val()]['hide']) {
                     $(processorFields[$(this).val()]['hide'].join(', ')).hide();
-                if(processorFields[$(this).val()]['show'])
+                }
+                if(processorFields[$(this).val()]['show']) {
                     $(processorFields[$(this).val()]['show'].join(', ')).show();
+                }
             }
         });
+        //@since 0.3
+        if(typeof options.components.processor.countryMap != "undefined") {
+            if(typeof options.components.processor.countryMap["default"] == "undefined") {
+                throw new Error('[GRGivingSupport] No default processor list defined');
+            } else {
+                $(options.components.processor.selector).find('option').each(function() {
+                    $(this).attr("data-name", $(this).text());
+                })
+                processorMasterOptions = $(options.components.processor.selector).find('option');
+                $form.find(options.components.country.selector).on('change', function(e) {
+                    var $processor = $(options.components.processor.selector);
+                    var optionsList = options.components.processor.countryMap["default"];
+                    
+                    if(typeof options.components.processor.countryMap[$(this).val()] != "undefined") {
+                        optionsList = options.components.processor.countryMap[$(this).val()];
+                    }
+
+                    optionsList = optionsList.map(function(value) {
+                        return '[data-name="'+value+'"]';
+                    });
+
+                    if(processorMasterOptions.filter(optionsList.join(',')).length != $processor.children().length) {
+                        $processor.children().remove();
+                        $processor.append(
+                            processorMasterOptions.filter(
+                                optionsList.join(',')
+                            )
+                        );
+                        $processor.find('option:first').prop('selected', true);
+                        $processor.trigger('change');
+                    }
+                });
+            }
+        }
     }
 
     //add container around amount for ask string buttons
@@ -237,15 +299,14 @@ GRGivingSupport.prototype.init = function() {
         $form
             .on('change', options.components.amount.selector, function(e) { //clear other box when not selected
                 e.stopPropagation();
-                if($form.find(options.components.amount.selector).val() != 'other')
+                if($form.find(options.components.amount.selector).val() != 'other') {
                     $form.find(options.components.other.selector).val('');
+                }
             })
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
 
-                var donationValue = parseFloat($(this).val().replace(/[^0-9.]/g,''));
-
-                $(this).closest("label").siblings("input[type=radio]").val(donationValue);
+                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
             });
     }
 
@@ -259,6 +320,10 @@ GRGivingSupport.prototype.init = function() {
 
     //check if currency is available and add change event
     if(isActive(options.components.currency)) { 
+        //@since 0.3
+        if(options.autoBuildCurrencyList && $(options.askStringSelector).length) {
+            this.buildCurrencyList();
+        }
         $form.find(options.components.currency.selector).on('change', $.proxy(this.updateAskString, this));
     }
     
@@ -346,13 +411,13 @@ GRGivingSupport.prototype.getAmount = function(formatted) {
 
     var amt = 0;
     var symbol = options.currencySymbol;
-    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length){
+    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
         amt = $form.find(options.components.amount.selector).filter(':checked').val();
-    }
 
-    amt = parseFloat(amt.replace(/[^0-9.]/g,''));
+    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
+        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
 
-    if(isNaN(amt))
+    if(isNaN(parseFloat(amt)))
         amt = 0;
 
     if(exists(options.components.currency)) {
@@ -428,8 +493,10 @@ function getAskStringIndex() {
         index.push(currency);
     }
 
-    if(isActive(options.components.recurrence) && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase()))
+    //@since 0.2 - updated to handle a single checkbox properly
+    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
         index.push(recurrence);
+    }
 
     if(index.length == 0)
         return 'default';
@@ -508,10 +575,10 @@ GRGivingSupport.prototype.isRecurring = function() {
 }
 
 /**
- * buildAskString 
- * @param Object|string should either be a selector of a source of ask string values per currency per recurrence
+ * Finds the ask string list defined in a unordered list and returns an Object with the array of values 
+ * @param {Object|string} should either be a selector of a source of ask string values per currency per recurrence
  * or an object of the same
- *      
+ * @return {Object} Object with one property 'amount' which is an Array of string values of ask amounts
  */
 function getAskString(index) {    
     var $askStringList = $(options.askStringSelector).find('ul.'+index);
@@ -527,8 +594,43 @@ function getAskString(index) {
     return {amounts: amounts};
 }
 
+/**
+ * Builds a dropdown of currencies based on the options provided in the ask range selector
+ * @return void
+ * @since  0.3
+ */
+GRGivingSupport.prototype.buildCurrencyList = function() {
+    var $askStringLists = $(options.askStringSelector).find('ul');
+    var $currency = $(options.components.currency.selector);
+    var currencies = [ ];
+    $askStringLists.each(function() {
+        var currency = $(this).attr('class').substring(0,3);
+        for(var iso2 in currencyMap) {
+            if(currencyMap[iso2] == currency) {
+                break;
+            }
+        }
+        if(currencies.indexOf(currency) == -1) {
+            currencies.push(currency);
+        }
+    });
+    currencies = currencies.map(function(currency) { 
+        return {name: currency, code: currency};
+    });
+    $currency.replaceWith(
+        grHelpers.createSelectComponent({
+            name: $currency.attr('name'),
+            classes: $currency.attr('class'),
+            options: currencies
+        })
+    );
+}
 
-
+/**
+ * Generates the HTML for the ask amount buttons based on a list of amounts and/or whether the 'other' component is defined
+ * @param  {Array} amounts Array of amount strings 
+ * @return {Array}         Array of HTML strings - one per button
+ */
 function getAskButtons(amounts) {
     var selectorButtons = [ ];
     // var $amount = $form.find(options.components.amount.selector);
@@ -576,6 +678,11 @@ function getAskButtons(amounts) {
     return selectorButtons;
 }
 
+/**
+ * Builds radio buttons in place of the recurrence input field
+ * @param  {Array} opt  Array of Objects of recurrence options to display - has properties 'label' and 'value'
+ * @return {void}
+ */
 GRGivingSupport.prototype.buildRecurrenceSelector = function(opt) {
     //check if isActive
     if(isActive(options.components.recurrence)) {
@@ -601,6 +708,10 @@ GRGivingSupport.prototype.buildRecurrenceSelector = function(opt) {
     }
 }
 
+/**
+ * Unhides the label for a field
+ * @return {void} 
+ */
 GRGivingSupport.prototype.showLabel = function(){
     this.closest(".eaFormField")
         .prev(".eaFormElementLabel")

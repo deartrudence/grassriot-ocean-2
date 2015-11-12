@@ -1,12 +1,37 @@
 /**
- * ENBeautifier module
- * requires jQuery, jQuery Placeholder
+ * ENBeautifier module.
+ * 
+ * Performs various functions on EN forms/pages
+ *
+ * @version  0.3
+ * @requires jQuery, jQuery Placeholder
  */
+
 var requiredOptions = [
     'form'
 ];
 
+//@since 0.3
+var defaults = {
+    fieldWrapperClass: 'js-form-field-wrapper',
+    fieldContainerClass: 'js-form-field-container',
+    willBuildColumns: false,
+    errorContainer: '#eaerrors',
+    pageSelector: 'input[name="ea.submitted.page"]',
+    postactionIndicator : 'isPostaction',
+    postactionClass : 'is-postAction',
+    reportedErrors: null,
+    currentPage: false,
+    isPostaction: false
+}
+
+var protect = { };
+
+var options;
+
 var fieldObtained = false;
+
+var grHelpers = require('./GRHelpers');
 
 /**
  * ENBeautifier constructor
@@ -25,9 +50,18 @@ var fieldObtained = false;
  *        string postactionIndicator - the variable name to check for explicit post-action selection
  *        string postactionClass - the class name to add to the body if it's a post-action page
  */
-function ENBeautifier(options) {
-    if(this.hasRequiredOptions(options)) {
-        this.targetForm = options.form;
+function ENBeautifier(opts) {
+    if((missing = grHelpers.hasMissingOptions(opts, requiredOptions))) {
+        throw new Error("[ENBeautifier] Missing required options: " + missing.join(', '));
+    }
+    else {
+        options = $.extend(true, {}, defaults, opts, protect);
+        this.init();
+    }
+
+    //removed @since 0.3
+    /*if(this.hasRequiredOptions(options)) {
+        this.form = options.form;
         this.fieldWrapperClass = (options.fieldWrapperClass ? options.fieldWrapperClass : 'js-form-field-wrapper');
         this.fieldContainerClass = (options.fieldContainerClass ? options.fieldContainerClass : 'js-form-field-container');
         this.willBuildColumns = (typeof options.willBuildColumns != 'undefined' ? options.willBuildColumns : false);
@@ -44,41 +78,21 @@ function ENBeautifier(options) {
         this.init();
     }
     else
-        throw new Error("[ENBeautifier] Missing required options: " + this.missingOptions.join(', '));
-}
-
-/**
- * ENBeautifier hasRequiredOptions
- * @param {Object} options list of options
- *
- * @return {bool} whether all necessary fields are provided in the options
- */
-ENBeautifier.prototype.hasRequiredOptions = function(options) {
-    var missingOptions = [ ];
-    for(var i = 0; i < requiredOptions.length; i++) {
-        if(typeof options[requiredOptions[i]] === 'undefined') {
-            missingOptions.push(requiredOptions[i]);
-        }
-    }
-    if(missingOptions.length) {
-        this.missingOptions = missingOptions;
-        return false;
-    }
-    return true;
+        throw new Error("[ENBeautifier] Missing required options: " + this.missingOptions.join(', '));*/
 }
 
 ENBeautifier.prototype.init = function() {
-    if(this.willBuildColumns) {
+    if(options.willBuildColumns) {
         $('.eaLeftColumnContent, .eaRightColumnContent').addClass('hide');
     }
     this.checkErrors();
 }
 
 ENBeautifier.prototype.tagFieldContainers = function() {
-    var fields = $(this.targetForm).find('input, select, textarea').not('[type="hidden"], .eaSubmitButton');
+    var fields = $(options.form).find('input, select, textarea').not('[type="hidden"], .eaSubmitButton');
     fields
-        .closest('div').addClass(this.fieldWrapperClass)
-        .parent().closest('div').addClass(this.fieldContainerClass);
+        .closest('div').addClass(options.fieldWrapperClass)
+        .parent().closest('div').addClass(options.fieldContainerClass);
 
     fields.each(function() {
         var $this = $(this);
@@ -99,14 +113,6 @@ ENBeautifier.prototype.moveToTargets = function(fillers, includeSource){
         if(typeof source === "string" ){
             $(target).append( (includeSource ? $(source) : $(source).contents()) );    
         }
-
-        //polyfill isArray; from MDN
-        if(!Array.isArray){
-            Array.isArray = function(arg){
-                return Object.prototype.toString.call(arg) === '[object Array]';
-            }
-        }
-
         //but if we have an array of selectors, loop through that array
         else if (Array.isArray(source)){
             var $target = $(target);
@@ -124,7 +130,7 @@ ENBeautifier.prototype.moveToTargets = function(fillers, includeSource){
  * @param  Object fieldCollection An object - selectors as the key and an object containing the target element and classes to add to it
  */
 ENBeautifier.prototype.addClasses = function(elementCollection) {
-    var $form = this.targetForm;
+    var $form = options.form;
     $.each(elementCollection, function (selector, data) {
         $form.find(selector).closest(data.targetElement).addClass(data.classes);
     });
@@ -159,7 +165,10 @@ ENBeautifier.prototype.buildColumns = function(options) {
         fillers[options.rightColumn] = ".eaRightColumnContent";
     }
 
-    this.moveToTargets(fillers);    
+    //@since 0.2
+    var includeSource = (typeof options.includeSource != "undefined" ? options.includeSource : false);
+
+    this.moveToTargets(fillers, includeSource);   
 }
 
 ENBeautifier.prototype.clearFillers = function(){
@@ -174,10 +183,10 @@ ENBeautifier.prototype.usePlaceholders = function(removeAsterisk) {
     if(typeof removeAsterisk === "undefined") {
         removeAsterisk = true;
     }
-    var fieldContainers = $(this.targetForm).find('.'+this.fieldContainerClass);
+    var fieldContainers = $(options.form).find('.'+options.fieldContainerClass);
     if(!fieldContainers.length) {
         this.tagFieldContainers();
-        fieldContainers = $(this.targetForm).find('.'+this.fieldContainerClass);
+        fieldContainers = $(options.form).find('.'+options.fieldContainerClass);
     }
 
     $(fieldContainers).each(function() {
@@ -190,21 +199,13 @@ ENBeautifier.prototype.usePlaceholders = function(removeAsterisk) {
             labelText = label.text();
         }
 
-        var hasPlaceholder = false;
-        if(typeof window.Modernizr !== 'undefined'){
-            hasPlaceholder = window.Modernizr.input.placeholder;
-        }
-        else{
-            var test = document.createElement('input');
-            return ('placeholder' in test);
-        }
-
         $(this)
             .find('input, textarea')
             .attr('placeholder', labelText);
-            
-        if(hasPlaceholder)
-        {
+        if(
+            typeof window.Modernizr === 'undefined'
+            || window.Modernizr.input.placeholder
+            ){
             label.closest('.eaFormElementLabel').hide();    
         }
     });
@@ -213,21 +214,26 @@ ENBeautifier.prototype.usePlaceholders = function(removeAsterisk) {
 /**
  * Finds errors reported by Engaging Networks and reports them 
  * It 1) Emits an event on the form, 2) Stores the contents for later use
- * @return {[type]} [description]
+ * @param {jQuery Object} $form @since 0.3 the parent jQuery object to look for errors in - useful for AJAX HTML responses
+ * @return void
  */
-ENBeautifier.prototype.checkErrors = function(){
-    var $errors = $(this.errorContainer);
+ENBeautifier.prototype.checkErrors = function($form){
+    var $errors;
 
+    //@since 0.3
+    if(typeof $form == "undefined") {
+        $form = options.form;
+    }
+    $errors = $form.find(options.errorContainer);
+    
     if( $errors.length > 0 && $.trim($errors.text()) != ""){
-        var errors = $errors.map(function(){
-            return $(this).contents();
-        });
+        var errors = $errors.contents();
 
         //Let the rest of the page know there's an error
-        $(this.targetForm).trigger("formError.enbeautifier", errors);
+        $form.trigger("formError.enbeautifier", errors);
 
         //store it for later use
-        this.reportedErrors = this.reportedErrors.concat(errors);
+        options.reportedErrors = errors;
     }
 }
 
@@ -241,10 +247,10 @@ ENBeautifier.prototype.getErrors = function(preserveErrors){
         preserveErrors = true;
     }
 
-    var errors = this.reportedErrors;
-
+    var errors = options.reportedErrors;
+    
     if(!preserveErrors){
-        this.reportedErrors = [];
+        options.reportedErrors = null;
     }
 
     return errors;
@@ -256,22 +262,22 @@ ENBeautifier.prototype.getErrors = function(preserveErrors){
  */
 ENBeautifier.prototype.checkPage = function(){
     //get the page number
-    var pageInput = $(this.pageSelector);
-    this.currentPage = pageInput.length ? parseInt(pageInput.val()) : 0;
+    var pageInput = $(options.pageSelector);
+    options.currentPage = pageInput.length ? parseInt(pageInput.val()) : 0;
 
     //determine if we're on a post-action page
     //if there's an explicit post-action indicator, then we've got an answer
-    if(typeof window[this.thankyouIndicator] === "boolean"){
-        this.isPostaction = window[this.thankyouIndicator];
+    if(typeof window[options.thankyouIndicator] === "boolean"){
+        options.isPostaction = window[options.thankyouIndicator];
     }
     //if not, then we should just assume that any page > 1 is a post-action
-    else if(this.currentPage > 1){
-        this.isPostaction = true;
+    else if(options.currentPage > 1){
+        options.isPostaction = true;
     }
 
     //if it's the post-action, add the post-action class
-    if(this.isPostaction){
-        $("body").addClass(this.postactionClass);
+    if(options.isPostaction){
+        $("body").addClass(options.postactionClass);
     }
 }
 

@@ -2,9 +2,8 @@
  * GRSteps module
  * 
  * Creates and handles a multi-step form
- * Note: uses ES6 module syntax
  * 
- * @module  GRSteps
+ * @version  0.3
  * @requires jQuery
  */
 var requiredOptions = [ 'steps' ];
@@ -16,10 +15,13 @@ var defaults = {
     'target': '.js-formSteps',
     'stepHandler': [],
     'stepLabels': [],
+    'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
+    'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
     'currentStep': false,
     'startStep': 0,
     'useCSSAnimation': true,
-    'addButtons': false
+    'addButtons': false,
+    'backButtons': true
 };
 
 var protect = {
@@ -42,7 +44,8 @@ function GRSteps(options){
 }
 
 /**
- * Initialize GRSteps
+ * Initialize GRSteps !!MODIFIED 20151002!!
+ *
  * @return {[type]} [description]
  */
 GRSteps.prototype.init = function(){
@@ -57,7 +60,7 @@ GRSteps.prototype.init = function(){
 
   //add step buttons if so configured
   if(this.options.addButtons){
-    this.buttonify.call(this.options.steps);
+    this.buttonify.call(this.options.steps, this);
   }
 
   //button handlers
@@ -74,6 +77,45 @@ GRSteps.prototype.init = function(){
     });
 
   this.switchTo(this.options.startStep);
+
+  //handle tabbing issue
+  $(this.options.steps).on('keydown', 'input, select, textarea, button', function(e) {
+      if(e.which == 9) {
+          var $stepPanel = $(this).parents('.page').first();
+          var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
+          var $firstTabbable = $stepPanel.find('input, select, textarea, button').filter(":first");
+          if(!e.shiftKey && $(this).is($lastTabbable)) {
+              e.preventDefault();
+              $firstTabbable.focus();
+              //formSteps.nextStep();
+          } else if(e.shiftKey && $(this).is($firstTabbable)) {
+              e.preventDefault();
+              $lastTabbable.focus();
+              //formSteps.previousStep();
+          }
+      }
+  });
+  
+  this.$container.on('stepChanged.grsteps', function(e, step) {
+      steps.$container.promise().done(function() {
+          $(steps.options.steps)
+              .filter(function(index) {
+                  return (step.currentStep == index);
+              })
+              .find('input, select, textarea, button')
+              .first()
+              .focus();
+      });
+  });
+
+  //Allow switching steps by clicking the breadcrumb
+  $(this.options.indicatorTarget).on("click", '.'+this.options.completeClass, function(){
+    var index = $(this).index();
+
+    if(steps.options.currentStep > index){
+      steps.switchTo(index);
+    }
+  });
 
 }
 
@@ -127,10 +169,16 @@ GRSteps.prototype.addSteps = function(newSteps){
   $(this.options.indicatorTarget).append(this.stepIndicators);
 
   //change the container width to match the number of panels
-  var containerWidthPercentage = 100 * this.stepIndicators.length;
-  var panelWidthPercentage = 100 * (1/this.stepIndicators.length);
-  this.$container.css("width", containerWidthPercentage + "%" );
-  this.$container.children().css("width",panelWidthPercentage + "%");
+  if(
+    typeof this.options.direction !== "string"
+    || this.options.direction === "right"
+    || this.options.direction === "left"
+    ){
+    var containerWidthPercentage = 100 * this.stepIndicators.length;
+    var panelWidthPercentage = 100 * (1/this.stepIndicators.length);
+    this.$container.css("width", containerWidthPercentage + "%" );
+    this.$container.children().css("width",panelWidthPercentage + "%"); 
+  }
 }
 
 /**
@@ -139,8 +187,6 @@ GRSteps.prototype.addSteps = function(newSteps){
  * @return {[type]}            [description]
  */
 GRSteps.prototype.switchTo = function(stepNumber){
-  this.stepIndicators
-    .removeClass(this.options.activeClass);
 
   //TODO: validate the current panel
   
@@ -154,15 +200,17 @@ GRSteps.prototype.switchTo = function(stepNumber){
     return;
   }
 
+  this.stepIndicators
+    .removeClass(this.options.activeClass);
+
   //add the complete class to the current indicator
-  //this is probably OK.
-  if(this.options.currentStep !== false){
+  //But only if going to a next step
+  if(
+    this.options.currentStep !== false
+    && this.options.currentStep < stepNumber
+    ){
     this.stepIndicators.eq(this.options.currentStep)
       .addClass(this.options.completeClass);
-  }
-
-  if(stepNumber > this.stepIndicators.length || stepNumber < 0){
-    return;
   }
 
   //switch the indicator
@@ -171,17 +219,54 @@ GRSteps.prototype.switchTo = function(stepNumber){
     .addClass(this.options.activeClass);
 
   //actually switch to the panel
-  var newMargin = (this.options.currentStep * -100).toString() + '%';
   
-  if(this.options.useCSSAnimation){
-    this.$container.css({marginLeft: newMargin});
+  //simulate scrolling right
+  if(
+    typeof this.options.direction !== "string"
+    || this.options.direction === "right"
+    ){
+    var newMargin = (this.options.currentStep * -100).toString() + '%';
+    
+    if(this.options.useCSSAnimation){
+      this.$container.css({marginLeft: newMargin});
+    }
+    else{
+      this.$container
+        .animate({
+          "marginLeft": newMargin
+        }, 300);
+    }    
   }
-  else{
-    this.$container
-      .animate({
-        "marginLeft": newMargin
-      }, 300);
+
+  //simulate scrolling down
+  //@since 0.3
+  else if(this.options.direction === "down"){
+    //get the collective height of earlier elements
+    var activePage = this.$container.children().eq(this.options.currentStep);
+
+    var newScroll = activePage.prevAll()
+      .map(function(){
+        return $(this).outerHeight();
+      })
+      .get().reduce(function(sum, item){
+        return sum + item;
+      },0);
+
+    if(this.options.useCSSAnimation){
+      this.$container.css({
+        scrollTop: newScroll,
+        height: activePage.outerHeight()
+      })
+    }
+    else{
+      this.$container
+        .animate({
+          "scrollTop": newScroll,
+          "height": activePage.outerHeight()
+        }, 300);
+    }
   }
+
 
   //let the world know what's happened
   this.$container.trigger("stepChanged.grsteps",{currentStep:this.options.currentStep});
@@ -190,24 +275,27 @@ GRSteps.prototype.switchTo = function(stepNumber){
 /**
  * [addButtons description]
  */
-GRSteps.prototype.buttonify = function(){
-  var lastIndex = this.length-1;
+GRSteps.prototype.buttonify = function(self){
+  var lastIndex = self.options.actionStep;
   this.each(function(index, step) {
     if(index == lastIndex) {
       $(step).append(
         '<p class="pull-right"> \
-          <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
+          <button type="button" class="btn btn-danger btn-lg btn-next">'+self.options.actionButton+'</button> \
         </p>'
       );
     } else {
       $(step).append(
         '<p class="pull-right"> \
-          <button type="button" class="btn btn-danger btn-lg btn-next">Donate<span class="glyphicon glyphicon-chevron-right"></span></button> \
+          <button type="button" class="btn btn-danger btn-lg btn-next">'+self.options.stepButton+'</button> \
         </p>'
       );
     }
 
-    if(index>0) {
+    if(
+      index>0
+      && self.options.backButtons === true
+      ) {
       $(step).append(
         '<p class="pull-left back-button"> \
           <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
@@ -227,6 +315,16 @@ GRSteps.prototype.nextStep = function(){
 
 GRSteps.prototype.previousStep = function(){
   this.switchTo(this.options.currentStep - 1)
+}
+
+/**
+ * Causes window to recalculate
+ * @return {[type]} [description]
+ *
+ * @since  0.3
+ */
+GRSteps.prototype.refresh = function(){
+  this.switchTo(this.options.currentStep);
 }
 
 //step validator
