@@ -24,7 +24,7 @@
 }
 
 .heroTitle {
-  @include dagny-light;
+  @include font-headN4;
   @include fontSize-large;
   @include lineHeight-hero;
   position: relative;
@@ -33,12 +33,12 @@
 
   strong,
   em {
-    @include dagny-heavy;
+    @include font-headI4;
     text-transform: uppercase;
   }
 
   em {
-    color: $mlight-green;
+    color: $light-green;
   }
 
   @media screen and (max-width: $screen-sm-max){
@@ -47,8 +47,8 @@
 }
 
 .heroCaption {
-  @include fontSize-smallest;
-  @include dagny;
+  @include fontSize-small;
+  @include font-bodyN4;
   position: absolute;
   left: 3%;
   bottom: 0;
@@ -94,6 +94,6 @@ screen and (max-device-width:$screen-xs-max) {
 
 @media screen and (min-width: $screen-lg) {
   .heroTitle {
-    @include fontSize-responsive-large;
+    @include fontSize-large;
   }
 }

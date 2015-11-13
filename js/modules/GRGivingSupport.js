@@ -497,7 +497,7 @@ function getAskStringIndex() {
     if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
         index.push(recurrence);
     }
-
+    
     if(index.length == 0)
         return 'default';
     else

@@ -22,7 +22,7 @@ label{
 }
 
 .navbar-stepcontainer {
-  padding-left: 60px;
+  padding-left: 0px;
 }
 .col-form{
   @media screen and (min-width: $screen-md){
@@ -54,12 +54,12 @@ label{
   }
 
   .form-navbar{
-    background: $xlight-green;
+    background: $white;
   }
 }
 
 #grdonation form {
-  background: $green;
+  background: $background-grey;
   // overflow-y: auto;
 
   &.is-active{
@@ -68,26 +68,25 @@ label{
 }
 
 .form-header{
+  background-color: $white;
   padding-top: $form-padding;
   padding-bottom: 0;
   @include formPadding;
 
   h3 {
-    @include dagny;
-    color: $white;
+    @include font-headN4;
+    color: $green;
     @include fontSize-medium;
     @include lineHeight-hero;
     text-transform: uppercase;
   }
   
   strong{
-    @include dagny-heavy;
+    @include font-headN7;
   }
 
   em {
-    text-transform: none;
-    font-style: normal;
-    color: $vdark-green;
+    @include font-headI7;
   }
 }
 
@@ -105,7 +104,7 @@ label{
 
 @media screen and (max-width: $screen-xxs-max) {
   .form {
-    background-color: $form-background;
+    background-color: $background-grey;
 
     &.is-active{
       overflow-x: hidden;
@@ -118,7 +117,7 @@ label{
     }
   }
   .form-navbar{
-    background-color: $xlight-green;
+    background-color: $white;
   }
   
   .form-header{
@@ -189,11 +188,11 @@ label{
   }
 
   #grdonation{
-    padding-top: $form-navbar-height;
+    //padding-top: $form-navbar-height;
   }
 
   #grdonation form{
-    margin-top: -1 * $form-navbar-height;
+    //margin-top: -1 * $form-navbar-height;
   }
 
   .affix {
@@ -203,10 +202,10 @@ label{
   }
 
   .form-navbar {
-    background: $form-navbar-bgimage;
+    background: $white;
     background-size: 435px 53px;
     width: 100%;
-    height: $form-navbar-height;
+    //height: $form-navbar-height;
     @include z-highest;
 
   }
@@ -218,7 +217,7 @@ label{
 }
 @media screen and (min-width: $screen-xl) {
   .form-navbar {
-    background: $form-navbar-bgimage-xl;
+    background: $white;
     background-size: 650px 54px;
     width: 650px;
     height: 53px;

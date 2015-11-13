@@ -3,7 +3,7 @@
  * 
  * Creates and handles a multi-step form
  * 
- * @version  0.3
+ * @version  0.3 !!MODIFIED 20151113!!
  * @requires jQuery
  */
 var requiredOptions = [ 'steps' ];
@@ -52,6 +52,7 @@ GRSteps.prototype.init = function(){
   //initalizer
   var steps = this;
   this.stepIndicators = $();
+  this.disabledSteps = [ ];  //@since __
   this.$container = $(this.options.target);
   this.addSteps(this.options.steps);
 
@@ -141,6 +142,53 @@ GRSteps.prototype.hasRequiredOptions = function(options, req) {
 }
 
 /**
+ * Hides a step and its indicator
+ * @param  {int} index the index of the step to hide starting at 0
+ * @return void   
+ * @since __    
+ */
+GRSteps.prototype.hideStep = function(index) {
+  if(this.disabledSteps.indexOf(index) === -1) {
+    this.disabledSteps.push(index);
+    $(this.options.steps[index]).children().css('visibility', 'hidden');
+    this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+  }
+}
+
+/**
+ * Shows a step and its indicator
+ * @param  {int} index the index of the step to show starting at 0
+ * @return void    
+ * @since  __   
+ */
+GRSteps.prototype.showStep = function(index) {
+  if(this.disabledSteps.indexOf(index) !== -1){
+    this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
+    $(this.options.steps[index]).children().css('visibility', '');
+    this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+  }
+}
+
+/**
+ * recalculates the sizes of the panels and container
+ * @return void
+ * @since  __
+ */
+GRSteps.prototype.recalculate = function() {
+  //change the container width to match the number of panels
+  if(
+    typeof this.options.direction !== "string"
+    || this.options.direction === "right"
+    || this.options.direction === "left"
+    ){
+    var containerWidthPercentage = 100 * (this.stepIndicators.length);
+    var panelWidthPercentage = 100 * (1/(this.stepIndicators.length));
+    this.$container.css("width", containerWidthPercentage + "%" );
+    this.$container.children().css("width",panelWidthPercentage + "%"); 
+  }
+}
+
+/**
  * [addSteps description]
  * @param {[type]} steps [description]
  */
@@ -168,17 +216,7 @@ GRSteps.prototype.addSteps = function(newSteps){
   //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
   $(this.options.indicatorTarget).append(this.stepIndicators);
 
-  //change the container width to match the number of panels
-  if(
-    typeof this.options.direction !== "string"
-    || this.options.direction === "right"
-    || this.options.direction === "left"
-    ){
-    var containerWidthPercentage = 100 * this.stepIndicators.length;
-    var panelWidthPercentage = 100 * (1/this.stepIndicators.length);
-    this.$container.css("width", containerWidthPercentage + "%" );
-    this.$container.children().css("width",panelWidthPercentage + "%"); 
-  }
+  this.recalculate();  //moved to function @since __
 }
 
 /**
@@ -306,15 +344,29 @@ GRSteps.prototype.buttonify = function(self){
 }
 
 /**
- * [next description]
- * @return {Function} [description]
+ *  switches to the next visiable step
+ * @since  __   Looks for hidden steps and jumps over them
+ * @return void
  */
 GRSteps.prototype.nextStep = function(){
-  this.switchTo(this.options.currentStep + 1)
+  var offset = 1;
+  while(this.disabledSteps.indexOf(this.options.currentStep + offset) !== -1) {
+    offset++;
+  }
+  this.switchTo(this.options.currentStep + offset);
 }
 
+/**
+ * switches to the previous visiable step
+ * @since  __   Looks for hidden steps and jumps over them
+ * @return {[type]} [description]
+ */
 GRSteps.prototype.previousStep = function(){
-  this.switchTo(this.options.currentStep - 1)
+  var offset = 1;
+  while(this.disabledSteps.indexOf(this.options.currentStep - offset) !== -1) {
+    offset++;
+  }
+  this.switchTo(this.options.currentStep - offset);
 }
 
 /**

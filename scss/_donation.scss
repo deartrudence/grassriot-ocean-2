@@ -1,9 +1,9 @@
 @mixin formSectionHeader{
   margin-top: 1.5em;
   @include fontSize-base;
-  @include dagny-light;
+  @include font-headN4;
   display: block !important;
-  color: $brown;
+  color: $magenta;
 }
 
 #grdonation{
@@ -38,9 +38,10 @@
     label {
       display: block;
       float: none;
-      background: $vlight-grey;
-      border-radius: 3px;
-      color: $grey;
+      border-radius: 1px;
+      border-top: 1px solid $vlight-grey;
+      background: $background-grey;
+      color: $medium-light-grey;
       box-shadow: 1px 1px 2px $black;
       box-shadow: 1px 1px 2px rgba($black, 0.3);
     }
@@ -76,18 +77,18 @@
       left: 0;
       content: '';
       width: 2.5em;
-      background: #D1D3D4;
-      border-radius: 3px 0 0 3px;
+      background: $vlight-grey;
+      border-radius: 1px 0 0 1px;
     }
 
     /* toggle hover */
     input[type='radio']:hover:not(:checked) ~ label:before {
       content: '\2714';
       text-indent: .9em;
-      color: #C2C2C2;
+      color: $lighter-grey;
     }
     input[type='radio']:hover:not(:checked) ~ label {
-      color: #888;
+      color: $lighter-grey;
     }
 
     /* toggle on */
@@ -95,11 +96,11 @@
       content: '\2714';
       text-indent: .9em;
       color: $white;
-      background-color: $vdark-green;
+      background-color: $cta-red;
     }
     input[type='radio']:checked ~ label {
       color: $white;
-      background-color: $dark-green;
+      background-color: $purple;
     }
 
     /* radio focus */
@@ -205,13 +206,14 @@
 
 
 .window--frame{
+  padding-top: 30px;
   overflow:hidden;
 }
 
-#gr_details, #gr_payment {
-  background: $form_background;
+/*#gr_details, #gr_payment {
+  background: $background-grey;
   border-radius: 0 0 15px 15px;
-}
+}*/
 
 #gr_details {
   input.eaSubmitButton {
@@ -290,10 +292,11 @@
   ul {
     list-style: none;
     margin: 0;
-    padding: 13px 0 13px 30px;
+    padding: 13px 0 0px 0px;
     text-align: left;
     font-size: 0;
     li {
+      vertical-align: middle;
       color: $steps_colour;
       background: $steps_background;
       @include background($steps_advancedBackground);
@@ -419,7 +422,7 @@
 }
 
 .go-back {
-  color: $white;
+    color: $input-placeholder-grey;
     display: inline-block;
     opacity: 0.8;
     background: none;
@@ -441,6 +444,9 @@
 
 #grdonation .page{
   float: left;
+  .pull-right {
+    clear: both;
+  }
 }
 
 .lt-ie9, .ie9 {
@@ -586,7 +592,7 @@
     // color: $white;
     // text-transform: uppercase;
     // border-radius: 5px;
-    @include cta-button-gradient--red;
+    @include cta-button--magenta;
 
     .glyphicon-chevron-right {
       font-size: 80%;
@@ -621,7 +627,7 @@
       box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px 0px;
       box-sizing: border-box;
       color: rgb(54, 54, 54);
-      @include font-sansN4;
+      @include font-bodyN4;
       
 
       @media only screen and (max-width: $screen-xxs-max){
@@ -708,7 +714,7 @@ select {
   }
 }
 
-#gr_details {
+#grdonation .page {
   div.eaQuestionCheckboxFormFieldContainer {
     height: auto;
     padding: 1em 0;
@@ -717,18 +723,22 @@ select {
     display: inline;
   }
   .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox,
-  .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input {
+  .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input,
+  .eaFormCheckbox,
+  .eaFormCheckbox input {
     vertical-align:top;
     &:hover {
       cursor: pointer;
     }
   }
-  .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label {
+  .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label,
+  .eaFormCheckbox label {
     cursor: pointer;
     display: inline-block;
     width: 90%;
-    @include fontSize-small;
-    @include dagny;
+    color: $magenta;
+    @include fontSize-base;
+    @include font-bodyN4;
     @include lineHeight-tight;
     font-weight: 400;
     top: 0px;

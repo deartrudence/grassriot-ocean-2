@@ -1,178 +1,227 @@
+//CDN
+
+//local
+// TODO: these are imaginary - need to be replaced when we receive actual files
+// @font-face {
+//     font-family: 'FrutigerLTStd Bold';
+//     src: url(FrutigerLTStdBold.woff);
+//     font-weight: 700;
+// }
+// @font-face {
+//     font-family: 'FrutigerLTStd Roman';
+//     src: url(FrutigerLTStdRoman.woff);
+//     font-weight: 400;
+// }
+
 //Fonts
-@mixin dagny-heavy{
-	font-family: "DagnyOT-Bold";
-	font-weight: 400;
-	font-style: normal;
-}
-@mixin dagny{
-	font-family: 'DagnyOT';
-	font-weight: 400;
-	font-style: normal;
-}
-@mixin dagny-light{
-	font-family: "DagnyOT-light";
-	font-weight: 400;
-	font-style: normal;
-}
-@mixin footer-font {
-	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-	font-size: 13px;
-	line-height: 2em;
-	font-weight: bolder;
-}
+// @mixin dagny-heavy{
+//   font-family: "DagnyOT-Bold";
+//   font-weight: 400;
+//   font-style: normal;
+// }
+// @mixin dagny{
+//   font-family: 'DagnyOT';
+//   font-weight: 400;
+//   font-style: normal;
+// }
+// @mixin dagny-light{
+//   font-family: "DagnyOT-light";
+//   font-weight: 400;
+//   font-style: normal;
+// }
+// @mixin footer-font {
+//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+//   font-size: 13px;
+//   line-height: 2em;
+//   font-weight: bolder;
+// }
 
-@mixin font-sansN4{
-	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-	font-weight: 400;
-}
+// @mixin font-headN4{
+//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+//   font-weight: 400;
+// }
 
-@mixin font-sansN7{
-	font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-	font-weight: 700;
-}
+// @mixin font-headN7{
+//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+//   font-weight: 700;
+// }
 
-@mixin font-primaryN7{
-	@include dagny-heavy;
-}
-
-//Sizes
-@mixin fontSize-smallest {
-	font-size: 10px;
-}
-@mixin fontSize-smaller{
-  font-size: 14px;
-}
-@mixin fontSize-small{
+// @mixin font-primaryN7{
+//   @mixin dagny-heavy;
+// }
+html {
   font-size: 16px;
-}
-@mixin fontSize-events {
-	font-size: 17px;
-}
-@mixin fontSize-base{
-  font-size: 18px;
-}
-@mixin fontSize-medium {
-	font-size: 25px;
-}
-@mixin fontSize-large{
-  font-size: 30px;
-}
-@mixin fontSize-largerish{
-  font-size: 37px;
-}
-@mixin fontSize-larger{
-  font-size: 43px;
-}
-@mixin fontSize-titleLarge{
-  font-size: 53px;
-}
-@mixin fontSize-xlarge{
-  font-size: 55px;
-}
-@mixin fontSize-huge{
-  font-size: 65px;
-}
-@mixin fontSize-massive-xs {
-  font-size: 150px;
-}
-@mixin fontSize-massive{
-  font-size: 210px;
-}
-
-@mixin fontSize-responsive-smaller {
-	font-size: 0.8vw;
-}
-@mixin fontSize-responsive-small {
-	font-size: 0.9vw;
-}
-@mixin fontSize-responsive-smallish{
-	font-size: 1.2vw;
-}
-@mixin fontSize-responsive-base {
-	font-size: 1.3vw;
-}
-@mixin fontSize-responsive-halfLarger{
-	font-size: 1.45vw;
-}
-@mixin fontSize-responsive-medium {
-	font-size: 1.8vw;
-}
-@mixin fontSize-responsive-large {
-	font-size: 2.4vw;
-}
-@mixin fontSize-responsive-larger{
-  font-size: 2.9vw;
-}
-@mixin fontSize-responsive-massive {
-	font-size: 15.3vw;
-}
-
-//Line Heights
-@mixin lineHeight-title--number {
-	line-height: 0.7;
-}
-@mixin lineHeight-hero {
-	line-height: 1.1;
-}
-@mixin lineHeight-campaigntext-main {
-	line-height: 1em;
-}
-@mixin lineHeight-higlights {
-	line-height: 1.5em;
-}
-@mixin lineHeight-title--text {
-	line-height: 5.4em;
-}
-@mixin lineHeight-tight{
-	line-height: 1.4;
-}
-
-//Local Fonts
-@font-face {
-	font-family: 'DagnyOT-Light';
-	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/DagnyOT-Light.otf') format('opentype');
-	// src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.eot') format('embedded-opentype'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.woff') format('woff'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.svg') format('svg');
-	font-weight: 200;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'DagnyOT';
-	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/DagnyOT.otf') format('opentype');
-	// src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.eot') format('embedded-opentype'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.woff') format('woff'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.svg') format('svg');
-	font-weight: 500;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'DagnyOT-Bold';
-	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/DagnyOT-Bold.otf') format('opentype');
-	// src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.eot') format('embedded-opentype'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.woff') format('woff'),
-	// 	 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AlternateGotNo2D.svg') format('svg');
-	font-weight: 700;
-	font-style: normal;
 }
 
 strong{
-	font-weight: 700;
+  font-weight: 700;
 }
 
 em{
-	font-style: italic;
+  font-style: italic;
 }
 
-// example of all font formats required
-// @font-face {
-// 	font-family: 'ATG-Cn18';
-// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AmnestyTradeGothic-Cn18.eot');
-// 	src: url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AmnestyTradeGothic-Cn18.eot?#iefix') format('embedded-opentype'),
-// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AmnestyTradeGothic-Cn18.woff') format('woff'),
-// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AmnestyTradeGothic-Cn18.ttf') format('truetype'),
-// 		 url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/AmnestyTradeGothic-Cn18.svg#AmnestyTradeGothic-Cn18') format('svg');
-// 	font-weight: normal;
-// 	font-style: normal;
-// }
+//
+//Body font
+//
+@mixin font-bodyN4{
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-bodyN7{
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-bodyI4{
+  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-bodyI7{
+  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+//
+//Title font
+//
+@mixin font-headN4{
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-headN7{
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-headI4{
+  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-headI7{
+  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+//
+//Decorative font
+//
+@mixin font-decoN4{
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-decoN7{
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-decoI4{
+  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-decoI7{
+  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+//Sizes
+@mixin fontSize($s: base){
+  $font-to-em: map-get((
+    small: 0.5rem,
+    base: 1rem,
+    medium: 1.3rem,
+    large: 1.6rem,
+    largerish: 2rem,
+    larger: 2.4rem,
+    titleLarge: 2.9rem,
+    xlarge: 3rem,
+    huge: 3.6rem,
+    titleHuge: 4.3rem
+  ), $s);
+  font-size: $font-to-em;
+}
+
+//lineheight
+$line-tightest: .96;
+$line-tighter: 1;
+$line-hero: 1.1;
+$line-tight: 1.2;
+$line-base: 1.5;
+$line-loose: 2;
+
+@mixin lineHeight-hero {
+  line-height: $line-hero;
+}
+
+@mixin line-tightest{
+  line-height: $line-tightest;
+}
+
+@mixin line-tighter{
+  line-height: $line-tighter;
+}
+
+@mixin line-tight{
+  line-height: $line-tight;
+}
+
+@mixin line-base{
+  line-height: $line-base;
+}
+
+@mixin line-loose{
+  line-height: $line-loose;
+}
+
+//font size
+@mixin fontSize-small{
+  font-size: 0.5rem;
+}
+@mixin fontSize-base{
+  font-size: 1rem;
+}
+@mixin fontSize-medium{
+  font-size: 1.22rem;
+}
+@mixin fontSize-large{
+  font-size: 1.77rem;
+}
+@mixin fontSize-largerish{
+  font-size: 2rem;
+}
+@mixin fontSize-titleLarge{
+  font-size: 2.9rem;
+}
+@mixin fontSize-xlarge{
+  font-size: 3rem;
+}
+@mixin fontSize-huge{
+  font-size: 3.6rem;
+}
+
+@mixin font-sansN7 {
+  font-family: 'Frutiger Neue W01 Bd';
+}
+
+@mixin font-sansN4 {
+  font-family: 'FrutigerLTStd Roman';
+}

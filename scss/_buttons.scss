@@ -2,27 +2,20 @@
 $calltoaction-buttonpadding-md: 20px 20px;
 
 @mixin calltoaction-button--red {
-  background-color: $medium-red;
+  background-color: $cta-red;
   padding: $calltoaction-buttonpadding-md;
   border-radius: 10px 10px 0 0;
 }
 
-@mixin cta-button-gradient--red {
-    @include dagny;
-    padding: 0.5em 4em;
-    text-transform: uppercase;
-    border: none;
-    font-size: 16px;
-    color: #fff;
-    border-radius: 6px;
-    border: none; 
-    @include background(linear-gradient(to bottom,  #993333 0%,#b02216 50%,#991d16 100%));
-    // background: #993333; /* Old browsers */
-    // background: -moz-linear-gradient(top,  #993333 0%, #b02216 50%, #991d16 100%); /* FF3.6+ */
-    // background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#993333), color-stop(50%,#b02216), color-stop(100%,#991d16)); /* Chrome,Safari4+ */
-    // background: -webkit-linear-gradient(top,  #993333 0%,#b02216 50%,#991d16 100%); /* Chrome10+,Safari5.1+ */
-    // background: -o-linear-gradient(top,  #993333 0%,#b02216 50%,#991d16 100%); /* Opera 11.10+ */
-    // background: -ms-linear-gradient(top,  #993333 0%,#b02216 50%,#991d16 100%); /* IE10+ */
-    // background: linear-gradient(to bottom,  #993333 0%,#b02216 50%,#991d16 100%); /* W3C */
-    // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#993333', endColorstr='#991d16',GradientType=0 ); /* IE6-9 */
+@mixin cta-button--magenta {
+  border-radius: 0;
+  border: 1px solid $white;
+  color: $white;
+  text-transform: uppercase;
+  background-color: $cta-red;
+  @include font-bodyN7;
+  @include fontSize-medium;
+  &:hover {
+    opacity: 0.9;
+  }
 }

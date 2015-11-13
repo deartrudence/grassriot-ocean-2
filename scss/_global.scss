@@ -1,6 +1,6 @@
 body {
   overflow-x:hidden;
-  @include dagny;
+  @include font-bodyN4;
   background-color: $green;
 
   &:after{

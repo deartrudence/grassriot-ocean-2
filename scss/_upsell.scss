@@ -38,7 +38,7 @@
 .upsell-title{
   font-size: 1em; //override bootstrap's sizes
   color: $upsell-colour;
-  @include dagny-heavy;
+  @include font-headN7;
   @include lineHeight-hero;
 }
 
@@ -134,11 +134,11 @@ button.upsell-modal--close{
   background: $upsell-action-background;
   // margin:0 -1*$upsell-recommendation-padding -1*$upsell-recommendation-padding;
   margin-top: -2px;
-  @include cta-button-gradient--red;
+  @include cta-button--magenta;
   text-align: center;
   padding: 1em;
   color: $upsell-colour;
-  @include font-primaryN7;
+  @include font-bodyN7;
 
   &:hover{
     opacity: 0.8;
@@ -153,7 +153,7 @@ button.upsell-modal--close{
   margin: 1.5em 0 1em;
 
   a{
-    color: $beige;
+    color: $charcoal;
     text-decoration: underline;
   }
 }
@@ -241,7 +241,7 @@ button.upsell-modal--close{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 0;
-    @include fontSize-smaller;
+    @include fontSize-small;
   }
 
   .upsell-subtitle{

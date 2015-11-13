@@ -12,21 +12,6 @@ webpackJsonp([0],[
 	var footer = $('footer');
 	var header = $('header');
 
-	//Key:Value :: Target:Content
-	var ENBeautifierFillers = {
-	  ".js-hero": ".js-heroContent",
-	  ".js-campaign": ".js-campaignText",
-	  ".js-highlights": ".js-highlightsText",
-	  ".js-hero-image": ".js-heroImage",
-	  ".js-financial": ".js-financialText",
-	  ".js-supporters": ".js-supportersText",
-	  ".js-formOpen-label": ".js-formOpen-labelText" };
-	var ENBeautifierFillersContainers = {
-	  '#gr_donation': [/*'#Payment_CurrencyDiv',*/ '#Recurring_PaymentDiv', '#Donation_AmountDiv'],
-	  '#gr_details': ['.js-billingDetails', '#First_NameDiv', '#Last_NameDiv', '#Email_AddressDiv', '#Address_1Div', '#CityDiv','#PostcodeDiv', '#CountryDiv', '#ProvinceDiv', '#Accepts_Electronic_CommunicationsDiv'],
-	  '#gr_payment': ['.js-paymentDetails', '#Payment_TypeDiv', '#CC_ImagesDiv', '#Credit_Card_NumberDiv', '#Card_CVVDiv', '#Credit_Card_ExpirationDiv'],
-	};
-
 	var ENBeautifier = __webpack_require__(3);
 	var enbeautifier;
 
@@ -63,8 +48,103 @@ webpackJsonp([0],[
 	var GRAnalytics = __webpack_require__(14);
 	var grAnalytics;
 
+	var gr = __webpack_require__(4);
+
+	var fields = gr.buildFieldNameObject({
+	    email:      'Email',
+	    fname:      'First Name',
+	    lname:      'Last Name',
+	    street1:    'Address 1',
+	    street2:    'Address2',
+	    city:       'City',
+	    region:     'State',
+	    postal:     'Postcode',
+	    country:    'Country',
+	    phone:      'Phone Number',
+	    pay_type:   'Payment Type',
+	    cardholder: 'Card Holder Name',
+	    cc_num:     'Credit Card Number',
+	    cc_cvv:     'CVV Code',
+	    cc_exp:     'Credit Card Expiration',
+	    amt:        'Donation Amount',
+	    currency:   'Currency',
+	    recur_pay:  'Recurring Payment',
+	    recur_freq: 'Recurring Frequency',
+	    recur_day:  'Recurring day',
+	    optin:      'Opt in',
+	    giftaid:    'Gift Aid',
+	    ref_camp_id:'Referring Campaign Id',
+	    matching:   'Matching Gift', 
+	    employer:   'Company Name',
+	    inmem:      'In Memoriam',
+	    inmem_type: 'Gift Type',
+	    inmem_name: 'Honoree Name',
+	    inmem_recip:'Honoree Title',
+	    inmem_msg:  'Honoree Message',
+	    inmem_street1: 'Honoree Inform Address 1',
+	    inmem_street2: 'Honoree Inform Address 2',
+	    inmem_city:    'Honoree Inform City',
+	    inmem_region:  'Honoree Inform State',
+	    inmem_postal:  'Honoree Inform Post Code',
+	    inmem_country: 'Honoree Inform Country',
+	});
+
+	//Key:Value :: Target:Content
+	var ENBeautifierFillers = {
+	  ".js-hero": ".js-heroContent",
+	  ".js-campaign": ".js-campaignText",
+	  ".js-highlights": ".js-highlightsText",
+	  ".js-hero-image": ".js-heroImage",
+	  ".js-financial": ".js-financialText",
+	  ".js-supporters": ".js-supportersText",
+	  ".js-formOpen-label": ".js-formOpen-labelText" };
+	var ENBeautifierFillersContainers = {
+	  '#gr_donation': [
+	    '#'+fields.recur_pay.nameNoSpace+'Div', 
+	    '#'+fields.amt.nameNoSpace+'Div', 
+	    '#'+fields.inmem.nameNoSpace+'Div', 
+	    '#'+fields.matching.nameNoSpace+'Div'
+	  ],
+	  '#gr_extra': [
+	    '.js-employerMatch',
+	    '#'+fields.employer.nameNoSpace+'Div', 
+	    '.js-inmemorialInstructions',
+	    '#'+fields.inmem_type.nameNoSpace+'Div', 
+	    '#'+fields.inmem_name.nameNoSpace+'Div', 
+	    '#'+fields.inmem_recip.nameNoSpace+'Div', 
+	    '#'+fields.inmem_msg.nameNoSpace+'Div', 
+	    '#'+fields.inmem_street1.nameNoSpace+'Div', 
+	    '#'+fields.inmem_street2.nameNoSpace+'Div', 
+	    '#'+fields.inmem_city.nameNoSpace+'Div', 
+	    '#'+fields.inmem_postal.nameNoSpace+'Div',
+	    '#'+fields.inmem_country.nameNoSpace+'Div',
+	    '#'+fields.inmem_region.nameNoSpace+'Div',
+	    '#'+fields.inmem_region.nameNoSpace+'Div'
+	  ],
+	  '#gr_details': [
+	    '.js-billingDetails', 
+	    '#'+fields.fname.nameNoSpace+'Div', 
+	    '#'+fields.lname.nameNoSpace+'Div', 
+	    '#'+fields.email.nameNoSpace+'Div', 
+	    '#'+fields.street1.nameNoSpace+'Div', 
+	    '#'+fields.city.nameNoSpace+'Div',
+	    '#'+fields.postal.nameNoSpace+'Div', 
+	    '#'+fields.country.nameNoSpace+'Div', 
+	    '#'+fields.region.nameNoSpace+'Div', 
+	    '#'+fields.phone.nameNoSpace+'Div'
+	  ],
+	  '#gr_payment': [
+	    '.js-paymentDetails', 
+	    '#'+fields.pay_type.nameNoSpace+'Div', 
+	    //'#CC_ImagesDiv', 
+	    '#'+fields.cc_num.nameNoSpace+'Div', 
+	    '#'+fields.cc_cvv.nameNoSpace+'Div', 
+	    '#'+fields.cc_exp.nameNoSpace+'Div'
+	  ],
+	};
+
 	var GRaygun = __webpack_require__(17);
-	var raygunFilterFields = ['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV'];
+	var raygunFilterFields = ['password', 'credit_card', fields.cc_num.name, fields.cc_cvv.name];
 	var graygunner = new GRaygun({filter: raygunFilterFields});
 
 	var $ = __webpack_require__(1);
@@ -90,7 +170,7 @@ webpackJsonp([0],[
 			init_validation();
 
 	        //set pcode validation to Canadian at the start
-	        handleCountryChange({target: 'select[name="Country"]'});
+	        handleCountryChange({target: fields.country.selector});
 		}
 		catch(error) {
 			graygunner.sendError(error);
@@ -302,22 +382,7 @@ webpackJsonp([0],[
 				nextArrow: '<button type="button" class="slick-next"></button>'
 			});
 
-	        enbeautifier.addClasses({
-	            '[name="First Name"]': {classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
-	            '[name="Last Name"]': { classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
-	            '[name="City"]': { classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
-	            '[name="Postcode"]': { classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
-	            '[name="Payment Type"]': { classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
-	            '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-	            '[name="Credit Card Number"]': { classes: "inline-block-field three-quarter", targetElement: "div.eaRightColumnContent"},
-	            '[name="Card CVV"]': { classes: "inline-block-field one-quarter last", targetElement: "div.eaRightColumnContent"},
-	            '[name="Credit Card Expiration1"]': { classes: "inline-block-field half", targetElement: ".eaSplitSelectfield"},
-	            '[name="Credit Card Expiration2"]': { classes: "inline-block-field half last", targetElement: ".eaSplitSelectfield"},
-	            '[name="Country"]': {classes: "inline-block-field half", targetElement: "div.eaRightColumnContent"},
-	            '[name="Province"]': {classes: "inline-block-field half last", targetElement: "div.eaRightColumnContent"},
-	            '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
-	            'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
-	        });
+	        enbeautifier.addClasses(getFormClasses());
 
 	        $("#Credit_Card_ExpirationDiv").html( function(i,h) { 
 	                    return h.replace(/&nbsp;/g,'');
@@ -328,8 +393,8 @@ webpackJsonp([0],[
 	          activeClass: 'active',
 	          useCSSAnimation: false,
 	          indicatorTarget: '.steps-list ul',
-	          steps: $("#gr_donation,#gr_details,#gr_payment"),
-	          stepLabels: ['1. Donate', '2. Details', '3. Payment'],
+	          steps: $("#gr_donation,#gr_extra,#gr_details,#gr_payment"),
+	          stepLabels: ['Amount', 'Details', 'Billing', 'Payment'],
 	          addButtons: true,
 	          target: "#window",
 	          stepHandler:[
@@ -346,11 +411,10 @@ webpackJsonp([0],[
 	              }
 	               
 	            },
-
 	            //step 2 handler
 	            function(){
 	              formErrors = [ ];
-	              $("#gr_details").find("input,select,textarea").valid();
+	              $("#gr_extra").find("input,select,textarea").valid();
 	              if(formErrors.length) {
 	                handleErrors(formErrors);
 	                return false;
@@ -358,9 +422,23 @@ webpackJsonp([0],[
 	                grAnalytics.analyticsReport( 'payment/page2-complete' );
 	                return true;
 	              }
+	               
 	            },
 
 	            //step 3 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_details").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
+	                grAnalytics.analyticsReport( 'payment/page3-complete' );
+	                return true;
+	              }
+	            },
+
+	            //step 4 handler
 	            function(){
 	              formErrors = [ ];
 	              //let the stepper handle any errors
@@ -378,7 +456,7 @@ webpackJsonp([0],[
 	        });
 	        
 	        //prevent tabbing to next step
-	        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
+	        $("#gr_donation,#gr_extra,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
 	            if(e.which == 9) {
 	                var $stepPanel = $(this).parents('.page').first();
 	                var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
@@ -397,7 +475,7 @@ webpackJsonp([0],[
 
 	        $("#window").on('stepChanged.grsteps', function(e, step) {
 	            $("#window").promise().done(function() {
-	                $("#gr_donation,#gr_details,#gr_payment")
+	                $("#gr_donation,#gr_extra,#gr_details,#gr_payment")
 	                    .filter(function(index) {
 	                        return (step.currentStep == index);
 	                    })
@@ -412,38 +490,36 @@ webpackJsonp([0],[
 	            form: $form,
 	            components: {
 	                country: {
-	                    selector: '[name="Country"]:not(a)',
+	                    selector: fields.country.selector,
 	                    urlParam: 'country',
-	                    defaultVal: 'CA'
+	                    defaultVal: 'US'
 	                },
 	                region: {
-	                    selector: '[name="Province"]:not(a)'
+	                    selector: fields.region.selector
 	                },
-	                currency: {
+	                /*currency: {
 	                    // selector: '[name="Payment Currency"]:not(a)',
 	                    urlParam: 'curr',
 	                    defaultVal: 'CAD'
-	                },
+	                },*/
 	                recurrence: {
-	                    selector: '[name="Recurring Payment"]:not(a)',
+	                    selector: fields.recur_pay.selector,
 	                    defaultVal: ''
 	                },
 	                amount: {
-	                    selector: '[name="Donation Amount"]:not(a)',
+	                    selector: fields.amt.selector,
 	                    urlParam: 'amt',
 	                    defaultVal: '50',
-	                    name: 'Donation Amount'
+	                    name: fields.amt.name
 	                },
 	                other: {
 	                    selector: '[name="Donation Amount Other"][type="text"]:not(a)',
 	                    name: 'Donation Amount Other',
-	                    targetName: 'Donation Amount',
+	                    targetName: fields.amt.name,
 	                    label: 'Other amount'
 	                },
 	                processor: {
-	                    selector: '[name="Payment Type"]:not(a)',
-	                    urlParam: 'country',
-	                    defaultVal: 'CA'
+	                    selector: fields.pay_type.selector,
 	                }
 	            },
 	            //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
@@ -469,26 +545,27 @@ webpackJsonp([0],[
 	        });
 
 	        //change the submit button when the amount changes
-	        $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");
+	        $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");    
 	        $form
 	          .on(
 	            'change',
-	            'input[name="Donation Amount"], input[name="Donation Amount Other"], input[name="Recurring Payment"], [name="Payment Currency"]:not(a)',
+	            'input[name="'+fields.amt.name+'"], input[name="Donation Amount Other"], input[name="'+fields.recur_pay.name+'"]',
 	            function(e) {
 	                $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
 	            })
 	          .on(
 	            'change',
-	            'select[name="Country"]',
+	            fields.country.selector,
 	            handleCountryChange)
 	          .on('submit', sendDonation);
+	        $form.find(fields.amt.selector).trigger('change');
 
 	        //add name to submit button for EN
 	        $submit.attr("name", "submitter");
 	        
 	        //Remove the original donate input
 	        //TODO: integrate this in to the actual form code
-	        $('input[name="Donation Amount"][type="text"]').remove();
+	        $('input[name="'+fields.amt.name+'"][type="text"]').remove();
 
 
 	        grupsell = new GRUpsell({
@@ -528,6 +605,14 @@ webpackJsonp([0],[
 	        $form.removeAttr('onsubmit');
 	        $('[data-toggle="popover"]').popover();
 
+	        formSteps.hideStep(1);
+	        $form.on('click', fields.inmem.selector, function(e) {
+	            if($(this).is(':checked')) {
+	                formSteps.showStep(1);
+	            } else {
+	                formSteps.hideStep(1);
+	            }
+	        })
 			//things to do just on load
 			setupMobileButton();
 
@@ -535,21 +620,20 @@ webpackJsonp([0],[
 			graygunner.sendError(error);
 		}
 	}
-
 	function handleCountryChange(e){
 	    var countryField = $(e.target);
 	    var countryCode = countryField.val();
-	    var regionField = $('[name="Province"]:not(a)');
-	    var countriesRequiringPcodes = ['US', 'CA'];
+	    var regionField = $form.find(fields.region.selector);
+	    var countriesRequiringRegion = ['US'];
 
-	    if(countryCode == 'CA'){
-	        $('input[name="Postcode"]').rules("add","isPostcodeCA");
+	    /*if(countryCode == 'CA'){
+	        $form.find(fields.postal.selector).rules("add","isPostcodeCA");
 	    }
 	    else{
-	        $('input[name="Postcode"]').rules("remove","isPostcodeCA");
-	    }
+	       $form.find(fields.postal.selector).rules("remove","isPostcodeCA");
+	    }*/
 
-	    if(countriesRequiringPcodes.indexOf(countryCode) !== -1){
+	    if(countriesRequiringRegion.indexOf(countryCode) !== -1){
 	        regionField.rules("add",{required: true});
 	        regionField.show();
 	    }
@@ -775,39 +859,6 @@ webpackJsonp([0],[
 	    $('.eaSubmitButton').val("Processing...");
 	}
 
-	// Tracking
-	//---------------------------------------
-	// function analyticsReport( event, title ){
-	// 	try {
-	// 		//UA
-	// 		if( typeof ga !== 'undefined' ){
-
-	// 		    var data = {};
-	// 		    if( event ){
-	// 		      data[ 'page'] = '/virtual/'+event;
-	// 		    }
-	// 		    if( title ){
-	// 		      data[ 'title' ] = title;
-	// 		    }
-
-	// 		    ga( 'send', 'pageview', data );
-
-	// 		}
-
-	// 		//Traditional GA
-	// 		if( typeof _gaq !== 'undefined' ){
-	// 		    _gaq.push(['_trackPageview', '/virtual/'+event]);
-	// 		}
-
-	// 		//Tag Manager
-	// 		if( typeof _gaq !== 'undefined' ){
-
-	// 		}
-	// 	} catch (error) {
-	// 		graygunner.sendError(error);
-	// 	}
-	// }
-
 	//Get the active section for analytics reporting
 	function analyticsGetSection(container) {
 		var currentSection = null;
@@ -913,7 +964,8 @@ webpackJsonp([0],[
 	                invalidAmount: 'We only accept online donations between $5 and $10,000',
 	                invalidDate: 'Date is invalid',
 	                invalidEmail: 'Please enter a valid email address.',
-	                invalidPcode: 'Please enter a valid postcode'
+	                invalidPcode: 'Please enter a valid postcode',
+	                invalidPhone: 'Please specify a valid phone number'
 	            },
 	            nowDate = new Date();
 
@@ -994,6 +1046,12 @@ webpackJsonp([0],[
 	            return regexCVV.test(value);
 	        }, errorMessages.invalidCVV);
 
+	        $.validator.addMethod('isPhone', function (value, element) {
+	            phone_number = phone_number.replace( /\s+/g, "" );
+	            return this.optional( element ) || phone_number.length > 9 &&
+	            phone_number.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/ );
+	        }, errorMessages.invalidPhone);
+
 	        $.validator.addMethod('isPostcodeCA', function (value, element) {
 	            value = $.trim(value);
 	            $(element).val(value);
@@ -1007,46 +1065,42 @@ webpackJsonp([0],[
 	            return true
 	        });
 
-	        var validation_rules = {
-	            "First Name": "required",
-	            "Last Name": "required",
-	            "Address 1": {
-	                required: true
-	            },
-	            "City": "required",
-	            "Province": "required",
-	            "Country": "required",
-	            "Email Address": {
-	                required: true,
-	                emailTLD: true
-	            },
-	            "Postcode": {
-	                required: true
-	            },
-	            "Payment Type": "required",
-	            "Credit Card Number": {
-	                required: true,
-	                stripspaces: true,
-	                creditcard: true
-	            },
-	            "Card CVV": {
-	                required: true,
-	                isCVV: true //note: AMEX CVVs are 4 digits but currently handled through PayPal
-	            },
-	            "Credit Card Expiration1": {
-	                required: true,
-	                isMonth: true
-	            },
-	            "Credit Card Expiration2": {
-	                required: true,
-	                isNowOrFutureYear: true,
-	                isFuture: true
-	            },
-	            "Donation Amount": {
-	                required: true,
-	                isValidDonation: true
-	            }
+	        var validation_rules = { };
+	        validation_rules[fields.fname.name] = "required";
+	        validation_rules[fields.lname.name] = "required";
+	        validation_rules[fields.street1.name] = { required: true };
+	        validation_rules[fields.city.name] = "required";
+	        validation_rules[fields.region.name] = "required";
+	        validation_rules[fields.country.name] = "required";
+	        validation_rules[fields.email.name] = {
+	            required: true,
+	            emailTLD: true
 	        };
+	        validation_rules[fields.postal.name] = { required: true };
+	        validation_rules[fields.pay_type.name] = "required";
+	        validation_rules[fields.cc_num.name] = {
+	            required: true,
+	            stripspaces: true,
+	            creditcard: true
+	        };
+	        validation_rules[fields.cc_cvv.name] = {
+	            required: true,
+	            isCVV: true //note: AMEX CVVs are 4 digits but currently handled through PayPal
+	        };
+	        validation_rules[fields.cc_exp.name+"1"] = {
+	            required: true,
+	            isMonth: true
+	        };
+	        validation_rules[fields.cc_exp.name+"2"] = {
+	            required: true,
+	            isNowOrFutureYear: true,
+	            isFuture: true
+	        };
+	        validation_rules[fields.amt.name] = {
+	            required: true,
+	            isValidDonation: true
+	        };
+
 	        $form.validate({
 	            rules: validation_rules,
 	            unhighlight: function (element, errorClass, validClass) {
@@ -1187,6 +1241,39 @@ webpackJsonp([0],[
 	            Raygun.send(err, {values: fieldData});
 	        }*/
 	    }
+	}
+
+	function getFormClasses() {
+	    var classes = {
+	        '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
+	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
+	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
+	    };
+	    classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.fname.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap one-quarter-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes['[name="'+fields.cc_exp.name+'1"]'] = { classes: "inline-block-field-wrap half-wrap", targetElement: ".eaSplitSelectfield"};
+	    classes['[name="'+fields.cc_exp.name+'2"]'] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: ".eaSplitSelectfield"};
+	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+
+	    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
+	    //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
+
+	    return classes;
 	}
 
 	/**
@@ -1934,7 +2021,7 @@ webpackJsonp([0],[
 	 * 
 	 * Creates and handles a multi-step form
 	 * 
-	 * @version  0.3
+	 * @version  0.3 !!MODIFIED 20151113!!
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'steps' ];
@@ -1983,6 +2070,7 @@ webpackJsonp([0],[
 	  //initalizer
 	  var steps = this;
 	  this.stepIndicators = $();
+	  this.disabledSteps = [ ];  //@since __
 	  this.$container = $(this.options.target);
 	  this.addSteps(this.options.steps);
 
@@ -2072,6 +2160,53 @@ webpackJsonp([0],[
 	}
 
 	/**
+	 * Hides a step and its indicator
+	 * @param  {int} index the index of the step to hide starting at 0
+	 * @return void   
+	 * @since __    
+	 */
+	GRSteps.prototype.hideStep = function(index) {
+	  if(this.disabledSteps.indexOf(index) === -1) {
+	    this.disabledSteps.push(index);
+	    $(this.options.steps[index]).children().css('visibility', 'hidden');
+	    this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+	  }
+	}
+
+	/**
+	 * Shows a step and its indicator
+	 * @param  {int} index the index of the step to show starting at 0
+	 * @return void    
+	 * @since  __   
+	 */
+	GRSteps.prototype.showStep = function(index) {
+	  if(this.disabledSteps.indexOf(index) !== -1){
+	    this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
+	    $(this.options.steps[index]).children().css('visibility', '');
+	    this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+	  }
+	}
+
+	/**
+	 * recalculates the sizes of the panels and container
+	 * @return void
+	 * @since  __
+	 */
+	GRSteps.prototype.recalculate = function() {
+	  //change the container width to match the number of panels
+	  if(
+	    typeof this.options.direction !== "string"
+	    || this.options.direction === "right"
+	    || this.options.direction === "left"
+	    ){
+	    var containerWidthPercentage = 100 * (this.stepIndicators.length);
+	    var panelWidthPercentage = 100 * (1/(this.stepIndicators.length));
+	    this.$container.css("width", containerWidthPercentage + "%" );
+	    this.$container.children().css("width",panelWidthPercentage + "%"); 
+	  }
+	}
+
+	/**
 	 * [addSteps description]
 	 * @param {[type]} steps [description]
 	 */
@@ -2099,17 +2234,7 @@ webpackJsonp([0],[
 	  //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
 	  $(this.options.indicatorTarget).append(this.stepIndicators);
 
-	  //change the container width to match the number of panels
-	  if(
-	    typeof this.options.direction !== "string"
-	    || this.options.direction === "right"
-	    || this.options.direction === "left"
-	    ){
-	    var containerWidthPercentage = 100 * this.stepIndicators.length;
-	    var panelWidthPercentage = 100 * (1/this.stepIndicators.length);
-	    this.$container.css("width", containerWidthPercentage + "%" );
-	    this.$container.children().css("width",panelWidthPercentage + "%"); 
-	  }
+	  this.recalculate();  //moved to function @since __
 	}
 
 	/**
@@ -2237,15 +2362,29 @@ webpackJsonp([0],[
 	}
 
 	/**
-	 * [next description]
-	 * @return {Function} [description]
+	 *  switches to the next visiable step
+	 * @since  __   Looks for hidden steps and jumps over them
+	 * @return void
 	 */
 	GRSteps.prototype.nextStep = function(){
-	  this.switchTo(this.options.currentStep + 1)
+	  var offset = 1;
+	  while(this.disabledSteps.indexOf(this.options.currentStep + offset) !== -1) {
+	    offset++;
+	  }
+	  this.switchTo(this.options.currentStep + offset);
 	}
 
+	/**
+	 * switches to the previous visiable step
+	 * @since  __   Looks for hidden steps and jumps over them
+	 * @return {[type]} [description]
+	 */
 	GRSteps.prototype.previousStep = function(){
-	  this.switchTo(this.options.currentStep - 1)
+	  var offset = 1;
+	  while(this.disabledSteps.indexOf(this.options.currentStep - offset) !== -1) {
+	    offset++;
+	  }
+	  this.switchTo(this.options.currentStep - offset);
 	}
 
 	/**
@@ -2767,7 +2906,7 @@ webpackJsonp([0],[
 	    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
 	        index.push(recurrence);
 	    }
-
+	    
 	    if(index.length == 0)
 	        return 'default';
 	    else

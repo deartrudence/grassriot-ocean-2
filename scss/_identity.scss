@@ -11,7 +11,7 @@
 .page-title {
     margin-left: $pagetitle-marginleft-base;
     margin-top: -($pagetitle-height-base / 2);
-    background: $pagetitle-img-base;
+    //background: $pagetitle-img-base;
     width: 250px;
     height: $pagetitle-height-base;
     background-size: contain;
@@ -53,7 +53,7 @@
   }
   .page-title {
       margin-top: -($pagetitle-height-xl / 2);
-      background: $pagetitle-img-xl;
+      //background: $pagetitle-img-xl;
       width: 500px;
       height: $pagetitle-height-xl;
       background-size: contain;

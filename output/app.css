@@ -2557,8 +2557,20 @@ em {
   font-style: italic;
 }
 
+html {
+  font-size: 16px;
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
 #upsell-modal {
-  background: rgba(214, 204, 175, 0.65);
+  background: rgba(37, 37, 37, 0.65);
 }
 
 .upsell-container {
@@ -2566,7 +2578,7 @@ em {
 }
 
 .upsell-modal--body {
-  background: #257488;
+  background: #f3f3f3;
   border-radius: 0;
   border: 0;
   padding: 0;
@@ -2588,7 +2600,7 @@ em {
 }
 
 .upsell-cta {
-  color: #0cacbd;
+  color: #e18e25;
   text-transform: uppercase;
   width: 40%;
   font-size: 3.6em;
@@ -2598,25 +2610,25 @@ em {
 .upsell-title {
   font-size: 1em;
   color: #fff;
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.1;
 }
 
 .upsell-title--highlight {
-  color: #b9d709;
+  color: #81af76;
 }
 
 .upsell-copy {
   width: 60%;
   position: relative;
   color: #fff;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 .upsell-copy--cta {
-  color: #b9d709;
+  color: #81af76;
   margin-top: 1.2em;
 }
 
@@ -2648,7 +2660,7 @@ em {
 }
 
 .upsell-recommendation--label {
-  background: #0cacbd;
+  background: #e18e25;
   padding: 10px 4em;
   line-height: 1.1;
 }
@@ -2670,7 +2682,7 @@ button.upsell-modal--close {
   opacity: 1;
   overflow: hidden;
   border-radius: 50%;
-  background: #bcbec0;
+  background: #545a63;
   color: #000;
   font-size: 30px;
   text-shadow: none;
@@ -2684,29 +2696,26 @@ button.upsell-modal--close:active {
 
 .upsell-confirm {
   display: block;
-  background: #cc3300;
+  background: #c31e24;
   margin-top: -2px;
-  font-family: 'DagnyOT';
+  border-radius: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #a8233e;
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding: 0.5em 4em;
-  text-transform: uppercase;
-  border: none;
-  font-size: 16px;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5MzMzMyIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjYjAyMjE2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTkxZDE2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #993333), color-stop(50%, #b02216), color-stop(100%, #991d16));
-  background: -moz-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
-  background: -webkit-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
-  background: linear-gradient(to bottom, #993333 0%, #b02216 50%, #991d16 100%);
+  font-size: 1.22rem;
   text-align: center;
   padding: 1em;
   color: #fff;
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+.upsell-confirm:hover {
+  opacity: 0.9;
 }
 .upsell-confirm:hover {
   opacity: 0.8;
@@ -2720,7 +2729,7 @@ button.upsell-modal--close:active {
   margin: 1.5em 0 1em;
 }
 .upsell-deny a {
-  color: #d6ccaf;
+  color: #252525;
   text-decoration: underline;
 }
 
@@ -2801,7 +2810,7 @@ button.upsell-modal--close:active {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 0;
-    font-size: 14px;
+    font-size: 0.5rem;
   }
 
   .upsell-subtitle {
@@ -2836,10 +2845,10 @@ html.flexbox .upsell-modal--body {
 
 body {
   overflow-x: hidden;
-  font-family: 'DagnyOT';
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #aed100;
+  background-color: #245e36;
 }
 body:after {
   display: none;
@@ -2909,10 +2918,10 @@ body:after {
 }
 
 .heroTitle {
-  font-family: "DagnyOT-light";
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 30px;
+  font-size: 1.77rem;
   line-height: 1.1;
   position: relative;
   color: #fff;
@@ -2920,13 +2929,13 @@ body:after {
 }
 .heroTitle strong,
 .heroTitle em {
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
 }
 .heroTitle em {
-  color: #bad80a;
+  color: #81af76;
 }
 @media screen and (max-width: 1159px) {
   .heroTitle {
@@ -2935,8 +2944,8 @@ body:after {
 }
 
 .heroCaption {
-  font-size: 10px;
-  font-family: 'DagnyOT';
+  font-size: 0.5rem;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -2964,22 +2973,22 @@ html.csstransforms {
   }
 
   .heroTitle {
-    font-size: 25px;
+    font-size: 1.22rem;
   }
 }
 @media screen and (min-width: 768px) {
   .heroTitle {
-    font-size: 25px;
+    font-size: 1.22rem;
   }
 }
 @media screen and (min-width: 1160px) {
   .heroTitle {
-    font-size: 25px;
+    font-size: 1.22rem;
   }
 }
 @media screen and (min-width: 1300px) {
   .heroTitle {
-    font-size: 2.4vw;
+    font-size: 1.77rem;
   }
 }
 .campaign {
@@ -3019,14 +3028,14 @@ html.csstransforms {
 }
 
 .campaignText-wrapper {
-  background-color: #0cacbd;
-  color: #aed100;
+  background-color: #e18e25;
+  color: #245e36;
   padding: 13% 15%;
   position: relative;
 }
 
 .campaignText-main {
-  font-family: 'DagnyOT';
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -3037,7 +3046,7 @@ html.csstransforms {
 }
 
 .campaignText-sub {
-  font-family: "DagnyOT-light";
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #fff;
@@ -3049,39 +3058,40 @@ html.csstransforms {
 }
 
 .highlights-title--number {
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-  font-weight: 700;
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   line-height: 0.7;
-  color: #aed100;
+  color: #245e36;
   display: block;
 }
 
 .highlights-title--text {
-  font-family: "DagnyOT-light";
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 25px;
+  font-size: 1.22rem;
   line-height: 5.4em;
   text-transform: uppercase;
 }
 
 .highlights-subtitle {
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   padding-bottom: 5px;
   text-transform: uppercase;
-  color: #0cacbd;
+  color: #e18e25;
 }
 
 .highlights-year {
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .highlights-events {
-  font-family: 'DagnyOT';
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.5em;
@@ -3089,11 +3099,11 @@ html.csstransforms {
 }
 
 .highlights-cta {
-  font-family: 'DagnyOT';
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 18px;
-  background-color: #b32317;
+  font-size: 1rem;
+  background-color: #a8233e;
   padding: 20px 20px;
   border-radius: 10px 10px 0 0;
   margin-left: 30px;
@@ -3109,7 +3119,6 @@ html.csstransforms {
 
 .financialText-wrapper {
   position: relative;
-  background: url('../img/15185294432_d0522561f3_o.jpg?1442547783');
   background-size: cover;
   background-position: center;
   font-size: 0;
@@ -3128,8 +3137,8 @@ html.csstransforms {
 }
 
 .financialCaption {
-  font-size: 10px;
-  font-family: 'DagnyOT';
+  font-size: 0.5rem;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -3149,7 +3158,7 @@ html.csstransforms {
 }
 
 .slick-track {
-  background-color: #257488;
+  background-color: #e18e25;
 }
 
 .slick-arrow {
@@ -3196,19 +3205,19 @@ html.csstransforms {
   width: 10px;
   height: 10px;
   border: 0;
-  background-color: #0cacbd;
+  background-color: #e18e25;
 }
 .slick-dots .slick-active button {
-  background-color: #cc3300;
+  background-color: #c31e24;
 }
 
 @media screen and (max-width: 767px), screen and (max-device-width: 767px) {
   .campaignText-main {
-    font-size: 25px;
+    font-size: 1.22rem;
   }
 
   .campaignText-sub {
-    font-size: 16px;
+    font-size: 0.5rem;
   }
 
   .highlightsText-wrapper {
@@ -3218,7 +3227,7 @@ html.csstransforms {
   .highlights-title {
     text-align: center;
     padding-bottom: 0;
-    font-size: 43px;
+    font-size: 1.77rem;
   }
 
   .highlights-title--number {
@@ -3230,7 +3239,7 @@ html.csstransforms {
   }
 
   .highlights-events {
-    font-size: 16px;
+    font-size: 0.5rem;
   }
 
   .highlights-cta {
@@ -3253,11 +3262,11 @@ html.csstransforms {
 }
 @media screen and (min-width: 768px) and (max-width: 1159px) {
   .campaignText-main {
-    font-size: 25px;
+    font-size: 1.22rem;
   }
 
   .campaigntext-sub {
-    font-size: 16px;
+    font-size: 0.5rem;
   }
 
   .highlightsText-wrapper {
@@ -3299,11 +3308,11 @@ html.csstransforms {
 }
 @media screen and (min-width: 1160px) {
   .campaignText-main {
-    font-size: 30px;
+    font-size: 1.77rem;
   }
 
   .campaigntext-small {
-    font-size: 16px;
+    font-size: 0.5rem;
   }
 
   .highlightsText-wrapper {
@@ -3325,17 +3334,17 @@ html.csstransforms {
   }
 
   .highlights-cta {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   .supportersText-wrapper h4 {
-    font-family: "DagnyOT-light";
+    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 18px;
+    font-size: 1rem;
     padding: 15px 3%;
     text-transform: uppercase;
-    background-color: #0cacbd;
+    background-color: #e18e25;
     color: #fff;
   }
 
@@ -3349,7 +3358,7 @@ html.csstransforms {
   }
 
   .supporters-carousel {
-    font-family: 'DagnyOT';
+    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #fff;
@@ -3368,22 +3377,22 @@ html.csstransforms {
     padding: 5%;
   }
   .supporters-carousel .supporter-name {
-    font-family: "DagnyOT-Bold";
+    font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 0.5rem;
     line-height: 1.5em;
   }
   .supporters-carousel .supporter-caption {
-    font-family: "DagnyOT-light";
+    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 0.5rem;
     line-height: 1.5em;
   }
   .supporters-carousel .supporter-description {
-    font-size: 25px;
-    font-family: "DagnyOT-light";
+    font-size: 1.22rem;
+    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     margin-bottom: 1em;
@@ -3391,13 +3400,13 @@ html.csstransforms {
 }
 @media screen and (min-width: 1300px) {
   .supporters-carousel .supporter-name {
-    font-size: 1.2vw;
+    font-size: 0.5rem;
   }
   .supporters-carousel .supporter-caption {
-    font-size: 1.2vw;
+    font-size: 0.5rem;
   }
   .supporters-carousel .supporter-description {
-    font-size: 1.8vw;
+    font-size: 1.22rem;
   }
 
   .financialText-wrapper {
@@ -3405,12 +3414,12 @@ html.csstransforms {
   }
 
   .campaignText-main {
-    font-size: 2.9vw;
+    font-size: 1.77rem;
     line-height: 1em;
   }
 
   .campaignText-sub {
-    font-size: 1.45vw;
+    font-size: 1.77rem;
     line-height: 1.5em;
   }
 
@@ -3489,7 +3498,7 @@ html.csstransforms {
     width: 15px;
     height: 15px;
     border: 0;
-    background-color: #0cacbd;
+    background-color: #e18e25;
   }
 }
 label {
@@ -3497,7 +3506,7 @@ label {
 }
 
 .navbar-stepcontainer {
-  padding-left: 60px;
+  padding-left: 0px;
 }
 
 .form {
@@ -3569,17 +3578,18 @@ label {
   }
 }
 .form.no-affix .form-navbar {
-  background: #d3e090;
+  background: #fff;
 }
 
 #grdonation form {
-  background: #aed100;
+  background: #f3f3f3;
 }
 #grdonation form.is-active {
   top: 0;
 }
 
 .form-header {
+  background-color: #fff;
   padding-top: 30px;
   padding-bottom: 0;
 }
@@ -3602,38 +3612,38 @@ label {
   }
 }
 .form-header h3 {
-  font-family: 'DagnyOT';
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #fff;
-  font-size: 25px;
+  color: #245e36;
+  font-size: 1.22rem;
   line-height: 1.1;
   text-transform: uppercase;
 }
 .form-header strong {
-  font-family: "DagnyOT-Bold";
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 .form-header em {
-  text-transform: none;
+  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
   font-style: normal;
-  color: #21633d;
 }
 
 .form-control {
   padding-top: 3px;
   padding-bottom: 3px;
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 #validErrModal {
-  font-size: 18px;
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 619px) {
   .form {
-    background-color: #aed100;
+    background-color: #f3f3f3;
   }
   .form.is-active {
     overflow-x: hidden;
@@ -3645,21 +3655,21 @@ label {
   }
 
   .form-navbar {
-    background-color: #d3e090;
+    background-color: #fff;
   }
 
   .form-header {
     padding-right: 60px;
   }
   .form-header h3 {
-    font-size: 16px;
+    font-size: 0.5rem;
   }
 
   .formOpen {
     font-family: "DagnyOT-Bold";
     font-weight: 400;
     font-style: normal;
-    font-size: 18px;
+    font-size: 1rem;
     display: block;
     position: absolute;
     top: -3em;
@@ -3676,7 +3686,7 @@ label {
   .js-formOpen-label {
     display: block;
     line-height: 3em;
-    background: #aed100;
+    background: #245e36;
     border-radius: 5px 5px 0 0;
     box-shadow: -1px -1px 2px #000;
     box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.3);
@@ -3686,11 +3696,11 @@ label {
     font-family: "DagnyOT-Bold";
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 0.5rem;
     display: block;
     position: absolute;
     border: 0;
-    color: #5d8200;
+    color: #81af76;
     right: 20px;
     top: 82px;
     width: auto;
@@ -3714,14 +3724,6 @@ label {
     height: 100%;
   }
 
-  #grdonation {
-    padding-top: 52px;
-  }
-
-  #grdonation form {
-    margin-top: -52px;
-  }
-
   .affix {
     position: fixed;
     top: 0;
@@ -3729,10 +3731,9 @@ label {
   }
 
   .form-navbar {
-    background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/transparent-flag.png");
+    background: #fff;
     background-size: 435px 53px;
     width: 100%;
-    height: 52px;
     z-index: 90;
   }
 
@@ -3743,7 +3744,7 @@ label {
 }
 @media screen and (min-width: 2100px) {
   .form-navbar {
-    background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/transparent-flagxl.svg");
+    background: #fff;
     background-size: 650px 54px;
     width: 650px;
     height: 53px;
@@ -3780,14 +3781,107 @@ label {
   display: block !important;
 }
 
+input[type="text"], select, textarea {
+  color: #404040;
+  padding: 14px;
+  border: 1px solid #767271;
+  border-radius: 0px;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#top input[type="text"], #top select, #top textarea {
+  color: #404040;
+  padding: 14px;
+  border: 1px solid #767271;
+  border-radius: 0px;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input[type="text"]:-moz-placeholder {
+  color: #78787a;
+}
+input[type="text"]::-moz-placeholder {
+  color: #78787a;
+}
+input[type="text"]:-ms-input-placeholder {
+  color: #78787a;
+}
+input[type="text"]::-webkit-input-placeholder {
+  color: #78787a;
+}
+
+.placeholder .text-wrap label {
+  display: none;
+}
+
+.form-title {
+  color: #792266;
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.cta, input[type="submit"], button[type="submit"] {
+  border-radius: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #a8233e;
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.22rem;
+}
+.cta:hover, input[type="submit"]:hover, button[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+.inline-block-field-wrap {
+  display: inline-block;
+  position: relative;
+  float: left;
+}
+.inline-block-field-wrap.full-wrap {
+  width: 100%;
+  clear: both;
+  float: none;
+}
+.inline-block-field-wrap.one-quarter-wrap {
+  width: 24%;
+}
+.inline-block-field-wrap.half-wrap {
+  width: 49%;
+}
+.inline-block-field-wrap.three-quarter-wrap {
+  width: 74%;
+}
+.inline-block-field-wrap.last-wrap {
+  margin-left: 2%;
+  clear: none;
+}
+.inline-block-field-wrap.hide-label .eaFormElementLabel {
+  height: 0;
+  margin-top: 0 !important;
+}
+
+.list-checkbox-wrap ul li {
+  display: inline-block;
+  width: 50%;
+}
+
 #grdonation .page h3 {
   margin-top: 1.5em;
-  font-size: 18px;
-  font-family: "DagnyOT-light";
+  font-size: 1rem;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   display: block !important;
-  color: #663f47;
+  color: #792266;
 }
 
 #gr_donation div.radiobutton {
@@ -3805,9 +3899,10 @@ label {
 #gr_donation div.radiobutton label {
   display: block;
   float: none;
-  background: #edf0ea;
-  border-radius: 3px;
-  color: #6e6f71;
+  border-radius: 1px;
+  border-top: 1px solid #dcdcdc;
+  background: #f3f3f3;
+  color: #646464;
   box-shadow: 1px 1px 2px #000;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -3839,38 +3934,38 @@ label {
   left: 0;
   content: '';
   width: 2.5em;
-  background: #D1D3D4;
-  border-radius: 3px 0 0 3px;
+  background: #dcdcdc;
+  border-radius: 1px 0 0 1px;
 }
 #gr_donation div.radiobutton input[type='radio']:hover:not(:checked) ~ label:before {
   content: '\2714';
   text-indent: .9em;
-  color: #C2C2C2;
+  color: #666666;
 }
 #gr_donation div.radiobutton input[type='radio']:hover:not(:checked) ~ label {
-  color: #888;
+  color: #666666;
 }
 #gr_donation div.radiobutton input[type='radio']:checked ~ label:before {
   content: '\2714';
   text-indent: .9em;
   color: #fff;
-  background-color: #21633d;
+  background-color: #a8233e;
 }
 #gr_donation div.radiobutton input[type='radio']:checked ~ label {
   color: #fff;
-  background-color: #5d8200;
+  background-color: #782266;
 }
 #gr_donation div.radiobutton input[type='radio']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
 }
 #gr_donation .eaFormElementLabel {
   margin-top: 1.5em;
-  font-size: 18px;
-  font-family: "DagnyOT-light";
+  font-size: 1rem;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   display: block !important;
-  color: #663f47;
+  color: #792266;
 }
 #gr_donation .eaMandatoryFieldMarker {
   display: none;
@@ -3936,16 +4031,16 @@ label {
   margin: 5px;
 }
 #gr_donation .levels label {
-  background: #edf0ea;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZjBlYSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2UwZTVkYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #edf0ea), color-stop(100%, #e0e5db));
-  background: -moz-linear-gradient(#edf0ea 0%, #e0e5db 100%);
-  background: -webkit-linear-gradient(#edf0ea 0%, #e0e5db 100%);
-  background: linear-gradient(#edf0ea 0%, #e0e5db 100%);
-  color: #313131;
+  background: #dcdcdc;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RjZGNkYyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2NmY2ZjZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dcdcdc), color-stop(100%, #cfcfcf));
+  background: -moz-linear-gradient(#dcdcdc 0%, #cfcfcf 100%);
+  background: -webkit-linear-gradient(#dcdcdc 0%, #cfcfcf 100%);
+  background: linear-gradient(#dcdcdc 0%, #cfcfcf 100%);
+  color: #404040;
 }
 #gr_donation .levels input[type='radio']:checked + label {
-  background: #21633d;
+  background: #81af76;
   color: #fff;
   cursor: default;
 }
@@ -3954,14 +4049,14 @@ label {
 }
 
 .window--frame {
+  padding-top: 30px;
   overflow: hidden;
 }
 
-#gr_details, #gr_payment {
-  background: #aed100;
+/*#gr_details, #gr_payment {
+  background: $background-grey;
   border-radius: 0 0 15px 15px;
-}
-
+}*/
 #gr_details input.eaSubmitButton {
   margin-top: 20px;
   width: 100%;
@@ -4006,13 +4101,14 @@ label {
 .steps-list ul {
   list-style: none;
   margin: 0;
-  padding: 13px 0 13px 30px;
+  padding: 13px 0 0px 0px;
   text-align: left;
   font-size: 0;
 }
 .steps-list ul li {
-  color: #313131;
-  background: #bcbec0;
+  vertical-align: middle;
+  color: #404040;
+  background: #545a63;
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkNWQ2ZDkiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2NkY2RjZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #d5d6d9), color-stop(60%, #cdcdcd));
   background: -moz-linear-gradient(#d5d6d9 40%, #cdcdcd 60%);
@@ -4026,14 +4122,14 @@ label {
   position: relative;
 }
 .steps-list ul li.current, .steps-list ul li.is-complete, .steps-list ul li.active {
-  background: #b9d709;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNiOWQ3MDkiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2FlZDEwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #b9d709), color-stop(60%, #aed100));
-  background: -moz-linear-gradient(#b9d709 40%, #aed100 60%);
-  background: -webkit-linear-gradient(#b9d709 40%, #aed100 60%);
-  background: linear-gradient(#b9d709 40%, #aed100 60%);
+  background: #81af76;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiM4MWFmNzYiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzI0NWUzNiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #81af76), color-stop(60%, #245e36));
+  background: -moz-linear-gradient(#81af76 40%, #245e36 60%);
+  background: -webkit-linear-gradient(#81af76 40%, #245e36 60%);
+  background: linear-gradient(#81af76 40%, #245e36 60%);
   border: none;
-  color: #313131;
+  color: #404040;
 }
 .steps-list ul li.active:after {
   content: "";
@@ -4041,7 +4137,7 @@ label {
   height: 0;
   display: block;
   border-width: 10px;
-  border-color: #aed100 transparent transparent;
+  border-color: #245e36 transparent transparent;
   border-style: solid;
   position: absolute;
   bottom: -20px;
@@ -4056,7 +4152,7 @@ label {
 }
 
 .giving-security {
-  background: #21633d;
+  background: #81af76;
   color: #fff;
   padding: 15px;
 }
@@ -4126,7 +4222,7 @@ label {
 }
 
 .go-back {
-  color: #fff;
+  color: #78787a;
   display: inline-block;
   opacity: 0.8;
   background: none;
@@ -4147,6 +4243,9 @@ label {
 
 #grdonation .page {
   float: left;
+}
+#grdonation .page .pull-right {
+  clear: both;
 }
 
 .lt-ie9 #grdonation label, .ie9 #grdonation label {
@@ -4270,21 +4369,18 @@ label {
 }
 #grdonation .btn-next {
   margin-top: 20px;
-  font-family: 'DagnyOT';
+  border-radius: 0;
+  border: 1px solid #fff;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #a8233e;
+  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  padding: 0.5em 4em;
-  text-transform: uppercase;
-  border: none;
-  font-size: 16px;
-  color: #fff;
-  border-radius: 6px;
-  border: none;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzk5MzMzMyIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjYjAyMjE2Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTkxZDE2Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #993333), color-stop(50%, #b02216), color-stop(100%, #991d16));
-  background: -moz-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
-  background: -webkit-linear-gradient(top, #993333 0%, #b02216 50%, #991d16 100%);
-  background: linear-gradient(to bottom, #993333 0%, #b02216 50%, #991d16 100%);
+  font-size: 1.22rem;
+}
+#grdonation .btn-next:hover {
+  opacity: 0.9;
 }
 #grdonation .btn-next .glyphicon-chevron-right {
   font-size: 80%;
@@ -4320,8 +4416,9 @@ label {
   box-shadow: rgba(0, 0, 0, 0.49804) 0px 1px 1px 0px;
   box-sizing: border-box;
   color: #363636;
-  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
+  font-style: normal;
 }
 @media only screen and (max-width: 619px) {
   #grdonation .levels label {
@@ -4330,12 +4427,12 @@ label {
 }
 #grdonation .levels label:hover {
   cursor: pointer;
-  background: #fafbf9;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZhZmJmOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VkZjBlYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fafbf9), color-stop(100%, #edf0ea));
-  background: -moz-linear-gradient(#fafbf9 0%, #edf0ea 100%);
-  background: -webkit-linear-gradient(#fafbf9 0%, #edf0ea 100%);
-  background: linear-gradient(#fafbf9 0%, #edf0ea 100%);
+  background: #e9e9e9;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U5ZTllOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2RjZGNkYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e9e9e9), color-stop(100%, #dcdcdc));
+  background: -moz-linear-gradient(#e9e9e9 0%, #dcdcdc 100%);
+  background: -webkit-linear-gradient(#e9e9e9 0%, #dcdcdc 100%);
+  background: linear-gradient(#e9e9e9 0%, #dcdcdc 100%);
 }
 #grdonation .levels label i {
   font-style: normal;
@@ -4354,12 +4451,12 @@ label {
   left: 0;
 }
 #grdonation .levels input[type="radio"]:checked + label {
-  background: #0cacbd;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBjYWNiZCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBhOTZhNSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0cacbd), color-stop(100%, #0a96a5));
-  background: -moz-linear-gradient(#0cacbd 0%, #0a96a5 100%);
-  background: -webkit-linear-gradient(#0cacbd 0%, #0a96a5 100%);
-  background: linear-gradient(#0cacbd 0%, #0a96a5 100%);
+  background: #e18e25;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UxOGUyNSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2QwODExZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e18e25), color-stop(100%, #d0811d));
+  background: -moz-linear-gradient(#e18e25 0%, #d0811d 100%);
+  background: -webkit-linear-gradient(#e18e25 0%, #d0811d 100%);
+  background: linear-gradient(#e18e25 0%, #d0811d 100%);
 }
 #grdonation .levels input[type="text"] {
   width: 100%;
@@ -4371,7 +4468,7 @@ label {
   padding-left: 5px;
   border-radius: 5px;
   box-shadow: none;
-  font-size: 18px;
+  font-size: 1rem;
   padding: 8px;
   font-size: 15px;
   font-family: "DagnyOT";
@@ -4406,27 +4503,33 @@ select.error {
   border: 2px solid #e80300;
 }
 
-#gr_details div.eaQuestionCheckboxFormFieldContainer {
+#grdonation .page div.eaQuestionCheckboxFormFieldContainer {
   height: auto;
   padding: 1em 0;
 }
-#gr_details .eaQuestionCheckboxFormFieldContainer label {
+#grdonation .page .eaQuestionCheckboxFormFieldContainer label {
   display: inline;
 }
-#gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox,
-#gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input {
+#grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox,
+#grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input,
+#grdonation .page .eaFormCheckbox,
+#grdonation .page .eaFormCheckbox input {
   vertical-align: top;
 }
-#gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox:hover,
-#gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input:hover {
+#grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox:hover,
+#grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input:hover,
+#grdonation .page .eaFormCheckbox:hover,
+#grdonation .page .eaFormCheckbox input:hover {
   cursor: pointer;
 }
-#gr_details .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label {
+#grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label,
+#grdonation .page .eaFormCheckbox label {
   cursor: pointer;
   display: inline-block;
   width: 90%;
-  font-size: 16px;
-  font-family: 'DagnyOT';
+  color: #792266;
+  font-size: 1rem;
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.4;
@@ -4437,13 +4540,13 @@ select.error {
   vertical-align: top;
   margin: 0 0 0 5px;
 }
-#gr_details .eaQuestionCheckboxFormFieldContainer label {
+#grdonation .page .eaQuestionCheckboxFormFieldContainer label {
   display: inline-block;
 }
-#gr_details #SSL_CertificateDiv {
+#grdonation .page #SSL_CertificateDiv {
   float: right;
 }
-#gr_details #RAPID_SSL {
+#grdonation .page #RAPID_SSL {
   width: 49%;
 }
 
@@ -4502,7 +4605,7 @@ select.error {
   font-family: "DagnyOT-light";
   font-weight: 400;
   font-style: normal;
-  font-size: 16px;
+  font-size: 0.5rem;
 }
 @media screen and (max-width: 619px) {
   .grdonation-contact {
@@ -4556,7 +4659,7 @@ select.error {
 .page-header {
   position: relative;
   width: 100%;
-  background-color: #313131;
+  background-color: #404040;
 }
 .page-header .row {
   position: absolute;
@@ -4566,7 +4669,6 @@ select.error {
 .page-title {
   margin-left: 70px;
   margin-top: -31px;
-  background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/ecojustice.png");
   width: 250px;
   height: 62px;
   background-size: contain;
@@ -4575,7 +4677,7 @@ select.error {
 
 @media screen and (max-width: 767px) {
   .page-header {
-    border-top: 5px solid #5d8200;
+    border-top: 5px solid #81af76;
     height: 80px;
   }
 
@@ -4588,25 +4690,24 @@ select.error {
 }
 @media screen and (min-width: 768px) {
   .page-header {
-    border-top: 5px solid #5d8200;
+    border-top: 5px solid #81af76;
     height: 105px;
   }
 }
 @media screen and (min-width: 1160px) {
   .page-header {
-    border-top: 5px solid #5d8200;
+    border-top: 5px solid #81af76;
     height: 105px;
   }
 }
 @media screen and (min-width: 2100px) {
   .page-header {
-    border-top: 5px solid #5d8200;
+    border-top: 5px solid #81af76;
     height: 205px;
   }
 
   .page-title {
     margin-top: -62px;
-    background: url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1943/ecojustice.svg");
     width: 500px;
     height: 124px;
     background-size: contain;
@@ -4619,8 +4720,8 @@ select.error {
   line-height: 2em;
   font-weight: bolder;
   padding: 80px;
-  background-color: #313131;
-  color: #d6ccaf;
+  background-color: #404040;
+  color: #252525;
 }
 
 .footer-legal {
@@ -4648,13 +4749,13 @@ select.error {
   text-decoration: none;
 }
 .footer-links a:visited {
-  color: #709202;
+  color: #81af76;
 }
 
 .footer-links--main {
-  font-size: 16px;
+  font-size: 0.5rem;
   display: inline-block;
-  color: #709202;
+  color: #81af76;
   text-transform: uppercase;
 }
 .footer-links--main li {
@@ -4662,15 +4763,15 @@ select.error {
   margin-right: 11px;
 }
 .footer-links--main a {
-  color: #709202;
+  color: #81af76;
 }
 
 .footer-links--secondary a {
   text-transform: uppercase;
-  color: #d6ccaf;
+  color: #252525;
 }
 .footer-links--secondary a:visited {
-  color: #d6ccaf;
+  color: #252525;
 }
 .footer-links--secondary li {
   display: inline-block;
@@ -4696,7 +4797,7 @@ select.error {
     margin-bottom: 5px;
   }
   .footer-links a:visited {
-    color: #d6ccaf;
+    color: #252525;
   }
 }
 @media screen and (max-width: 767px) {
@@ -4741,7 +4842,7 @@ select.error {
   margin: 0;
 }
 .post-action .campaign p {
-  font-size: 18px;
+  font-size: 1rem;
   color: #fff;
   max-width: 40em;
   margin: 0 auto;
@@ -4810,7 +4911,7 @@ select.error {
 }
 .post-action .social-title {
   color: #fff;
-  font-size: 25px;
+  font-size: 1.22rem;
   text-align: center;
 }
 @media screen and (min-width: 1300px) {
