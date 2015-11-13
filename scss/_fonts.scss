@@ -196,6 +196,9 @@ $line-loose: 2;
 @mixin fontSize-small{
   font-size: 0.5rem;
 }
+@mixin fontSize-smallish{
+  font-size: 0.8rem;
+}
 @mixin fontSize-base{
   font-size: 1rem;
 }

@@ -1,13 +1,17 @@
 @mixin defaultInputStyles {
   color: $vdark-grey;
-  padding: 14px;
+  padding-left: 14px;
+  padding-right: 14px;
   border: 1px solid $input-border-grey;
   border-radius: 0px;
   @include font-bodyN4;
 }
 
 input[type="text"], select, textarea {
-   @include defaultInputStyles;
+  &.form-control {
+    @include defaultInputStyles;
+  }
+  @include defaultInputStyles;
 }
 
 #top {
@@ -16,7 +20,14 @@ input[type="text"], select, textarea {
   }
 }
 
-input[type="text"] {
+textarea {
+  &.form-control {
+    padding-top: 8px;
+    height: 6em;
+  }
+}
+
+input[type="text"], textarea {
     @include input-placeholder {
         color: $input-placeholder-grey;
     }
@@ -30,6 +41,12 @@ input[type="text"] {
   color: $magenta;
   @include font-bodyN7;
   @include fontSize-base;
+}
+
+.form-text {
+  color: $magenta;
+  @include font-bodyN4;
+  @include fontSize-smallish;
 }
 
 .cta-wrap {

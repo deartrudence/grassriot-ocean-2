@@ -28,8 +28,8 @@ $background-grey: #f3f3f3;
 $input-placeholder-grey: #78787a;
 $input-border-grey: #767271;
 
-$indicator-light-grey: #d5d6d9;
-$indicator-dark-grey: #cdcdcd;
+$indicator-light-grey: #dddfde;
+$indicator-dark-grey: #d5d6d8;
 $black: #000;
 
 $modal-overlay-opacity: 0.65;
@@ -121,15 +121,16 @@ $form-background: $green;
 $form-padding: 30px;
 $form-navbar-height: 52px;
 
-$steps_colour: $vdark-grey;
-$steps_background: $light-grey;
+$steps_colour: $purple;
+$steps_background: $indicator-light-grey;
 $steps_advancedBackground: linear-gradient($indicator-light-grey 40%, $indicator-dark-grey 60%);
 $steps_border: none;
-$stepsActive_background: $light-green;
-$stepsActive_advancedBackground: linear-gradient($stepsActive_background 40%, $green 60%);
+$stepsActive_background: $dark-red;
+$stepsActive_advancedBackground: linear-gradient($stepsActive_background 40%, $cta-red 60%);
 $stepsActive_border: none;
-$stepsActive_colour: $vdark-grey;
-$stepsActive_arrowBackground: $green;
+$stepsActive_colour: $white;
+$stepsActive_arrowBackground: $cta-red;
+$stepsComplete_colour: $orange;
 
 $amount-active-advancedBackground: linear-gradient($yellow 0%, darken($yellow,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($vlight-grey,5%) 0%, $vlight-grey 100%);

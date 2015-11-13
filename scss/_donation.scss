@@ -2,13 +2,13 @@
   margin-top: 1.5em;
   @include fontSize-base;
   @include font-headN4;
-  display: block !important;
   color: $magenta;
 }
 
 #grdonation{
   .page h3{
     @include formSectionHeader;
+    display: block;
   }
 }
 
@@ -111,6 +111,7 @@
 
   .eaFormElementLabel{
     @include formSectionHeader;
+    display: block !important;
   }
 
   .eaMandatoryFieldMarker{
@@ -280,7 +281,7 @@
 }
 
 @mixin text-indicator{
-  padding: 5px 10px;
+  padding: 5px 15px;
   font-size: 10px;
   line-height: 16px;
   display: inline-block;
@@ -312,6 +313,10 @@
         color: $stepsActive_colour;
       }
 
+      &.is-complete {
+        color: $stepsComplete_colour;
+      }
+
       &.active:after{
         $triangle-height: 10px;
         content: "";
@@ -324,7 +329,7 @@
         position: absolute;
         bottom: -2 * $triangle-height;
         left: 50%;
-        margin-left: -0.5 * $triangle-height; 
+        margin-left: -1 * $triangle-height; 
       }
     }
     // .second,
@@ -601,6 +606,17 @@
   }
   .levels {
     clear: left;
+    &:before, &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      content: " ";
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    margin-bottom: 1em;
     .amountbutton {
       display: block;
       width: 48%;
@@ -619,8 +635,8 @@
       width: 100%;
       font-size: 20px;
       color: #fff;
-      border-radius: 5px;
-      margin-bottom: 5px;
+      border-radius: 1px;
+      margin-bottom: 10px;
       text-align: center;
       line-height: 40px;
       vertical-align: middle;
@@ -670,17 +686,16 @@
     input[type="text"] {
       width: 100%;
       margin: 0;
-      border: 1px solid #d0d0d0;
-      height: 40px;
+      height: 36px;
       background: white;
       color: #555;
       padding-left: 5px;
-      border-radius: 5px;
+      border-radius: 1px;
       box-shadow: none;
       @include fontSize-base;
       padding: 8px;
       font-size: 15px;
-      font-family: "DagnyOT";
+      @include font-bodyN4;
 
       @media only screen and (max-width: $screen-xxs-max){
         height: 34px;
@@ -692,18 +707,15 @@
 
 input[type=text], select, textarea {
   box-shadow: none;
-  border: none;
-  border: 1px solid #ddd;
-  border-radius: 5px;
   &:focus {
     outline: none;
     border: 1px solid #aaa;
   }
-  height: 38px;
   margin-bottom: 7px;
 }
+
 input[type=text],
-select {
+select, textarea {
   &.valid {
     background: #E0FCE1;
     border: 2px solid #62C166;
@@ -737,7 +749,7 @@ select {
     display: inline-block;
     width: 90%;
     color: $magenta;
-    @include fontSize-base;
+    @include fontSize-smallish;
     @include font-bodyN4;
     @include lineHeight-tight;
     font-weight: 400;

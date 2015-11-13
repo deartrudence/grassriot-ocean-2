@@ -107,7 +107,8 @@ webpackJsonp([0],[
 	  ],
 	  '#gr_extra': [
 	    '.js-employerMatch',
-	    '#'+fields.employer.nameNoSpace+'Div', 
+	    '#'+fields.employer.nameNoSpace+'Div',
+	    '.js-inmemorialDetails', 
 	    '.js-inmemorialInstructions',
 	    '#'+fields.inmem_type.nameNoSpace+'Div', 
 	    '#'+fields.inmem_name.nameNoSpace+'Div', 
@@ -127,6 +128,7 @@ webpackJsonp([0],[
 	    '#'+fields.lname.nameNoSpace+'Div', 
 	    '#'+fields.email.nameNoSpace+'Div', 
 	    '#'+fields.street1.nameNoSpace+'Div', 
+	    '#'+fields.street2.nameNoSpace+'Div', 
 	    '#'+fields.city.nameNoSpace+'Div',
 	    '#'+fields.postal.nameNoSpace+'Div', 
 	    '#'+fields.country.nameNoSpace+'Div', 
@@ -517,10 +519,10 @@ webpackJsonp([0],[
 	                    name: 'Donation Amount Other',
 	                    targetName: fields.amt.name,
 	                    label: 'Other amount'
-	                },
+	                }/*,
 	                processor: {
 	                    selector: fields.pay_type.selector,
-	                }
+	                }*/
 	            },
 	            //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
 	            askStringSelector: '#donation-ranges',
@@ -528,7 +530,7 @@ webpackJsonp([0],[
 	            recurrenceOptions: [
 	                {label: 'Single', 'value': ''},
 	                {label: 'Monthly', 'value': 'Y'}
-	            ],
+	            ]/*,
 	            processorFields: { 
 	                'PayPal': {
 	                    hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
@@ -540,7 +542,7 @@ webpackJsonp([0],[
 	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
 	                }
 
-	            }
+	            }*/
 
 	        });
 
@@ -606,12 +608,46 @@ webpackJsonp([0],[
 	        $('[data-toggle="popover"]').popover();
 
 	        formSteps.hideStep(1);
-	        $form.on('click', fields.inmem.selector, function(e) {
+	        $form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
+	            var toggleFields = [ ];
+	            switch($(this).attr('name')) {
+	                case fields.inmem.name: 
+	                    toggleFields = [
+	                        '.js-inmemorialDetails', 
+	                        '.js-inmemorialInstructions',
+	                        fields.inmem_type.selector,
+	                        fields.inmem_name.selector,
+	                        fields.inmem_recip.selector,
+	                        fields.inmem_msg.selector,
+	                        fields.inmem_street1.selector,
+	                        fields.inmem_street2.selector,
+	                        fields.inmem_city.selector,
+	                        fields.inmem_region.selector,
+	                        fields.inmem_postal.selector,
+	                        fields.inmem_country.selector,
+	                    ];
+
+	                break;
+	                case fields.matching.name:
+	                    toggleFields = [
+	                        '.js-employerMatch',
+	                        fields.employer.selector
+	                    ];
+	                break;
+	            }
+
 	            if($(this).is(':checked')) {
+	                $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').show().filter('.hide').removeClass('hide');
+	            } else {
+	                $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').hide();
+	            }
+
+	            if($(fields.inmem.selector+","+fields.matching.selector).filter(':checked').length) {
 	                formSteps.showStep(1);
 	            } else {
 	                formSteps.hideStep(1);
 	            }
+
 	        })
 			//things to do just on load
 			setupMobileButton();
@@ -1247,7 +1283,7 @@ webpackJsonp([0],[
 	    var classes = {
 	        '.eaSubmitButton':{ classes: "btn btn-danger btn-lg", targetElement: ".eaSubmitButton"},
 	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
-	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect'}
+	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea'}
 	    };
 	    classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
@@ -1256,6 +1292,7 @@ webpackJsonp([0],[
 	    classes[fields.lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
@@ -1269,9 +1306,19 @@ webpackJsonp([0],[
 	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 
-	    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
 	    classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
 	    //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_recip.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+	    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+	    
 
 	    return classes;
 	}
