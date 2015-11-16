@@ -3,7 +3,7 @@
  *
  * Manages common aspects required for building a donation form
  *
- * @version  0.3
+ * @version  0.3 !!MODIFIED 20151116!!
  * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
@@ -497,7 +497,7 @@ function getAskStringIndex() {
     if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
         index.push(recurrence);
     }
-    
+
     if(index.length == 0)
         return 'default';
     else
@@ -641,10 +641,10 @@ function getAskButtons(amounts) {
             selectorButtons.push(
                 grHelpers.createRadioComponent({
                     name:  options.components.amount.name,
-                    label: choice,
+                    label: choice.replace(/\*/g,''),
                     value: choice.replace(/[^0-9\.]/g,''),
                     wrap:  "<div class='amountbutton'></div>",
-                    atts: (i==1 ? ['checked="checked"'] : '')
+                    atts: (choice.indexOf('*') != -1 ? ['checked="checked"'] : '')
                 })
             );
         }

@@ -483,7 +483,6 @@ function setupAction(){
             });
         });
 
-        var defaultDonation = $(".js-donationDefault").text();
         // Setup Campaign Page
         grGiving = new GRGivingSupport({
             form: $form,
@@ -508,7 +507,6 @@ function setupAction(){
                 amount: {
                     selector: fields.amt.selector,
                     urlParam: 'amt',
-                    defaultVal: defaultDonation,
                     name: fields.amt.name
                 },
                 other: {
