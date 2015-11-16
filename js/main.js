@@ -483,6 +483,7 @@ function setupAction(){
             });
         });
 
+        var defaultDonation = $(".js-donationDefault").text();
         // Setup Campaign Page
         grGiving = new GRGivingSupport({
             form: $form,
@@ -507,7 +508,7 @@ function setupAction(){
                 amount: {
                     selector: fields.amt.selector,
                     urlParam: 'amt',
-                    defaultVal: '50',
+                    defaultVal: defaultDonation,
                     name: fields.amt.name
                 },
                 other: {
@@ -1084,6 +1085,10 @@ function init_validation(){
             phone_number.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/ );
         }, errorMessages.invalidPhone);
 
+        $.validator.addMethod("notEqual", function (value, element, param) {
+          return this.optional(element) || value !== param;
+        }, jQuery.validator.format("{0} is required."));
+
         $.validator.addMethod('isPostcodeCA', function (value, element) {
             value = $.trim(value);
             $(element).val(value);
@@ -1132,6 +1137,22 @@ function init_validation(){
             required: true,
             isValidDonation: true
         };
+        validation_rules[fields.employer.name] = {
+            required: function(element) {
+                return $(fields.matching.selector).is(':checked');
+            }
+        }
+        validation_rules[fields.inmem_type.name] = {
+            required: function(element) {
+                return $(fields.inmem.selector).is(':checked');
+            },
+            notEqual: 'Gift Type'
+        }
+        validation_rules[fields.inmem_name.name] = {
+            required: function(element) {
+                return $(fields.inmem.selector).is(':checked');
+            }
+        }
 
         $form.validate({
             rules: validation_rules,

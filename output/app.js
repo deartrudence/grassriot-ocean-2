@@ -2,7 +2,7 @@ webpackJsonp([0],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {//Beautifier configuration
+	/* WEBPACK VAR INJECTION */(function($, jQuery) {//Beautifier configuration
 	var leftColumnSelector = '.js-left-column';
 	var formSelector = '.form';
 	var ENFormSelector = '.eaform';
@@ -487,6 +487,7 @@ webpackJsonp([0],[
 	            });
 	        });
 
+	        var defaultDonation = $(".js-donationDefault").text();
 	        // Setup Campaign Page
 	        grGiving = new GRGivingSupport({
 	            form: $form,
@@ -511,7 +512,7 @@ webpackJsonp([0],[
 	                amount: {
 	                    selector: fields.amt.selector,
 	                    urlParam: 'amt',
-	                    defaultVal: '50',
+	                    defaultVal: defaultDonation,
 	                    name: fields.amt.name
 	                },
 	                other: {
@@ -1088,6 +1089,10 @@ webpackJsonp([0],[
 	            phone_number.match( /^(\+?1-?)?(\([2-9]([02-9]\d|1[02-9])\)|[2-9]([02-9]\d|1[02-9]))-?[2-9]([02-9]\d|1[02-9])-?\d{4}$/ );
 	        }, errorMessages.invalidPhone);
 
+	        $.validator.addMethod("notEqual", function (value, element, param) {
+	          return this.optional(element) || value !== param;
+	        }, jQuery.validator.format("{0} is required."));
+
 	        $.validator.addMethod('isPostcodeCA', function (value, element) {
 	            value = $.trim(value);
 	            $(element).val(value);
@@ -1136,6 +1141,22 @@ webpackJsonp([0],[
 	            required: true,
 	            isValidDonation: true
 	        };
+	        validation_rules[fields.employer.name] = {
+	            required: function(element) {
+	                return $(fields.matching.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.inmem_type.name] = {
+	            required: function(element) {
+	                return $(fields.inmem.selector).is(':checked');
+	            },
+	            notEqual: 'Gift Type'
+	        }
+	        validation_rules[fields.inmem_name.name] = {
+	            required: function(element) {
+	                return $(fields.inmem.selector).is(':checked');
+	            }
+	        }
 
 	        $form.validate({
 	            rules: validation_rules,
@@ -1335,7 +1356,7 @@ webpackJsonp([0],[
 	        windowSize = windowSize.replace(/["']/g,'');
 	    }           
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(1)))
 
 /***/ },
 /* 1 */,
