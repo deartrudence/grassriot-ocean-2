@@ -3,7 +3,7 @@
  *
  * Manages common aspects required for building a donation form
  *
- * @version  0.3 !!MODIFIED 20151116!!
+ * @version  0.4
  * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
@@ -628,6 +628,7 @@ GRGivingSupport.prototype.buildCurrencyList = function() {
 
 /**
  * Generates the HTML for the ask amount buttons based on a list of amounts and/or whether the 'other' component is defined
+ * @since  0.4 the default selected amount should have an asterisk as the last character
  * @param  {Array} amounts Array of amount strings 
  * @return {Array}         Array of HTML strings - one per button
  */
