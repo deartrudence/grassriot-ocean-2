@@ -3675,7 +3675,7 @@ em {
 
 .upsell-title {
   font-size: 1em;
-  color: #fff;
+  color: #FFFFFF;
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -3689,8 +3689,8 @@ em {
 .upsell-copy {
   width: 60%;
   position: relative;
-  color: #fff;
-  font-size: 1rem;
+  color: #FFFFFF;
+  font-size: 16px;
 }
 
 .upsell-copy--cta {
@@ -3703,7 +3703,7 @@ em {
 }
 
 .upsell-recommendation {
-  color: #fff;
+  color: #FFFFFF;
   border-radius: 5px;
   overflow: hidden;
   margin-top: .6em;
@@ -3712,7 +3712,7 @@ em {
 }
 
 .upsell-recommendation--amount {
-  background: #fff;
+  background: #FFFFFF;
   color: #000;
   padding: 0 10px;
   border-radius: 3px;
@@ -3765,8 +3765,8 @@ button.upsell-modal--close:active {
   background: #c31e24;
   margin-top: -2px;
   border-radius: 0;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
@@ -3775,7 +3775,7 @@ button.upsell-modal--close:active {
   font-size: 1.22rem;
   text-align: center;
   padding: 1em;
-  color: #fff;
+  color: #FFFFFF;
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -3785,7 +3785,7 @@ button.upsell-modal--close:active {
 }
 .upsell-confirm:hover {
   opacity: 0.8;
-  color: #fff;
+  color: #FFFFFF;
 }
 .upsell-confirm:active {
   opacity: 0.7;
@@ -3856,7 +3856,7 @@ button.upsell-modal--close:active {
     margin: 0;
     text-indent: 0;
     background: none;
-    color: #fff;
+    color: #FFFFFF;
     text-shadow: 0 -2px 0 #000;
     opacity: 0.4;
   }
@@ -3914,7 +3914,7 @@ body {
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #245e36;
+  background-color: #e5e6e8;
 }
 body:after {
   display: none;
@@ -3961,20 +3961,20 @@ body:after {
 .hero {
   position: relative;
   overflow: hidden;
-  height: 100%;
-  background: url('../img/18915705851_4958b9ef7e_o.jpg?1442547783');
+  height: 545px;
+  background: url('../img/msf-header.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
 
 .page-title {
-  color: #fff;
+  color: #FFFFFF;
   position: relative;
   z-index: 30;
 }
 
 .hero-text {
-  color: #fff;
+  color: #FFFFFF;
   position: relative;
   z-index: 30;
 }
@@ -3990,8 +3990,8 @@ body:after {
   font-size: 1.77rem;
   line-height: 1.1;
   position: relative;
-  color: #fff;
-  padding: 16% 25% 23% 25%;
+  color: #FFFFFF;
+  padding: 30% 15% 20% 15%;
 }
 .heroTitle strong,
 .heroTitle em {
@@ -4017,7 +4017,7 @@ body:after {
   position: absolute;
   left: 3%;
   bottom: 0;
-  color: #fff;
+  color: #FFFFFF;
   padding: 10px 15px;
 }
 
@@ -4062,42 +4062,65 @@ html.csstransforms {
 }
 @media screen and (min-width: 620px) {
   .campaign {
-    padding-right: 300px;
-    padding-left: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
+    padding-right: 400px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 @media screen and (min-width: 768px) {
   .campaign {
     padding-right: 400px;
-    padding-left: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 @media screen and (min-width: 1160px) {
   .campaign {
-    padding-right: 435px;
-    padding-left: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
+    padding-right: 400px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
 @media screen and (min-width: 2100px) {
   .campaign {
-    padding-right: 650px;
-    padding-left: 30px;
-    margin-left: -30px;
-    margin-right: -30px;
+    padding-right: 400px;
+    padding-left: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 }
+.campaign h2, .campaign h3, .campaign h4, .campaign h5 {
+  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.77rem;
+  line-height: 1;
+  color: #f42841;
+  margin: 1em 0em;
+}
+.campaign .msf-black {
+  color: #231f20;
+}
+.campaign .row {
+  margin: 0px;
+}
 
-.campaignText-wrapper {
-  background-color: #e18e25;
-  color: #245e36;
-  padding: 13% 15%;
+.wrapper {
+  background-color: #545a63;
+  color: #231f20;
+  padding: 80px 35px;
   position: relative;
+}
+.wrapper p {
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.campaignText-wrapper.wrapper {
+  background-color: #FFFFFF;
 }
 
 .campaignText-main {
@@ -4106,16 +4129,42 @@ html.csstransforms {
   font-style: normal;
 }
 
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 545px;
+  background: url('../img/msf-header.jpg?1448243909');
+  background-size: cover;
+  background-position: center;
+}
+
+.impactText-wrapper.wrapper {
+  background: none;
+}
+
+.js-impact {
+  position: relative;
+  overflow: hidden;
+  height: 420px;
+  background: url('../img/section-1.jpg?1448243909');
+  background-size: cover;
+  background-position: center;
+}
+
+.quoteText-wrapper.wrapper {
+  background: #FFFFFF;
+}
+
 .js-supporters,
 .js-highlights {
-  background: #fff;
+  background: #FFFFFF;
 }
 
 .campaignText-sub {
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #fff;
+  color: #FFFFFF;
   text-transform: uppercase;
 }
 
@@ -4168,14 +4217,14 @@ html.csstransforms {
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1rem;
+  font-size: 16px;
   background-color: #a8233e;
   padding: 20px 20px;
   border-radius: 10px 10px 0 0;
   margin-left: 30px;
   margin-right: 50px;
   margin-bottom: 5px;
-  color: #fff;
+  color: #FFFFFF;
   text-align: center;
   left: 0;
   right: 0;
@@ -4210,7 +4259,7 @@ html.csstransforms {
   position: absolute;
   left: 3%;
   bottom: 0;
-  color: #fff;
+  color: #FFFFFF;
   padding: 0 0 2%;
 }
 @media screen and (max-width: 767px) {
@@ -4400,18 +4449,18 @@ html.csstransforms {
   }
 
   .highlights-cta {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   .supportersText-wrapper h4 {
     font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 16px;
     padding: 15px 3%;
     text-transform: uppercase;
     background-color: #e18e25;
-    color: #fff;
+    color: #FFFFFF;
   }
 
   .profile-photo {
@@ -4427,7 +4476,7 @@ html.csstransforms {
     font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: #fff;
+    color: #FFFFFF;
     padding: 0px 0px 60px 0px;
   }
   .supporters-carousel .supporter-picture {
@@ -4596,7 +4645,7 @@ label {
     top: 80px;
     right: 0;
     height: 100%;
-    width: 300px;
+    width: 400px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -4614,7 +4663,7 @@ label {
     position: absolute;
     top: 105px;
     right: 0;
-    width: 435px;
+    width: 400px;
     height: 100%;
   }
 }
@@ -4623,7 +4672,7 @@ label {
     position: absolute;
     top: 205px;
     right: 0;
-    width: 650px;
+    width: 400px;
     height: 100%;
   }
 }
@@ -4635,16 +4684,16 @@ label {
 }
 @media screen and (min-width: 1160px) {
   .form.no-affix {
-    width: 400px;
+    width: 365px;
   }
 }
 @media screen and (min-width: 2100px) {
   .form.no-affix {
-    width: 605px;
+    width: 355px;
   }
 }
 .form.no-affix .form-navbar {
-  background: #fff;
+  background: #FFFFFF;
 }
 
 #grdonation form {
@@ -4655,7 +4704,7 @@ label {
 }
 
 .form-header {
-  background-color: #fff;
+  background-color: #FFFFFF;
   padding-top: 30px;
   padding-bottom: 0;
 }
@@ -4700,11 +4749,11 @@ label {
 .form-control {
   padding-top: 3px;
   padding-bottom: 3px;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 #validErrModal {
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 619px) {
@@ -4721,7 +4770,7 @@ label {
   }
 
   .form-navbar {
-    background-color: #fff;
+    background-color: #FFFFFF;
   }
 
   .form-header {
@@ -4735,14 +4784,14 @@ label {
     font-family: "DagnyOT-Bold";
     font-weight: 400;
     font-style: normal;
-    font-size: 1rem;
+    font-size: 16px;
     display: block;
     position: absolute;
     top: -3em;
     left: 0px;
     width: 100%;
     text-transform: uppercase;
-    color: #fff;
+    color: #FFFFFF;
     height: 3em;
     border: 0;
     padding: 0 10px;
@@ -4797,7 +4846,7 @@ label {
   }
 
   .form-navbar {
-    background: #fff;
+    background: #FFFFFF;
     background-size: 435px 53px;
     width: 100%;
     z-index: 90;
@@ -4810,7 +4859,7 @@ label {
 }
 @media screen and (min-width: 2100px) {
   .form-navbar {
-    background: #fff;
+    background: #FFFFFF;
     background-size: 650px 54px;
     width: 650px;
     height: 53px;
@@ -4906,7 +4955,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 1rem;
+  font-size: 16px;
 }
 
 .form-text {
@@ -4919,8 +4968,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .cta, input[type="submit"], button[type="submit"] {
   border-radius: 0;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
@@ -4967,7 +5016,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 #grdonation .page h3 {
   margin-top: 1.5em;
-  font-size: 1rem;
+  font-size: 16px;
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -5039,11 +5088,11 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 #gr_donation div.radiobutton input[type='radio']:checked ~ label:before {
   content: '\2714';
   text-indent: .9em;
-  color: #fff;
+  color: #FFFFFF;
   background-color: #a8233e;
 }
 #gr_donation div.radiobutton input[type='radio']:checked ~ label {
-  color: #fff;
+  color: #FFFFFF;
   background-color: #782266;
 }
 #gr_donation div.radiobutton input[type='radio']:focus ~ label:before {
@@ -5051,7 +5100,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 #gr_donation .eaFormElementLabel {
   margin-top: 1.5em;
-  font-size: 1rem;
+  font-size: 16px;
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -5220,7 +5269,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   background: -webkit-linear-gradient(#c31e24 40%, #a8233e 60%);
   background: linear-gradient(#c31e24 40%, #a8233e 60%);
   border: none;
-  color: #fff;
+  color: #FFFFFF;
 }
 .steps-list ul li.is-complete {
   color: #db672a;
@@ -5247,7 +5296,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .giving-security {
   background: #81af76;
-  color: #fff;
+  color: #FFFFFF;
   padding: 15px;
 }
 
@@ -5464,8 +5513,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 #grdonation .btn-next {
   margin-top: 20px;
   border-radius: 0;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
   font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
@@ -5572,7 +5621,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   padding-left: 5px;
   border-radius: 1px;
   box-shadow: none;
-  font-size: 1rem;
+  font-size: 16px;
   padding: 8px;
   font-size: 15px;
   font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
@@ -5944,8 +5993,8 @@ select.error, textarea.error {
   margin: 0;
 }
 .post-action .campaign p {
-  font-size: 1rem;
-  color: #fff;
+  font-size: 16px;
+  color: #FFFFFF;
   max-width: 40em;
   margin: 0 auto;
 }
@@ -5996,23 +6045,23 @@ select.error, textarea.error {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1442547783') no-repeat center;
+  background: url('../img/fb-2015.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1442547783') no-repeat center;
+  background: url('../img/tw-2015.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1442547783') no-repeat center;
+  background: url('../img/gp.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1442547783') no-repeat center;
+  background: url('../img/in.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1442547783') no-repeat center;
+  background: url('../img/ml.png?1448227385') no-repeat center;
 }
 .post-action .social-title {
-  color: #fff;
+  color: #FFFFFF;
   font-size: 1.22rem;
   text-align: center;
 }

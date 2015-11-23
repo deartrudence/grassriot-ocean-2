@@ -93,11 +93,13 @@ webpackJsonp([0],[
 	var ENBeautifierFillers = {
 	  ".js-hero": ".js-heroContent",
 	  ".js-campaign": ".js-campaignText",
-	  ".js-highlights": ".js-highlightsText",
-	  ".js-hero-image": ".js-heroImage",
-	  ".js-financial": ".js-financialText",
-	  ".js-supporters": ".js-supportersText",
-	  ".js-formOpen-label": ".js-formOpen-labelText" };
+	  ".js-impact": ".js-impactText",
+	  ".js-quote": ".js-quoteText",
+	  ".js-response": ".js-responseText",
+	  ".js-accountable": ".js-accountableText",
+	  ".js-gift": ".js-giftText",
+	  ".js-policy": ".js-policyText"
+	};
 	var ENBeautifierFillersContainers = {
 	  '#gr_donation': [
 	    '#'+fields.recur_pay.nameNoSpace+'Div', 
@@ -487,7 +489,6 @@ webpackJsonp([0],[
 	            });
 	        });
 
-	        //var defaultDonation = $(".js-donationDefault").text();
 	        // Setup Campaign Page
 	        grGiving = new GRGivingSupport({
 	            form: $form,
@@ -512,7 +513,6 @@ webpackJsonp([0],[
 	                amount: {
 	                    selector: fields.amt.selector,
 	                    urlParam: 'amt',
-	                    //defaultVal: defaultDonation,
 	                    name: fields.amt.name
 	                },
 	                other: {
@@ -2480,7 +2480,7 @@ webpackJsonp([0],[
 	 *
 	 * Manages common aspects required for building a donation form
 	 *
-	 * @version  0.3 !!MODIFIED 20151116!!
+	 * @version  0.4
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'form' ];
@@ -3105,6 +3105,7 @@ webpackJsonp([0],[
 
 	/**
 	 * Generates the HTML for the ask amount buttons based on a list of amounts and/or whether the 'other' component is defined
+	 * @since  0.4 the default selected amount should have an asterisk as the last character
 	 * @param  {Array} amounts Array of amount strings 
 	 * @return {Array}         Array of HTML strings - one per button
 	 */

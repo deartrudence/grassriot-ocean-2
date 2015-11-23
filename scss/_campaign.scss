@@ -1,19 +1,76 @@
-//Every row on the left starting from the turquoise
+
+
+// Every row on the left starting from the turquoise
 .campaign {
+	
   overflow: hidden;
   @include contentContainer;
+	  	    
+  h2, h3, h4, h5 {
+    @include font-headN4;
+    @include fontSize-large;
+   	@include line-tighter;
+   	color: $msf-red;
+   	margin: 1em 0em;
+  }
+  
+  .msf-black {
+   	color: $msf-black;
+  }
+
+  .row {
+	margin: 0px;
+	}  
 }
 
-.campaignText-wrapper {
-  background-color: $yellow;
-  color: $green;
-  padding: $campaignText-wrapper;
-  position: relative;
+
+.wrapper {
+	background-color: $light-grey;
+	color: $msf-black;
+	padding: 80px 35px;
+	position: relative;
+	
+	p {
+		@include fontSize-base;
+		margin: 15px 0;
+	}
+}
+
+.campaignText-wrapper.wrapper {
+	background-color: $white;
 }
 
 .campaignText-main {
   @include font-bodyN4;
 }
+
+
+.hero {
+  position: relative; //for the overflow control
+  overflow: hidden;
+  height: 545px;
+  background: $hero-bgimage;
+  background-size: cover;
+  background-position: center;
+}
+
+.impactText-wrapper.wrapper {
+	background: none;
+}
+.js-impact {
+	position: relative; //for the overflow control
+	overflow: hidden;
+	height: 420px;
+	background: $impact-bgimage;
+	background-size: cover;
+	background-position: center;
+}
+
+
+.quoteText-wrapper.wrapper {
+	background: $white;
+}
+
 
 .js-supporters,
 .js-highlights{

@@ -89,11 +89,13 @@ var fields = gr.buildFieldNameObject({
 var ENBeautifierFillers = {
   ".js-hero": ".js-heroContent",
   ".js-campaign": ".js-campaignText",
-  ".js-highlights": ".js-highlightsText",
-  ".js-hero-image": ".js-heroImage",
-  ".js-financial": ".js-financialText",
-  ".js-supporters": ".js-supportersText",
-  ".js-formOpen-label": ".js-formOpen-labelText" };
+  ".js-impact": ".js-impactText",
+  ".js-quote": ".js-quoteText",
+  ".js-response": ".js-responseText",
+  ".js-accountable": ".js-accountableText",
+  ".js-gift": ".js-giftText",
+  ".js-policy": ".js-policyText"
+};
 var ENBeautifierFillersContainers = {
   '#gr_donation': [
     '#'+fields.recur_pay.nameNoSpace+'Div', 
