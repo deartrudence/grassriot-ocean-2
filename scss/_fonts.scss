@@ -65,25 +65,32 @@ em{
 //Body font
 //
 @mixin font-bodyN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+@mixin font-bodyN6{
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 @mixin font-bodyN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-bodyI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -92,25 +99,31 @@ em{
 //Title font
 //
 @mixin font-headN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-headN6{
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
   font-style: normal;
 }
 
 @mixin font-headN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-headI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -119,25 +132,25 @@ em{
 //Decorative font
 //
 @mixin font-decoN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -209,7 +222,7 @@ $line-loose: 2;
   font-size: 1.77rem;
 }
 @mixin fontSize-largerish{
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 @mixin fontSize-titleLarge{
   font-size: 2.9rem;

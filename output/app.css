@@ -3676,8 +3676,8 @@ em {
 .upsell-title {
   font-size: 1em;
   color: #FFFFFF;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   line-height: 1.1;
 }
@@ -3769,15 +3769,15 @@ button.upsell-modal--close:active {
   color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 1.22rem;
   text-align: center;
   padding: 1em;
   color: #FFFFFF;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 .upsell-confirm:hover {
@@ -3911,7 +3911,7 @@ html.flexbox .upsell-modal--body {
 
 body {
   overflow-x: hidden;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   background-color: #e5e6e8;
@@ -3984,7 +3984,7 @@ body:after {
 }
 
 .heroTitle {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.77rem;
@@ -3995,7 +3995,7 @@ body:after {
 }
 .heroTitle strong,
 .heroTitle em {
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
@@ -4011,7 +4011,7 @@ body:after {
 
 .heroCaption {
   font-size: 0.5rem;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -4092,14 +4092,24 @@ html.csstransforms {
     margin-right: 0px;
   }
 }
+.campaign h1 {
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.9rem;
+  padding: 28% 15% 20% 10%;
+  text-transform: uppercase;
+  line-height: .9em;
+  text-align: center;
+}
 .campaign h2, .campaign h3, .campaign h4, .campaign h5 {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
   font-style: normal;
   font-size: 1.77rem;
   line-height: 1;
   color: #f42841;
-  margin: 0em 0em 1em;
+  margin: 0em 0em .5em;
 }
 .campaign .msf-black {
   color: #231f20;
@@ -4111,7 +4121,7 @@ html.csstransforms {
 .wrapper {
   background-color: #FFFFFF;
   color: #231f20;
-  padding: 80px 35px;
+  padding: 80px 100px 80px 35px;
   position: relative;
 }
 .wrapper p {
@@ -4119,10 +4129,11 @@ html.csstransforms {
   margin: 15px 0;
 }
 
-.campaignText-main {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.js-campaign .stripe.wrapper {
+  background: url('../img/stripe.png?1448249388');
+  background-repeat: repeat;
+  height: 20px;
+  padding: 0px;
 }
 
 .hero {
@@ -4132,6 +4143,13 @@ html.csstransforms {
   background: url('../img/msf-header.jpg?1448243909');
   background-size: cover;
   background-position: center;
+}
+
+.js-campaign h2 {
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.3rem;
 }
 
 .js-impact {
@@ -4145,15 +4163,23 @@ html.csstransforms {
 
 .impactText-wrapper.wrapper {
   background: none;
+  padding: 65px 130px 0px 35px;
 }
 .impactText-wrapper.wrapper h3 {
   color: #FFFFFF;
   text-transform: uppercase;
-  font-size: 2.9rem;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3rem;
 }
 .impactText-wrapper.wrapper p {
   color: #FFFFFF;
-  font-size: 1.22rem;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 1.4em;
 }
 
 .js-response {
@@ -4167,14 +4193,14 @@ html.csstransforms {
 
 .responseText-wrapper.wrapper {
   background: none;
-  padding: 0px 35px;
   position: absolute;
+  padding: 80px 100px 10px 35px;
   bottom: 15px;
 }
 .responseText-wrapper.wrapper h3 {
   color: #FFFFFF;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 .responseText-wrapper.wrapper p {
   color: #FFFFFF;
@@ -4183,14 +4209,18 @@ html.csstransforms {
 
 .quoteText-wrapper.wrapper blockquote {
   color: #f42841;
+  font-weight: 700;
+}
+.quoteText-wrapper.wrapper blockquote p {
   font-size: 1.22rem;
+  margin: 0px;
 }
 .quoteText-wrapper.wrapper blockquote span.author {
-  font-size: 1.22rem;
+  font-weight: 500;
 }
 
 .giftText-wrapper.wrapper {
-  padding: 170px 95px 0px;
+  padding: 170px 130px 0px 100px;
 }
 
 .js-gift {
@@ -4204,6 +4234,11 @@ html.csstransforms {
 .js-gift p {
   color: #FFFFFF;
   font-size: 1.22rem;
+  font-weight: 300;
+}
+.js-gift strong {
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .giftText-wrapper.wrapper {
@@ -4216,7 +4251,7 @@ html.csstransforms {
 
 .accountableText-colleft {
   float: left;
-  width: 55%;
+  width: 60%;
 }
 .accountableText-colleft p {
   padding-right: 30px;
@@ -4225,31 +4260,36 @@ html.csstransforms {
 
 .accountableText-colright {
   float: left;
-  width: 45%;
+  width: 40%;
   padding-left: 10px;
 }
 
 .accountableText-colright img {
-  margin-top: 50px;
+  margin-top: 35px;
+  padding-left: 10px;
 }
 
 .js-policy h4 {
   color: #231f20;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 1.22rem;
   font-weight: bold;
+}
+
+.policyText-wrapper.wrapper {
+  padding: 80px 70px 80px 35px;
 }
 
 .policyText-colleft {
   float: left;
   width: 50%;
-  padding: 20px;
+  padding: 20px 20px 20px 10px;
 }
 
 .policyText-colright {
   float: left;
   width: 50%;
-  padding: 20px;
+  padding: 20px 20px 20px 10px;
 }
 
 .js-supporters,
@@ -4258,7 +4298,7 @@ html.csstransforms {
 }
 
 .campaignText-sub {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #FFFFFF;
@@ -4270,8 +4310,8 @@ html.csstransforms {
 }
 
 .highlights-title--number {
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   line-height: 0.7;
   color: #245e36;
@@ -4279,7 +4319,7 @@ html.csstransforms {
 }
 
 .highlights-title--text {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.22rem;
@@ -4288,8 +4328,8 @@ html.csstransforms {
 }
 
 .highlights-subtitle {
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   padding-bottom: 5px;
   text-transform: uppercase;
@@ -4297,13 +4337,13 @@ html.csstransforms {
 }
 
 .highlights-year {
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 .highlights-events {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.5em;
@@ -4311,7 +4351,7 @@ html.csstransforms {
 }
 
 .highlights-cta {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
@@ -4350,7 +4390,7 @@ html.csstransforms {
 
 .financialCaption {
   font-size: 0.5rem;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -4550,7 +4590,7 @@ html.csstransforms {
   }
 
   .supportersText-wrapper h4 {
-    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 16px;
@@ -4570,7 +4610,7 @@ html.csstransforms {
   }
 
   .supporters-carousel {
-    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     color: #FFFFFF;
@@ -4589,14 +4629,14 @@ html.csstransforms {
     padding: 5%;
   }
   .supporters-carousel .supporter-name {
-    font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
     font-style: normal;
     font-size: 0.5rem;
     line-height: 1.5em;
   }
   .supporters-carousel .supporter-caption {
-    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 0.5rem;
@@ -4604,7 +4644,7 @@ html.csstransforms {
   }
   .supporters-carousel .supporter-description {
     font-size: 1.22rem;
-    font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-style: normal;
     margin-bottom: 1em;
@@ -4824,7 +4864,7 @@ label {
   }
 }
 .form-header h3 {
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #245e36;
@@ -4833,12 +4873,12 @@ label {
   text-transform: uppercase;
 }
 .form-header strong {
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 .form-header em {
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -4905,8 +4945,8 @@ label {
   }
 
   .formClose {
-    font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-    font-weight: 400;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
     font-style: normal;
     font-size: 0.5rem;
     display: block;
@@ -4999,7 +5039,7 @@ input[type="text"], select, textarea {
   padding-right: 14px;
   border: 1px solid #767271;
   border-radius: 0px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5009,7 +5049,7 @@ input[type="text"].form-control, select.form-control, textarea.form-control {
   padding-right: 14px;
   border: 1px solid #767271;
   border-radius: 0px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5020,7 +5060,7 @@ input[type="text"].form-control, select.form-control, textarea.form-control {
   padding-right: 14px;
   border: 1px solid #767271;
   border-radius: 0px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5049,15 +5089,15 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .form-title {
   color: #792266;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 16px;
 }
 
 .form-text {
   color: #792266;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 0.8rem;
@@ -5069,8 +5109,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 1.22rem;
 }
@@ -5114,7 +5154,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 #grdonation .page h3 {
   margin-top: 1.5em;
   font-size: 16px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #792266;
@@ -5198,7 +5238,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 #gr_donation .eaFormElementLabel {
   margin-top: 1.5em;
   font-size: 16px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #792266;
@@ -5614,8 +5654,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   color: #FFFFFF;
   text-transform: uppercase;
   background-color: #a8233e;
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
   font-size: 1.22rem;
 }
@@ -5667,7 +5707,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   box-shadow: rgba(0, 0, 0, 0.49804) 0px 1px 1px 0px;
   box-sizing: border-box;
   color: #363636;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5721,7 +5761,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   font-size: 16px;
   padding: 8px;
   font-size: 15px;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5777,7 +5817,7 @@ select.error, textarea.error {
   width: 90%;
   color: #792266;
   font-size: 0.8rem;
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.4;

@@ -5,13 +5,22 @@
 	
   overflow: hidden;
   @include contentContainer;
-	  	    
+  
+  h1 {
+  	@include font-headN7;
+  	@include fontSize-titleLarge;
+  	padding: 28% 15% 20% 10%;
+    text-transform: uppercase;
+    line-height: .9em;
+    text-align: center;
+  }
+  	    
   h2, h3, h4, h5 {
-    @include font-headN4;
+    @include font-headN6;
     @include fontSize-large;
    	@include line-tighter;
    	color: $msf-red;
-   	margin: 0em 0em 1em;
+   	margin: 0em 0em .5em;
   }
   
   .msf-black {
@@ -23,11 +32,10 @@
 	}  
 }
 
-
 .wrapper {
 	background-color: $white;
 	color: $msf-black;
-	padding: 80px 35px;
+	padding: 80px 100px 80px 35px;
 	position: relative;
 	
 	p {
@@ -36,12 +44,12 @@
 	}
 }
 
-
-
-.campaignText-main {
-  @include font-bodyN4;
+.js-campaign .stripe.wrapper {
+  background: $stripe;
+  background-repeat: repeat;
+  height: 20px;
+  padding: 0px;
 }
-
 
 .hero {
   position: relative; //for the overflow control
@@ -52,6 +60,14 @@
   background-position: center;
 }
 
+.js-campaign {
+	
+	h2 {
+		@include font-headN7;
+		@include fontSize-largerish;
+	}
+	
+}
 
 .js-impact {
 	position: relative; //for the overflow control
@@ -65,16 +81,20 @@
 
 .impactText-wrapper.wrapper {
 	background: none;
+    padding: 65px 130px 0px 35px;
 	
 	h3 {
 		color: $white;
 		text-transform: uppercase;
-		@include fontSize-titleLarge;
+		@include font-headN7;
+		@include fontSize-xlarge;
 	}
 	
 	p {
 		color: $white;
-		@include fontSize-medium;
+		@include font-bodyN6;
+		font-size: 1.4rem;
+		line-height: 1.4em;
 	}
 
 }
@@ -91,8 +111,8 @@
 
 .responseText-wrapper.wrapper {
     background: none;
-    padding: 0px 35px;
     position: absolute;
+	padding: 80px 100px 10px 35px;
     bottom: 15px;
 	
 	h3 {
@@ -113,17 +133,22 @@
 .quoteText-wrapper.wrapper {
 	
 	blockquote {
+		
 		color: $msf-red;
-		@include fontSize-medium;
+		font-weight: 700;
+		p {
+			@include fontSize-medium;
+			margin: 0px;			
+		}
 		
 		span.author {
-			@include fontSize-medium;
+		font-weight: 500;
 		}
 	}	
 }
 
 .giftText-wrapper.wrapper {
-	padding: 170px 95px 0px;
+	padding: 170px 130px 0px 100px;
 }
 
 .js-gift {
@@ -137,6 +162,12 @@
 	p {
 		color: $white;
 		@include fontSize-medium;
+		font-weight: 300;
+	}
+	
+	strong {
+		font-weight: 600;
+		text-transform: uppercase;
 	}
 }
 
@@ -150,7 +181,7 @@
 
 .accountableText-colleft {
 	float: left;
-	width: 55%;
+	width: 60%;
 	
 	p {
 		padding-right: 30px;
@@ -160,33 +191,38 @@
 
 .accountableText-colright {
 	float: left;
-	width: 45%;
+	width: 40%;
 	padding-left: 10px;
 }
 
 .accountableText-colright img {
-	margin-top: 50px;
+	margin-top: 35px;
+	padding-left: 10px;
 }
+
 
 .js-policy {
 	h4 {
 		color: $msf-black;
 		text-transform: uppercase;
-		@include fontSize-base;
+		@include fontSize-medium;
 		font-weight: bold;
 	}
+}
+.policyText-wrapper.wrapper {
+	padding: 80px 70px 80px 35px;
 }
 
 .policyText-colleft {
 	float: left;
 	width: 50%;
-	padding: 20px;
+	padding: 20px 20px 20px 10px;
 }
 
 .policyText-colright {
 	float: left;
 	width: 50%;
-	padding: 20px;
+	padding: 20px 20px 20px 10px;
 }
 
 
