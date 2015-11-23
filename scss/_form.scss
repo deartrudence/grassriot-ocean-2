@@ -10,8 +10,8 @@
   }
 
   @media screen and (min-width: $screen-md-min){
-    padding-left: 2*$form-padding;  
-    padding-right: 2*$form-padding;
+    padding-left: $form-padding;  
+    padding-right: $form-padding;
 
   }
 }
@@ -59,12 +59,16 @@ label{
 }
 
 #grdonation form {
-  background: $background-grey;
+  background-color: $white;
   // overflow-y: auto;
 
   &.is-active{
     top: 0;
   }
+}
+
+#Donation-Amount-Other {
+	border: 0px solid $white;
 }
 
 .form-header{
@@ -104,7 +108,7 @@ label{
 
 @media screen and (max-width: $screen-xxs-max) {
   .form {
-    background-color: $background-grey;
+    background-color: $white;
 
     &.is-active{
       overflow-x: hidden;
