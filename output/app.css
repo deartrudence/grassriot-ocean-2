@@ -4834,7 +4834,9 @@ label {
 }
 
 #grdonation form {
-  background-color: #FFFFFF;
+  background: url('../img/border.jpg?1448259271');
+  background-repeat: repeat-y;
+  background-color: white;
 }
 #grdonation form.is-active {
   top: 0;
@@ -4987,8 +4989,9 @@ label {
   }
 
   .form-navbar {
-    background: #FFFFFF;
-    background-size: 435px 53px;
+    background: url('../img/border.jpg?1448259271');
+    background-repeat: repeat-y;
+    background-color: white;
     width: 100%;
     z-index: 90;
   }
@@ -5157,11 +5160,11 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 #grdonation .page h3 {
   margin-top: 1.5em;
-  font-size: 16px;
+  font-size: 1.22rem;
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #792266;
+  color: #231f20;
   display: block;
 }
 
@@ -5241,11 +5244,11 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 #gr_donation .eaFormElementLabel {
   margin-top: 1.5em;
-  font-size: 16px;
+  font-size: 1.22rem;
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
-  color: #792266;
+  color: #231f20;
   display: block !important;
 }
 #gr_donation .eaMandatoryFieldMarker {
@@ -5395,6 +5398,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   line-height: 16px;
   display: inline-block;
   position: relative;
+  font-size: 13px;
 }
 .steps-list ul li.current, .steps-list ul li.is-complete, .steps-list ul li.active {
   background: #c31e24;
@@ -5665,6 +5669,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   position: relative;
 }
 #grdonation .levels {
+  margin-top: 10px;
   clear: left;
   margin-bottom: 1em;
 }
@@ -5696,7 +5701,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   border: 2px solid #d4d4d2;
   display: block;
   width: 100%;
-  font-size: 15px;
+  font-size: 18px;
   color: #fff;
   border-radius: 3px;
   margin-bottom: 10px;

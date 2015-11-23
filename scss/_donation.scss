@@ -1,8 +1,8 @@
 @mixin formSectionHeader{
   margin-top: 1.5em;
-  @include fontSize-base;
+  @include fontSize-medium;
   @include font-headN4;
-  color: $magenta;
+  color: $msf-black;
 }
 
 #grdonation{
@@ -303,7 +303,7 @@
       @include background($steps_advancedBackground);
       border: $steps_border;      
       @include text-indicator;
-
+	  font-size: 13px;
       &.current,
       &.is-complete,
       &.active {
@@ -605,6 +605,7 @@
     }
   }
   .levels {
+	margin-top: 10px;  
     clear: left;
     &:before, &:after {
       content: " ";
@@ -634,7 +635,7 @@
 	  border: 2px solid #d4d4d2;
       display: block;
       width: 100%;
-      font-size: 15px;
+      font-size: 18px;
       color: #fff;
       border-radius: 3px;
       margin-bottom: 10px;

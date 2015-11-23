@@ -59,8 +59,10 @@ label{
 }
 
 #grdonation form {
-  background-color: $white;
-  // overflow-y: auto;
+	
+    background: $form-background;
+    background-repeat: repeat-y;
+    background-color: white;  // overflow-y: auto;
 
   &.is-active{
     top: 0;
@@ -206,8 +208,9 @@ label{
   }
 
   .form-navbar {
-    background: $white;
-    background-size: 435px 53px;
+    background: $form-background;
+    background-repeat: repeat-y;
+    background-color: white;  // overflow-y: auto;
     width: 100%;
     //height: $form-navbar-height;
     @include z-highest;
