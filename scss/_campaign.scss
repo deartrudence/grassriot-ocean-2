@@ -11,7 +11,7 @@
     @include fontSize-large;
    	@include line-tighter;
    	color: $msf-red;
-   	margin: 1em 0em;
+   	margin: 0em 0em 1em;
   }
   
   .msf-black {
@@ -25,7 +25,7 @@
 
 
 .wrapper {
-	background-color: $light-grey;
+	background-color: $white;
 	color: $msf-black;
 	padding: 80px 35px;
 	position: relative;
@@ -36,9 +36,7 @@
 	}
 }
 
-.campaignText-wrapper.wrapper {
-	background-color: $white;
-}
+
 
 .campaignText-main {
   @include font-bodyN4;
@@ -54,9 +52,7 @@
   background-position: center;
 }
 
-.impactText-wrapper.wrapper {
-	background: none;
-}
+
 .js-impact {
 	position: relative; //for the overflow control
 	overflow: hidden;
@@ -67,9 +63,132 @@
 }
 
 
+.impactText-wrapper.wrapper {
+	background: none;
+	
+	h3 {
+		color: $white;
+		text-transform: uppercase;
+		@include fontSize-titleLarge;
+	}
+	
+	p {
+		color: $white;
+		@include fontSize-medium;
+	}
+
+}
+
+.js-response {
+	position: relative; //for the overflow control
+	overflow: hidden;
+	height: 530px;
+	background: $response-bgimage;
+	background-size: cover;
+	background-position: center;
+}
+
+
+.responseText-wrapper.wrapper {
+    background: none;
+    padding: 0px 35px;
+    position: absolute;
+    bottom: 15px;
+	
+	h3 {
+		color: $white;
+		text-transform: uppercase;
+		@include fontSize-largerish;
+	}
+	
+	p {
+		color: $white;
+		@include fontSize-base;
+	}
+}
+
+.js-quote {
+	
+}
+.quoteText-wrapper.wrapper {
+	
+	blockquote {
+		color: $msf-red;
+		@include fontSize-medium;
+		
+		span.author {
+			@include fontSize-medium;
+		}
+	}	
+}
+
+.giftText-wrapper.wrapper {
+	padding: 170px 95px 0px;
+}
+
+.js-gift {
+	position: relative; //for the overflow control
+	overflow: hidden;
+	height: 425px;
+	background: $gift-bgimage;
+	background-size: cover;
+	background-position: center;
+	
+	p {
+		color: $white;
+		@include fontSize-medium;
+	}
+}
+
+.giftText-wrapper.wrapper {
+	background: none;
+}
+
 .quoteText-wrapper.wrapper {
 	background: $white;
 }
+
+.accountableText-colleft {
+	float: left;
+	width: 55%;
+	
+	p {
+		padding-right: 30px;
+		border-right: 1px solid $vlight-grey;
+	}
+}
+
+.accountableText-colright {
+	float: left;
+	width: 45%;
+	padding-left: 10px;
+}
+
+.accountableText-colright img {
+	margin-top: 50px;
+}
+
+.js-policy {
+	h4 {
+		color: $msf-black;
+		text-transform: uppercase;
+		@include fontSize-base;
+		font-weight: bold;
+	}
+}
+
+.policyText-colleft {
+	float: left;
+	width: 50%;
+	padding: 20px;
+}
+
+.policyText-colright {
+	float: left;
+	width: 50%;
+	padding: 20px;
+}
+
 
 
 .js-supporters,

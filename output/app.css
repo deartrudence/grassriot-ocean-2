@@ -4099,7 +4099,7 @@ html.csstransforms {
   font-size: 1.77rem;
   line-height: 1;
   color: #f42841;
-  margin: 1em 0em;
+  margin: 0em 0em 1em;
 }
 .campaign .msf-black {
   color: #231f20;
@@ -4109,7 +4109,7 @@ html.csstransforms {
 }
 
 .wrapper {
-  background-color: #545a63;
+  background-color: #FFFFFF;
   color: #231f20;
   padding: 80px 35px;
   position: relative;
@@ -4117,10 +4117,6 @@ html.csstransforms {
 .wrapper p {
   font-size: 16px;
   margin: 15px 0;
-}
-
-.campaignText-wrapper.wrapper {
-  background-color: #FFFFFF;
 }
 
 .campaignText-main {
@@ -4138,10 +4134,6 @@ html.csstransforms {
   background-position: center;
 }
 
-.impactText-wrapper.wrapper {
-  background: none;
-}
-
 .js-impact {
   position: relative;
   overflow: hidden;
@@ -4151,8 +4143,113 @@ html.csstransforms {
   background-position: center;
 }
 
+.impactText-wrapper.wrapper {
+  background: none;
+}
+.impactText-wrapper.wrapper h3 {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 2.9rem;
+}
+.impactText-wrapper.wrapper p {
+  color: #FFFFFF;
+  font-size: 1.22rem;
+}
+
+.js-response {
+  position: relative;
+  overflow: hidden;
+  height: 530px;
+  background: url('../img/section-2.jpg?1448243909');
+  background-size: cover;
+  background-position: center;
+}
+
+.responseText-wrapper.wrapper {
+  background: none;
+  padding: 0px 35px;
+  position: absolute;
+  bottom: 15px;
+}
+.responseText-wrapper.wrapper h3 {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.responseText-wrapper.wrapper p {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.quoteText-wrapper.wrapper blockquote {
+  color: #f42841;
+  font-size: 1.22rem;
+}
+.quoteText-wrapper.wrapper blockquote span.author {
+  font-size: 1.22rem;
+}
+
+.giftText-wrapper.wrapper {
+  padding: 170px 95px 0px;
+}
+
+.js-gift {
+  position: relative;
+  overflow: hidden;
+  height: 425px;
+  background: url('../img/section-3.jpg?1448243909');
+  background-size: cover;
+  background-position: center;
+}
+.js-gift p {
+  color: #FFFFFF;
+  font-size: 1.22rem;
+}
+
+.giftText-wrapper.wrapper {
+  background: none;
+}
+
 .quoteText-wrapper.wrapper {
   background: #FFFFFF;
+}
+
+.accountableText-colleft {
+  float: left;
+  width: 55%;
+}
+.accountableText-colleft p {
+  padding-right: 30px;
+  border-right: 1px solid #dcdcdc;
+}
+
+.accountableText-colright {
+  float: left;
+  width: 45%;
+  padding-left: 10px;
+}
+
+.accountableText-colright img {
+  margin-top: 50px;
+}
+
+.js-policy h4 {
+  color: #231f20;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.policyText-colleft {
+  float: left;
+  width: 50%;
+  padding: 20px;
+}
+
+.policyText-colright {
+  float: left;
+  width: 50%;
+  padding: 20px;
 }
 
 .js-supporters,
