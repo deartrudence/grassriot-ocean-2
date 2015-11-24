@@ -19,3 +19,23 @@ $calltoaction-buttonpadding-md: 20px 20px;
     opacity: 0.9;
   }
 }
+
+@mixin cta-button--msf-red {
+  border-radius: 0;
+  border: 1px solid $white;
+  color: $white;
+  text-transform: uppercase;
+  background-color: $msf-red;
+  @include font-bodyN7;
+  @include fontSize-medium;
+  border-radius: 5px;
+  padding: 10px 30px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  &:focus {
+	  outline: none;
+  }
+}

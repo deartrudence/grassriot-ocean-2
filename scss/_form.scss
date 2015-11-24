@@ -222,15 +222,7 @@ label{
     display: none;
   }
 }
-@media screen and (min-width: $screen-xl) {
-  .form-navbar {
-    background: $white;
-    background-size: 650px 54px;
-    width: 650px;
-    height: 53px;
 
-  }
-}
 
 #grdonation .page{
   @include formPadding;

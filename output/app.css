@@ -5001,14 +5001,6 @@ label {
     display: none;
   }
 }
-@media screen and (min-width: 2100px) {
-  .form-navbar {
-    background: #FFFFFF;
-    background-size: 650px 54px;
-    width: 650px;
-    height: 53px;
-  }
-}
 @media screen and (max-width: 619px) {
   #grdonation .page {
     padding-left: 20px;
@@ -5159,8 +5151,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 #grdonation .page h3 {
-  margin-top: 1.5em;
-  font-size: 1.22rem;
+  margin: 1.5em 0 1em;
+  font-size: 16px;
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -5243,8 +5235,8 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   box-shadow: 0 0 0 3px #999;
 }
 #gr_donation .eaFormElementLabel {
-  margin-top: 1.5em;
-  font-size: 1.22rem;
+  margin: 1.5em 0 1em;
+  font-size: 16px;
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -5258,17 +5250,20 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 .security-text {
   background: none;
   border: none;
-  color: #939598;
+  color: #000;
   font-size: 11px;
   position: absolute;
-  top: 22px;
+  top: 30px;
   right: 20px;
   font-style: normal;
   z-index: 10;
   border-radius: 4px;
+  transition: all 0.5s ease;
 }
 .security-text:hover {
   cursor: pointer;
+  opacity: 0.7;
+  color: green;
 }
 
 .security-image {
@@ -5327,7 +5322,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 .window--frame {
-  padding-top: 30px;
+  padding-top: 0px;
   overflow: hidden;
 }
 
@@ -5373,19 +5368,40 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   padding: 0;
 }
 
+.form-header-counter {
+  margin-top: 25px;
+  position: relative;
+  background: url('../img/form-feature.png?1448328931');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 139px;
+}
+
+.form-header-counter + h3 {
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1;
+  font-size: 1.5rem;
+  color: #f42841;
+  text-align: center;
+  margin: 20px auto 0px;
+  width: 80%;
+}
+
 .steps-list {
   position: relative;
 }
 .steps-list ul {
   list-style: none;
   margin: 0;
-  padding: 15px 0 0px 30px;
+  padding: 25px 0 0px 30px;
   text-align: left;
   font-size: 0;
 }
 .steps-list ul li {
   vertical-align: middle;
-  color: #782266;
+  color: #444;
   background: #dddfde;
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkZGRmZGUiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2Q1ZDZkOCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #dddfde), color-stop(60%, #d5d6d8));
@@ -5402,16 +5418,12 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 .steps-list ul li.current, .steps-list ul li.is-complete, .steps-list ul li.active {
   background: #c31e24;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNjMzFlMjQiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2E4MjMzZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #c31e24), color-stop(60%, #a8233e));
-  background: -moz-linear-gradient(#c31e24 40%, #a8233e 60%);
-  background: -webkit-linear-gradient(#c31e24 40%, #a8233e 60%);
-  background: linear-gradient(#c31e24 40%, #a8233e 60%);
+  background: #f42841;
   border: none;
   color: #FFFFFF;
 }
 .steps-list ul li.is-complete {
-  color: #db672a;
+  color: #FFFFFF;
 }
 .steps-list ul li.active:after {
   content: "";
@@ -5419,7 +5431,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   height: 0;
   display: block;
   border-width: 10px;
-  border-color: #a8233e transparent transparent;
+  border-color: #f42841 transparent transparent;
   border-style: solid;
   position: absolute;
   bottom: -20px;
@@ -5506,13 +5518,23 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 .go-back {
   color: #78787a;
   display: inline-block;
-  opacity: 0.8;
+  opacity: 0.6;
   background: none;
   border: none;
   margin-top: 30px;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.go-back:focus {
+  outline: none;
 }
 .go-back:hover {
   opacity: 1;
+  cursor: pointer;
+}
+.go-back .glyphicon::before {
+  font-size: 15px;
 }
 
 .mobile-logo {
@@ -5655,14 +5677,19 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
   text-transform: uppercase;
-  background-color: #a8233e;
+  background-color: #f42841;
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.22rem;
+  border-radius: 5px;
+  padding: 10px 30px;
 }
 #grdonation .btn-next:hover {
   opacity: 0.9;
+}
+#grdonation .btn-next:focus {
+  outline: none;
 }
 #grdonation .btn-next .glyphicon-chevron-right {
   font-size: 80%;
