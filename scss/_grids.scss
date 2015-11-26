@@ -21,7 +21,7 @@
 
   @media screen and (min-width: $screen-xs-min){
     position: absolute;
-    top: $header-height-xs;
+    //top: $header-height-xs;
     right: 0;
     height: 100%;
     width: $form-width-xs;
@@ -30,7 +30,7 @@
   @media screen and (min-width: $screen-sm){
     position: absolute;
     width: 100%;
-    top: $header-height-sm;
+    //top: $header-height-sm;
     right: 0;
     height: 100%;
     width: $form-width-sm;
@@ -38,7 +38,7 @@
 
   @media screen and (min-width: $screen-md){
     position: absolute;
-    top: $header-height-md;
+    //top: $header-height-md;
     right: 0;
     width: $form-width-md;
     height: 100%;
@@ -50,8 +50,8 @@
   }
 
   @media screen and (min-width: $screen-xl){
-    position: absolute;
-    top: $header-height-xl;
+    // position: absolute;
+    // top: $header-height-xl;
     right: 0;
     width: $form-width-xl;
     height: 100%;

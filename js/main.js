@@ -221,7 +221,7 @@ function init() {
     
     function handleSizing(){
         getBrowserSize();
-        makeAffix();
+        //makeAffix();
     }
 
     handleSizing();

@@ -4779,7 +4779,6 @@ label {
 @media screen and (min-width: 620px) {
   .form {
     position: absolute;
-    top: 80px;
     right: 0;
     height: 100%;
     width: 400px;
@@ -4789,7 +4788,6 @@ label {
   .form {
     position: absolute;
     width: 100%;
-    top: 105px;
     right: 0;
     height: 100%;
     width: 400px;
@@ -4798,7 +4796,6 @@ label {
 @media screen and (min-width: 1160px) {
   .form {
     position: absolute;
-    top: 105px;
     right: 0;
     width: 400px;
     height: 100%;
@@ -4806,8 +4803,6 @@ label {
 }
 @media screen and (min-width: 2100px) {
   .form {
-    position: absolute;
-    top: 205px;
     right: 0;
     width: 400px;
     height: 100%;

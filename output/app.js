@@ -225,7 +225,7 @@ webpackJsonp([0],[
 	    
 	    function handleSizing(){
 	        getBrowserSize();
-	        makeAffix();
+	        //makeAffix();
 	    }
 
 	    handleSizing();
