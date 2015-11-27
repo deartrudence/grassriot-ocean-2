@@ -323,7 +323,7 @@ webpackJsonp([0],[
 	}
 
 	function setContainerOffset($affixForm, $container) {
-	    $affixForm.css('right', (parseInt($container.css('margin-right')) + parseInt($container.css('padding-right'))).toString() + 'px');
+	    $affixForm.css('right', (Math.round($(window).width()) - Math.round($container.offset().left) - $container.outerWidth() + 1).toString() + 'px'); //(parseInt($container.css('margin-right')) + parseInt($container.css('padding-right'))).toString() + 'px');
 	}
 
 	function getFormHeight($sourceForm) {
