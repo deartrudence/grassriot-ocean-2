@@ -221,11 +221,11 @@ function init() {
     
     function handleSizing(){
         getBrowserSize();
-        //makeAffix();
+        makeAffix();
     }
 
     handleSizing();
-    $(window).on("resize",handleSizing());
+    $(window).on("resize",handleSizing);
 
 }
 
@@ -288,13 +288,16 @@ function setupTracking(){
 function makeAffix(){
     // we handle the mobile form without use of affix
     var $affixForm = $(".form");
-    $(window).off(".affix");
+    var $container = $(".page-wrapper");
+    //$(window).off(".affix");
+    $affixForm.off('affix.bs.affix');
     $affixForm
-        .removeClass("affix affix-top affix-bottom")
+        .removeClass("no-affix affix affix-top affix-bottom")
         .removeData("bs.affix");
 
     if (windowSize !== "phone" && windowSize !== "mobile") {
         if($(window).height() >  getFormHeight($affixForm)) {
+            setContainerOffset($affixForm, $container);
             $affixForm
                 // .filter(":not(.affix-top, .affix, .affix-bottom)")
                 .affix({
@@ -303,7 +306,7 @@ function makeAffix(){
                         bottom: footer.outerHeight()
                     }
                 });
-
+            $("#grdonation").css('height','');
             // $affixForm.affix('checkPosition');
         }
         else {
@@ -313,6 +316,10 @@ function makeAffix(){
     }
     else{
     }
+}
+
+function setContainerOffset($affixForm, $container) {
+    $affixForm.css('right', (parseInt($container.css('margin-right')) + parseInt($container.css('padding-right'))).toString() + 'px');
 }
 
 function getFormHeight($sourceForm) {

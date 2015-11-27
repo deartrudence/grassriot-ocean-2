@@ -52,6 +52,7 @@ label{
   @media screen and (min-width: $screen-xl){
     width: $form-width-xl - 45px;
   }
+  right: 0 !important;
 
   .form-navbar{
     background: $white;
