@@ -12,7 +12,7 @@ var ENBeautifier = require('./modules/ENBeautifier');
 var enbeautifier;
 
 // slick carousel slider
-var slick = require('slick');
+// var slick = require('slick');
 
 //hero configuration
 var hero = ".hero-image";
@@ -213,7 +213,8 @@ function init() {
 		setupTY();
 	}
     else{
-        setupAction();        
+        setupAction();
+        setupCounter();    
     }
 
 	//do everything else
@@ -372,6 +373,198 @@ function setupPage(){
 }
 
 /**
+ * [setupCounter description]
+ * @return {[type]} [description]
+ */
+function setupCounter(){
+  var refresh = 4000;
+  var scroll = 2000;
+  var maxstep = 30;
+  var currentCount = 0;
+  var currentTotal = 0;
+  var tickerCount = 0;
+  var startingValue = 0;
+  var offset; 
+  var currentCountSet = false;
+  var isStarted = false;
+  var isPaused = false;
+  var $counter = $(".js-seconds-counter");
+  var oldAdditional = 0;
+  var newAdditional = 0;
+  var ticker;
+  var refreshInterval;
+  var refresher;
+  //corresponds to set amounts at 30 seconds per 250$
+  //TODO: Set these based on the actual donation ranges
+  var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
+
+  require('jqueryeasing');
+  require('ticker');
+
+  var version = getURLParameter('version');
+
+  switch(version){
+    case "soon":
+      startingValue = 1843;
+      break;
+    case "help":
+      startingValue = 2105;
+      break;
+    default:
+      startingValue = 586;
+      break;
+  }
+
+  //set offset
+  if(typeof window.offset === "undefined"){
+    window.offset = 0;
+  }
+
+  updatecount(startingValue);
+
+  /**
+   * [updatecount description]
+   * @param  {[type]} count [description]
+   * @return {[type]}       [description]
+   */
+  function updatecount(count){
+
+    if(typeof count !== 'undefined'){
+      currentTotal = parseInt(count) + parseInt(window.offset);      
+    }
+
+    //if(currentCount == 0 && currentTotal != 0){
+    if(!currentCountSet){
+      // currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+      currentCount = currentTotal;
+      currentCountSet = true;
+      $(".js-seconds-counter").html(addCommas(currentCount));
+    }
+
+    // var randLimit = currentTotal - currentCount < 2 ? currentTotal - currentCount : 2;
+    currentCount += timeAmounts[Math.floor(Math.random() * timeAmounts.length)];
+
+    if(!isStarted){
+      isStarted = true;
+      setCounter();
+    }
+  }
+
+  /**
+   * [gettotal description]
+   * @return {[type]} [description]
+   */
+  function gettotal(){
+
+    // currentTotal += timeAmounts[Math.floor(Math.random()*timeAmounts.length)];
+    // console.log(currentTotal);
+    // updatecount(currentTotal);
+  }
+
+  /**
+   * [setStartCount description]
+   */
+  function setStartCount(){
+    currentTotal = $counter.html().replace(',', '');
+    
+    if(currentCount == 0){
+      currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+    } 
+    // var orig = counter.html().replace(',', '');
+  }
+
+  /**
+   * [addCommas description]
+   * @param {[type]} nStr [description]
+   */
+  function addCommas(nStr){
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+  }
+
+  function doRefresh(){
+    if(isPaused) return;
+
+    updatecount();
+
+    //set refresh interval to between 2 and 4 seconds
+    refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
+    refresher = window.setTimeout(doRefresh,refresh);
+  }
+
+  /**
+   * [setCounter description]
+   */
+  function setCounter() {
+    setStartCount();
+    setTimeout( doRefresh, refresh );
+
+    ticker = $counter.ticker({
+      delay:  1000,
+      separators: true,
+      incremental: function(){
+        return currentCount;
+        // if(tickerCount == 0){
+        //   tickerCount = currentCount;
+        // }else if(tickerCount < currentCount){
+        //   tickerCount++;
+        // }
+        // return tickerCount;
+      }
+    });
+  }
+
+  /**
+   * [getSecondsAdded description]
+   * @return {[type]} [description]
+   */
+  function getSecondsAdded(){
+    //get the dollar amount difference
+    newAdditional = grGiving.getAmount();
+    var diff = newAdditional - oldAdditional;
+
+    //convert to a time difference
+    diff = Math.floor(diff/250 * 30);
+    
+    //Add the offset to the counter
+    currentCount += diff;
+
+    //save our new value
+    oldAdditional = newAdditional;
+
+    //force a refresh
+    //Set refresh delay to zero to improve response time
+    var normalRefresh = ticker[0].options.delay;
+    ticker[0].options.delay = 0;
+    ticker[0].update_container();
+    ticker[0].options.delay = normalRefresh;
+  }
+
+  function pauseTicker(){
+    isPaused = true;
+  }
+
+  function unpauseTicker(){
+    isPaused = false;
+    doRefresh();
+  }
+
+  getSecondsAdded();
+  $("#Donation_AmountField")
+    .on("change",getSecondsAdded)
+    .on("mouseenter",pauseTicker)
+    .on("mouseleave",unpauseTicker);
+
+}
+
+/**
  * [setupAction description]
  * @return {[type]} [description]
  */
@@ -381,13 +574,13 @@ function setupAction(){
 
 
 		// slick
-		$('.supporters-carousel').slick({
-			dots: true,
-			arrows: true,
-			appendArrows: '.slick-list',
-			prevArrow: '<button type="button" class="slick-prev"></button>',
-			nextArrow: '<button type="button" class="slick-next"></button>'
-		});
+		// $('.supporters-carousel').slick({
+		// 	dots: true,
+		// 	arrows: true,
+		// 	appendArrows: '.slick-list',
+		// 	prevArrow: '<button type="button" class="slick-prev"></button>',
+		// 	nextArrow: '<button type="button" class="slick-next"></button>'
+		// });
 
         enbeautifier.addClasses(getFormClasses());
 

@@ -16,7 +16,7 @@ webpackJsonp([0],[
 	var enbeautifier;
 
 	// slick carousel slider
-	var slick = __webpack_require__(5);
+	// var slick = require('slick');
 
 	//hero configuration
 	var hero = ".hero-image";
@@ -33,19 +33,19 @@ webpackJsonp([0],[
 	var windowSize;
 
 	//Upsell
-	var GRUpsell = __webpack_require__(6);
+	var GRUpsell = __webpack_require__(5);
 	var grupsell;
 	var upsellContentSelector = '#upsell-modal';
 	var $upsellTrackingField = $("#Other_1");
 
 	//Donation form
-	var GRSteps = __webpack_require__(7);
+	var GRSteps = __webpack_require__(6);
 	var formSteps;
 
-	var GRGivingSupport = __webpack_require__(8);
+	var GRGivingSupport = __webpack_require__(7);
 	var grGiving;
 
-	var GRAnalytics = __webpack_require__(14);
+	var GRAnalytics = __webpack_require__(13);
 	var grAnalytics;
 
 	var gr = __webpack_require__(4);
@@ -147,15 +147,15 @@ webpackJsonp([0],[
 	  ],
 	};
 
-	var GRaygun = __webpack_require__(17);
+	var GRaygun = __webpack_require__(16);
 	var raygunFilterFields = ['password', 'credit_card', fields.cc_num.name, fields.cc_cvv.name];
 	var graygunner = new GRaygun({filter: raygunFilterFields});
 
 	var $ = __webpack_require__(1);
+	__webpack_require__(17);
 	__webpack_require__(18);
 	__webpack_require__(19);
 	__webpack_require__(20);
-	__webpack_require__(21);
 
 	// var $submit = $(".eaSubmitButton");
 	var $error_modal = $("#error-modal");
@@ -190,7 +190,7 @@ webpackJsonp([0],[
 	function init() {
 
 	  //redirect older browsers
-	  var browser = __webpack_require__(22);
+	  var browser = __webpack_require__(21);
 	  if(
 	    (browser.firefox && parseFloat(browser.version) < 9)
 	    || (browser.chrome && parseFloat(browser.version) < 16)
@@ -217,7 +217,8 @@ webpackJsonp([0],[
 			setupTY();
 		}
 	    else{
-	        setupAction();        
+	        setupAction();
+	        setupCounter();    
 	    }
 
 		//do everything else
@@ -376,6 +377,198 @@ webpackJsonp([0],[
 	}
 
 	/**
+	 * [setupCounter description]
+	 * @return {[type]} [description]
+	 */
+	function setupCounter(){
+	  var refresh = 4000;
+	  var scroll = 2000;
+	  var maxstep = 30;
+	  var currentCount = 0;
+	  var currentTotal = 0;
+	  var tickerCount = 0;
+	  var startingValue = 0;
+	  var offset; 
+	  var currentCountSet = false;
+	  var isStarted = false;
+	  var isPaused = false;
+	  var $counter = $(".js-seconds-counter");
+	  var oldAdditional = 0;
+	  var newAdditional = 0;
+	  var ticker;
+	  var refreshInterval;
+	  var refresher;
+	  //corresponds to set amounts at 30 seconds per 250$
+	  //TODO: Set these based on the actual donation ranges
+	  var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
+
+	  __webpack_require__(22);
+	  __webpack_require__(23);
+
+	  var version = getURLParameter('version');
+
+	  switch(version){
+	    case "soon":
+	      startingValue = 1843;
+	      break;
+	    case "help":
+	      startingValue = 2105;
+	      break;
+	    default:
+	      startingValue = 586;
+	      break;
+	  }
+
+	  //set offset
+	  if(typeof window.offset === "undefined"){
+	    window.offset = 0;
+	  }
+
+	  updatecount(startingValue);
+
+	  /**
+	   * [updatecount description]
+	   * @param  {[type]} count [description]
+	   * @return {[type]}       [description]
+	   */
+	  function updatecount(count){
+
+	    if(typeof count !== 'undefined'){
+	      currentTotal = parseInt(count) + parseInt(window.offset);      
+	    }
+
+	    //if(currentCount == 0 && currentTotal != 0){
+	    if(!currentCountSet){
+	      // currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+	      currentCount = currentTotal;
+	      currentCountSet = true;
+	      $(".js-seconds-counter").html(addCommas(currentCount));
+	    }
+
+	    // var randLimit = currentTotal - currentCount < 2 ? currentTotal - currentCount : 2;
+	    currentCount += timeAmounts[Math.floor(Math.random() * timeAmounts.length)];
+
+	    if(!isStarted){
+	      isStarted = true;
+	      setCounter();
+	    }
+	  }
+
+	  /**
+	   * [gettotal description]
+	   * @return {[type]} [description]
+	   */
+	  function gettotal(){
+
+	    // currentTotal += timeAmounts[Math.floor(Math.random()*timeAmounts.length)];
+	    // console.log(currentTotal);
+	    // updatecount(currentTotal);
+	  }
+
+	  /**
+	   * [setStartCount description]
+	   */
+	  function setStartCount(){
+	    currentTotal = $counter.html().replace(',', '');
+	    
+	    if(currentCount == 0){
+	      currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+	    } 
+	    // var orig = counter.html().replace(',', '');
+	  }
+
+	  /**
+	   * [addCommas description]
+	   * @param {[type]} nStr [description]
+	   */
+	  function addCommas(nStr){
+	    nStr += '';
+	    var x = nStr.split('.');
+	    var x1 = x[0];
+	    var x2 = x.length > 1 ? '.' + x[1] : '';
+	    var rgx = /(\d+)(\d{3})/;
+	    while (rgx.test(x1)) {
+	        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	    }
+	    return x1 + x2;
+	  }
+
+	  function doRefresh(){
+	    if(isPaused) return;
+
+	    updatecount();
+
+	    //set refresh interval to between 2 and 4 seconds
+	    refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
+	    refresher = window.setTimeout(doRefresh,refresh);
+	  }
+
+	  /**
+	   * [setCounter description]
+	   */
+	  function setCounter() {
+	    setStartCount();
+	    setTimeout( doRefresh, refresh );
+
+	    ticker = $counter.ticker({
+	      delay:  1000,
+	      separators: true,
+	      incremental: function(){
+	        return currentCount;
+	        // if(tickerCount == 0){
+	        //   tickerCount = currentCount;
+	        // }else if(tickerCount < currentCount){
+	        //   tickerCount++;
+	        // }
+	        // return tickerCount;
+	      }
+	    });
+	  }
+
+	  /**
+	   * [getSecondsAdded description]
+	   * @return {[type]} [description]
+	   */
+	  function getSecondsAdded(){
+	    //get the dollar amount difference
+	    newAdditional = grGiving.getAmount();
+	    var diff = newAdditional - oldAdditional;
+
+	    //convert to a time difference
+	    diff = Math.floor(diff/250 * 30);
+	    
+	    //Add the offset to the counter
+	    currentCount += diff;
+
+	    //save our new value
+	    oldAdditional = newAdditional;
+
+	    //force a refresh
+	    //Set refresh delay to zero to improve response time
+	    var normalRefresh = ticker[0].options.delay;
+	    ticker[0].options.delay = 0;
+	    ticker[0].update_container();
+	    ticker[0].options.delay = normalRefresh;
+	  }
+
+	  function pauseTicker(){
+	    isPaused = true;
+	  }
+
+	  function unpauseTicker(){
+	    isPaused = false;
+	    doRefresh();
+	  }
+
+	  getSecondsAdded();
+	  $("#Donation_AmountField")
+	    .on("change",getSecondsAdded)
+	    .on("mouseenter",pauseTicker)
+	    .on("mouseleave",unpauseTicker);
+
+	}
+
+	/**
 	 * [setupAction description]
 	 * @return {[type]} [description]
 	 */
@@ -385,13 +578,13 @@ webpackJsonp([0],[
 
 
 			// slick
-			$('.supporters-carousel').slick({
-				dots: true,
-				arrows: true,
-				appendArrows: '.slick-list',
-				prevArrow: '<button type="button" class="slick-prev"></button>',
-				nextArrow: '<button type="button" class="slick-next"></button>'
-			});
+			// $('.supporters-carousel').slick({
+			// 	dots: true,
+			// 	arrows: true,
+			// 	appendArrows: '.slick-list',
+			// 	prevArrow: '<button type="button" class="slick-prev"></button>',
+			// 	nextArrow: '<button type="button" class="slick-next"></button>'
+			// });
 
 	        enbeautifier.addClasses(getFormClasses());
 
@@ -704,7 +897,7 @@ webpackJsonp([0],[
 	        var itemData = [campaignData];
 
 	        //get the social links module
-	        var GRSocialize = __webpack_require__(23);
+	        var GRSocialize = __webpack_require__(24);
 	                
 	        var section = getURLParameter('s');
 	        grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
@@ -986,7 +1179,7 @@ webpackJsonp([0],[
 
 	function init_validation(){
 		try{
-			__webpack_require__(24);
+			__webpack_require__(25);
 
 	        var errorMessages = {
 	                invalidMonth: 'Invalid month',
@@ -1900,8 +2093,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 5 */,
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -2074,7 +2266,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -2465,7 +2657,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -2518,8 +2710,8 @@ webpackJsonp([0],[
 	    'IN'
 	];
 	//TODO: Consider making these two conditional for when they are used
-	var currencyMap = __webpack_require__(9);
-	var currencySymbols = __webpack_require__(10);
+	var currencyMap = __webpack_require__(8);
+	var currencySymbols = __webpack_require__(9);
 
 	var grHelpers = __webpack_require__(4);
 	var processorFields = { };
@@ -2863,7 +3055,7 @@ webpackJsonp([0],[
 	        for(var i=0; i<countries.length; i++) {
 	            if(availableRegionLists.indexOf(countries[i]) != -1) {
 	                //include region object
-	                var regions = __webpack_require__(11)("./GRRegions-"+countries[i]);
+	                var regions = __webpack_require__(10)("./GRRegions-"+countries[i]);
 	                //build selector and assign to 
 	                regionLists[countries[i]] = grHelpers.createSelectComponent({
 	                    name: $region.attr('name'),
@@ -3194,7 +3386,7 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports) {
 
 	/**
@@ -3458,7 +3650,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	/**
@@ -3490,14 +3682,14 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./GRRegions-CA": 12,
-		"./GRRegions-CA.js": 12,
-		"./GRRegions-US": 13,
-		"./GRRegions-US.js": 13
+		"./GRRegions-CA": 11,
+		"./GRRegions-CA.js": 11,
+		"./GRRegions-US": 12,
+		"./GRRegions-US.js": 12
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -3510,11 +3702,11 @@ webpackJsonp([0],[
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 11;
+	webpackContext.id = 10;
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -3585,7 +3777,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -3808,7 +4000,7 @@ webpackJsonp([0],[
 	};
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -4088,7 +4280,7 @@ webpackJsonp([0],[
 	    else if(supportedPixels.indexOf(name.toLowerCase()) != -1 ) {
 	        registeredPixels[name] = 'pending';
 	        __webpack_require__.e/* nsure */(1, function(require) {
-	            var pixel = __webpack_require__(15)("./GRAnalytics-pixel-"+name);
+	            var pixel = __webpack_require__(14)("./GRAnalytics-pixel-"+name);
 	            registeredPixels[name] = {id: id,
 	                showPixel: pixel.showPixel};
 	            if(typeof firePixelQueue[name] != "undefined") {
@@ -4130,9 +4322,9 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
+/* 14 */,
 /* 15 */,
-/* 16 */,
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
@@ -4303,12 +4495,14 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
+/* 17 */,
 /* 18 */,
 /* 19 */,
 /* 20 */,
 /* 21 */,
 /* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
