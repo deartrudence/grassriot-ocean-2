@@ -102,7 +102,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.amt.nameNoSpace+'Div', 
     '#'+fields.inmem.nameNoSpace+'Div', 
     '#'+fields.matching.nameNoSpace+'Div'
-  ],
+  ],/*
   '#gr_extra': [
     '.js-employerMatch',
     '#'+fields.employer.nameNoSpace+'Div',
@@ -119,7 +119,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.inmem_country.nameNoSpace+'Div',
     '#'+fields.inmem_region.nameNoSpace+'Div',
     '#'+fields.inmem_region.nameNoSpace+'Div'
-  ],
+  ],*/
   '#gr_details': [
     '.js-billingDetails', 
     '#'+fields.fname.nameNoSpace+'Div', 
@@ -191,7 +191,7 @@ function init() {
     (browser.firefox && parseFloat(browser.version) < 9)
     || (browser.chrome && parseFloat(browser.version) < 16)
     ){
-    var backupForm = backupForm ? backupForm : "https://www.support.ecojustice.ca/ea-action/action?ea.campaign.id=40221&ea.client.id=1943&ea-account.campaign.id=40221";
+    var backupForm = backupForm ? backupForm : "";
     window.location = backupForm;
   }
 
@@ -288,7 +288,7 @@ function setupTracking(){
 function makeAffix(){
     // we handle the mobile form without use of affix
     var $affixForm = $(".form");
-    var $container = $(".page-wrapper");
+    var $container = $(".donation-form-wrapper");
     //$(window).off(".affix");
     $affixForm.off('affix.bs.affix');
     $affixForm
@@ -400,8 +400,8 @@ function setupAction(){
           activeClass: 'active',
           useCSSAnimation: false,
           indicatorTarget: '.steps-list ul',
-          steps: $("#gr_donation,#gr_extra,#gr_details,#gr_payment"),
-          stepLabels: ['Amount', 'Details', 'Billing', 'Payment'],
+          steps: $("#gr_donation,#gr_details,#gr_payment"),
+          stepLabels: ['Amount', 'Billing', 'Payment'],
           addButtons: true,
           target: "#window",
           stepHandler:[
@@ -419,20 +419,6 @@ function setupAction(){
                
             },
             //step 2 handler
-            function(){
-              formErrors = [ ];
-              $("#gr_extra").find("input,select,textarea").valid();
-              if(formErrors.length) {
-                handleErrors(formErrors);
-                return false;
-              } else {
-                grAnalytics.analyticsReport( 'payment/page2-complete' );
-                return true;
-              }
-               
-            },
-
-            //step 3 handler
             function(){
               formErrors = [ ];
               $("#gr_details").find("input,select,textarea").valid();
@@ -463,7 +449,7 @@ function setupAction(){
         });
         
         //prevent tabbing to next step
-        $("#gr_donation,#gr_extra,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
+        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
             if(e.which == 9) {
                 var $stepPanel = $(this).parents('.page').first();
                 var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
@@ -482,7 +468,7 @@ function setupAction(){
 
         $("#window").on('stepChanged.grsteps', function(e, step) {
             $("#window").promise().done(function() {
-                $("#gr_donation,#gr_extra,#gr_details,#gr_payment")
+                $("#gr_donation,#gr_details,#gr_payment")
                     .filter(function(index) {
                         return (step.currentStep == index);
                     })
@@ -611,8 +597,8 @@ function setupAction(){
         $form.removeAttr('onsubmit');
         $('[data-toggle="popover"]').popover();
 
-        formSteps.hideStep(1);
-        $form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
+        //formSteps.hideStep(1);
+        /*$form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
             var toggleFields = [ ];
             switch($(this).attr('name')) {
                 case fields.inmem.name: 
@@ -652,7 +638,7 @@ function setupAction(){
                 formSteps.hideStep(1);
             }
 
-        })
+        })*/
 		//things to do just on load
 		setupMobileButton();
 
@@ -1144,7 +1130,7 @@ function init_validation(){
             required: true,
             isValidDonation: true
         };
-        validation_rules[fields.employer.name] = {
+        /*validation_rules[fields.employer.name] = {
             required: function(element) {
                 return $(fields.matching.selector).is(':checked');
             }
@@ -1159,7 +1145,7 @@ function init_validation(){
             required: function(element) {
                 return $(fields.inmem.selector).is(':checked');
             }
-        }
+        }*/
 
         $form.validate({
             rules: validation_rules,
@@ -1330,7 +1316,7 @@ function getFormClasses() {
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 
-    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
+    /*classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
     classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
     //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
@@ -1341,7 +1327,7 @@ function getFormClasses() {
     classes[fields.inmem_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};*/
     
 
     return classes;
