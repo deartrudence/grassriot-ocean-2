@@ -3594,6 +3594,23 @@ button.close {
  * formContainer
  * Container styling for wherever the form is supposed to go
  */
+.main {
+  height: 100%;
+}
+
+.main > .donation-form-wrapper {
+  min-height: 100%;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.donation-form-wrapper {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /**
  * contentContainer
  */
@@ -3962,7 +3979,7 @@ body:after {
   position: relative;
   overflow: hidden;
   height: 545px;
-  background: url('../img/msf-header.jpg?1448243909');
+  background: url('../img/msf-header.jpg?1448585087');
   background-size: cover;
   background-position: center;
 }
@@ -4059,38 +4076,9 @@ html.csstransforms {
 }
 .campaign {
   overflow: hidden;
-}
-@media screen and (min-width: 620px) {
-  .campaign {
-    padding-right: 400px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .campaign {
-    padding-right: 400px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-@media screen and (min-width: 1160px) {
-  .campaign {
-    padding-right: 400px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-@media screen and (min-width: 2100px) {
-  .campaign {
-    padding-right: 400px;
-    padding-left: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
+  width: auto;
+  padding-right: 400px;
+  float: left;
 }
 .campaign h1 {
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
@@ -4130,7 +4118,7 @@ html.csstransforms {
 }
 
 .js-campaign .stripe.wrapper {
-  background: url('../img/stripe.png?1448249388');
+  background: url('../img/stripe.png?1448585087');
   background-repeat: repeat;
   height: 20px;
   padding: 0px;
@@ -4140,7 +4128,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 545px;
-  background: url('../img/msf-header.jpg?1448243909');
+  background: url('../img/msf-header.jpg?1448585087');
   background-size: cover;
   background-position: center;
 }
@@ -4156,7 +4144,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 420px;
-  background: url('../img/section-1.jpg?1448243909');
+  background: url('../img/section-1.jpg?1448585087');
   background-size: cover;
   background-position: center;
 }
@@ -4186,7 +4174,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 530px;
-  background: url('../img/section-2.jpg?1448243909');
+  background: url('../img/section-2.jpg?1448585087');
   background-size: cover;
   background-position: center;
 }
@@ -4227,7 +4215,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 425px;
-  background: url('../img/section-3.jpg?1448243909');
+  background: url('../img/section-3.jpg?1448585087');
   background-size: cover;
   background-position: center;
 }
@@ -4829,7 +4817,7 @@ label {
 }
 
 #grdonation form {
-  background: url('../img/border.jpg?1448259271');
+  background: url('../img/border.jpg?1448585086');
   background-repeat: repeat-y;
   background-color: white;
 }
@@ -4984,7 +4972,7 @@ label {
   }
 
   .form-navbar {
-    background: url('../img/border.jpg?1448259271');
+    background: url('../img/border.jpg?1448585086');
     background-repeat: repeat-y;
     background-color: white;
     width: 100%;
@@ -5366,10 +5354,30 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 .form-header-counter {
   margin-top: 25px;
   position: relative;
-  background: url('../img/form-feature.png?1448328931');
+  background: url('../img/form-feature.png?1448585087');
   background-repeat: no-repeat;
   background-size: cover;
   height: 139px;
+}
+.form-header-counter .seconds-container {
+  color: #FFFFFF;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 0.8rem;
+  position: relative;
+  top: 35px;
+  left: 50px;
+  width: 100px;
+  text-align: right;
+}
+.form-header-counter .seconds-container p.js-seconds-counter {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 1em;
+  margin-bottom: -5px;
 }
 
 .form-header-counter + h3 {
@@ -6207,20 +6215,20 @@ select.error, textarea.error {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1448227385') no-repeat center;
+  background: url('../img/fb-2015.png?1448585086') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1448227385') no-repeat center;
+  background: url('../img/tw-2015.png?1448585087') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1448227385') no-repeat center;
+  background: url('../img/gp.png?1448585087') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1448227385') no-repeat center;
+  background: url('../img/in.png?1448585087') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1448227385') no-repeat center;
+  background: url('../img/ml.png?1448585087') no-repeat center;
 }
 .post-action .social-title {
   color: #FFFFFF;

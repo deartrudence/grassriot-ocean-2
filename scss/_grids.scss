@@ -4,9 +4,27 @@
  */
 
 
+.main {
+  height: 100%;
+}
+
+.main>.donation-form-wrapper {
+    min-height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.donation-form-wrapper {
+    max-width: $page-max-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 @mixin formContainer{
 
-  @media screen and (max-width: $screen-xxs-max){
+  @media screen and (max-width: $screen-xxs-max) {
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -61,44 +79,47 @@
 /**
  * contentContainer
  */
-@mixin contentContainer{
-  @media screen and (min-width: $screen-xxs-max){
+@mixin contentContainer {
+
+  width: auto;
+  padding-right: $form-width-xl;  
+  float: left;
+     
+  @media screen and (min-width: $screen-xxs-max) {
 
   }
-  @media screen and (max-width: $screen-xs-max){
+ 
+  @media screen and (max-width: $screen-xs-max) {
   }
 
 
-  @media screen and (min-width: $screen-xs-min){
-    padding-right: $form-width-xs;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+  @media screen and (min-width: $screen-xs-min) {
+    //padding-right: $form-width-xs;
+    //padding-left: $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
   }
 
-  @media screen and (min-width: $screen-sm){
-    padding-right: $form-width-sm;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+  @media screen and (min-width: $screen-sm) {
+    //padding-right: $form-width-sm;
+    //padding-left: $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
   }
 
-  @media screen and (min-width: $screen-md){
-    padding-right: $form-width-md;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+  @media screen and (min-width: $screen-md) {
+    //padding-right: $form-width-md;
+    //padding-left: $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
+  }
+
+  @media screen and (min-width: $screen-lg) {
 
   }
 
-  @media screen and (min-width: $screen-lg){
+  @media screen and (min-width: $screen-xl) {
 
-  }
 
-  @media screen and (min-width: $screen-xl){
-    padding-right: $form-width-xl;
-    padding-left: $content-overlap-xl;
-    margin-left: -1 * $content-overlap-xl;
-    margin-right: -1 * $content-overlap-xl;
   }
 }

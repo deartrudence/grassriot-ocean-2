@@ -298,6 +298,25 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 139px;
+	
+	.seconds-container {
+  	color: $white;
+  	@include font-headN7;
+  	@include fontSize-smallish;
+  	position: relative;
+    top: 35px;
+    left: 50px;
+    width: 100px;
+    text-align: right;
+    
+    p.js-seconds-counter {
+      @include font-decoN7;
+    	@include fontSize-xlarge;      
+      line-height: 1em;
+      margin-bottom: -5px;
+    }  	
+
+	}
 }
 .form-header-counter + h3 {
 	@include font-headN7;
