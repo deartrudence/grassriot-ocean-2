@@ -4205,7 +4205,6 @@ body:after {
   line-height: 1.1;
   position: relative;
   color: #FFFFFF;
-  padding: 30% 15% 20% 15%;
 }
 .heroTitle strong,
 .heroTitle em {
@@ -4216,11 +4215,6 @@ body:after {
 }
 .heroTitle em {
   color: #81af76;
-}
-@media screen and (max-width: 1159px) {
-  .heroTitle {
-    padding: 16% 20% 23%;
-  }
 }
 
 .heroCaption {
@@ -4980,7 +4974,7 @@ label {
 }
 @media screen and (min-width: 1160px) {
   .form {
-    position: absolute;
+    position: fixed;
     right: 0;
     width: 400px;
     height: 100%;
@@ -6184,63 +6178,21 @@ select.error, textarea.error {
   }
 }
 .page-header {
-  position: relative;
-  width: 100%;
-  background-color: #404040;
-}
-.page-header .row {
   position: absolute;
-  top: 50%;
 }
 
-.page-title {
-  margin-left: 70px;
-  margin-top: -31px;
-  width: 250px;
-  height: 62px;
-  background-size: contain;
-  background-repeat: no-repeat;
+.page-logo {
+  overflow: hidden;
+  text-indent: -9999px;
+  background: url('../img/logo_msf_bilingual.png?1448657886') #FFFFFF 50% 50% no-repeat;
+  background-size: 167px;
+  position: absolute;
+  width: 200px;
+  height: 95px;
+  left: 50px;
+  z-index: 10;
 }
 
-@media screen and (max-width: 767px) {
-  .page-header {
-    border-top: 5px solid #81af76;
-    height: 80px;
-  }
-
-  .page-title {
-    margin-top: -21px;
-    margin-left: 50px;
-    width: 166px;
-    height: 42px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .page-header {
-    border-top: 5px solid #81af76;
-    height: 105px;
-  }
-}
-@media screen and (min-width: 1160px) {
-  .page-header {
-    border-top: 5px solid #81af76;
-    height: 105px;
-  }
-}
-@media screen and (min-width: 2100px) {
-  .page-header {
-    border-top: 5px solid #81af76;
-    height: 205px;
-  }
-
-  .page-title {
-    margin-top: -62px;
-    width: 500px;
-    height: 124px;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-}
 .page-footer {
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
   font-size: 13px;
@@ -6358,8 +6310,259 @@ select.error, textarea.error {
     height: auto;
   }
 }
+.share-block {
+  background-color: #FFFFFF;
+}
+.share-block:after {
+  content: " ";
+  display: block;
+  height: 20px;
+  background: url('../img/stripe.png?1448638935');
+}
+.share-block:last-child:after {
+  display: none;
+}
+@media screen and (max-width: 767px) {
+  .share-block {
+    padding: 20px;
+  }
+}
+@media screen and (min-width: 620px) and (max-width: 767px) {
+  .share-block h3 {
+    padding: 0 0 .5em;
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 620px) {
+  .share-block h3 {
+    display: table-cell;
+    background: none;
+    padding: 30px 20px;
+    min-height: 200px;
+    vertical-align: top;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .share-content-container {
+    display: table-cell;
+    background: none;
+    width: 70%;
+    min-height: 200px;
+    color: #000;
+    vertical-align: top;
+    padding: 35px 30px 30px 20px;
+  }
+}
+
+.share-content-padding {
+  max-width: 475px;
+}
+
+.word-bubble, .gradient-box {
+  font-size: .85em;
+}
+
+.gradient-box {
+  position: relative;
+  padding: 20px 25px 20px;
+  margin-bottom: 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5ZjlmOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f9f9f9), color-stop(100%, #ffffff));
+  background: -moz-linear-gradient(top, #f9f9f9, #ffffff);
+  background: -webkit-linear-gradient(top, #f9f9f9, #ffffff);
+  background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+}
+.gradient-box:before {
+  content: ' ';
+  position: absolute;
+  display: inline-block;
+  top: 30px;
+  left: 30px;
+  width: 13px;
+  height: 10px;
+}
+@media screen and (min-width: 620px) and (max-width: 767px) {
+  .gradient-box {
+    padding-left: 40px;
+  }
+  .gradient-box:before {
+    top: 24px;
+    left: 15px;
+  }
+}
+
+.email-box {
+  position: relative;
+  padding: 20px 25px 20px;
+  margin-bottom: 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+@media screen and (min-width: 620px) and (max-width: 767px) {
+  .email-box {
+    padding-left: 40px;
+  }
+}
+
+.mail-container {
+  max-height: 70px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 0px;
+}
+
+.share-button {
+  display: block;
+  float: right;
+  padding: 5px 10px 5px 5px;
+  min-width: 130px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.share-button:active, .share-button:hover, .share-button:visited {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+.share-button:hover {
+  opacity: .9;
+}
+.share-button img, .share-button span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.share-button span {
+  padding-top: 2px;
+  margin-left: 5px;
+}
+.share-button.facebook {
+  background-color: #3C5A99;
+}
+.share-button.twitter {
+  background-color: #60A9DD;
+}
+.share-button.mail {
+  background-color: #0F96D3;
+}
+
+.mail-body {
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #5B5B5B;
+}
+
+.mail-subject {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #3C5A99;
+}
+
+.tw-icon-wrap {
+  float: left;
+  margin-left: 50px;
+  font-size: 12px;
+}
+.tw-icon-wrap img, .tw-icon-wrap span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fb-block-wrap {
+  padding: 6px;
+  border: 1px dashed #E6E6E6;
+  width: 100%;
+  margin-bottom: 12px;
+}
+.fb-block-wrap .fb-block {
+  width: 100%;
+  border: 1px solid #E2E2E2;
+  background-color: #F6F7F8;
+}
+.fb-block-wrap .fb-block .facebook-image, .fb-block-wrap .fb-block .fb-content-container {
+  display: inline-block;
+  min-height: 100px;
+}
+.fb-block-wrap .fb-block .facebook-image {
+  background-size: 100% auto;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  width: 30%;
+  vertical-align: middle;
+  font-size: 0;
+  padding: 0;
+}
+.fb-block-wrap .fb-block .fb-content-container {
+  border-left: 1px solid #E2E2E2;
+  width: 68%;
+  vertical-align: top;
+  padding: 10px;
+}
+.fb-block-wrap .fb-block .fb-content-container .fb-content {
+  max-height: 80px;
+  overflow: hidden;
+  position: relative;
+}
+.fb-block-wrap .fb-block .fb-content-container .fb-content:after {
+  content: ' ';
+  position: absolute;
+  bottom: 0px;
+  height: 18px;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(246, 247, 248, 0) 0%, #f6f7f8 100%);
+}
+.fb-block-wrap .fb-block .fb-content-container .facebook-title {
+  color: #3C5A99;
+  text-transform: uppercase;
+  display: block;
+  font-size: .9em;
+  line-height: 1.5em;
+}
+.fb-block-wrap .fb-block .fb-content-container .facebook-description {
+  color: #5B5B5B;
+  font-size: .8em;
+  margin-bottom: 0px;
+}
+
+.word-bubble {
+  display: block;
+  background: linear-gradient(to right, #ffffff, #f0f3f1);
+  border: 1px solid #E4E4E4;
+  border-radius: 3px;
+  padding: 20px;
+  position: relative;
+  margin-bottom: 25px;
+  color: #5B5B5B;
+}
+
+.social-block .caption {
+  padding: 0 15px 30px 30px;
+}
+.social-block .caption {
+  font: 38px;
+  line-height: 1;
+  padding: 0 15px 30px 49px;
+  position: relative;
+}
+.social-block .social {
+  padding: 20px 34px 30px 34px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 0;
+}
+
 .post-action .row {
   margin: 0;
+}
+.post-action .col-text {
+  float: none;
 }
 .post-action .col-form {
   display: none;
@@ -6370,28 +6573,62 @@ select.error, textarea.error {
 }
 .post-action .campaign p {
   font-size: 16px;
-  color: #FFFFFF;
+  color: #000;
   max-width: 40em;
-  margin: 0 auto;
 }
-.post-action .hero {
-  padding: 80px 40px;
-}
-@media screen and (min-width: 768px) {
-  .post-action .hero {
-    text-align: center;
-    padding: 80px;
+@media screen and (min-width: 992px) {
+  .post-action .page-logo {
+    left: 140px;
   }
 }
-@media screen and (min-width: 1300px) {
-  .post-action .hero {
-    padding: 10% 25%;
-    min-height: 500px;
-    min-height: 80vh;
+.post-action .page-header {
+  position: relative;
+}
+@media screen and (min-width: 620px) {
+  .post-action .page-header {
+    height: 204px;
   }
 }
 .post-action .heroTitle {
-  padding: 0 0 .5em;
+  text-transform: uppercase;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+@media screen and (min-width: 620px) and (max-width: 767px) {
+  .post-action .heroTitle {
+    text-align: center;
+    font-size: 1.77rem;
+    padding: 2em 0;
+  }
+}
+@media screen and (min-width: 992px) {
+  .post-action .heroTitle {
+    left: 50%;
+    width: 50%;
+    font-size: 1.77rem;
+    padding: 2em 0;
+  }
+}
+.post-action .js-campaign:before {
+  content: " ";
+  display: block;
+  height: 20px;
+  background: url('../img/stripe.png?1448638935');
+}
+.post-action .mobile-center {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.post-action .sharingSection-title {
+  max-width: 700px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  padding: 20px 20px 0;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.77rem;
 }
 .post-action .social-block {
   margin-top: 2em;
@@ -6436,6 +6673,9 @@ select.error, textarea.error {
   width: 51px;
   background: url('../img/ml.png?1448486536') no-repeat center;
 }
+.post-action .sharing-title {
+  color: #000;
+}
 .post-action .social-title {
   color: #FFFFFF;
   font-size: 1.22rem;
@@ -6445,6 +6685,15 @@ select.error, textarea.error {
   .post-action .social-title {
     font-size: 1.8vw;
   }
+}
+.post-action .js-hero,
+.post-action .js-impact,
+.post-action .js-quote,
+.post-action .js-accountable,
+.post-action .js-gift,
+.post-action .js-response,
+.post-action .js-policy {
+  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */

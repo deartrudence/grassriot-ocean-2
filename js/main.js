@@ -94,7 +94,8 @@ var ENBeautifierFillers = {
   ".js-response": ".js-responseText",
   ".js-accountable": ".js-accountableText",
   ".js-gift": ".js-giftText",
-  ".js-policy": ".js-policyText"
+  ".js-policy": ".js-policyText",
+  '.js-formOpen-label': '.js-formOpen-labelText'
 };
 var ENBeautifierFillersContainers = {
   '#gr_donation': [
@@ -303,8 +304,8 @@ function makeAffix(){
                 // .filter(":not(.affix-top, .affix, .affix-bottom)")
                 .affix({
                     offset: {
-                        top: header.outerHeight(),
-                        bottom: footer.outerHeight()
+                        top: 0,
+                        bottom: 0
                     }
                 });
             $("#grdonation").css('height','');
@@ -900,9 +901,46 @@ function setupTY(){
         //Ecommerce not installed on client's analytics
         // grAnalytics.eCommerceReport(transactionData, itemData);
 
+        enbeautifier.moveToTargets({
+          '.js-campaign': '.sharingSection-title',
+          '.js-campaign': '.eaFullWidthColumnContent',
+          '.js-campaign': '.eaLeftColumnContent',
+          // '.js-campaign': '.social-block',
+          '.share-block .twitter-text': '.social .twitter .text',
+          '.share-block .mail-subject': '.social .mail .subject',
+          '.share-block .mail-body': '.social .mail .body',
+          '.page-header': '.js-postaction-heroText'
+        });
 
-        $(leftColumnSelector).find('header .logo').after($(leftColumnSelector).children("div:first").children());
-        $(leftColumnSelector).children("div:first").remove();    
+
+        //setup facebook share pieces from specific content or the meta tags
+        ['title', 'description', 'image'].forEach(function(element) {
+          var content = $('.social .facebook .'+element).length
+            ? $('.social .facebook .'+element).text()
+            : $('meta[property="og:'+element+'"]').attr('content');
+
+            console.log(element, content);
+          if(element=='image') {
+            $('.share-block .facebook-'+element).css('background-image','url('+content+')');
+          } else {
+          $('.share-block .facebook-'+element).text(content);
+          }
+        });
+
+        var section = getURLParameter('s');
+        grAnalytics.analyticsReport('action-complete/'+$(formSelector).find('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
+        $('.main').addClass('post-action');
+        $('#gr_giving').show();//.addClass('content-wrap');
+        $('.js-left-column header').prependTo('.container');
+        
+        //include containers for these
+        enbeautifier.moveToTargets({
+          'header .wrap': leftColumnSelector+' > div:first .text-block',
+          'header': leftColumnSelector+' > div:first .subtext-block'
+        }, true); 
+        
+        console.log($(".js-postaction-heroBg"));
+        $('.page-header').css('background-image', 'url('+$(".js-postaction-heroBg").attr('src')+')');
 
 
         //init social links
