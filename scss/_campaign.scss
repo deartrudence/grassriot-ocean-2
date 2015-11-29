@@ -51,14 +51,30 @@
   padding: 0px;
 }
 
-.hero {
+.js-hero {
   position: relative; //for the overflow control
   overflow: hidden;
   height: 545px;
+}
+
+.js-hero.js-content-version.doc {
   background: $hero-bgimage;
   background-size: cover;
   background-position: center;
 }
+
+.js-hero.js-content-version.sea {
+  background: $hero-bgimage-sea;
+  background-size: cover;
+  background-position: right bottom;
+}
+
+.js-hero.js-content-version.delivery {
+  background: $hero-bgimage;
+  background-size: cover;
+  background-position: center;
+}
+
 
 .js-campaign {
 	
@@ -67,6 +83,22 @@
 		@include fontSize-largerish;
 	}
 	
+}
+
+.campaignText-wrapper.js-content-version h2 {
+	display: none;
+}
+
+.campaignText-wrapper.js-content-version.doc h2.doc {
+	display: block;
+}
+
+.campaignText-wrapper.js-content-version.sea h2.sea {
+	display: block;	
+}
+
+.campaignText-wrapper.js-content-version.delivery h2.delivery {
+	display: block;
 }
 
 .js-impact {

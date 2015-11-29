@@ -4340,10 +4340,25 @@ html.csstransforms {
   padding: 0px;
 }
 
-.hero {
+.js-hero {
   position: relative;
   overflow: hidden;
   height: 545px;
+}
+
+.js-hero.js-content-version.doc {
+  background: url('../img/msf-header.jpg?1448243909');
+  background-size: cover;
+  background-position: center;
+}
+
+.js-hero.js-content-version.sea {
+  background: url('../img/msf-header-sea.jpg?1448833184');
+  background-size: cover;
+  background-position: right bottom;
+}
+
+.js-hero.js-content-version.delivery {
   background: url('../img/msf-header.jpg?1448243909');
   background-size: cover;
   background-position: center;
@@ -4354,6 +4369,22 @@ html.csstransforms {
   font-weight: 700;
   font-style: normal;
   font-size: 2.3rem;
+}
+
+.campaignText-wrapper.js-content-version h2 {
+  display: none;
+}
+
+.campaignText-wrapper.js-content-version.doc h2.doc {
+  display: block;
+}
+
+.campaignText-wrapper.js-content-version.sea h2.sea {
+  display: block;
+}
+
+.campaignText-wrapper.js-content-version.delivery h2.delivery {
+  display: block;
 }
 
 .js-impact {

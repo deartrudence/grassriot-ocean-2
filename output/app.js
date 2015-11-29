@@ -399,6 +399,7 @@ webpackJsonp([0],[
 	  var ticker;
 	  var refreshInterval;
 	  var refresher;
+	  var contentClass;
 	  //corresponds to set amounts at 30 seconds per 250$
 	  //TODO: Set these based on the actual donation ranges
 	  var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
@@ -406,27 +407,33 @@ webpackJsonp([0],[
 	  __webpack_require__(22);
 	  __webpack_require__(23);
 
-	  var version = getURLParameter('version');
+	  var version = getURLParameter('s');
 
 	  switch(version){
-	    case "soon":
+	    case "1843":
 	      startingValue = 1843;
+	      contentClass = "delivery";
 	      break;
-	    case "help":
+	    case "2105":
 	      startingValue = 2105;
+	      contentClass = "sea";
 	      break;
 	    default:
 	      startingValue = 586;
+	      contentClass = "doc";
 	      break;
 	  }
+	  
+	  $(".js-content-version").addClass(contentClass);
 
 	  //set offset
+	  
 	  if(typeof window.offset === "undefined"){
 	    window.offset = 0;
 	  }
 
 	  updatecount(startingValue);
-
+		
 	  /**
 	   * [updatecount description]
 	   * @param  {[type]} count [description]
