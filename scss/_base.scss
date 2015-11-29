@@ -127,9 +127,9 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 $form-background: image-url("border.jpg");
 $form-feature: image-url("form-feature.png");
 
-$form-width-xxs: 400px;
-$form-width-xs: 400px;
-$form-width-sm: 400px;
+$form-width-xxs: 300px;
+$form-width-xs: 300px;
+$form-width-sm: 300px;
 $form-width-md: 400px;
 $form-width-xl: 400px;
 $form-padding: 30px;
@@ -182,12 +182,13 @@ $sharing-text-grey: #5B5B5B;
 //screen sizes
 //-----------
 $screen-sm: 768px;
-$screen-md: 1160px;
+$screen-md: 992px;
 $screen-lg: 1300px;
 $screen-xl: 2100px;
 
 $screen-xxs-max: 619px;
 $screen-xs-min: 620px;
+
 $screen-xl-min: $screen-xl;
 $screen-xs-max: ($screen-sm - 1);
 $screen-sm-max: ($screen-md - 1);

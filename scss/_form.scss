@@ -38,11 +38,11 @@ label{
 //simplification for small monitors
 .form.no-affix{
   @media screen and (min-width: $screen-sm){
-    width: $form-width-sm - 35px;
+    width: $form-width-sm;
   }
 
   @media screen and (min-width: $screen-md){
-    width: $form-width-md - 35px;
+    width: $form-width-md;
   }
 
   @media screen and (min-width: $screen-lg){
@@ -50,7 +50,7 @@ label{
   }
 
   @media screen and (min-width: $screen-xl){
-    width: $form-width-xl - 45px;
+    width: $form-width-xl;
   }
   right: 0 !important;
 
@@ -154,7 +154,7 @@ label{
   .js-formOpen-label{
     display: block;
     line-height: 3em;
-    background: $cta-red;
+    background: $msf-red;
     border-radius: 5px 5px 0 0;
     box-shadow: -1px -1px 2px $black;
     box-shadow: -1px -1px 2px rgba($black, 0.3);
@@ -163,19 +163,26 @@ label{
   .formClose {
     @include font-bodyN7;
     @include fontSize-small;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
     display: block;
+    background: grey;
     position: absolute;
     border: 0;
-    color: $charcoal;
-    right: 20px;
-    top: 82px; //top par + form padding
+    color: grey;
+    right: -2px;
+    top: 0px;
     width: auto;
-    background: rgba($yellow,0.6);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    opacity: 0.6;
+    background: lightgrey;
+    opacity: 1;
+    line-height: 0em;
     cursor: pointer;
+    width: 30px;
+    height: 26px;
+    outline: none;
+    padding-bottom: 8px;
 
     &:hover{
       opacity: 0.8;

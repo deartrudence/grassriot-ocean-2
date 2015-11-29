@@ -4018,12 +4018,12 @@ button.upsell-modal--close:active {
     width: 720px;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   .upsell-modal--body {
     width: 800px;
   }
 }
-@media screen and (max-width: 1159px) {
+@media screen and (max-width: 991px) {
   .upsell-recommendation {
     max-width: 350px;
     margin: 1.5em auto;
@@ -4156,7 +4156,7 @@ body:after {
     content: "tablet";
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   body:after {
     content: "small-desktop";
   }
@@ -4176,7 +4176,7 @@ body:after {
   position: relative;
   overflow: hidden;
   height: 545px;
-  background: url('../img/msf-header.jpg?1448638935');
+  background: url('../img/msf-header.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
@@ -4255,7 +4255,7 @@ html.csstransforms {
     font-size: 1.22rem;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   .heroTitle {
     font-size: 1.22rem;
   }
@@ -4267,9 +4267,33 @@ html.csstransforms {
 }
 .campaign {
   overflow: hidden;
-  width: auto;
-  padding-right: 400px;
+  width: 100%;
   float: left;
+}
+@media screen and (min-width: 620px) {
+  .campaign {
+    padding-right: 300px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .campaign {
+    padding-right: 300px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .campaign {
+    padding-right: 400px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .campaign {
+    padding-right: 400px;
+  }
+}
+@media screen and (min-width: 2100px) {
+  .campaign {
+    padding-right: 400px;
+  }
 }
 .campaign h1 {
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
@@ -4280,6 +4304,7 @@ html.csstransforms {
   text-transform: uppercase;
   line-height: .9em;
   text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.6) 2px 2px 6px;
 }
 .campaign h2, .campaign h3, .campaign h4, .campaign h5 {
   font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
@@ -4300,7 +4325,7 @@ html.csstransforms {
 .wrapper {
   background-color: #FFFFFF;
   color: #231f20;
-  padding: 80px 100px 80px 35px;
+  padding: 8% 8% 8% 6%;
   position: relative;
 }
 .wrapper p {
@@ -4309,7 +4334,7 @@ html.csstransforms {
 }
 
 .js-campaign .stripe.wrapper {
-  background: url('../img/stripe.png?1448638935');
+  background: url('../img/stripe.png?1448249388');
   background-repeat: repeat;
   height: 20px;
   padding: 0px;
@@ -4319,7 +4344,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 545px;
-  background: url('../img/msf-header.jpg?1448638935');
+  background: url('../img/msf-header.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
@@ -4335,14 +4360,13 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 420px;
-  background: url('../img/section-1.jpg?1448638935');
+  background: url('../img/section-1.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
 
 .impactText-wrapper.wrapper {
   background: none;
-  padding: 65px 130px 0px 35px;
 }
 .impactText-wrapper.wrapper h3 {
   color: #FFFFFF;
@@ -4365,7 +4389,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 530px;
-  background: url('../img/section-2.jpg?1448638935');
+  background: url('../img/section-2.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
@@ -4373,8 +4397,8 @@ html.csstransforms {
 .responseText-wrapper.wrapper {
   background: none;
   position: absolute;
-  padding: 80px 100px 10px 35px;
-  bottom: 15px;
+  padding-bottom: 3%;
+  bottom: 0px;
 }
 .responseText-wrapper.wrapper h3 {
   color: #FFFFFF;
@@ -4386,6 +4410,11 @@ html.csstransforms {
   font-size: 16px;
 }
 
+.quoteText-wrapper.wrapper img {
+  float: left;
+  width: 30%;
+  padding-right: 30px;
+}
 .quoteText-wrapper.wrapper blockquote {
   color: #f42841;
   font-weight: 700;
@@ -4405,8 +4434,8 @@ html.csstransforms {
 .js-gift {
   position: relative;
   overflow: hidden;
-  height: 425px;
-  background: url('../img/section-3.jpg?1448638935');
+  min-height: 425px;
+  background: url('../img/section-3.jpg?1448243909');
   background-size: cover;
   background-position: center;
 }
@@ -4456,7 +4485,7 @@ html.csstransforms {
 }
 
 .policyText-wrapper.wrapper {
-  padding: 80px 70px 80px 35px;
+  padding: 8% 8% 8% 6%;
 }
 
 .policyText-colleft {
@@ -4643,6 +4672,95 @@ html.csstransforms {
 }
 
 @media screen and (max-width: 767px), screen and (max-device-width: 767px) {
+  header p.page-logo {
+    left: 0px;
+  }
+
+  .campaign {
+    overflow: hidden;
+    width: 100%;
+    float: left;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 620px), screen and (max-device-width: 767px) and (min-width: 620px) {
+  .campaign {
+    padding-right: 300px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 768px), screen and (max-device-width: 767px) and (min-width: 768px) {
+  .campaign {
+    padding-right: 300px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 992px), screen and (max-device-width: 767px) and (min-width: 992px) {
+  .campaign {
+    padding-right: 400px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 1300px), screen and (max-device-width: 767px) and (min-width: 1300px) {
+  .campaign {
+    padding-right: 400px;
+  }
+}
+@media screen and (max-width: 767px) and (min-width: 2100px), screen and (max-device-width: 767px) and (min-width: 2100px) {
+  .campaign {
+    padding-right: 400px;
+  }
+}
+@media screen and (max-width: 767px), screen and (max-device-width: 767px) {
+  .campaign h1 {
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    padding: 0 6% 50%;
+  }
+
+  .impactText-wrapper.wrapper {
+    background: none;
+    padding-top: 20%;
+  }
+  .impactText-wrapper.wrapper h3 {
+    font-size: 2em;
+  }
+  .impactText-wrapper.wrapper p {
+    color: #FFFFFF;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .giftText-wrapper.wrapper {
+    padding: 8% 8% 8% 6%;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .accountableText-colleft, .accountableText-colright {
+    float: none;
+    width: auto;
+    padding-left: 0px;
+  }
+  .accountableText-colleft p, .accountableText-colright p {
+    padding-right: 0px;
+    border-right: none;
+  }
+
+  .accountableText-colright img {
+    margin-top: 35px;
+    padding-left: 0px;
+  }
+
+  .policyText-colleft, .policyText-colright {
+    float: none;
+    width: auto;
+    padding: 0px;
+  }
+
   .campaignText-main {
     font-size: 1.22rem;
   }
@@ -4691,7 +4809,7 @@ html.csstransforms {
     display: none;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1159px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
   .campaignText-main {
     font-size: 1.22rem;
   }
@@ -4737,7 +4855,7 @@ html.csstransforms {
     display: none;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   .campaignText-main {
     font-size: 1.77rem;
   }
@@ -4960,7 +5078,7 @@ label {
     position: absolute;
     right: 0;
     height: 100%;
-    width: 400px;
+    width: 300px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -4969,10 +5087,10 @@ label {
     width: 100%;
     right: 0;
     height: 100%;
-    width: 400px;
+    width: 300px;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   .form {
     position: fixed;
     right: 0;
@@ -4993,17 +5111,17 @@ label {
 }
 @media screen and (min-width: 768px) {
   .form.no-affix {
-    width: 365px;
+    width: 300px;
   }
 }
-@media screen and (min-width: 1160px) {
+@media screen and (min-width: 992px) {
   .form.no-affix {
-    width: 365px;
+    width: 400px;
   }
 }
 @media screen and (min-width: 2100px) {
   .form.no-affix {
-    width: 355px;
+    width: 400px;
   }
 }
 .form.no-affix .form-navbar {
@@ -5011,7 +5129,7 @@ label {
 }
 
 #grdonation form {
-  background: url('../img/border.jpg?1448638935');
+  background: url('../img/border.jpg?1448259271');
   background-repeat: repeat-y;
   background-color: white;
 }
@@ -5121,7 +5239,7 @@ label {
   .js-formOpen-label {
     display: block;
     line-height: 3em;
-    background: #a8233e;
+    background: #f42841;
     border-radius: 5px 5px 0 0;
     box-shadow: -1px -1px 2px #000;
     box-shadow: -1px -1px 2px rgba(0, 0, 0, 0.3);
@@ -5132,19 +5250,26 @@ label {
     font-weight: 700;
     font-style: normal;
     font-size: 0.5rem;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
     display: block;
+    background: grey;
     position: absolute;
     border: 0;
-    color: #252525;
-    right: 20px;
-    top: 82px;
+    color: grey;
+    right: -2px;
+    top: 0px;
     width: auto;
-    background: rgba(225, 142, 37, 0.6);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    opacity: 0.6;
+    background: lightgrey;
+    opacity: 1;
+    line-height: 0em;
     cursor: pointer;
+    width: 30px;
+    height: 26px;
+    outline: none;
+    padding-bottom: 8px;
   }
   .formClose:hover {
     opacity: 0.8;
@@ -5166,7 +5291,7 @@ label {
   }
 
   .form-navbar {
-    background: url('../img/border.jpg?1448638935');
+    background: url('../img/border.jpg?1448259271');
     background-repeat: repeat-y;
     background-color: white;
     width: 100%;
@@ -5548,7 +5673,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 .form-header-counter {
   margin-top: 25px;
   position: relative;
-  background: url('../img/form-feature.png?1448638935');
+  background: url('../img/form-feature.png?1448328931');
   background-repeat: no-repeat;
   background-size: cover;
   height: 139px;
@@ -5782,6 +5907,34 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 @media only screen and (max-width: 767px) {
   ul {
     padding-left: 1em;
+  }
+
+  .steps-list ul {
+    margin: 0;
+    padding: 0px;
+  }
+
+  .form-header-counter + h3 {
+    line-height: 1;
+    font-size: 1.6em;
+    color: #f42841;
+    text-align: center;
+    margin: 30px auto 0px;
+    width: 90%;
+  }
+
+  .security-text {
+    background: none;
+    border: none;
+    color: lightgrey;
+    font-size: 11px;
+    position: absolute;
+    top: 6px;
+    left: 213px;
+    font-style: normal;
+    z-index: 10;
+    border-radius: 4px;
+    transition: all 0.5s ease;
   }
 
   .mob-but-wrap {
@@ -6184,7 +6337,7 @@ select.error, textarea.error {
 .page-logo {
   overflow: hidden;
   text-indent: -9999px;
-  background: url('../img/logo_msf_bilingual.png?1448657886') #FFFFFF 50% 50% no-repeat;
+  background: url('../img/logo_msf_bilingual.png?1448752429') #FFFFFF 50% 50% no-repeat;
   background-size: 167px;
   position: absolute;
   width: 200px;
@@ -6317,7 +6470,7 @@ select.error, textarea.error {
   content: " ";
   display: block;
   height: 20px;
-  background: url('../img/stripe.png?1448638935');
+  background: url('../img/stripe.png?1448249388');
 }
 .share-block:last-child:after {
   display: none;
@@ -6614,7 +6767,7 @@ select.error, textarea.error {
   content: " ";
   display: block;
   height: 20px;
-  background: url('../img/stripe.png?1448638935');
+  background: url('../img/stripe.png?1448249388');
 }
 .post-action .mobile-center {
   max-width: 700px;
@@ -6658,20 +6811,20 @@ select.error, textarea.error {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1448486536') no-repeat center;
+  background: url('../img/fb-2015.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1448486536') no-repeat center;
+  background: url('../img/tw-2015.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1448486536') no-repeat center;
+  background: url('../img/gp.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1448486536') no-repeat center;
+  background: url('../img/in.png?1448227385') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1448486536') no-repeat center;
+  background: url('../img/ml.png?1448227385') no-repeat center;
 }
 .post-action .sharing-title {
   color: #000;

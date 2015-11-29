@@ -81,51 +81,49 @@
  */
 @mixin contentContainer {
 
-  width: auto;
-  padding-right: $form-width-xl;  
+  width: 100%;
   float: left;
      
   @media screen and (min-width: $screen-xxs-max) {
-
+		
   }
  
   @media screen and (max-width: $screen-xs-max) {
+	  	  
   }
 
 
   @media screen and (min-width: $screen-xs-min) {
-    //padding-right: $form-width-xs;
+    padding-right: $form-width-xs;
     //padding-left: $content-overlap-md;
     //margin-left: -1 * $content-overlap-md;
     //margin-right: -1 * $content-overlap-md;
   }
 
   @media screen and (min-width: $screen-sm) {
-    //padding-right: $form-width-sm;
-    //padding-left: $content-overlap-md;
+    padding-right: $form-width-sm;
     //margin-left: -1 * $content-overlap-md;
     //margin-right: -1 * $content-overlap-md;
   }
 
   @media screen and (min-width: $screen-md) {
-    //padding-right: $form-width-md;
+    padding-right: $form-width-md;
     //padding-left: $content-overlap-md;
     //margin-left: -1 * $content-overlap-md;
     //margin-right: -1 * $content-overlap-md;
   }
 
   @media screen and (min-width: $screen-lg) {
-
+	  padding-right: $form-width-xl;  
   }
 
   @media screen and (min-width: $screen-xl) {
-
-
+  	padding-right: $form-width-xl;  
   }
 }
 
 
-@mixin mobile{
+@mixin mobile {
   @media screen and (max-width: #{$screen-xxs-max}){
     @content;
   }

@@ -11,6 +11,8 @@
     text-transform: uppercase;
     line-height: .9em;
     text-align: center;
+    
+    text-shadow: rgba(0,0,0,0.6) 2px 2px 6px;
   }
   	    
   h2, h3, h4, h5 {
@@ -33,7 +35,7 @@
 .wrapper {
 	background-color: $white;
 	color: $msf-black;
-	padding: 80px 100px 80px 35px;
+	padding: 8% 8% 8% 6%;
 	position: relative;
 	
 	p {
@@ -79,7 +81,6 @@
 
 .impactText-wrapper.wrapper {
 	background: none;
-    padding: 65px 130px 0px 35px;
 	
 	h3 {
 		color: $white;
@@ -110,8 +111,8 @@
 .responseText-wrapper.wrapper {
     background: none;
     position: absolute;
-	padding: 80px 100px 10px 35px;
-    bottom: 15px;
+		padding-bottom: 3%;
+    bottom: 0px;
 	
 	h3 {
 		color: $white;
@@ -128,19 +129,26 @@
 .js-quote {
 	
 }
+
 .quoteText-wrapper.wrapper {
 	
+	img {
+		float:left; 
+		width:30%; 
+		padding-right: 30px;
+	}
 	blockquote {
 		
 		color: $msf-red;
 		font-weight: 700;
+		
 		p {
 			@include fontSize-medium;
 			margin: 0px;			
 		}
 		
 		span.author {
-		font-weight: 500;
+			font-weight: 500;
 		}
 	}	
 }
@@ -152,7 +160,7 @@
 .js-gift {
 	position: relative; //for the overflow control
 	overflow: hidden;
-	height: 425px;
+	min-height: 425px;
 	background: $gift-bgimage;
 	background-size: cover;
 	background-position: center;
@@ -208,7 +216,7 @@
 	}
 }
 .policyText-wrapper.wrapper {
-	padding: 80px 70px 80px 35px;
+	padding: 8% 8% 8% 6%;
 }
 
 .policyText-colleft {
@@ -388,6 +396,70 @@
 // for mobile
 @media screen and (max-width: $screen-xs-max),
 screen and (max-device-width:$screen-xs-max) {
+
+	header p.page-logo {
+		left: 0px;	
+	}
+	
+	.campaign {
+		
+	  overflow: hidden;
+	  @include contentContainer;
+	  
+	  h1 {
+	  	@include font-headN7;
+			font-size: 1.5rem;
+	    position: absolute;
+	    bottom: 0;
+			padding: 0 6% 50%;
+	  }
+	  	  	    	  
+	}
+	
+	.impactText-wrapper.wrapper {
+		
+		h3 {
+			font-size: 2em;
+		}
+		background: none;
+		
+		padding-top: 20%;		
+		p {
+			color: $white;
+			@include font-bodyN6;
+			@include fontSize-base;
+			@include line-base;
+		}
+	
+	}
+	
+	.giftText-wrapper.wrapper {
+		padding: 8% 8% 8% 6%;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.accountableText-colleft, .accountableText-colright {
+		float: none;
+		width: auto;
+		padding-left: 0px;
+
+		p {
+			padding-right: 0px;
+			border-right: none;
+		}
+	}
+		
+	.accountableText-colright img {
+		margin-top: 35px;
+		padding-left: 0px;
+	}
+	
+	.policyText-colleft, .policyText-colright {
+		float: none;
+		width: auto;
+		padding: 0px;
+	}
 
   .campaignText-main {
     @include fontSize-medium;

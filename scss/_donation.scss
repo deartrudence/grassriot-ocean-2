@@ -548,6 +548,35 @@
 	padding-left: 1em;
   }
 
+	.steps-list {
+	  ul {
+			margin: 0;
+			padding: 0px;
+		}
+	}
+	
+	.form-header-counter + h3 {
+    line-height: 1;
+    font-size: 1.6em;
+    color: #f42841;
+    text-align: center;
+    margin: 30px auto 0px;
+    width: 90%;
+	}
+	.security-text {
+		background: none;
+    border: none;
+    color: lightgrey;
+    font-size: 11px;
+    position: absolute;
+    top: 6px;
+    left: 213px;
+    font-style: normal;
+    z-index: 10;
+    border-radius: 4px;
+    transition: all 0.5s ease;
+	}	
+		
   .mob-but-wrap {
 	position: fixed;
   }
