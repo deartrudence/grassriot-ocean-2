@@ -6,17 +6,16 @@
     <title>MSF Canada</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-		<link rel="shortcut icon" href="http://cdn.msf.org/sites/msf.org/files/favicon_0_0.ico" type="image/vnd.microsoft.icon">
-		
-	<script src="https://use.typekit.net/hnt7cxs.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <link rel="shortcut icon" href="http://cdn.msf.org/sites/msf.org/files/favicon_0_0.ico" type="image/vnd.microsoft.icon">
+    
+  <script src="https://use.typekit.net/hnt7cxs.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="output/app.css">
-	<!--script src="http://cdn.raygun.io/raygun4js/raygun.min.js"></script-->
-  
+    <link rel="stylesheet" href="output/app.css?v=1448913328000">
+  <!--script src="http://cdn.raygun.io/raygun4js/raygun.min.js"></script-->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -26,6 +25,8 @@
     // ga('create', 'UA-2854575-1', 'auto');
     // ga('send', 'pageview');
   </script>
+
+
   <script>
     /*Raygun.init('uiv4Ngo9EFGKmmfVfksyaA==', {
       excludedHostnames: [],
@@ -34,15 +35,16 @@
     Raygun.setFilterScope('all');
     Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
   </script>
-  
-  </head>
+  <link href="css/ensharing.css" rel="stylesheet" type="text/css">
+<link href="css/typeahead.css" rel="stylesheet" type="text/css">
+</head>
   <body>
     <!-- Error Modal -->
     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             <h5 class="modal-title">Error processing donation</h5>
           </div>
           <div class="modal-body">
@@ -55,13 +57,13 @@
     <!-- End Error Modal -->
 
   <div class="main">
-	<div class="donation-form-wrapper">
+  <div class="donation-form-wrapper">
     <header class="page-header">
       <p class="page-logo">Medecins sans frontieres</p>
     </header>
 
-    	<div class="col-text campaign">
-	    	<!-- TODO - need to change js-hero background image based on class -->
+      <div class="col-text campaign">
+        <!-- TODO - need to change js-hero background image based on class -->
         <section class="js-hero js-content-version row hero">
           <div class="hero-image js-hero-image">
     
@@ -90,12 +92,20 @@
         </section>
       </div>
 
-			<div class="col-form js-col-form">
+<div class="col-form js-col-form">
         <section class="form js-right-column">
         <div id="grdonation" class="slider-wrap js-form-container">
-        <!-- START CAMPAIGN CONTENT -->
+<script type='text/javascript' src='https://www.google.com/jsapi'></script>
+<script type='text/javascript'>google.load('jquery', '1.7.1');</script>
+<script type='text/javascript' >var CONTEXT_ROOT = '/ea-action';</script>
+<script type='text/javascript' src='/ea-action/js/eaCommon.js'></script>
+<script type='text/javascript' src='/ea-action/js/eaAJAX.js'></script>
+<script type='text/javascript' src='/ea-action/js/eacampaign.js'></script>
 
-<form method='POST' name='[GR] Form 2015_1' id='ea11256id' class='eaform ea11256class' action='/ea-action/action' autocomplete='off' onsubmit='return validateEAform(this, false, false, false )'>
+<script type='text/javascript' src='/ea-action/js/typeahead.js'></script>
+
+
+<form method='POST' name='[GR] Default Form_1' id='ea12268id' class='eaform ea12268class' action='/ea-action/action' autocomplete='off' onsubmit='return validateEAform(this, false, false, false )'>
 <input type='hidden' name='ea_requested_action' value='ea_submit_user_form' />
 <input type='hidden' name='ea_javascript_enabled' id='ea_javascript_enabled' value='false' />
 <input type='hidden' name='ea.AJAX.submit' value='false' />
@@ -103,12 +113,14 @@
 <input type='hidden' name='ea.campaign.id' value='44866' />
 <input type='hidden' name='ea.form.id' value='12268' />
 <input type='hidden' name='ea.submitted.page' value='1' />
-<input type='hidden' name='sessionId' value='54672692-0fce-431e-afea-a4a035ffc6c3' />
+<input type='hidden' name='sessionId' value='9961619d-78b8-4d2a-8ea1-7360bfae44e8' />
+<div id='eaerrors' class='eaErrorMessage'>Generic Payment Error
+<br/>
+</div>
+
 <div id='[GR]_Campaign_HeaderDiv' class='eaLeftColumnContent'><div class="js-heroContent">
 <h1 class="js-heroTitle heroTitle">Help us get there before time runs out. Donate to our emergency fund.</h1>
-</div></div>
-
-<div id='[GR]_Form_HeaderDiv' class='eaRightColumnContent'><div class="form-navbar steps-list">
+</div></div><div id='[GR]_Form_HeaderDiv' class='eaRightColumnContent'><div class="form-navbar steps-list">
   
 <ul>
 </ul>
@@ -199,45 +211,31 @@
 <li>$500</li>
 <li>$1000</li>
 </ul>
-<ul class="single">
-<li>$9</li>
-<li>$35*</li>
-<li>$50</li>
-<li>$75</li>
-<li>$100</li>
-</ul>
-<ul class="monthly">
-<li>$5*</li>
-<li>$15</li>
-<li>$50</li>
-<li>$75</li>
-<li>$100</li>
-</ul>
 </div>
 <div class="js-formOpen-labelText hide">Donate</div></div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Donation_AmountDiv' class='eaRightColumnContent'><div id='Donation_AmountError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Donation_Amount'><a name='Donation_Amount' style='text-decoration:none; color: inherit;'>Donation Amount</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Donation_AmountField' class='eaFormField'>
-   <input id='Donation_Amount' type='text' class='eaFormTextfield' name='Donation Amount' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Donation_Amount' type='text' class='eaFormTextfield' name='Donation Amount' value='125' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='[GR]_Billing_InformationDiv' class='eaRightColumnContent'><h2 class="js-billingDetails">Billing Information</h2></div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='First_NameDiv' class='eaRightColumnContent'><div id='First_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='First_Name'><a name='First_Name' style='text-decoration:none; color: inherit;'>First Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='First_NameField' class='eaFormField'>
-   <input id='First_Name' type='text' class='eaFormTextfield' name='First Name' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='First_Name' type='text' class='eaFormTextfield' name='First Name' value='Senning' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Last_NameDiv' class='eaRightColumnContent'><div id='Last_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Last_Name'><a name='Last_Name' style='text-decoration:none; color: inherit;'>Last Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Last_NameField' class='eaFormField'>
-   <input id='Last_Name' type='text' class='eaFormTextfield' name='Last Name' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Last_Name' type='text' class='eaFormTextfield' name='Last Name' value='Luk' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Address_1Div' class='eaRightColumnContent'><div id='Address_1Error' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Address_1'><a name='Address_1' style='text-decoration:none; color: inherit;'>Address 1</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Address_1Field' class='eaFormField'>
-   <input id='Address_1' type='text' class='eaFormTextfield' name='Address 1' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Address_1' type='text' class='eaFormTextfield' name='Address 1' value='111 Fake St.' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Address_2Div' class='eaRightColumnContent'><div id='Address_2Error' class='eaErrorMessage'></div>
@@ -249,7 +247,7 @@
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='CityDiv' class='eaRightColumnContent'><div id='CityError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='City'><a name='City' style='text-decoration:none; color: inherit;'>City</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CityField' class='eaFormField'>
-   <input id='City' type='text' class='eaFormTextfield' name='City' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='City' type='text' class='eaFormTextfield' name='City' value='Toronto' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='ProvinceDiv' class='eaRightColumnContent'><div id='ProvinceError' class='eaErrorMessage'></div>
@@ -263,7 +261,7 @@
       <option value='NL'>NL</option>
       <option value='NT'>NT</option>
       <option value='NU'>NU</option>
-      <option value='ON'>ON</option>
+      <option value='ON' selected>ON</option>
       <option value='PE'>PE</option>
       <option value='QC'>QC</option>
       <option value='SK'>SK</option>
@@ -274,13 +272,13 @@
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Postal_CodeDiv' class='eaRightColumnContent'><div id='Postal_CodeError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Postal_Code'><a name='Postal_Code' style='text-decoration:none; color: inherit;'>Postal Code</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Postal_CodeField' class='eaFormField'>
-   <input id='Postal_Code' type='text' class='eaFormTextfield' name='Postal Code' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Postal_Code' type='text' class='eaFormTextfield' name='Postal Code' value='M5T 1T1' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='E-mailDiv' class='eaRightColumnContent'><div id='E-mailError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='E-mail'><a name='E-mail' style='text-decoration:none; color: inherit;'>Email Address</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='E-mailField' class='eaFormField'>
-   <input id='E-mail' type='text' class='eaFormTextfield' name='E-mail' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='E-mail' type='text' class='eaFormTextfield' name='E-mail' value='senning+test@grassriots.com' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='[GR]_Payment_InformationDiv' class='eaRightColumnContent'><h2 class="js-paymentDetails">Payment Information</h2></div>
@@ -288,7 +286,7 @@
 <span class='eaFormElementLabel'><label for='Payment_Type'><a name='Payment_Type' style='text-decoration:none; color: inherit;'>Payment Type</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Payment_TypeField' class='eaFormField'>
    <select id='Payment_Type' class='eaFormSelect' name='Payment Type' onblur='validatefield(this, true, false, false);' />      <option value=''>-please select-</option>
-      <option value='Visa'>Visa</option>
+      <option value='Visa' selected>Visa</option>
       <option value='Master Card'>Master Card</option>
       <option value='AMEX'>AMEX</option>
    </select>
@@ -297,13 +295,13 @@
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Card_Holder_NameDiv' class='eaRightColumnContent'><div id='Card_Holder_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Card_Holder_Name'><a name='Card_Holder_Name' style='text-decoration:none; color: inherit;'>Card Holder Name</a></label></span>
 <div id='Card_Holder_NameField' class='eaFormField'>
-   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='Senning Luk' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Credit_Card_NumberDiv' class='eaRightColumnContent'><div id='Credit_Card_NumberError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Card Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Credit_Card_NumberField' class='eaFormField'>
-   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='4111111111111111' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='Credit_Card_ExpirationDiv' class='eaRightColumnContent'><div id='Credit_Card_ExpirationError' class='eaErrorMessage'></div>
@@ -337,32 +335,31 @@
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='CVV_CodeDiv' class='eaRightColumnContent'><div id='CVV_CodeError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Code <a href="https://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=2770" onclick="window.open('https://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=2770','CVV','width=600,height=600,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-300)+'');return false;">What is this?</a></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CVV_CodeField' class='eaFormField'>
-   <input id='CVV_Code' type='text' style='width:90px' class='eaFormTextfield' name='CVV Code' value='' onblur='validatefield(this, true, false, false);' />
+   <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='1234' onblur='validatefield(this, true, false, false);' />
 </div>
 </div>
 <div class='eaLeftColumnFiller'>&nbsp;</div><div id='opt-INDiv' class='eaRightColumnContent'><div class="eaQuestionLabel"></div><div class="eaQuestionCheckboxFormFieldContainer">
 <span class='eaQuestionCheckbox'><input id='opt-INY' type='checkbox' name='opt-IN' value='Y' checked  onblur='validatefield(this, false, false, false);' /><label for="opt-INY"> Yes, I would like to receive email updates from MSF.</label></span>&nbsp;&nbsp;&nbsp;</div></div><span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_1"><input type="submit" class="eaSubmitButton" value="Donate"></input></span>
-</form>
-          <!-- END OF HTML OUTPUT FROM EN -->
-        </div>
+</form><!-- END OF HTML OUTPUT FROM EN -->
+</div>
 
         <button class="formOpen js-formOpen">
           <span class="js-formOpen-label"></span>
           <span class="formOpen-arrow" role="presentation"></span>
         </button>
-        <button class="formClose js-formClose">&times;</button>
+        <button class="formClose js-formClose">×</button>
 
         </section>
       </div>
 
-	</div>
-	</div>
+  </div>
+  </div>
 
     <div class="modal fade" id="validErrModal" tabindex='-1'>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title">Please correct the errors indicated below.</h4>
                 </div>
                 <div class="modal-body error-list"><!-- dynamic content --></div>
@@ -373,24 +370,17 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="output/vendors.js"></script>
-    <script type="text/javascript" src="output/app.js"></script>
-    <script type="text/javascript">
-    validatefield =
-      ( typeof validatefield === "undefined" )
-      ? function(){}
-      : validatefield;
+    <script type="text/javascript" src="output/vendors.js?v=1448913332000"></script>
+    <script type="text/javascript" src="output/app.js?v=1448913330000"></script>
 
 
-    validateEAform =
-      ( typeof validateEAform === "undefined" )
-      ? function(){}
-      : validateEAform;
-
-    checkdep =
-      ( typeof checkdep === "undefined" )
-      ? function(){}
-      : checkdep;
-    </script>
   </body>
 </html>
+<script type='text/javascript'> 
+  if (document.forms && createXMLRequest() != null) {
+    var jsEnabled = document.getElementById('ea_javascript_enabled');
+    if(jsEnabled) { jsEnabled.value='true'; }
+    var url = '/ea-action/form.cache.do?campaignId=44866&formId=12268';
+    $.post(url);
+  }
+</script>
