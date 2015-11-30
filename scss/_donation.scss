@@ -295,7 +295,20 @@
 	margin-top: 25px;
 	position: relative;
 	height: 139px;
+
+	.seconds-label {
+    padding-right: 3px;
+    /* font-weight: normal; */
+    font-size: 17px;
+    
+    span {
+	    font-weight: normal;
+    }
+	}
+
 }
+
+
 
 .form-header-counter.js-content-version.doc {
 	background: $form-feature-doc;

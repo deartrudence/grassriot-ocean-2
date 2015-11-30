@@ -5611,6 +5611,14 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
   position: relative;
   height: 139px;
 }
+.form-header-counter .seconds-label {
+  padding-right: 3px;
+  /* font-weight: normal; */
+  font-size: 17px;
+}
+.form-header-counter .seconds-label span {
+  font-weight: normal;
+}
 
 .form-header-counter.js-content-version.doc {
   background: url('../img/doc-countdown.png?1448895595');
