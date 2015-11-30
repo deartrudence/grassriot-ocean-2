@@ -24,7 +24,15 @@
   }
 
   .page-logo{
-    @include smallDesktopPlus{
+
+    @include mobile{
+      left: 50px;
+      width: 150px;
+      height: 70px;
+      background-size: 134px;
+    }
+
+    @include tabletPlus{
       left: 140px;
     }
   }
@@ -53,12 +61,12 @@
     text-transform: uppercase;
     @include font-bodyN7;
 
-    @include tablet{
+    @include mobile{
       text-align: center;
       @include fontSize-large;
-      padding: 2em 0;
+      padding: 75px 0 2em;
     }
-    @include smallDesktopPlus{
+    @include tabletPlus{
       left: 50%;
       width: 50%;
       @include fontSize-large;

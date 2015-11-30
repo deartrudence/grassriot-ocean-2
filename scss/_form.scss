@@ -31,6 +31,9 @@ label{
 }
 
 .form{
+  background: $form-background;
+  background-repeat: repeat-y;
+  background-color: white;
   @include formContainer;
   @include z-highest;
 }
@@ -46,12 +49,13 @@ label{
   }
 
   @media screen and (min-width: $screen-lg){
-
+  
   }
 
   @media screen and (min-width: $screen-xl){
     width: $form-width-xl;
   }
+  position: absolute;
   right: 0 !important;
 
   .form-navbar{
@@ -63,7 +67,7 @@ label{
 	
     background: $form-background;
     background-repeat: repeat-y;
-    background-color: white;  // overflow-y: auto;
+    background-color: white;
 
   &.is-active{
     top: 0;
@@ -136,7 +140,7 @@ label{
   }
 
   .formOpen {
-    @include dagny-heavy;
+    // @include dagny-heavy;
     @include fontSize-base;
     display: block;
     position: absolute;
@@ -246,4 +250,40 @@ label{
 
 .no-placeholder .eaFormElementLabel{
   display: block !important;
+}
+
+
+
+.inline-block-field-wrap {
+  display: inline-block;
+  position: relative;
+  float: left;
+
+  &.full-wrap {
+    width: 100%;
+    clear: both;
+    // float: none;
+  }
+  &.one-quarter-wrap {
+    width: 24%;
+  }
+  &.half-wrap {
+    width: 49%;
+  }
+  &.three-quarter-wrap {
+    width: 74%;
+  }
+
+  &.last-wrap {
+    margin-left: 2%;
+    // text-align: right;
+    clear: none;
+  }
+
+  &.hide-label {
+    .eaFormElementLabel {
+      height: 0;
+      margin-top: 0 !important;
+    }
+  }
 }

@@ -273,9 +273,11 @@ webpackJsonp([0],[
 	        } );
 
 	        var error_text = '';
-	        errors.each(function() {
-	            error_text += $(this).text();
-	        });
+	        if(typeof errors.each === "function"){
+	          errors.each(function() {
+	              error_text += $(this).text();
+	          });  
+	        }
 
 	        // handle errors
 	        try { throw new Error("EA Processing Error");}
@@ -384,7 +386,7 @@ webpackJsonp([0],[
 	 * @return {[type]} [description]
 	 */
 	function setupCounter(){
-	  var refresh = 4000;
+	  var refresh = 1200;
 	  var scroll = 2000;
 	  var maxstep = 30;
 	  var currentCount = 0;
@@ -404,12 +406,13 @@ webpackJsonp([0],[
 	  var contentClass;
 	  //corresponds to set amounts at 30 seconds per 250$
 	  //TODO: Set these based on the actual donation ranges
-	  var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
+	  // var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
 
-	  __webpack_require__(22);
-	  __webpack_require__(23);
+	  // require('jqueryeasing');
+	  // require('ticker');
 
 	  var version = getURLParameter('s');
+	  var variant = getURLParameter('v');
 
 	  switch(version){
 	    case "1843":
@@ -452,11 +455,20 @@ webpackJsonp([0],[
 	      // currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
 	      currentCount = currentTotal;
 	      currentCountSet = true;
-	      $(".js-seconds-counter").html(addCommas(currentCount));
+	      showCount();
 	    }
 
 	    // var randLimit = currentTotal - currentCount < 2 ? currentTotal - currentCount : 2;
-	    currentCount += timeAmounts[Math.floor(Math.random() * timeAmounts.length)];
+	    // currentCount += timeAmounts[Math.floor(Math.random() * timeAmounts.length)];
+
+	    if(typeof variant !== "undefined" && variant === "countdown"){
+	      if(currentCount > 100){
+	        currentCount -= 1;
+	      }
+	    }
+	    else {
+	      currentCount += 1;  
+	    }
 
 	    if(!isStarted){
 	      isStarted = true;
@@ -466,14 +478,22 @@ webpackJsonp([0],[
 
 	  /**
 	   * [gettotal description]
+	   * Not used in this
+	   * 
 	   * @return {[type]} [description]
 	   */
-	  function gettotal(){
+	  // function gettotal(){
 
-	    // currentTotal += timeAmounts[Math.floor(Math.random()*timeAmounts.length)];
-	    // console.log(currentTotal);
-	    // updatecount(currentTotal);
-	  }
+	  //   // currentTotal += timeAmounts[Math.floor(Math.random()*timeAmounts.length)];
+	  //   if(typeof variant !== "undefined" && variant === "countdown"){
+	  //     currentTotal -= 1;
+	  //   }
+	  //   else {
+	  //     currentTotal += 1;  
+	  //   }
+	    
+	  //   updatecount(currentTotal);
+	  // }
 
 	  /**
 	   * [setStartCount description]
@@ -507,10 +527,11 @@ webpackJsonp([0],[
 	    if(isPaused) return;
 
 	    updatecount();
+	    showCount();
 
 	    //set refresh interval to between 2 and 4 seconds
-	    refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
-	    refresher = window.setTimeout(doRefresh,refresh);
+	    // refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
+	    // refresher = window.setTimeout(doRefresh,refresh);
 	  }
 
 	  /**
@@ -518,21 +539,30 @@ webpackJsonp([0],[
 	   */
 	  function setCounter() {
 	    setStartCount();
-	    setTimeout( doRefresh, refresh );
+	    // setTimeout( doRefresh, refresh );
+	    setInterval(doRefresh, refresh);
 
-	    ticker = $counter.ticker({
-	      delay:  1000,
-	      separators: true,
-	      incremental: function(){
-	        return currentCount;
-	        // if(tickerCount == 0){
-	        //   tickerCount = currentCount;
-	        // }else if(tickerCount < currentCount){
-	        //   tickerCount++;
-	        // }
-	        // return tickerCount;
-	      }
-	    });
+	    // ticker = $counter.ticker({
+	    //   delay:  1000,
+	    //   separators: true,
+	    //   incremental: function(){
+	    //     return currentCount;
+	    //     // if(tickerCount == 0){
+	    //     //   tickerCount = currentCount;
+	    //     // }else if(tickerCount < currentCount){
+	    //     //   tickerCount++;
+	    //     // }
+	    //     // return tickerCount;
+	    //   }
+	    // });
+	  }
+
+	  /**
+	   * [showCount description]
+	   * @return {[type]} [description]
+	   */
+	  function showCount(){
+	    $counter.html(currentCount);
 	  }
 
 	  /**
@@ -545,7 +575,7 @@ webpackJsonp([0],[
 	    var diff = newAdditional - oldAdditional;
 
 	    //convert to a time difference
-	    diff = Math.floor(diff/250 * 30);
+	    diff = Math.floor(diff/100 * 60);
 	    
 	    //Add the offset to the counter
 	    currentCount += diff;
@@ -553,12 +583,15 @@ webpackJsonp([0],[
 	    //save our new value
 	    oldAdditional = newAdditional;
 
+
+	    showCount();
+
 	    //force a refresh
 	    //Set refresh delay to zero to improve response time
-	    var normalRefresh = ticker[0].options.delay;
-	    ticker[0].options.delay = 0;
-	    ticker[0].update_container();
-	    ticker[0].options.delay = normalRefresh;
+	    // var normalRefresh = ticker[0].options.delay;
+	    // ticker[0].options.delay = 0;
+	    // ticker[0].update_container();
+	    // ticker[0].options.delay = normalRefresh;
 	  }
 
 	  function pauseTicker(){
@@ -572,9 +605,9 @@ webpackJsonp([0],[
 
 	  getSecondsAdded();
 	  $("#Donation_AmountField")
-	    .on("change",getSecondsAdded)
-	    .on("mouseenter",pauseTicker)
-	    .on("mouseleave",unpauseTicker);
+	    .on("change",getSecondsAdded);
+	    // .on("mouseenter",pauseTicker)
+	    // .on("mouseleave",unpauseTicker);
 
 	}
 
@@ -907,7 +940,7 @@ webpackJsonp([0],[
 	        var itemData = [campaignData];
 
 	        //get the social links module
-	        var GRSocialize = __webpack_require__(24);
+	        var GRSocialize = __webpack_require__(22);
 	                
 	        var section = getURLParameter('s');
 	        grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
@@ -1226,7 +1259,7 @@ webpackJsonp([0],[
 
 	function init_validation(){
 		try{
-			__webpack_require__(25);
+			__webpack_require__(23);
 
 	        var errorMessages = {
 	                invalidMonth: 'Invalid month',
@@ -4547,9 +4580,7 @@ webpackJsonp([0],[
 /* 19 */,
 /* 20 */,
 /* 21 */,
-/* 22 */,
-/* 23 */,
-/* 24 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
