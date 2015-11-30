@@ -270,6 +270,7 @@ function setupTracking(){
 
         var error_text = '';
         if(typeof errors.each === "function"){
+          errors.each(function() {
               error_text += $(this).text();
           });  
         }
