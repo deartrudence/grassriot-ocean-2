@@ -960,8 +960,6 @@ function setupTY(){
           var content = $('.social .facebook .'+element).length
             ? $('.social .facebook .'+element).text()
             : $('meta[property="og:'+element+'"]').attr('content');
-
-            console.log(element, content);
           if(element=='image') {
             $('.share-block .facebook-'+element).css('background-image','url('+content+')');
           } else {
@@ -980,14 +978,14 @@ function setupTY(){
           'header .wrap': leftColumnSelector+' > div:first .text-block',
           'header': leftColumnSelector+' > div:first .subtext-block'
         }, true); 
-        
-        console.log($(".js-postaction-heroBg"));
+
         $('.page-header').css('background-image', 'url('+$(".js-postaction-heroBg").attr('src')+')');
 
 
         //init social links
         socialbuttons = new GRSocialize({
-            target: ".social",
+            source: ".social",
+            target: ".share-block",
             newWindow: true,
             onOpen: function(network, spec, target){
                 grAnalytics.analyticsReport('share/'+network);
