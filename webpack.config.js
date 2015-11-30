@@ -71,7 +71,7 @@ config.addVendor('jquery', "vendor/jquery-1.11.3.min.js");
 config.addVendor('jqueryvalidate', "vendor/jquery.validate.min.js");
 // config.addVendor('raygun', "vendor/raygun/raygun.min.js");
 config.addVendor('modernizr',"vendor/modernizr.min.js");
-config.addVendor('slick', "vendor/slick/slick.min.js");
+//config.addVendor('slick', "vendor/slick/slick.min.js");
 config.addVendor('affix', "vendor/bootstrap/assets/javascripts/bootstrap/affix.js");
 config.addVendor('modal', "vendor/bootstrap/assets/javascripts/bootstrap/modal.js");
 config.addVendor('tooltip', "vendor/bootstrap/assets/javascripts/bootstrap/tooltip.js");

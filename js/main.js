@@ -68,7 +68,7 @@ var fields = gr.buildFieldNameObject({
     recur_freq: 'Recurring Frequency',
     recur_day:  'Recurring day',
     optin:      'opt-IN',
-    giftaid:    'Gift Aid',
+    /*giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
     matching:   'Matching Gift', 
     employer:   'Company Name',
@@ -82,7 +82,7 @@ var fields = gr.buildFieldNameObject({
     inmem_city:    'Honoree Inform City',
     inmem_region:  'Honoree Inform State',
     inmem_postal:  'Honoree Inform Post Code',
-    inmem_country: 'Honoree Inform Country',
+    inmem_country: 'Honoree Inform Country',*/
 });
 
 //Key:Value :: Target:Content
@@ -99,10 +99,10 @@ var ENBeautifierFillers = {
 };
 var ENBeautifierFillersContainers = {
   '#gr_donation': [
-    '#'+fields.recur_pay.nameNoSpace+'Div', 
+    //'#'+fields.recur_pay.nameNoSpace+'Div', 
     '#'+fields.amt.nameNoSpace+'Div', 
-    '#'+fields.inmem.nameNoSpace+'Div', 
-    '#'+fields.matching.nameNoSpace+'Div'
+    //'#'+fields.inmem.nameNoSpace+'Div', 
+    //'#'+fields.matching.nameNoSpace+'Div'
   ],/*
   '#gr_extra': [
     '.js-employerMatch',
@@ -132,7 +132,8 @@ var ENBeautifierFillersContainers = {
     '#'+fields.postal.nameNoSpace+'Div', 
     '#'+fields.country.nameNoSpace+'Div', 
     '#'+fields.region.nameNoSpace+'Div', 
-    '#'+fields.phone.nameNoSpace+'Div'
+    '#'+fields.optin.nameNoSpace+'Div'
+    //'#'+fields.phone.nameNoSpace+'Div'
   ],
   '#gr_payment': [
     '.js-paymentDetails', 
@@ -172,7 +173,7 @@ $(document).ready(function() {
 		init_validation();
 
         //set pcode validation to Canadian at the start
-        handleCountryChange({target: fields.country.selector});
+        //handleCountryChange({target: fields.country.selector});
 	}
 	catch(error) {
 		graygunner.sendError(error);
@@ -684,23 +685,23 @@ function setupAction(){
         grGiving = new GRGivingSupport({
             form: $form,
             components: {
-                country: {
+                /*country: {
                     selector: fields.country.selector,
                     urlParam: 'country',
                     defaultVal: 'US'
                 },
                 region: {
                     selector: fields.region.selector
-                },
+                },*/
                 /*currency: {
                     // selector: '[name="Payment Currency"]:not(a)',
                     urlParam: 'curr',
                     defaultVal: 'CAD'
                 },*/
-                recurrence: {
+                /*recurrence: {
                     selector: fields.recur_pay.selector,
                     defaultVal: ''
-                },
+                },*/
                 amount: {
                     selector: fields.amt.selector,
                     urlParam: 'amt',
@@ -719,7 +720,7 @@ function setupAction(){
             //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
-            recurrenceOptions: [
+            /*recurrenceOptions: [
                 {label: 'Single', 'value': ''},
                 {label: 'Monthly', 'value': 'Y'}
             ]/*,
@@ -747,10 +748,10 @@ function setupAction(){
             function(e) {
                 $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
             })
-          .on(
+          /*.on(
             'change',
             fields.country.selector,
-            handleCountryChange)
+            handleCountryChange)*/
           .on('submit', sendDonation);
         $form.find(fields.amt.selector).trigger('change');
 
@@ -1544,9 +1545,9 @@ function getFormClasses() {
     classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+    //classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.region.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+    //classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap one-quarter-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
