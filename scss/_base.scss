@@ -77,22 +77,23 @@ $pagetitle-height-xl: 124px;
 $pagetitle-marginleft-xs: 50px;
 $pagetitle-marginleft-base: 70px;
 
-$stripe: image-url('stripe.png');
+$stripe: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/stripe.png?v=1448846415000');
 //Hero
 $hero-background: $white;
-$hero-bgimage: image-url('msf-header.jpg');
-$hero-bgimage-xl: image-url('msf-header.jpg');
+$hero-bgimage: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_doc.jpg?v=1448845789000');
+$hero-bgimage-xl: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_doc.jpg?v=1448845789000');
 
-$hero-bgimage-sea: image-url('msf-header-sea.jpg');
+$hero-bgimage-sea: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_sea.jpg?v=1448845857000');
+$hero-bgimage-delivery: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_delivery.jpg?v=1448845787000');
 
 $heroTitle-padding: 30% 15% 20% 15%;
 $heroTitle-padding-sm: 16% 20% 23%;
 $hero-captionpadding-md: 10px 15px;
 
 // IMPACT
-$impact-bgimage: image-url('section-1.jpg');
-$response-bgimage: image-url('section-2.jpg');
-$gift-bgimage: image-url('section-3.jpg');
+$impact-bgimage: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-1.jpg?v=1448845996000');
+$response-bgimage: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-2.jpg?v=1448845996000');
+$gift-bgimage: image-url('https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-3.jpg?v=1448845996000');
 
 //Campaign
 $campaignText-wrapper: 13% 15%;
@@ -117,7 +118,6 @@ $financial-height-md: 400px;
 $financialText-padding-sm: 5%;
 $financialText-padding-xs: 10%;
 $financialText-padding-md: 5%;
-$financial-bgimage: image-url("15185294432_d0522561f3_o.jpg");
 
 
 //Supporters
@@ -127,8 +127,10 @@ $supporterPicture-height-md: 300px;
 $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
-$form-background: image-url("border.jpg");
-$form-feature: image-url("form-feature.png");
+$form-background: image-url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/msf-ye-2015-border.jpg?v=1448846411000");
+$form-feature-doc: image-url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/doc-countdown.png?v=1448846674000");
+$form-feature-delivery: image-url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/delivery-countdown.png?v=1448846675000");
+$form-feature-sea: image-url("https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/sea-countdown.png?v=1448846677000");
 
 $form-width-xxs: 300px;
 $form-width-xs: 300px;

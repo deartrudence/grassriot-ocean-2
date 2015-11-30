@@ -4176,7 +4176,7 @@ body:after {
   position: relative;
   overflow: hidden;
   height: 545px;
-  background: url('../img/msf-header.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_doc.jpg?v=1448845789000);
   background-size: cover;
   background-position: center;
 }
@@ -4334,7 +4334,7 @@ html.csstransforms {
 }
 
 .js-campaign .stripe.wrapper {
-  background: url('../img/stripe.png?1448249388');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/stripe.png?v=1448846415000);
   background-repeat: repeat;
   height: 20px;
   padding: 0px;
@@ -4347,19 +4347,19 @@ html.csstransforms {
 }
 
 .js-hero.js-content-version.doc {
-  background: url('../img/msf-header.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_doc.jpg?v=1448845789000);
   background-size: cover;
   background-position: center;
 }
 
 .js-hero.js-content-version.sea {
-  background: url('../img/msf-header-sea.jpg?1448833184');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_sea.jpg?v=1448845857000);
   background-size: cover;
   background-position: right bottom;
 }
 
 .js-hero.js-content-version.delivery {
-  background: url('../img/msf-header.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/hero_doc.jpg?v=1448845789000);
   background-size: cover;
   background-position: center;
 }
@@ -4391,7 +4391,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 420px;
-  background: url('../img/section-1.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-1.jpg?v=1448845996000);
   background-size: cover;
   background-position: center;
 }
@@ -4420,7 +4420,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   height: 530px;
-  background: url('../img/section-2.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-2.jpg?v=1448845996000);
   background-size: cover;
   background-position: center;
 }
@@ -4466,7 +4466,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   min-height: 425px;
-  background: url('../img/section-3.jpg?1448243909');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/ye-2015-section-3.jpg?v=1448845996000);
   background-size: cover;
   background-position: center;
 }
@@ -5160,7 +5160,7 @@ label {
 }
 
 #grdonation form {
-  background: url('../img/border.jpg?1448259271');
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/msf-ye-2015-border.jpg?v=1448846411000);
   background-repeat: repeat-y;
   background-color: white;
 }
@@ -5322,7 +5322,7 @@ label {
   }
 
   .form-navbar {
-    background: url('../img/border.jpg?1448259271');
+    background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/msf-ye-2015-border.jpg?v=1448846411000);
     background-repeat: repeat-y;
     background-color: white;
     width: 100%;
@@ -5704,10 +5704,25 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 .form-header-counter {
   margin-top: 25px;
   position: relative;
-  background: url('../img/form-feature.png?1448328931');
+  height: 139px;
+}
+
+.form-header-counter.js-content-version.doc {
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/doc-countdown.png?v=1448846674000);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 139px;
+}
+
+.form-header-counter.js-content-version.sea {
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/sea-countdown.png?v=1448846677000);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-header-counter.js-content-version.delivery {
+  background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/delivery-countdown.png?v=1448846675000);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .seconds-container {

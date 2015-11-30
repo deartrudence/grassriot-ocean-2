@@ -294,11 +294,27 @@
 .form-header-counter {
 	margin-top: 25px;
 	position: relative;
-	background: $form-feature;
-	background-repeat: no-repeat;
-	background-size: cover;
 	height: 139px;
 }
+
+.form-header-counter.js-content-version.doc {
+	background: $form-feature-doc;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.form-header-counter.js-content-version.sea {
+	background: $form-feature-sea;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.form-header-counter.js-content-version.delivery {
+	background: $form-feature-delivery;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+	
 .seconds-container {
   color: $white;
   @include font-headN7;

@@ -47,14 +47,14 @@ var grAnalytics;
 var gr = require('./modules/GRHelpers');
 
 var fields = gr.buildFieldNameObject({
-    email:      'Email',
+    email:      'E-mail',
     fname:      'First Name',
     lname:      'Last Name',
     street1:    'Address 1',
-    street2:    'Address2',
+    street2:    'Address 2',
     city:       'City',
-    region:     'State',
-    postal:     'Postcode',
+    region:     'Province',
+    postal:     'Postal Code',
     country:    'Country',
     phone:      'Phone Number',
     pay_type:   'Payment Type',
@@ -67,7 +67,7 @@ var fields = gr.buildFieldNameObject({
     recur_pay:  'Recurring Payment',
     recur_freq: 'Recurring Frequency',
     recur_day:  'Recurring day',
-    optin:      'Opt in',
+    optin:      'opt-IN',
     giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
     matching:   'Matching Gift', 
@@ -138,6 +138,7 @@ var ENBeautifierFillersContainers = {
     '.js-paymentDetails', 
     '#'+fields.pay_type.nameNoSpace+'Div', 
     //'#CC_ImagesDiv', 
+    '#'+fields.cardholder.nameNoSpace+'Div', 
     '#'+fields.cc_num.nameNoSpace+'Div', 
     '#'+fields.cc_cvv.nameNoSpace+'Div', 
     '#'+fields.cc_exp.nameNoSpace+'Div'
