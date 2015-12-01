@@ -1,0 +1,191 @@
+<style><!--
+table{font-family:Arial, Helvetica, sans-serif; font-size: 12px;}
+
+td {
+	padding-bottom: 10px;
+}
+
+ul {padding-left:1em}
+li {padding-left:1em}
+--></style>
+
+<table style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12px !important; border-top: 3px solid black; border-bottom: 3px solid black;" width="690">
+	<tbody style="width: 600px; font-family: Arial, Helvetica, sans-serif;">
+	<tr>
+		<td>
+			<table width="100%">
+				<tr>
+					<td width="50%" valign="top">
+						<table width="50%" align="center" cellpadding="10" cellspacing="0" border="0">
+								<tr>
+									<td colspan="2">
+										<table width="300" align="center" cellpadding="0" cellspacing="0" border="0">
+											<tr>
+												<td width="150" valign="top">
+													<img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/logo_msf_bilingual.png" width="150" style="margin-left:-20px;" />
+												</td>
+												<td width="150" valign="top">
+													<p style="padding-top:0; font-size: 12px"><span style="font-size: 14px;font-weight:bold;">MSF Canada</span><br />
+														720 Spadina Ave. Ste. 402
+														<br />Toronto ON, M5S 2T9 CA
+													</p>
+												</td>
+											</tr>
+										</table>											
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<br/>																		
+										<p>Charitable Registration Number:<br />135275857RR0001</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="300" align="center" cellpadding="0" cellspacing="0" border="0" style="font-weight: bold;">
+											<tr style="padding-bottom: 30px;">
+												<td width="150">Amount Received:</td>
+												<td width="150">{receipt_data~amount}</td>
+											</tr>										
+											<tr>
+												<td width="0" style="margin-bottom: 30px;">Date Received:</td>
+												<td width="0">{receipt_data~createdOn}</td>
+											</tr>			
+											<tr>
+												<td width="">Date Issued:</td>
+												<td width="">{receipt_data~createdOn}</td>
+											</tr>																									
+											<tr>
+												<td width="">Location Receipt Issued:</td>
+												<td width="">Toronto</td>
+											</tr>	
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="background: lightgrey;">
+										<p>{user_data~First Name} {user_data~LastName}<br/>
+											{user_data~Address 1}<br/>
+											{user_data~City}, {user_data~Province}<br />
+											{user_data~Postal Code} Canada
+										</p>
+										
+										<p>This is your official receipt for income tax purposes Please retain this copy for your records.</p>
+										<p>Canada Revenue Agency<br /><a href="www.cra-arc.gc.ca/charities" target="_blank">www.cra-arc.gc.ca/charities</a></p>
+									</td>
+								</tr>
+						</table>
+					</td>
+					<td width="50%" valign="top">
+						<table align="center" cellspacing="0" border="0" style="font-size:11px; padding: 10px 10px 0px 40px; font-weight: normal; line-height: 1.5em;">
+									<tr>
+										<td>
+											<p style="font-weight: bold;">Receipt Number: {receipt_data~id}</p>
+											<p>Dear {user_data~First Name} {user_data~LastName},</p>											
+											<p>Thank you for your gift to Médecins Sans Frontières / Doctors Without Borders (MSF). MSF is dedicated to preserving the lives and dignity of people whose health and safety are threatened by natural or human disasters. MSF also provides assistance to people living in places where health structures are insufficient or non-existent. We are often the first medical relief organisation to arrive and the last to leave. Your support means that MSF can provide the medicine and trained personnel needed whenever these emergencies arise.</p>
+											<p>You have made a vital contribution to our efforts. It is only with the ongoing commitment of our donors that MSF can provide humanitarian assistance to people in more than 60 countries. Thank you for your generosity and support.</p>
+											<p>Sincerely,</p>
+											
+											<img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/msf-signature-cornish.png?v=1448934775000" width="300" style="margin-bottom: -20px; margin-top: -10px;" />
+											<p>Stephen Cornish, Executive Director, MSF Canada</p>
+										</td>
+									</tr>							
+						</table>						
+					</td>
+				</tr>				
+			</table>
+		</td>				
+	</tr>
+	</tbody>
+</table>
+<table style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 12px !important; border-bottom: 3px solid black;" width="690">
+	<tbody style="width: 600px; font-family: Arial, Helvetica, sans-serif;">
+	<tr>
+		<td>
+			<table width="100%">
+				<tr>
+					<td width="50%" valign="top">
+						<table width="50%" align="center" cellpadding="10" cellspacing="0" border="0">
+								<tr>
+									<td colspan="2">
+										<table width="300" align="center" cellpadding="0" cellspacing="0" border="0">
+											<tr>
+												<td width="150" valign="top">
+													<img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/logo_msf_bilingual.png" width="150" style="margin-left:-20px;" />
+												</td>
+												<td width="150" valign="top">
+													<p style="padding-top:0px; font-size: 12px"><span style="font-size: 14px;font-weight:bold;">MSF Canada</span><br />
+														720 Spadina Ave. Ste. 402
+														<br />Toronto ON, M5S 2T9 CA
+													</p>
+												</td>
+											</tr>
+										</table>											
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<br/>																		
+										<p>Charitable Registration Number:<br />135275857RR0001</p>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<table width="300" align="center" cellpadding="0" cellspacing="0" border="0" style="font-weight: bold;">
+											<tr style="padding-bottom: 30px;">
+												<td width="150">Amount Received:</td>
+												<td width="150">{receipt_data~amount}</td>
+											</tr>										
+											<tr>
+												<td width="0" style="margin-bottom: 30px;">Date Received:</td>
+												<td width="0">{receipt_data~createdOn}</td>
+											</tr>			
+											<tr>
+												<td width="">Date Issued:</td>
+												<td width="">{receipt_data~createdOn}</td>
+											</tr>																									
+											<tr>
+												<td width="">Location Receipt Issued:</td>
+												<td width="">Toronto</td>
+											</tr>	
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td style="background: lightgrey;">
+										<p>{user_data~First Name} {user_data~LastName}<br/>
+											{user_data~Address 1}<br/>
+											{user_data~City}, {user_data~Province}<br />
+											{user_data~Postal Code} Canada
+										</p>
+										
+										<p>This is your official receipt for income tax purposes Please retain this copy for your records.</p>
+										<p>Canada Revenue Agency<br /><a href="www.cra-arc.gc.ca/charities" target="_blank">www.cra-arc.gc.ca/charities</a></p>
+									</td>
+								</tr>
+						</table>
+					</td>
+					<td width="50%" valign="top">
+						<table align="center" cellspacing="0" border="0" style="font-size: 11px; padding: 10px 10px 0px 40px; font-weight: normal; line-height: 1.5em;">
+									<tr>
+										<td>
+											<p style="font-weight: bold;">Receipt Number: {receipt_data~id}</p>
+											<p>Dear {user_data~First Name} {user_data~LastName},</p>											
+											<p>Thank you for your gift to Médecins Sans Frontières / Doctors Without Borders (MSF). MSF is dedicated to preserving the lives and dignity of people whose health and safety are threatened by natural or human disasters. MSF also provides assistance to people living in places where health structures are insufficient or non-existent. We are often the first medical relief organisation to arrive and the last to leave. Your support means that MSF can provide the medicine and trained personnel needed whenever these emergencies arise.</p>
+											<p>You have made a vital contribution to our efforts. It is only with the ongoing commitment of our donors that MSF can provide humanitarian assistance to people in more than 60 countries. Thank you for your generosity and support.</p>
+											<p>Sincerely,</p>
+											
+											<img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/msf-signature-cornish.png?v=1448934775000" width="300" style="margin-bottom: -20px; margin-top: -10px;" />
+											<p>Stephen Cornish, Executive Director, MSF Canada</p>
+										</td>
+									</tr>							
+						</table>						
+					</td>
+				</tr>				
+			</table>
+		</td>				
+	</tr>
+	</tbody>
+</table>
+
+										
