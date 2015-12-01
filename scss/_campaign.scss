@@ -501,6 +501,14 @@ screen and (max-device-width:$screen-xs-max) {
     @include fontSize-small;
   }
 
+.js-campaign {
+	
+	h2 {
+		@include font-headN7;
+		@include fontSize-large;
+	}
+	
+}
   // .highlightsText-wrapper {
   //   padding: $highlightsText-padding-xs;
   // }
