@@ -411,16 +411,20 @@ function setupCounter(){
   var variant = getURLParameter('v');
 
   switch(version){
-    case "1843":
+    case "1843":      
       startingValue = 1843;
-      contentClass = "delivery";
+      contentClass = "doc";
       break;
     case "2105":
       startingValue = 2105;
       contentClass = "sea";
       break;
-    default:
+    case "586":
       startingValue = 586;
+      contentClass = "delivery";
+      break;    
+    default:
+      startingValue = 1843;
       contentClass = "doc";
       break;
   }
