@@ -271,6 +271,7 @@ GRSocialize.prototype.buildURLs = function(source) {
           }
         }
       });
+
       if($(self.options.target).find('a.'+network).length > 0) {
         $(self.options.target).find('a.'+network).attr('href', networkURL);
       }

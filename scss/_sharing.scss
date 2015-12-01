@@ -43,12 +43,21 @@
 
     }
   }
+
+  img{
+    max-width: 100%;
+  }
 }
 
 .share-content-container {
   // background-color: $white;
   // display: inline-block;
   
+  @include mobile{
+    padding-top: 35px;
+    padding-bottom: 30px;
+  }
+
   @include tabletPlus{
     display: table-cell;
     background: none;
