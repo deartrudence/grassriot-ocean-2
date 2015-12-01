@@ -947,12 +947,24 @@ function setupTY(){
         //Ecommerce not installed on client's analytics
         // grAnalytics.eCommerceReport(transactionData, itemData);
 
+
+        //init social links
+        //Most be above moveToTargets so we can get all the text before it's moved
+        socialbuttons = new GRSocialize({
+            source: ".social",
+            target: ".share-block",
+            newWindow: true,
+            onOpen: function(network, spec, target){
+                grAnalytics.analyticsReport('share/'+network);
+            }
+        });
+
         enbeautifier.moveToTargets({
           '.js-campaign': '.sharingSection-title',
           '.js-campaign': '.eaFullWidthColumnContent',
           '.js-campaign': '.eaLeftColumnContent',
           // '.js-campaign': '.social-block',
-          '.share-block .twitter-text': '.social .twitter .text',
+          '.share-block .twitter-text': ['.social .twitter .text', '.social .twitter .img'],
           '.share-block .mail-subject': '.social .mail .subject',
           '.share-block .mail-body': '.social .mail .body',
           '.page-header': '.js-postaction-heroText'
@@ -984,17 +996,6 @@ function setupTY(){
         }, true); 
 
         $('.page-header').css('background-image', 'url('+$(".js-postaction-heroBg").attr('src')+')');
-
-
-        //init social links
-        socialbuttons = new GRSocialize({
-            source: ".social",
-            target: ".share-block",
-            newWindow: true,
-            onOpen: function(network, spec, target){
-                grAnalytics.analyticsReport('share/'+network);
-            }
-        });
     } catch(error) {
         graygunner.sendError(error);
     }
@@ -1584,8 +1585,8 @@ function getFormClasses() {
     classes[fields.region.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     //classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap one-quarter-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
     classes['[name="'+fields.cc_exp.name+'1"]'] = { classes: "inline-block-field-wrap half-wrap", targetElement: ".eaSplitSelectfield"};
     classes['[name="'+fields.cc_exp.name+'2"]'] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: ".eaSplitSelectfield"};
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
