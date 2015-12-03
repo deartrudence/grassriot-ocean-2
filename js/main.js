@@ -272,7 +272,7 @@ function setupTracking(){
         if(typeof errors.each === "function"){
           errors.each(function() {
               error_text += $(this).text();
-          });  
+          });
         }
 
         // handle errors
@@ -1146,7 +1146,11 @@ function sendDonation(e) {
         !grGiving.isRecurring()
         && grupsell.exists
     ){
-        grupsell.launch();
+        var upsellLaunched = grupsell.launch();
+
+      if(!upsellLaunched){
+        $form.submit();
+      }
     }
     //if it is a recurring donation already, submit
     else{
@@ -1371,9 +1375,22 @@ function init_validation(){
             return true
         });
 
+        //EN's receipt generator freaks out at ampersands in fields
+        $.validator.addMethod('replaceAmpersands',function(value,element){
+          value = value.replace(/&/g,'+')
+          $(element).val(value);
+          return true;
+        });
+
         var validation_rules = { };
-        validation_rules[fields.fname.name] = "required";
-        validation_rules[fields.lname.name] = "required";
+        validation_rules[fields.fname.name] = {
+          required: true,
+          replaceAmpersands: true
+        };
+        validation_rules[fields.lname.name] = {
+          required: true,
+          replaceAmpersands: true
+        };
         validation_rules[fields.street1.name] = { required: true };
         validation_rules[fields.city.name] = "required";
         validation_rules[fields.region.name] = "required";
