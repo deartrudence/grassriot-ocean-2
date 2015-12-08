@@ -407,6 +407,13 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
 }
 
 GRGivingSupport.prototype.getAmount = function(formatted) {
+
+    /**
+     * Moved the regex out on its own since it's reused
+     * @since  0.4 - 7Dec2015
+     */    
+    var nonNumeric = /[^0-9\.]/g;
+
     if(typeof formatted == "undefined") formatted = false;
 
     var amt = 0;
@@ -414,8 +421,22 @@ GRGivingSupport.prototype.getAmount = function(formatted) {
     if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
         amt = $form.find(options.components.amount.selector).filter(':checked').val();
 
-    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
-        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
+    if(
+        amt == 'other' 
+        || (!exists(options.components.amount) && exists(options.components.other))
+        ){
+        amt = $form.find(options.components.other.selector).val().replace(nonNumeric, '');  
+    }
+
+
+    /**
+     * Changed to allow getting amount multiple times
+     * Checking that amt == "other" fails as we change the radio button to the amount during a check. 
+     * @since  0.4 - 7Dec2015
+     */        
+    if(amt.match(nonNumeric)){
+        amt = amt.replace(nonNumeric,'');
+    }
 
     if(isNaN(parseFloat(amt)))
         amt = 0;

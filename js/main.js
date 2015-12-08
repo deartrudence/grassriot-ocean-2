@@ -274,6 +274,9 @@ function setupTracking(){
               error_text += $(this).text();
           });
         }
+        else{
+          error_text = errors;
+        }
 
         // handle errors
         try { throw new Error("EA Processing Error");}
@@ -703,6 +706,9 @@ function setupAction(){
                     $lastTabbable.focus();
                     //formSteps.previousStep();
                 }
+            }
+            else if(e.which == 13){
+              e.preventDefault();
             }
         });
 

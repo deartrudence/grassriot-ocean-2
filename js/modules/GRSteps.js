@@ -251,7 +251,11 @@ GRSteps.prototype.switchTo = function(stepNumber){
       .addClass(this.options.completeClass);
   }
 
-  //don't go to a step that doesn't exist
+
+  /**
+   * Prevent going to a step that doesn't exist
+   * @since v0.3 - 2015-12-04
+   */
   if(this.$container.children().length <= stepNumber){
     return;
   }
