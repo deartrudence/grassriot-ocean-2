@@ -18,7 +18,9 @@ var defaults = {
         currency: {  },
         recurrence: {  },
         amount: {  },
-        other: { },
+        other: {
+            classNames: ['amountbutton--other']
+        },
         processor: {  }
     },
     activeRegionLists: [ ],
@@ -210,6 +212,8 @@ function GRGivingSupport(opts) {
 GRGivingSupport.prototype.init = function() { 
     $form = options.form;
     this.getDefaults();
+    var self = this;
+
     if(isActive(options.components.region)) {
         //attach region input details onchange
         if(options.activeRegionLists) {
@@ -306,7 +310,7 @@ GRGivingSupport.prototype.init = function() {
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
 
-                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+                $(this).closest("label").siblings("input[type=radio]").val(self.getAmount());
             });
     }
 
@@ -407,36 +411,22 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
 }
 
 GRGivingSupport.prototype.getAmount = function(formatted) {
-
-    /**
-     * Moved the regex out on its own since it's reused
-     * @since  0.4 - 7Dec2015
-     */    
-    var nonNumeric = /[^0-9\.]/g;
-
     if(typeof formatted == "undefined") formatted = false;
 
     var amt = 0;
     var symbol = options.currencySymbol;
-    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
-        amt = $form.find(options.components.amount.selector).filter(':checked').val();
+    var $selected = $form.find(options.components.amount.selector).filter(':checked');
+    if(exists(options.components.amount) && $selected.length)
+        amt = $selected.val();
 
     if(
         amt == 'other' 
         || (!exists(options.components.amount) && exists(options.components.other))
+        || ($selected.length && $selected.hasClass(options.components.other.classNames))
         ){
-        amt = $form.find(options.components.other.selector).val().replace(nonNumeric, '');  
-    }
-
-
-    /**
-     * Changed to allow getting amount multiple times
-     * Checking that amt == "other" fails as we change the radio button to the amount during a check. 
-     * @since  0.4 - 7Dec2015
-     */        
-    if(amt.match(nonNumeric)){
-        amt = amt.replace(nonNumeric,'');
-    }
+        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
+    } 
+        
 
     if(isNaN(parseFloat(amt)))
         amt = 0;
@@ -677,6 +667,7 @@ function getAskButtons(amounts) {
                 name:  options.components.other.targetName,
                 label: $('<div>').append($form.find(options.components.other.selector).clone()).html(),
                 value: 'other',
+                classNames: [options.components.other.classNames],
                 wrap:  "<div class='amountbutton'></div>"
             })
         );
@@ -692,6 +683,7 @@ function getAskButtons(amounts) {
                 name:  options.components.other.targetName,
                 label: $('<div>').append(textInput.clone()).html(),
                 value: 'other',
+                classNames: [options.components.other.classNames],
                 wrap:  "<div class='amountbutton'></div>"
             })
         );
