@@ -3,7 +3,7 @@
 @import "compass/css3";
 @import "bootstrap/variables";
 @import "bs";
-@import "slick";
+//@import "slick";
 
 //bootstrap donation imports
 @import "bootstrap/glyphicons";
@@ -17,24 +17,26 @@
 @import 'bootstrap/buttons';
 @import 'bootstrap/close';
 @import 'bootstrap/popovers';
+// @import "tick";
 
 //foundation
 @import "base";
 @import "buttons";
 @import "grids";
-@import "eco_fonts";
+// @import "eco_fonts";
 @import "fonts";
 @import "zindex";
 
 //styles
-@import "upsell";
+// @import "upsell";
 @import "global";
 @import "hero";
 @import "campaign";
 @import "form";
-@import "mh_form";
+// @import "mh_form";
 @import "donation";
 @import "media";
 @import "identity";
-@import "footer";
+// @import "footer";
+@import "sharing";
 @import "post-action";

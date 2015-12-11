@@ -30,6 +30,13 @@ $input-border-grey: #767271;
 
 $indicator-light-grey: #dddfde;
 $indicator-dark-grey: #d5d6d8;
+
+// MSF Colors
+
+$msf-black: #231f20;
+$msf-red: #f42841;
+$msf-background: #e5e6e8;
+$white: #FFFFFF; 
 $black: #000;
 
 $modal-overlay-opacity: 0.65;
@@ -48,10 +55,10 @@ $beige: $charcoal;
 //-----------
 
 //text
-$content-overlap-xs: 20px;
-$content-overlap-sm: 20px;
-$content-overlap-md: 20px;
-$content-overlap-xl: 30px;
+$content-overlap-xs: 0px;
+$content-overlap-sm: 0px;
+$content-overlap-md: 0px;
+$content-overlap-xl: 0px;
 
 //Header
 $header-bgcolour: $vdark-grey;
@@ -70,19 +77,29 @@ $pagetitle-height-xl: 124px;
 $pagetitle-marginleft-xs: 50px;
 $pagetitle-marginleft-base: 70px;
 
-
+$stripe: image-url('stripe.png');
 //Hero
 $hero-background: $white;
-$hero-bgimage: image-url('18915705851_4958b9ef7e_o.jpg');
-$hero-bgimage-xl: image-url('18915705851_4958b9ef7e_o.jpg');
-$heroTitle-padding: 16% 25% 23% 25%;
+$hero-bgimage: image-url('hero_doc.jpg');
+$hero-bgimage-xl: image-url('hero_doc.jpg');
+
+$hero-bgimage-sea: image-url('hero_sea.jpg');
+$hero-bgimage-delivery: image-url('hero_delivery.jpg');
+
+$heroTitle-padding: 30% 15% 20% 15%;
 $heroTitle-padding-sm: 16% 20% 23%;
 $hero-captionpadding-md: 10px 15px;
+
+// IMPACT
+$impact-bgimage: image-url('ye-2015-section-1.jpg');
+$response-bgimage: image-url('ye-2015-section-2.jpg');
+$gift-bgimage: image-url('ye-2015-section-3.jpg');
 
 //Campaign
 $campaignText-wrapper: 13% 15%;
 $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
+$page-max-width: 1400px;
 
 //Highlights
 $highlights-margin-xs: 0px 10px 5px 10px;
@@ -96,13 +113,11 @@ $highlightsText-padding-md: 10% 4.5% 5% 4.5%;
 $highlightsText-padding-xs: 14% 4.5% 5% 4.5%;
 $highlights-titlepadding-lg: 0 30px 0 0;
 
-
 //Financial
 $financial-height-md: 400px;
 $financialText-padding-sm: 5%;
 $financialText-padding-xs: 10%;
 $financialText-padding-md: 5%;
-$financial-bgimage: image-url("15185294432_d0522561f3_o.jpg");
 
 
 //Supporters
@@ -112,12 +127,16 @@ $supporterPicture-height-md: 300px;
 $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
+$form-background: image-url("msf-ye-2015-border.jpg");
+$form-feature-doc: image-url("doc-countdown.png");
+$form-feature-delivery: image-url("deliver-countdown.png");
+$form-feature-sea: image-url("sea-countdown.png");
+
 $form-width-xxs: 300px;
 $form-width-xs: 300px;
-$form-width-sm: 400px;
-$form-width-md: 435px;
-$form-width-xl: 650px;
-$form-background: $green;
+$form-width-sm: 300px;
+$form-width-md: 400px;
+$form-width-xl: 400px;
 $form-padding: 30px;
 $form-navbar-height: 52px;
 
@@ -159,16 +178,22 @@ $upsell-action-background: $dark-red;
 $upsell-close-colour: $black;
 $upsell-close-background: $light-grey;
 
+//Postaction
+$share-borderColour: #E6E6E6;
+$share-header-bgColour: #e5e5e5;
+$sharing-text-grey: #5B5B5B;
+
 //-----------
 //screen sizes
 //-----------
 $screen-sm: 768px;
-$screen-md: 1160px;
+$screen-md: 992px;
 $screen-lg: 1300px;
 $screen-xl: 2100px;
 
 $screen-xxs-max: 619px;
 $screen-xs-min: 620px;
+
 $screen-xl-min: $screen-xl;
 $screen-xs-max: ($screen-sm - 1);
 $screen-sm-max: ($screen-md - 1);

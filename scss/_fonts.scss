@@ -65,25 +65,32 @@ em{
 //Body font
 //
 @mixin font-bodyN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+@mixin font-bodyN6{
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 @mixin font-bodyN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-bodyI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -92,25 +99,31 @@ em{
 //Title font
 //
 @mixin font-headN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-headN6{
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 600;
   font-style: normal;
 }
 
 @mixin font-headN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-headI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -119,25 +132,25 @@ em{
 //Decorative font
 //
 @mixin font-decoN4{
-  font-family: "FrutigerNeueW01-Regular", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoN7{
-  font-family: "Frutiger Neue W01 Bd", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-decoI4{
-  font-family: "Frutiger Neue W01 It", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoI7{
-  font-family: "Frutiger Neue W01 Bd It", "Helvetica", "Arial", sans-serif;
+  font-family: "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -167,6 +180,26 @@ $line-hero: 1.1;
 $line-tight: 1.2;
 $line-base: 1.5;
 $line-loose: 2;
+
+//Line Heights
+@mixin lineHeight-title--number {
+  line-height: 0.7;
+}
+@mixin lineHeight-hero {
+  line-height: 1.1;
+}
+@mixin lineHeight-campaigntext-main {
+  line-height: 1em;
+}
+@mixin lineHeight-higlights {
+  line-height: 1.5em;
+}
+@mixin lineHeight-title--text {
+  line-height: 5.4em;
+}
+@mixin lineHeight-tight{
+  line-height: 1.4;
+}
 
 @mixin lineHeight-hero {
   line-height: $line-hero;
@@ -200,7 +233,7 @@ $line-loose: 2;
   font-size: 0.8rem;
 }
 @mixin fontSize-base{
-  font-size: 1rem;
+  font-size: 16px;
 }
 @mixin fontSize-medium{
   font-size: 1.22rem;
@@ -209,7 +242,7 @@ $line-loose: 2;
   font-size: 1.77rem;
 }
 @mixin fontSize-largerish{
-  font-size: 2rem;
+  font-size: 2.3rem;
 }
 @mixin fontSize-titleLarge{
   font-size: 2.9rem;
@@ -219,6 +252,35 @@ $line-loose: 2;
 }
 @mixin fontSize-huge{
   font-size: 3.6rem;
+}
+
+
+@mixin fontSize-responsive-smaller {
+  font-size: 0.8vw;
+}
+@mixin fontSize-responsive-small {
+  font-size: 0.9vw;
+}
+@mixin fontSize-responsive-smallish{
+  font-size: 1.2vw;
+}
+@mixin fontSize-responsive-base {
+  font-size: 1.3vw;
+}
+@mixin fontSize-responsive-halfLarger{
+  font-size: 1.45vw;
+}
+@mixin fontSize-responsive-medium {
+  font-size: 1.8vw;
+}
+@mixin fontSize-responsive-large {
+  font-size: 2.4vw;
+}
+@mixin fontSize-responsive-larger{
+  font-size: 2.9vw;
+}
+@mixin fontSize-responsive-massive {
+  font-size: 15.3vw;
 }
 
 @mixin font-sansN7 {

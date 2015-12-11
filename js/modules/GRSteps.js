@@ -251,6 +251,15 @@ GRSteps.prototype.switchTo = function(stepNumber){
       .addClass(this.options.completeClass);
   }
 
+
+  /**
+   * Prevent going to a step that doesn't exist
+   * @since v0.3 - 2015-12-04
+   */
+  if(this.$container.children().length <= stepNumber){
+    return;
+  }
+
   //switch the indicator
   this.options.currentStep = stepNumber;
   this.stepIndicators.eq(this.options.currentStep)

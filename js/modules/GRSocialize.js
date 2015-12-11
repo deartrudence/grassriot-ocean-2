@@ -266,11 +266,20 @@ GRSocialize.prototype.buildURLs = function(source) {
         if($(networkData).find('.'+element).length > 0) {
           if(network == 'facebook' && typeof self.options.facebook != "undefined") { //don't url encode the facebook element since it is a standalone URL
             networkURL = $(networkData).find('.'+element).text();
-          } else {
+          } 
+          /**
+           * Don't URI encode mailto links
+           * @since  v0.2 - 01Dec15 
+           */
+          else if(network == "mail"){
+            networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&';
+          }
+          else {
             networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&amp;';
           }
         }
       });
+
       if($(self.options.target).find('a.'+network).length > 0) {
         $(self.options.target).find('a.'+network).attr('href', networkURL);
       }

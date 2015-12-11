@@ -10,11 +10,11 @@
   }
 
   @media screen and (min-width: $screen-md-min){
-    padding-left: 2*$form-padding;  
-    padding-right: 2*$form-padding;
+    padding-left: $form-padding;  
+    padding-right: $form-padding;
 
   }
-}
+} 
 
 //override bootstrap
 label{
@@ -31,6 +31,9 @@ label{
 }
 
 .form{
+  background: $form-background;
+  background-repeat: repeat-y;
+  background-color: white;
   @include formContainer;
   @include z-highest;
 }
@@ -38,33 +41,41 @@ label{
 //simplification for small monitors
 .form.no-affix{
   @media screen and (min-width: $screen-sm){
-    width: $form-width-sm - 35px;
+    width: $form-width-sm;
   }
 
   @media screen and (min-width: $screen-md){
-    width: $form-width-md - 35px;
+    width: $form-width-md;
   }
 
   @media screen and (min-width: $screen-lg){
-
+  
   }
 
   @media screen and (min-width: $screen-xl){
-    width: $form-width-xl - 45px;
+    width: $form-width-xl;
   }
+  position: absolute;
+  right: 0 !important;
 
   .form-navbar{
-    background: $white;
+    //background: $white;
   }
 }
 
 #grdonation form {
-  background: $background-grey;
-  // overflow-y: auto;
+	
+    background: $form-background;
+    background-repeat: repeat-y;
+    background-color: white;
 
   &.is-active{
     top: 0;
   }
+}
+
+#Donation-Amount-Other {
+	border: 0px solid $white;
 }
 
 .form-header{
@@ -104,7 +115,7 @@ label{
 
 @media screen and (max-width: $screen-xxs-max) {
   .form {
-    background-color: $background-grey;
+    background-color: $white;
 
     &.is-active{
       overflow-x: hidden;
@@ -129,7 +140,7 @@ label{
   }
 
   .formOpen {
-    @include dagny-heavy;
+    // @include dagny-heavy;
     @include fontSize-base;
     display: block;
     position: absolute;
@@ -147,7 +158,7 @@ label{
   .js-formOpen-label{
     display: block;
     line-height: 3em;
-    background: $cta-red;
+    background: $msf-red;
     border-radius: 5px 5px 0 0;
     box-shadow: -1px -1px 2px $black;
     box-shadow: -1px -1px 2px rgba($black, 0.3);
@@ -156,19 +167,26 @@ label{
   .formClose {
     @include font-bodyN7;
     @include fontSize-small;
+    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 24px;
     display: block;
+    background: grey;
     position: absolute;
     border: 0;
-    color: $charcoal;
-    right: 20px;
-    top: 82px; //top par + form padding
+    color: grey;
+    right: -2px;
+    top: 0px;
     width: auto;
-    background: rgba($yellow,0.6);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    opacity: 0.6;
+    background: lightgrey;
+    opacity: 1;
+    line-height: 0em;
     cursor: pointer;
+    width: 30px;
+    height: 26px;
+    outline: none;
+    padding-bottom: 8px;
 
     &:hover{
       opacity: 0.8;
@@ -202,8 +220,9 @@ label{
   }
 
   .form-navbar {
-    background: $white;
-    background-size: 435px 53px;
+    background: $form-background;
+    background-repeat: repeat-y;
+    background-color: white;  // overflow-y: auto;
     width: 100%;
     //height: $form-navbar-height;
     @include z-highest;
@@ -215,15 +234,7 @@ label{
     display: none;
   }
 }
-@media screen and (min-width: $screen-xl) {
-  .form-navbar {
-    background: $white;
-    background-size: 650px 54px;
-    width: 650px;
-    height: 53px;
 
-  }
-}
 
 #grdonation .page{
   @include formPadding;
@@ -239,4 +250,46 @@ label{
 
 .no-placeholder .eaFormElementLabel{
   display: block !important;
+}
+
+
+
+.inline-block-field-wrap {
+  display: inline-block;
+  position: relative;
+  float: left;
+
+  &.full-wrap {
+    width: 100%;
+    clear: both;
+    // float: none;
+  }
+  &.one-quarter-wrap {
+    width: 24%;
+  }
+  &.half-wrap {
+    width: 49%;
+  }
+  &.three-quarter-wrap {
+    width: 74%;
+  }
+  &.two-fifths-wrap {
+    width: 39%;
+  }
+  &.three-fifths-wrap {
+    width: 59%;
+  }
+
+  &.last-wrap {
+    margin-left: 2%;
+    // text-align: right;
+    clear: none;
+  }
+
+  &.hide-label {
+    .eaFormElementLabel {
+      height: 0;
+      margin-top: 0 !important;
+    }
+  }
 }

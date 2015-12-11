@@ -1,7 +1,7 @@
 body {
   overflow-x:hidden;
   @include font-bodyN4;
-  background-color: $green;
+  background-color: $msf-background;
 
   &:after{
     display: none;

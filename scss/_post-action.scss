@@ -2,7 +2,10 @@
 .post-action {
   .row{
     margin: 0;
-    
+  }
+
+  .col-text{
+    float: none;
   }
 
   .col-form{
@@ -14,32 +17,84 @@
     margin: 0;
     p{
       @include fontSize-base;
-      color: $white;
+      color: $black;
       max-width: 40em;
-      margin: 0 auto;
+      // margin: 0 auto;
     }
   }
 
-  .hero{
+  .page-logo{
 
-    padding: $page-padding-xs;
-
-    @media screen and (min-width: $screen-sm){
-      text-align: center;
-      padding: $page-left-padding-md;
+    @include mobile{
+      left: 50px;
+      width: 150px;
+      height: 70px;
+      background-size: 134px;
     }
-    @media screen and (min-width: $screen-lg){
-      padding: 10% 25%;
-      min-height: 500px; //fallback
-      min-height: 80vh;
+
+    @include tabletPlus{
+      left: 140px;
+    }
+  }
+
+  .page-header{
+    position: relative;
+
+    // padding: $page-padding-xs;
+
+    // @media screen and (min-width: $screen-sm){
+    //   text-align: center;
+    //   padding: $page-left-padding-md;
+    // }
+    // @media screen and (min-width: $screen-lg){
+    //   padding: 10% 25%;
+    //   min-height: 500px; //fallback
+    //   min-height: 80vh;
+    // }
+
+    @include tabletPlus{
+      height: 204px;
     }
   }
 
   .heroTitle{
-    padding: 0 0 .5em;
+    text-transform: uppercase;
+    @include font-bodyN7;
+
+    @include mobile{
+      text-align: center;
+      @include fontSize-large;
+      padding: 75px 0 2em;
+    }
+    @include tabletPlus{
+      left: 50%;
+      width: 50%;
+      @include fontSize-large;
+      padding: 2em 0;
+    }
   }
 
+  .js-campaign:before{
+    content:" ";
+    display: block;
+    height: 20px;
+    background: image-url("stripe.png");
+  }
+
+
+  .mobile-center{
+    max-width: 700px;
+    margin: 0 auto;
+  }
   
+  .sharingSection-title{
+    max-width: 700px;
+    margin: 0 auto;
+    text-transform: uppercase;
+    padding: 20px 20px 0;
+    @include font-bodyN7;
+    @include fontSize-large;
+  }
 
 
   .social-block {
@@ -97,6 +152,10 @@
     }
   }
 
+  .sharing-title{
+    color: $black;
+  }
+
   .social-title{
     color: $white;
     @include fontSize-medium;
@@ -105,5 +164,16 @@
     @media screen and (min-width: $screen-lg){
       @include fontSize-responsive-medium;
     }
+  }
+
+  //hide irrelevant sections
+  .js-hero,
+  .js-impact,
+  .js-quote,
+  .js-accountable,
+  .js-gift,
+  .js-response,
+  .js-policy{
+    display: none;
   }
 }

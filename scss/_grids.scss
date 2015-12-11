@@ -3,9 +3,28 @@
  * Container styling for wherever the form is supposed to go
  */
 
+
+.main {
+  height: 100%;
+}
+
+.main>.donation-form-wrapper {
+    min-height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.donation-form-wrapper {
+    max-width: $page-max-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 @mixin formContainer{
 
-  @media screen and (max-width: $screen-xxs-max){
+  @media screen and (max-width: $screen-xxs-max) {
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -20,7 +39,7 @@
 
   @media screen and (min-width: $screen-xs-min){
     position: absolute;
-    top: $header-height-xs;
+    //top: $header-height-xs;
     right: 0;
     height: 100%;
     width: $form-width-xs;
@@ -29,15 +48,15 @@
   @media screen and (min-width: $screen-sm){
     position: absolute;
     width: 100%;
-    top: $header-height-sm;
+    //top: $header-height-sm;
     right: 0;
     height: 100%;
     width: $form-width-sm;
   }
 
   @media screen and (min-width: $screen-md){
-    position: absolute;
-    top: $header-height-md;
+    position: fixed;
+    //top: $header-height-md;
     right: 0;
     width: $form-width-md;
     height: 100%;
@@ -49,8 +68,8 @@
   }
 
   @media screen and (min-width: $screen-xl){
-    position: absolute;
-    top: $header-height-xl;
+    // position: absolute;
+    // top: $header-height-xl;
     right: 0;
     width: $form-width-xl;
     height: 100%;
@@ -60,44 +79,106 @@
 /**
  * contentContainer
  */
-@mixin contentContainer{
-  @media screen and (min-width: $screen-xxs-max){
+@mixin contentContainer {
 
+  width: 100%;
+  float: left;
+     
+  @media screen and (min-width: $screen-xxs-max) {
+		
   }
-  @media screen and (max-width: $screen-xs-max){
+ 
+  @media screen and (max-width: $screen-xs-max) {
+	  	  
   }
 
 
-  @media screen and (min-width: $screen-xs-min){
+  @media screen and (min-width: $screen-xs-min) {
     padding-right: $form-width-xs;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+    //padding-left: $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
   }
 
-  @media screen and (min-width: $screen-sm){
+  @media screen and (min-width: $screen-sm) {
     padding-right: $form-width-sm;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
   }
 
-  @media screen and (min-width: $screen-md){
+  @media screen and (min-width: $screen-md) {
     padding-right: $form-width-md;
-    padding-left: $content-overlap-md;
-    margin-left: -1 * $content-overlap-md;
-    margin-right: -1 * $content-overlap-md;
-
+    //padding-left: $content-overlap-md;
+    //margin-left: -1 * $content-overlap-md;
+    //margin-right: -1 * $content-overlap-md;
   }
 
-  @media screen and (min-width: $screen-lg){
-
+  @media screen and (min-width: $screen-lg) {
+	  padding-right: $form-width-xl;  
   }
 
-  @media screen and (min-width: $screen-xl){
-    padding-right: $form-width-xl;
-    padding-left: $content-overlap-xl;
-    margin-left: -1 * $content-overlap-xl;
-    margin-right: -1 * $content-overlap-xl;
+  @media screen and (min-width: $screen-xl) {
+  	padding-right: $form-width-xl;  
   }
+}
+
+
+@mixin mobile {
+  @media screen and (max-width: #{$screen-xxs-max}){
+    @content;
+  }
+}
+
+@mixin mobileAndTablet{
+  @media screen and (max-width: #{$screen-xs-max}){
+    @content;
+  }
+}
+
+@mixin tablet{
+  @media screen and (min-width: #{$screen-xs-min}) and (max-width: #{$screen-sm-max}){
+    @content;
+  }
+}
+
+@mixin tabletPlus{
+  @media screen and (min-width: #{$screen-xs-min}){
+    @content;
+  }
+}
+
+@mixin tabletAndSmallDesktop{
+  @media screen and (min-width: #{$screen-xs-min}) and (max-width: #{$screen-md-max}){
+    @content;
+  }
+}
+
+@mixin smallDesktop{
+  @media screen and (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max}){
+    @content;
+  }
+}
+
+@mixin smallDesktopPlus{
+  @media screen and (min-width: #{$screen-md-min}){
+    @content;
+  }
+}
+
+@mixin smallDesktopMin{
+  @media screen and (max-width: #{$screen-md-max}){
+    @content;
+  }
+}
+
+@mixin desktop{
+  @media screen and (min-width: #{$screen-lg-min}){
+    @content;
+  }
+}
+
+@mixin shortDesktop{
+  @media only screen and (max-width: 1439px) and (min-width:991px) and (max-height:699px){
+    @content
+  } 
 }

@@ -1,63 +1,75 @@
 .page-header {
-  position: relative;
-  width: 100%;
-  background-color: $vdark-grey;
-  .row {
-    position: absolute;
-    top: 50%;
-  }
+  position: absolute;
+  // width: 100%;
+  // background-color: $vdark-grey;
+  // .row {
+  //   position: absolute;
+  //   top: 50%;
+  // }
 }
 
-.page-title {
-    margin-left: $pagetitle-marginleft-base;
-    margin-top: -($pagetitle-height-base / 2);
-    //background: $pagetitle-img-base;
-    width: 250px;
-    height: $pagetitle-height-base;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
+.page-logo{
+  overflow: hidden;
+  text-indent: -9999px;
+  background: image-url('logo_msf_bilingual.png') $white 50% 50% no-repeat;
+  background-size: 167px;
+  position: absolute;
+  width: 200px;
+  height: 95px;
+  left: 50px;
+  @include z-base;
+}
 
-@media screen and (max-width: $screen-xs-max){
-  $border-height: 5px;
-  .page-header {
-    border-top: $border-height solid $dark-green;
-    height: $header-height-xs;
-  }
-  .page-title {
-    margin-top: -($pagetitle-height-xs / 2);
-    margin-left: $pagetitle-marginleft-xs;
-    width: 166px;
-    height: $pagetitle-height-xs;
-  }
-}
-@media screen and (min-width: $screen-sm){
-  $border-height: 5px;
-  .page-header {
-    border-top: $border-height solid $dark-green;
-    height: $header-height-md;
-  }
-}
-@media screen and (min-width: $screen-md){
-  $border-height: 5px;
-  .page-header {
-    border-top: $border-height solid $dark-green;
-    height: $header-height-md;
-  }
-}
-@media screen and (min-width: $screen-xl){
-  $border-height: 5px;
-  .page-header {
-    border-top: $border-height solid $dark-green;
-    height: $header-height-xl;
-  }
-  .page-title {
-      margin-top: -($pagetitle-height-xl / 2);
-      //background: $pagetitle-img-xl;
-      width: 500px;
-      height: $pagetitle-height-xl;
-      background-size: contain;
-      background-repeat: no-repeat;
-  }
+// .page-title {
+//     margin-left: $pagetitle-marginleft-base;
+//     margin-top: -($pagetitle-height-base / 2);
+//     //background: $pagetitle-img-base;
+//     width: 250px;
+//     height: $pagetitle-height-base;
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//   }
 
-}
+// @media screen and (max-width: $screen-xs-max){
+//   $border-height: 5px;
+//   .page-header {
+//     border-top: $border-height solid $dark-green;
+//     height: $header-height-xs;
+//   }
+//   .page-title {
+//     margin-top: -($pagetitle-height-xs / 2);
+//     margin-left: $pagetitle-marginleft-xs;
+//     width: 166px;
+//     height: $pagetitle-height-xs;
+//   }
+// }
+// @media screen and (min-width: $screen-sm){
+//   $border-height: 5px;
+//   .page-header {
+//     border-top: $border-height solid $dark-green;
+//     height: $header-height-md;
+//   }
+// }
+// @media screen and (min-width: $screen-md){
+//   $border-height: 5px;
+//   .page-header {
+//     border-top: $border-height solid $dark-green;
+//     height: $header-height-md;
+//   }
+// }
+// @media screen and (min-width: $screen-xl){
+//   $border-height: 5px;
+//   .page-header {
+//     border-top: $border-height solid $dark-green;
+//     height: $header-height-xl;
+//   }
+//   .page-title {
+//       margin-top: -($pagetitle-height-xl / 2);
+//       //background: $pagetitle-img-xl;
+//       width: 500px;
+//       height: $pagetitle-height-xl;
+//       background-size: contain;
+//       background-repeat: no-repeat;
+//   }
+
+// }

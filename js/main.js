@@ -12,7 +12,7 @@ var ENBeautifier = require('./modules/ENBeautifier');
 var enbeautifier;
 
 // slick carousel slider
-var slick = require('slick');
+// var slick = require('slick');
 
 //hero configuration
 var hero = ".hero-image";
@@ -47,14 +47,14 @@ var grAnalytics;
 var gr = require('./modules/GRHelpers');
 
 var fields = gr.buildFieldNameObject({
-    email:      'Email',
+    email:      'E-mail',
     fname:      'First Name',
     lname:      'Last Name',
     street1:    'Address 1',
-    street2:    'Address2',
+    street2:    'Address 2',
     city:       'City',
-    region:     'State',
-    postal:     'Postcode',
+    region:     'Province',
+    postal:     'Postal Code',
     country:    'Country',
     phone:      'Phone Number',
     pay_type:   'Payment Type',
@@ -67,8 +67,8 @@ var fields = gr.buildFieldNameObject({
     recur_pay:  'Recurring Payment',
     recur_freq: 'Recurring Frequency',
     recur_day:  'Recurring day',
-    optin:      'Opt in',
-    giftaid:    'Gift Aid',
+    optin:      'opt-IN',
+    /*giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
     matching:   'Matching Gift', 
     employer:   'Company Name',
@@ -82,25 +82,28 @@ var fields = gr.buildFieldNameObject({
     inmem_city:    'Honoree Inform City',
     inmem_region:  'Honoree Inform State',
     inmem_postal:  'Honoree Inform Post Code',
-    inmem_country: 'Honoree Inform Country',
+    inmem_country: 'Honoree Inform Country',*/
 });
 
 //Key:Value :: Target:Content
 var ENBeautifierFillers = {
   ".js-hero": ".js-heroContent",
   ".js-campaign": ".js-campaignText",
-  ".js-highlights": ".js-highlightsText",
-  ".js-hero-image": ".js-heroImage",
-  ".js-financial": ".js-financialText",
-  ".js-supporters": ".js-supportersText",
-  ".js-formOpen-label": ".js-formOpen-labelText" };
+  ".js-impact": ".js-impactText",
+  ".js-quote": ".js-quoteText",
+  ".js-response": ".js-responseText",
+  ".js-accountable": ".js-accountableText",
+  ".js-gift": ".js-giftText",
+  ".js-policy": ".js-policyText",
+  '.js-formOpen-label': '.js-formOpen-labelText'
+};
 var ENBeautifierFillersContainers = {
   '#gr_donation': [
-    '#'+fields.recur_pay.nameNoSpace+'Div', 
+    //'#'+fields.recur_pay.nameNoSpace+'Div', 
     '#'+fields.amt.nameNoSpace+'Div', 
-    '#'+fields.inmem.nameNoSpace+'Div', 
-    '#'+fields.matching.nameNoSpace+'Div'
-  ],
+    //'#'+fields.inmem.nameNoSpace+'Div', 
+    //'#'+fields.matching.nameNoSpace+'Div'
+  ],/*
   '#gr_extra': [
     '.js-employerMatch',
     '#'+fields.employer.nameNoSpace+'Div',
@@ -117,7 +120,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.inmem_country.nameNoSpace+'Div',
     '#'+fields.inmem_region.nameNoSpace+'Div',
     '#'+fields.inmem_region.nameNoSpace+'Div'
-  ],
+  ],*/
   '#gr_details': [
     '.js-billingDetails', 
     '#'+fields.fname.nameNoSpace+'Div', 
@@ -129,12 +132,14 @@ var ENBeautifierFillersContainers = {
     '#'+fields.postal.nameNoSpace+'Div', 
     '#'+fields.country.nameNoSpace+'Div', 
     '#'+fields.region.nameNoSpace+'Div', 
-    '#'+fields.phone.nameNoSpace+'Div'
+    '#'+fields.optin.nameNoSpace+'Div'
+    //'#'+fields.phone.nameNoSpace+'Div'
   ],
   '#gr_payment': [
     '.js-paymentDetails', 
     '#'+fields.pay_type.nameNoSpace+'Div', 
     //'#CC_ImagesDiv', 
+    '#'+fields.cardholder.nameNoSpace+'Div', 
     '#'+fields.cc_num.nameNoSpace+'Div', 
     '#'+fields.cc_cvv.nameNoSpace+'Div', 
     '#'+fields.cc_exp.nameNoSpace+'Div'
@@ -168,7 +173,7 @@ $(document).ready(function() {
 		init_validation();
 
         //set pcode validation to Canadian at the start
-        handleCountryChange({target: fields.country.selector});
+        //handleCountryChange({target: fields.country.selector});
 	}
 	catch(error) {
 		graygunner.sendError(error);
@@ -189,7 +194,7 @@ function init() {
     (browser.firefox && parseFloat(browser.version) < 9)
     || (browser.chrome && parseFloat(browser.version) < 16)
     ){
-    var backupForm = backupForm ? backupForm : "https://www.support.ecojustice.ca/ea-action/action?ea.campaign.id=40221&ea.client.id=1943&ea-account.campaign.id=40221";
+    var backupForm = backupForm ? backupForm : "";
     window.location = backupForm;
   }
 
@@ -211,7 +216,8 @@ function init() {
 		setupTY();
 	}
     else{
-        setupAction();        
+        setupAction();
+        setupCounter();    
     }
 
 	//do everything else
@@ -223,7 +229,7 @@ function init() {
     }
 
     handleSizing();
-    $(window).on("resize",handleSizing());
+    $(window).on("resize",handleSizing);
 
 }
 
@@ -263,9 +269,14 @@ function setupTracking(){
         } );
 
         var error_text = '';
-        errors.each(function() {
-            error_text += $(this).text();
-        });
+        if(typeof errors.each === "function"){
+          errors.each(function() {
+              error_text += $(this).text();
+          });
+        }
+        else{
+          error_text = errors;
+        }
 
         // handle errors
         try { throw new Error("EA Processing Error");}
@@ -286,22 +297,25 @@ function setupTracking(){
 function makeAffix(){
     // we handle the mobile form without use of affix
     var $affixForm = $(".form");
-    $(window).off(".affix");
+    var $container = $(".donation-form-wrapper");
+    //$(window).off(".affix");
+    $affixForm.off('affix.bs.affix');
     $affixForm
-        .removeClass("affix affix-top affix-bottom")
+        .removeClass("no-affix affix affix-top affix-bottom")
         .removeData("bs.affix");
 
     if (windowSize !== "phone" && windowSize !== "mobile") {
         if($(window).height() >  getFormHeight($affixForm)) {
+            setContainerOffset($affixForm, $container);
             $affixForm
                 // .filter(":not(.affix-top, .affix, .affix-bottom)")
                 .affix({
                     offset: {
-                        top: header.outerHeight(),
-                        bottom: footer.outerHeight()
+                        top: 0,
+                        bottom: 0
                     }
                 });
-
+            $("#grdonation").css('height','');
             // $affixForm.affix('checkPosition');
         }
         else {
@@ -311,6 +325,10 @@ function makeAffix(){
     }
     else{
     }
+}
+
+function setContainerOffset($affixForm, $container) {
+    $affixForm.css('right', (Math.round($(window).width()) - Math.round($container.offset().left) - $container.outerWidth() + 1).toString() + 'px'); //(parseInt($container.css('margin-right')) + parseInt($container.css('padding-right'))).toString() + 'px');
 }
 
 function getFormHeight($sourceForm) {
@@ -363,6 +381,240 @@ function setupPage(){
 }
 
 /**
+ * [setupCounter description]
+ * @return {[type]} [description]
+ */
+function setupCounter(){
+  var refresh = 1200;
+  var scroll = 2000;
+  var maxstep = 30;
+  var currentCount = 0;
+  var currentTotal = 0;
+  var tickerCount = 0;
+  var startingValue = 0;
+  var offset; 
+  var currentCountSet = false;
+  var isStarted = false;
+  var isPaused = false;
+  var $counter = $(".js-seconds-counter");
+  var oldAdditional = 0;
+  var newAdditional = 0;
+  var ticker;
+  var refreshInterval;
+  var refresher;
+  var contentClass;
+  //corresponds to set amounts at 30 seconds per 250$
+  //TODO: Set these based on the actual donation ranges
+  // var timeAmounts = [1,1,1,4,4,4,10,10,10,10,10,15,15,15,20]; 
+
+  // require('jqueryeasing');
+  // require('ticker');
+
+  var version = getURLParameter('s');
+  var variant = getURLParameter('v');
+
+  switch(version){
+    case "1843":      
+      startingValue = 1843;
+      contentClass = "doc";
+      break;
+    case "2105":
+      startingValue = 2105;
+      contentClass = "sea";
+      break;
+    case "586":
+      startingValue = 586;
+      contentClass = "delivery";
+      break;    
+    default:
+      startingValue = 1843;
+      contentClass = "doc";
+      break;
+  }
+  
+  $(".js-content-version").addClass(contentClass);
+
+  //set offset
+  
+  if(typeof window.offset === "undefined"){
+    window.offset = 0;
+  }
+
+  updatecount(startingValue);
+	
+  /**
+   * [updatecount description]
+   * @param  {[type]} count [description]
+   * @return {[type]}       [description]
+   */
+  function updatecount(count){
+
+    if(typeof count !== 'undefined'){
+      currentTotal = parseInt(count) + parseInt(window.offset);      
+    }
+
+    //if(currentCount == 0 && currentTotal != 0){
+    if(!currentCountSet){
+      // currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+      currentCount = currentTotal;
+      currentCountSet = true;
+      showCount();
+    }
+
+    // var randLimit = currentTotal - currentCount < 2 ? currentTotal - currentCount : 2;
+    // currentCount += timeAmounts[Math.floor(Math.random() * timeAmounts.length)];
+
+    if(typeof variant !== "undefined" && variant === "countdown"){
+      if(currentCount > 100){
+        currentCount -= 1;
+      }
+    }
+    else {
+      currentCount += 1;  
+    }
+
+    if(!isStarted){
+      isStarted = true;
+      setCounter();
+    }
+  }
+
+  /**
+   * [gettotal description]
+   * Not used in this
+   * 
+   * @return {[type]} [description]
+   */
+  // function gettotal(){
+
+  //   // currentTotal += timeAmounts[Math.floor(Math.random()*timeAmounts.length)];
+  //   if(typeof variant !== "undefined" && variant === "countdown"){
+  //     currentTotal -= 1;
+  //   }
+  //   else {
+  //     currentTotal += 1;  
+  //   }
+    
+  //   updatecount(currentTotal);
+  // }
+
+  /**
+   * [setStartCount description]
+   */
+  function setStartCount(){
+    currentTotal = $counter.html().replace(',', '');
+    
+    if(currentCount == 0){
+      currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
+    } 
+    // var orig = counter.html().replace(',', '');
+  }
+
+  /**
+   * [addCommas description]
+   * @param {[type]} nStr [description]
+   */
+  function addCommas(nStr){
+    nStr += '';
+    var x = nStr.split('.');
+    var x1 = x[0];
+    var x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+  }
+
+  function doRefresh(){
+    if(isPaused) return;
+
+    updatecount();
+    showCount();
+
+    //set refresh interval to between 2 and 4 seconds
+    // refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
+    // refresher = window.setTimeout(doRefresh,refresh);
+  }
+
+  /**
+   * [setCounter description]
+   */
+  function setCounter() {
+    setStartCount();
+    // setTimeout( doRefresh, refresh );
+    setInterval(doRefresh, refresh);
+
+    // ticker = $counter.ticker({
+    //   delay:  1000,
+    //   separators: true,
+    //   incremental: function(){
+    //     return currentCount;
+    //     // if(tickerCount == 0){
+    //     //   tickerCount = currentCount;
+    //     // }else if(tickerCount < currentCount){
+    //     //   tickerCount++;
+    //     // }
+    //     // return tickerCount;
+    //   }
+    // });
+  }
+
+  /**
+   * [showCount description]
+   * @return {[type]} [description]
+   */
+  function showCount(){
+    $counter.html(currentCount);
+  }
+
+  /**
+   * [getSecondsAdded description]
+   * @return {[type]} [description]
+   */
+  function getSecondsAdded(){
+    //get the dollar amount difference
+    newAdditional = grGiving.getAmount();
+    var diff = newAdditional - oldAdditional;
+
+    //convert to a time difference
+    diff = Math.floor(diff/100 * 60);
+    
+    //Add the offset to the counter
+    currentCount += diff;
+
+    //save our new value
+    oldAdditional = newAdditional;
+
+
+    showCount();
+
+    //force a refresh
+    //Set refresh delay to zero to improve response time
+    // var normalRefresh = ticker[0].options.delay;
+    // ticker[0].options.delay = 0;
+    // ticker[0].update_container();
+    // ticker[0].options.delay = normalRefresh;
+  }
+
+  function pauseTicker(){
+    isPaused = true;
+  }
+
+  function unpauseTicker(){
+    isPaused = false;
+    doRefresh();
+  }
+
+  getSecondsAdded();
+  $("#Donation_AmountField")
+    .on("change",getSecondsAdded);
+    // .on("mouseenter",pauseTicker)
+    // .on("mouseleave",unpauseTicker);
+
+}
+
+/**
  * [setupAction description]
  * @return {[type]} [description]
  */
@@ -372,13 +624,13 @@ function setupAction(){
 
 
 		// slick
-		$('.supporters-carousel').slick({
-			dots: true,
-			arrows: true,
-			appendArrows: '.slick-list',
-			prevArrow: '<button type="button" class="slick-prev"></button>',
-			nextArrow: '<button type="button" class="slick-next"></button>'
-		});
+		// $('.supporters-carousel').slick({
+		// 	dots: true,
+		// 	arrows: true,
+		// 	appendArrows: '.slick-list',
+		// 	prevArrow: '<button type="button" class="slick-prev"></button>',
+		// 	nextArrow: '<button type="button" class="slick-next"></button>'
+		// });
 
         enbeautifier.addClasses(getFormClasses());
 
@@ -391,8 +643,8 @@ function setupAction(){
           activeClass: 'active',
           useCSSAnimation: false,
           indicatorTarget: '.steps-list ul',
-          steps: $("#gr_donation,#gr_extra,#gr_details,#gr_payment"),
-          stepLabels: ['Amount', 'Details', 'Billing', 'Payment'],
+          steps: $("#gr_donation,#gr_details,#gr_payment"),
+          stepLabels: ['Amount', 'Billing', 'Payment'],
           addButtons: true,
           target: "#window",
           stepHandler:[
@@ -410,20 +662,6 @@ function setupAction(){
                
             },
             //step 2 handler
-            function(){
-              formErrors = [ ];
-              $("#gr_extra").find("input,select,textarea").valid();
-              if(formErrors.length) {
-                handleErrors(formErrors);
-                return false;
-              } else {
-                grAnalytics.analyticsReport( 'payment/page2-complete' );
-                return true;
-              }
-               
-            },
-
-            //step 3 handler
             function(){
               formErrors = [ ];
               $("#gr_details").find("input,select,textarea").valid();
@@ -454,7 +692,7 @@ function setupAction(){
         });
         
         //prevent tabbing to next step
-        $("#gr_donation,#gr_extra,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
+        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
             if(e.which == 9) {
                 var $stepPanel = $(this).parents('.page').first();
                 var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
@@ -469,11 +707,14 @@ function setupAction(){
                     //formSteps.previousStep();
                 }
             }
+            else if(e.which == 13){
+              e.preventDefault();
+            }
         });
 
         $("#window").on('stepChanged.grsteps', function(e, step) {
             $("#window").promise().done(function() {
-                $("#gr_donation,#gr_extra,#gr_details,#gr_payment")
+                $("#gr_donation,#gr_details,#gr_payment")
                     .filter(function(index) {
                         return (step.currentStep == index);
                     })
@@ -487,23 +728,23 @@ function setupAction(){
         grGiving = new GRGivingSupport({
             form: $form,
             components: {
-                country: {
+                /*country: {
                     selector: fields.country.selector,
                     urlParam: 'country',
                     defaultVal: 'US'
                 },
                 region: {
                     selector: fields.region.selector
-                },
+                },*/
                 /*currency: {
                     // selector: '[name="Payment Currency"]:not(a)',
                     urlParam: 'curr',
                     defaultVal: 'CAD'
                 },*/
-                recurrence: {
+                /*recurrence: {
                     selector: fields.recur_pay.selector,
                     defaultVal: ''
-                },
+                },*/
                 amount: {
                     selector: fields.amt.selector,
                     urlParam: 'amt',
@@ -522,7 +763,7 @@ function setupAction(){
             //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
-            recurrenceOptions: [
+            /*recurrenceOptions: [
                 {label: 'Single', 'value': ''},
                 {label: 'Monthly', 'value': 'Y'}
             ]/*,
@@ -550,10 +791,10 @@ function setupAction(){
             function(e) {
                 $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
             })
-          .on(
+          /*.on(
             'change',
             fields.country.selector,
-            handleCountryChange)
+            handleCountryChange)*/
           .on('submit', sendDonation);
         $form.find(fields.amt.selector).trigger('change');
 
@@ -602,8 +843,8 @@ function setupAction(){
         $form.removeAttr('onsubmit');
         $('[data-toggle="popover"]').popover();
 
-        formSteps.hideStep(1);
-        $form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
+        //formSteps.hideStep(1);
+        /*$form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
             var toggleFields = [ ];
             switch($(this).attr('name')) {
                 case fields.inmem.name: 
@@ -643,7 +884,7 @@ function setupAction(){
                 formSteps.hideStep(1);
             }
 
-        })
+        })*/
 		//things to do just on load
 		setupMobileButton();
 
@@ -713,18 +954,54 @@ function setupTY(){
         // grAnalytics.eCommerceReport(transactionData, itemData);
 
 
-        $(leftColumnSelector).find('header .logo').after($(leftColumnSelector).children("div:first").children());
-        $(leftColumnSelector).children("div:first").remove();    
-
-
         //init social links
+        //Most be above moveToTargets so we can get all the text before it's moved
         socialbuttons = new GRSocialize({
-            target: ".social",
+            source: ".social",
+            target: ".share-block",
             newWindow: true,
             onOpen: function(network, spec, target){
                 grAnalytics.analyticsReport('share/'+network);
             }
         });
+
+        enbeautifier.moveToTargets({
+          '.js-campaign': '.sharingSection-title',
+          '.js-campaign': '.eaFullWidthColumnContent',
+          '.js-campaign': '.eaLeftColumnContent',
+          // '.js-campaign': '.social-block',
+          '.share-block .twitter-text': ['.social .twitter .text', '.social .twitter .img'],
+          '.share-block .mail-subject': '.social .mail .subject',
+          '.share-block .mail-body': '.social .mail .body',
+          '.page-header': '.js-postaction-heroText'
+        });
+
+
+        //setup facebook share pieces from specific content or the meta tags
+        ['title', 'description', 'image'].forEach(function(element) {
+          var content = $('.social .facebook .'+element).length
+            ? $('.social .facebook .'+element).text()
+            : $('meta[property="og:'+element+'"]').attr('content');
+          if(element=='image') {
+            $('.share-block .facebook-'+element).css('background-image','url('+content+')');
+          } else {
+          $('.share-block .facebook-'+element).text(content);
+          }
+        });
+
+        var section = getURLParameter('s');
+        grAnalytics.analyticsReport('action-complete/'+$(formSelector).find('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
+        $('.main').addClass('post-action');
+        $('#gr_giving').show();//.addClass('content-wrap');
+        $('.js-left-column header').prependTo('.container');
+        
+        //include containers for these
+        enbeautifier.moveToTargets({
+          'header .wrap': leftColumnSelector+' > div:first .text-block',
+          'header': leftColumnSelector+' > div:first .subtext-block'
+        }, true); 
+
+        $('.page-header').css('background-image', 'url('+$(".js-postaction-heroBg").attr('src')+')');
     } catch(error) {
         graygunner.sendError(error);
     }
@@ -875,7 +1152,11 @@ function sendDonation(e) {
         !grGiving.isRecurring()
         && grupsell.exists
     ){
-        grupsell.launch();
+        var upsellLaunched = grupsell.launch();
+
+      if(!upsellLaunched){
+        $form.submit();
+      }
     }
     //if it is a recurring donation already, submit
     else{
@@ -1100,9 +1381,22 @@ function init_validation(){
             return true
         });
 
+        //EN's receipt generator freaks out at ampersands in fields
+        $.validator.addMethod('replaceAmpersands',function(value,element){
+          value = value.replace(/&/g,'+')
+          $(element).val(value);
+          return true;
+        });
+
         var validation_rules = { };
-        validation_rules[fields.fname.name] = "required";
-        validation_rules[fields.lname.name] = "required";
+        validation_rules[fields.fname.name] = {
+          required: true,
+          replaceAmpersands: true
+        };
+        validation_rules[fields.lname.name] = {
+          required: true,
+          replaceAmpersands: true
+        };
         validation_rules[fields.street1.name] = { required: true };
         validation_rules[fields.city.name] = "required";
         validation_rules[fields.region.name] = "required";
@@ -1135,7 +1429,7 @@ function init_validation(){
             required: true,
             isValidDonation: true
         };
-        validation_rules[fields.employer.name] = {
+        /*validation_rules[fields.employer.name] = {
             required: function(element) {
                 return $(fields.matching.selector).is(':checked');
             }
@@ -1150,7 +1444,7 @@ function init_validation(){
             required: function(element) {
                 return $(fields.inmem.selector).is(':checked');
             }
-        }
+        }*/
 
         $form.validate({
             rules: validation_rules,
@@ -1310,18 +1604,18 @@ function getFormClasses() {
     classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+    //classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.region.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+    //classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap one-quarter-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
     classes['[name="'+fields.cc_exp.name+'1"]'] = { classes: "inline-block-field-wrap half-wrap", targetElement: ".eaSplitSelectfield"};
     classes['[name="'+fields.cc_exp.name+'2"]'] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: ".eaSplitSelectfield"};
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
 
-    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
+    /*classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
     classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
     //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
@@ -1332,7 +1626,7 @@ function getFormClasses() {
     classes[fields.inmem_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
     classes[fields.inmem_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};*/
     
 
     return classes;
