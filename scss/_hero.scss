@@ -69,6 +69,54 @@ html.csstransforms {
   -ms-transform: translate(-50%,-50%,0);
 }
 
+//add hero video support
+
+.is-videoPlaceholder{
+  //on .hero
+  .heroTitle{
+    padding-top: 20%;
+  }
+
+  .glyphicon{
+    // font-size: 2em;
+
+    //extra
+    margin-bottom: 0.5em;
+    color: $msf-red;
+    font-size: 1.5em;
+    background: $white;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0.25em 0.2em 0.25em 0.3em; //to visually center the play icon
+    text-shadow: none;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+  }
+}
+
+.js-hero.is-videoContainer{
+  //on .hero
+  height: auto;
+
+  .heroTitle{
+    display: none;
+  }
+}
+
+.js-hero-video{
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0;
+  height: 0;
+
+  iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
 @media screen and (max-width: $screen-xs-max),
 screen and (max-device-width:$screen-xs-max) {
   body:after {

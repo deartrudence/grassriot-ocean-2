@@ -435,7 +435,6 @@ function setupCounter(){
   $(".js-content-version").addClass(contentClass);
 
   //set offset
-  
   if(typeof window.offset === "undefined"){
     window.offset = 0;
   }
@@ -840,54 +839,48 @@ function setupAction(){
             ]*/
         });
 
-        $form.removeAttr('onsubmit');
-        $('[data-toggle="popover"]').popover();
+    $form.removeAttr('onsubmit');
+    $('[data-toggle="popover"]').popover();
 
-        //formSteps.hideStep(1);
-        /*$form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
-            var toggleFields = [ ];
-            switch($(this).attr('name')) {
-                case fields.inmem.name: 
-                    toggleFields = [
-                        '.js-inmemorialDetails', 
-                        '.js-inmemorialInstructions',
-                        fields.inmem_type.selector,
-                        fields.inmem_name.selector,
-                        fields.inmem_recip.selector,
-                        fields.inmem_msg.selector,
-                        fields.inmem_street1.selector,
-                        fields.inmem_street2.selector,
-                        fields.inmem_city.selector,
-                        fields.inmem_region.selector,
-                        fields.inmem_postal.selector,
-                        fields.inmem_country.selector,
-                    ];
-
-                break;
-                case fields.matching.name:
-                    toggleFields = [
-                        '.js-employerMatch',
-                        fields.employer.selector
-                    ];
-                break;
-            }
-
-            if($(this).is(':checked')) {
-                $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').show().filter('.hide').removeClass('hide');
-            } else {
-                $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').hide();
-            }
-
-            if($(fields.inmem.selector+","+fields.matching.selector).filter(':checked').length) {
-                formSteps.showStep(1);
-            } else {
-                formSteps.hideStep(1);
-            }
-
-        })*/
-		//things to do just on load
 		setupMobileButton();
 
+    //if the video is requested, show it
+    
+    require.ensure([],function(require){
+      var browser = require("bowser");
+
+      if(gr.getURLParameter("showVideo") === "true"){
+
+        var $video = $(".js-hero-video");
+        if($video.length){
+
+          var $container = $video.parent();
+          $container.addClass("is-videoPlaceholder");
+          $container.find(".heroTitle").prepend('<span class="glyphicon glyphicon-play"></span><br />');
+          var videoURL = $video.text();
+
+          $container.on("click",function(e){
+
+            //for iOS 7 and older, treat the video as a link rather than an embed location
+            if(browser.ios && browser.version <= 7){
+              window.location = videoURL;
+            }
+
+            //for browsers that can handle embedded video, do it!
+            else{
+              $video
+                .html("<iframe src='"+videoURL+"?wmode=opaque&enablejsapi=1&autoplay=1' frameborder='0' allowfullscreen></iframe>")
+                .removeClass("hidden");
+
+              $container.addClass("is-videoContainer");
+              $(".page-header").hide();
+            }
+          });
+
+        }
+        
+      }
+    })
 	} catch(error) {
 		graygunner.sendError(error);
 	}
