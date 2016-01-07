@@ -3,7 +3,7 @@
  *
  * Manages common aspects required for building a donation form
  *
- * @version  0.4
+ * @version  0.5
  * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
@@ -18,9 +18,7 @@ var defaults = {
         currency: {  },
         recurrence: {  },
         amount: {  },
-        other: {
-            classNames: ['amountbutton--other']
-        },
+        other: { },
         processor: {  }
     },
     activeRegionLists: [ ],
@@ -212,8 +210,6 @@ function GRGivingSupport(opts) {
 GRGivingSupport.prototype.init = function() { 
     $form = options.form;
     this.getDefaults();
-    var self = this;
-
     if(isActive(options.components.region)) {
         //attach region input details onchange
         if(options.activeRegionLists) {
@@ -310,7 +306,7 @@ GRGivingSupport.prototype.init = function() {
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
 
-                $(this).closest("label").siblings("input[type=radio]").val(self.getAmount());
+                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
             });
     }
 
@@ -369,10 +365,13 @@ GRGivingSupport.prototype.setDefaults = function() {
             continue;
         switch(component) {
             case 'currency': 
-                if( !components.currency.startingValue && isActive(components.country) && options.autoSelectCurrency)
+                if( !components.currency.startingValue && isActive(components.country) && options.autoSelectCurrency) {
                     this.setCurrencyByCountry($form.find(components.country.selector).val());
-                else if(!components.currency.startingValue && components.currency.defaultVal)
+                } else if(!components.currency.startingValue && components.currency.defaultVal) {
                     this.setCurrency(components.currency.defaultVal);
+                } else { //@since 0.5
+                    this.setCurrency(components.currency.startingValue);
+                }
             break;
             default:
                 if(components[component].startingValue || typeof components[component].defaultVal != "undefined")
@@ -415,18 +414,11 @@ GRGivingSupport.prototype.getAmount = function(formatted) {
 
     var amt = 0;
     var symbol = options.currencySymbol;
-    var $selected = $form.find(options.components.amount.selector).filter(':checked');
-    if(exists(options.components.amount) && $selected.length)
-        amt = $selected.val();
+    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
+        amt = $form.find(options.components.amount.selector).filter(':checked').val();
 
-    if(
-        amt == 'other' 
-        || (!exists(options.components.amount) && exists(options.components.other))
-        || ($selected.length && $selected.hasClass(options.components.other.classNames))
-        ){
+    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
         amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
-    } 
-        
 
     if(isNaN(parseFloat(amt)))
         amt = 0;
@@ -667,7 +659,6 @@ function getAskButtons(amounts) {
                 name:  options.components.other.targetName,
                 label: $('<div>').append($form.find(options.components.other.selector).clone()).html(),
                 value: 'other',
-                classNames: [options.components.other.classNames],
                 wrap:  "<div class='amountbutton'></div>"
             })
         );
@@ -683,7 +674,6 @@ function getAskButtons(amounts) {
                 name:  options.components.other.targetName,
                 label: $('<div>').append(textInput.clone()).html(),
                 value: 'other',
-                classNames: [options.components.other.classNames],
                 wrap:  "<div class='amountbutton'></div>"
             })
         );

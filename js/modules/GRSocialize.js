@@ -4,7 +4,7 @@
  * Interacts with share buttons to generate a pop-up dialog
  * Note: For the Facebook Share Dialog, your app will need to use the same domain for the hosting page and the sharing link (which should be specified as the Site URL)
  *
- * @version  0.2
+ * @version  0.3
  * @requires jQuery
  */
 
@@ -269,17 +269,15 @@ GRSocialize.prototype.buildURLs = function(source) {
           } 
           /**
            * Don't URI encode mailto links
-           * @since  v0.2 - 01Dec15 
+           * @since  v0.3 - 01Dec15 
            */
           else if(network == "mail"){
             networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&';
-          }
-          else {
+          } else {
             networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&amp;';
           }
         }
       });
-
       if($(self.options.target).find('a.'+network).length > 0) {
         $(self.options.target).find('a.'+network).attr('href', networkURL);
       }

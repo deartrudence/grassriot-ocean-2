@@ -2,7 +2,8 @@
  * GRCurrencySymbols module.
  * 
  * A list of single-character symbols for currencies that have them
- * 
+ *
+ * @version 0.1
  */
 
 module.exports = {

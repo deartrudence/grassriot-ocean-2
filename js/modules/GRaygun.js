@@ -1,8 +1,9 @@
 /**
  * GRaygun module.
  * 
- * Uses for interaction with Raygun service.
- * 
+ * Used for interaction with Raygun service.
+ *
+ * @version  0.2
  * @requires jQuery
  */
 
@@ -92,6 +93,24 @@ function _prepareFormsData( forms ) {
     }
     
     return formDataCollection;
+}
+
+/**
+ * Generates a custom error to send to Raygun.
+ * 
+ * @param {String} errorName Error description.
+ * @param {Object} options An object with error's additional data 
+ * which will be processed and sent to 'raygun'.
+ * @public
+ * @since  0.2
+ */
+GRaygun.prototype.sendCustomError = function( errorName, options ) {
+    var self = this;
+
+    try { throw new Error(errorName);}
+    catch(error) {
+        self.sendError(error, options);
+    }
 }
 
 /**

@@ -1,8 +1,10 @@
 /**
- * GRAnalytics-pixel-facebook module.
+ * GRAnalytics-pixel-facebook module
  * 
  * specific implementation for facebook pixel (old method)
- * 
+ *
+ * @version  0.1
+ * @requires jQuery
  */
 
 window.fb_param = {};

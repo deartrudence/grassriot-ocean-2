@@ -1,6 +1,10 @@
 /**
  * GRUpsell module
- * requires jQuery, Bootstrap
+ *
+ * Managed functionality relating to upsell modals
+ *
+ * @version  0.3
+ * @requires jQuery, Bootstrap
  */
 var requiredOptions = [
     'form',
@@ -16,12 +20,22 @@ var defaults = {
     'maxGift': 300,
     'donationAmountClass': 'js-single-donation-amount',
     'upsellAmountClass': 'js-monthly-donation-amount',
-    'enabled': true
+    'enabled': true,
+    'onDeclineFormUpdates': function() { //@since v0.3
+        this.options.recurringField.val('N');
+    },
+    'onUpsellFormUpdates': function() { //@since v0.3
+        this.options.recurringField.val('Y');
+        this.options.donationAmountField.val(this.upsellAmount);
+    }
 }
-var initialAmount = 0;
-var upsellAmount = 0;
 
-var options;
+var protect = {
+    initialAmount: 0,
+    upsellAmount: 0
+}
+
+var grHelpers = require('./GRHelpers');
 
 /**
  * GRUpsell constructor
@@ -29,46 +43,28 @@ var options;
  *        string upsellContentSelector - selector for container of upsell content
  *        jQuery recurringField - collection of form field names desired in the order of preference - Email should always be included and be the first in the array
  *        jQuery form - a jQuery object of the form where the fields will be added 
+ * @since 0.3 - Uses GR Helpers for missing options instead of local function
+ * @since 0.3 - switched options to be instance based rather than global within module
  */
-function GRUpsell(opt) {
+function GRUpsell(opts) {
     this.exists = false;
 
-    if(this.hasRequiredOptions(opt)) {
-
-        options = $.extend(true, {}, defaults, opt);
+    if((missing = grHelpers.hasMissingOptions(opts, requiredOptions))) {
+        throw new Error("[GRUpsell] Missing required options: " + missing.join(', '));
+    }
+    else {
+        this.options = $.extend(true, {}, defaults, opts, protect);
         this.init();
     }
-    else
-        throw new Error("[GRUpsell] Missing required options: " + this.missingOptions.join(', '));
-}
-
-/**
- * GRUpsell hasRequiredOptions
- * @param {Object} options list of options
- *
- * @return {bool} whether all necessary fields are provided in the options
- */
-GRUpsell.prototype.hasRequiredOptions = function(options) {
-    var missingOptions = [ ];
-    for(var i = 0; i < requiredOptions.length; i++) {
-        if(typeof options[requiredOptions[i]] === 'undefined') {
-            missingOptions.push(requiredOptions[i]);
-        }
-    }
-    if(missingOptions.length) {
-        this.missingOptions = missingOptions;
-        return false;
-    }
-    return true;
 }
 
 GRUpsell.prototype.init = function() {
-    var upsellContent = $(options.upsellContentSelector);
+    var upsellContent = $(this.options.upsellContentSelector);
     if(upsellContent.length > 0){
         this.exists = true;
         upsellContent.appendTo($('body'));
-        $('body').on('click', "."+options.declineClass, $.proxy(handleDecline, this));
-        $('body').on('click', "."+options.upsellClass, $.proxy(handleUpsell, this));
+        $('body').on('click', "."+this.options.declineClass, $.proxy(handleDecline, this));
+        $('body').on('click', "."+this.options.upsellClass, $.proxy(handleUpsell, this));
     }
     else{
         this.exists = false;
@@ -76,7 +72,7 @@ GRUpsell.prototype.init = function() {
 }
 
 GRUpsell.prototype.launch = function() {
-    var field = options.donationAmountField;
+    var field = this.options.donationAmountField;
 
     //get the active field
     if( field.length > 1){
@@ -86,38 +82,62 @@ GRUpsell.prototype.launch = function() {
         }
     }
 
-    initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
+    this.initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
+    //@since 0.3 handle 'other' field [in EN way - we already handle GRGivingSupport way]
+    if(isNaN(this.initialAmount) && this.options.donationAmountField.filter('[type="text"]').length) {
+        this.initialAmount = parseFloat(this.options.donationAmountField.filter('[type="text"]').val().replace(/[^0-9\.]/g, ''));
+    } else if(isNaN(this.initialAmount)) {
+        this.initialAmount = 0;
+    }
 
-    if(options.enabled === false || initialAmount >= options.maxGift || options.recurringField.val()=='Y') 
+    if( //@since 0.3 flexible detection of recurring field type and value
+        this.options.enabled === false 
+        || this.initialAmount >= this.options.maxGift 
+        || (
+            this.options.recurringField.val()=='Y'
+            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
+            )
+        || (
+            this.options.recurringField.filter(':checked').length
+            && this.options.recurringField.filter(':checked').val() == 'Y'
+            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
+            )
+        || !this.exists ) {
+        
         return false;
+    }
 
-    upsellAmount = calculateUpsell(initialAmount);
+    this.upsellAmount = calculateUpsell.call(this, this.initialAmount);
 
-    $(options.upsellContentSelector).find("."+options.donationAmountClass).text(initialAmount.toLocaleString());
-    $(options.upsellContentSelector).find("."+options.upsellAmountClass).text(upsellAmount.toLocaleString());
+    if(typeof this.options.preLaunchCallback === "function") {
+        this.options.preLaunchCallback.call(this);
+    }
 
-    $(options.upsellContentSelector).modal({
+    $(this.options.upsellContentSelector).find("."+this.options.donationAmountClass).text(this.initialAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+    $(this.options.upsellContentSelector).find("."+this.options.upsellAmountClass).text(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+
+    $(this.options.upsellContentSelector).modal({
         backdrop: 'static',
         keyboard: false
     });
-    $(options.upsellContentSelector).modal('show');
-    options.enabled = false;
+    $(this.options.upsellContentSelector).modal('show');
+    this.options.enabled = false;
     return true;
 }
 
 function calculateUpsell(amt) {
-    switch(options.upsellMethod) {
+    switch(this.options.upsellMethod) {
         case 'range':
-            if(typeof options.range != "undefined")
-                return getUpsellFromRange(amt);
+            if(typeof this.options.range != "undefined")
+                return getUpsellFromRange.call(this, amt);
         break;
         case 'function':
-            if(typeof options.calcFunction != "undefined")
-                return options.calcFunction(amt);
+            if(typeof this.options.calcFunction != "undefined")
+                return this.options.calcFunction(amt);
         break;
         case 'formula':
-            if(typeof options.formula != "undefined") 
-                return eval(options.formula);
+            if(typeof this.options.formula != "undefined") 
+                return eval(this.options.formula);
         break;
     }
     return amt;   
@@ -126,9 +146,9 @@ function calculateUpsell(amt) {
 function getUpsellFromRange(amt) {
     try {
         amt = parseFloat(amt.replace(/[^0-9\.]/g, ''));
-        for(var i = 0; i < options.range.length; i++) {
-            if(amt >= options.range[i].min && amt < options.range[i].max)
-                return options.range[i].amount;
+        for(var i = 0; i < this.options.range.length; i++) {
+            if(amt >= this.options.range[i].min && amt < this.options.range[i].max)
+                return this.options.range[i].amount;
         }
     }
     catch(err) { }
@@ -138,29 +158,28 @@ function getUpsellFromRange(amt) {
 
 function handleDecline(e) {
     e.preventDefault();
-    options.recurringField.val('N');
-    options.form.trigger("grupsell.declined", [initialAmount, upsellAmount]);
-    $(options.upsellContentSelector).modal('hide');
+    this.options.onDeclineFormUpdates.call(this);
+    this.options.form.trigger("grupsell.declined", [this.initialAmount, this.upsellAmount]);
+    $(this.options.upsellContentSelector).modal('hide');
 
-    if(typeof options.declineCallback === "function"){
-        options.declineCallback.call(this);
+    if(typeof this.options.declineCallback === "function"){
+        this.options.declineCallback.call(this);
     }
 
-    options.form.submit();
+    this.options.form.submit();
 }
 
 function handleUpsell(e) {
     e.preventDefault();
-    options.recurringField.val('Y');
-    options.donationAmountField.val(upsellAmount);
-    options.form.trigger("grupsell.upsold", [initialAmount, upsellAmount]);
-    $(options.upsellContentSelector).modal('hide');
+    this.options.onUpsellFormUpdates.call(this);
+    this.options.form.trigger("grupsell.upsold", [this.initialAmount, this.upsellAmount]);
+    $(this.options.upsellContentSelector).modal('hide');
 
-    if(typeof options.upsellCallback === "function"){
-        options.upsellCallback.call(this);
+    if(typeof this.options.upsellCallback === "function"){
+        this.options.upsellCallback.call(this);
     }
 
-    options.form.submit();
+    this.options.form.submit();
 }
 
 

@@ -2,7 +2,8 @@
  * GRCurrencies module.
  * 
  * A list of country codes mapped to currency key->value pair
- * 
+ *
+ * @version 0.1
  */
 
 module.exports = {

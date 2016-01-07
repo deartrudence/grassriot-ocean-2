@@ -3,7 +3,7 @@
  * 
  * Creates and handles a multi-step form
  * 
- * @version  0.3 !!MODIFIED 20151113!!
+ * @version  0.4
  * @requires jQuery
  */
 var requiredOptions = [ 'steps' ];
@@ -52,7 +52,7 @@ GRSteps.prototype.init = function(){
   //initalizer
   var steps = this;
   this.stepIndicators = $();
-  this.disabledSteps = [ ];  //@since __
+  this.disabledSteps = [ ];  //@since 0.4
   this.$container = $(this.options.target);
   this.addSteps(this.options.steps);
 
@@ -145,7 +145,7 @@ GRSteps.prototype.hasRequiredOptions = function(options, req) {
  * Hides a step and its indicator
  * @param  {int} index the index of the step to hide starting at 0
  * @return void   
- * @since __    
+ * @since 0.4    
  */
 GRSteps.prototype.hideStep = function(index) {
   if(this.disabledSteps.indexOf(index) === -1) {
@@ -159,7 +159,7 @@ GRSteps.prototype.hideStep = function(index) {
  * Shows a step and its indicator
  * @param  {int} index the index of the step to show starting at 0
  * @return void    
- * @since  __   
+ * @since  0.4   
  */
 GRSteps.prototype.showStep = function(index) {
   if(this.disabledSteps.indexOf(index) !== -1){
@@ -172,7 +172,7 @@ GRSteps.prototype.showStep = function(index) {
 /**
  * recalculates the sizes of the panels and container
  * @return void
- * @since  __
+ * @since  0.4
  */
 GRSteps.prototype.recalculate = function() {
   //change the container width to match the number of panels
@@ -216,7 +216,7 @@ GRSteps.prototype.addSteps = function(newSteps){
   //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
   $(this.options.indicatorTarget).append(this.stepIndicators);
 
-  this.recalculate();  //moved to function @since __
+  this.recalculate();  //moved to function @since 0.4
 }
 
 /**
@@ -254,7 +254,7 @@ GRSteps.prototype.switchTo = function(stepNumber){
 
   /**
    * Prevent going to a step that doesn't exist
-   * @since v0.3 - 2015-12-04
+   * @since v0.35 - 2015-12-04 - JH: this wasn't in v0.3 so I changed the version to v0.35 to note it strayed - not sure what projects it exists in, but if we always upgrade to v0.4 [or the latest] then we should be okay
    */
   if(this.$container.children().length <= stepNumber){
     return;
@@ -354,7 +354,7 @@ GRSteps.prototype.buttonify = function(self){
 
 /**
  *  switches to the next visiable step
- * @since  __   Looks for hidden steps and jumps over them
+ * @since  0.4   Looks for hidden steps and jumps over them
  * @return void
  */
 GRSteps.prototype.nextStep = function(){
@@ -367,7 +367,7 @@ GRSteps.prototype.nextStep = function(){
 
 /**
  * switches to the previous visiable step
- * @since  __   Looks for hidden steps and jumps over them
+ * @since  0.4   Looks for hidden steps and jumps over them
  * @return {[type]} [description]
  */
 GRSteps.prototype.previousStep = function(){

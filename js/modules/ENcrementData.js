@@ -1,6 +1,10 @@
 /**
- * ENcrementData module
- * requires jQuery, Stringer
+ * ENcrementData module.
+ * 
+ * Determines which new piece of information to request on a form
+ *
+ * @version  0.1
+ * @requires jQuery, Stringer
  */
 var requiredOptions = [
     'clientId',

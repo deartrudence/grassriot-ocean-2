@@ -1,6 +1,10 @@
 /**
  * Stringer module
- * requires jQuery
+ *
+ * Interface to connect to Stringer web service
+ *
+ * @version  0.1
+ * @requires jQuery
  */
 var requiredOptions = [
     'clientId'
