@@ -74,7 +74,7 @@ webpackJsonp([0],[
 	    optin:      'opt-IN',
 	    /*giftaid:    'Gift Aid',
 	    ref_camp_id:'Referring Campaign Id',
-	    matching:   'Matching Gift', 
+	    matching:   'Matching Gift', */
 	    employer:   'Company Name',
 	    inmem:      'In Memoriam',
 	    inmem_type: 'Gift Type',
@@ -86,7 +86,7 @@ webpackJsonp([0],[
 	    inmem_city:    'Honoree Inform City',
 	    inmem_region:  'Honoree Inform State',
 	    inmem_postal:  'Honoree Inform Post Code',
-	    inmem_country: 'Honoree Inform Country',*/
+	    inmem_country: 'Honoree Inform Country'
 	});
 
 	//Key:Value :: Target:Content
@@ -103,28 +103,9 @@ webpackJsonp([0],[
 	};
 	var ENBeautifierFillersContainers = {
 	  '#gr_donation': [
-	    //'#'+fields.recur_pay.nameNoSpace+'Div', 
-	    '#'+fields.amt.nameNoSpace+'Div', 
-	    //'#'+fields.inmem.nameNoSpace+'Div', 
-	    //'#'+fields.matching.nameNoSpace+'Div'
-	  ],/*
-	  '#gr_extra': [
-	    '.js-employerMatch',
-	    '#'+fields.employer.nameNoSpace+'Div',
-	    '.js-inmemorialDetails', 
-	    '.js-inmemorialInstructions',
-	    '#'+fields.inmem_type.nameNoSpace+'Div', 
-	    '#'+fields.inmem_name.nameNoSpace+'Div', 
-	    '#'+fields.inmem_recip.nameNoSpace+'Div', 
-	    '#'+fields.inmem_msg.nameNoSpace+'Div', 
-	    '#'+fields.inmem_street1.nameNoSpace+'Div', 
-	    '#'+fields.inmem_street2.nameNoSpace+'Div', 
-	    '#'+fields.inmem_city.nameNoSpace+'Div', 
-	    '#'+fields.inmem_postal.nameNoSpace+'Div',
-	    '#'+fields.inmem_country.nameNoSpace+'Div',
-	    '#'+fields.inmem_region.nameNoSpace+'Div',
-	    '#'+fields.inmem_region.nameNoSpace+'Div'
-	  ],*/
+	    '#'+fields.recur_pay.nameNoSpace+'Div', 
+	    '#'+fields.amt.nameNoSpace+'Div',
+	  ],
 	  '#gr_details': [
 	    '.js-billingDetails', 
 	    '#'+fields.fname.nameNoSpace+'Div', 
@@ -138,7 +119,29 @@ webpackJsonp([0],[
 	    '#'+fields.region.nameNoSpace+'Div', 
 	    '#'+fields.optin.nameNoSpace+'Div'
 	    //'#'+fields.phone.nameNoSpace+'Div'
+	  ],/*
+	  '#gr_options': [
+	    '#'+fields.byorg.nameNoSpace+'Div',
+	    '#'+fields.inmem.nameNoSpace+'Div'
 	  ],
+	  '#gr_inmem': [
+	    '.js-inmemorialDetails', 
+	    '.js-inmemorialInstructions',
+	    '#'+fields.inmem_type.nameNoSpace+'Div', 
+	    '#'+fields.inmem_name.nameNoSpace+'Div', 
+	    '#'+fields.inmem_recip.nameNoSpace+'Div', 
+	    '#'+fields.inmem_msg.nameNoSpace+'Div', 
+	    '#'+fields.inmem_street1.nameNoSpace+'Div', 
+	    '#'+fields.inmem_street2.nameNoSpace+'Div', 
+	    '#'+fields.inmem_city.nameNoSpace+'Div', 
+	    '#'+fields.inmem_postal.nameNoSpace+'Div',
+	    '#'+fields.inmem_country.nameNoSpace+'Div',
+	    '#'+fields.inmem_region.nameNoSpace+'Div'
+	  ],
+	  '#gr_company': [
+	    '.js-employerMatch',
+	    '#'+fields.employer.nameNoSpace+'Div'
+	  ],*/
 	  '#gr_payment': [
 	    '.js-paymentDetails', 
 	    '#'+fields.pay_type.nameNoSpace+'Div', 
@@ -221,7 +224,7 @@ webpackJsonp([0],[
 		}
 	    else{
 	        setupAction();
-	        setupCounter();    
+	        //setupCounter();    
 	    }
 
 		//do everything else
@@ -388,7 +391,7 @@ webpackJsonp([0],[
 	 * [setupCounter description]
 	 * @return {[type]} [description]
 	 */
-	function setupCounter(){
+	/*function setupCounter(){
 	  var refresh = 1200;
 	  var scroll = 2000;
 	  var maxstep = 30;
@@ -414,8 +417,8 @@ webpackJsonp([0],[
 	  // require('jqueryeasing');
 	  // require('ticker');
 
-	  var version = getURLParameter('s');
-	  var variant = getURLParameter('v');
+	  var version = gr.getURLParameter('s');
+	  var variant = gr.getURLParameter('v');
 
 	  switch(version){
 	    case "1843":      
@@ -443,14 +446,14 @@ webpackJsonp([0],[
 	    window.offset = 0;
 	  }
 
-	  updatecount(startingValue);
+	  updatecount(startingValue);*/
 		
 	  /**
 	   * [updatecount description]
 	   * @param  {[type]} count [description]
 	   * @return {[type]}       [description]
 	   */
-	  function updatecount(count){
+	  /*function updatecount(count){
 
 	    if(typeof count !== 'undefined'){
 	      currentTotal = parseInt(count) + parseInt(window.offset);      
@@ -480,7 +483,7 @@ webpackJsonp([0],[
 	      isStarted = true;
 	      setCounter();
 	    }
-	  }
+	  }*/
 
 	  /**
 	   * [gettotal description]
@@ -504,20 +507,20 @@ webpackJsonp([0],[
 	  /**
 	   * [setStartCount description]
 	   */
-	  function setStartCount(){
+	  /*function setStartCount(){
 	    currentTotal = $counter.html().replace(',', '');
 	    
 	    if(currentCount == 0){
 	      currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
 	    } 
 	    // var orig = counter.html().replace(',', '');
-	  }
+	  }*/
 
 	  /**
 	   * [addCommas description]
 	   * @param {[type]} nStr [description]
 	   */
-	  function addCommas(nStr){
+	  /*function addCommas(nStr){
 	    nStr += '';
 	    var x = nStr.split('.');
 	    var x1 = x[0];
@@ -538,12 +541,12 @@ webpackJsonp([0],[
 	    //set refresh interval to between 2 and 4 seconds
 	    // refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
 	    // refresher = window.setTimeout(doRefresh,refresh);
-	  }
+	  }*/
 
 	  /**
 	   * [setCounter description]
 	   */
-	  function setCounter() {
+	  /*function setCounter() {
 	    setStartCount();
 	    // setTimeout( doRefresh, refresh );
 	    setInterval(doRefresh, refresh);
@@ -561,21 +564,21 @@ webpackJsonp([0],[
 	    //     // return tickerCount;
 	    //   }
 	    // });
-	  }
+	  }*/
 
 	  /**
 	   * [showCount description]
 	   * @return {[type]} [description]
 	   */
-	  function showCount(){
+	  /*function showCount(){
 	    $counter.html(currentCount);
-	  }
+	  }*/
 
 	  /**
 	   * [getSecondsAdded description]
 	   * @return {[type]} [description]
 	   */
-	  function getSecondsAdded(){
+	  /*function getSecondsAdded(){
 	    //get the dollar amount difference
 	    newAdditional = grGiving.getAmount();
 	    var diff = newAdditional - oldAdditional;
@@ -615,7 +618,7 @@ webpackJsonp([0],[
 	    // .on("mouseenter",pauseTicker)
 	    // .on("mouseleave",unpauseTicker);
 
-	}
+	}*/
 
 	/**
 	 * [setupAction description]
@@ -637,7 +640,7 @@ webpackJsonp([0],[
 
 	        enbeautifier.addClasses(getFormClasses());
 
-	        $("#Credit_Card_ExpirationDiv").html( function(i,h) { 
+	        $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
 	                    return h.replace(/&nbsp;/g,'');
 	                });
 
@@ -646,8 +649,8 @@ webpackJsonp([0],[
 	          activeClass: 'active',
 	          useCSSAnimation: false,
 	          indicatorTarget: '.steps-list ul',
-	          steps: $("#gr_donation,#gr_details,#gr_payment"),
-	          stepLabels: ['Amount', 'Billing', 'Payment'],
+	          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
+	          stepLabels: ['Amount', 'Billing', 'Options', 'Notification', 'Organization', 'Payment'],
 	          addButtons: true,
 	          target: "#window",
 	          stepHandler:[
@@ -662,7 +665,6 @@ webpackJsonp([0],[
 	                grAnalytics.analyticsReport( 'payment/page1-complete' );
 	                return true;
 	              }
-	               
 	            },
 	            //step 2 handler
 	            function(){
@@ -672,12 +674,47 @@ webpackJsonp([0],[
 	                handleErrors(formErrors);
 	                return false;
 	              } else {
+	                grAnalytics.analyticsReport( 'payment/page2-complete' );
+	                return true;
+	              }
+	            },
+	            //step 3 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_options").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
 	                grAnalytics.analyticsReport( 'payment/page3-complete' );
 	                return true;
 	              }
 	            },
-
 	            //step 4 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_inmem").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
+	                grAnalytics.analyticsReport( 'payment/page4-complete' );
+	                return true;
+	              }
+	            },
+	            //step 5 handler
+	            function(){
+	              formErrors = [ ];
+	              $("#gr_company").find("input,select,textarea").valid();
+	              if(formErrors.length) {
+	                handleErrors(formErrors);
+	                return false;
+	              } else {
+	                grAnalytics.analyticsReport( 'payment/page5-complete' );
+	                return true;
+	              }
+	            },
+	            //step 6 handler
 	            function(){
 	              formErrors = [ ];
 	              //let the stepper handle any errors
@@ -692,39 +729,6 @@ webpackJsonp([0],[
 
 	            }
 	          ]
-	        });
-	        
-	        //prevent tabbing to next step
-	        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
-	            if(e.which == 9) {
-	                var $stepPanel = $(this).parents('.page').first();
-	                var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
-	                var $firstTabbable = $stepPanel.find('input, select, textarea, button').filter(":first");
-	                if(!e.shiftKey && $(this).is($lastTabbable)) {
-	                    e.preventDefault();
-	                    $firstTabbable.focus();
-	                    //formSteps.nextStep();
-	                } else if(e.shiftKey && $(this).is($firstTabbable)) {
-	                    e.preventDefault();
-	                    $lastTabbable.focus();
-	                    //formSteps.previousStep();
-	                }
-	            }
-	            else if(e.which == 13){
-	              e.preventDefault();
-	            }
-	        });
-
-	        $("#window").on('stepChanged.grsteps', function(e, step) {
-	            $("#window").promise().done(function() {
-	                $("#gr_donation,#gr_details,#gr_payment")
-	                    .filter(function(index) {
-	                        return (step.currentStep == index);
-	                    })
-	                    .find('input, select, textarea, button')
-	                    .first()
-	                    .focus();
-	            });
 	        });
 
 	        // Setup Campaign Page
@@ -743,8 +747,8 @@ webpackJsonp([0],[
 	                    // selector: '[name="Payment Currency"]:not(a)',
 	                    urlParam: 'curr',
 	                    defaultVal: 'CAD'
-	                },*/
-	                /*recurrence: {
+	                },
+	                recurrence: {
 	                    selector: fields.recur_pay.selector,
 	                    defaultVal: ''
 	                },*/
@@ -758,10 +762,10 @@ webpackJsonp([0],[
 	                    name: 'Donation Amount Other',
 	                    targetName: fields.amt.name,
 	                    label: 'Other amount'
-	                }/*,
+	                },
 	                processor: {
 	                    selector: fields.pay_type.selector,
-	                }*/
+	                }
 	            },
 	            //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
 	            askStringSelector: '#donation-ranges',
@@ -769,7 +773,7 @@ webpackJsonp([0],[
 	            /*recurrenceOptions: [
 	                {label: 'Single', 'value': ''},
 	                {label: 'Monthly', 'value': 'Y'}
-	            ]/*,
+	            ],*/
 	            processorFields: { 
 	                'PayPal': {
 	                    hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
@@ -781,7 +785,7 @@ webpackJsonp([0],[
 	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
 	                }
 
-	            }*/
+	            }
 
 	        });
 
@@ -850,8 +854,8 @@ webpackJsonp([0],[
 
 	    //if the video is requested, show it
 	    
-	    !/* require.ensure */(function(require){
-	      var browser = __webpack_require__(21);
+	    /*require.ensure([],function(require){
+	      var browser = require("bowser");
 
 	      if(gr.getURLParameter("showVideo") === "true"){
 
@@ -884,7 +888,7 @@ webpackJsonp([0],[
 	        }
 	        
 	      }
-	    }(__webpack_require__))
+	    })*/
 		} catch(error) {
 			graygunner.sendError(error);
 		}
@@ -945,7 +949,7 @@ webpackJsonp([0],[
 	        //get the social links module
 	        var GRSocialize = __webpack_require__(22);
 	                
-	        var section = getURLParameter('s');
+	        var section = gr.getURLParameter('s');
 	        grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
 	        //Ecommerce not installed on client's analytics
 	        // grAnalytics.eCommerceReport(transactionData, itemData);
@@ -986,7 +990,7 @@ webpackJsonp([0],[
 	          }
 	        });
 
-	        var section = getURLParameter('s');
+	        var section = gr.getURLParameter('s');
 	        grAnalytics.analyticsReport('action-complete/'+$(formSelector).find('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
 	        $('.main').addClass('post-action');
 	        $('#gr_giving').show();//.addClass('content-wrap');
@@ -1176,91 +1180,6 @@ webpackJsonp([0],[
 				currentSection = $(this).attr("data-section");
 		});
 		return currentSection;
-	}
-
-	// Error Reporting
-	// ---------------------------------------
-	function raygunSendError(error, options) {
-		try {
-			// require('raygun');
-			var data = { };
-			if(!options instanceof Object || typeof options == 'undefined') {
-				options = { };
-			}
-
-			//if forms are defined, pull in the form data for each listed form selector and store as an array of
-			if(options.forms && options.forms.length) {
-				var formDataCollection = { };
-				for(var i = 0; i < options.forms.length; i++) {
-					var $forms = $(options.forms[i]);
-					formDataCollection[options.forms[i]] = $forms.map(function(index, form) {
-						return [$(form).serializeArray().map(
-							function(obj) {
-								var returnObj = { };
-								returnObj[obj.name] = obj.value;
-								return returnObj;
-							}
-						)];
-					});
-				}
-				//console.log(formDataCollection);
-				$.extend(true, data, {forms: formDataCollection});
-			}
-
-			if(options.data) {
-				$.extend(true, data, options.data);
-			}
-
-			/*if(typeof Raygun !== 'undefined')
-				Raygun.send(error, data);
-			else {*/
-				console.log(error);
-				console.log(data);
-			//}
-		}
-		catch(error) {
-			if(typeof Raygun !== 'undefined')
-				Raygun.send(error);
-		}
-	}
-
-	function raygunCheckErrorContainer(selector, formSelectors) {
-		try {
-			if($(selector).length && $.trim($(selector).text()) != '') {
-				$error_modal
-	                .find(".modalErrorMessage")
-	                .html($('#eaerrors')
-	                .html());
-	            
-	            $error_modal.modal( {
-	                show:true
-	            } );
-
-	            try { throw new Error("EA Processing Error");}
-				catch(error) {
-					grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-					var data = {};
-					data[selector] = $(selector).text();
-					raygunSendError(error, {
-						data: data,
-						forms: formSelectors
-					});
-				}
-			}
-		}
-		catch(error) {
-			raygunSendError(error);
-		}
-	}
-
-	function getURLParameter(name){
-	    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-	    if (results==null){
-	       return null;
-	    }
-	    else{
-	       return results[1] || 0;
-	    }
 	}
 
 	function init_validation(){
@@ -2197,7 +2116,11 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {/**
 	 * GRUpsell module
-	 * requires jQuery, Bootstrap
+	 *
+	 * Managed functionality relating to upsell modals
+	 *
+	 * @version  0.3
+	 * @requires jQuery, Bootstrap
 	 */
 	var requiredOptions = [
 	    'form',
@@ -2213,12 +2136,22 @@ webpackJsonp([0],[
 	    'maxGift': 300,
 	    'donationAmountClass': 'js-single-donation-amount',
 	    'upsellAmountClass': 'js-monthly-donation-amount',
-	    'enabled': true
+	    'enabled': true,
+	    'onDeclineFormUpdates': function() { //@since v0.3
+	        this.options.recurringField.val('N');
+	    },
+	    'onUpsellFormUpdates': function() { //@since v0.3
+	        this.options.recurringField.val('Y');
+	        this.options.donationAmountField.val(this.upsellAmount);
+	    }
 	}
-	var initialAmount = 0;
-	var upsellAmount = 0;
 
-	var options;
+	var protect = {
+	    initialAmount: 0,
+	    upsellAmount: 0
+	}
+
+	var grHelpers = __webpack_require__(4);
 
 	/**
 	 * GRUpsell constructor
@@ -2226,46 +2159,28 @@ webpackJsonp([0],[
 	 *        string upsellContentSelector - selector for container of upsell content
 	 *        jQuery recurringField - collection of form field names desired in the order of preference - Email should always be included and be the first in the array
 	 *        jQuery form - a jQuery object of the form where the fields will be added 
+	 * @since 0.3 - Uses GR Helpers for missing options instead of local function
+	 * @since 0.3 - switched options to be instance based rather than global within module
 	 */
-	function GRUpsell(opt) {
+	function GRUpsell(opts) {
 	    this.exists = false;
 
-	    if(this.hasRequiredOptions(opt)) {
-
-	        options = $.extend(true, {}, defaults, opt);
+	    if((missing = grHelpers.hasMissingOptions(opts, requiredOptions))) {
+	        throw new Error("[GRUpsell] Missing required options: " + missing.join(', '));
+	    }
+	    else {
+	        this.options = $.extend(true, {}, defaults, opts, protect);
 	        this.init();
 	    }
-	    else
-	        throw new Error("[GRUpsell] Missing required options: " + this.missingOptions.join(', '));
-	}
-
-	/**
-	 * GRUpsell hasRequiredOptions
-	 * @param {Object} options list of options
-	 *
-	 * @return {bool} whether all necessary fields are provided in the options
-	 */
-	GRUpsell.prototype.hasRequiredOptions = function(options) {
-	    var missingOptions = [ ];
-	    for(var i = 0; i < requiredOptions.length; i++) {
-	        if(typeof options[requiredOptions[i]] === 'undefined') {
-	            missingOptions.push(requiredOptions[i]);
-	        }
-	    }
-	    if(missingOptions.length) {
-	        this.missingOptions = missingOptions;
-	        return false;
-	    }
-	    return true;
 	}
 
 	GRUpsell.prototype.init = function() {
-	    var upsellContent = $(options.upsellContentSelector);
+	    var upsellContent = $(this.options.upsellContentSelector);
 	    if(upsellContent.length > 0){
 	        this.exists = true;
 	        upsellContent.appendTo($('body'));
-	        $('body').on('click', "."+options.declineClass, $.proxy(handleDecline, this));
-	        $('body').on('click', "."+options.upsellClass, $.proxy(handleUpsell, this));
+	        $('body').on('click', "."+this.options.declineClass, $.proxy(handleDecline, this));
+	        $('body').on('click', "."+this.options.upsellClass, $.proxy(handleUpsell, this));
 	    }
 	    else{
 	        this.exists = false;
@@ -2273,7 +2188,7 @@ webpackJsonp([0],[
 	}
 
 	GRUpsell.prototype.launch = function() {
-	    var field = options.donationAmountField;
+	    var field = this.options.donationAmountField;
 
 	    //get the active field
 	    if( field.length > 1){
@@ -2283,38 +2198,62 @@ webpackJsonp([0],[
 	        }
 	    }
 
-	    initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
+	    this.initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
+	    //@since 0.3 handle 'other' field [in EN way - we already handle GRGivingSupport way]
+	    if(isNaN(this.initialAmount) && this.options.donationAmountField.filter('[type="text"]').length) {
+	        this.initialAmount = parseFloat(this.options.donationAmountField.filter('[type="text"]').val().replace(/[^0-9\.]/g, ''));
+	    } else if(isNaN(this.initialAmount)) {
+	        this.initialAmount = 0;
+	    }
 
-	    if(options.enabled === false || initialAmount >= options.maxGift || options.recurringField.val()=='Y') 
+	    if( //@since 0.3 flexible detection of recurring field type and value
+	        this.options.enabled === false 
+	        || this.initialAmount >= this.options.maxGift 
+	        || (
+	            this.options.recurringField.val()=='Y'
+	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
+	            )
+	        || (
+	            this.options.recurringField.filter(':checked').length
+	            && this.options.recurringField.filter(':checked').val() == 'Y'
+	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
+	            )
+	        || !this.exists ) {
+	        
 	        return false;
+	    }
 
-	    upsellAmount = calculateUpsell(initialAmount);
+	    this.upsellAmount = calculateUpsell.call(this, this.initialAmount);
 
-	    $(options.upsellContentSelector).find("."+options.donationAmountClass).text(initialAmount.toLocaleString());
-	    $(options.upsellContentSelector).find("."+options.upsellAmountClass).text(upsellAmount.toLocaleString());
+	    if(typeof this.options.preLaunchCallback === "function") {
+	        this.options.preLaunchCallback.call(this);
+	    }
 
-	    $(options.upsellContentSelector).modal({
+	    $(this.options.upsellContentSelector).find("."+this.options.donationAmountClass).text(this.initialAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+	    $(this.options.upsellContentSelector).find("."+this.options.upsellAmountClass).text(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+
+	    $(this.options.upsellContentSelector).modal({
 	        backdrop: 'static',
 	        keyboard: false
 	    });
-	    $(options.upsellContentSelector).modal('show');
-	    options.enabled = false;
+	    $(this.options.upsellContentSelector).modal('show');
+	    this.options.enabled = false;
 	    return true;
 	}
 
 	function calculateUpsell(amt) {
-	    switch(options.upsellMethod) {
+	    switch(this.options.upsellMethod) {
 	        case 'range':
-	            if(typeof options.range != "undefined")
-	                return getUpsellFromRange(amt);
+	            if(typeof this.options.range != "undefined")
+	                return getUpsellFromRange.call(this, amt);
 	        break;
 	        case 'function':
-	            if(typeof options.calcFunction != "undefined")
-	                return options.calcFunction(amt);
+	            if(typeof this.options.calcFunction != "undefined")
+	                return this.options.calcFunction(amt);
 	        break;
 	        case 'formula':
-	            if(typeof options.formula != "undefined") 
-	                return eval(options.formula);
+	            if(typeof this.options.formula != "undefined") 
+	                return eval(this.options.formula);
 	        break;
 	    }
 	    return amt;   
@@ -2323,9 +2262,9 @@ webpackJsonp([0],[
 	function getUpsellFromRange(amt) {
 	    try {
 	        amt = parseFloat(amt.replace(/[^0-9\.]/g, ''));
-	        for(var i = 0; i < options.range.length; i++) {
-	            if(amt >= options.range[i].min && amt < options.range[i].max)
-	                return options.range[i].amount;
+	        for(var i = 0; i < this.options.range.length; i++) {
+	            if(amt >= this.options.range[i].min && amt < this.options.range[i].max)
+	                return this.options.range[i].amount;
 	        }
 	    }
 	    catch(err) { }
@@ -2335,29 +2274,28 @@ webpackJsonp([0],[
 
 	function handleDecline(e) {
 	    e.preventDefault();
-	    options.recurringField.val('N');
-	    options.form.trigger("grupsell.declined", [initialAmount, upsellAmount]);
-	    $(options.upsellContentSelector).modal('hide');
+	    this.options.onDeclineFormUpdates.call(this);
+	    this.options.form.trigger("grupsell.declined", [this.initialAmount, this.upsellAmount]);
+	    $(this.options.upsellContentSelector).modal('hide');
 
-	    if(typeof options.declineCallback === "function"){
-	        options.declineCallback.call(this);
+	    if(typeof this.options.declineCallback === "function"){
+	        this.options.declineCallback.call(this);
 	    }
 
-	    options.form.submit();
+	    this.options.form.submit();
 	}
 
 	function handleUpsell(e) {
 	    e.preventDefault();
-	    options.recurringField.val('Y');
-	    options.donationAmountField.val(upsellAmount);
-	    options.form.trigger("grupsell.upsold", [initialAmount, upsellAmount]);
-	    $(options.upsellContentSelector).modal('hide');
+	    this.options.onUpsellFormUpdates.call(this);
+	    this.options.form.trigger("grupsell.upsold", [this.initialAmount, this.upsellAmount]);
+	    $(this.options.upsellContentSelector).modal('hide');
 
-	    if(typeof options.upsellCallback === "function"){
-	        options.upsellCallback.call(this);
+	    if(typeof this.options.upsellCallback === "function"){
+	        this.options.upsellCallback.call(this);
 	    }
 
-	    options.form.submit();
+	    this.options.form.submit();
 	}
 
 
@@ -2373,7 +2311,7 @@ webpackJsonp([0],[
 	 * 
 	 * Creates and handles a multi-step form
 	 * 
-	 * @version  0.3 !!MODIFIED 20151113!!
+	 * @version  0.4
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'steps' ];
@@ -2422,7 +2360,7 @@ webpackJsonp([0],[
 	  //initalizer
 	  var steps = this;
 	  this.stepIndicators = $();
-	  this.disabledSteps = [ ];  //@since __
+	  this.disabledSteps = [ ];  //@since 0.4
 	  this.$container = $(this.options.target);
 	  this.addSteps(this.options.steps);
 
@@ -2515,7 +2453,7 @@ webpackJsonp([0],[
 	 * Hides a step and its indicator
 	 * @param  {int} index the index of the step to hide starting at 0
 	 * @return void   
-	 * @since __    
+	 * @since 0.4    
 	 */
 	GRSteps.prototype.hideStep = function(index) {
 	  if(this.disabledSteps.indexOf(index) === -1) {
@@ -2529,7 +2467,7 @@ webpackJsonp([0],[
 	 * Shows a step and its indicator
 	 * @param  {int} index the index of the step to show starting at 0
 	 * @return void    
-	 * @since  __   
+	 * @since  0.4   
 	 */
 	GRSteps.prototype.showStep = function(index) {
 	  if(this.disabledSteps.indexOf(index) !== -1){
@@ -2542,7 +2480,7 @@ webpackJsonp([0],[
 	/**
 	 * recalculates the sizes of the panels and container
 	 * @return void
-	 * @since  __
+	 * @since  0.4
 	 */
 	GRSteps.prototype.recalculate = function() {
 	  //change the container width to match the number of panels
@@ -2586,7 +2524,7 @@ webpackJsonp([0],[
 	  //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
 	  $(this.options.indicatorTarget).append(this.stepIndicators);
 
-	  this.recalculate();  //moved to function @since __
+	  this.recalculate();  //moved to function @since 0.4
 	}
 
 	/**
@@ -2624,7 +2562,7 @@ webpackJsonp([0],[
 
 	  /**
 	   * Prevent going to a step that doesn't exist
-	   * @since v0.3 - 2015-12-04
+	   * @since v0.35 - 2015-12-04 - JH: this wasn't in v0.3 so I changed the version to v0.35 to note it strayed - not sure what projects it exists in, but if we always upgrade to v0.4 [or the latest] then we should be okay
 	   */
 	  if(this.$container.children().length <= stepNumber){
 	    return;
@@ -2724,7 +2662,7 @@ webpackJsonp([0],[
 
 	/**
 	 *  switches to the next visiable step
-	 * @since  __   Looks for hidden steps and jumps over them
+	 * @since  0.4   Looks for hidden steps and jumps over them
 	 * @return void
 	 */
 	GRSteps.prototype.nextStep = function(){
@@ -2737,7 +2675,7 @@ webpackJsonp([0],[
 
 	/**
 	 * switches to the previous visiable step
-	 * @since  __   Looks for hidden steps and jumps over them
+	 * @since  0.4   Looks for hidden steps and jumps over them
 	 * @return {[type]} [description]
 	 */
 	GRSteps.prototype.previousStep = function(){
@@ -2773,7 +2711,7 @@ webpackJsonp([0],[
 	 *
 	 * Manages common aspects required for building a donation form
 	 *
-	 * @version  0.4
+	 * @version  0.5
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'form' ];
@@ -2788,9 +2726,7 @@ webpackJsonp([0],[
 	        currency: {  },
 	        recurrence: {  },
 	        amount: {  },
-	        other: {
-	            classNames: ['amountbutton--other']
-	        },
+	        other: { },
 	        processor: {  }
 	    },
 	    activeRegionLists: [ ],
@@ -2982,8 +2918,6 @@ webpackJsonp([0],[
 	GRGivingSupport.prototype.init = function() { 
 	    $form = options.form;
 	    this.getDefaults();
-	    var self = this;
-
 	    if(isActive(options.components.region)) {
 	        //attach region input details onchange
 	        if(options.activeRegionLists) {
@@ -3080,7 +3014,7 @@ webpackJsonp([0],[
 	            .on('change','[name="'+options.components.other.name+'"]', function(e){
 	                e.stopPropagation();
 
-	                $(this).closest("label").siblings("input[type=radio]").val(self.getAmount());
+	                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
 	            });
 	    }
 
@@ -3139,10 +3073,13 @@ webpackJsonp([0],[
 	            continue;
 	        switch(component) {
 	            case 'currency': 
-	                if( !components.currency.startingValue && isActive(components.country) && options.autoSelectCurrency)
+	                if( !components.currency.startingValue && isActive(components.country) && options.autoSelectCurrency) {
 	                    this.setCurrencyByCountry($form.find(components.country.selector).val());
-	                else if(!components.currency.startingValue && components.currency.defaultVal)
+	                } else if(!components.currency.startingValue && components.currency.defaultVal) {
 	                    this.setCurrency(components.currency.defaultVal);
+	                } else { //@since 0.5
+	                    this.setCurrency(components.currency.startingValue);
+	                }
 	            break;
 	            default:
 	                if(components[component].startingValue || typeof components[component].defaultVal != "undefined")
@@ -3185,18 +3122,11 @@ webpackJsonp([0],[
 
 	    var amt = 0;
 	    var symbol = options.currencySymbol;
-	    var $selected = $form.find(options.components.amount.selector).filter(':checked');
-	    if(exists(options.components.amount) && $selected.length)
-	        amt = $selected.val();
+	    if(exists(options.components.amount) && $form.find(options.components.amount.selector).filter(':checked').length)
+	        amt = $form.find(options.components.amount.selector).filter(':checked').val();
 
-	    if(
-	        amt == 'other' 
-	        || (!exists(options.components.amount) && exists(options.components.other))
-	        || ($selected.length && $selected.hasClass(options.components.other.classNames))
-	        ){
+	    if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
 	        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
-	    } 
-	        
 
 	    if(isNaN(parseFloat(amt)))
 	        amt = 0;
@@ -3437,7 +3367,6 @@ webpackJsonp([0],[
 	                name:  options.components.other.targetName,
 	                label: $('<div>').append($form.find(options.components.other.selector).clone()).html(),
 	                value: 'other',
-	                classNames: [options.components.other.classNames],
 	                wrap:  "<div class='amountbutton'></div>"
 	            })
 	        );
@@ -3453,7 +3382,6 @@ webpackJsonp([0],[
 	                name:  options.components.other.targetName,
 	                label: $('<div>').append(textInput.clone()).html(),
 	                value: 'other',
-	                classNames: [options.components.other.classNames],
 	                wrap:  "<div class='amountbutton'></div>"
 	            })
 	        );
@@ -3514,7 +3442,8 @@ webpackJsonp([0],[
 	 * GRCurrencies module.
 	 * 
 	 * A list of country codes mapped to currency key->value pair
-	 * 
+	 *
+	 * @version 0.1
 	 */
 
 	module.exports = {
@@ -3778,7 +3707,8 @@ webpackJsonp([0],[
 	 * GRCurrencySymbols module.
 	 * 
 	 * A list of single-character symbols for currencies that have them
-	 * 
+	 *
+	 * @version 0.1
 	 */
 
 	module.exports = {
@@ -4451,8 +4381,9 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */(function($) {/**
 	 * GRaygun module.
 	 * 
-	 * Uses for interaction with Raygun service.
-	 * 
+	 * Used for interaction with Raygun service.
+	 *
+	 * @version  0.2
 	 * @requires jQuery
 	 */
 
@@ -4545,6 +4476,24 @@ webpackJsonp([0],[
 	}
 
 	/**
+	 * Generates a custom error to send to Raygun.
+	 * 
+	 * @param {String} errorName Error description.
+	 * @param {Object} options An object with error's additional data 
+	 * which will be processed and sent to 'raygun'.
+	 * @public
+	 * @since  0.2
+	 */
+	GRaygun.prototype.sendCustomError = function( errorName, options ) {
+	    var self = this;
+
+	    try { throw new Error(errorName);}
+	    catch(error) {
+	        self.sendError(error, options);
+	    }
+	}
+
+	/**
 	 * Prepares data to sending to 'raygun' service.
 	 * 
 	 * @param {String} error Error description.
@@ -4630,7 +4579,7 @@ webpackJsonp([0],[
 	 * Interacts with share buttons to generate a pop-up dialog
 	 * Note: For the Facebook Share Dialog, your app will need to use the same domain for the hosting page and the sharing link (which should be specified as the Site URL)
 	 *
-	 * @version  0.2
+	 * @version  0.3
 	 * @requires jQuery
 	 */
 
@@ -4895,17 +4844,15 @@ webpackJsonp([0],[
 	          } 
 	          /**
 	           * Don't URI encode mailto links
-	           * @since  v0.2 - 01Dec15 
+	           * @since  v0.3 - 01Dec15 
 	           */
 	          else if(network == "mail"){
 	            networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&';
-	          }
-	          else {
+	          } else {
 	            networkURL += element + '=' + encodeURIComponent($(networkData).find('.'+element).text()) + '&amp;';
 	          }
 	        }
 	      });
-
 	      if($(self.options.target).find('a.'+network).length > 0) {
 	        $(self.options.target).find('a.'+network).attr('href', networkURL);
 	      }

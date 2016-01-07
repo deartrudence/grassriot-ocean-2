@@ -70,7 +70,7 @@ var fields = gr.buildFieldNameObject({
     optin:      'opt-IN',
     /*giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
-    matching:   'Matching Gift', 
+    matching:   'Matching Gift', */
     employer:   'Company Name',
     inmem:      'In Memoriam',
     inmem_type: 'Gift Type',
@@ -82,7 +82,7 @@ var fields = gr.buildFieldNameObject({
     inmem_city:    'Honoree Inform City',
     inmem_region:  'Honoree Inform State',
     inmem_postal:  'Honoree Inform Post Code',
-    inmem_country: 'Honoree Inform Country',*/
+    inmem_country: 'Honoree Inform Country'
 });
 
 //Key:Value :: Target:Content
@@ -99,28 +99,9 @@ var ENBeautifierFillers = {
 };
 var ENBeautifierFillersContainers = {
   '#gr_donation': [
-    //'#'+fields.recur_pay.nameNoSpace+'Div', 
-    '#'+fields.amt.nameNoSpace+'Div', 
-    //'#'+fields.inmem.nameNoSpace+'Div', 
-    //'#'+fields.matching.nameNoSpace+'Div'
-  ],/*
-  '#gr_extra': [
-    '.js-employerMatch',
-    '#'+fields.employer.nameNoSpace+'Div',
-    '.js-inmemorialDetails', 
-    '.js-inmemorialInstructions',
-    '#'+fields.inmem_type.nameNoSpace+'Div', 
-    '#'+fields.inmem_name.nameNoSpace+'Div', 
-    '#'+fields.inmem_recip.nameNoSpace+'Div', 
-    '#'+fields.inmem_msg.nameNoSpace+'Div', 
-    '#'+fields.inmem_street1.nameNoSpace+'Div', 
-    '#'+fields.inmem_street2.nameNoSpace+'Div', 
-    '#'+fields.inmem_city.nameNoSpace+'Div', 
-    '#'+fields.inmem_postal.nameNoSpace+'Div',
-    '#'+fields.inmem_country.nameNoSpace+'Div',
-    '#'+fields.inmem_region.nameNoSpace+'Div',
-    '#'+fields.inmem_region.nameNoSpace+'Div'
-  ],*/
+    '#'+fields.recur_pay.nameNoSpace+'Div', 
+    '#'+fields.amt.nameNoSpace+'Div',
+  ],
   '#gr_details': [
     '.js-billingDetails', 
     '#'+fields.fname.nameNoSpace+'Div', 
@@ -134,7 +115,29 @@ var ENBeautifierFillersContainers = {
     '#'+fields.region.nameNoSpace+'Div', 
     '#'+fields.optin.nameNoSpace+'Div'
     //'#'+fields.phone.nameNoSpace+'Div'
+  ],/*
+  '#gr_options': [
+    '#'+fields.byorg.nameNoSpace+'Div',
+    '#'+fields.inmem.nameNoSpace+'Div'
   ],
+  '#gr_inmem': [
+    '.js-inmemorialDetails', 
+    '.js-inmemorialInstructions',
+    '#'+fields.inmem_type.nameNoSpace+'Div', 
+    '#'+fields.inmem_name.nameNoSpace+'Div', 
+    '#'+fields.inmem_recip.nameNoSpace+'Div', 
+    '#'+fields.inmem_msg.nameNoSpace+'Div', 
+    '#'+fields.inmem_street1.nameNoSpace+'Div', 
+    '#'+fields.inmem_street2.nameNoSpace+'Div', 
+    '#'+fields.inmem_city.nameNoSpace+'Div', 
+    '#'+fields.inmem_postal.nameNoSpace+'Div',
+    '#'+fields.inmem_country.nameNoSpace+'Div',
+    '#'+fields.inmem_region.nameNoSpace+'Div'
+  ],
+  '#gr_company': [
+    '.js-employerMatch',
+    '#'+fields.employer.nameNoSpace+'Div'
+  ],*/
   '#gr_payment': [
     '.js-paymentDetails', 
     '#'+fields.pay_type.nameNoSpace+'Div', 
@@ -217,7 +220,7 @@ function init() {
 	}
     else{
         setupAction();
-        setupCounter();    
+        //setupCounter();    
     }
 
 	//do everything else
@@ -384,7 +387,7 @@ function setupPage(){
  * [setupCounter description]
  * @return {[type]} [description]
  */
-function setupCounter(){
+/*function setupCounter(){
   var refresh = 1200;
   var scroll = 2000;
   var maxstep = 30;
@@ -410,8 +413,8 @@ function setupCounter(){
   // require('jqueryeasing');
   // require('ticker');
 
-  var version = getURLParameter('s');
-  var variant = getURLParameter('v');
+  var version = gr.getURLParameter('s');
+  var variant = gr.getURLParameter('v');
 
   switch(version){
     case "1843":      
@@ -439,14 +442,14 @@ function setupCounter(){
     window.offset = 0;
   }
 
-  updatecount(startingValue);
+  updatecount(startingValue);*/
 	
   /**
    * [updatecount description]
    * @param  {[type]} count [description]
    * @return {[type]}       [description]
    */
-  function updatecount(count){
+  /*function updatecount(count){
 
     if(typeof count !== 'undefined'){
       currentTotal = parseInt(count) + parseInt(window.offset);      
@@ -476,7 +479,7 @@ function setupCounter(){
       isStarted = true;
       setCounter();
     }
-  }
+  }*/
 
   /**
    * [gettotal description]
@@ -500,20 +503,20 @@ function setupCounter(){
   /**
    * [setStartCount description]
    */
-  function setStartCount(){
+  /*function setStartCount(){
     currentTotal = $counter.html().replace(',', '');
     
     if(currentCount == 0){
       currentCount = Math.floor(currentTotal * 0.2) < 500 ? currentTotal - Math.floor(currentTotal * 0.2) : currentTotal - 500;
     } 
     // var orig = counter.html().replace(',', '');
-  }
+  }*/
 
   /**
    * [addCommas description]
    * @param {[type]} nStr [description]
    */
-  function addCommas(nStr){
+  /*function addCommas(nStr){
     nStr += '';
     var x = nStr.split('.');
     var x1 = x[0];
@@ -534,12 +537,12 @@ function setupCounter(){
     //set refresh interval to between 2 and 4 seconds
     // refresh = (Math.floor(Math.random() * 2) + 2) * 1000;
     // refresher = window.setTimeout(doRefresh,refresh);
-  }
+  }*/
 
   /**
    * [setCounter description]
    */
-  function setCounter() {
+  /*function setCounter() {
     setStartCount();
     // setTimeout( doRefresh, refresh );
     setInterval(doRefresh, refresh);
@@ -557,21 +560,21 @@ function setupCounter(){
     //     // return tickerCount;
     //   }
     // });
-  }
+  }*/
 
   /**
    * [showCount description]
    * @return {[type]} [description]
    */
-  function showCount(){
+  /*function showCount(){
     $counter.html(currentCount);
-  }
+  }*/
 
   /**
    * [getSecondsAdded description]
    * @return {[type]} [description]
    */
-  function getSecondsAdded(){
+  /*function getSecondsAdded(){
     //get the dollar amount difference
     newAdditional = grGiving.getAmount();
     var diff = newAdditional - oldAdditional;
@@ -611,7 +614,7 @@ function setupCounter(){
     // .on("mouseenter",pauseTicker)
     // .on("mouseleave",unpauseTicker);
 
-}
+}*/
 
 /**
  * [setupAction description]
@@ -633,7 +636,7 @@ function setupAction(){
 
         enbeautifier.addClasses(getFormClasses());
 
-        $("#Credit_Card_ExpirationDiv").html( function(i,h) { 
+        $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
                     return h.replace(/&nbsp;/g,'');
                 });
 
@@ -642,8 +645,8 @@ function setupAction(){
           activeClass: 'active',
           useCSSAnimation: false,
           indicatorTarget: '.steps-list ul',
-          steps: $("#gr_donation,#gr_details,#gr_payment"),
-          stepLabels: ['Amount', 'Billing', 'Payment'],
+          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
+          stepLabels: ['Amount', 'Billing', 'Options', 'Notification', 'Organization', 'Payment'],
           addButtons: true,
           target: "#window",
           stepHandler:[
@@ -658,7 +661,6 @@ function setupAction(){
                 grAnalytics.analyticsReport( 'payment/page1-complete' );
                 return true;
               }
-               
             },
             //step 2 handler
             function(){
@@ -668,12 +670,47 @@ function setupAction(){
                 handleErrors(formErrors);
                 return false;
               } else {
+                grAnalytics.analyticsReport( 'payment/page2-complete' );
+                return true;
+              }
+            },
+            //step 3 handler
+            function(){
+              formErrors = [ ];
+              $("#gr_options").find("input,select,textarea").valid();
+              if(formErrors.length) {
+                handleErrors(formErrors);
+                return false;
+              } else {
                 grAnalytics.analyticsReport( 'payment/page3-complete' );
                 return true;
               }
             },
-
             //step 4 handler
+            function(){
+              formErrors = [ ];
+              $("#gr_inmem").find("input,select,textarea").valid();
+              if(formErrors.length) {
+                handleErrors(formErrors);
+                return false;
+              } else {
+                grAnalytics.analyticsReport( 'payment/page4-complete' );
+                return true;
+              }
+            },
+            //step 5 handler
+            function(){
+              formErrors = [ ];
+              $("#gr_company").find("input,select,textarea").valid();
+              if(formErrors.length) {
+                handleErrors(formErrors);
+                return false;
+              } else {
+                grAnalytics.analyticsReport( 'payment/page5-complete' );
+                return true;
+              }
+            },
+            //step 6 handler
             function(){
               formErrors = [ ];
               //let the stepper handle any errors
@@ -688,39 +725,6 @@ function setupAction(){
 
             }
           ]
-        });
-        
-        //prevent tabbing to next step
-        $("#gr_donation,#gr_details,#gr_payment").on('keydown', 'input, select, textarea, button', function(e) {
-            if(e.which == 9) {
-                var $stepPanel = $(this).parents('.page').first();
-                var $lastTabbable = $stepPanel.find('input, select, textarea, button').filter(":last");
-                var $firstTabbable = $stepPanel.find('input, select, textarea, button').filter(":first");
-                if(!e.shiftKey && $(this).is($lastTabbable)) {
-                    e.preventDefault();
-                    $firstTabbable.focus();
-                    //formSteps.nextStep();
-                } else if(e.shiftKey && $(this).is($firstTabbable)) {
-                    e.preventDefault();
-                    $lastTabbable.focus();
-                    //formSteps.previousStep();
-                }
-            }
-            else if(e.which == 13){
-              e.preventDefault();
-            }
-        });
-
-        $("#window").on('stepChanged.grsteps', function(e, step) {
-            $("#window").promise().done(function() {
-                $("#gr_donation,#gr_details,#gr_payment")
-                    .filter(function(index) {
-                        return (step.currentStep == index);
-                    })
-                    .find('input, select, textarea, button')
-                    .first()
-                    .focus();
-            });
         });
 
         // Setup Campaign Page
@@ -739,8 +743,8 @@ function setupAction(){
                     // selector: '[name="Payment Currency"]:not(a)',
                     urlParam: 'curr',
                     defaultVal: 'CAD'
-                },*/
-                /*recurrence: {
+                },
+                recurrence: {
                     selector: fields.recur_pay.selector,
                     defaultVal: ''
                 },*/
@@ -754,10 +758,10 @@ function setupAction(){
                     name: 'Donation Amount Other',
                     targetName: fields.amt.name,
                     label: 'Other amount'
-                }/*,
+                },
                 processor: {
                     selector: fields.pay_type.selector,
-                }*/
+                }
             },
             //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
             askStringSelector: '#donation-ranges',
@@ -765,7 +769,7 @@ function setupAction(){
             /*recurrenceOptions: [
                 {label: 'Single', 'value': ''},
                 {label: 'Monthly', 'value': 'Y'}
-            ]/*,
+            ],*/
             processorFields: { 
                 'PayPal': {
                     hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
@@ -777,7 +781,7 @@ function setupAction(){
                     show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
                 }
 
-            }*/
+            }
 
         });
 
@@ -846,7 +850,7 @@ function setupAction(){
 
     //if the video is requested, show it
     
-    require.ensure([],function(require){
+    /*require.ensure([],function(require){
       var browser = require("bowser");
 
       if(gr.getURLParameter("showVideo") === "true"){
@@ -880,7 +884,7 @@ function setupAction(){
         }
         
       }
-    })
+    })*/
 	} catch(error) {
 		graygunner.sendError(error);
 	}
@@ -941,7 +945,7 @@ function setupTY(){
         //get the social links module
         var GRSocialize = require('./modules/GRSocialize');
                 
-        var section = getURLParameter('s');
+        var section = gr.getURLParameter('s');
         grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
         //Ecommerce not installed on client's analytics
         // grAnalytics.eCommerceReport(transactionData, itemData);
@@ -982,7 +986,7 @@ function setupTY(){
           }
         });
 
-        var section = getURLParameter('s');
+        var section = gr.getURLParameter('s');
         grAnalytics.analyticsReport('action-complete/'+$(formSelector).find('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
         $('.main').addClass('post-action');
         $('#gr_giving').show();//.addClass('content-wrap');
@@ -1172,91 +1176,6 @@ function analyticsGetSection(container) {
 			currentSection = $(this).attr("data-section");
 	});
 	return currentSection;
-}
-
-// Error Reporting
-// ---------------------------------------
-function raygunSendError(error, options) {
-	try {
-		// require('raygun');
-		var data = { };
-		if(!options instanceof Object || typeof options == 'undefined') {
-			options = { };
-		}
-
-		//if forms are defined, pull in the form data for each listed form selector and store as an array of
-		if(options.forms && options.forms.length) {
-			var formDataCollection = { };
-			for(var i = 0; i < options.forms.length; i++) {
-				var $forms = $(options.forms[i]);
-				formDataCollection[options.forms[i]] = $forms.map(function(index, form) {
-					return [$(form).serializeArray().map(
-						function(obj) {
-							var returnObj = { };
-							returnObj[obj.name] = obj.value;
-							return returnObj;
-						}
-					)];
-				});
-			}
-			//console.log(formDataCollection);
-			$.extend(true, data, {forms: formDataCollection});
-		}
-
-		if(options.data) {
-			$.extend(true, data, options.data);
-		}
-
-		/*if(typeof Raygun !== 'undefined')
-			Raygun.send(error, data);
-		else {*/
-			console.log(error);
-			console.log(data);
-		//}
-	}
-	catch(error) {
-		if(typeof Raygun !== 'undefined')
-			Raygun.send(error);
-	}
-}
-
-function raygunCheckErrorContainer(selector, formSelectors) {
-	try {
-		if($(selector).length && $.trim($(selector).text()) != '') {
-			$error_modal
-                .find(".modalErrorMessage")
-                .html($('#eaerrors')
-                .html());
-            
-            $error_modal.modal( {
-                show:true
-            } );
-
-            try { throw new Error("EA Processing Error");}
-			catch(error) {
-				grAnalytics.analyticsReport('action-failure/'+$('input[name="ea.campaign.id"]').val());
-				var data = {};
-				data[selector] = $(selector).text();
-				raygunSendError(error, {
-					data: data,
-					forms: formSelectors
-				});
-			}
-		}
-	}
-	catch(error) {
-		raygunSendError(error);
-	}
-}
-
-function getURLParameter(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    if (results==null){
-       return null;
-    }
-    else{
-       return results[1] || 0;
-    }
 }
 
 function init_validation(){
