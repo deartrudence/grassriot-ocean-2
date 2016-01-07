@@ -679,7 +679,7 @@ webpackJsonp([0],[
 	              }
 	            },
 	            //step 3 handler
-	            function(){
+	            function(){ return true;
 	              formErrors = [ ];
 	              $("#gr_options").find("input,select,textarea").valid();
 	              if(formErrors.length) {
@@ -849,6 +849,50 @@ webpackJsonp([0],[
 
 	    $form.removeAttr('onsubmit');
 	    $('[data-toggle="popover"]').popover();
+
+	    formSteps.hideStep(3);
+	    formSteps.hideStep(4);
+	    /*$form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
+	        var toggleFields = [ ];
+	        switch($(this).attr('name')) {
+	            case fields.inmem.name:
+	                toggleFields = [
+	                    '.js-inmemorialDetails',
+	                    '.js-inmemorialInstructions',
+	                    fields.inmem_type.selector,
+	                    fields.inmem_name.selector,
+	                    fields.inmem_recip.selector,
+	                    fields.inmem_msg.selector,
+	                    fields.inmem_street1.selector,
+	                    fields.inmem_street2.selector,
+	                    fields.inmem_city.selector,
+	                    fields.inmem_region.selector,
+	                    fields.inmem_postal.selector,
+	                    fields.inmem_country.selector,
+	                ];
+
+	            break;
+	            case fields.matching.name:
+	                toggleFields = [
+	                    '.js-employerMatch',
+	                    fields.employer.selector
+	                ];
+	            break;
+	        }
+
+	        if($(this).is(':checked')) {
+	            $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').show().filter('.hide').removeClass('hide');
+	        } else {
+	            $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').hide();
+	        }
+
+	        if($(fields.inmem.selector+","+fields.matching.selector).filter(':checked').length) {
+	            formSteps.showStep(1);
+	        } else {
+	            formSteps.hideStep(1);
+	        }
+
+	    });*/
 
 			setupMobileButton();
 

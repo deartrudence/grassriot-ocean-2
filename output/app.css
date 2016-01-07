@@ -3786,7 +3786,7 @@ html.csstransforms {
 }
 
 .js-campaign .stripe.wrapper {
-  background: url('../img/stripe.png?1452170872');
+  background: url('../img/stripe.png?1452176049');
   background-repeat: repeat;
   height: 20px;
   padding: 0px;
@@ -3918,7 +3918,7 @@ html.csstransforms {
   position: relative;
   overflow: hidden;
   min-height: 425px;
-  background: url('../img/ye-2015-section-3.jpg?1452170872');
+  background: url('../img/ye-2015-section-3.jpg?1452176049');
   background-size: cover;
   background-position: center;
 }
@@ -5366,7 +5366,7 @@ select.error, textarea.error {
   content: " ";
   display: block;
   height: 20px;
-  background: url('../img/stripe.png?1452170872');
+  background: url('../img/stripe.png?1452176049');
 }
 .share-block:last-child:after {
   display: none;
@@ -5680,7 +5680,7 @@ select.error, textarea.error {
   content: " ";
   display: block;
   height: 20px;
-  background: url('../img/stripe.png?1452170872');
+  background: url('../img/stripe.png?1452176049');
 }
 .post-action .mobile-center {
   max-width: 700px;
