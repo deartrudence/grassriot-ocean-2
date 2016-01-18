@@ -154,7 +154,7 @@ label{
     height: $formSize;
     border: 0;
     // padding: 0 10px;
-    background: $msf-red;
+    background: $cta-red;
   }
 
   .js-formOpen-label{
@@ -177,7 +177,7 @@ label{
     top: -0.5 * $height;
     left: 50%;
     margin-left: -0.5  * $width;
-    background: $msf-red image-url("arrow-open.png") center center no-repeat;
+    background: $cta-red image-url("arrow-open.png") center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;    
   }
@@ -306,6 +306,7 @@ label{
 
   &.hide-label {
     .eaFormElementLabel {
+      display: none !important;
       height: 0;
       margin-top: 0 !important;
     }

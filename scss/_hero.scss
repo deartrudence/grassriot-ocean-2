@@ -23,27 +23,38 @@
   max-width: $page-text-max-width;
 }
 
-.heroTitle {
-  @include font-headN4;
-  @include fontSize-large;
-  @include lineHeight-hero;
-  position: relative;
-  color: $white;
-  // padding: $heroTitle-padding;
+.campaign {
+  .heroTitle {
+    @include font-headN6;
+    @include fontSize-largerish;
+    @include lineHeight-hero;
+    position: relative;
+    color: $white;
+    padding: $heroTitle-padding;
 
-  strong,
-  em {
-    @include font-headI4;
+    strong,
+    em {
+      @include font-headI4;
+      text-transform: uppercase;
+    }
+
+    em {
+      color: $light-green;
+    }
+
+    @media screen and (max-width: $screen-sm-max){
+      padding: $heroTitle-padding-sm;
+    }
+  }
+
+  .heroSubtitle {
+    @include font-headN6;
+    @include fontSize-medium;
     text-transform: uppercase;
+    padding: $heroSubtitle-padding;
+    color: $white;
+    text-align: center;
   }
-
-  em {
-    color: $light-green;
-  }
-
-  // @media screen and (max-width: $screen-sm-max){
-  //   padding: $heroTitle-padding-sm;
-  // }
 }
 
 .heroCaption {
@@ -82,7 +93,7 @@ html.csstransforms {
 
     //extra
     margin-bottom: 0.5em;
-    color: $msf-red;
+    color: $cta-red;
     font-size: 1.5em;
     background: $white;
     border-radius: 50%;

@@ -47,16 +47,18 @@ var grAnalytics;
 var gr = require('./modules/GRHelpers');
 
 var fields = gr.buildFieldNameObject({
-    email:      'E-mail',
-    fname:      'First Name',
-    lname:      'Last Name',
-    street1:    'Address 1',
-    street2:    'Address 2',
+    title:      'Title', 
+    email:      'Primary_Email',
+    fname:      'First_Name',
+    mname:      'Middle_Name', 
+    lname:      'Last_Name',
+    street1:    'Addrline1',
+    street2:    'Addrline2',
     city:       'City',
     region:     'Province',
-    postal:     'Postal Code',
+    postal:     'Postal_Code',
     country:    'Country',
-    phone:      'Phone Number',
+    phone:      'Home_Phone',
     pay_type:   'Payment Type',
     cardholder: 'Card Holder Name',
     cc_num:     'Credit Card Number',
@@ -66,23 +68,36 @@ var fields = gr.buildFieldNameObject({
     currency:   'Currency',
     recur_pay:  'Recurring Payment',
     recur_freq: 'Recurring Frequency',
-    recur_day:  'Recurring day',
-    optin:      'opt-IN',
+    recur_day:  'Recurring Day',
+    optin:      'Opt-In_English',
+    restrict:   'Direct Gift',
+    comments:   'Additional Comments',
     /*giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
     matching:   'Matching Gift', */
-    employer:   'Company Name',
+    from_org:   'Company Gift',
+    org_fname:  'Contact Persons Name',
+    org_lname:  'Contact Last Name',
+    employer:   'Organization Name',
     inmem:      'In Memoriam',
-    inmem_type: 'Gift Type',
-    inmem_name: 'Honoree Name',
-    inmem_recip:'Honoree Title',
-    inmem_msg:  'Honoree Message',
-    inmem_street1: 'Honoree Inform Address 1',
-    inmem_street2: 'Honoree Inform Address 2',
-    inmem_city:    'Honoree Inform City',
-    inmem_region:  'Honoree Inform State',
-    inmem_postal:  'Honoree Inform Post Code',
-    inmem_country: 'Honoree Inform Country'
+    //inmem_type: 'Tribute Options',
+    inmem_name:     'Memoriam Name',
+    inmem_msg:      'Memoriam Message',
+    inmem_from:     'Memoriam Sender',
+    inhonor:        'Tribute Options',
+    inhonor_name:   'Honoree Name',
+    inhonor_occ:    'Occasion',
+    inhonor_msg:    'Honoree Message',
+    inhonor_from:   'Honoree Signature',
+    inform:         'Recognize Gift',
+    inform_recip:    'Inform Name',
+    inform_street1:  'Inform Address 1',
+    inform_street2:  'Inform Address 2',
+    inform_city:     'Inform City',
+    inform_region:   'Inform Region',
+    inform_postal:   'Inform Postcode',
+    inform_country:  'Inform Country'
+    
 });
 
 //Key:Value :: Target:Content
@@ -90,7 +105,7 @@ var ENBeautifierFillers = {
   ".js-hero": ".js-heroContent",
   ".js-campaign": ".js-campaignText",
   ".js-impact": ".js-impactText",
-  ".js-quote": ".js-quoteText",
+  ".js-cta-ask": ".js-ctaAskText",
   ".js-response": ".js-responseText",
   ".js-accountable": ".js-accountableText",
   ".js-gift": ".js-giftText",
@@ -113,31 +128,41 @@ var ENBeautifierFillersContainers = {
     '#'+fields.postal.nameNoSpace+'Div', 
     '#'+fields.country.nameNoSpace+'Div', 
     '#'+fields.region.nameNoSpace+'Div', 
+    '#'+fields.phone.nameNoSpace+'Div',
     '#'+fields.optin.nameNoSpace+'Div'
-    //'#'+fields.phone.nameNoSpace+'Div'
-  ],/*
+  ],
   '#gr_options': [
-    '#'+fields.byorg.nameNoSpace+'Div',
-    '#'+fields.inmem.nameNoSpace+'Div'
+    '#'+fields.restrict.nameNoSpace+'Div',
+    '#'+fields.from_org.nameNoSpace+'Div',
+    '#'+fields.inmem.nameNoSpace+'Div',
+    '#'+fields.inhonor.nameNoSpace+'Div'
   ],
   '#gr_inmem': [
     '.js-inmemorialDetails', 
     '.js-inmemorialInstructions',
-    '#'+fields.inmem_type.nameNoSpace+'Div', 
+    //'#'+fields.inmem_type.nameNoSpace+'Div', 
     '#'+fields.inmem_name.nameNoSpace+'Div', 
-    '#'+fields.inmem_recip.nameNoSpace+'Div', 
+    '#'+fields.inhonor_name.nameNoSpace+'Div', 
+    '#'+fields.inhonor_occ.nameNoSpace+'Div',
+    '#'+fields.inform.nameNoSpace+'Div',
+    '#'+fields.inform_recip.nameNoSpace+'Div', 
+    '#'+fields.inform_street1.nameNoSpace+'Div', 
+    '#'+fields.inform_street2.nameNoSpace+'Div', 
+    '#'+fields.inform_city.nameNoSpace+'Div', 
+    '#'+fields.inform_postal.nameNoSpace+'Div',
+    '#'+fields.inform_country.nameNoSpace+'Div',
+    '#'+fields.inform_region.nameNoSpace+'Div',
     '#'+fields.inmem_msg.nameNoSpace+'Div', 
-    '#'+fields.inmem_street1.nameNoSpace+'Div', 
-    '#'+fields.inmem_street2.nameNoSpace+'Div', 
-    '#'+fields.inmem_city.nameNoSpace+'Div', 
-    '#'+fields.inmem_postal.nameNoSpace+'Div',
-    '#'+fields.inmem_country.nameNoSpace+'Div',
-    '#'+fields.inmem_region.nameNoSpace+'Div'
+    '#'+fields.inhonor_msg.nameNoSpace+'Div',
+    '#'+fields.inmem_from.nameNoSpace+'Div', 
+    '#'+fields.inhonor_from.nameNoSpace+'Div'
   ],
   '#gr_company': [
     '.js-employerMatch',
-    '#'+fields.employer.nameNoSpace+'Div'
-  ],*/
+    '#'+fields.employer.nameNoSpace+'Div',
+    '#'+fields.org_fname.nameNoSpace+'Div',
+    '#'+fields.org_lname.nameNoSpace+'Div',
+  ],
   '#gr_payment': [
     '.js-paymentDetails', 
     '#'+fields.pay_type.nameNoSpace+'Div', 
@@ -739,7 +764,7 @@ function setupAction(){
                 region: {
                     selector: fields.region.selector
                 },*/
-                /*currency: {
+                currency: {
                     // selector: '[name="Payment Currency"]:not(a)',
                     urlParam: 'curr',
                     defaultVal: 'CAD'
@@ -747,7 +772,7 @@ function setupAction(){
                 recurrence: {
                     selector: fields.recur_pay.selector,
                     defaultVal: ''
-                },*/
+                },
                 amount: {
                     selector: fields.amt.selector,
                     urlParam: 'amt',
@@ -766,10 +791,10 @@ function setupAction(){
             //activeRegionLists: ['CA'], //disabling since Ecojustice already has a dropdown for region that includes US and CA options
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
-            /*recurrenceOptions: [
+            recurrenceOptions: [
                 {label: 'Single', 'value': ''},
                 {label: 'Monthly', 'value': 'Y'}
-            ],*/
+            ],
             processorFields: { 
                 'PayPal': {
                     hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
@@ -848,32 +873,34 @@ function setupAction(){
 
     formSteps.hideStep(3);
     formSteps.hideStep(4);
-    /*$form.on('change', fields.inmem.selector+","+fields.matching.selector, function(e) {
+    $form.on('change', fields.inmem.selector/*+","+fields.matching.selector*/, function(e) {
         var toggleFields = [ ];
         switch($(this).attr('name')) {
             case fields.inmem.name:
                 toggleFields = [
                     '.js-inmemorialDetails',
                     '.js-inmemorialInstructions',
-                    fields.inmem_type.selector,
+                    //fields.inmem_type.selector,
                     fields.inmem_name.selector,
-                    fields.inmem_recip.selector,
+                    fields.inmem_from.selector,
                     fields.inmem_msg.selector,
-                    fields.inmem_street1.selector,
-                    fields.inmem_street2.selector,
-                    fields.inmem_city.selector,
-                    fields.inmem_region.selector,
-                    fields.inmem_postal.selector,
-                    fields.inmem_country.selector,
+                    fields.inform.selector,
+                    fields.inform_recip.selector,
+                    fields.inform_street1.selector,
+                    fields.inform_street2.selector,
+                    fields.inform_city.selector,
+                    fields.inform_region.selector,
+                    fields.inform_postal.selector,
+                    fields.inform_country.selector,
                 ];
 
             break;
-            case fields.matching.name:
+            /*case fields.matching.name:
                 toggleFields = [
                     '.js-employerMatch',
                     fields.employer.selector
                 ];
-            break;
+            break;*/
         }
 
         if($(this).is(':checked')) {
@@ -882,13 +909,13 @@ function setupAction(){
             $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').hide();
         }
 
-        if($(fields.inmem.selector+","+fields.matching.selector).filter(':checked').length) {
-            formSteps.showStep(1);
+        if($(fields.inmem.selector/*+","+fields.matching.selector*/).filter(':checked').length) {
+            formSteps.showStep(3);
         } else {
-            formSteps.hideStep(1);
+            formSteps.hideStep(3);
         }
 
-    });*/
+    });
 
 		setupMobileButton();
 
@@ -1550,39 +1577,39 @@ function getFormClasses() {
         '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
         'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea'}
     };
-    classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.fname.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    //classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.region.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    //classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
+    classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.fname.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
     classes['[name="'+fields.cc_exp.name+'1"]'] = { classes: "inline-block-field-wrap half-wrap", targetElement: ".eaSplitSelectfield"};
     classes['[name="'+fields.cc_exp.name+'2"]'] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: ".eaSplitSelectfield"};
-    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
+    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 
-    /*classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
-    classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaRightColumnContent"};
+    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
+    //classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
     //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_recip.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaRightColumnContent"};
-    classes[fields.inmem_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaRightColumnContent"};*/
+    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    //classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_recip.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
     
 
     return classes;

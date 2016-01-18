@@ -1,104 +1,80 @@
 // Every row on the left starting from the turquoise
 .campaign {
-	
   overflow: hidden;
   @include contentContainer;
   
   h1 {
-  	@include font-headN7;
-  	@include fontSize-titleLarge;
-  	padding: 28% 15% 20% 10%;
+  	@include font-headN6;
+  	@include fontSize-largerish;
+  	padding: 20% 8% 20% 6%;
     text-transform: uppercase;
     line-height: .9em;
     text-align: center;
-    
-    text-shadow: rgba(0,0,0,0.6) 2px 2px 6px;
   }
   	    
-  h2, h3, h4, h5 {
+  h2 {
+    @include font-headN3;
+    @include fontSize-large;
+    color: $dark-green;
+    @include line-tight;
+    margin: 0em 0em .5em;
+  }
+
+  h3 {
+    @include font-headN7;
+    @include fontSize-mediumLarge;
+    color: $light-green;
+    @include line-tight;
+    margin: 0em 0em .5em;
+  }
+
+  h4, h5 {
     @include font-headN6;
     @include fontSize-large;
    	@include line-tighter;
-   	color: $msf-red;
+   	color: $dark-green;
    	margin: 0em 0em .5em;
   }
   
-  .msf-black {
-   	color: $msf-black;
+  .ncc-dark-green {
+   	color: $dark-green;
+  }
+  .ncc-light-green {
+    color: $light-green
   }
 
   .row {
 	margin: 0px;
-	}  
+	} 
+  &:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    right: 372px;
+    @include box-shadow(inset 10px -10px 15px 0px rgba(210,210,210, .5));
+    height: 100%;
+    width: 30px;
+    @include z-superHighest;
+  }
 }
 
 .wrapper {
 	background-color: $white;
-	color: $msf-black;
-	padding: 8% 8% 8% 6%;
+	color: $text-colour;
+	padding: 8% 8% 8% 5%;
 	position: relative;
 	
 	p {
 		@include fontSize-base;
+    @include lineHeight-campaigntext-main;
 		margin: 15px 0;
 	}
-}
-
-.js-campaign .stripe.wrapper {
-  background: $stripe;
-  background-repeat: repeat;
-  height: 20px;
-  padding: 0px;
 }
 
 .js-hero {
   position: relative; //for the overflow control
   overflow: hidden;
   height: 545px;
-}
-
-.js-hero.js-content-version.doc {
-  background: $hero-bgimage;
-  background-size: cover;
-  background-position: center;
-}
-
-.js-hero.js-content-version.sea {
-  background: $hero-bgimage-sea;
-  background-size: cover;
-  background-position: right bottom;
-}
-
-.js-hero.js-content-version.delivery {
-  background: $hero-bgimage-delivery;
-  background-size: cover;
-  background-position: center;
-}
-
-
-.js-campaign {
-	
-	h2 {
-		@include font-headN7;
-		@include fontSize-largerish;
-	}
-	
-}
-
-.campaignText-wrapper.js-content-version h2 {
-	display: none;
-}
-
-.campaignText-wrapper.js-content-version.doc h2.doc {
-	display: block;
-}
-
-.campaignText-wrapper.js-content-version.sea h2.sea {
-	display: block;	
-}
-
-.campaignText-wrapper.js-content-version.delivery h2.delivery {
-	display: block;
 }
 
 .js-impact {
@@ -112,21 +88,30 @@
 
 
 .impactText-wrapper.wrapper {
-	background: none;
-	
-	h3 {
-		color: $white;
-		text-transform: uppercase;
-		@include font-headN7;
-		@include fontSize-xlarge;
-	}
-	
-	p {
-		color: $white;
-		@include font-bodyN6;
-		font-size: 1.4rem;
-		line-height: 1.4em;
-	}
+  padding-left: 29px;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  .colleft {
+    float: left;
+    width: 40%;
+    padding-right: 5%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-right: 10px solid $light-green;
+  }
+  .colright {
+    float: left;
+    width: 60%;
+    list-style: disc outside;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 5%;
+    margin-left: -10px;
+    border-left: 10px solid $light-green;
+    li {
+      margin-bottom: 1em;
+    }
+  }
 
 }
 
@@ -141,48 +126,65 @@
 
 
 .responseText-wrapper.wrapper {
-    background: none;
-    position: absolute;
-		padding-bottom: 3%;
-    bottom: 0px;
-	
-	h3 {
-		color: $white;
-		text-transform: uppercase;
-		@include fontSize-largerish;
-	}
-	
-	p {
-		color: $white;
-		@include fontSize-base;
-	}
+    background-color: $lightest-grey;
+    position: relative;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    &:after {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-top-color: $lightest-grey;
+      border-width: 50px;
+      margin-left: -50px;
+    }
+  	h3 {
+  		color: $dark-green;
+      margin-bottom: 0;
+      font-weight: 400;
+  		@include fontSize-medium;
+  	}
+  	
+  	p {
+      margin-top: 0;
+  		@include fontSize-base;
+  	}
 }
 
-.js-quote {
-	
-}
+.ctaAskText-wrapper.wrapper {
+  padding: 0px;
+  .ctaAskText-text {
+    margin: 0;
+    display: block;
+    position: relative;
+    width: 65%;
+    padding: 25px 20px;
+    background-color: $light-green;
+    border-left: 9px solid $dark-green;
+    color: $white;
+    @include font-bodyN7;
+    @include fontSize-base;
+    @include line-base;
+    &:after {
+      left: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-left-color: $light-green;
+      border-width: 30px;
+      margin-top: -30px;
+    }
+  }
 
-.quoteText-wrapper.wrapper {
-	
-	img {
-    float: left;
-    width: 35%;
-    padding-right: 55px;
-	}
-	blockquote {
-		
-		color: $msf-red;
-		font-weight: 700;
-		
-		p {
-			@include fontSize-medium;
-			margin: 0px;			
-		}
-		
-		span.author {
-			font-weight: 500;
-		}
-	}	
 }
 
 .giftText-wrapper.wrapper {
@@ -213,10 +215,6 @@
 	background: none;
 }
 
-.quoteText-wrapper.wrapper {
-	background: $white;
-}
-
 .accountableText-colleft {
 	float: left;
 	width: 60%;
@@ -241,7 +239,7 @@
 
 .js-policy {
 	h4 {
-		color: $msf-black;
+		color: $charcoal;
 		text-transform: uppercase;
 		@include fontSize-medium;
 		font-weight: 600;

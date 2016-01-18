@@ -1,18 +1,22 @@
 $orange: #db672a;
 $yellow: #e18e25;
 $green: #245e36;
-$light-green: #81af76;
-$blue: #005282;
 $purple: #782266;
-$dark-red: #a6223c;
-$red: #c51f35;
-$white: #fff;
 $dark-red: #c31e24;
 $red: #a7233b;
 $magenta: #792266;
 $maroon: #a6223c;
 $menu-red: #C5272D;
-$cta-red: #a8233e;
+
+
+//ncc colors
+$vlight-green: #B6D86A;
+$light-green: #A4CE46;
+$medium-green: #58A966;
+$dark-green: #2D903D;
+$blue: #01B6D1;
+$dark-blue: #0181C8;
+$cta-red: #EB1C24;
 
 $charcoal: #252525;
 
@@ -23,6 +27,7 @@ $light-grey: #545a63;
 $lighter-grey: #666666;
 $medium-light-grey: #646464;
 $vlight-grey: #dcdcdc;
+$lightest-grey: #EDEDED;
 $darker-background-grey: #f3f3f3;
 $background-grey: #f3f3f3;
 $input-placeholder-grey: #78787a;
@@ -31,24 +36,12 @@ $input-border-grey: #767271;
 $indicator-light-grey: #dddfde;
 $indicator-dark-grey: #d5d6d8;
 
-// MSF Colors
-
-$msf-black: #231f20;
-$msf-red: #f42841;
-$msf-background: #e5e6e8;
+$body-background: #E5E6E7;
 $white: #FFFFFF; 
 $black: #000;
 
 $modal-overlay-opacity: 0.65;
-$text-colour: $vdark-grey;
-
-//eco justice colors - just for compiling 
-$xlight-green: $light-green;
-$dark-green: $light-green;
-$vdark-green: $light-green;
-$brand-green: $light-green;
-$brown: $purple;
-$beige: $charcoal;
+$text-colour: $charcoal;
 
 //-----------
 //sections
@@ -86,7 +79,8 @@ $hero-bgimage-xl: image-url('hero_baby.jpg');
 $hero-bgimage-sea: image-url('hero_sea.jpg');
 $hero-bgimage-delivery: image-url('hero_delivery.jpg');
 
-$heroTitle-padding: 30% 15% 20% 15%;
+$heroTitle-padding: 20% 8% 0% 6%;
+$heroSubtitle-padding: 0% 12% 20% 12%;
 $heroTitle-padding-sm: 16% 20% 23%;
 $hero-captionpadding-md: 10px 15px;
 
@@ -128,9 +122,6 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 
 //form
 $form-background: image-url("msf-ye-2015-border.jpg");
-$form-feature-doc: image-url("baby-countdown.jpg");
-$form-feature-delivery: image-url("deliver-countdown.png");
-$form-feature-sea: image-url("sea-countdown.png");
 
 $form-width-xxs: 300px;
 $form-width-xs: 300px;
@@ -140,16 +131,16 @@ $form-width-xl: 400px;
 $form-padding: 30px;
 $form-navbar-height: 52px;
 
-$steps_colour: $purple;
+$steps_colour: $charcoal;
 $steps_background: $indicator-light-grey;
 $steps_advancedBackground: linear-gradient($indicator-light-grey 40%, $indicator-dark-grey 60%);
 $steps_border: none;
-$stepsActive_background: $dark-red;
-$stepsActive_advancedBackground: linear-gradient($stepsActive_background 40%, $cta-red 60%);
+$stepsActive_background: $dark-green;
+$stepsActive_advancedBackground: linear-gradient($medium-green 40%, $dark-green 60%);
 $stepsActive_border: none;
 $stepsActive_colour: $white;
-$stepsActive_arrowBackground: $cta-red;
-$stepsComplete_colour: $orange;
+$stepsActive_arrowBackground: $dark-green;
+$stepsComplete_colour: $light-green;
 
 $amount-active-advancedBackground: linear-gradient($yellow 0%, darken($yellow,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($vlight-grey,5%) 0%, $vlight-grey 100%);

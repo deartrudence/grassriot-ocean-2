@@ -1,7 +1,7 @@
 body {
   overflow-x:hidden;
   @include font-bodyN4;
-  background-color: $msf-background;
+  background-color: $body-background;
 
   &:after{
     display: none;
@@ -39,4 +39,8 @@ body:after{
   @media screen and (min-width: $screen-xl){
     content: "large-desktop";
   }
+}
+
+@mixin thickBlueLine{
+    border-bottom: 7px solid $dark-blue;
 }

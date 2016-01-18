@@ -1,8 +1,8 @@
 @mixin formSectionHeader{
   margin: 1.5em 0 1em;
   @include fontSize-base;
-  @include font-headN4;
-  color: $msf-black;
+  @include font-headN7;
+  color: $light-green;
 }
 
 #grdonation{
@@ -96,11 +96,11 @@
 	  content: '\2714';
 	  text-indent: .9em;
 	  color: $white;
-	  background-color: $cta-red;
+	  background-color: $light-green;
 	}
 	input[type='radio']:checked ~ label {
 	  color: $white;
-	  background-color: $purple;
+	  background-color: $dark-green;
 	}
 
 	/* radio focus */
@@ -181,26 +181,6 @@
 	text-align: center;
 	font-size: 16px;
 	margin: 5px;
-  }
-  .levels {
-	label {
-  //	background: $amount-normal-background;
-  //	@include background($amount-normal-advancedBackground);
-	  color: $text-colour;
-	  // &:hover {
-	  //   background: $amount-hover-background;
-	  //   background: $amount-hover-advancedBackground;
-	  //   color: $text-colour;
-	  // }
-	  
-	}
-	input[type='radio'] {
-	  &:checked + label {
-		background: $msf-black;
-		color: #fff;
-		cursor: default;
-	  }
-	}
   }
 
   .btn-prev{
@@ -307,26 +287,6 @@
 	}
 
 }
-
-
-
-.form-header-counter.js-content-version.doc {
-	background: $form-feature-doc;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.form-header-counter.js-content-version.sea {
-	background: $form-feature-sea;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
-.form-header-counter.js-content-version.delivery {
-	background: $form-feature-delivery;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
 	
 .seconds-container {
   color: $white;
@@ -360,6 +320,8 @@
   width: 85%;
 }
 .steps-list {
+  height: 90px;
+  @include thickBlueLine;
   position: relative;
   ul {
 	list-style: none;
@@ -379,13 +341,13 @@
 	  &.is-complete,
 	  &.active {
 		background: $stepsActive_background;
-		@include background($msf-red);
+		@include background($stepsActive_advancedBackground);
 		border: $stepsActive_border;
 		color: $white;
 	  }
 
 	  &.is-complete {
-		color: $white;
+		color: $stepsComplete_colour;
 	  }
 
 	  &.active:after{
@@ -395,7 +357,7 @@
 		height: 0;
 		display: block;
 		border-width: $triangle-height;
-		border-color: $msf-red transparent transparent;
+		border-color: $stepsActive_arrowBackground transparent transparent;
 		border-style: solid;
 		position: absolute;
 		bottom: -2 * $triangle-height;
@@ -427,7 +389,7 @@
 }
 
 .giving-security{
-  background: $vdark-green;
+  background: $white;
   color: $white;
   padding: 15px;
 }
@@ -702,14 +664,7 @@
 
   .btn-next {
 	margin-top: 20px;
-	// border-radius: 3px;
-	// border: 0;
-	// background-color: $light-red;
-	// background-image: linear-gradient($light-red 50%, $vdark-red 100%);
-	// color: $white;
-	// text-transform: uppercase;
-	// border-radius: 5px;
-	@include cta-button--msf-red;
+	@include cta-button--red;
 
 	.glyphicon-chevron-right {
 	  font-size: 80%;
@@ -793,12 +748,10 @@
 	  left: 0;
 
 	  &:checked + label {
- //		  background: $amount-active-background;
-//		  @include background($amount-active-advancedBackground);
-	background: #231f20;
-	border: 2px solid #231f20;
-	color: #fff;
-	cursor: default;
+    	background: $dark-green;
+    	border: 2px solid $dark-green;
+    	color: #fff;
+    	cursor: default;
 	  }
 
 	}

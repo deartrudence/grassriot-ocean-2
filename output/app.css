@@ -3541,10 +3541,10 @@ em {
 
 body {
   overflow-x: hidden;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #e5e6e8;
+  background-color: #E5E6E7;
 }
 body:after {
   display: none;
@@ -3613,29 +3613,45 @@ body:after {
   max-width: 600px;
 }
 
-.heroTitle {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+.campaign .heroTitle {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 600;
   font-style: normal;
-  font-size: 1.77rem;
+  font-size: 2.3rem;
   line-height: 1.1;
   position: relative;
   color: #FFFFFF;
+  padding: 20% 8% 0% 6%;
 }
-.heroTitle strong,
-.heroTitle em {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+.campaign .heroTitle strong,
+.campaign .heroTitle em {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   text-transform: uppercase;
 }
-.heroTitle em {
-  color: #81af76;
+.campaign .heroTitle em {
+  color: #A4CE46;
+}
+@media screen and (max-width: 991px) {
+  .campaign .heroTitle {
+    padding: 16% 20% 23%;
+  }
+}
+.campaign .heroSubtitle {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 1.22rem;
+  text-transform: uppercase;
+  padding: 0% 12% 20% 12%;
+  color: #FFFFFF;
+  text-align: center;
 }
 
 .heroCaption {
   font-size: 0.5rem;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -3662,7 +3678,7 @@ html.csstransforms {
 }
 .is-videoPlaceholder .glyphicon {
   margin-bottom: 0.5em;
-  color: #f42841;
+  color: #EB1C24;
   font-size: 1.5em;
   background: #FFFFFF;
   border-radius: 50%;
@@ -3748,95 +3764,79 @@ html.csstransforms {
   }
 }
 .campaign h1 {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 600;
   font-style: normal;
-  font-size: 2.9rem;
-  padding: 28% 15% 20% 10%;
+  font-size: 2.3rem;
+  padding: 20% 8% 20% 6%;
   text-transform: uppercase;
   line-height: .9em;
   text-align: center;
-  text-shadow: rgba(0, 0, 0, 0.6) 2px 2px 6px;
 }
-.campaign h2, .campaign h3, .campaign h4, .campaign h5 {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+.campaign h2 {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.77rem;
+  color: #2D903D;
+  line-height: 1.2;
+  margin: 0em 0em .5em;
+}
+.campaign h3 {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: #A4CE46;
+  line-height: 1.2;
+  margin: 0em 0em .5em;
+}
+.campaign h4, .campaign h5 {
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 600;
   font-style: normal;
   font-size: 1.77rem;
   line-height: 1;
-  color: #f42841;
+  color: #2D903D;
   margin: 0em 0em .5em;
 }
-.campaign .msf-black {
-  color: #231f20;
+.campaign .ncc-dark-green {
+  color: #2D903D;
+}
+.campaign .ncc-light-green {
+  color: #A4CE46;
 }
 .campaign .row {
   margin: 0px;
 }
+.campaign:after {
+  position: absolute;
+  content: ' ';
+  top: 0;
+  right: 372px;
+  -webkit-box-shadow: inset 10px -10px 15px 0px rgba(210, 210, 210, 0.5);
+  box-shadow: inset 10px -10px 15px 0px rgba(210, 210, 210, 0.5);
+  height: 100%;
+  width: 30px;
+  z-index: 900;
+}
 
 .wrapper {
   background-color: #FFFFFF;
-  color: #231f20;
-  padding: 8% 8% 8% 6%;
+  color: #252525;
+  padding: 8% 8% 8% 5%;
   position: relative;
 }
 .wrapper p {
   font-size: 16px;
+  line-height: 1em;
   margin: 15px 0;
-}
-
-.js-campaign .stripe.wrapper {
-  background: url('../img/stripe.png?1452176049');
-  background-repeat: repeat;
-  height: 20px;
-  padding: 0px;
 }
 
 .js-hero {
   position: relative;
   overflow: hidden;
   height: 545px;
-}
-
-.js-hero.js-content-version.doc {
-  background: url('../img/hero_baby.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.js-hero.js-content-version.sea {
-  background: url('../img/hero_sea.jpg');
-  background-size: cover;
-  background-position: right bottom;
-}
-
-.js-hero.js-content-version.delivery {
-  background: url('../img/hero_delivery.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.js-campaign h2 {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 2.3rem;
-}
-
-.campaignText-wrapper.js-content-version h2 {
-  display: none;
-}
-
-.campaignText-wrapper.js-content-version.doc h2.doc {
-  display: block;
-}
-
-.campaignText-wrapper.js-content-version.sea h2.sea {
-  display: block;
-}
-
-.campaignText-wrapper.js-content-version.delivery h2.delivery {
-  display: block;
 }
 
 .js-impact {
@@ -3849,23 +3849,30 @@ html.csstransforms {
 }
 
 .impactText-wrapper.wrapper {
-  background: none;
+  padding-left: 29px;
+  padding-top: 10%;
+  padding-bottom: 10%;
 }
-.impactText-wrapper.wrapper h3 {
-  color: #FFFFFF;
-  text-transform: uppercase;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 3rem;
+.impactText-wrapper.wrapper .colleft {
+  float: left;
+  width: 40%;
+  padding-right: 5%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-right: 10px solid #A4CE46;
 }
-.impactText-wrapper.wrapper p {
-  color: #FFFFFF;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-  font-size: 1.4rem;
-  line-height: 1.4em;
+.impactText-wrapper.wrapper .colright {
+  float: left;
+  width: 60%;
+  list-style: disc outside;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 5%;
+  margin-left: -10px;
+  border-left: 10px solid #A4CE46;
+}
+.impactText-wrapper.wrapper .colright li {
+  margin-bottom: 1em;
 }
 
 .js-response {
@@ -3878,36 +3885,65 @@ html.csstransforms {
 }
 
 .responseText-wrapper.wrapper {
-  background: none;
+  background-color: #EDEDED;
+  position: relative;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+.responseText-wrapper.wrapper:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
   position: absolute;
-  padding-bottom: 3%;
-  bottom: 0px;
+  pointer-events: none;
+  border-top-color: #EDEDED;
+  border-width: 50px;
+  margin-left: -50px;
 }
 .responseText-wrapper.wrapper h3 {
-  color: #FFFFFF;
-  text-transform: uppercase;
-  font-size: 2.3rem;
+  color: #2D903D;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 1.22rem;
 }
 .responseText-wrapper.wrapper p {
-  color: #FFFFFF;
+  margin-top: 0;
   font-size: 16px;
 }
 
-.quoteText-wrapper.wrapper img {
-  float: left;
-  width: 35%;
-  padding-right: 55px;
+.ctaAskText-wrapper.wrapper {
+  padding: 0px;
 }
-.quoteText-wrapper.wrapper blockquote {
-  color: #f42841;
+.ctaAskText-wrapper.wrapper .ctaAskText-text {
+  margin: 0;
+  display: block;
+  position: relative;
+  width: 65%;
+  padding: 25px 20px;
+  background-color: #A4CE46;
+  border-left: 9px solid #2D903D;
+  color: #FFFFFF;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.5;
 }
-.quoteText-wrapper.wrapper blockquote p {
-  font-size: 1.22rem;
-  margin: 0px;
-}
-.quoteText-wrapper.wrapper blockquote span.author {
-  font-weight: 500;
+.ctaAskText-wrapper.wrapper .ctaAskText-text:after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-left-color: #A4CE46;
+  border-width: 30px;
+  margin-top: -30px;
 }
 
 .giftText-wrapper.wrapper {
@@ -3936,10 +3972,6 @@ html.csstransforms {
   background: none;
 }
 
-.quoteText-wrapper.wrapper {
-  background: #FFFFFF;
-}
-
 .accountableText-colleft {
   float: left;
   width: 60%;
@@ -3961,7 +3993,7 @@ html.csstransforms {
 }
 
 .js-policy h4 {
-  color: #231f20;
+  color: #252525;
   text-transform: uppercase;
   font-size: 1.22rem;
   font-weight: 600;
@@ -3989,7 +4021,7 @@ html.csstransforms {
 }
 
 .campaignText-sub {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #FFFFFF;
@@ -4034,7 +4066,7 @@ html.csstransforms {
 }
 @media screen and (max-width: 767px), screen and (max-device-width: 767px) {
   .campaign h1 {
-    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.5rem;
@@ -4052,7 +4084,7 @@ html.csstransforms {
   }
   .impactText-wrapper.wrapper p {
     color: #FFFFFF;
-    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-weight: 600;
     font-style: normal;
     font-size: 16px;
@@ -4095,7 +4127,7 @@ html.csstransforms {
   }
 
   .js-campaign h2 {
-    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.77rem;
@@ -4235,7 +4267,7 @@ label {
   }
 }
 .form-header h3 {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #245e36;
@@ -4244,12 +4276,12 @@ label {
   text-transform: uppercase;
 }
 .form-header strong {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 .form-header em {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -4299,7 +4331,7 @@ label {
     color: #FFFFFF;
     height: 100px;
     border: 0;
-    background: #f42841;
+    background: #EB1C24;
   }
 
   .js-formOpen-label {
@@ -4318,13 +4350,13 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #f42841 url('../img/arrow-open.png?1452170872') center center no-repeat;
+    background: #EB1C24 url('../img/arrow-open.png?1452170872') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
 
   .formClose {
-    font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+    font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 0.5rem;
@@ -4441,6 +4473,7 @@ label {
   clear: none;
 }
 .inline-block-field-wrap.hide-label .eaFormElementLabel {
+  display: none !important;
   height: 0;
   margin-top: 0 !important;
 }
@@ -4448,10 +4481,10 @@ label {
 #grdonation .page h3 {
   margin: 1.5em 0 1em;
   font-size: 16px;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  color: #231f20;
+  color: #A4CE46;
   display: block;
 }
 
@@ -4520,11 +4553,11 @@ label {
   content: '\2714';
   text-indent: .9em;
   color: #FFFFFF;
-  background-color: #a8233e;
+  background-color: #A4CE46;
 }
 #gr_donation div.radiobutton input[type='radio']:checked ~ label {
   color: #FFFFFF;
-  background-color: #782266;
+  background-color: #2D903D;
 }
 #gr_donation div.radiobutton input[type='radio']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
@@ -4532,10 +4565,10 @@ label {
 #gr_donation .eaFormElementLabel {
   margin: 1.5em 0 1em;
   font-size: 16px;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  color: #231f20;
+  color: #A4CE46;
   display: block !important;
 }
 #gr_donation .eaMandatoryFieldMarker {
@@ -4604,14 +4637,6 @@ label {
   font-size: 16px;
   margin: 5px;
 }
-#gr_donation .levels label {
-  color: #404040;
-}
-#gr_donation .levels input[type='radio']:checked + label {
-  background: #231f20;
-  color: #fff;
-  cursor: default;
-}
 #gr_donation .btn-prev {
   display: none;
 }
@@ -4677,27 +4702,9 @@ label {
   font-weight: normal;
 }
 
-.form-header-counter.js-content-version.doc {
-  background: url('../img/baby-countdown.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.form-header-counter.js-content-version.sea {
-  background: url('../img/sea-countdown.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.form-header-counter.js-content-version.delivery {
-  background: url('../img/deliver-countdown.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .seconds-container {
   color: #FFFFFF;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 0.8rem;
@@ -4722,7 +4729,7 @@ label {
 }
 
 .form-header-counter + h3 {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
   line-height: 1;
@@ -4734,6 +4741,8 @@ label {
 }
 
 .steps-list {
+  height: 90px;
+  border-bottom: 7px solid #0181C8;
   position: relative;
 }
 .steps-list ul {
@@ -4761,13 +4770,17 @@ label {
   font-size: 13px;
 }
 .steps-list ul li.current, .steps-list ul li.is-complete, .steps-list ul li.active {
-  background: #c31e24;
-  background: #f42841;
+  background: #2D903D;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiM1OGE5NjYiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzJkOTAzZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #58a966), color-stop(60%, #2d903d));
+  background: -moz-linear-gradient(#58a966 40%, #2d903d 60%);
+  background: -webkit-linear-gradient(#58a966 40%, #2d903d 60%);
+  background: linear-gradient(#58a966 40%, #2d903d 60%);
   border: none;
   color: #FFFFFF;
 }
 .steps-list ul li.is-complete {
-  color: #FFFFFF;
+  color: #A4CE46;
 }
 .steps-list ul li.active:after {
   content: "";
@@ -4775,7 +4788,7 @@ label {
   height: 0;
   display: block;
   border-width: 10px;
-  border-color: #f42841 transparent transparent;
+  border-color: #2D903D transparent transparent;
   border-style: solid;
   position: absolute;
   bottom: -20px;
@@ -4790,7 +4803,7 @@ label {
 }
 
 .giving-security {
-  background: #81af76;
+  background: #FFFFFF;
   color: #FFFFFF;
   padding: 15px;
 }
@@ -5049,8 +5062,8 @@ label {
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
   text-transform: uppercase;
-  background-color: #f42841;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  background-color: #EB1C24;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.22rem;
@@ -5145,8 +5158,8 @@ label {
   left: 0;
 }
 #grdonation .levels input[type="radio"]:checked + label {
-  background: #231f20;
-  border: 2px solid #231f20;
+  background: #2D903D;
+  border: 2px solid #2D903D;
   color: #fff;
   cursor: default;
 }
@@ -5219,7 +5232,7 @@ select.error, textarea.error {
   width: 90%;
   color: #792266;
   font-size: 0.8rem;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   line-height: 1.4;
@@ -5344,13 +5357,15 @@ select.error, textarea.error {
   }
 }
 .page-header {
-  position: absolute;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  border-bottom: 7px solid #0181C8;
 }
 
 .page-logo {
   overflow: hidden;
   text-indent: -9999px;
-  background: url('../img/logo_msf_bilingual.png') #FFFFFF 50% 50% no-repeat;
   background-size: 167px;
   position: absolute;
   width: 200px;
@@ -5510,7 +5525,7 @@ select.error, textarea.error {
 }
 
 .mail-body {
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #5B5B5B;
@@ -5657,7 +5672,7 @@ select.error, textarea.error {
 }
 .post-action .heroTitle {
   text-transform: uppercase;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
@@ -5691,7 +5706,7 @@ select.error, textarea.error {
   margin: 0 auto;
   text-transform: uppercase;
   padding: 20px 20px 0;
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.77rem;

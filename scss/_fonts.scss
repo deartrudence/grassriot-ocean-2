@@ -65,32 +65,32 @@ em{
 //Body font
 //
 @mixin font-bodyN4{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyN6{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 
 @mixin font-bodyN7{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-bodyI4{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyI7{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -98,32 +98,39 @@ em{
 //
 //Title font
 //
+@mixin font-headN3{
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
 @mixin font-headN4{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headN6{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 @mixin font-headN7{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-headI4{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headI7{
-  font-family: "freight-sans-pro", "Helvetica", "Arial", sans-serif;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -237,6 +244,9 @@ $line-loose: 2;
 }
 @mixin fontSize-medium{
   font-size: 1.22rem;
+}
+@mixin fontSize-mediumLarge{
+  font-size: 1.5rem;
 }
 @mixin fontSize-large{
   font-size: 1.77rem;

@@ -2,7 +2,7 @@
   @include footer-font;
   padding: $footer-padding-md;
   background-color: $vdark-grey;
-  color: $beige;
+  color: $charcoal;
 }
 
 .footer-legal {
@@ -28,7 +28,7 @@
     text-decoration: none;
 
     &:visited {
-      color: $brand-green;
+      color: $light-green;
     }
   }
 }
@@ -36,7 +36,7 @@
 .footer-links--main {
   @include fontSize-small;
   display: inline-block;
-  color: $brand-green;
+  color: $light-green;
   text-transform: uppercase;
 
   li {
@@ -45,17 +45,17 @@
   }
 
   a{
-    color: $brand-green;
+    color: $light-green;
   }
 }
 
 .footer-links--secondary {
   a {
     text-transform: uppercase;
-    color: $beige;
+    color: $charcoal;
 
     &:visited {
-      color: $beige;
+      color: $charcoal;
     }
   }
 
@@ -85,7 +85,7 @@
     }
 
     a:visited {
-      color: $beige;
+      color: $charcoal;
     }
   }
 }
