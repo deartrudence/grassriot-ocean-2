@@ -3,7 +3,7 @@
  * 
  * Creates and handles a multi-step form
  * 
- * @version  0.4
+ * @version  0.4 !!!MODIFIED20160119!!
  * @requires jQuery
  */
 var requiredOptions = [ 'steps' ];
@@ -151,7 +151,9 @@ GRSteps.prototype.hideStep = function(index) {
   if(this.disabledSteps.indexOf(index) === -1) {
     this.disabledSteps.push(index);
     $(this.options.steps[index]).children().css('visibility', 'hidden');
-    this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+      this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+    }
   }
 }
 
@@ -165,7 +167,9 @@ GRSteps.prototype.showStep = function(index) {
   if(this.disabledSteps.indexOf(index) !== -1){
     this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
     $(this.options.steps[index]).children().css('visibility', '');
-    this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+      this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+    }
   }
 }
 
@@ -205,12 +209,15 @@ GRSteps.prototype.addSteps = function(newSteps){
     ){
 
     //set the indicator label as either an integer or the indicated label
-    var label = i+1;
-    if(typeof this.options.stepLabels[i] !== 'undefined'){
+    //@since  __ - hidden classes and empty label support
+    var label = ""; //i+1;
+    var hiddenClasses = " hide hidden-step"; 
+    if(typeof this.options.stepLabels[i] !== 'undefined' && this.options.stepLabels[i].length){
       label = this.options.stepLabels[i];
+      hiddenClasses = "";
     }
 
-    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+'">'+label+'</li>');
+    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+hiddenClasses+'">'+label+'</li>');
   }
 
   //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
@@ -238,18 +245,15 @@ GRSteps.prototype.switchTo = function(stepNumber){
     return;
   }
 
-  this.stepIndicators
-    .removeClass(this.options.activeClass);
-
   //add the complete class to the current indicator
   //But only if going to a next step
-  if(
+  /*if(
     this.options.currentStep !== false
     && this.options.currentStep < stepNumber
     ){
     this.stepIndicators.eq(this.options.currentStep)
       .addClass(this.options.completeClass);
-  }
+  }*/
 
 
   /**
@@ -262,8 +266,9 @@ GRSteps.prototype.switchTo = function(stepNumber){
 
   //switch the indicator
   this.options.currentStep = stepNumber;
-  this.stepIndicators.eq(this.options.currentStep)
-    .addClass(this.options.activeClass);
+  this.updateIndicators();
+  //this.stepIndicators.eq(this.options.currentStep)
+  //  .addClass(this.options.activeClass);
 
   //actually switch to the panel
   
@@ -317,6 +322,36 @@ GRSteps.prototype.switchTo = function(stepNumber){
 
   //let the world know what's happened
   this.$container.trigger("stepChanged.grsteps",{currentStep:this.options.currentStep});
+}
+
+/**
+ * Updates indicators by handling the varying logic needed to determine which should be 'active' and which should be 'complete' to support panels without their own indicators
+ *
+ * @since __
+ */
+GRSteps.prototype.updateIndicators = function(){
+  var currentClass = '', previousClass = '';
+  var previousIndicatorIndex = this.options.currentStep - 1;
+
+  this.stepIndicators
+    .removeClass(this.options.activeClass);
+
+  if($.trim(this.stepIndicators.eq(this.options.currentStep).text()) == "") {
+    previousClass = this.options.activeClass;
+  } else {
+    currentClass = this.options.activeClass;
+    previousClass = this.options.completeClass;
+  }
+
+  while(previousIndicatorIndex >= 0 && ($.trim(this.stepIndicators.eq(previousIndicatorIndex).text()) == "" || this.disabledSteps.indexOf(previousIndicatorIndex) !== -1)) {
+    previousIndicatorIndex--;
+  }
+
+  if(previousIndicatorIndex >= 0) {
+    this.stepIndicators.eq(previousIndicatorIndex).addClass(previousClass);
+  }
+  this.stepIndicators.eq(this.options.currentStep).addClass(currentClass);
+
 }
 
 /**

@@ -671,7 +671,7 @@ function setupAction(){
           useCSSAnimation: false,
           indicatorTarget: '.steps-list ul',
           steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
-          stepLabels: ['Amount', 'Billing', 'Options', 'Notification', 'Organization', 'Payment'],
+          stepLabels: ['Amount', 'Billing', 'Options', '', '', 'Payment'],
           addButtons: true,
           target: "#window",
           stepHandler:[
@@ -792,8 +792,8 @@ function setupAction(){
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
             recurrenceOptions: [
-                {label: 'Single', 'value': ''},
-                {label: 'Monthly', 'value': 'Y'}
+                {label: 'One-time Donation', 'value': ''},
+                {label: 'Give monthly', 'value': 'Y'}
             ],
             processorFields: { 
                 'PayPal': {

@@ -4522,8 +4522,8 @@ label {
 }
 #gr_donation div.radiobutton input[type='radio']:empty ~ label {
   position: relative;
-  line-height: 2.5em;
-  text-indent: 3.25em;
+  padding-left: 3.25em;
+  min-height: 3em;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;

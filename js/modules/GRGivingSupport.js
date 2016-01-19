@@ -3,7 +3,7 @@
  *
  * Manages common aspects required for building a donation form
  *
- * @version  0.5
+ * @version  0.5 !!MODIFIED20160119!!
  * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
@@ -497,7 +497,8 @@ function getAskStringIndex() {
     }
 
     //@since 0.2 - updated to handle a single checkbox properly
-    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
+    //@since __ - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
+    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase().replace(/[^a-z0-9]/g,"_"))) {
         index.push(recurrence);
     }
 

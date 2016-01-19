@@ -675,7 +675,7 @@ webpackJsonp([0],[
 	          useCSSAnimation: false,
 	          indicatorTarget: '.steps-list ul',
 	          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
-	          stepLabels: ['Amount', 'Billing', 'Options', 'Notification', 'Organization', 'Payment'],
+	          stepLabels: ['Amount', 'Billing', 'Options', '', 'Organization', 'Payment'],
 	          addButtons: true,
 	          target: "#window",
 	          stepHandler:[
@@ -796,8 +796,8 @@ webpackJsonp([0],[
 	            askStringSelector: '#donation-ranges',
 	            askStringContainerClass: 'levels',
 	            recurrenceOptions: [
-	                {label: 'Single', 'value': ''},
-	                {label: 'Monthly', 'value': 'Y'}
+	                {label: 'One-time Donation', 'value': ''},
+	                {label: 'Give monthly', 'value': 'Y'}
 	            ],
 	            processorFields: { 
 	                'PayPal': {
@@ -2382,7 +2382,7 @@ webpackJsonp([0],[
 	 * 
 	 * Creates and handles a multi-step form
 	 * 
-	 * @version  0.4
+	 * @version  0.4 !!!MODIFIED20160119!!
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'steps' ];
@@ -2530,7 +2530,9 @@ webpackJsonp([0],[
 	  if(this.disabledSteps.indexOf(index) === -1) {
 	    this.disabledSteps.push(index);
 	    $(this.options.steps[index]).children().css('visibility', 'hidden');
-	    this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+	    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+	      this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
+	    }
 	  }
 	}
 
@@ -2544,7 +2546,9 @@ webpackJsonp([0],[
 	  if(this.disabledSteps.indexOf(index) !== -1){
 	    this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
 	    $(this.options.steps[index]).children().css('visibility', '');
-	    this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+	    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+	      this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
+	    }
 	  }
 	}
 
@@ -2584,12 +2588,15 @@ webpackJsonp([0],[
 	    ){
 
 	    //set the indicator label as either an integer or the indicated label
-	    var label = i+1;
-	    if(typeof this.options.stepLabels[i] !== 'undefined'){
+	    //@since  __ - hidden classes and empty label support
+	    var label = ""; //i+1;
+	    var hiddenClasses = " hide hidden-step"; 
+	    if(typeof this.options.stepLabels[i] !== 'undefined' && this.options.stepLabels[i].length){
 	      label = this.options.stepLabels[i];
+	      hiddenClasses = "";
 	    }
 
-	    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+'">'+label+'</li>');
+	    this.stepIndicators = this.stepIndicators.add('<li class="step'+i+hiddenClasses+'">'+label+'</li>');
 	  }
 
 	  //after the first time stepIndicators is appended, it becomes part of the DOM. So when you re-append, it acts as though you're moving the whole set, effectively just adding the new things (apparently)
@@ -2617,18 +2624,15 @@ webpackJsonp([0],[
 	    return;
 	  }
 
-	  this.stepIndicators
-	    .removeClass(this.options.activeClass);
-
 	  //add the complete class to the current indicator
 	  //But only if going to a next step
-	  if(
+	  /*if(
 	    this.options.currentStep !== false
 	    && this.options.currentStep < stepNumber
 	    ){
 	    this.stepIndicators.eq(this.options.currentStep)
 	      .addClass(this.options.completeClass);
-	  }
+	  }*/
 
 
 	  /**
@@ -2641,8 +2645,9 @@ webpackJsonp([0],[
 
 	  //switch the indicator
 	  this.options.currentStep = stepNumber;
-	  this.stepIndicators.eq(this.options.currentStep)
-	    .addClass(this.options.activeClass);
+	  this.updateIndicators();
+	  //this.stepIndicators.eq(this.options.currentStep)
+	  //  .addClass(this.options.activeClass);
 
 	  //actually switch to the panel
 	  
@@ -2696,6 +2701,36 @@ webpackJsonp([0],[
 
 	  //let the world know what's happened
 	  this.$container.trigger("stepChanged.grsteps",{currentStep:this.options.currentStep});
+	}
+
+	/**
+	 * Updates indicators by handling the varying logic needed to determine which should be 'active' and which should be 'complete' to support panels without their own indicators
+	 *
+	 * @since __
+	 */
+	GRSteps.prototype.updateIndicators = function(){
+	  var currentClass = '', previousClass = '';
+	  var previousIndicatorIndex = this.options.currentStep - 1;
+
+	  this.stepIndicators
+	    .removeClass(this.options.activeClass);
+
+	  if($.trim(this.stepIndicators.eq(this.options.currentStep).text()) == "") {
+	    previousClass = this.options.activeClass;
+	  } else {
+	    currentClass = this.options.activeClass;
+	    previousClass = this.options.completeClass;
+	  }
+
+	  while(previousIndicatorIndex >= 0 && ($.trim(this.stepIndicators.eq(previousIndicatorIndex).text()) == "" || this.disabledSteps.indexOf(previousIndicatorIndex) !== -1)) {
+	    previousIndicatorIndex--;
+	  }
+
+	  if(previousIndicatorIndex >= 0) {
+	    this.stepIndicators.eq(previousIndicatorIndex).addClass(previousClass);
+	  }
+	  this.stepIndicators.eq(this.options.currentStep).addClass(currentClass);
+
 	}
 
 	/**
@@ -2782,7 +2817,7 @@ webpackJsonp([0],[
 	 *
 	 * Manages common aspects required for building a donation form
 	 *
-	 * @version  0.5
+	 * @version  0.5 !!MODIFIED20160119!!
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'form' ];
@@ -3276,7 +3311,8 @@ webpackJsonp([0],[
 	    }
 
 	    //@since 0.2 - updated to handle a single checkbox properly
-	    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase())) {
+	    //@since __ - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
+	    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase().replace(/[^a-z0-9]/g,"_"))) {
 	        index.push(recurrence);
 	    }
 
