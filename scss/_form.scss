@@ -304,6 +304,18 @@ label{
     clear: none;
   }
 
+  &.show-label {
+    .eaFormElementLabel {
+      display: block !important;
+    }
+  }
+
+  &.no-label-padding {
+    .eaFormElementLabel, .eaQuestionLabel {
+      padding: 0;
+    }
+  }
+
   &.hide-label {
     .eaFormElementLabel {
       display: none !important;

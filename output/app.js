@@ -12,6 +12,8 @@ webpackJsonp([0],[
 	var footer = $('footer');
 	var header = $('header');
 
+	var donationSummary;
+
 	var ENBeautifier = __webpack_require__(3);
 	var enbeautifier;
 
@@ -82,9 +84,10 @@ webpackJsonp([0],[
 	    from_org:   'Company Gift',
 	    org_fname:  'Contact Persons Name',
 	    org_lname:  'Contact Last Name',
+	    org_email:  'Other Email',
 	    employer:   'Organization Name',
 	    inmem:      'In Memoriam',
-	    //inmem_type: 'Tribute Options',
+	    inmem_inhon: 'In honour or in memoriam',
 	    inmem_name:     'Memoriam Name',
 	    inmem_msg:      'Memoriam Message',
 	    inmem_from:     'Memoriam Sender',
@@ -100,9 +103,27 @@ webpackJsonp([0],[
 	    inform_city:     'Inform City',
 	    inform_region:   'Inform Region',
 	    inform_postal:   'Inform Postcode',
-	    inform_country:  'Inform Country'
-	    
+	    inform_country:  'Inform Country',
+	    sec_street1:    'Other Addrline1',
+	    sec_street2:    'Other Addrline2',
+	    sec_city:       'Other City',
+	    sec_region:     'Other Province',
+	    sec_postal:     'Other Postal_Code',
+	    sec_country:    'Other Country',
+	    sec_billing:    'Use as billing address',
+	    sec_addrtype:   'Other Address Type',
+	    addrtype:       'Addr_Type'
 	});
+
+	var fieldsToSwap = {
+	  street1: 'sec_street1',
+	  street2: 'sec_street2',
+	  city:    'sec_city',
+	  region:  'sec_region', 
+	  postal:  'sec_postal', 
+	  country: 'sec_country',
+	  addrtype:'sec_addrtype'
+	};
 
 	//Key:Value :: Target:Content
 	var ENBeautifierFillers = {
@@ -118,11 +139,12 @@ webpackJsonp([0],[
 	};
 	var ENBeautifierFillersContainers = {
 	  '#gr_donation': [
+	    '.js-formHeader',
 	    '#'+fields.recur_pay.nameNoSpace+'Div', 
 	    '#'+fields.amt.nameNoSpace+'Div',
 	  ],
 	  '#gr_details': [
-	    '.js-billingDetails', 
+	    '.js-donorInformation', 
 	    '#'+fields.fname.nameNoSpace+'Div', 
 	    '#'+fields.lname.nameNoSpace+'Div', 
 	    '#'+fields.email.nameNoSpace+'Div', 
@@ -137,13 +159,14 @@ webpackJsonp([0],[
 	  ],
 	  '#gr_options': [
 	    '#'+fields.restrict.nameNoSpace+'Div',
+	    '.js-donationOptions',
 	    '#'+fields.from_org.nameNoSpace+'Div',
+	    '#'+fields.inmem_inhon.nameNoSpace+'Div',
 	    '#'+fields.inmem.nameNoSpace+'Div',
 	    '#'+fields.inhonor.nameNoSpace+'Div'
 	  ],
 	  '#gr_inmem': [
-	    '.js-inmemorialDetails', 
-	    '.js-inmemorialInstructions',
+	    '.js-honourMemorialInformation', 
 	    //'#'+fields.inmem_type.nameNoSpace+'Div', 
 	    '#'+fields.inmem_name.nameNoSpace+'Div', 
 	    '#'+fields.inhonor_name.nameNoSpace+'Div', 
@@ -162,19 +185,30 @@ webpackJsonp([0],[
 	    '#'+fields.inhonor_from.nameNoSpace+'Div'
 	  ],
 	  '#gr_company': [
-	    '.js-employerMatch',
+	    '.js-companyInformation',
 	    '#'+fields.employer.nameNoSpace+'Div',
 	    '#'+fields.org_fname.nameNoSpace+'Div',
 	    '#'+fields.org_lname.nameNoSpace+'Div',
+	    '#'+fields.org_email.nameNoSpace+'Div',
+	    '#'+fields.sec_street1.nameNoSpace+'Div', 
+	    '#'+fields.sec_street2.nameNoSpace+'Div', 
+	    '#'+fields.sec_city.nameNoSpace+'Div',
+	    '#'+fields.sec_postal.nameNoSpace+'Div', 
+	    '#'+fields.sec_country.nameNoSpace+'Div', 
+	    '#'+fields.sec_region.nameNoSpace+'Div', 
+	    '#'+fields.sec_billing.nameNoSpace+'Div',
 	  ],
 	  '#gr_payment': [
-	    '.js-paymentDetails', 
+	    '.js-paymentInformation', 
 	    '#'+fields.pay_type.nameNoSpace+'Div', 
 	    //'#CC_ImagesDiv', 
 	    '#'+fields.cardholder.nameNoSpace+'Div', 
 	    '#'+fields.cc_num.nameNoSpace+'Div', 
 	    '#'+fields.cc_cvv.nameNoSpace+'Div', 
-	    '#'+fields.cc_exp.nameNoSpace+'Div'
+	    '#'+fields.cc_exp.nameNoSpace+'Div',
+	    '.js-donationSummary',
+	    '.js-instructionsAndComment',
+	    '#'+fields.comments.nameNoSpace+'Div'
 	  ],
 	};
 
@@ -653,15 +687,13 @@ webpackJsonp([0],[
 
 		try{
 
-
-			// slick
-			// $('.supporters-carousel').slick({
-			// 	dots: true,
-			// 	arrows: true,
-			// 	appendArrows: '.slick-list',
-			// 	prevArrow: '<button type="button" class="slick-prev"></button>',
-			// 	nextArrow: '<button type="button" class="slick-next"></button>'
-			// });
+	        //Swap fields on post-back - this moves the 
+	        if(
+	          typeof fields.sec_billing != "undefined"
+	          && $(fields.sec_billing.selector).length 
+	          && $(fields.sec_billing.selector).is(":checked")) {
+	          swapFields();
+	        }
 
 	        enbeautifier.addClasses(getFormClasses());
 
@@ -669,15 +701,23 @@ webpackJsonp([0],[
 	                    return h.replace(/&nbsp;/g,'');
 	                });
 
-	    	//Set up panel steps
+	    	  //Set up panel steps
 	        formSteps = new GRSteps({
 	          activeClass: 'active',
 	          useCSSAnimation: false,
 	          indicatorTarget: '.steps-list ul',
 	          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
-	          stepLabels: ['Amount', 'Billing', 'Options', '', 'Organization', 'Payment'],
+	          stepLabels: ['Amount', 'Billing', 'Options', '', '', 'Payment'],
 	          addButtons: true,
 	          target: "#window",
+	          stepPreSwitchCallback: [
+	            null,
+	            null,
+	            null,
+	            null,
+	            null,
+	            buildDonationSummary
+	          ],
 	          stepHandler:[
 	            //step 1 handler
 	            function(){
@@ -704,7 +744,7 @@ webpackJsonp([0],[
 	              }
 	            },
 	            //step 3 handler
-	            function(){ return true;
+	            function(){
 	              formErrors = [ ];
 	              $("#gr_options").find("input,select,textarea").valid();
 	              if(formErrors.length) {
@@ -749,6 +789,12 @@ webpackJsonp([0],[
 	              } 
 	              //If there are no errors, send the form
 	              else {
+	                if(
+	                  typeof fields.sec_billing != "undefined"
+	                  && $(fields.sec_billing.selector).length 
+	                  && $(fields.sec_billing.selector).is(":checked")) {
+	                  swapFields();
+	                }
 	                $form.submit();
 	              }
 
@@ -801,13 +847,16 @@ webpackJsonp([0],[
 	            ],
 	            processorFields: { 
 	                'PayPal': {
-	                    hide: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                    hide: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
 	                },
 	                'Visa': {
-	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
 	                },
 	                'MasterCard': {
-	                    show: ['#Credit_Card_NumberDiv', '#Credit_Card_Verification_ValueDiv', '#Credit_Card_ExpirationField']
+	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+	                },
+	                'AMEX': {
+	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
 	                }
 
 	            }
@@ -875,51 +924,7 @@ webpackJsonp([0],[
 	    $form.removeAttr('onsubmit');
 	    $('[data-toggle="popover"]').popover();
 
-	    formSteps.hideStep(3);
-	    formSteps.hideStep(4);
-	    $form.on('change', fields.inmem.selector/*+","+fields.matching.selector*/, function(e) {
-	        var toggleFields = [ ];
-	        switch($(this).attr('name')) {
-	            case fields.inmem.name:
-	                toggleFields = [
-	                    '.js-inmemorialDetails',
-	                    '.js-inmemorialInstructions',
-	                    //fields.inmem_type.selector,
-	                    fields.inmem_name.selector,
-	                    fields.inmem_from.selector,
-	                    fields.inmem_msg.selector,
-	                    fields.inform.selector,
-	                    fields.inform_recip.selector,
-	                    fields.inform_street1.selector,
-	                    fields.inform_street2.selector,
-	                    fields.inform_city.selector,
-	                    fields.inform_region.selector,
-	                    fields.inform_postal.selector,
-	                    fields.inform_country.selector,
-	                ];
-
-	            break;
-	            /*case fields.matching.name:
-	                toggleFields = [
-	                    '.js-employerMatch',
-	                    fields.employer.selector
-	                ];
-	            break;*/
-	        }
-
-	        if($(this).is(':checked')) {
-	            $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').show().filter('.hide').removeClass('hide');
-	        } else {
-	            $(toggleFields.join(',')).closest('.js-form-field-container, .form-title, .form-text').hide();
-	        }
-
-	        if($(fields.inmem.selector/*+","+fields.matching.selector*/).filter(':checked').length) {
-	            formSteps.showStep(3);
-	        } else {
-	            formSteps.hideStep(3);
-	        }
-
-	    });
+	    setupDonationOptions();
 
 			setupMobileButton();
 
@@ -964,6 +969,96 @@ webpackJsonp([0],[
 			graygunner.sendError(error);
 		}
 	}
+
+	function setupDonationOptions() {
+
+	  $(fields.inmem.selector).data('deselect',fields.inhonor.selector);
+	  $(fields.inhonor.selector).data('deselect',fields.inmem.selector);
+
+	  if($(fields.inmem.selector+','+fields.inhonor.selector).filter(':checked').length == 0) {
+	    $(fields.inmem.selector).prop('checked',true).change();
+	  }
+
+	  //show/hide optional steps based on user selections
+	  $form.on('change', fields.inmem_inhon.selector, function(e) {
+	    if($(this).is(":checked")) {
+	        formSteps.showStep(3);
+	        $(fields.inmem.selector+','+fields.inhonor.selector).closest('.'+formFieldContainerClass).show();
+	    } else {
+	        formSteps.hideStep(3);
+	        $(fields.inmem.selector+','+fields.inhonor.selector).prop('checked', false).closest('.'+formFieldContainerClass).hide();
+	        $('.js-honourGift,.js-memorialGift').hide();
+	    }
+	  });
+	  $form.on('change', fields.from_org.selector, function(e) {
+	    if($(this).is(":checked")) {
+	        formSteps.showStep(4);
+	        $('.js-personalGift').hide();
+	        $('.js-orgGift').show();
+	    } else {
+	        formSteps.hideStep(4);
+	        $('.js-orgGift').hide();
+	        $('.js-personalGift').show();
+	    }
+	  });
+
+	  //
+
+	  $form.on('change', fields.inmem.selector+","+fields.inhonor.selector, function(e) {
+	      switch($(this).attr('name')) {
+	          case fields.inmem.name:
+	              $('.js-memorialGift').show();
+	              $('.js-honourGift').hide();
+
+	          break;
+	          case fields.inhonor.name:
+	              $('.js-memorialGift').hide();
+	              $('.js-honourGift').show();
+	          break;
+	      }
+
+	      if($(this).is(':checked')) {
+	          $($(this).data('deselect')).prop("checked", false);
+	      }
+	  });
+
+	  $form.on('change', fields.inform.selector+":checked", function() {
+	    switch($(this).filter(':checked').val()) {
+	      case 'mail':
+	        $('.js-informMail').removeClass('hide');
+	      break;
+
+	      case 'no': 
+	        $('.js-informMail').addClass('hide');
+	      break;
+	    }
+
+	  });
+	  $form.find(fields.inmem_inhon.selector+','+fields.from_org.selector).trigger('change');
+	  $form.find(fields.inmem.selector+','+fields.inhonor.selector+','+fields.inform.selector).filter(':checked').trigger('change');
+	}
+
+	/**
+	 * Swaps the values of a set of fields to another.  The fieldsToSwap is an Object with only key/value pairs where the keys are one field indentifier and the values are the other field identifier [both strings].
+	 */
+	function swapFields() {
+	  var field1Value;
+
+	  for(var field1 in fieldsToSwap) {
+	    field2 = fieldsToSwap[field1];
+	    if(
+	      typeof fields[field2] != "undefined"
+	      && typeof fields[field1]!= "undefined"
+	      && $(fields[field2].selector).length
+	      && $(fields[field1].selector).length
+	    ) {
+	      field1Value = $form.find(fields[field1].selector).eq(0).val();
+	      $form.find(fields[field1].selector).eq(0).val($form.find(fields[field2].selector).eq(0).val());
+	      $form.find(fields[field2].selector).eq(0).val(field1Value);
+	    }
+	  }
+	}
+
 	function handleCountryChange(e){
 	    var countryField = $(e.target);
 	    var countryCode = countryField.val();
@@ -1077,6 +1172,18 @@ webpackJsonp([0],[
 	    } catch(error) {
 	        graygunner.sendError(error);
 	    }
+
+	}
+
+	function buildDonationSummary() {
+	  gr.replaceENTemplateTags($form, $('.js-donationSummary'),fields,{start: "`", end: "`"});
+	  $('.js-amount').text(grGiving.getAmount(true));
+
+	  if(grGiving.isRecurring()) {
+	    $('.js-frequency').text(' monthly');
+	  } else {
+	    $('.js-frequency').text('');
+	  }
 
 	}
 
@@ -1581,19 +1688,27 @@ webpackJsonp([0],[
 	        '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
 	        'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea'}
 	    };
+	    
+	    //Gift fields
 	    classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+	    
+	    //Personal info fields
 	    classes[fields.fname.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+	    
+	    //Main address fields
+	    classes[fields.street1.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.street2.selector] = { classes: "inline-block-field-wrap one-quarter-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.country.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+	    
+	    //Payment fields
 	    classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
@@ -1602,18 +1717,30 @@ webpackJsonp([0],[
 	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 
+	    //Donation option fields
+	    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label", targetElement: "div.eaFullWidthContent"};
+
+	    //In memorial fields
 	    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
-	    //classes[fields.matching.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
-	    //classes[fields.giftaid.selector] = { classes: "inline-block-field full", targetElement: "div.eaRightColumnContent"};
-	    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
-	    //classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_recip.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_street1.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_street2.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
-	    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inmem_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inmem_from.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+
+	    //In honour fields
+	    classes[fields.inhonor.selector] = { classes: "inline-block-field-wrap full-wrap hide-label ", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inhonor_name.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inhonor_occ.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inhonor_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inhonor_from.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+
+	    //Inform fields
+	    classes[fields.inform_recip.selector] = { classes: "inline-block-field-wrap full-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_street1.selector] = { classes: "inline-block-field-wrap hide js-informMail three-quarter-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_street2.selector] = { classes: "inline-block-field-wrap last-wrap hide js-informMail one-quarter-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_city.selector] = { classes: "inline-block-field-wrap half-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_country.selector] = { classes: "inline-block-field-wrap half-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
 	    
 
 	    return classes;
@@ -2393,6 +2520,7 @@ webpackJsonp([0],[
 	    'completeClass': "is-complete",
 	    'target': '.js-formSteps',
 	    'stepHandler': [],
+	    'stepPreSwitchCallback': [], //@since __
 	    'stepLabels': [],
 	    'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
 	    'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
@@ -2624,17 +2752,6 @@ webpackJsonp([0],[
 	    return;
 	  }
 
-	  //add the complete class to the current indicator
-	  //But only if going to a next step
-	  /*if(
-	    this.options.currentStep !== false
-	    && this.options.currentStep < stepNumber
-	    ){
-	    this.stepIndicators.eq(this.options.currentStep)
-	      .addClass(this.options.completeClass);
-	  }*/
-
-
 	  /**
 	   * Prevent going to a step that doesn't exist
 	   * @since v0.35 - 2015-12-04 - JH: this wasn't in v0.3 so I changed the version to v0.35 to note it strayed - not sure what projects it exists in, but if we always upgrade to v0.4 [or the latest] then we should be okay
@@ -2646,8 +2763,14 @@ webpackJsonp([0],[
 	  //switch the indicator
 	  this.options.currentStep = stepNumber;
 	  this.updateIndicators();
-	  //this.stepIndicators.eq(this.options.currentStep)
-	  //  .addClass(this.options.activeClass);
+	  
+	  //@since __ - create a pre-panel load callback which can help with ensuring code fires before a panel loads especially in cases where there are hidden panels. There is no return value to stop the panel switch.
+	  if(
+	    typeof this.options.stepPreSwitchCallback[this.options.currentStep] === "function"
+	    && this.options.currentStep > 0
+	  ) {
+	    this.options.stepPreSwitchCallback[this.options.currentStep].call(this.$container);
+	  }
 
 	  //actually switch to the panel
 	  

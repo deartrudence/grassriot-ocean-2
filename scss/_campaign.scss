@@ -51,7 +51,7 @@
     content: ' ';
     top: 0;
     right: 372px;
-    @include box-shadow(inset 10px -10px 15px 0px rgba(210,210,210, .5));
+    @include box-shadow(inset 10px 0px 15px -5px rgba(210,210,210, 0.5));
     height: 100%;
     width: 30px;
     @include z-superHighest;

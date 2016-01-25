@@ -195,13 +195,6 @@
 </div>
 </div>
 <div id='[GR]_Donation_RangesDiv' class='eaFullWidthContent'><div id="donation-ranges" class="hide">
-<ul class="default">
-<li>$75</li>
-<li>$125*</li>
-<li>$250</li>
-<li>$500</li>
-<li>$1000</li>
-</ul>
 <ul class="CAD-one_time_donation">
 <li>$9</li>
 <li>$35*</li>
@@ -219,169 +212,94 @@
 </div>
 <div class="js-formOpen-labelText hide">Donate</div>
 </div>
+<div id='[GR]_Form_HeaderDiv' class='eaFullWidthContent'><h1 class="js-formHeader"><strong>Yes,</strong> I want to help conserve Canada's natural spaces.</h1>
+</div>
 <div id='Recurring_PaymentDiv' class='eaFullWidthContent'><div id='Recurring_PaymentError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'><p>This donation is a:</p></a><span class='eaMandatoryFieldMarker'> *</span></span>
+<span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'><p>This donation is a:</p></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Recurring_PaymentField' class='eaFormField'>
-<input id='Recurring_PaymentY' type='text' name='Recurring Payment' value='Y' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' />
+   <input id='Recurring_Payment' type='text' class='eaFormTextfield' name='Recurring Payment' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Donation_AmountDiv' class='eaFullWidthContent'><div id='Donation_AmountError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Donation_Amount'><a name='Donation_Amount' style='text-decoration:none; color: inherit;'><p>Gift amount:</p></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Donation_Amount'><a name='Donation_Amount' style='text-decoration:none; color: inherit;'><p>Please select your donation amount</p></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Donation_AmountField' class='eaFormField'>
-  <input id='Donation_Amount' type='text' name='Donation Amount' value='' onchange='checkdep(this);' class='eaRadioTextfield'  />
-</div>
-
-</div>
-<div id='Recurring_DayDiv' style='display:none' class='eaFullWidthContent'><div id='Recurring_DayError' class='eaErrorMessage'></div>
-<span class='eaLabelSpacer'>&nbsp;</span>
-
-<span class='eaFormElementLabel'><label for='Recurring_Day'><a name='Recurring_Day' style='text-decoration:none; color: inherit;'><p>To make a monthly gift to NCC by <strong>direct bank deposit</strong>, please <a href="http://e-activist.com/ea-action/action?ea.client.id=1803&amp;ea.campaign.id=21469">click here</a>. </p><p>Preferred processing date:</p></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
-<br clear='all' />
-<span class='eaLabelSpacer'>&nbsp;</span>
-<div id='Recurring_DayField' class='eaFormField'>
-   <select id='Recurring_Day' class='eaFormSelect' name='Recurring Day' style='width:200px' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='1'>1st of the month</option>
-      <option value='15'>15th of the month</option>
-   </select>
+   <input id='Donation_Amount' type='text' class='eaFormTextfield' name='Donation Amount' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Recurring_FrequencyDiv' style='display:none' class='eaFullWidthContent'><div id='Recurring_FrequencyError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Recurring_Frequency'><a name='Recurring_Frequency' style='text-decoration:none; color: inherit;'>Recurring Frequency:</a></label></span>
+<span class='eaFormElementLabel'><label for='Recurring_Frequency'><a name='Recurring_Frequency' style='text-decoration:none; color: inherit;'>Recurring Frequency</a></label></span>
 <div id='Recurring_FrequencyField' class='eaFormField'>
    <select id='Recurring_Frequency' class='eaFormSelect' name='Recurring Frequency' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='MONTHLY'>MONTHLY</option>
    </select>
 </div>
 
 </div>
-<div id='Donation_information_headerDiv' class='eaFullWidthContent'><h2 class="js-paymentDetails">Donation Information</h2>
+<div id='Recurring_DayDiv' style='display:none' class='eaFullWidthContent'><div id='Recurring_DayError' class='eaErrorMessage'></div>
+<span class='eaLabelSpacer'>&nbsp;</span>
+
+<span class='eaFormElementLabel'><label for='Recurring_Day'><a name='Recurring_Day' style='text-decoration:none; color: inherit;'>Recurring Day</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<br clear='all' />
+<span class='eaLabelSpacer'>&nbsp;</span>
+<div id='Recurring_DayField' class='eaFormField'>
+   <input id='Recurring_Day' type='text' style='width:200px' class='eaFormTextfield' name='Recurring Day' value='999' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='CurrencyDiv' style='display:none' class='eaFullWidthContent'><div id='CurrencyError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Currency'><a name='Currency' style='text-decoration:none; color: inherit;'>Currency<a href="http://www.pinterest.com/pin/create/extension/"></a></a></label></span>
+<div id='CurrencyField' class='eaFormField'>
+   <input id='Currency' type='text' class='eaFormTextfield' name='Currency' value='CAD' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='[GR]_Donor_InformationDiv' class='eaFullWidthContent'><h3 class="js-donorInformation">Donor Information</h3>
 </div>
 <div id='First_NameDiv' class='eaFullWidthContent'><div id='First_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='First_Name'><a name='First_Name' style='text-decoration:none; color: inherit;'>First Name:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='First_Name'><a name='First_Name' style='text-decoration:none; color: inherit;'>First Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='First_NameField' class='eaFormField'>
    <input id='First_Name' type='text' class='eaFormTextfield' name='First_Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Last_NameDiv' class='eaFullWidthContent'><div id='Last_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Last_Name'><a name='Last_Name' style='text-decoration:none; color: inherit;'>Last Name:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Last_Name'><a name='Last_Name' style='text-decoration:none; color: inherit;'>Last Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Last_NameField' class='eaFormField'>
    <input id='Last_Name' type='text' class='eaFormTextfield' name='Last_Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Primary_EmailDiv' class='eaFullWidthContent'><div id='Primary_EmailError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Primary_Email'><a name='Primary_Email' style='text-decoration:none; color: inherit;'>Email Address:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
-<div id='Primary_EmailField' class='eaFormField'>
-   <input id='Primary_Email' type='text' class='eaFormTextfield' name='Primary_Email' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
-</div>
-
-</div>
 <div id='Addrline1Div' class='eaFullWidthContent'><div id='Addrline1Error' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Addrline1'><a name='Addrline1' style='text-decoration:none; color: inherit;'>Street 1:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Addrline1'><a name='Addrline1' style='text-decoration:none; color: inherit;'>Street 1</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Addrline1Field' class='eaFormField'>
    <input id='Addrline1' type='text' class='eaFormTextfield' name='Addrline1' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Addrline2Div' class='eaFullWidthContent'><div id='Addrline2Error' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Addrline2'><a name='Addrline2' style='text-decoration:none; color: inherit;'>Street 2:</a></label></span>
+<span class='eaFormElementLabel'><label for='Addrline2'><a name='Addrline2' style='text-decoration:none; color: inherit;'>Unit</a></label></span>
 <div id='Addrline2Field' class='eaFormField'>
    <input id='Addrline2' type='text' class='eaFormTextfield' name='Addrline2' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='CityDiv' class='eaFullWidthContent'><div id='CityError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='City'><a name='City' style='text-decoration:none; color: inherit;'>City:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='City'><a name='City' style='text-decoration:none; color: inherit;'>City</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CityField' class='eaFormField'>
    <input id='City' type='text' class='eaFormTextfield' name='City' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='ProvinceDiv' class='eaFullWidthContent'><div id='ProvinceError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Province'><a name='Province' style='text-decoration:none; color: inherit;'>State/Province:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
-<div id='ProvinceField' class='eaFormField'>
-   <select id='Province' class='eaFormSelect' name='Province' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
-      <option value='AB'>Alberta</option>
-      <option value='BC'>British Columbia</option>
-      <option value='MB'>Manitoba</option>
-      <option value='NB'>New Brunswick</option>
-      <option value='NL'>Newfoundland and Labrador</option>
-      <option value='NB'>New Brunswick</option>
-      <option value='NS'>Nova Scotia</option>
-      <option value='NT'>Northwest Territories</option>
-      <option value='NU'>Nunavut</option>
-      <option value='ON'>Ontario</option>
-      <option value='PE'>Prince Edward Island</option>
-      <option value='QC'>Quebec</option>
-      <option value='SK'>Saskatchewan</option>
-      <option value='YT'>Yukon</option>
-      <option value='other'>Outside of Canada/U.S.</option>
-      <option value='CA'>California</option>
-      <option value='AL'>Alabama</option>
-      <option value='AK'>Alaska</option>
-      <option value='AZ'>Arizona</option>
-      <option value='AR'>Arkansas</option>
-      <option value='CA'>California</option>
-      <option value='CO'>Colorado</option>
-      <option value='CT'>Connecticut</option>
-      <option value='DE'>Delaware</option>
-      <option value='DC'>District of Columbia</option>
-      <option value='FL'>Florida</option>
-      <option value='GA'>Georgia</option>
-      <option value='HI'>Hawaii</option>
-      <option value='ID'>Idaho</option>
-      <option value='IL'>Illinois</option>
-      <option value='IN'>Indiana</option>
-      <option value='IA'>Iowa</option>
-      <option value='KS'>Kansas</option>
-      <option value='KY'>Kentucky</option>
-      <option value='LA'>Louisiana</option>
-      <option value='ME'>Maine</option>
-      <option value='MD'>Maryland</option>
-      <option value='MA'>Massachusetts</option>
-      <option value='MI'>Michigan</option>
-      <option value='MN'>Minnesota</option>
-      <option value='MS'>Mississippi</option>
-      <option value='MO'>Missouri</option>
-      <option value='MT'>Montana</option>
-      <option value='NE'>Nebraska</option>
-      <option value='NV'>Nevada</option>
-      <option value='NH'>New Hampshire</option>
-      <option value='NJ'>New Jersey</option>
-      <option value='NM'>New Mexico</option>
-      <option value='NY'>New York</option>
-      <option value='NC'>North Carolina</option>
-      <option value='ND'>North Dakota</option>
-      <option value='OH'>Ohio</option>
-      <option value='OK'>Oklahoma</option>
-      <option value='OR'>Oregon</option>
-      <option value='PA'>Pennsylvania</option>
-      <option value='RI'>Rhode Island</option>
-      <option value='SC'>South Carolina</option>
-      <option value='SD'>South Dakota</option>
-      <option value='TN'>Tennessee</option>
-      <option value='TX'>Texas</option>
-      <option value='UT'>Utah</option>
-      <option value='VT'>Vermont</option>
-      <option value='VA'>Virginia</option>
-      <option value='WA'>Washington</option>
-      <option value='WV'>West Virginia</option>
-      <option value='WI'>Wisconsin</option>
-      <option value='WY'>Wyoming</option>
-   </select>
-</div>
-
-</div>
 <div id='Postal_CodeDiv' class='eaFullWidthContent'><div id='Postal_CodeError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Postal_Code'><a name='Postal_Code' style='text-decoration:none; color: inherit;'>Zip/Postal Code:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Postal_Code'><a name='Postal_Code' style='text-decoration:none; color: inherit;'>Zip/Postal Code</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Postal_CodeField' class='eaFormField'>
    <input id='Postal_Code' type='text' class='eaFormTextfield' name='Postal_Code' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='CountryDiv' class='eaFullWidthContent'><div id='CountryError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Country'><a name='Country' style='text-decoration:none; color: inherit;'>Country:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Country'><a name='Country' style='text-decoration:none; color: inherit;'>Country</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CountryField' class='eaFormField'>
    <select id='Country' class='eaFormSelect' name='Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
       <option value='United States of America'>United States of America</option>
@@ -630,8 +548,90 @@
 </div>
 
 </div>
+<div id='ProvinceDiv' class='eaFullWidthContent'><div id='ProvinceError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Province'><a name='Province' style='text-decoration:none; color: inherit;'>State/Province</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<div id='ProvinceField' class='eaFormField'>
+   <select id='Province' class='eaFormSelect' name='Province' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
+      <option value='AB'>Alberta</option>
+      <option value='BC'>British Columbia</option>
+      <option value='MB'>Manitoba</option>
+      <option value='NB'>New Brunswick</option>
+      <option value='NL'>Newfoundland and Labrador</option>
+      <option value='NB'>New Brunswick</option>
+      <option value='NS'>Nova Scotia</option>
+      <option value='NT'>Northwest Territories</option>
+      <option value='NU'>Nunavut</option>
+      <option value='ON'>Ontario</option>
+      <option value='PE'>Prince Edward Island</option>
+      <option value='QC'>Quebec</option>
+      <option value='SK'>Saskatchewan</option>
+      <option value='YT'>Yukon</option>
+      <option value='other'>Outside of Canada/U.S.</option>
+      <option value='CA'>California</option>
+      <option value='AL'>Alabama</option>
+      <option value='AK'>Alaska</option>
+      <option value='AZ'>Arizona</option>
+      <option value='AR'>Arkansas</option>
+      <option value='CA'>California</option>
+      <option value='CO'>Colorado</option>
+      <option value='CT'>Connecticut</option>
+      <option value='DE'>Delaware</option>
+      <option value='DC'>District of Columbia</option>
+      <option value='FL'>Florida</option>
+      <option value='GA'>Georgia</option>
+      <option value='HI'>Hawaii</option>
+      <option value='ID'>Idaho</option>
+      <option value='IL'>Illinois</option>
+      <option value='IN'>Indiana</option>
+      <option value='IA'>Iowa</option>
+      <option value='KS'>Kansas</option>
+      <option value='KY'>Kentucky</option>
+      <option value='LA'>Louisiana</option>
+      <option value='ME'>Maine</option>
+      <option value='MD'>Maryland</option>
+      <option value='MA'>Massachusetts</option>
+      <option value='MI'>Michigan</option>
+      <option value='MN'>Minnesota</option>
+      <option value='MS'>Mississippi</option>
+      <option value='MO'>Missouri</option>
+      <option value='MT'>Montana</option>
+      <option value='NE'>Nebraska</option>
+      <option value='NV'>Nevada</option>
+      <option value='NH'>New Hampshire</option>
+      <option value='NJ'>New Jersey</option>
+      <option value='NM'>New Mexico</option>
+      <option value='NY'>New York</option>
+      <option value='NC'>North Carolina</option>
+      <option value='ND'>North Dakota</option>
+      <option value='OH'>Ohio</option>
+      <option value='OK'>Oklahoma</option>
+      <option value='OR'>Oregon</option>
+      <option value='PA'>Pennsylvania</option>
+      <option value='RI'>Rhode Island</option>
+      <option value='SC'>South Carolina</option>
+      <option value='SD'>South Dakota</option>
+      <option value='TN'>Tennessee</option>
+      <option value='TX'>Texas</option>
+      <option value='UT'>Utah</option>
+      <option value='VT'>Vermont</option>
+      <option value='VA'>Virginia</option>
+      <option value='WA'>Washington</option>
+      <option value='WV'>West Virginia</option>
+      <option value='WI'>Wisconsin</option>
+      <option value='WY'>Wyoming</option>
+   </select>
+</div>
+
+</div>
+<div id='Primary_EmailDiv' class='eaFullWidthContent'><div id='Primary_EmailError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Primary_Email'><a name='Primary_Email' style='text-decoration:none; color: inherit;'>Email Address</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<div id='Primary_EmailField' class='eaFormField'>
+   <input id='Primary_Email' type='text' class='eaFormTextfield' name='Primary_Email' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
 <div id='Home_PhoneDiv' class='eaFullWidthContent'><div id='Home_PhoneError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Home_Phone'><a name='Home_Phone' style='text-decoration:none; color: inherit;'>Telephone:</a></label></span>
+<span class='eaFormElementLabel'><label for='Home_Phone'><a name='Home_Phone' style='text-decoration:none; color: inherit;'>Telephone</a></label></span>
 <div id='Home_PhoneField' class='eaFormField'>
    <input id='Home_Phone' type='text' class='eaFormTextfield' name='Home_Phone' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
@@ -640,10 +640,10 @@
 <div id='Opt-In_EnglishDiv' class='eaFullWidthContent'><div class="eaQuestionLabel"></div><div class="eaQuestionCheckboxFormFieldContainer">
 <span class='eaQuestionCheckbox'><input id='Opt-In_EnglishY' type='checkbox' name='Opt-In_English' value='Y' onblur='validatefield(this, false, false, false);' /><label for="Opt-In_EnglishY"><b>Yes</b>, I would like to receive updates and news from the Nature Conservancy of Canada by email.</label></span>&nbsp;&nbsp;&nbsp;</div>
 </div>
-<div id='Helpful_information_headerDiv' class='eaFullWidthContent'><h2 class="js-inmemorialDetails">Helpful Information</h2>
+<div id='[GR]_Optional_Donation_ChoicesDiv' class='eaFullWidthContent'><h3 class="js-donationOptions">Optional Donation Choices</h3>
 </div>
 <div id='Direct_GiftDiv' class='eaFullWidthContent'><div id='Direct_GiftError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Direct_Gift'><a name='Direct_Gift' style='text-decoration:none; color: inherit;'>Direct My Gift to:</a></label></span>
+<span class='eaFormElementLabel'><label for='Direct_Gift'><a name='Direct_Gift' style='text-decoration:none; color: inherit;'><h3>Please direct my funds</h3></a></label></span>
 <div id='Direct_GiftField' class='eaFormField'>
    <select id='Direct_Gift' class='eaFormSelect' name='Direct Gift' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='90140'>Where it is most needed</option>
       <option value='90010'>British Columbia</option>
@@ -661,113 +661,747 @@
 
 </div>
 <div id='Company_GiftDiv' class='eaFullWidthContent'><div id='Company_GiftError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><a name='Company_Gift' style='text-decoration:none; color: inherit;'>This donation is on behalf of an:</a></span>
+<span class='eaFormElementLabel'><a name='Company_Gift' style='text-decoration:none; color: inherit;'>This donation is</a></span>
 <div id='Company_GiftField' class='eaFormField'>
    
-<span class='eaFormRadio'><input id='Company_GiftIndividual' type='radio' name='Company Gift' value='Individual' checked  onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='Company_GiftIndividual'>Individual</label></span>
-<span class='eaFormRadio'><input id='Company_GiftOrganization' type='radio' name='Company Gift' value='Organization' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='Company_GiftOrganization'>Organization</label></span>
+<span class='eaFormCheckbox'><input id='Company_GiftOrganization' type='checkbox' name='Company Gift' value='Organization' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for="Company_GiftOrganization">On behalf of a company</label></span>
 </div>
 
 </div>
-<div id='Tribute_OptionsDiv' style='display:none' class='eaFullWidthContent'><div id='Tribute_OptionsError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Tribute_Options'><a name='Tribute_Options' style='text-decoration:none; color: inherit;'>I would like to make a donation:</a></label></span>
+<div id='In_honour_or_in_memoriamDiv' class='eaFullWidthContent'><div class="eaQuestionLabel">&nbsp;</div><div class="eaQuestionCheckboxFormFieldContainer">
+<span class='eaQuestionCheckbox'><input id='In_honour_or_in_memoriamY' type='checkbox' name='In honour or in memoriam' value='Y' onblur='validatefield(this, false, false, false);' /><label for="In_honour_or_in_memoriamY">In honour or in memorium</label></span>&nbsp;&nbsp;&nbsp;</div>
+</div>
+<div id='Tribute_OptionsDiv' class='eaFullWidthContent'><div id='Tribute_OptionsError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><a name='Tribute_Options' style='text-decoration:none; color: inherit;'>In honour</a></span>
 <div id='Tribute_OptionsField' class='eaFormField'>
-   <select id='Tribute_Options' class='eaFormSelect' name='Tribute Options' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='In honor of'>In honor of</option>
-      <option value='In celebration of'>In celebration of</option>
-      <option value='In recognition of'>In recognition of</option>
-      <option value='As a gift to'>As a gift to</option>
-   </select>
+   
+<span class='eaFormRadio'><input id='Tribute_OptionsY' type='radio' name='Tribute Options' value='Y' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='Tribute_OptionsY'>is in honour of someone else</label></span>&nbsp;&nbsp;&nbsp;
 </div>
 
 </div>
 <div id='In_MemoriamDiv' class='eaFullWidthContent'><div id='In_MemoriamError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><a name='In_Memoriam' style='text-decoration:none; color: inherit;'>In Memoriam:</a></span>
+<span class='eaFormElementLabel'><a name='In_Memoriam' style='text-decoration:none; color: inherit;'>In Memoriam</a></span>
 <div id='In_MemoriamField' class='eaFormField'>
    
-<span class='eaFormCheckbox'><input id='In_MemoriamY' type='checkbox' name='In Memoriam' value='Y' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for="In_MemoriamY">My gift is in memory of someone</label></span>&nbsp;&nbsp;&nbsp;
+<span class='eaFormRadio'><input id='In_MemoriamY' type='radio' name='In Memoriam' value='Y' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='In_MemoriamY'>is in memory of someone who has passed away</label></span>&nbsp;&nbsp;&nbsp;
 </div>
 
 </div>
-<div id='Organization_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Organization_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Organization_Name'><a name='Organization_Name' style='text-decoration:none; color: inherit;'>Organization Name:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<div id='[GR]_Company_InformationDiv' class='eaFullWidthContent'><h3 class="js-companyInformation">Company Information</h3>
+</div>
+<div id='Organization_NameDiv' class='eaFullWidthContent'><div id='Organization_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Organization_Name'><a name='Organization_Name' style='text-decoration:none; color: inherit;'>The Company's Name</a></label></span>
 <div id='Organization_NameField' class='eaFormField'>
    <input id='Organization_Name' type='text' class='eaFormTextfield' name='Organization Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Contact_Persons_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Contact_Persons_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Contact_Persons_Name'><a name='Contact_Persons_Name' style='text-decoration:none; color: inherit;'>Contact Person's First Name:</a></label></span>
+<div id='Contact_Persons_NameDiv' class='eaFullWidthContent'><div id='Contact_Persons_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Contact_Persons_Name'><a name='Contact_Persons_Name' style='text-decoration:none; color: inherit;'>First Name</a></label></span>
 <div id='Contact_Persons_NameField' class='eaFormField'>
    <input id='Contact_Persons_Name' type='text' class='eaFormTextfield' name='Contact Persons Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Contact_Last_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Contact_Last_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Contact_Last_Name'><a name='Contact_Last_Name' style='text-decoration:none; color: inherit;'>Contact Person's Last Name:</a></label></span>
+<div id='Contact_Last_NameDiv' class='eaFullWidthContent'><div id='Contact_Last_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Contact_Last_Name'><a name='Contact_Last_Name' style='text-decoration:none; color: inherit;'>Last Name</a></label></span>
 <div id='Contact_Last_NameField' class='eaFormField'>
    <input id='Contact_Last_Name' type='text' class='eaFormTextfield' name='Contact Last Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Memoriam_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Memoriam_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Memoriam_Name'><a name='Memoriam_Name' style='text-decoration:none; color: inherit;'>My/Our donation is in memory of:</a></label></span>
+<div id='Other_EmailDiv' class='eaFullWidthContent'><div id='Other_EmailError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Email'><a name='Other_Email' style='text-decoration:none; color: inherit;'>Email Address</a></label></span>
+<div id='Other_EmailField' class='eaFormField'>
+   <input id='Other_Email' type='text' class='eaFormTextfield' name='Other Email' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Other_Addrline1Div' class='eaFullWidthContent'><div id='Other_Addrline1Error' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Addrline1'><a name='Other_Addrline1' style='text-decoration:none; color: inherit;'>Address</a></label></span>
+<div id='Other_Addrline1Field' class='eaFormField'>
+   <input id='Other_Addrline1' type='text' class='eaFormTextfield' name='Other Addrline1' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Other_Addrline2Div' class='eaFullWidthContent'><div id='Other_Addrline2Error' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Addrline2'><a name='Other_Addrline2' style='text-decoration:none; color: inherit;'>Unit</a></label></span>
+<div id='Other_Addrline2Field' class='eaFormField'>
+   <input id='Other_Addrline2' type='text' class='eaFormTextfield' name='Other Addrline2' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Other_CityDiv' class='eaFullWidthContent'><div id='Other_CityError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_City'><a name='Other_City' style='text-decoration:none; color: inherit;'>City</a></label></span>
+<div id='Other_CityField' class='eaFormField'>
+   <input id='Other_City' type='text' class='eaFormTextfield' name='Other City' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Other_Postal_CodeDiv' class='eaFullWidthContent'><div id='Other_Postal_CodeError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Postal_Code'><a name='Other_Postal_Code' style='text-decoration:none; color: inherit;'>Zip / Postal</a></label></span>
+<div id='Other_Postal_CodeField' class='eaFormField'>
+   <input id='Other_Postal_Code' type='text' class='eaFormTextfield' name='Other Postal_Code' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Other_CountryDiv' class='eaFullWidthContent'><div id='Other_CountryError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Country'><a name='Other_Country' style='text-decoration:none; color: inherit;'>Country</a></label></span>
+<div id='Other_CountryField' class='eaFormField'>
+   <select id='Other_Country' class='eaFormSelect' name='Other Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
+      <option value='United States of America'>United States of America</option>
+      <option value='Afghanistan'>Afghanistan</option>
+      <option value='Alland Islands'>Alland Islands</option>
+      <option value='Albania'>Albania</option>
+      <option value='Algeria'>Algeria</option>
+      <option value='American Samoa'>American Samoa</option>
+      <option value='Andorra'>Andorra</option>
+      <option value='Angola'>Angola</option>
+      <option value='Anguilla'>Anguilla</option>
+      <option value='Antarctica'>Antarctica</option>
+      <option value='Antigua and Barbuda'>Antigua and Barbuda</option>
+      <option value='Argentina'>Argentina</option>
+      <option value='Armenia'>Armenia</option>
+      <option value='Aruba'>Aruba</option>
+      <option value='Australia'>Australia</option>
+      <option value='Austria'>Austria</option>
+      <option value='Azerbaijan'>Azerbaijan</option>
+      <option value='Bahamas'>Bahamas</option>
+      <option value='Bahrain'>Bahrain</option>
+      <option value='Bangladesh'>Bangladesh</option>
+      <option value='Barbados'>Barbados</option>
+      <option value='Belarus'>Belarus</option>
+      <option value='Belgium'>Belgium</option>
+      <option value='Belize'>Belize</option>
+      <option value='Benin'>Benin</option>
+      <option value='Bermuda'>Bermuda</option>
+      <option value='Bhutan'>Bhutan</option>
+      <option value='Bolivia, Plurinational State of'>Bolivia, Plurinational State of</option>
+      <option value='Bosnia and Herzegovina'>Bosnia and Herzegovina</option>
+      <option value='Botswana'>Botswana</option>
+      <option value='Bouvet Island'>Bouvet Island</option>
+      <option value='Brazil'>Brazil</option>
+      <option value='British Indian Ocean Territory'>British Indian Ocean Territory</option>
+      <option value='Brunei Darussalam'>Brunei Darussalam</option>
+      <option value='Bulgaria'>Bulgaria</option>
+      <option value='Burkina Faso'>Burkina Faso</option>
+      <option value='Burundi'>Burundi</option>
+      <option value='Cambodia'>Cambodia</option>
+      <option value='Cameroon'>Cameroon</option>
+      <option value='Cape Verde'>Cape Verde</option>
+      <option value='Cayman Islands'>Cayman Islands</option>
+      <option value='Central African Republic'>Central African Republic</option>
+      <option value='Chad'>Chad</option>
+      <option value='Chile'>Chile</option>
+      <option value='China'>China</option>
+      <option value='Christmas Island'>Christmas Island</option>
+      <option value='Cocos (Keeling) Islands'>Cocos (Keeling) Islands</option>
+      <option value='Colombia'>Colombia</option>
+      <option value='Comoros'>Comoros</option>
+      <option value='Congo'>Congo</option>
+      <option value='Congo, the Democratic Republic of the'>Congo, the Democratic Republic of the</option>
+      <option value='Cook Islands'>Cook Islands</option>
+      <option value='Costa Rica'>Costa Rica</option>
+      <option value='Cote d&#39;Ivoire'>Cote d'Ivoire</option>
+      <option value='Croatia'>Croatia</option>
+      <option value='Cuba'>Cuba</option>
+      <option value='Cyprus'>Cyprus</option>
+      <option value='Czech Republic'>Czech Republic</option>
+      <option value='Denmark'>Denmark</option>
+      <option value='Djibouti'>Djibouti</option>
+      <option value='Dominica'>Dominica</option>
+      <option value='Dominican Republic'>Dominican Republic</option>
+      <option value='Ecuador'>Ecuador</option>
+      <option value='Egypt'>Egypt</option>
+      <option value='El Salvador'>El Salvador</option>
+      <option value='Equatorial Guinea'>Equatorial Guinea</option>
+      <option value='Eritrea'>Eritrea</option>
+      <option value='Estonia'>Estonia</option>
+      <option value='Ethiopia'>Ethiopia</option>
+      <option value='Falkland Islands (Malvinas)'>Falkland Islands (Malvinas)</option>
+      <option value='Faroe Islands'>Faroe Islands</option>
+      <option value='Fiji'>Fiji</option>
+      <option value='Finland'>Finland</option>
+      <option value='France'>France</option>
+      <option value='French Guiana'>French Guiana</option>
+      <option value='French Polynesia'>French Polynesia</option>
+      <option value='French Southern Territories'>French Southern Territories</option>
+      <option value='Gabon'>Gabon</option>
+      <option value='Gambia'>Gambia</option>
+      <option value='Georgia'>Georgia</option>
+      <option value='Germany'>Germany</option>
+      <option value='Ghana'>Ghana</option>
+      <option value='Gibraltar'>Gibraltar</option>
+      <option value='Greece'>Greece</option>
+      <option value='Greenland'>Greenland</option>
+      <option value='Grenada'>Grenada</option>
+      <option value='Guadeloupe'>Guadeloupe</option>
+      <option value='Guam'>Guam</option>
+      <option value='Guatemala'>Guatemala</option>
+      <option value='Guernsey'>Guernsey</option>
+      <option value='Guinea'>Guinea</option>
+      <option value='Guinea-Bissau'>Guinea-Bissau</option>
+      <option value='Guyana'>Guyana</option>
+      <option value='Haiti'>Haiti</option>
+      <option value='Heard Island and McDonald Islands'>Heard Island and McDonald Islands</option>
+      <option value='Holy See (Vatican City State)'>Holy See (Vatican City State)</option>
+      <option value='Honduras'>Honduras</option>
+      <option value='Hong Kong'>Hong Kong</option>
+      <option value='Hungary'>Hungary</option>
+      <option value='Iceland'>Iceland</option>
+      <option value='India'>India</option>
+      <option value='Indonesia'>Indonesia</option>
+      <option value='Iran, Islamic Republic of'>Iran, Islamic Republic of</option>
+      <option value='Iraq'>Iraq</option>
+      <option value='Ireland'>Ireland</option>
+      <option value='Isle of Man'>Isle of Man</option>
+      <option value='Israel'>Israel</option>
+      <option value='Italy'>Italy</option>
+      <option value='Jamaica'>Jamaica</option>
+      <option value='Japan'>Japan</option>
+      <option value='Jersey'>Jersey</option>
+      <option value='Jordan'>Jordan</option>
+      <option value='Kazakhstan'>Kazakhstan</option>
+      <option value='Kenya'>Kenya</option>
+      <option value='Kiribati'>Kiribati</option>
+      <option value='Korea, Democratic People&#39;s Republic of'>Korea, Democratic People's Republic of</option>
+      <option value='Korea, Republic of'>Korea, Republic of</option>
+      <option value='Kuwait'>Kuwait</option>
+      <option value='Kyrgyzstan'>Kyrgyzstan</option>
+      <option value='Lao People&#39;s Democratic Republic'>Lao People's Democratic Republic</option>
+      <option value='Latvia'>Latvia</option>
+      <option value='Lebanon'>Lebanon</option>
+      <option value='Lesotho'>Lesotho</option>
+      <option value='Liberia'>Liberia</option>
+      <option value='Libyan Arab Jamahiriya'>Libyan Arab Jamahiriya</option>
+      <option value='Liechtenstein'>Liechtenstein</option>
+      <option value='Lithuania'>Lithuania</option>
+      <option value='Luxembourg'>Luxembourg</option>
+      <option value='Macao'>Macao</option>
+      <option value='Madagascar'>Madagascar</option>
+      <option value='Malawi'>Malawi</option>
+      <option value='Malaysia'>Malaysia</option>
+      <option value='Maldives'>Maldives</option>
+      <option value='Mali'>Mali</option>
+      <option value='Malta'>Malta</option>
+      <option value='Marshall Islands'>Marshall Islands</option>
+      <option value='Martinique'>Martinique</option>
+      <option value='Mauritania'>Mauritania</option>
+      <option value='Mauritius'>Mauritius</option>
+      <option value='Mayotte'>Mayotte</option>
+      <option value='Mexico'>Mexico</option>
+      <option value='Micronesia, Federated States of'>Micronesia, Federated States of</option>
+      <option value='Moldova, Republic of'>Moldova, Republic of</option>
+      <option value='Monaco'>Monaco</option>
+      <option value='Mongolia'>Mongolia</option>
+      <option value='Montenegro'>Montenegro</option>
+      <option value='Montserrat'>Montserrat</option>
+      <option value='Morocco'>Morocco</option>
+      <option value='Mozambique'>Mozambique</option>
+      <option value='Myanmar'>Myanmar</option>
+      <option value='Namibia'>Namibia</option>
+      <option value='Nauru'>Nauru</option>
+      <option value='Nepal'>Nepal</option>
+      <option value='Netherlands'>Netherlands</option>
+      <option value='Netherlands Antilles'>Netherlands Antilles</option>
+      <option value='New Caledonia'>New Caledonia</option>
+      <option value='New Zealand'>New Zealand</option>
+      <option value='Nicaragua'>Nicaragua</option>
+      <option value='Niger'>Niger</option>
+      <option value='Nigeria'>Nigeria</option>
+      <option value='Niue'>Niue</option>
+      <option value='Norfolk Island'>Norfolk Island</option>
+      <option value='Northern Mariana Islands'>Northern Mariana Islands</option>
+      <option value='Norway'>Norway</option>
+      <option value='Oman'>Oman</option>
+      <option value='Pakistan'>Pakistan</option>
+      <option value='Palau'>Palau</option>
+      <option value='Palestinian Territory, Occupied'>Palestinian Territory, Occupied</option>
+      <option value='Panama'>Panama</option>
+      <option value='Papua New Guinea'>Papua New Guinea</option>
+      <option value='Paraguay'>Paraguay</option>
+      <option value='Peru'>Peru</option>
+      <option value='Philippines'>Philippines</option>
+      <option value='Pitcairn'>Pitcairn</option>
+      <option value='Poland'>Poland</option>
+      <option value='Portugal'>Portugal</option>
+      <option value='Puerto Rico'>Puerto Rico</option>
+      <option value='Qatar'>Qatar</option>
+      <option value='Rounion'>Rounion</option>
+      <option value='Romania'>Romania</option>
+      <option value='Russian Federation'>Russian Federation</option>
+      <option value='Rwanda'>Rwanda</option>
+      <option value='Saint Bartholemy'>Saint Bartholemy</option>
+      <option value='Saint Kitts and Nevis'>Saint Kitts and Nevis</option>
+      <option value='Saint Lucia'>Saint Lucia</option>
+      <option value='Saint Martin (French part)'>Saint Martin (French part)</option>
+      <option value='Saint Pierre and Miquelon'>Saint Pierre and Miquelon</option>
+      <option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines</option>
+      <option value='Samoa'>Samoa</option>
+      <option value='San Marino'>San Marino</option>
+      <option value='Sao Tome and Principe'>Sao Tome and Principe</option>
+      <option value='Saudi Arabia'>Saudi Arabia</option>
+      <option value='Senegal'>Senegal</option>
+      <option value='Serbia'>Serbia</option>
+      <option value='Seychelles'>Seychelles</option>
+      <option value='Sierra Leone'>Sierra Leone</option>
+      <option value='Singapore'>Singapore</option>
+      <option value='Slovakia'>Slovakia</option>
+      <option value='Slovenia'>Slovenia</option>
+      <option value='Solomon Islands'>Solomon Islands</option>
+      <option value='Somalia'>Somalia</option>
+      <option value='South Africa'>South Africa</option>
+      <option value='Spain'>Spain</option>
+      <option value='Sri Lanka'>Sri Lanka</option>
+      <option value='Sudan'>Sudan</option>
+      <option value='Suriname'>Suriname</option>
+      <option value='Svalbard and Jan Mayen'>Svalbard and Jan Mayen</option>
+      <option value='Swaziland'>Swaziland</option>
+      <option value='Sweden'>Sweden</option>
+      <option value='Switzerland'>Switzerland</option>
+      <option value='Syrian Arab Republic'>Syrian Arab Republic</option>
+      <option value='Taiwan, Province of China'>Taiwan, Province of China</option>
+      <option value='Tajikistan'>Tajikistan</option>
+      <option value='Tanzania, United Republic of'>Tanzania, United Republic of</option>
+      <option value='Thailand'>Thailand</option>
+      <option value='Timor-Leste'>Timor-Leste</option>
+      <option value='Togo'>Togo</option>
+      <option value='Tokelau'>Tokelau</option>
+      <option value='Tonga'>Tonga</option>
+      <option value='Trinidad and Tobago'>Trinidad and Tobago</option>
+      <option value='Tunisia'>Tunisia</option>
+      <option value='Turkey'>Turkey</option>
+      <option value='Turkmenistan'>Turkmenistan</option>
+      <option value='Turks and Caicos Islands'>Turks and Caicos Islands</option>
+      <option value='Tuvalu'>Tuvalu</option>
+      <option value='Uganda'>Uganda</option>
+      <option value='Ukraine'>Ukraine</option>
+      <option value='United Arab Emirates'>United Arab Emirates</option>
+      <option value='United Kingdom'>United Kingdom</option>
+      <option value='United States Minor Outlying Islands'>United States Minor Outlying Islands</option>
+      <option value='Uruguay'>Uruguay</option>
+      <option value='Uzbekistan'>Uzbekistan</option>
+      <option value='Vanuatu'>Vanuatu</option>
+      <option value='Venezuela, Bolivarian Republic of'>Venezuela, Bolivarian Republic of</option>
+      <option value='Viet Nam'>Viet Nam</option>
+      <option value='Virgin Islands, British'>Virgin Islands, British</option>
+      <option value='Virgin Islands, U.S.'>Virgin Islands, U.S.</option>
+      <option value='Wallis and Futuna'>Wallis and Futuna</option>
+      <option value='Western Sahara'>Western Sahara</option>
+      <option value='Yemen'>Yemen</option>
+      <option value='Zambia'>Zambia</option>
+      <option value='Zimbabwe'>Zimbabwe</option>
+   </select>
+</div>
+
+</div>
+<div id='Other_ProvinceDiv' class='eaFullWidthContent'><div id='Other_ProvinceError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Province'><a name='Other_Province' style='text-decoration:none; color: inherit;'>Province</a></label></span>
+<div id='Other_ProvinceField' class='eaFormField'>
+   <select id='Other_Province' class='eaFormSelect' name='Other Province' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
+      <option value='AB'>Alberta</option>
+      <option value='BC'>British Columbia</option>
+      <option value='MB'>Manitoba</option>
+      <option value='NB'>New Brunswick</option>
+      <option value='NL'>Newfoundland and Labrador</option>
+      <option value='NB'>New Brunswick</option>
+      <option value='NS'>Nova Scotia</option>
+      <option value='ON'>Ontario</option>
+      <option value='PE'>Prince Edward Island</option>
+      <option value='QC'>Quebec</option>
+      <option value='SK'>Saskatchewan</option>
+      <option value='CA'>California</option>
+      <option value='AL'> Alabama</option>
+      <option value='AK'>Alaska</option>
+      <option value='AZ'>Arizona</option>
+      <option value='AR'>Arkansas</option>
+      <option value='CA'>California</option>
+      <option value='CO'>Colorado</option>
+      <option value='CT'>Connecticut</option>
+      <option value='DE'>Delaware</option>
+      <option value='DC'>District of Columbia</option>
+      <option value='FL'>Florida</option>
+      <option value='GA'>Georgia</option>
+      <option value='HI'>Hawaii</option>
+      <option value='ID'>Idaho</option>
+      <option value='IL'>Illinois</option>
+      <option value='IN'>Indiana</option>
+      <option value='IA'>Iowa</option>
+      <option value='KS'>Kansas</option>
+      <option value='KY'>Kentucky</option>
+      <option value='LA'>Louisiana</option>
+      <option value='ME'>Maine</option>
+      <option value='MD'>Maryland</option>
+      <option value='MA'>Massachusetts</option>
+      <option value='MI'>Michigan</option>
+      <option value='MN'>Minnesota</option>
+      <option value='MS'>Mississippi</option>
+      <option value='MO'>Missouri</option>
+      <option value='MT'>Montana</option>
+      <option value='NE'>Nebraska</option>
+      <option value='NV'>Nevada</option>
+      <option value='NH'>New Hampshire</option>
+      <option value='NJ'>New Jersey</option>
+      <option value='NM'>New Mexico</option>
+      <option value='NY'>New York</option>
+      <option value='NC'>North Carolina</option>
+      <option value='ND'>North Dakota</option>
+      <option value='OH'>Ohio</option>
+      <option value='OK'>Oklahoma</option>
+      <option value='OR'>Oregon</option>
+      <option value='PA'>Pennsylvania</option>
+      <option value='RI'>Rhode Island</option>
+      <option value='SC'>South Carolina</option>
+      <option value='SD'>South Dakota</option>
+      <option value='TN'>Tennessee</option>
+      <option value='TX'>Texas</option>
+      <option value='UT'>Utah</option>
+      <option value='VT'>Vermont</option>
+      <option value='VA'>Virginia</option>
+      <option value='WA'>Washington</option>
+      <option value='WV'>West Virginia</option>
+      <option value='WI'>Wisconsin</option>
+      <option value='WY'>Wyoming</option>
+   </select>
+</div>
+
+</div>
+<div id='Use_as_billing_addressDiv' class='eaFullWidthContent'><div class="eaQuestionLabel"></div><div class="eaQuestionCheckboxFormFieldContainer">
+<span class='eaQuestionCheckbox'><input id='Use_as_billing_addressY' type='checkbox' name='Use as billing address' value='Y' onblur='validatefield(this, false, false, false);' /><label for="Use_as_billing_addressY">Use this as the billing address</label></span>&nbsp;&nbsp;&nbsp;</div>
+</div>
+<div id='Other_Address_TypeDiv' style='display:none' class='eaFullWidthContent'><div id='Other_Address_TypeError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Other_Address_Type'><a name='Other_Address_Type' style='text-decoration:none; color: inherit;'>Other Address Type</a></label></span>
+<div id='Other_Address_TypeField' class='eaFormField'>
+   <input id='Other_Address_Type' type='text' class='eaFormTextfield' name='Other Address Type' value='Organization' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Addr_TypeDiv' style='display:none' class='eaFullWidthContent'><div id='Addr_TypeError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Addr_Type'><a name='Addr_Type' style='text-decoration:none; color: inherit;'>Address Type</a></label></span>
+<div id='Addr_TypeField' class='eaFormField'>
+   <input id='Addr_Type' type='text' class='eaFormTextfield' name='Addr_Type' value='Individual' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='[GR]_Honouree+Memorial_InformationDiv' class='eaFullWidthContent'><h3 class="js-honourMemorialInformation"><span class="js-honourGift">Honouree</span><span class="js-memorialGift">Memorial</span> Information</h3>
+</div>
+<div id='Memoriam_NameDiv' class='eaFullWidthContent'><div id='Memoriam_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Memoriam_Name'><a name='Memoriam_Name' style='text-decoration:none; color: inherit;'>Name of the Deceased</a></label></span>
 <div id='Memoriam_NameField' class='eaFormField'>
    <input id='Memoriam_Name' type='text' class='eaFormTextfield' name='Memoriam Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Honoree_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Honoree_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Honoree_Name'><a name='Honoree_Name' style='text-decoration:none; color: inherit;'>In the name of - please enter the honouree's name(s):</a></label></span>
+<div id='Honoree_NameDiv' class='eaFullWidthContent'><div id='Honoree_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Honoree_Name'><a name='Honoree_Name' style='text-decoration:none; color: inherit;'>Honouree's Name(s)</a></label></span>
 <div id='Honoree_NameField' class='eaFormField'>
    <input id='Honoree_Name' type='text' class='eaFormTextfield' name='Honoree Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='OccasionDiv' style='display:none' class='eaFullWidthContent'><div id='OccasionError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Occasion'><a name='Occasion' style='text-decoration:none; color: inherit;'>Occasion:</a></label></span>
+<div id='OccasionDiv' class='eaFullWidthContent'><div id='OccasionError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Occasion'><a name='Occasion' style='text-decoration:none; color: inherit;'>Occasion</a></label></span>
 <div id='OccasionField' class='eaFormField'>
    <input id='Occasion' type='text' class='eaFormTextfield' name='Occasion' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Recognize_GiftDiv' class='eaFullWidthContent'><div id='Recognize_GiftError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><a name='Recognize_Gift' style='text-decoration:none; color: inherit;'>Tribute Gift:</a></span>
+<span class='eaFormElementLabel'><a name='Recognize_Gift' style='text-decoration:none; color: inherit;'>Would you like to notify <span class="js-memorialGift">somone of your donation</span><span class="js-honourGift">the honuoree</span>?<br /><span class="label-note">Your donation amount won't be displayed in the notification.</span></a></span>
 <div id='Recognize_GiftField' class='eaFormField'>
    
-<span class='eaFormCheckbox'><input id='Recognize_GiftY' type='checkbox' name='Recognize Gift' value='Y' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for="Recognize_GiftY">I wish to make a gift in tribute</label></span>&nbsp;&nbsp;&nbsp;
+<span class='eaFormRadio'><input id='Recognize_Giftno' type='radio' name='Recognize Gift' value='no' checked  onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='Recognize_Giftno'>No Thanks</label></span>
+<span class='eaFormRadio'><input id='Recognize_Giftmail' type='radio' name='Recognize Gift' value='mail' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for='Recognize_Giftmail'>Mail a card</label></span>
 </div>
 
 </div>
-<div id='Inform_NameDiv' style='display:none' class='eaFullWidthContent'><div id='Inform_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Name'><a name='Inform_Name' style='text-decoration:none; color: inherit;'>Inform Name:</a></label></span>
+<div id='Inform_NameDiv' class='eaFullWidthContent'><div id='Inform_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Name'><a name='Inform_Name' style='text-decoration:none; color: inherit;'>Name of the recipient</a></label></span>
 <div id='Inform_NameField' class='eaFormField'>
    <input id='Inform_Name' type='text' class='eaFormTextfield' name='Inform Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Inform_Address_1Div' style='display:none' class='eaFullWidthContent'><div id='Inform_Address_1Error' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Address_1'><a name='Inform_Address_1' style='text-decoration:none; color: inherit;'>Inform Street:</a></label></span>
+<div id='Inform_Address_1Div' class='eaFullWidthContent'><div id='Inform_Address_1Error' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Address_1'><a name='Inform_Address_1' style='text-decoration:none; color: inherit;'>Address</a></label></span>
 <div id='Inform_Address_1Field' class='eaFormField'>
    <input id='Inform_Address_1' type='text' class='eaFormTextfield' name='Inform Address 1' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Inform_Address_2Div' style='display:none' class='eaFullWidthContent'><div id='Inform_Address_2Error' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Address_2'><a name='Inform_Address_2' style='text-decoration:none; color: inherit;'>Inform Street 2:</a></label></span>
+<div id='Inform_Address_2Div' class='eaFullWidthContent'><div id='Inform_Address_2Error' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Address_2'><a name='Inform_Address_2' style='text-decoration:none; color: inherit;'>Unit</a></label></span>
 <div id='Inform_Address_2Field' class='eaFormField'>
    <input id='Inform_Address_2' type='text' class='eaFormTextfield' name='Inform Address 2' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Inform_CityDiv' style='display:none' class='eaFullWidthContent'><div id='Inform_CityError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_City'><a name='Inform_City' style='text-decoration:none; color: inherit;'>Inform City:</a></label></span>
+<div id='Inform_CityDiv' class='eaFullWidthContent'><div id='Inform_CityError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_City'><a name='Inform_City' style='text-decoration:none; color: inherit;'>City</a></label></span>
 <div id='Inform_CityField' class='eaFormField'>
    <input id='Inform_City' type='text' class='eaFormTextfield' name='Inform City' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Inform_RegionDiv' style='display:none' class='eaFullWidthContent'><div id='Inform_RegionError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Region'><a name='Inform_Region' style='text-decoration:none; color: inherit;'>Inform Province/State:</a></label></span>
+<div id='Inform_PostcodeDiv' class='eaFullWidthContent'><div id='Inform_PostcodeError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Postcode'><a name='Inform_Postcode' style='text-decoration:none; color: inherit;'>Zip / Postal</a></label></span>
+<div id='Inform_PostcodeField' class='eaFormField'>
+   <input id='Inform_Postcode' type='text' class='eaFormTextfield' name='Inform Postcode' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Inform_CountryDiv' class='eaFullWidthContent'><div id='Inform_CountryError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Country'><a name='Inform_Country' style='text-decoration:none; color: inherit;'>Country</a></label></span>
+<div id='Inform_CountryField' class='eaFormField'>
+   <select id='Inform_Country' class='eaFormSelect' name='Inform Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
+      <option value='United States of America'>United States of America</option>
+      <option value='Afghanistan'>Afghanistan</option>
+      <option value='Alland Islands'>Alland Islands</option>
+      <option value='Albania'>Albania</option>
+      <option value='Algeria'>Algeria</option>
+      <option value='American Samoa'>American Samoa</option>
+      <option value='Andorra'>Andorra</option>
+      <option value='Angola'>Angola</option>
+      <option value='Anguilla'>Anguilla</option>
+      <option value='Antarctica'>Antarctica</option>
+      <option value='Antigua and Barbuda'>Antigua and Barbuda</option>
+      <option value='Argentina'>Argentina</option>
+      <option value='Armenia'>Armenia</option>
+      <option value='Aruba'>Aruba</option>
+      <option value='Australia'>Australia</option>
+      <option value='Austria'>Austria</option>
+      <option value='Azerbaijan'>Azerbaijan</option>
+      <option value='Bahamas'>Bahamas</option>
+      <option value='Bahrain'>Bahrain</option>
+      <option value='Bangladesh'>Bangladesh</option>
+      <option value='Barbados'>Barbados</option>
+      <option value='Belarus'>Belarus</option>
+      <option value='Belgium'>Belgium</option>
+      <option value='Belize'>Belize</option>
+      <option value='Benin'>Benin</option>
+      <option value='Bermuda'>Bermuda</option>
+      <option value='Bhutan'>Bhutan</option>
+      <option value='Bolivia, Plurinational State of'>Bolivia, Plurinational State of</option>
+      <option value='Bosnia and Herzegovina'>Bosnia and Herzegovina</option>
+      <option value='Botswana'>Botswana</option>
+      <option value='Bouvet Island'>Bouvet Island</option>
+      <option value='Brazil'>Brazil</option>
+      <option value='British Indian Ocean Territory'>British Indian Ocean Territory</option>
+      <option value='Brunei Darussalam'>Brunei Darussalam</option>
+      <option value='Bulgaria'>Bulgaria</option>
+      <option value='Burkina Faso'>Burkina Faso</option>
+      <option value='Burundi'>Burundi</option>
+      <option value='Cambodia'>Cambodia</option>
+      <option value='Cameroon'>Cameroon</option>
+      <option value='Cape Verde'>Cape Verde</option>
+      <option value='Cayman Islands'>Cayman Islands</option>
+      <option value='Central African Republic'>Central African Republic</option>
+      <option value='Chad'>Chad</option>
+      <option value='Chile'>Chile</option>
+      <option value='China'>China</option>
+      <option value='Christmas Island'>Christmas Island</option>
+      <option value='Cocos (Keeling) Islands'>Cocos (Keeling) Islands</option>
+      <option value='Colombia'>Colombia</option>
+      <option value='Comoros'>Comoros</option>
+      <option value='Congo'>Congo</option>
+      <option value='Congo, the Democratic Republic of the'>Congo, the Democratic Republic of the</option>
+      <option value='Cook Islands'>Cook Islands</option>
+      <option value='Costa Rica'>Costa Rica</option>
+      <option value='Cote d&#39;Ivoire'>Cote d'Ivoire</option>
+      <option value='Croatia'>Croatia</option>
+      <option value='Cuba'>Cuba</option>
+      <option value='Cyprus'>Cyprus</option>
+      <option value='Czech Republic'>Czech Republic</option>
+      <option value='Denmark'>Denmark</option>
+      <option value='Djibouti'>Djibouti</option>
+      <option value='Dominica'>Dominica</option>
+      <option value='Dominican Republic'>Dominican Republic</option>
+      <option value='Ecuador'>Ecuador</option>
+      <option value='Egypt'>Egypt</option>
+      <option value='El Salvador'>El Salvador</option>
+      <option value='Equatorial Guinea'>Equatorial Guinea</option>
+      <option value='Eritrea'>Eritrea</option>
+      <option value='Estonia'>Estonia</option>
+      <option value='Ethiopia'>Ethiopia</option>
+      <option value='Falkland Islands (Malvinas)'>Falkland Islands (Malvinas)</option>
+      <option value='Faroe Islands'>Faroe Islands</option>
+      <option value='Fiji'>Fiji</option>
+      <option value='Finland'>Finland</option>
+      <option value='France'>France</option>
+      <option value='French Guiana'>French Guiana</option>
+      <option value='French Polynesia'>French Polynesia</option>
+      <option value='French Southern Territories'>French Southern Territories</option>
+      <option value='Gabon'>Gabon</option>
+      <option value='Gambia'>Gambia</option>
+      <option value='Georgia'>Georgia</option>
+      <option value='Germany'>Germany</option>
+      <option value='Ghana'>Ghana</option>
+      <option value='Gibraltar'>Gibraltar</option>
+      <option value='Greece'>Greece</option>
+      <option value='Greenland'>Greenland</option>
+      <option value='Grenada'>Grenada</option>
+      <option value='Guadeloupe'>Guadeloupe</option>
+      <option value='Guam'>Guam</option>
+      <option value='Guatemala'>Guatemala</option>
+      <option value='Guernsey'>Guernsey</option>
+      <option value='Guinea'>Guinea</option>
+      <option value='Guinea-Bissau'>Guinea-Bissau</option>
+      <option value='Guyana'>Guyana</option>
+      <option value='Haiti'>Haiti</option>
+      <option value='Heard Island and McDonald Islands'>Heard Island and McDonald Islands</option>
+      <option value='Holy See (Vatican City State)'>Holy See (Vatican City State)</option>
+      <option value='Honduras'>Honduras</option>
+      <option value='Hong Kong'>Hong Kong</option>
+      <option value='Hungary'>Hungary</option>
+      <option value='Iceland'>Iceland</option>
+      <option value='India'>India</option>
+      <option value='Indonesia'>Indonesia</option>
+      <option value='Iran, Islamic Republic of'>Iran, Islamic Republic of</option>
+      <option value='Iraq'>Iraq</option>
+      <option value='Ireland'>Ireland</option>
+      <option value='Isle of Man'>Isle of Man</option>
+      <option value='Israel'>Israel</option>
+      <option value='Italy'>Italy</option>
+      <option value='Jamaica'>Jamaica</option>
+      <option value='Japan'>Japan</option>
+      <option value='Jersey'>Jersey</option>
+      <option value='Jordan'>Jordan</option>
+      <option value='Kazakhstan'>Kazakhstan</option>
+      <option value='Kenya'>Kenya</option>
+      <option value='Kiribati'>Kiribati</option>
+      <option value='Korea, Democratic People&#39;s Republic of'>Korea, Democratic People's Republic of</option>
+      <option value='Korea, Republic of'>Korea, Republic of</option>
+      <option value='Kuwait'>Kuwait</option>
+      <option value='Kyrgyzstan'>Kyrgyzstan</option>
+      <option value='Lao People&#39;s Democratic Republic'>Lao People's Democratic Republic</option>
+      <option value='Latvia'>Latvia</option>
+      <option value='Lebanon'>Lebanon</option>
+      <option value='Lesotho'>Lesotho</option>
+      <option value='Liberia'>Liberia</option>
+      <option value='Libyan Arab Jamahiriya'>Libyan Arab Jamahiriya</option>
+      <option value='Liechtenstein'>Liechtenstein</option>
+      <option value='Lithuania'>Lithuania</option>
+      <option value='Luxembourg'>Luxembourg</option>
+      <option value='Macao'>Macao</option>
+      <option value='Madagascar'>Madagascar</option>
+      <option value='Malawi'>Malawi</option>
+      <option value='Malaysia'>Malaysia</option>
+      <option value='Maldives'>Maldives</option>
+      <option value='Mali'>Mali</option>
+      <option value='Malta'>Malta</option>
+      <option value='Marshall Islands'>Marshall Islands</option>
+      <option value='Martinique'>Martinique</option>
+      <option value='Mauritania'>Mauritania</option>
+      <option value='Mauritius'>Mauritius</option>
+      <option value='Mayotte'>Mayotte</option>
+      <option value='Mexico'>Mexico</option>
+      <option value='Micronesia, Federated States of'>Micronesia, Federated States of</option>
+      <option value='Moldova, Republic of'>Moldova, Republic of</option>
+      <option value='Monaco'>Monaco</option>
+      <option value='Mongolia'>Mongolia</option>
+      <option value='Montenegro'>Montenegro</option>
+      <option value='Montserrat'>Montserrat</option>
+      <option value='Morocco'>Morocco</option>
+      <option value='Mozambique'>Mozambique</option>
+      <option value='Myanmar'>Myanmar</option>
+      <option value='Namibia'>Namibia</option>
+      <option value='Nauru'>Nauru</option>
+      <option value='Nepal'>Nepal</option>
+      <option value='Netherlands'>Netherlands</option>
+      <option value='Netherlands Antilles'>Netherlands Antilles</option>
+      <option value='New Caledonia'>New Caledonia</option>
+      <option value='New Zealand'>New Zealand</option>
+      <option value='Nicaragua'>Nicaragua</option>
+      <option value='Niger'>Niger</option>
+      <option value='Nigeria'>Nigeria</option>
+      <option value='Niue'>Niue</option>
+      <option value='Norfolk Island'>Norfolk Island</option>
+      <option value='Northern Mariana Islands'>Northern Mariana Islands</option>
+      <option value='Norway'>Norway</option>
+      <option value='Oman'>Oman</option>
+      <option value='Pakistan'>Pakistan</option>
+      <option value='Palau'>Palau</option>
+      <option value='Palestinian Territory, Occupied'>Palestinian Territory, Occupied</option>
+      <option value='Panama'>Panama</option>
+      <option value='Papua New Guinea'>Papua New Guinea</option>
+      <option value='Paraguay'>Paraguay</option>
+      <option value='Peru'>Peru</option>
+      <option value='Philippines'>Philippines</option>
+      <option value='Pitcairn'>Pitcairn</option>
+      <option value='Poland'>Poland</option>
+      <option value='Portugal'>Portugal</option>
+      <option value='Puerto Rico'>Puerto Rico</option>
+      <option value='Qatar'>Qatar</option>
+      <option value='Rounion'>Rounion</option>
+      <option value='Romania'>Romania</option>
+      <option value='Russian Federation'>Russian Federation</option>
+      <option value='Rwanda'>Rwanda</option>
+      <option value='Saint Bartholemy'>Saint Bartholemy</option>
+      <option value='Saint Kitts and Nevis'>Saint Kitts and Nevis</option>
+      <option value='Saint Lucia'>Saint Lucia</option>
+      <option value='Saint Martin (French part)'>Saint Martin (French part)</option>
+      <option value='Saint Pierre and Miquelon'>Saint Pierre and Miquelon</option>
+      <option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines</option>
+      <option value='Samoa'>Samoa</option>
+      <option value='San Marino'>San Marino</option>
+      <option value='Sao Tome and Principe'>Sao Tome and Principe</option>
+      <option value='Saudi Arabia'>Saudi Arabia</option>
+      <option value='Senegal'>Senegal</option>
+      <option value='Serbia'>Serbia</option>
+      <option value='Seychelles'>Seychelles</option>
+      <option value='Sierra Leone'>Sierra Leone</option>
+      <option value='Singapore'>Singapore</option>
+      <option value='Slovakia'>Slovakia</option>
+      <option value='Slovenia'>Slovenia</option>
+      <option value='Solomon Islands'>Solomon Islands</option>
+      <option value='Somalia'>Somalia</option>
+      <option value='South Africa'>South Africa</option>
+      <option value='Spain'>Spain</option>
+      <option value='Sri Lanka'>Sri Lanka</option>
+      <option value='Sudan'>Sudan</option>
+      <option value='Suriname'>Suriname</option>
+      <option value='Svalbard and Jan Mayen'>Svalbard and Jan Mayen</option>
+      <option value='Swaziland'>Swaziland</option>
+      <option value='Sweden'>Sweden</option>
+      <option value='Switzerland'>Switzerland</option>
+      <option value='Syrian Arab Republic'>Syrian Arab Republic</option>
+      <option value='Taiwan, Province of China'>Taiwan, Province of China</option>
+      <option value='Tajikistan'>Tajikistan</option>
+      <option value='Tanzania, United Republic of'>Tanzania, United Republic of</option>
+      <option value='Thailand'>Thailand</option>
+      <option value='Timor-Leste'>Timor-Leste</option>
+      <option value='Togo'>Togo</option>
+      <option value='Tokelau'>Tokelau</option>
+      <option value='Tonga'>Tonga</option>
+      <option value='Trinidad and Tobago'>Trinidad and Tobago</option>
+      <option value='Tunisia'>Tunisia</option>
+      <option value='Turkey'>Turkey</option>
+      <option value='Turkmenistan'>Turkmenistan</option>
+      <option value='Turks and Caicos Islands'>Turks and Caicos Islands</option>
+      <option value='Tuvalu'>Tuvalu</option>
+      <option value='Uganda'>Uganda</option>
+      <option value='Ukraine'>Ukraine</option>
+      <option value='United Arab Emirates'>United Arab Emirates</option>
+      <option value='United Kingdom'>United Kingdom</option>
+      <option value='United States Minor Outlying Islands'>United States Minor Outlying Islands</option>
+      <option value='Uruguay'>Uruguay</option>
+      <option value='Uzbekistan'>Uzbekistan</option>
+      <option value='Vanuatu'>Vanuatu</option>
+      <option value='Venezuela, Bolivarian Republic of'>Venezuela, Bolivarian Republic of</option>
+      <option value='Viet Nam'>Viet Nam</option>
+      <option value='Virgin Islands, British'>Virgin Islands, British</option>
+      <option value='Virgin Islands, U.S.'>Virgin Islands, U.S.</option>
+      <option value='Wallis and Futuna'>Wallis and Futuna</option>
+      <option value='Western Sahara'>Western Sahara</option>
+      <option value='Yemen'>Yemen</option>
+      <option value='Zambia'>Zambia</option>
+      <option value='Zimbabwe'>Zimbabwe</option>
+   </select>
+</div>
+
+</div>
+<div id='Inform_RegionDiv' class='eaFullWidthContent'><div id='Inform_RegionError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Inform_Region'><a name='Inform_Region' style='text-decoration:none; color: inherit;'>Province</a></label></span>
 <div id='Inform_RegionField' class='eaFormField'>
    <select id='Inform_Region' class='eaFormSelect' name='Inform Region' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
       <option value='AB'>Alberta</option>
@@ -837,52 +1471,38 @@
 </div>
 
 </div>
-<div id='Inform_PostcodeDiv' style='display:none' class='eaFullWidthContent'><div id='Inform_PostcodeError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Postcode'><a name='Inform_Postcode' style='text-decoration:none; color: inherit;'>Inform PC:</a></label></span>
-<div id='Inform_PostcodeField' class='eaFormField'>
-   <input id='Inform_Postcode' type='text' class='eaFormTextfield' name='Inform Postcode' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
-</div>
-
-</div>
-<div id='Inform_CountryDiv' style='display:none' class='eaFullWidthContent'><div id='Inform_CountryError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Inform_Country'><a name='Inform_Country' style='text-decoration:none; color: inherit;'>Informed Country:</a></label></span>
-<div id='Inform_CountryField' class='eaFormField'>
-   <input id='Inform_Country' type='text' class='eaFormTextfield' name='Inform Country' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
-</div>
-
-</div>
-<div id='Memoriam_MessageDiv' style='display:none' class='eaFullWidthContent'><div id='Memoriam_MessageError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Memoriam_Message'><a name='Memoriam_Message' style='text-decoration:none; color: inherit;'>If you wish, you can provide a personal message for the card:</a></label></span>
-<div id='Memoriam_MessageField' class='eaFormField'>
-   <textarea id='Memoriam_Message' class='eaFormTextArea' name='Memoriam Message' onblur='validatefield(this);' onchange='checkdep(this);' ></textarea>
-</div>
-
-</div>
-<div id='Honoree_MessageDiv' style='display:none' class='eaFullWidthContent'><div id='Honoree_MessageError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Honoree_Message'><a name='Honoree_Message' style='text-decoration:none; color: inherit;'>Message Signature:</a></label></span>
+<div id='Honoree_MessageDiv' class='eaFullWidthContent'><div id='Honoree_MessageError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Honoree_Message'><a name='Honoree_Message' style='text-decoration:none; color: inherit;'>Message to the Honouree</a></label></span>
 <div id='Honoree_MessageField' class='eaFormField'>
    <textarea id='Honoree_Message' class='eaFormTextArea' name='Honoree Message' onblur='validatefield(this);' onchange='checkdep(this);' ></textarea>
 </div>
 
 </div>
-<div id='Memoriam_SenderDiv' style='display:none' class='eaFullWidthContent'><div id='Memoriam_SenderError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Memoriam_Sender'><a name='Memoriam_Sender' style='text-decoration:none; color: inherit;'>We would like the card to be sent from:</a></label></span>
-<div id='Memoriam_SenderField' class='eaFormField'>
-   <input id='Memoriam_Sender' type='text' class='eaFormTextfield' name='Memoriam Sender' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+<div id='Memoriam_MessageDiv' class='eaFullWidthContent'><div id='Memoriam_MessageError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Memoriam_Message'><a name='Memoriam_Message' style='text-decoration:none; color: inherit;'>Message to the recipient</a></label></span>
+<div id='Memoriam_MessageField' class='eaFormField'>
+   <textarea id='Memoriam_Message' class='eaFormTextArea' name='Memoriam Message' onblur='validatefield(this);' onchange='checkdep(this);' ></textarea>
 </div>
 
 </div>
-<div id='Honoree_SignatureDiv' style='display:none' class='eaFullWidthContent'><div id='Honoree_SignatureError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Honoree_Signature'><a name='Honoree_Signature' style='text-decoration:none; color: inherit;'>Message Signature:</a></label></span>
+<div id='Honoree_SignatureDiv' class='eaFullWidthContent'><div id='Honoree_SignatureError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Honoree_Signature'><a name='Honoree_Signature' style='text-decoration:none; color: inherit;'>Name of the sender(s)</a></label></span>
 <div id='Honoree_SignatureField' class='eaFormField'>
    <input id='Honoree_Signature' type='text' class='eaFormTextfield' name='Honoree Signature' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='Donor_information_headerDiv' class='eaFullWidthContent'><h2 class="js-billingDetails">Donor Information</h2>
+<div id='Memoriam_SenderDiv' class='eaFullWidthContent'><div id='Memoriam_SenderError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Memoriam_Sender'><a name='Memoriam_Sender' style='text-decoration:none; color: inherit;'>Name of the sender(s)</a></label></span>
+<div id='Memoriam_SenderField' class='eaFormField'>
+   <input id='Memoriam_Sender' type='text' class='eaFormTextfield' name='Memoriam Sender' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='[GR]_Payment_InformationDiv' class='eaFullWidthContent'><h3 class="js-paymentInformation">Payment Information</h3>
 </div>
 <div id='Payment_TypeDiv' class='eaFullWidthContent'><div id='Payment_TypeError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Payment_Type'><a name='Payment_Type' style='text-decoration:none; color: inherit;'>Payment Type:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Payment_Type'><a name='Payment_Type' style='text-decoration:none; color: inherit;'>Payment Type</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Payment_TypeField' class='eaFormField'>
    <select id='Payment_Type' class='eaFormSelect' name='Payment Type' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
       <option value='Visa'>Visa</option>
@@ -894,21 +1514,21 @@
 
 </div>
 <div id='Card_Holder_NameDiv' class='eaFullWidthContent'><div id='Card_Holder_NameError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Card_Holder_Name'><a name='Card_Holder_Name' style='text-decoration:none; color: inherit;'>Credit Card Holder Name:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Card_Holder_Name'><a name='Card_Holder_Name' style='text-decoration:none; color: inherit;'>Credit Card Holder Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Card_Holder_NameField' class='eaFormField'>
    <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Credit_Card_NumberDiv' class='eaFullWidthContent'><div id='Credit_Card_NumberError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Credit Card Number:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Credit Card Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Credit_Card_NumberField' class='eaFormField'>
    <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Credit_Card_ExpirationDiv' class='eaFullWidthContent'><div id='Credit_Card_ExpirationError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Credit_Card_Expiration'><a name='Credit_Card_Expiration' style='text-decoration:none; color: inherit;'>Expiration Date:</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Credit_Card_Expiration'><a name='Credit_Card_Expiration' style='text-decoration:none; color: inherit;'>Expiration Date</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Credit_Card_ExpirationField' class='eaFormField'>
    <select id='Credit_Card_Expiration1' class='eaSplitSelectfield' name='Credit Card Expiration1'>
    <option value='01'>01</option>
@@ -939,43 +1559,34 @@
 
 </div>
 <div id='CVV_CodeDiv' class='eaFullWidthContent'><div id='CVV_CodeError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Number: <a href="http://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=1715" onclick="window.open('http://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=1715','CVV','width=600,height=600,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-300)+'');return false;">What's this?</a></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CVV_CodeField' class='eaFormField'>
    <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
+<div id='[GR]_Main_Donation_SummaryDiv' class='eaFullWidthContent'><div class="js-donationSummary">
+<h3>Summary</h3>
+<span class="js-personalGift">`user_data~First_Name` `user_data~Last_Name`</span><span class="js-orgGift">`user_data~Organization Name`</span> is making a<span class="js-frequency"></span> donation of <span class="js-amount"></span><span class="js-memorialGift"> in memory of `user_data~Memoriam Name`</span><span class="js-honourGift"> in honour of `user_data~Honoree Name`</span>.</div>
+</div>
+<div id='[GR]_Instructions_and_Comments_ToggleDiv' class='eaFullWidthContent'><div class="js-instructionsAndComment">
+<p><em>Use the navigation below to make edits to the information you've submitted. If you would like to add a comment to your donation -</em> <a href="#" class="js-toggleComments">click here</a>.</p>
+</div>
+</div>
 <div id='Additional_CommentsDiv' class='eaFullWidthContent'><div id='Additional_CommentsError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Additional_Comments'><a name='Additional_Comments' style='text-decoration:none; color: inherit;'>Additional Comments:</a></label></span>
+<span class='eaFormElementLabel'><label for='Additional_Comments'><a name='Additional_Comments' style='text-decoration:none; color: inherit;'>Additional Comments</a></label></span>
 <div id='Additional_CommentsField' class='eaFormField'>
    <textarea id='Additional_Comments' class='eaFormTextArea' name='Additional Comments' onblur='validatefield(this);' onchange='checkdep(this);' ></textarea>
 </div>
 
 </div>
-<div class='eaTwoColumnFiller'>&nbsp;</div>
-<div id='Preferred_LangDiv' style='display:none' class='eaFullWidthContent'><div id='Preferred_LangError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Preferred_Lang'><a name='Preferred_Lang' style='text-decoration:none; color: inherit;'>Preferred Language</a></label></span>
-<div id='Preferred_LangField' class='eaFormField'>
-   <select id='Preferred_Lang' class='eaFormSelect' name='Preferred_Lang' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='English'>English</option>
-      <option value='French'>French</option>
-   </select>
-</div>
-
-</div>
-<div id='CurrencyDiv' style='display:none' class='eaFullWidthContent'><div id='CurrencyError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Currency'><a name='Currency' style='text-decoration:none; color: inherit;'>Currency<a href="http://www.pinterest.com/pin/create/extension/"></a></a></label></span>
-<div id='CurrencyField' class='eaFormField'>
-   <input id='Currency' type='text' class='eaFormTextfield' name='Currency' value='CAD' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
-</div>
-
-</div>
 <div id='Spam_TrapDiv' class='eaFullWidthContent'><div id='Spam_TrapError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Spam_Trap'><a name='Spam_Trap' style='text-decoration:none; color: inherit;'>Spam Trap&nbsp;</a></label></span>
+<span class='eaFormElementLabel'><label for='Spam_Trap'><a name='Spam_Trap' style='text-decoration:none; color: inherit;'>Spam Trap </a></label></span>
 <div id='Spam_TrapField' class='eaFormField'>
    <input id='Spam_Trap' type='text' class='eaFormTextfield' name='Spam Trap' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
-</div><span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_1"><input type="submit" class="eaSubmitButton" value="Submit"></input></span>
+</div><span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_1"><input type="submit" class="eaSubmitButton" value="Donate"></input></span>
 </form>
           <!-- END OF HTML OUTPUT FROM EN -->
         </div>

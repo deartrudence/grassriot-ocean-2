@@ -111,7 +111,7 @@
 
   .eaFormElementLabel{
 	@include formSectionHeader;
-	display: block !important;
+	display: block;// !important;
   }
 
   .eaMandatoryFieldMarker{
@@ -810,7 +810,9 @@ select, textarea {
   }
   .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox,
   .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input,
-  .eaFormCheckbox,
+  .eaFormCheckbox, 
+  .eaFormRadio, 
+  .eaFormRadio input,
   .eaFormCheckbox input {
 	vertical-align:top;
 	&:hover {
@@ -818,11 +820,11 @@ select, textarea {
 	}
   }
   .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label,
+  .eaFormRadio label,
   .eaFormCheckbox label {
 	cursor: pointer;
 	display: inline-block;
 	width: 90%;
-	color: $magenta;
 	@include fontSize-smallish;
 	@include font-bodyN4;
 	@include lineHeight-tight;

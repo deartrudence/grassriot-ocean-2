@@ -3814,8 +3814,8 @@ html.csstransforms {
   content: ' ';
   top: 0;
   right: 372px;
-  -webkit-box-shadow: inset 10px -10px 15px 0px rgba(210, 210, 210, 0.5);
-  box-shadow: inset 10px -10px 15px 0px rgba(210, 210, 210, 0.5);
+  -webkit-box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
+  box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
   height: 100%;
   width: 30px;
   z-index: 900;
@@ -4472,6 +4472,12 @@ label {
   margin-left: 2%;
   clear: none;
 }
+.inline-block-field-wrap.show-label .eaFormElementLabel {
+  display: block !important;
+}
+.inline-block-field-wrap.no-label-padding .eaFormElementLabel, .inline-block-field-wrap.no-label-padding .eaQuestionLabel {
+  padding: 0;
+}
 .inline-block-field-wrap.hide-label .eaFormElementLabel {
   display: none !important;
   height: 0;
@@ -4569,7 +4575,7 @@ label {
   font-weight: 700;
   font-style: normal;
   color: #A4CE46;
-  display: block !important;
+  display: block;
 }
 #gr_donation .eaMandatoryFieldMarker {
   display: none;
@@ -5216,21 +5222,25 @@ select.error, textarea.error {
 #grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox,
 #grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input,
 #grdonation .page .eaFormCheckbox,
+#grdonation .page .eaFormRadio,
+#grdonation .page .eaFormRadio input,
 #grdonation .page .eaFormCheckbox input {
   vertical-align: top;
 }
 #grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox:hover,
 #grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox input:hover,
 #grdonation .page .eaFormCheckbox:hover,
+#grdonation .page .eaFormRadio:hover,
+#grdonation .page .eaFormRadio input:hover,
 #grdonation .page .eaFormCheckbox input:hover {
   cursor: pointer;
 }
 #grdonation .page .eaQuestionCheckboxFormFieldContainer .eaQuestionCheckbox label,
+#grdonation .page .eaFormRadio label,
 #grdonation .page .eaFormCheckbox label {
   cursor: pointer;
   display: inline-block;
   width: 90%;
-  color: #792266;
   font-size: 0.8rem;
   font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;

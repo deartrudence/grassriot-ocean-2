@@ -14,6 +14,7 @@ var defaults = {
     'completeClass': "is-complete",
     'target': '.js-formSteps',
     'stepHandler': [],
+    'stepPreSwitchCallback': [], //@since __
     'stepLabels': [],
     'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
     'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
@@ -245,17 +246,6 @@ GRSteps.prototype.switchTo = function(stepNumber){
     return;
   }
 
-  //add the complete class to the current indicator
-  //But only if going to a next step
-  /*if(
-    this.options.currentStep !== false
-    && this.options.currentStep < stepNumber
-    ){
-    this.stepIndicators.eq(this.options.currentStep)
-      .addClass(this.options.completeClass);
-  }*/
-
-
   /**
    * Prevent going to a step that doesn't exist
    * @since v0.35 - 2015-12-04 - JH: this wasn't in v0.3 so I changed the version to v0.35 to note it strayed - not sure what projects it exists in, but if we always upgrade to v0.4 [or the latest] then we should be okay
@@ -267,8 +257,14 @@ GRSteps.prototype.switchTo = function(stepNumber){
   //switch the indicator
   this.options.currentStep = stepNumber;
   this.updateIndicators();
-  //this.stepIndicators.eq(this.options.currentStep)
-  //  .addClass(this.options.activeClass);
+  
+  //@since __ - create a pre-panel load callback which can help with ensuring code fires before a panel loads especially in cases where there are hidden panels. There is no return value to stop the panel switch.
+  if(
+    typeof this.options.stepPreSwitchCallback[this.options.currentStep] === "function"
+    && this.options.currentStep > 0
+  ) {
+    this.options.stepPreSwitchCallback[this.options.currentStep].call(this.$container);
+  }
 
   //actually switch to the panel
   
