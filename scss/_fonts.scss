@@ -64,6 +64,11 @@ em{
 //
 //Body font
 //
+@mixin font-bodyN3{
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 @mixin font-bodyN4{
   font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: 400;
@@ -183,10 +188,11 @@ em{
 //lineheight
 $line-tightest: .96;
 $line-tighter: 1;
-$line-hero: 1.1;
-$line-tight: 1.2;
-$line-base: 1.5;
-$line-loose: 2;
+$line-hero: 1.06;
+$line-tight: 1.12;
+$line-nearBase: 1.18;
+$line-base: 1.26;
+$line-loose: 1.33;
 
 //Line Heights
 @mixin lineHeight-title--number {
@@ -208,7 +214,7 @@ $line-loose: 2;
   line-height: 1.4;
 }
 
-@mixin lineHeight-hero {
+@mixin line-hero {
   line-height: $line-hero;
 }
 
@@ -224,6 +230,10 @@ $line-loose: 2;
   line-height: $line-tight;
 }
 
+@mixin line-nearBase{
+  line-height: $line-nearBase;
+}
+
 @mixin line-base{
   line-height: $line-base;
 }
@@ -237,31 +247,37 @@ $line-loose: 2;
   font-size: 0.5rem;
 }
 @mixin fontSize-smallish{
-  font-size: 0.8rem;
+  font-size: (12 / 16) * 1rem;
 }
 @mixin fontSize-base{
   font-size: 16px;
 }
+@mixin fontSize-biggerBase {
+  font-size: (18 / 16) * 1rem;
+}
+@mixin fontSize-mediumSmall{
+  font-size: (20 / 16) * 1rem;
+}
 @mixin fontSize-medium{
-  font-size: 1.22rem;
+  font-size: (22 / 16) * 1rem;
 }
 @mixin fontSize-mediumLarge{
-  font-size: 1.5rem;
+  font-size: (24 / 16) * 1rem;
 }
 @mixin fontSize-large{
-  font-size: 1.77rem;
+  font-size: (25 / 16) * 1rem;
 }
 @mixin fontSize-largerish{
-  font-size: 2.3rem;
+  font-size: (30 / 16) * 1rem;
 }
 @mixin fontSize-titleLarge{
-  font-size: 2.9rem;
+  font-size: (30 / 16) * 1rem;
 }
 @mixin fontSize-xlarge{
-  font-size: 3rem;
+  font-size: (30 / 16) * 1rem;
 }
 @mixin fontSize-huge{
-  font-size: 3.6rem;
+  font-size: (30 / 16) * 1rem;
 }
 
 

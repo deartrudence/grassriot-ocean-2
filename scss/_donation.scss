@@ -6,9 +6,17 @@
 }
 
 #grdonation{
-  .page h3{
-	@include formSectionHeader;
-	display: block;
+  .page {
+    h3{
+    	@include formSectionHeader;
+    	display: block;
+    }
+    h1 {
+        color: $dark-green;
+        strong {
+            color: $light-green;
+        }
+    }
   }
 }
 
@@ -31,9 +39,12 @@
   div.radiobutton {
 	clear: none;
 	float: left;
-	margin: 0 2% 0px 0px;
+    &:nth-child(even) {
+        float: right;
+    }
+	margin: 0 0 25px 0px;
 	display: block;
-	width: 40%;
+	width: 46.5%;
 
 	label {
 	  display: block;
@@ -77,18 +88,18 @@
 	  left: 0;
 	  content: '';
 	  width: 2.5em;
-	  background: $vlight-grey;
+	  background: $indicator-dark-grey;
 	  border-radius: 1px 0 0 1px;
+      padding-top: 10px;
 	}
 
 	/* toggle hover */
 	input[type='radio']:hover:not(:checked) ~ label:before {
 	  content: '\2714';
 	  text-indent: .9em;
-	  color: $lighter-grey;
 	}
 	input[type='radio']:hover:not(:checked) ~ label {
-	  color: $lighter-grey;
+	  background-color: lighten($lightest-grey, 5%);
 	}
 
 	/* toggle on */
@@ -126,11 +137,11 @@
 	font-size: 11px;
 	position: absolute;
 	top: 30px;
-	right: 20px;
+	right: 17px;
 	font-style: normal;
 	z-index: 10;
 	border-radius: 4px;
-  transition: all 0.5s ease;
+    transition: all 0.5s ease;
 
   &:hover {
 		cursor: pointer;
@@ -320,13 +331,13 @@
   width: 85%;
 }
 .steps-list {
-  height: 90px;
+  height: $header-height-md;
   @include thickBlueLine;
   position: relative;
   ul {
 	list-style: none;
 	margin: 0;
-	padding: 25px 0 0px 30px;
+	padding: 35px 0 0px 17px;
 	text-align: left;
 	font-size: 0;
 	li {
@@ -687,23 +698,24 @@
 	margin-bottom: 1em;
 	.amountbutton {
 	  display: block;
-	  width: 48%;
+	  width: 46.5%;
 	  float: left;
 	  &:nth-child(even) {
 		float: right;
 	  }
 
-	  @media screen and (max-width: $screen-xxs-max){
-		width: 46%;
+	  @include mobileAndTablet {
+		width: 46.5%;
 	  }
 	}
 	label {
-	  background: #efefef;
-	  border: 2px solid #d4d4d2;
+	  background: $amount-normal-background;
+      @include background($amount-normal-advancedBackground);
+	  border: 2px solid $donation-amount-border-color;
 	  display: block;
 	  width: 100%;
 	  font-size: 18px;
-	  color: #fff;
+	  color: $white;
 	  border-radius: 3px;
 	  margin-bottom: 10px;
 	  text-align: center;
@@ -711,12 +723,12 @@
 	  vertical-align: middle;
 	  // box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px 0px;
 	  box-sizing: border-box;
-	  color: #727272;
+	  color: $donation-amount-button-text-color;
 	  @include font-decoN4;
 	  font-weight: bold;
 
 
-	  @media only screen and (max-width: $screen-xxs-max){
+	  @include mobileAndTablet {
 		line-height: 34px;
 	  }
 
@@ -748,8 +760,8 @@
 	  left: 0;
 
 	  &:checked + label {
-    	background: $dark-green;
-    	border: 2px solid $dark-green;
+    	background: $amount-active-background;
+    	border: 2px solid $amount-active-background;
     	color: #fff;
     	cursor: default;
 	  }
@@ -771,7 +783,7 @@
 	  outline: none;
 	  outline-offset: -2px;
 
-	  @media only screen and (max-width: $screen-xxs-max){
+	  @include mobileAndTablet {
 		height: 34px;
 	  }
 

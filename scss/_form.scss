@@ -1,10 +1,10 @@
 @mixin formPadding{
-  @media screen and (max-width: $screen-xxs-max){
+  @include mobileAndTablet {
     padding-left: 20px;  
     padding-right: 20px;
   }
 
-  @media screen and (min-width: $screen-xs-min){
+  @media screen and (min-width: $screen-sm-min){
     padding-left: $form-padding;  
     padding-right: $form-padding;
   }
@@ -113,7 +113,7 @@ label{
   @include fontSize-base;
 }
 
-@media screen and (max-width: $screen-xxs-max) {
+@media screen and (max-width: $screen-sm) {
   .form {
     background-color: $white;
 
@@ -217,7 +217,7 @@ label{
 }
 
 //Sidebar form experience
-@media screen and (min-width: $screen-xs-min){
+@media screen and (min-width: $screen-sm-min){
   #grdonation,
   .form form{
     height: 100%;

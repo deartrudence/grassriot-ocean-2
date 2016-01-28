@@ -27,14 +27,15 @@
   .heroTitle {
     @include font-headN6;
     @include fontSize-largerish;
-    @include lineHeight-hero;
+    @include line-hero;
     position: relative;
     color: $white;
     padding: $heroTitle-padding;
+    padding-left: $campaign-paddingleft-md;
 
     strong,
     em {
-      @include font-headI4;
+      @include font-headN7;
       text-transform: uppercase;
     }
 
@@ -46,25 +47,17 @@
       padding: $heroTitle-padding-sm;
     }
   }
-
-  .heroSubtitle {
-    @include font-headN6;
-    @include fontSize-medium;
-    text-transform: uppercase;
-    padding: $heroSubtitle-padding;
-    color: $white;
-    text-align: center;
-  }
 }
 
 .heroCaption {
-  @include fontSize-small;
-  @include font-bodyN4;
+  @include fontSize-smallish;
+  @include font-bodyN3;
   position: absolute;
-  left: 3%;
+  left: 0;
   bottom: 0;
   color: $white;
   padding: $hero-captionpadding-md;
+  padding-left: $campaign-paddingleft-md;
 }
 
 // better centering for browsers that  CSS transforms

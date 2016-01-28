@@ -9,7 +9,6 @@
   	padding: 20% 8% 20% 6%;
     text-transform: uppercase;
     line-height: .9em;
-    text-align: center;
   }
   	    
   h2 {
@@ -50,11 +49,14 @@
     position: absolute;
     content: ' ';
     top: 0;
-    right: 372px;
+    right: $form-width-md - ($campaign-shadow-width - 2px) ;
     @include box-shadow(inset 10px 0px 15px -5px rgba(210,210,210, 0.5));
     height: 100%;
     width: 30px;
     @include z-superHighest;
+    @include mobileAndTablet {
+      display: none;
+    }
   }
 }
 
@@ -126,7 +128,7 @@
 
 
 .responseText-wrapper.wrapper {
-    background-color: $lightest-grey;
+    background-color: $vlight-grey;
     position: relative;
     padding-top: 4%;
     padding-bottom: 4%;
@@ -139,7 +141,7 @@
       width: 0;
       position: absolute;
       pointer-events: none;
-      border-top-color: $lightest-grey;
+      border-top-color: $vlight-grey;
       border-width: 50px;
       margin-left: -50px;
     }
@@ -424,8 +426,8 @@
 // }
 
 // for mobile
-@media screen and (max-width: $screen-xs-max),
-screen and (max-device-width:$screen-xs-max) {
+@media screen and (max-width: $screen-sm),
+screen and (max-device-width:$screen-sm) {
 
 	header p.page-logo {
 		left: 0px;	

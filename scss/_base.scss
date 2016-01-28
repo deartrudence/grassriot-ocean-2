@@ -11,9 +11,9 @@ $menu-red: #C5272D;
 
 //ncc colors
 $vlight-green: #B6D86A;
-$light-green: #A4CE46;
+$light-green: #A5CF46;
 $medium-green: #58A966;
-$dark-green: #2D903D;
+$dark-green: #2D903C;
 $blue: #01B6D1;
 $dark-blue: #0181C8;
 $cta-red: #EB1C24;
@@ -25,16 +25,19 @@ $dark-grey: #676d76;
 $grey: #555;
 $light-grey: #545a63;
 $lighter-grey: #666666;
-$medium-light-grey: #646464;
-$vlight-grey: #dcdcdc;
-$lightest-grey: #EDEDED;
+$medium-light-grey: #737373;
+$vlight-grey: #EDEDED;
+$lightest-grey: #F0F1F1;
 $darker-background-grey: #f3f3f3;
-$background-grey: #f3f3f3;
+$background-grey: $lightest-grey;
 $input-placeholder-grey: #78787a;
 $input-border-grey: #767271;
 
 $indicator-light-grey: #dddfde;
-$indicator-dark-grey: #d5d6d8;
+$indicator-dark-grey: #d7d8d9;
+
+$donation-amount-button-text-color: $medium-light-grey;
+$donation-amount-border-color: #d4d4d2;
 
 $body-background: #E5E6E7;
 $white: #FFFFFF; 
@@ -56,10 +59,10 @@ $content-overlap-xl: 0px;
 //Header
 $header-bgcolour: $vdark-grey;
 $header-height-xxs: 76px;
-$header-height-xs: 80px;
-$header-height-sm: 105px;
-$header-height-md: 105px;
-$header-height-xl: 205px;
+$header-height-xs: 76px;
+$header-height-sm: 76px;
+$header-height-md: 108px;
+$header-height-xl: 108px;
 $header-padding: 15px 0 15px 5%;
 
 // Page Title
@@ -79,10 +82,10 @@ $hero-bgimage-xl: image-url('hero_baby.jpg');
 $hero-bgimage-sea: image-url('hero_sea.jpg');
 $hero-bgimage-delivery: image-url('hero_delivery.jpg');
 
-$heroTitle-padding: 20% 8% 0% 6%;
-$heroSubtitle-padding: 0% 12% 20% 12%;
-$heroTitle-padding-sm: 16% 20% 23%;
-$hero-captionpadding-md: 10px 15px;
+$heroTitle-padding: 18% 5% 0% 5%;
+//$heroSubtitle-padding: 0% 12% 20% 12%;
+$heroTitle-padding-sm: $heroTitle-padding; //16% 20% 23%;
+$hero-captionpadding-md: 15px;
 
 // IMPACT
 $impact-bgimage: image-url('ye-2015-section-1.jpg');
@@ -93,6 +96,9 @@ $gift-bgimage: image-url('ye-2015-section-3.jpg');
 $campaignText-wrapper: 13% 15%;
 $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
+$campaign-shadow-width: 30px;
+$campaign-paddingleft-md: 29px; 
+$campaign-paddingleft-xxs: 11px; 
 $page-max-width: 1400px;
 
 //Highlights
@@ -123,12 +129,12 @@ $supporterProfile-padding-md: 0px 0px 60px 0px;
 //form
 $form-background: image-url("msf-ye-2015-border.jpg");
 
-$form-width-xxs: 300px;
-$form-width-xs: 300px;
-$form-width-sm: 300px;
-$form-width-md: 400px;
-$form-width-xl: 400px;
-$form-padding: 30px;
+$form-width-xxs: 386px;
+$form-width-xs: 386px;
+$form-width-sm: 386px;
+$form-width-md: 386px;
+$form-width-xl: 386px;
+$form-padding: 24px;
 $form-navbar-height: 52px;
 
 $steps_colour: $charcoal;
@@ -142,12 +148,12 @@ $stepsActive_colour: $white;
 $stepsActive_arrowBackground: $dark-green;
 $stepsComplete_colour: $light-green;
 
-$amount-active-advancedBackground: linear-gradient($yellow 0%, darken($yellow,5%) 100%);
-$amount-hover-advancedBackground: linear-gradient(lighten($vlight-grey,5%) 0%, $vlight-grey 100%);
-$amount-normal-advancedBackground: linear-gradient($vlight-grey 0%, darken($vlight-grey, 5%) 100%);
-$amount-active-background: $yellow;
-$amount-hover-background: lighten($vlight-grey, 5%);
-$amount-normal-background: $vlight-grey;
+$amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-green,5%) 100%);
+$amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
+$amount-normal-advancedBackground: linear-gradient($lightest-grey 0%, darken($lightest-grey, 5%) 100%);
+$amount-active-background: $dark-green;
+$amount-hover-background: lighten($lightest-grey, 5%);
+$amount-normal-background: $lightest-grey;
 
 //footer
 $footer-padding-xs: 40px;
@@ -184,6 +190,7 @@ $screen-xl: 2100px;
 
 $screen-xxs-max: 619px;
 $screen-xs-min: 620px;
+$screen-sm-min: 769px;
 
 $screen-xl-min: $screen-xl;
 $screen-xs-max: ($screen-sm - 1);

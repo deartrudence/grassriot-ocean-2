@@ -88,7 +88,7 @@
 
 @mixin formContainer{
 
-  @media screen and (max-width: $screen-xxs-max) {
+  @media screen and (max-width: $screen-sm) {
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -101,7 +101,7 @@
     translate: transform3d(0,0,0);
   }
 
-  @media screen and (min-width: $screen-xs-min){
+  @media screen and (min-width: $screen-sm-min){
     position: absolute;
     //top: $header-height-xs;
     right: 0;
@@ -157,7 +157,7 @@
   }
 
 
-  @media screen and (min-width: $screen-xs-min) {
+  @media screen and (min-width: $screen-sm-min) {
     padding-right: $form-width-xs;
     //padding-left: $content-overlap-md;
     //margin-left: -1 * $content-overlap-md;

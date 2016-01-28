@@ -19,7 +19,7 @@ var enbeautifier;
 
 //hero configuration
 var hero = ".hero-image";
-var heroImage = ".js-hero-image img";
+var heroImage = ".js-hero-image";
 var heroText = ".js-hero-text";
 var heroImageRatio = false;
 
@@ -127,6 +127,7 @@ var fieldsToSwap = {
 
 //Key:Value :: Target:Content
 var ENBeautifierFillers = {
+  ".js-page-header": ".js-languageToggle", 
   ".js-hero": ".js-heroContent",
   ".js-campaign": ".js-campaignText",
   ".js-impact": ".js-impactText",
@@ -370,7 +371,7 @@ function makeAffix(){
         .removeClass("no-affix affix affix-top affix-bottom")
         .removeData("bs.affix");
 
-    if (windowSize !== "phone" && windowSize !== "mobile") {
+    if (windowSize !== "phone" && windowSize !== "mobile" && windowSize !== "tablet") {
         if($(window).height() >  getFormHeight($affixForm)) {
             setContainerOffset($affixForm, $container);
             $affixForm
@@ -686,7 +687,9 @@ function setupPage(){
 function setupAction(){
 
 	try{
-
+        console.log(heroImage);
+        console.log($(heroImage));
+        $('.js-hero').css('background-image', 'url('+$(heroImage).attr('src')+')');
         //Swap fields on post-back - this moves the 
         if(
           typeof fields.sec_billing != "undefined"
@@ -1809,7 +1812,7 @@ function getFormClasses() {
     //Gift fields
     classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
-    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.recur_pay.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
     
     //Personal info fields
     classes[fields.fname.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
