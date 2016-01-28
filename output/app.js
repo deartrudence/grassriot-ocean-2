@@ -12,7 +12,8 @@ webpackJsonp([0],[
 	var footer = $('footer');
 	var header = $('header');
 
-	var donationSummary;
+	var $donationSummary = $('.js-donationSummary');
+	var $donationSummaryRaw = $donationSummary.clone().removeClass('js-donationSummary').addClass('js-donationSummaryRaw hide');
 
 	var ENBeautifier = __webpack_require__(3);
 	var enbeautifier;
@@ -116,6 +117,9 @@ webpackJsonp([0],[
 	});
 
 	var fieldsToSwap = {
+	  fname:   'org_fname',
+	  lname:   'org_lname',
+	  email:   'org_email',
 	  street1: 'sec_street1',
 	  street2: 'sec_street2',
 	  city:    'sec_city',
@@ -972,6 +976,16 @@ webpackJsonp([0],[
 
 	function setupDonationOptions() {
 
+	  $donationSummary.after($donationSummaryRaw);
+
+	  $form.on('click', '.js-toggleComments', function(e) {
+	    e.preventDefault();
+	    $('#'+fields.comments.nameNoSpace+'Div').slideToggle();
+	  });
+	  if($(fields.comments.selector).val() != '') {
+	    $('.js-toggleComments').click();
+	  }
+
 	  $(fields.inmem.selector).data('deselect',fields.inhonor.selector);
 	  $(fields.inhonor.selector).data('deselect',fields.inmem.selector);
 
@@ -1176,13 +1190,14 @@ webpackJsonp([0],[
 	}
 
 	function buildDonationSummary() {
-	  gr.replaceENTemplateTags($form, $('.js-donationSummary'),fields,{start: "`", end: "`"});
-	  $('.js-amount').text(grGiving.getAmount(true));
+	  $donationSummary.html($donationSummaryRaw.html());
+	  gr.replaceENTemplateTags($form, $donationSummary,fields,{start: "`", end: "`"});
+	  $donationSummary.find('.js-amount').text(grGiving.getAmount(true));
 
 	  if(grGiving.isRecurring()) {
-	    $('.js-frequency').text(' monthly');
+	    $donationSummary.find('.js-frequency').text(' monthly');
 	  } else {
-	    $('.js-frequency').text('');
+	    $donationSummary.find('.js-frequency').text('');
 	  }
 
 	}
@@ -1413,6 +1428,7 @@ webpackJsonp([0],[
 
 	        $.validator.addMethod('isNowOrFutureYear', function (value, element) {
 	            var year = '';
+	            value = value.replace('/','');
 	            if(value.length >= 4){
 	                year = parseInt(value, 10);
 	            }
@@ -1430,8 +1446,10 @@ webpackJsonp([0],[
 	            //Reject if the month and year together are in the past
 	            var month = $(element)
 	                .closest("form")
-	                .find("#Credit_Card_Expiration1")
+	                .find("#"+fields.cc_exp.nameNoSpace+"1")
 	                .val();
+
+	            value = value.replace('/','');
 
 	            //for two-digit years, assume it's in this century
 	            if(value.length === 2){
@@ -1462,11 +1480,15 @@ webpackJsonp([0],[
 	          return this.optional(element) || value !== param;
 	        }, jQuery.validator.format("{0} is required."));
 
-	        $.validator.addMethod('isPostcodeCA', function (value, element) {
-	            value = $.trim(value);
-	            $(element).val(value);
-	            var regexPcode = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
-	            return regexPcode.test(value);
+	        $.validator.addMethod('isPostcodeCA', function (value, element, param) {
+	            if(param) {
+	              value = $.trim(value);
+	              $(element).val(value);
+	              var regexPcode = /^([a-zA-Z]\d[a-zA-z]( )?\d[a-zA-Z]\d)$/;
+	              return regexPcode.test(value);
+	            } else {
+	              return true;
+	            }
 	        }, errorMessages.invalidPcode);
 
 	        $.validator.addMethod('stripspaces', function (value,element) {
@@ -1499,7 +1521,12 @@ webpackJsonp([0],[
 	            required: true,
 	            emailTLD: true
 	        };
-	        validation_rules[fields.postal.name] = { required: true };
+	        validation_rules[fields.postal.name] = { 
+	          required: true,
+	          isPostcodeCA: function(element) {
+	            return $(fields.country.selector).val() == "Canada";
+	          }
+	        };
 	        validation_rules[fields.pay_type.name] = "required";
 	        validation_rules[fields.cc_num.name] = {
 	            required: true,
@@ -1523,23 +1550,117 @@ webpackJsonp([0],[
 	            required: true,
 	            isValidDonation: true
 	        };
-	        /*validation_rules[fields.employer.name] = {
+	        validation_rules[fields.employer.name] = {
 	            required: function(element) {
-	                return $(fields.matching.selector).is(':checked');
+	                return $(fields.from_org.selector).is(':checked');
 	            }
 	        }
-	        validation_rules[fields.inmem_type.name] = {
+	        validation_rules[fields.org_fname.name] = {
 	            required: function(element) {
-	                return $(fields.inmem.selector).is(':checked');
-	            },
-	            notEqual: 'Gift Type'
+	                return $(fields.from_org.selector).is(':checked');
+	            }
 	        }
-	        validation_rules[fields.inmem_name.name] = {
+	        validation_rules[fields.org_lname.name] = {
 	            required: function(element) {
-	                return $(fields.inmem.selector).is(':checked');
+	                return $(fields.from_org.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.org_email.name] = {
+	            required: function(element) {
+	                return $(fields.from_org.selector).is(':checked');
+	            },
+	            emailTLD: true
+	        }
+	        validation_rules[fields.sec_street1.name] = {
+	            required: function(element) {
+	                return $(fields.sec_billing.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.sec_city.name] = {
+	            required: function(element) {
+	                return $(fields.sec_billing.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.sec_region.name] = {
+	            required: function(element) {
+	                return $(fields.sec_billing.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.sec_postal.name] = {
+	            required: function(element) {
+	                return $(fields.sec_billing.selector).is(':checked');
+	            },
+	            isPostcodeCA: function(element) {
+	              return $(fields.sec_country.selector).val() == "Canada";
+	            }
+	        }
+	        validation_rules[fields.sec_country.name] = {
+	            required: function(element) {
+	                return $(fields.sec_billing.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.inmem.name] = {
+	            required: function(element) {
+	                return $(fields.inmem_inhon.selector).is(':checked') && !$(fields.inhonor.selector).is(':checked');
+	            }
+	        }
+	        /*validation_rules[fields.inhonor.name] = {
+	            required: function(element) {
+	                return $(fields.inmem_inhon.selector).is(':checked') && !$(fields.inmem.selector).is(':checked');
 	            }
 	        }*/
-
+	        validation_rules[fields.inmem_name.name] = {
+	            required: function(element) {
+	                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.inhonor_name.name] = {
+	            required: function(element) {
+	                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inhonor.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.inhonor_occ.name] = {
+	            required: function(element) {
+	                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inhonor.selector).is(':checked');
+	            }
+	        }
+	        validation_rules[fields.inform.name] = {
+	            required: true
+	        }
+	        validation_rules[fields.inform_recip.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            }
+	        }
+	        validation_rules[fields.inform_street1.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            }
+	        }
+	        validation_rules[fields.inform_city.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            }
+	        }
+	        validation_rules[fields.inform_region.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            }
+	        }
+	        validation_rules[fields.inform_postal.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            },
+	            isPostcodeCA: function(element) {
+	              return $(fields.inform_country.selector).val() == "Canada";
+	            }
+	        }
+	        validation_rules[fields.inform_country.name] = {
+	            required: function(element) {
+	                return $(fields.inform.selector).filter(':checked').val() == "mail";
+	            }
+	        }
+	        
 	        $form.validate({
 	            rules: validation_rules,
 	            unhighlight: function (element, errorClass, validClass) {
@@ -1741,6 +1862,17 @@ webpackJsonp([0],[
 	    classes[fields.inform_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.inform_country.selector] = { classes: "inline-block-field-wrap half-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+
+	    //Company fields
+	    classes[fields.org_fname.selector] = { classes: "inline-block-field-wrap half-wrap ", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.org_lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.org_email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_street1.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_street2.selector] = { classes: "inline-block-field-wrap last-wrap one-quarter-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.sec_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    
 
 	    return classes;
