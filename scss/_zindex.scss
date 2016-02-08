@@ -13,6 +13,9 @@
 @mixin z-highest{
   z-index: 90;
 }
+@mixin z-extraHighest{
+  z-index: 150;
+}
 @mixin z-superHighest{
   z-index: 900;
 }

@@ -18,10 +18,14 @@ var enbeautifier;
 // var slick = require('slick');
 
 //hero configuration
-var hero = ".hero-image";
+var hero = ".js-hero";
 var heroImage = ".js-hero-image";
 var heroText = ".js-hero-text";
 var heroImageRatio = false;
+
+//cta configuration
+var cta = '.js-ctaAskTextWrapper';
+var ctaImage = '.js-ctaAskTextWrapper img';
 
 //mobile form button
 var form = ".form";
@@ -132,6 +136,7 @@ var ENBeautifierFillers = {
   ".js-campaign": ".js-campaignText",
   ".js-impact": ".js-impactText",
   ".js-cta-ask": ".js-ctaAskText",
+  ".js-other-ways": ".js-otherWaysToGive", 
   ".js-response": ".js-responseText",
   ".js-accountable": ".js-accountableText",
   ".js-gift": ".js-giftText",
@@ -379,7 +384,7 @@ function makeAffix(){
                 .affix({
                     offset: {
                         top: 0,
-                        bottom: 0
+                        //bottom: 0
                     }
                 });
             $("#grdonation").css('height','');
@@ -687,9 +692,21 @@ function setupPage(){
 function setupAction(){
 
 	try{
-        console.log(heroImage);
-        console.log($(heroImage));
-        $('.js-hero').css('background-image', 'url('+$(heroImage).attr('src')+')');
+        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
+        $(cta).css('background-image', 'url('+$(ctaImage).attr('src')+')');
+        if ( $('#slider #slides').length ) {
+          $('#slider #slides').cycle({
+            next: $('#slider .nav .next'),
+            prev: $('#slider .nav .prev'),
+            slides: $('#slides > li'),
+            timeout: 5000,
+            pager: '#pager',
+            pagerActiveClass: 'activeSlide',
+            pagerTemplate: '<a href="#" class="dot"></a>',
+            pauseOnHover: true
+          });
+        }
+
         //Swap fields on post-back - this moves the 
         if(
           typeof fields.sec_billing != "undefined"

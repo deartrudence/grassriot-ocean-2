@@ -1,0 +1,154 @@
+#slider {
+    position: relative;
+}
+#slider .nav .prev {
+    display: block;
+    position: absolute;
+    top: 191px;
+    left: 40px;
+    width: 49px;
+    height: 93px;
+    background: url('../images/wrapper/icon-previous.png');
+    z-index: 9999999;
+}
+#slider .nav .next {
+    display: block;
+    position: absolute;
+    top: 191px;
+    right: 40px;
+    width: 49px;
+    height: 93px;
+    background: url('../images/wrapper/icon-next.png');
+    z-index: 9999999;
+}
+#slider.province .nav .next,
+#slider.province .nav .prev {
+    top: 140px;
+}
+#slider #pager {
+    position: absolute;
+    bottom: 27px;
+    left: 45.2%;
+    z-index: 9999999;
+}
+#slider .nav .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+#slider .nav .dot.activeSlide {
+    background-color: #df5f1e;
+}
+#slides {
+    padding: 0;
+    margin: 0;
+}
+#slides li {
+    position: relative;
+    list-style: none;
+    width: 1170px;
+    height: 475px;
+    overflow: hidden;
+}
+#slides.province li {
+    height: 373px;
+}
+#slides img {
+    width: auto;
+    height: 475px;
+    max-width: none;
+}
+#slides.province img {
+    width: 1170px;
+    height: auto;
+}
+#slides .slide-content {
+    position: absolute;
+    bottom: 86px;
+    right: 132px;
+    background-color: rgba(255, 255, 255, .92);
+    max-width: 263px;
+    padding: 18px 22px 22px;
+}
+#slides.province .slide-content {
+    top: 20px;
+    bottom: auto;
+}
+#slides .slide-content h2{
+    margin-top: 0;
+    color: #0082c9;
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: -.2px;
+    border-bottom: 2px solid #00b6d1;
+    display: block;
+    padding-bottom: 9px;
+    margin-bottom: 3px;
+    line-height: 1.25em;
+}
+#slides .slide-content h2 a {
+    text-decoration: none;
+    color: #0082c9;
+}
+#slides .slide-content p {
+    color: #4d4d4f;
+    font-size: 21px;
+    line-height: 1.5em;
+    margin: 0px;
+}
+#slides .slide-content .read-more {
+    margin-bottom: 0;
+}
+#slides .slide-content .read-more a {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #0082c9;
+    font-weight: bold;
+    text-decoration: none;
+}
+#slides .slide-content .read-more a:hover {
+    color: #14bbd4;
+}
+#slides .slide-content .read-more a span {
+    width: 14px;
+    height: 19px;
+    display: inline-block;
+    background: url('../images/wrapper/icon-raquo.png') no-repeat center center transparent;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    top: 3px;
+    margin-left: 3px;
+}
+#slides .slide-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#slides .slide-info .toggle-info {
+    display: block;
+    float: right;
+    width: 50px;
+    height: 39px;
+    background: url('../images/wrapper/icon-info-big.png') no-repeat center center rgba(255, 255, 255, .65);
+}
+#slides .slide-info p {
+    float: left;
+    margin: 0;
+    padding: 0 24px;
+    background-color: rgba(255, 255, 255, .85);
+    font-size: 14px;
+    height: 39px;
+    line-height: 39px;
+    color: #262626;
+}
+#slides .slide-info p{
+    display: none;
+}
+#slides .slide-info:hover p {
+    display: block;
+}

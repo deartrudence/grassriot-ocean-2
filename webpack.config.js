@@ -75,9 +75,10 @@ config.addVendor('modernizr',"vendor/modernizr.min.js");
 config.addVendor('affix', "vendor/bootstrap/assets/javascripts/bootstrap/affix.js");
 config.addVendor('modal', "vendor/bootstrap/assets/javascripts/bootstrap/modal.js");
 config.addVendor('tooltip', "vendor/bootstrap/assets/javascripts/bootstrap/tooltip.js");
+config.addVendor('cycle', "vendor/jquery.cycle2.min.js");
 config.addVendor('popover', "vendor/bootstrap/assets/javascripts/bootstrap/popover.js");
-config.addVendor('ticker', "vendor/Ticker.js");
-config.addVendor('jqueryeasing', "vendor/jquery.easing.min.js");
+//config.addVendor('ticker', "vendor/Ticker.js");
+//config.addVendor('jqueryeasing', "vendor/jquery.easing.min.js");
 
 if(process.env.BUILD_DEV === "true"){
   config.addVendor('tota11y',"vendor/tota11y.min.js");
