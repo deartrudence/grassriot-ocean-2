@@ -5,6 +5,10 @@
   background: $hero-bgimage;
   background-size: cover;
   background-position: center;
+  @include mobile {
+    background-image: none !important;
+    height: auto;
+  }
 }
 
 .page-title {
@@ -24,6 +28,27 @@
 }
 
 .campaign {
+  .heroImageContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    @include mobile {
+      position: relative;
+      width: 100%;
+      height: auto;
+      top: auto;
+      left: auto;
+    }
+  }
+  .heroImage {
+    display: none;
+    @include mobile {
+      display: block;
+      width: 100%;
+    }
+  }
   .heroTitle {
     @include font-headN6;
     @include fontSize-largerish;
@@ -43,8 +68,12 @@
       color: $light-green;
     }
 
-    @media screen and (max-width: $screen-sm-max){
+    @include smallDesktopMax {
       padding: $heroTitle-padding-sm;
+    }
+    @include mobile {
+      display: block;
+      background-color: $dark-green;
     }
   }
 }
@@ -58,6 +87,9 @@
   color: $white;
   padding: $hero-captionpadding-md;
   padding-left: $campaign-paddingleft-md;
+  @include mobile {
+    @include mobileGutter;
+  }
 }
 
 // better centering for browsers that  CSS transforms

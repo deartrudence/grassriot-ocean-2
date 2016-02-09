@@ -82,11 +82,11 @@
 	}
 }
 
-.js-hero {
+/*.js-hero {
   position: relative; //for the overflow control
   overflow: hidden;
   height: 545px;
-}
+}*/
 
 .campaignText-wrapper.wrapper {
   h2 {
@@ -107,7 +107,7 @@
   padding-right: 256px;
   background: image-url('CTA-cow_elk.jpg') no-repeat right bottom;
   background-size: 256px auto;
-  @include smallDesktopMin {
+  @include smallDesktopMax {
     background-image: none;
     padding-right: 0px;
   }
@@ -135,7 +135,7 @@
       border-left-color: $light-green;
       border-width: 32px;
       margin-top: -32px;
-      @include smallDesktopMin {
+      @include smallDesktopMax {
         left: 50%;
         top: 100%;
         margin-top: 0px;
@@ -144,10 +144,13 @@
         border-top-color: $light-green;
       }
     }
+    @include smallDesktopMax {
+      border-left: none;
+    }
   }
   img {
     display: none;
-    @include smallDesktopMin {
+    @include smallDesktopMax {
       display: block;
       width: 100%;
     }
@@ -158,6 +161,9 @@
 .otherWaysToGive-wrapper.wrapper {
   text-align: center;
   padding-bottom: 0;
+  @include smallDesktopMax {
+    text-align: left;
+  }
   a {
     text-transform: uppercase;
     @include fontSize-biggerBase;
@@ -194,6 +200,15 @@
     padding-top: 30px;
     padding-bottom: 30px;
     border-right: 6px solid $light-green;
+    @include smallDesktopMax {
+      padding-bottom: 5px;
+    }
+    @include mobile {
+      @include fontSize-xlarge;
+      @include line-tight;
+      padding-bottom: 32px;
+      padding-top: 0px;
+    }
   }
   .colright {
     float: left;
@@ -207,7 +222,35 @@
     li {
       margin-bottom: 1em;
       margin-left: 15px;
+      @include mobile {
+        margin-bottom: 32px;
+        margin-left: 28px;
+        @include line-loosest;
+        @include fontSize-mediumLarge;
+      }
     }
+    @include smallDesktopMax {
+      padding-top: 5px;
+    }
+    @include mobile {
+      padding: 0px;
+    }
+  }
+  @include smallDesktopMax {
+    padding-left: $campaign-paddingleft-md;
+    padding-right: $campaign-paddingleft-md;
+    .colright, .colleft {
+      float: none;
+      width: 100%;
+      border: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  @include mobile {
+    padding-top: 40px;
+    padding-bottom: 0;
+    @include mobileGutter;
   }
 
 }
@@ -251,12 +294,17 @@
       @include line-loose;
   		@include fontSize-biggerBase;
   	}
+    @include mobile {
+      padding-top: 27px;
+      padding-bottom: 27px;
+      @include mobileGutter;
+    }
 }
 
 #slider {
   width: 100%;
   position: relative;
-  @include smallDesktopMin {
+  @include smallDesktopMax {
     padding-bottom: 40px;
   }
   .nav {
@@ -268,9 +316,9 @@
       left: 12px;
       width: 35px;
       height: 68px;
-      background: image-url('icon-previous.png');
+      background: image-url('icon-previous.png') left center;
       background-size: cover;
-      @include z-superHighest;
+      @include z-extraHighest;
     }
     .next {
       display: block;
@@ -279,13 +327,20 @@
       right: 12px;
       width: 35px;
       height: 68px;
-      background: image-url('icon-next.png');
+      background: image-url('icon-next.png') right center;
       background-size: cover;
-      @include z-superHighest;
+      @include z-extraHighest;
     }
-    @include smallDesktopMin {
+    @include smallDesktopMax {
       .next, .prev {
         top: 25%;
+        width: 20px;
+      }
+    }
+    @include mobile {
+      .next, .prev {
+        top: 18%;
+        width: 15px;
       }
     }
     .dot {
@@ -304,8 +359,8 @@
     position: absolute;
     bottom: 25px;
     left: 45.2%;
-    @include z-superHighest;
-    @include smallDesktopMin {
+    @include z-extraHighest;
+    @include smallDesktopMax {
       bottom: 15px;
     }
   }
@@ -335,11 +390,14 @@
         @include line-loose;
         @include fontSize-biggerBase;
       }
-      @include smallDesktopMin {
+      @include smallDesktopMax {
         position: static;
         display: block;
         width: 100%;
         max-width: none;
+      }
+      @include mobile {
+        @include mobileGutter;
       }
     }
   }
@@ -353,6 +411,9 @@
     float: left;
     width: 50%;
     padding-right: 20px;
+    @include tablet {
+      margin-bottom: 24px;
+    }
   }
   .colright {
     float: left;
@@ -362,6 +423,10 @@
   h3 {
     text-transform: uppercase;
     @include fontSize-mediumLarge;
+    @include mobile {
+      @include fontSize-biggerBase;
+      @include line-loose;
+    }
   }
   img {
     width: 100%;
@@ -375,13 +440,24 @@
     @include line-base;
     @include thickBlueLine;
     padding-bottom: 8%;
+    @include mobile {
+      padding-bottom: 10px;
+    }
   }
-  @include smallDesktopMin {
+  @include smallDesktopMax {
     .colright, .colleft {
       float: none;
       width: 100%;
       padding-left: 0;
+      padding-right: 0;
     }
+  }
+  @include mobile {
+    .colright, .colleft {
+      margin-bottom: 48px;
+    }
+    @include mobileGutter;
+    padding-top: 48px;
   }
 }
 
@@ -395,10 +471,19 @@
     h3 {
       @include fontSize-medium;
       @include line-nearBase;
+      margin-bottom: 1em;
+      @include smallDesktopMax {
+        margin-bottom: 47px;
+      }
     }
-    @include smallDesktopMin {
+    img {
+      max-width: 257px;
+      width: 100%;
+    }
+    @include smallDesktopMax {
       width: 100%;
       clear: both;
+      margin-bottom: 80px;
     }
   }
   .colright {
@@ -421,15 +506,15 @@
       }
     }
   }
-  @include smallDesktopMin {
+  @include smallDesktopMax {
     .colright, .colleft {
       float: none;
       width: 100%;
       padding-left: 0;
     }
-    .colleft {
-      margin-bottom: 80px;
-    }
+  }
+  @include mobile {
+    @include mobileGutter;
   }
 }
 
@@ -610,7 +695,7 @@ screen and (max-device-width:$screen-sm) {
 	  	  	    	  
 	}
 	
-	.impactText-wrapper.wrapper {
+	/*.impactText-wrapper.wrapper {
 		
 		h3 {
 			font-size: 2em;
@@ -625,7 +710,7 @@ screen and (max-device-width:$screen-sm) {
 			@include line-base;
 		}
 	
-	}
+	}*/
 	
 	.giftText-wrapper.wrapper {
 		padding: 8% 8% 8% 6%;
@@ -633,7 +718,7 @@ screen and (max-device-width:$screen-sm) {
 		bottom: 0;
 	}
 
-	.accountableText-colleft, .accountableText-colright {
+	/*.accountableText-colleft, .accountableText-colright {
 		float: none;
 		width: auto;
 		padding-left: 0px;
@@ -647,13 +732,13 @@ screen and (max-device-width:$screen-sm) {
 	.accountableText-colright img {
 		margin-top: 35px;
 		padding-left: 0px;
-	}
+	}*/
 	
-	.policyText-colleft, .policyText-colright {
+	/*.policyText-colleft, .policyText-colright {
 		float: none;
 		width: auto;
 		padding: 0px;
-	}
+	}*/
 
   .campaignText-main {
     @include fontSize-medium;

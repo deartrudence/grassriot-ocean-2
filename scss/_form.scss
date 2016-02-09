@@ -35,7 +35,7 @@ label{
   background-repeat: repeat-y;
   background-color: white;
   @include formContainer;
-  @include z-highest;
+  @include z-extraHighest;
 }
 
 //simplification for small monitors
@@ -155,6 +155,7 @@ label{
     border: 0;
     // padding: 0 10px;
     background: $cta-red;
+    @include z-superHighest;
   }
 
   .js-formOpen-label{

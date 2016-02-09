@@ -193,6 +193,7 @@ $line-tight: 1.12;
 $line-nearBase: 1.18;
 $line-base: 1.26;
 $line-loose: 1.33;
+$line-loosest: 1.58;
 
 //Line Heights
 @mixin lineHeight-title--number {
@@ -242,6 +243,10 @@ $line-loose: 1.33;
   line-height: $line-loose;
 }
 
+@mixin line-loosest{
+  line-height: $line-loosest;
+}
+
 //font size
 @mixin fontSize-small{
   font-size: 0.5rem;
@@ -277,7 +282,7 @@ $line-loose: 1.33;
   font-size: (30 / 16) * 1rem;
 }
 @mixin fontSize-xlarge{
-  font-size: (30 / 16) * 1rem;
+  font-size: (32 / 16) * 1rem;
 }
 @mixin fontSize-huge{
   font-size: (30 / 16) * 1rem;

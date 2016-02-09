@@ -34,6 +34,12 @@
   }
 }
 
+@mixin smallDesktopMax{
+  @media screen and (max-width: #{$screen-sm-max}){
+    @content;
+  }
+}
+
 @mixin smallDesktopPlus{
   @media screen and (min-width: #{$screen-md-min}){
     @content;
@@ -96,7 +102,7 @@
     width: 100%;
     // padding: 20px;
 
-    @include z-highest;
+    @include z-extraHighest;
     -webkit-backface-visibility: hidden; //may improve rendering of the fixed form
     translate: transform3d(0,0,0);
   }
@@ -153,7 +159,7 @@
   }
  
   @media screen and (max-width: $screen-xs-max) {
-	  	  
+	  	  padding-bottom: 100px;
   }
 
 
@@ -184,4 +190,12 @@
   @media screen and (min-width: $screen-xl) {
   	padding-right: $form-width-xl;  
   }
+}
+
+/*
+ * Mobile Padding
+ */
+@mixin mobileGutter {
+  padding-left: $campaign-paddingleft-xxs;
+  padding-right: $campaign-paddingleft-xxs;
 }
