@@ -3,15 +3,29 @@
   // color: #000;
   background-color: $white;
   // @include background(linear-gradient(to bottom, $white 90%, #f6f6f6 ));
-  &:after{
-    content:" ";
-    display: block;
-    height: 20px;
-    background: image-url("stripe.png");
+  
+  .mobile-center{
+    border-bottom: 5px solid $dark-blue;  
   }
 
-  &:last-child:after{
-    display: none;
+  // &:after{
+  //   content:" ";
+  //   display: block;
+  //   height: 20px;
+  //   background: image-url("stripe.png");
+  // }
+
+  &.facebook{
+    .sharing-title,
+    .share-content-container{
+      @include tabletPlus{
+        padding-top: 60px; 
+      }
+    }
+  }
+
+  &:last-child .mobile-center{
+    border-bottom: none;
   }
 
   @include mobileAndTablet{
@@ -26,7 +40,7 @@
     
     @include tablet{
       padding: 0 0 .5em;
-      font-size: 18px;
+      @include fontSize-largerish;
     }
 
     // @include tablet{
@@ -36,11 +50,10 @@
     @include tabletPlus{
       display: table-cell;
       background: none;
-      padding: 30px 20px;
+      padding: 34px 29px 30px;
       min-height: 200px;
       vertical-align: top;
       width: 30%;
-
     }
   }
 
@@ -54,8 +67,8 @@
   // display: inline-block;
   
   @include mobile{
-    padding-top: 35px;
-    padding-bottom: 30px;
+    padding-top: 0px;
+    padding-bottom: 52px;
   }
 
   @include tabletPlus{
@@ -65,7 +78,7 @@
     min-height: 200px;
     color: $black;
     vertical-align: top;
-    padding: 35px 30px 30px 20px;    
+    padding: 35px 29px 30px 20px;    
   }
 }
 
@@ -216,7 +229,7 @@
       border-left: 1px solid #E2E2E2;
       width: 68%;
       vertical-align: top;
-      padding: 10px;
+      padding: 13px;
       .fb-content {
         max-height: 80px;
         overflow: hidden;
@@ -236,6 +249,7 @@
         display: block;
         font-size: .9em;
         line-height: 1.5em;
+        font-weight: 400;
       }
       .facebook-description { 
         color: $sharing-text-grey;
@@ -252,8 +266,8 @@
   display: block;
   background: linear-gradient(to right, #fff,#F0F3F1);
   border: 1px solid #E4E4E4;
-  border-radius: 3px;
-  padding: 20px;
+  border-radius: 9px;
+  padding: 19px;
   position: relative;
   margin-bottom: 25px;
   color: $sharing-text-grey;
@@ -267,6 +281,20 @@
   //   border: 10px solid;
   //   border-color: #E4E4E4 #E4E4E4 transparent transparent;
   // }
+}
+
+.post-action .campaign .word-bubble.twitter-text{
+  color: $medium-light-grey;
+  @include fontSize-smaller;
+
+  img{
+    margin-top: 19px;
+  }
+}
+
+.post-action .campaign .mail-body{
+  color: $medium-light-grey;
+  @include fontSize-smaller;
 }
 
 // .gradient-box {
@@ -334,4 +362,12 @@
     //   background: url(https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1770/ml.png?v=1433428757000) no-repeat center;
     // }
   }
+}
+
+//Icon sprite
+@import "socialicon/*.png";
+@include all-socialicon-sprites;
+.socialicon{
+  width: 29px;
+  height: 29px;
 }

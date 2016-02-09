@@ -249,6 +249,9 @@ $line-loose: 1.33;
 @mixin fontSize-smallish{
   font-size: (12 / 16) * 1rem;
 }
+@mixin fontSize-smaller{
+  font-size: (12 / 16) * 1rem;
+}
 @mixin fontSize-base{
   font-size: 16px;
 }

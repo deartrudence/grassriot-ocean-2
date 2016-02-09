@@ -3501,11 +3501,6 @@ button.close {
 .main {
   height: 100%;
 }
-@media screen and (max-width: 619px) {
-  .main {
-    padding-bottom: 100px;
-  }
-}
 
 .main > .donation-form-wrapper {
   min-height: 100%;
@@ -3864,7 +3859,7 @@ html.csstransforms {
 .ctaAskText-wrapper.wrapper {
   padding: 0px;
   padding-right: 256px;
-  background: url('../img/CTA-cow_elk.jpg?1453784854') no-repeat right bottom;
+  background: url('../img/CTA-cow_elk.jpg?1455030460') no-repeat right bottom;
   background-size: 256px auto;
 }
 @media screen and (max-width: 1299px) {
@@ -4037,7 +4032,7 @@ html.csstransforms {
   left: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-previous.png?1454918169');
+  background: url('../img/icon-previous.png?1455030460');
   background-size: cover;
   z-index: 900;
 }
@@ -4048,7 +4043,7 @@ html.csstransforms {
   right: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-next.png?1454918189');
+  background: url('../img/icon-next.png?1455030460');
   background-size: cover;
   z-index: 900;
 }
@@ -4533,7 +4528,7 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #C8102E url('../img/arrow-open.png?1452170872') center center no-repeat;
+    background: #C8102E url('../img/arrow-open.png?1455030460') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
@@ -5627,14 +5622,17 @@ select.error, textarea.error {
 .share-block {
   background-color: #FFFFFF;
 }
-.share-block:after {
-  content: " ";
-  display: block;
-  height: 20px;
-  background: url('../img/stripe.png?1452176049');
+.share-block .mobile-center {
+  border-bottom: 5px solid #0181C8;
 }
-.share-block:last-child:after {
-  display: none;
+@media screen and (min-width: 620px) {
+  .share-block.facebook .sharing-title,
+  .share-block.facebook .share-content-container {
+    padding-top: 60px;
+  }
+}
+.share-block:last-child .mobile-center {
+  border-bottom: none;
 }
 @media screen and (max-width: 767px) {
   .share-block {
@@ -5644,14 +5642,14 @@ select.error, textarea.error {
 @media screen and (min-width: 620px) and (max-width: 991px) {
   .share-block h3 {
     padding: 0 0 .5em;
-    font-size: 18px;
+    font-size: 1.875rem;
   }
 }
 @media screen and (min-width: 620px) {
   .share-block h3 {
     display: table-cell;
     background: none;
-    padding: 30px 20px;
+    padding: 34px 29px 30px;
     min-height: 200px;
     vertical-align: top;
     width: 30%;
@@ -5663,8 +5661,8 @@ select.error, textarea.error {
 
 @media screen and (max-width: 619px) {
   .share-content-container {
-    padding-top: 35px;
-    padding-bottom: 30px;
+    padding-top: 0px;
+    padding-bottom: 52px;
   }
 }
 @media screen and (min-width: 620px) {
@@ -5675,7 +5673,7 @@ select.error, textarea.error {
     min-height: 200px;
     color: #000;
     vertical-align: top;
-    padding: 35px 30px 30px 20px;
+    padding: 35px 29px 30px 20px;
   }
 }
 
@@ -5826,7 +5824,7 @@ select.error, textarea.error {
   border-left: 1px solid #E2E2E2;
   width: 68%;
   vertical-align: top;
-  padding: 10px;
+  padding: 13px;
 }
 .fb-block-wrap .fb-block .fb-content-container .fb-content {
   max-height: 80px;
@@ -5847,6 +5845,7 @@ select.error, textarea.error {
   display: block;
   font-size: .9em;
   line-height: 1.5em;
+  font-weight: 400;
 }
 .fb-block-wrap .fb-block .fb-content-container .facebook-description {
   color: #5B5B5B;
@@ -5858,11 +5857,24 @@ select.error, textarea.error {
   display: block;
   background: linear-gradient(to right, #ffffff, #f0f3f1);
   border: 1px solid #E4E4E4;
-  border-radius: 3px;
-  padding: 20px;
+  border-radius: 9px;
+  padding: 19px;
   position: relative;
   margin-bottom: 25px;
   color: #5B5B5B;
+}
+
+.post-action .campaign .word-bubble.twitter-text {
+  color: #737373;
+  font-size: 0.75rem;
+}
+.post-action .campaign .word-bubble.twitter-text img {
+  margin-top: 19px;
+}
+
+.post-action .campaign .mail-body {
+  color: #737373;
+  font-size: 0.75rem;
 }
 
 .social-block .caption {
@@ -5881,6 +5893,36 @@ select.error, textarea.error {
   font-size: 0;
 }
 
+.socialicon-sprite, .socialicon-email, .socialicon-facebook, .socialicon-googleplus, .socialicon-linkedin, .socialicon-twitter {
+  background-image: url('../img/socialicon-s746a828c29.png');
+  background-repeat: no-repeat;
+}
+
+.socialicon-email {
+  background-position: 0 0;
+}
+
+.socialicon-facebook {
+  background-position: 0 -28px;
+}
+
+.socialicon-googleplus {
+  background-position: 0 -56px;
+}
+
+.socialicon-linkedin {
+  background-position: 0 -101px;
+}
+
+.socialicon-twitter {
+  background-position: 0 -146px;
+}
+
+.socialicon {
+  width: 29px;
+  height: 29px;
+}
+
 .post-action .row {
   margin: 0;
 }
@@ -5890,21 +5932,25 @@ select.error, textarea.error {
 .post-action .col-form {
   display: none;
 }
+.post-action .js-hero {
+  height: auto;
+}
 .post-action .campaign {
   padding: 0;
   margin: 0;
 }
 .post-action .campaign p {
-  font-size: 16px;
-  color: #000;
+  font-size: 1.125rem;
+  color: #FFFFFF;
   max-width: 40em;
+}
+.post-action .campaign:after {
+  display: none;
 }
 @media screen and (max-width: 619px) {
   .post-action .page-logo {
     left: 50px;
     width: 150px;
-    height: 70px;
-    background-size: 134px;
   }
 }
 @media screen and (min-width: 620px) {
@@ -5915,41 +5961,78 @@ select.error, textarea.error {
 .post-action .page-header {
   position: relative;
 }
-@media screen and (min-width: 620px) {
-  .post-action .page-header {
-    height: 204px;
-  }
-}
 .post-action .heroTitle {
   text-transform: uppercase;
   font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
 }
 @media screen and (max-width: 619px) {
   .post-action .heroTitle {
-    text-align: center;
     font-size: 1.5625rem;
     padding: 75px 0 2em;
   }
 }
 @media screen and (min-width: 620px) {
   .post-action .heroTitle {
-    left: 50%;
-    width: 50%;
-    font-size: 1.5625rem;
-    padding: 2em 0;
+    font-size: 1.875rem;
+    padding: 4em 0 1em;
+    color: #B6D86A;
   }
 }
-.post-action .js-campaign:before {
-  content: " ";
-  display: block;
-  height: 20px;
-  background: url('../img/stripe.png?1452176049');
+@media screen and (min-width: 620px) {
+  .post-action .heroTitle {
+    max-width: 50%;
+    margin-bottom: 1rem;
+  }
+}
+.post-action .hero p {
+  max-width: 50%;
+  margin-bottom: 1rem;
+}
+.post-action .heroContent-cta {
+  color: #B6D86A;
 }
 .post-action .mobile-center {
-  max-width: 700px;
+  max-width: 715px;
   margin: 0 auto;
+}
+@media screen and (max-width: 619px) {
+  .post-action .mobile-center {
+    padding: 0 20px;
+  }
+}
+.post-action .heroSummary {
+  background: #EDEDED;
+  padding: 1em 29px;
+  border-radius: 1em 1em 0 0;
+  margin-top: 5em;
+}
+.post-action .heroSummary p {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+.post-action .heroSummary:after {
+  content: " ";
+  display: block;
+  height: 13px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NmQ3NiIgc3RvcC1vcGFjaXR5PSIwLjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2NzZkNzYiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(103, 109, 118, 0.5)), color-stop(100%, rgba(103, 109, 118, 0)));
+  background: -moz-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+  background: -webkit-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+  background: linear-gradient(to top, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+}
+.post-action .campaign p.heroSummary-details {
+  color: #545a63;
+  font-size: 0.75rem;
+}
+.post-action .campaign p.heroSummary-message {
+  color: #000;
+  font-size: 0.75rem;
 }
 .post-action .sharingSection-title {
   max-width: 700px;
@@ -5989,23 +6072,24 @@ select.error, textarea.error {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1450368915') no-repeat center;
+  background: url('../img/fb-2015.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1450368915') no-repeat center;
+  background: url('../img/tw-2015.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1450368915') no-repeat center;
+  background: url('../img/gp.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1450368915') no-repeat center;
+  background: url('../img/in.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1450368915') no-repeat center;
+  background: url('../img/ml.png?1455030460') no-repeat center;
 }
 .post-action .sharing-title {
-  color: #000;
+  color: #2D903C;
+  line-height: 1.1;
 }
 .post-action .social-title {
   color: #FFFFFF;
@@ -6016,15 +6100,6 @@ select.error, textarea.error {
   .post-action .social-title {
     font-size: 1.8vw;
   }
-}
-.post-action .js-hero,
-.post-action .js-impact,
-.post-action .js-quote,
-.post-action .js-accountable,
-.post-action .js-gift,
-.post-action .js-response,
-.post-action .js-policy {
-  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */
