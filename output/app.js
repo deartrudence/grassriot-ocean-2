@@ -1126,6 +1126,8 @@ webpackJsonp([0],[
 	        //add the post-action class
 	        $("body").addClass("post-action");
 	        $transaction_details = $(".js-transactionDetails");
+	        console.log(hero, heroImage);
+	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
 
 
 	        var transactionData = {

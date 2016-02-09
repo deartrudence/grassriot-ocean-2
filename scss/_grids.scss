@@ -62,9 +62,9 @@
 .main {
   height: 100%;
 
-  @include mobile{
-    padding-bottom: 100px;
-  }
+  // @include mobile{
+  //   padding-bottom: 100px;
+  // }
 }
 
 .main>.donation-form-wrapper {

@@ -12,14 +12,23 @@
     display: none;
   }
 
+  .js-hero{
+    height: auto;
+  }
+
   .campaign{
     padding: 0;
     margin: 0;
+
     p{
-      @include fontSize-base;
-      color: $black;
+      @include fontSize-biggerBase;
+      color: $white;
       max-width: 40em;
       // margin: 0 auto;
+    }
+
+    &:after{
+      display:none;
     }
   }
 
@@ -28,8 +37,6 @@
     @include mobile{
       left: 50px;
       width: 150px;
-      height: 70px;
-      background-size: 134px;
     }
 
     @include tabletPlus{
@@ -39,52 +46,93 @@
 
   .page-header{
     position: relative;
-
-    // padding: $page-padding-xs;
-
-    // @media screen and (min-width: $screen-sm){
-    //   text-align: center;
-    //   padding: $page-left-padding-md;
-    // }
-    // @media screen and (min-width: $screen-lg){
-    //   padding: 10% 25%;
-    //   min-height: 500px; //fallback
-    //   min-height: 80vh;
-    // }
-
-    @include tabletPlus{
-      height: 204px;
-    }
   }
 
   .heroTitle{
     text-transform: uppercase;
-    @include font-bodyN7;
+    @include font-bodyN4;
 
     @include mobile{
-      text-align: center;
+      // text-align: center;
       @include fontSize-large;
       padding: 75px 0 2em;
     }
     @include tabletPlus{
-      left: 50%;
-      width: 50%;
-      @include fontSize-large;
-      padding: 2em 0;
+      // left: 50%;
+      // width: 50%;
+      @include fontSize-largerish;
+      // padding: 2em 0;
+      padding: 4em 0 1em;
+      color: $vlight-green;
     }
   }
 
-  .js-campaign:before{
-    content:" ";
-    display: block;
-    height: 20px;
-    background: image-url("stripe.png");
+  @mixin heroContent{
+    max-width: 50%;
+    margin-bottom: 1rem;
   }
+  .heroTitle{
+    @include tabletPlus{
+      @include heroContent;      
+    }
+  }
+
+  .hero p{
+    @include heroContent;
+  }
+
+  .heroContent-cta{
+    color: $vlight-green;
+  }
+
+  // .js-campaign:before{
+  //   content:" ";
+  //   display: block;
+  //   height: 20px;
+  //   background: image-url("stripe.png");
+  // }
 
 
   .mobile-center{
-    max-width: 700px;
+    max-width: 715px;
     margin: 0 auto;
+
+    @include mobile{
+      padding: 0 20px;
+    }
+  }
+
+  .heroSummary{
+    background: $vlight-grey;
+    padding: 1em 29px;
+    border-radius: 1em 1em 0 0;
+    margin-top: 5em;
+
+    p{
+      max-width: 100%;
+      margin-bottom: 0;
+    }
+
+    &:after{
+      content: " ";
+      display: block;
+      height: 13px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include background(linear-gradient(to top, rgba($dark-grey, 0.5), rgba($dark-grey, 0)));
+    }
+  }
+
+  .campaign p.heroSummary-details{
+    color: $light-grey;
+    @include fontSize-smaller;
+  }
+
+  .campaign p.heroSummary-message{
+    color: $black;
+    @include fontSize-smaller;
   }
   
   .sharingSection-title{
@@ -153,7 +201,8 @@
   }
 
   .sharing-title{
-    color: $black;
+    color: $dark-green;
+    @include lineHeight-hero;
   }
 
   .social-title{
@@ -167,13 +216,13 @@
   }
 
   //hide irrelevant sections
-  .js-hero,
-  .js-impact,
-  .js-quote,
-  .js-accountable,
-  .js-gift,
-  .js-response,
-  .js-policy{
-    display: none;
-  }
+  // .js-hero,
+  // .js-impact,
+  // .js-quote,
+  // .js-accountable,
+  // .js-gift,
+  // .js-response,
+  // .js-policy{
+  //   display: none;
+  // }
 }
