@@ -74,6 +74,16 @@ $pagetitle-marginleft-xs: 50px;
 $pagetitle-marginleft-base: 70px;
 
 $stripe: image-url('stripe.png');
+
+//Campaign
+$campaignText-wrapper: 13% 15%;
+$campaign-paddingtop-md: 30px;
+$campaign-height-md: 250px;
+$campaign-shadow-width: 30px;
+$campaign-paddingleft-md: 29px; 
+$campaign-paddingleft-xxs: 11px; 
+$page-max-width: 1400px;
+
 //Hero
 $hero-background: $white;
 $hero-bgimage: image-url('hero_baby.jpg');
@@ -85,21 +95,13 @@ $hero-bgimage-delivery: image-url('hero_delivery.jpg');
 $heroTitle-padding: 18% 5% 0% 5%;
 //$heroSubtitle-padding: 0% 12% 20% 12%;
 $heroTitle-padding-sm: $heroTitle-padding; //16% 20% 23%;
+$heroTitle-padding-xxs: 55px $campaign-paddingleft-xxs;
 $hero-captionpadding-md: 15px;
 
 // IMPACT
 //$impact-bgimage: image-url('ye-2015-section-1.jpg');
 $response-bgimage: image-url('ye-2015-section-2.jpg');
 $gift-bgimage: image-url('ye-2015-section-3.jpg');
-
-//Campaign
-$campaignText-wrapper: 13% 15%;
-$campaign-paddingtop-md: 30px;
-$campaign-height-md: 250px;
-$campaign-shadow-width: 30px;
-$campaign-paddingleft-md: 29px; 
-$campaign-paddingleft-xxs: 11px; 
-$page-max-width: 1400px;
 
 //Highlights
 $highlights-margin-xs: 0px 10px 5px 10px;
@@ -136,6 +138,7 @@ $form-width-md: 386px;
 $form-width-xl: 386px;
 $form-padding: 24px;
 $form-navbar-height: 52px;
+$form-text-padding: 10px;
 
 $steps_colour: $charcoal;
 $steps_background: $indicator-light-grey;

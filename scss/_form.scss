@@ -298,16 +298,14 @@ label{
   &.three-fifths-wrap {
     width: 59%;
   }
-
   &.last-wrap {
     margin-left: 2%;
     // text-align: right;
     clear: none;
   }
-
-  &.show-label {
-    .eaFormElementLabel {
-      display: block !important;
+  &.label-100 {
+    label {
+      width: 100%;
     }
   }
 
@@ -316,12 +314,17 @@ label{
       padding: 0;
     }
   }
+}
 
-  &.hide-label {
-    .eaFormElementLabel {
-      display: none !important;
-      height: 0;
-      margin-top: 0 !important;
-    }
+.show-label {
+  .eaFormElementLabel {
+    display: block !important;
+  }
+}
+.hide-label {
+  .eaFormElementLabel {
+    display: none !important;
+    height: 0;
+    margin-top: 0 !important;
   }
 }

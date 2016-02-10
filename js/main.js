@@ -716,6 +716,11 @@ function setupAction(){
         }
 
         enbeautifier.addClasses(getFormClasses());
+        var selectorClasses = {};
+        selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
+        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaQuestionCheckboxFormFieldContainer"};
+        enbeautifier.addClasses(selectorClasses);
+
 
         $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
                     return h.replace(/&nbsp;/g,'');
@@ -729,6 +734,7 @@ function setupAction(){
           steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
           stepLabels: ['Amount', 'Billing', 'Options', '', '', 'Payment'],
           addButtons: true,
+          backButton: 'go back',
           target: "#window",
           stepPreSwitchCallback: [
             null,
@@ -1857,7 +1863,8 @@ function getFormClasses() {
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 
     //Donation option fields
-    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label", targetElement: "div.eaFullWidthContent"};
+    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label label-100", targetElement: "div.eaFullWidthContent"};
+    classes[fields.from_org.selector] = { classes: "show-label", targetElement: "div.eaFullWidthContent"};
 
     //In memorial fields
     classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};

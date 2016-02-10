@@ -10,6 +10,10 @@
     h3{
     	@include formSectionHeader;
     	display: block;
+        padding-left: $form-text-padding;
+    }
+    label, .eaFormElementLabel {
+        padding-left: $form-text-padding
     }
     h1 {
         text-align: center;
@@ -24,10 +28,103 @@
             @include font-headN4;
         }
     }
+    div.radiobutton {
+        clear: none;
+        float: left;
+        &:nth-child(even) {
+            float: right;
+        }
+        margin: 0 0 25px 0px;
+        display: block;
+        width: 46.5%;
+
+        label {
+          display: block;
+          float: none;
+          border-radius: 1px;
+          border-top: 1px solid $vlight-grey;
+          background: $background-grey;
+          color: $medium-light-grey;
+          box-shadow: 1px 1px 2px $black;
+          box-shadow: 1px 1px 2px rgba($black, 0.3);
+          margin-bottom: 0;
+          padding-right: 3.75em;
+        }
+        *:focus {
+          outline: 0;
+        }
+        input[type='radio'] {
+          outline: 0;
+        }
+
+        /* hide input */
+        input[type='radio']:empty, input[type='checkbox']:empty {
+          margin-left: -999px;
+          position: absolute;
+          display: none;
+        }
+
+        /* style label */
+        input[type='radio']:empty ~ label, input[type='checkbox']:empty ~ label {
+          position: relative;
+          padding-left: 3.25em;
+          padding-top: .2em;
+          padding-bottom: .2em;
+          min-height: 3em;
+          cursor: pointer;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        input[type='radio']:empty ~ label:before, input[type='checkbox']:empty ~ label:before {
+          position: absolute;
+          display: block;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          content: '';
+          width: 2.5em;
+          background: $indicator-dark-grey;
+          border-radius: 1px 0 0 1px;
+          padding-top: 13px;
+        }
+
+        /* toggle hover */
+        input[type='radio']:not(:checked) ~ label:hover:before, input[type='checkbox']:not(:checked) ~ label:hover:before {
+          content: '\2714';
+          text-indent: .9em;
+        }
+        input[type='radio']:not(:checked) ~ label:hover, input[type='checkbox']:not(:checked) ~ label:hover {
+          background-color: lighten($lightest-grey, 5%);
+        }
+
+        /* toggle on */
+        input[type='radio']:checked ~ label:before, input[type='checkbox']:checked ~ label:before {
+          content: '\2714';
+          text-indent: .9em;
+          color: $white;
+          background-color: $light-green;
+        }
+        input[type='radio']:checked ~ label, input[type='checkbox']:checked ~ label {
+          color: $white;
+          background-color: $dark-green;
+        }
+
+        /* radio focus */
+        input[type='radio']:focus ~ label:before, input[type='checkbox']:focus ~ label:before {
+          box-shadow: 0 0 0 3px #999;
+        }
+    }
+  }
+  #gr_options {
+        .radiobutton label {
+            padding-right: 3%;
+        }
   }
 }
 
-#gr_donation {
+
   
   // div.radiobutton {
   //   label {
@@ -43,92 +140,8 @@
   //	 color: #222;
   //   }
   // }
-  div.radiobutton {
-	clear: none;
-	float: left;
-    &:nth-child(even) {
-        float: right;
-    }
-	margin: 0 0 25px 0px;
-	display: block;
-	width: 46.5%;
-
-	label {
-	  display: block;
-	  float: none;
-	  border-radius: 1px;
-	  border-top: 1px solid $vlight-grey;
-	  background: $background-grey;
-	  color: $medium-light-grey;
-	  box-shadow: 1px 1px 2px $black;
-	  box-shadow: 1px 1px 2px rgba($black, 0.3);
-      margin-bottom: 0;
-      padding-right: 3.75em;
-	}
-	*:focus {
-	  outline: 0;
-	}
-	input[type='radio'] {
-	  outline: 0;
-	}
-
-	/* hide input */
-	input[type='radio']:empty {
-	  margin-left: -999px;
-	  position: absolute;
-	}
-
-	/* style label */
-	input[type='radio']:empty ~ label {
-	  position: relative;
-	  padding-left: 3.25em;
-      min-height: 3em;
-	  cursor: pointer;
-	  -webkit-user-select: none;
-	  -moz-user-select: none;
-	  -ms-user-select: none;
-	  user-select: none;
-	}
-	input[type='radio']:empty ~ label:before {
-	  position: absolute;
-	  display: block;
-	  top: 0;
-	  bottom: 0;
-	  left: 0;
-	  content: '';
-	  width: 2.5em;
-	  background: $indicator-dark-grey;
-	  border-radius: 1px 0 0 1px;
-      padding-top: 10px;
-	}
-
-	/* toggle hover */
-	input[type='radio']:hover:not(:checked) ~ label:before {
-	  content: '\2714';
-	  text-indent: .9em;
-	}
-	input[type='radio']:hover:not(:checked) ~ label {
-	  background-color: lighten($lightest-grey, 5%);
-	}
-
-	/* toggle on */
-	input[type='radio']:checked ~ label:before {
-	  content: '\2714';
-	  text-indent: .9em;
-	  color: $white;
-	  background-color: $light-green;
-	}
-	input[type='radio']:checked ~ label {
-	  color: $white;
-	  background-color: $dark-green;
-	}
-
-	/* radio focus */
-	input[type='radio']:focus ~ label:before {
-	  box-shadow: 0 0 0 3px #999;
-	}
-  }
-
+  
+#gr_donation {
   .eaFormElementLabel{
 	@include formSectionHeader;
 	display: block;// !important;
@@ -139,32 +152,31 @@
   }
 }
 
-.security-text {
-	background: none;
-	border: none;
-	color: #000;
-	font-size: 11px;
-	position: absolute;
-	top: 30px;
-	right: 17px;
-	font-style: normal;
-	z-index: 10;
-	border-radius: 4px;
-    transition: all 0.5s ease;
+.security {
+    display: inline-block;
+    vertical-align: middle;
+    .security-text {
+        background: none;
+        border: none;
+        color: #000;
+        font-size: 11px;
+        font-style: normal;
+        z-index: 10;
+        border-radius: 4px;
+        transition: all 0.5s ease;
 
-  &:hover {
-		cursor: pointer;
-		opacity: 0.7;
-		color: green;
-  }
+        &:hover {
+            cursor: pointer;
+            opacity: 0.7;
+            color: green;
+        }
+    }
+
+    .security-image {
+        display: inline-block;
+        margin-right: 4px;
+      }
 }
-
-.security-image {
-	width: 10px;
-	position: relative;
-	top: -1px;
-	margin-right: 2px;
-  }
 
 .popover {
   width: 400px;
@@ -343,12 +355,15 @@
   height: $header-height-md;
   @include thickBlueLine;
   position: relative;
+  padding-top: 35px;
   ul {
 	list-style: none;
 	margin: 0;
-	padding: 35px 0 0px 17px;
+	padding: 0px 10px 0px 17px;
 	text-align: left;
 	font-size: 0;
+    display: inline-block;
+    vertical-align: middle;
 	li {
 	  vertical-align: middle;
 	  color: #444;
@@ -482,19 +497,20 @@
 }
 
 .go-back {
-	color: $input-placeholder-grey;
+	color: $black;
 	display: inline-block;
-	opacity: 0.6;
+	opacity: 0.7;
 	background: none;
 	border: none;
 	margin-top: 30px;
-	font-size: 18px;
-	text-transform: uppercase;
-	font-weight: bold;
+	@include fontSize-base;
+    @include font-bodyN4;
+	text-transform: lowercase;
+    text-decoration: underline;
 
-  &:focus {
-	  outline: none;
-  }
+    &:focus {
+      outline: none;
+    }
 
 	&:hover {
 	  opacity: 1;
@@ -564,7 +580,7 @@
 	.steps-list {
 	  ul {
 			margin: 0;
-			padding: 0px;
+			padding: 0px 10px 0 0;
 		}
 	}
 	
@@ -581,9 +597,6 @@
     border: none;
     color: lightgrey;
     font-size: 11px;
-    position: absolute;
-    top: 6px;
-    left: 213px;
     font-style: normal;
     z-index: 10;
     border-radius: 4px;
@@ -728,6 +741,7 @@
 	  color: $white;
 	  border-radius: 3px;
 	  margin-bottom: 10px;
+      padding-left: 0px;
 	  text-align: center;
 	  line-height: 40px;
 	  vertical-align: middle;
@@ -826,6 +840,10 @@ select, textarea {
   div.eaQuestionCheckboxFormFieldContainer {
 	height: auto;
 	padding: 1em 0;
+    &.radiobutton {
+        padding-top: 0;
+        margin-bottom: inherit;
+    }
   }
   .eaQuestionCheckboxFormFieldContainer label {
 	display: inline;
@@ -856,6 +874,7 @@ select, textarea {
 	position: relative;
 	vertical-align:top;
 	margin: 0 0 0 5px;
+    padding-left: 0;
   }
   .eaQuestionCheckboxFormFieldContainer label {
 	display: inline-block;

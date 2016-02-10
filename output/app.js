@@ -720,6 +720,11 @@ webpackJsonp([0],[
 	        }
 
 	        enbeautifier.addClasses(getFormClasses());
+	        var selectorClasses = {};
+	        selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
+	        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaQuestionCheckboxFormFieldContainer"};
+	        enbeautifier.addClasses(selectorClasses);
+
 
 	        $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
 	                    return h.replace(/&nbsp;/g,'');
@@ -733,6 +738,7 @@ webpackJsonp([0],[
 	          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
 	          stepLabels: ['Amount', 'Billing', 'Options', '', '', 'Payment'],
 	          addButtons: true,
+	          backButton: 'go back',
 	          target: "#window",
 	          stepPreSwitchCallback: [
 	            null,
@@ -1861,7 +1867,8 @@ webpackJsonp([0],[
 	    classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 
 	    //Donation option fields
-	    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label label-100", targetElement: "div.eaFullWidthContent"};
+	    classes[fields.from_org.selector] = { classes: "show-label", targetElement: "div.eaFullWidthContent"};
 
 	    //In memorial fields
 	    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
@@ -2678,6 +2685,7 @@ webpackJsonp([0],[
 	    'stepLabels': [],
 	    'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
 	    'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
+	    'backButton': '<span class="glyphicon glyphicon-chevron-left"></span> Back',
 	    'currentStep': false,
 	    'startStep': 0,
 	    'useCSSAnimation': true,
@@ -3036,9 +3044,9 @@ webpackJsonp([0],[
 	      ) {
 	      $(step).append(
 	        '<p class="pull-left back-button"> \
-	          <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
+	          <button type="button" class="go-back btn-prev">'+self.options.backButton+'</button> \
 	        </p>'
-	      );
+	      ); //@since __ - allow passing of back button text
 	    }
 	  });
 	}

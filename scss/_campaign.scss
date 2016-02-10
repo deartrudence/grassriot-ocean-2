@@ -92,8 +92,23 @@
   h2 {
     margin-bottom: 0;
   }
-  padding-left: 94px;
-  padding-right: 94px;
+  padding-left: 10.2%;
+  padding-right: 10.2%;
+  @include mobile {
+    p {
+      margin-bottom: 0;
+      @include line-nearBase;
+      @include fontSize-mediumLarge;
+    }
+    h3, h2 {
+      display: inline;
+      @include fontSize-largerish;
+      @include line-hero;
+    }
+    padding-top: 32px;
+    padding-bottom: 25px;
+    @include mobileGutter;
+  }
 }
 
 .campaignText-sub{
@@ -164,9 +179,15 @@
   @include smallDesktopMax {
     text-align: left;
   }
+  @include mobile {
+    @include mobileGutter;
+
+    padding-top: 40px;
+  }
   a {
     text-transform: uppercase;
     @include fontSize-biggerBase;
+    @include line-loose;
     @include font-bodyN4;
     color: $orange;
     text-decoration: underline;
@@ -181,6 +202,9 @@
     }
     &:visited {
       color: $orange;
+    }
+    @include mobile {
+      @include font-bodyN7;
     }
   }
 }
@@ -286,6 +310,11 @@
       text-transform: uppercase;
       @include line-loose;
   		@include fontSize-mediumSmall;
+      @include mobile {
+        @include fontSize-mediumLarge;
+        @include line-nearBase;
+        font-weight: 400;
+      }
   	}
   	
   	p {
@@ -293,6 +322,10 @@
       margin-bottom: 0;
       @include line-loose;
   		@include fontSize-biggerBase;
+      @include mobile {
+        @include fontSize-mediumLarge;
+        @include line-nearBase;
+      }
   	}
     @include mobile {
       padding-top: 27px;
@@ -316,9 +349,13 @@
       left: 12px;
       width: 35px;
       height: 68px;
-      background: image-url('icon-previous.png') left center;
+      background: image-url('icon-previous.png') no-repeat left center;
       background-size: cover;
       @include z-extraHighest;
+      @include mobile {
+        background: image-url('icon-previous-mobile.png') no-repeat right center;
+        background-color: $white;
+      }
     }
     .next {
       display: block;
@@ -327,20 +364,23 @@
       right: 12px;
       width: 35px;
       height: 68px;
-      background: image-url('icon-next.png') right center;
+      background: image-url('icon-next.png') no-repeat right center;
       background-size: cover;
       @include z-extraHighest;
+      @include mobile {
+        background: image-url('icon-next-mobile.png') no-repeat right center;
+        background-color: $white;
+      }
     }
     @include smallDesktopMax {
       .next, .prev {
         top: 25%;
-        width: 20px;
+        width: 25px;
       }
     }
     @include mobile {
       .next, .prev {
         top: 18%;
-        width: 15px;
       }
     }
     .dot {
@@ -362,6 +402,9 @@
     @include z-extraHighest;
     @include smallDesktopMax {
       bottom: 15px;
+    }
+    @include mobile {
+      display: none;
     }
   }
   .slide {

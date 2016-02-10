@@ -18,6 +18,7 @@ var defaults = {
     'stepLabels': [],
     'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
     'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
+    'backButton': '<span class="glyphicon glyphicon-chevron-left"></span> Back',
     'currentStep': false,
     'startStep': 0,
     'useCSSAnimation': true,
@@ -376,9 +377,9 @@ GRSteps.prototype.buttonify = function(self){
       ) {
       $(step).append(
         '<p class="pull-left back-button"> \
-          <button type="button" class="go-back btn-prev"><span class="glyphicon glyphicon-chevron-left"></span> Back</button> \
+          <button type="button" class="go-back btn-prev">'+self.options.backButton+'</button> \
         </p>'
-      );
+      ); //@since __ - allow passing of back button text
     }
   });
 }

@@ -74,6 +74,7 @@
     @include mobile {
       display: block;
       background-color: $dark-green;
+      padding: $heroTitle-padding-xxs;
     }
   }
 }
