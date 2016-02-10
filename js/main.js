@@ -1367,17 +1367,14 @@ function sendDonation(e) {
 
     //if not a recurring donation, launch the upsell.
     if(
+        //validated
         !grGiving.isRecurring()
-        && grupsell.exists
-    ){
-        var upsellLaunched = grupsell.launch();
-
-      if(!upsellLaunched){
-        $form.submit();
-      }
+        && grupsell.exists 
+        && grupsell.launch()
+    ) {
+        return false;
     }
-    //if it is a recurring donation already, submit
-    else{
+    else/* if(validated)*/ {
         $form.submit();
     }
     return false;

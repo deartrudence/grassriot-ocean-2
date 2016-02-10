@@ -5840,6 +5840,280 @@ select.error, textarea.error {
     font-size: 14px;
   }
 }
+#upsell-modal {
+  background: rgba(37, 37, 37, 0.65);
+}
+
+.upsell-container {
+  display: table-row;
+}
+
+.upsell-modal--body {
+  background: #F0F1F1;
+  border-radius: 0;
+  border: 0;
+  padding: 0;
+  top: 100px;
+}
+
+.upsell-modal--body {
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 0 !important;
+}
+
+.upsell-panel {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 45px 35px 25px;
+}
+
+.upsell-cta {
+  color: #e18e25;
+  text-transform: uppercase;
+  width: 40%;
+  font-size: 3.6em;
+  line-height: .8;
+}
+
+.upsell-title {
+  font-size: 1em;
+  color: #FFFFFF;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.1;
+}
+
+.upsell-title--highlight {
+  color: #A5CF46;
+}
+
+.upsell-copy {
+  width: 60%;
+  position: relative;
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.upsell-copy--cta {
+  color: #A5CF46;
+  margin-top: 1.2em;
+}
+
+.upsell-subtitle {
+  font-size: 2em;
+}
+
+.upsell-recommendation {
+  color: #FFFFFF;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: .6em;
+  box-shadow: 1px 1px 2px #000;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.upsell-recommendation--amount {
+  background: #FFFFFF;
+  color: #000;
+  padding: 0 10px;
+  border-radius: 3px;
+  margin-right: 10px;
+  float: left;
+  min-height: 2.4em;
+  line-height: 2.4em;
+}
+.upsell-recommendation--amount em {
+  font-style: normal;
+}
+
+.upsell-recommendation--label {
+  background: #e18e25;
+  padding: 10px 4em;
+  line-height: 1.1;
+}
+@media screen and (max-width: 619px) {
+  .upsell-recommendation--label {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+button.upsell-modal--close {
+  position: absolute;
+  height: 38px;
+  width: 38px;
+  top: 0;
+  right: 0;
+  margin-top: -19px;
+  margin-right: -19px;
+  opacity: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #545a63;
+  color: #000;
+  font-size: 30px;
+  text-shadow: none;
+}
+button.upsell-modal--close:hover {
+  opacity: 0.8;
+}
+button.upsell-modal--close:active {
+  opacity: 0.7;
+}
+
+.upsell-confirm {
+  display: block;
+  background: #c31e24;
+  margin-top: -2px;
+  border-radius: 0;
+  border: 1px solid #FFFFFF;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  background-color: #C8102E;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.375rem;
+  text-align: center;
+  padding: 1em;
+  color: #FFFFFF;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.upsell-confirm:hover {
+  opacity: 0.9;
+}
+.upsell-confirm:hover {
+  opacity: 0.8;
+  color: #FFFFFF;
+}
+.upsell-confirm:active {
+  opacity: 0.7;
+}
+
+.upsell-deny {
+  margin: 1.5em 0 1em;
+}
+.upsell-deny a {
+  color: #252525;
+  text-decoration: underline;
+}
+
+@media screen and (min-width: 768px) {
+  .upsell-modal--body {
+    width: 720px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .upsell-modal--body {
+    width: 800px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .upsell-recommendation {
+    max-width: 350px;
+    margin: 1.5em auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .upsell-container {
+    display: block;
+  }
+
+  .upsell-cta,
+  .upsell-copy {
+    display: block;
+    width: 100%;
+  }
+
+  .upsell-cta {
+    font-size: 3em;
+    padding-top: 25px;
+    padding-top: 25px;
+  }
+
+  .upsell-copy {
+    padding-top: 25px;
+  }
+  .upsell-copy:after {
+    display: none;
+  }
+
+  .upsell-title {
+    margin-top: 0;
+  }
+
+  .upsell-subtitle {
+    margin-top: 0;
+  }
+
+  .upsell-modal--body {
+    max-height: 100%;
+    overflow-y: auto;
+  }
+
+  button.upsell-modal--close {
+    margin: 0;
+    text-indent: 0;
+    background: none;
+    color: #FFFFFF;
+    text-shadow: 0 -2px 0 #000;
+    opacity: 0.4;
+  }
+  button.upsell-modal--close:hover {
+    opacity: 0.6;
+  }
+  button.upsell-modal--close:active {
+    opacity: 0.8;
+  }
+
+  .upsell-cta {
+    font-size: 1.8em;
+    padding: 25px 20px;
+  }
+
+  .upsell-copy {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0;
+    font-size: 0.5rem;
+  }
+
+  .upsell-subtitle {
+    display: none;
+  }
+
+  .upsell-recommendation {
+    margin-top: 5px;
+    font-size: 1em;
+  }
+
+  .upsell-recommendation--label {
+    padding-bottom: 5px;
+    min-height: 3.2em;
+  }
+
+  .upsell-confirm {
+    padding: 0.5em;
+  }
+
+  .upsell-deny {
+    margin: 2em 0 0;
+  }
+}
+html.flexbox #upsell-modal.in {
+  display: flex !important;
+  height: 100%;
+}
+html.flexbox .upsell-modal--body {
+  margin: auto;
+}
+
 .page-header {
   width: 100%;
   height: 108px;
