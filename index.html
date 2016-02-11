@@ -278,6 +278,13 @@
 </ul>
 </div>
 <div class="js-formOpen-labelText hide">Donate</div>
+<div class="js-backButton-labelHTML hide">Go Back</div>
+<div class="js-nextButton-labelHTML hide">Next<span class="glyphicon glyphicon-chevron-right"></span></div>
+<div class="js-donateButton-labelText hide">Donate</div>
+<div class="js-step1-labelText hide">Amount</div>
+<div class="js-step2-labelText hide">Billing</div>
+<div class="js-step3-labelText hide">Options</div>
+<div class="js-step4-labelText hide">Payment</div>
 </div>
 <div id='[GR]_Form_HeaderDiv' class='eaFullWidthContent'><h1 class="js-formHeader"><strong>Yes,</strong> I want to help conserve Canada's natural spaces.</h1>
 </div>
@@ -1575,7 +1582,7 @@
 <span class='eaFormElementLabel'><label for='Payment_Type'><a name='Payment_Type' style='text-decoration:none; color: inherit;'>Payment Type</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Payment_TypeField' class='eaFormField'>
    <select id='Payment_Type' class='eaFormSelect' name='Payment Type' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
-      <option value='Visa'>Visa</option>
+      <option value='Visa' selected>Visa</option>
       <option value='MasterCard'>MasterCard</option>
       <option value='Paypal'>PayPal</option>
       <option value='AMEX'>American Express</option>
@@ -1586,14 +1593,14 @@
 <div id='Card_Holder_NameDiv' class='eaFullWidthContent'><div id='Card_Holder_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Card_Holder_Name'><a name='Card_Holder_Name' style='text-decoration:none; color: inherit;'>Credit Card Holder Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Card_Holder_NameField' class='eaFormField'>
-   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='j' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Credit_Card_NumberDiv' class='eaFullWidthContent'><div id='Credit_Card_NumberError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Credit Card Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Credit_Card_NumberField' class='eaFormField'>
-   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='4111111111111111' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
@@ -1621,7 +1628,7 @@
    <option value='/18'>2018</option>
    <option value='/19'>2019</option>
    <option value='/20'>2020</option>
-   <option value='/21'>2021</option>
+   <option value='/21' selected>2021</option>
    <option value='/22'>2022</option>
 </select>
 
@@ -1631,7 +1638,7 @@
 <div id='CVV_CodeDiv' class='eaFullWidthContent'><div id='CVV_CodeError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CVV_CodeField' class='eaFormField'>
-   <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='111' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
@@ -1664,15 +1671,15 @@
     <div class="modal-dialog modal-body modal-content upsell-modal--body">
       <div class="upsell-container">
         <div class="upsell-panel upsell-cta">
-          <h3 class="upsell-title js-percentContent">Make your gift go further</h3>
+          <h3 class="upsell-title js-licContent">Make your gift go further</h3>
           <h3 class="upsell-title js-monthlyContent">Be a hero for a child in crisis.</h3>
         </div>
-        <div class="upsell-panel upsell-copy"><h3 class="upsell-subtitle js-monthlyContent">Give Monthly</h3><h3 class="upsell-subtitle js-percentContent">Give More Monthly</h3><p class="js-percentContent"><strong>By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</strong></p><p class="js-monthlyContent"><strong>A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</strong></p><p class="js-percentContent">By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</p><p class="js-monthlyContent">A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</p>
+        <div class="upsell-panel upsell-copy"><h3 class="upsell-subtitle js-monthlyContent">Give Monthly</h3><h3 class="upsell-subtitle js-licContent">Give More Monthly</h3><p class="js-licContent"><strong>By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</strong></p><p class="js-monthlyContent"><strong>A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</strong></p><p class="js-licContent">By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</p><p class="js-monthlyContent">A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</p>
           <div class="upsell-recommendation">
-            <a href="#" class="js-monthly-donation upsell-confirm js-percentContent"><strong>Donate <span class="symbol">$</span><span class="js-monthly-donation-amount"></span> now.</strong></a>
+            <a href="#" class="js-monthly-donation upsell-confirm js-licContent"><strong>Donate <span class="symbol">$</span><span class="js-monthly-donation-amount"></span> now.</strong></a>
             <a href="#" class="js-monthly-donation upsell-confirm js-monthlyContent"><strong>Donate <span class="symbol">$</span><span class="js-monthly-donation-amount"></span> monthly.</strong></a>
           </div>
-          <p class="upsell-deny">&gt;<a href="#" class="js-single-donation js-percentContent"><strong>No thanks,</strong> complete my donation as-is.</a><a href="#" class="js-single-donation js-monthlyContent"><strong>No thanks,</strong> complete my one-time gift.</a></p>
+          <p class="upsell-deny">&gt;<a href="#" class="js-single-donation js-licContent"><strong>No thanks,</strong> complete my donation as-is.</a><a href="#" class="js-single-donation js-monthlyContent"><strong>No thanks,</strong> complete my one-time gift.</a></p>
         </div>
       </div>
       <button class="js-single-donation close upsell-modal--close">&times;</button>

@@ -71,6 +71,10 @@ var fields = gr.buildFieldNameObject({
     cc_num:     'Credit Card Number',
     cc_cvv:     'CVV Code',
     cc_exp:     'Credit Card Expiration',
+    bank_name:  'DD Bank Name',
+    bank_acct:  'DD Bank Account Number',
+    bank_branch:'DD Branch Number',
+    bank_inst:  'DD Institution Number',
     amt:        'Donation Amount',
     currency:   'Currency',
     recur_pay:  'Recurring Payment',
@@ -212,6 +216,10 @@ var ENBeautifierFillersContainers = {
     '#'+fields.cc_num.nameNoSpace+'Div', 
     '#'+fields.cc_cvv.nameNoSpace+'Div', 
     '#'+fields.cc_exp.nameNoSpace+'Div',
+    '#'+fields.bank_name.nameNoSpace+'Div', 
+    '#'+fields.bank_acct.nameNoSpace+'Div', 
+    '#'+fields.bank_branch.nameNoSpace+'Div', 
+    '#'+fields.bank_inst.nameNoSpace+'Div',
     '.js-donationSummary',
     '.js-instructionsAndComment',
     '#'+fields.comments.nameNoSpace+'Div'
@@ -375,8 +383,7 @@ function makeAffix(){
     $affixForm
         .removeClass("no-affix affix affix-top affix-bottom")
         .removeData("bs.affix");
-
-    if (windowSize !== "phone" && windowSize !== "mobile" && windowSize !== "tablet") {
+    if (windowSize !== "phone" && windowSize !== "mobile") {
         if($(window).height() >  getFormHeight($affixForm)) {
             setContainerOffset($affixForm, $container);
             $affixForm
@@ -392,6 +399,7 @@ function makeAffix(){
         }
         else {
             $("#grdonation").css('height','auto');
+            $affixForm.css('right','');
             $affixForm.addClass("no-affix");
         }
     }
@@ -692,6 +700,12 @@ function setupPage(){
 function setupAction(){
 
 	try{
+        //payment processor-related fields
+        var paymentTypeOptions = $(fields.pay_type.selector).children('option');
+        var ccFields = ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field'];
+        var ddFields = ['#'+fields.bank_name.nameNoSpace+'Div', '#'+fields.bank_acct.nameNoSpace+'Div', '#'+fields.bank_branch.nameNoSpace+'Div', '#'+fields.bank_inst.nameNoSpace+'Div'];
+
+
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
         $(cta).css('background-image', 'url('+$(ctaImage).attr('src')+')');
         if ( $('#slider #slides').length ) {
@@ -720,7 +734,6 @@ function setupAction(){
         selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
         selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaQuestionCheckboxFormFieldContainer"};
         enbeautifier.addClasses(selectorClasses);
-
 
         $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
                     return h.replace(/&nbsp;/g,'');
@@ -765,6 +778,31 @@ function setupAction(){
                 handleErrors(formErrors);
                 return false;
               } else {
+                if(grGiving.isRecurring()) {
+                    $form
+                      .find(fields.pay_type.selector)
+                      .children('option')
+                      .replaceWith(
+                        paymentTypeOptions
+                          .filter(
+                            function() {
+                              return this.value.toLowerCase() != 'paypal';
+                            }
+                          )
+                      );
+                } else {
+                  $form
+                    .find(fields.pay_type.selector)
+                    .children('option')
+                    .replaceWith(
+                      paymentTypeOptions
+                        .filter(
+                          function() {
+                            return this.value.toLowerCase() != 'dd';
+                          }
+                        )
+                    );
+                }
                 grAnalytics.analyticsReport( 'payment/page2-complete' );
                 return true;
               }
@@ -875,19 +913,21 @@ function setupAction(){
                 {label: 'Give monthly', 'value': 'Y'}
             ],
             processorFields: { 
-                'PayPal': {
-                    hide: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+                'Paypal': {
+                    hide: ccFields.concat(ddFields);
                 },
                 'Visa': {
-                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+                    show: ccFields,
+                    hide: ddFields
                 },
                 'MasterCard': {
-                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+                    show: ccFields,
+                    hide: ddFields
                 },
-                'AMEX': {
-                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+                'DirectDebit': {
+                    show: ddFields,
+                    hide: ccFields
                 }
-
             }
 
         });
@@ -918,12 +958,15 @@ function setupAction(){
 
         grupsell = new GRUpsell({
             form: $form,
-            recurringField: $('[name="Recurring Payment"]:not(a)'),
-            donationAmountField: $('[name="Donation Amount"]:not(a)'),
+            recurringFieldSelector: fields.recur_pay.selector,
+            donationAmountFieldSelector: fields.amt.selector,
             upsellContentSelector: upsellContentSelector,
             upsellMethod: 'function',
             maxGift: 500,
             calcFunction: function( amount ) {
+              if(grGiving.isRecurring()) {
+                return 85;
+              } else {
                 var amount = Math.floor(amount);
                 var ret = amount;
                 var mlt = 1.2;
@@ -933,12 +976,33 @@ function setupAction(){
                 ret = Math.min(Math.round(ret*4.33),amount);        
 
                 return ret;
+              }
             },
             declineCallback: function(){
-                grAnalytics.analyticsReport( 'payment/upsell-declined' );
+                //grAnalytics.analyticsReport( 'payment/upsell-declined' );
             },
             upsellCallback: function(){
-                grAnalytics.analyticsReport( 'payment/upsell-accepted' );
+                //grAnalytics.analyticsReport( 'payment/upsell-accepted' );
+            },
+            preventLaunch: function() {
+              return (
+                grGiving.isRecurring() && (this.initialAmount < 50 || this.initialAmount >= 85)
+              );
+            },
+            onUpsellFormUpdates: function() {
+                if(grGiving.isRecurring()) { 
+                    this.options.donationAmountField.filter(':checked').val(this.upsellAmount.toFixed(2));
+                } else {
+                    this.options.recurringField.filter(':checked').val('Y');
+                    this.options.donationAmountField.val(this.upsellAmount);
+                }
+            },
+            preLaunchCallback: function() {
+                if(grGiving.isRecurring() && this.initialAmount >= 50 && this.initialAmount < 85) {
+                    $('.js-monthlyContent').hide();
+                } else if(!grGiving.isRecurring()) {
+                    $('.js-licContent').hide();
+                }
             }
             /*range: [ //min is inclusive, max is not inclusive
                 {min: 0, max: 20, amount: 6},
@@ -1362,6 +1426,7 @@ function sendDonation(e) {
     // }
     // else
     //     form.submit();
+    gr.disableButtons($form);
     e.preventDefault();
 
     //detach ourselves
@@ -1370,8 +1435,7 @@ function sendDonation(e) {
     //if not a recurring donation, launch the upsell.
     if(
         //validated
-        !grGiving.isRecurring()
-        && grupsell.exists 
+        grupsell.exists 
         && grupsell.launch()
     ) {
         return false;

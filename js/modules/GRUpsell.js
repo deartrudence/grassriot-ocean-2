@@ -3,13 +3,13 @@
  *
  * Managed functionality relating to upsell modals
  *
- * @version  0.3
+ * @version  0.3  !!MODIFIED20160211-MAJOR!!
  * @requires jQuery, Bootstrap
  */
 var requiredOptions = [
     'form',
-    'donationAmountField',
-    'recurringField',
+    'donationAmountFieldSelector',
+    'recurringFieldSelector',
     'upsellContentSelector'
 ];
 
@@ -27,6 +27,19 @@ var defaults = {
     'onUpsellFormUpdates': function() { //@since v0.3
         this.options.recurringField.val('Y');
         this.options.donationAmountField.val(this.upsellAmount);
+    },
+    'preventLaunch': function() { //@since v__
+        return (
+            (
+            this.options.recurringField.val()=='Y'
+            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
+            )
+        || (
+            this.options.recurringField.filter(':checked').length
+            && this.options.recurringField.filter(':checked').val() == 'Y'
+            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
+            )
+        );
     }
 }
 
@@ -69,9 +82,25 @@ GRUpsell.prototype.init = function() {
     else{
         this.exists = false;
     }
+
+    //@since __ saving jQuery objects of fields
+    this.options.donationAmountField = $(this.options.donationAmountFieldSelector);
+    this.options.recurringField = $(this.options.recurringFieldSelector);
+}
+
+/**
+ * Re-queries DOM for recurring and donation amount fields based on set selectors
+ * @return null
+ */
+GRUpsell.prototype.refreshFields = function() {
+    this.options.donationAmountField = $(this.options.donationAmountFieldSelector);
+    this.options.recurringField = $(this.options.recurringFieldSelector);
 }
 
 GRUpsell.prototype.launch = function() {
+    //@since __ re-query DOM during launch to confirm fields are still present and accurate
+    this.refreshFields();
+    
     var field = this.options.donationAmountField;
 
     //get the active field
@@ -80,7 +109,7 @@ GRUpsell.prototype.launch = function() {
         if(checkedField.length === 1){
             field = checkedField;
         }
-    }
+    } console.log(field);
 
     this.initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
     //@since 0.3 handle 'other' field [in EN way - we already handle GRGivingSupport way]
@@ -91,18 +120,12 @@ GRUpsell.prototype.launch = function() {
     }
 
     if( //@since 0.3 flexible detection of recurring field type and value
+        //@since __ removed hard-coded launch prevention based on recurring value and moved into a callback preventLaunch
         this.options.enabled === false 
         || this.initialAmount >= this.options.maxGift 
-        || (
-            this.options.recurringField.val()=='Y'
-            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
-            )
-        || (
-            this.options.recurringField.filter(':checked').length
-            && this.options.recurringField.filter(':checked').val() == 'Y'
-            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
-            )
-        || !this.exists ) {
+        || !this.exists
+        || (typeof this.options.preventLaunch == "function" && this.options.preventLaunch.call(this))
+         ) {
         
         return false;
     }

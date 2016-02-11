@@ -379,8 +379,7 @@ webpackJsonp([0],[
 	    $affixForm
 	        .removeClass("no-affix affix affix-top affix-bottom")
 	        .removeData("bs.affix");
-
-	    if (windowSize !== "phone" && windowSize !== "mobile" && windowSize !== "tablet") {
+	    if (windowSize !== "phone" && windowSize !== "mobile") {
 	        if($(window).height() >  getFormHeight($affixForm)) {
 	            setContainerOffset($affixForm, $container);
 	            $affixForm
@@ -396,6 +395,7 @@ webpackJsonp([0],[
 	        }
 	        else {
 	            $("#grdonation").css('height','auto');
+	            $affixForm.css('right','');
 	            $affixForm.addClass("no-affix");
 	        }
 	    }
@@ -922,12 +922,15 @@ webpackJsonp([0],[
 
 	        grupsell = new GRUpsell({
 	            form: $form,
-	            recurringField: $('[name="Recurring Payment"]:not(a)'),
-	            donationAmountField: $('[name="Donation Amount"]:not(a)'),
+	            recurringFieldSelector: fields.recur_pay.selector,
+	            donationAmountFieldSelector: fields.amt.selector,
 	            upsellContentSelector: upsellContentSelector,
 	            upsellMethod: 'function',
 	            maxGift: 500,
 	            calcFunction: function( amount ) {
+	              if(grGiving.isRecurring()) {
+	                return 85;
+	              } else {
 	                var amount = Math.floor(amount);
 	                var ret = amount;
 	                var mlt = 1.2;
@@ -937,12 +940,33 @@ webpackJsonp([0],[
 	                ret = Math.min(Math.round(ret*4.33),amount);        
 
 	                return ret;
+	              }
 	            },
 	            declineCallback: function(){
-	                grAnalytics.analyticsReport( 'payment/upsell-declined' );
+	                //grAnalytics.analyticsReport( 'payment/upsell-declined' );
 	            },
 	            upsellCallback: function(){
-	                grAnalytics.analyticsReport( 'payment/upsell-accepted' );
+	                //grAnalytics.analyticsReport( 'payment/upsell-accepted' );
+	            },
+	            preventLaunch: function() {
+	              return (
+	                grGiving.isRecurring() && (this.initialAmount < 50 || this.initialAmount >= 85)
+	              );
+	            },
+	            onUpsellFormUpdates: function() {
+	                if(grGiving.isRecurring()) { 
+	                    this.options.donationAmountField.filter(':checked').val(this.upsellAmount.toFixed(2));
+	                } else {
+	                    this.options.recurringField.filter(':checked').val('Y');
+	                    this.options.donationAmountField.val(this.upsellAmount);
+	                }
+	            },
+	            preLaunchCallback: function() {
+	                if(grGiving.isRecurring() && this.initialAmount >= 50 && this.initialAmount < 85) {
+	                    $('.js-monthlyContent').hide();
+	                } else if(!grGiving.isRecurring()) {
+	                    $('.js-licContent').hide();
+	                }
 	            }
 	            /*range: [ //min is inclusive, max is not inclusive
 	                {min: 0, max: 20, amount: 6},
@@ -1366,6 +1390,7 @@ webpackJsonp([0],[
 	    // }
 	    // else
 	    //     form.submit();
+	    gr.disableButtons($form);
 	    e.preventDefault();
 
 	    //detach ourselves
@@ -1374,8 +1399,7 @@ webpackJsonp([0],[
 	    //if not a recurring donation, launch the upsell.
 	    if(
 	        //validated
-	        !grGiving.isRecurring()
-	        && grupsell.exists 
+	        grupsell.exists 
 	        && grupsell.launch()
 	    ) {
 	        return false;
@@ -2477,13 +2501,13 @@ webpackJsonp([0],[
 	 *
 	 * Managed functionality relating to upsell modals
 	 *
-	 * @version  0.3
+	 * @version  0.3  !!MODIFIED20160211-MAJOR!!
 	 * @requires jQuery, Bootstrap
 	 */
 	var requiredOptions = [
 	    'form',
-	    'donationAmountField',
-	    'recurringField',
+	    'donationAmountFieldSelector',
+	    'recurringFieldSelector',
 	    'upsellContentSelector'
 	];
 
@@ -2501,6 +2525,19 @@ webpackJsonp([0],[
 	    'onUpsellFormUpdates': function() { //@since v0.3
 	        this.options.recurringField.val('Y');
 	        this.options.donationAmountField.val(this.upsellAmount);
+	    },
+	    'preventLaunch': function() { //@since v__
+	        return (
+	            (
+	            this.options.recurringField.val()=='Y'
+	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
+	            )
+	        || (
+	            this.options.recurringField.filter(':checked').length
+	            && this.options.recurringField.filter(':checked').val() == 'Y'
+	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
+	            )
+	        );
 	    }
 	}
 
@@ -2543,9 +2580,25 @@ webpackJsonp([0],[
 	    else{
 	        this.exists = false;
 	    }
+
+	    //@since __ saving jQuery objects of fields
+	    this.options.donationAmountField = $(this.options.donationAmountFieldSelector);
+	    this.options.recurringField = $(this.options.recurringFieldSelector);
+	}
+
+	/**
+	 * Re-queries DOM for recurring and donation amount fields based on set selectors
+	 * @return null
+	 */
+	GRUpsell.prototype.refreshFields = function() {
+	    this.options.donationAmountField = $(this.options.donationAmountFieldSelector);
+	    this.options.recurringField = $(this.options.recurringFieldSelector);
 	}
 
 	GRUpsell.prototype.launch = function() {
+	    //@since __ re-query DOM during launch to confirm fields are still present and accurate
+	    this.refreshFields();
+	    
 	    var field = this.options.donationAmountField;
 
 	    //get the active field
@@ -2554,7 +2607,7 @@ webpackJsonp([0],[
 	        if(checkedField.length === 1){
 	            field = checkedField;
 	        }
-	    }
+	    } console.log(field);
 
 	    this.initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
 	    //@since 0.3 handle 'other' field [in EN way - we already handle GRGivingSupport way]
@@ -2565,18 +2618,12 @@ webpackJsonp([0],[
 	    }
 
 	    if( //@since 0.3 flexible detection of recurring field type and value
+	        //@since __ removed hard-coded launch prevention based on recurring value and moved into a callback preventLaunch
 	        this.options.enabled === false 
 	        || this.initialAmount >= this.options.maxGift 
-	        || (
-	            this.options.recurringField.val()=='Y'
-	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) === -1
-	            )
-	        || (
-	            this.options.recurringField.filter(':checked').length
-	            && this.options.recurringField.filter(':checked').val() == 'Y'
-	            && ['checkbox','radio'].indexOf(this.options.recurringField.attr('type').toLowerCase()) !== -1
-	            )
-	        || !this.exists ) {
+	        || !this.exists
+	        || (typeof this.options.preventLaunch == "function" && this.options.preventLaunch.call(this))
+	         ) {
 	        
 	        return false;
 	    }
