@@ -10,7 +10,7 @@
     h3{
     	@include formSectionHeader;
     	display: block;
-        padding-left: $form-text-padding;
+      padding-left: $form-text-padding;
     }
     label, .eaFormElementLabel {
         padding-left: $form-text-padding
@@ -22,7 +22,7 @@
         @include font-headN4;
         @include line-tight;
         margin-top: 25px;
-        margin-bottom: 19px;
+        margin-bottom: 19px - 5px; //<label> has the 5px taken from here
         strong {
             color: $light-green;
             @include font-headN4;
@@ -67,7 +67,7 @@
         /* style label */
         input[type='radio']:empty ~ label, input[type='checkbox']:empty ~ label {
           position: relative;
-          padding-left: 3.25em;
+          padding-left: 3.5em;
           padding-top: .2em;
           padding-bottom: .2em;
           min-height: 3em;
@@ -116,6 +116,11 @@
           box-shadow: 0 0 0 3px #999;
         }
     }
+
+    select{
+      margin-bottom: 25px;
+    }
+
   }
   #gr_options {
         .radiobutton label {
@@ -124,7 +129,44 @@
   }
 }
 
+.donationSummary{
+  @include fontSize-base;
+  padding-left: $form-text-padding;
+  padding-right: $form-text-padding;
+  margin-bottom: 20px;
+}
 
+.js-form-explainer{
+  @include fontSize-base;
+  @include lineHeight-hero;
+  color: $medium-light-grey;
+  clear: both;
+  padding-top: 15px;
+  max-width: 30em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#grdonation .page .js-donationOptions{
+  margin-bottom: 0;
+}
+
+#Company_GiftDiv span{
+  margin-bottom: 20px;
+  @include fontSize-base;
+  @include lineHeight-hero;
+}
+
+.js-instructionsAndComment{
+  padding-left: $form-text-padding;
+  padding-right: $form-text-padding;
+  color: $medium-light-grey;
+}
+
+.js-additional-comments{
+  margin-left: $form-text-padding;
+  margin-right: $form-text-padding;
+}
   
   // div.radiobutton {
   //   label {
@@ -275,6 +317,46 @@
 	top: 50%;
 	margin-top: -11px;
   }
+}
+
+#grdonation #gr_options .eaFormRadio,
+#grdonation #gr_inmem .eaFormRadio,
+#grdonation #gr_company .eaFormRadio{
+  margin-left: 20px;
+  padding-left: 20px;
+  display: block;
+
+  input{
+    margin-left: -20px;
+  }
+
+  label{
+    @include fontSize-base;
+    color: $medium-light-grey;
+  }
+}
+
+#grdonation .page #Recognize_GiftDiv{
+  .eaFormElementLabel{
+    display: block;
+    clear: both;
+    padding-left: 0;
+    @include formSectionHeader;
+  }
+
+  .eaFormElementLabel .label-note{
+    @include fontSize-base;
+    color: $medium-light-grey;
+  }
+
+
+}
+
+#grdonation #gr_inmem .eaFormRadio,
+#grdonation #gr_company .eaFormRadio{
+  margin-left: 0;
+  float: left;
+  width: 32%;
 }
 
 .no-padding {
@@ -707,8 +789,9 @@
 	}
   }
   .levels {
-	margin-top: 10px;	
-	clear: left;
+  	margin-top: 0;	
+  	clear: left;
+
 	&:before, &:after {
 	  content: " ";
 	  display: table;

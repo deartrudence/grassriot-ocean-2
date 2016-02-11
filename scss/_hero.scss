@@ -88,6 +88,7 @@
   color: $white;
   padding: $hero-captionpadding-md;
   padding-left: $campaign-paddingleft-md;
+  line-height: 1;
   @include mobile {
     @include mobileGutter;
   }

@@ -23,7 +23,7 @@
     p{
       @include fontSize-biggerBase;
       color: $white;
-      max-width: 40em;
+      max-width: 30em;
       // margin: 0 auto;
     }
 
@@ -55,34 +55,41 @@
     @include mobile{
       // text-align: center;
       @include fontSize-large;
-      padding: 75px 0 2em;
+      padding: 55px 0 20px;
+      color: $vlight-green;
     }
     @include tabletPlus{
       // left: 50%;
       // width: 50%;
       @include fontSize-largerish;
       // padding: 2em 0;
-      padding: 4em 0 1em;
+      padding: 4em 0 0.5em;
       color: $vlight-green;
     }
   }
 
   @mixin heroContent{
-    max-width: 50%;
-    margin-bottom: 1rem;
+    @include tabletPlus{
+      max-width: 50%;
+      margin-bottom: 1rem; 
+    }
   }
   .heroTitle{
-    @include tabletPlus{
-      @include heroContent;      
-    }
+    @include heroContent;
   }
 
   .hero p{
     @include heroContent;
+
+    @include mobile{
+      @include fontSize-large;
+      margin-bottom: .4em;
+    }
   }
 
   .heroContent-cta{
     color: $vlight-green;
+    font-style: normal;
   }
 
   // .js-campaign:before{
@@ -98,41 +105,64 @@
     margin: 0 auto;
 
     @include mobile{
-      padding: 0 20px;
+      padding: 0 11px;
+    }
+  }
+
+  .hero .mobile-center{
+    @include mobile{
+      background: $dark-green;
     }
   }
 
   .heroSummary{
     background: $vlight-grey;
-    padding: 1em 29px;
-    border-radius: 1em 1em 0 0;
-    margin-top: 5em;
+
+    @include mobile{
+      padding: 28px 11px;
+      margin: 28px -11px 0;
+    }
+    @include tabletPlus{
+      padding: 1em 29px;
+      border-radius: 1em 1em 0 0;
+      margin-top: 5em; 
+    }
 
     p{
       max-width: 100%;
       margin-bottom: 0;
     }
-
+    
     &:after{
-      content: " ";
-      display: block;
-      height: 13px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      @include background(linear-gradient(to top, rgba($dark-grey, 0.5), rgba($dark-grey, 0)));
+      @include tabletPlus{
+        content: " ";
+        display: block;
+        height: 13px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        @include background(linear-gradient(to top, rgba($dark-grey, 0.5), rgba($dark-grey, 0)));        
+      }
     }
   }
 
   .campaign p.heroSummary-details{
     color: $light-grey;
-    @include fontSize-smaller;
+    @include fontSize-large;
+
+    @include tabletPlus{
+      @include fontSize-smaller;
+    }
   }
 
   .campaign p.heroSummary-message{
     color: $black;
-    @include fontSize-smaller;
+    @include fontSize-large;
+
+    @include tabletPlus{
+      @include fontSize-smaller;
+    }
   }
   
   .sharingSection-title{
@@ -203,6 +233,11 @@
   .sharing-title{
     color: $dark-green;
     @include lineHeight-hero;
+    @include fontSize-titleLarge;
+
+    @include mobile{
+      margin-bottom: 30px;
+    }
   }
 
   .social-title{

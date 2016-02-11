@@ -832,6 +832,9 @@ webpackJsonp([0],[
 	          ]
 	        });
 
+	        //add the message
+	        $("#gr_donation").append($(".js-form-explainer"));
+
 	        // Setup Campaign Page
 	        grGiving = new GRGivingSupport({
 	            form: $form,
@@ -1130,10 +1133,9 @@ webpackJsonp([0],[
 	function setupTY(){
 	    try{
 	        //add the post-action class
+	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
 	        $("body").addClass("post-action");
 	        $transaction_details = $(".js-transactionDetails");
-	        console.log(hero, heroImage);
-	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
 
 
 	        var transactionData = {

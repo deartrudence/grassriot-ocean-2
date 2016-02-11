@@ -173,6 +173,14 @@
 
 }
 
+.ctaAskPhotoCaption{
+  @include smallDesktopPlus{
+    left: 100%;
+    margin-left: -256px;
+    padding: 7px 13px;
+  }
+}
+
 .otherWaysToGive-wrapper.wrapper {
   text-align: center;
   padding-bottom: 0;
@@ -216,41 +224,50 @@
   padding-right: 68px;
   padding-top: 10%;
   padding-bottom: 10%;
+
   .colleft {
     @include font-headN4;
     float: left;
     width: 40%;
     padding-right: 31px;
-    padding-top: 30px;
-    padding-bottom: 30px;
     border-right: 6px solid $light-green;
+
     @include smallDesktopMax {
       padding-bottom: 5px;
     }
+
     @include mobile {
       @include fontSize-xlarge;
       @include line-tight;
       padding-bottom: 32px;
       padding-top: 0px;
     }
+
   }
+
   .colright {
     float: left;
     width: 60%;
     list-style: disc outside;
-    padding-top: 30px;
-    padding-bottom: 30px;
     padding-left: 31px;
     margin-left: -6px;
     border-left: 6px solid $light-green;
+    @include fontSize-base;
+
     li {
       margin-bottom: 1em;
       margin-left: 15px;
+
       @include mobile {
         margin-bottom: 32px;
         margin-left: 28px;
         @include line-loosest;
         @include fontSize-mediumLarge;
+      }
+
+
+      &:last-of-type{
+        margin-bottom: 0;
       }
     }
     @include smallDesktopMax {
@@ -326,6 +343,10 @@
         @include fontSize-mediumLarge;
         @include line-nearBase;
       }
+
+      @include tabletPlus{
+        max-width: 35em;
+      }
   	}
     @include mobile {
       padding-top: 27px;
@@ -375,7 +396,8 @@
     @include smallDesktopMax {
       .next, .prev {
         top: 25%;
-        width: 25px;
+        width: 35px;
+        background-position: center center;
       }
     }
     @include mobile {

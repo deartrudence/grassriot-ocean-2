@@ -3510,7 +3510,7 @@ button.close {
 }
 
 .donation-form-wrapper {
-  max-width: 1400px;
+  max-width: 1175px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -3687,6 +3687,7 @@ body:after {
   color: #FFFFFF;
   padding: 15px;
   padding-left: 29px;
+  line-height: 1;
 }
 @media screen and (max-width: 619px) {
   .photoCaption {
@@ -3928,7 +3929,7 @@ html.csstransforms {
 .ctaAskText-wrapper.wrapper {
   padding: 0px;
   padding-right: 256px;
-  background: url('../img/CTA-cow_elk.jpg?1453784854') no-repeat right bottom;
+  background: url('../img/CTA-cow_elk.jpg?1455030460') no-repeat right bottom;
   background-size: 256px auto;
 }
 @media screen and (max-width: 991px) {
@@ -3987,6 +3988,14 @@ html.csstransforms {
   .ctaAskText-wrapper.wrapper img {
     display: block;
     width: 100%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ctaAskPhotoCaption {
+    left: 100%;
+    margin-left: -256px;
+    padding: 7px 13px;
   }
 }
 
@@ -4049,8 +4058,6 @@ html.csstransforms {
   float: left;
   width: 40%;
   padding-right: 31px;
-  padding-top: 30px;
-  padding-bottom: 30px;
   border-right: 6px solid #A5CF46;
 }
 @media screen and (max-width: 991px) {
@@ -4070,11 +4077,10 @@ html.csstransforms {
   float: left;
   width: 60%;
   list-style: disc outside;
-  padding-top: 30px;
-  padding-bottom: 30px;
   padding-left: 31px;
   margin-left: -6px;
   border-left: 6px solid #A5CF46;
+  font-size: 16px;
 }
 .impactText-wrapper.wrapper .colright li {
   margin-bottom: 1em;
@@ -4087,6 +4093,9 @@ html.csstransforms {
     line-height: 1.58;
     font-size: 1.5rem;
   }
+}
+.impactText-wrapper.wrapper .colright li:last-of-type {
+  margin-bottom: 0;
 }
 @media screen and (max-width: 991px) {
   .impactText-wrapper.wrapper .colright {
@@ -4171,6 +4180,11 @@ html.csstransforms {
     line-height: 1.18;
   }
 }
+@media screen and (min-width: 620px) {
+  .responseText-wrapper.wrapper p {
+    max-width: 35em;
+  }
+}
 @media screen and (max-width: 619px) {
   .responseText-wrapper.wrapper {
     padding-top: 27px;
@@ -4199,13 +4213,13 @@ html.csstransforms {
   left: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-previous.png?1454918169') no-repeat left center;
+  background: url('../img/icon-previous.png?1455030460') no-repeat left center;
   background-size: cover;
   z-index: 150;
 }
 @media screen and (max-width: 619px) {
   #slider .nav .prev {
-    background: url('../img/icon-previous-mobile.png?1455104116') no-repeat right center;
+    background: url('../img/icon-previous-mobile.png?1455122991') no-repeat right center;
     background-color: #FFFFFF;
   }
 }
@@ -4216,20 +4230,21 @@ html.csstransforms {
   right: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-next.png?1454918189') no-repeat right center;
+  background: url('../img/icon-next.png?1455030460') no-repeat right center;
   background-size: cover;
   z-index: 150;
 }
 @media screen and (max-width: 619px) {
   #slider .nav .next {
-    background: url('../img/icon-next-mobile.png?1455104143') no-repeat right center;
+    background: url('../img/icon-next-mobile.png?1455122991') no-repeat right center;
     background-color: #FFFFFF;
   }
 }
 @media screen and (max-width: 991px) {
   #slider .nav .next, #slider .nav .prev {
     top: 25%;
-    width: 25px;
+    width: 35px;
+    background-position: center center;
   }
 }
 @media screen and (max-width: 619px) {
@@ -4770,7 +4785,7 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #C8102E url('../img/arrow-open.png?1452170872') center center no-repeat;
+    background: #C8102E url('../img/arrow-open.png?1455030460') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
@@ -4909,6 +4924,12 @@ label {
   margin-top: 0 !important;
 }
 
+#Spam_TrapDiv {
+  height: 0;
+  overflow: hidden;
+  text-indent: -99999;
+}
+
 #grdonation .page h3 {
   margin: 1.5em 0 1em;
   font-size: 1.125rem;
@@ -4931,7 +4952,7 @@ label {
   font-style: normal;
   line-height: 1.12;
   margin-top: 25px;
-  margin-bottom: 19px;
+  margin-bottom: 14px;
 }
 #grdonation .page h1 strong {
   color: #A5CF46;
@@ -4979,7 +5000,7 @@ label {
 }
 #grdonation .page div.radiobutton input[type='radio']:empty ~ label, #grdonation .page div.radiobutton input[type='checkbox']:empty ~ label {
   position: relative;
-  padding-left: 3.25em;
+  padding-left: 3.5em;
   padding-top: .2em;
   padding-bottom: .2em;
   min-height: 3em;
@@ -5021,8 +5042,50 @@ label {
 #grdonation .page div.radiobutton input[type='radio']:focus ~ label:before, #grdonation .page div.radiobutton input[type='checkbox']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
 }
+#grdonation .page select {
+  margin-bottom: 25px;
+}
 #grdonation #gr_options .radiobutton label {
   padding-right: 3%;
+}
+
+.donationSummary {
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
+}
+
+.js-form-explainer {
+  font-size: 16px;
+  line-height: 1.1;
+  color: #737373;
+  clear: both;
+  padding-top: 15px;
+  max-width: 30em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#grdonation .page .js-donationOptions {
+  margin-bottom: 0;
+}
+
+#Company_GiftDiv span {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.js-instructionsAndComment {
+  padding-left: 10px;
+  padding-right: 10px;
+  color: #737373;
+}
+
+.js-additional-comments {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #gr_donation .eaFormElementLabel {
@@ -5145,6 +5208,48 @@ label {
   margin-top: -11px;
 }
 
+#grdonation #gr_options .eaFormRadio,
+#grdonation #gr_inmem .eaFormRadio,
+#grdonation #gr_company .eaFormRadio {
+  margin-left: 20px;
+  padding-left: 20px;
+  display: block;
+}
+#grdonation #gr_options .eaFormRadio input,
+#grdonation #gr_inmem .eaFormRadio input,
+#grdonation #gr_company .eaFormRadio input {
+  margin-left: -20px;
+}
+#grdonation #gr_options .eaFormRadio label,
+#grdonation #gr_inmem .eaFormRadio label,
+#grdonation #gr_company .eaFormRadio label {
+  font-size: 16px;
+  color: #737373;
+}
+
+#grdonation .page #Recognize_GiftDiv .eaFormElementLabel {
+  display: block;
+  clear: both;
+  padding-left: 0;
+  margin: 1.5em 0 1em;
+  font-size: 1.125rem;
+  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #A5CF46;
+}
+#grdonation .page #Recognize_GiftDiv .eaFormElementLabel .label-note {
+  font-size: 16px;
+  color: #737373;
+}
+
+#grdonation #gr_inmem .eaFormRadio,
+#grdonation #gr_company .eaFormRadio {
+  margin-left: 0;
+  float: left;
+  width: 32%;
+}
+
 .no-padding {
   padding: 0;
 }
@@ -5250,7 +5355,7 @@ label {
   font-style: normal;
 }
 .steps-list ul li.is-complete {
-  color: #A5CF46;
+  color: #000;
 }
 .steps-list ul li.active:after {
   content: "";
@@ -5551,7 +5656,7 @@ label {
   position: relative;
 }
 #grdonation .levels {
-  margin-top: 10px;
+  margin-top: 0;
   clear: left;
 }
 #grdonation .levels:before, #grdonation .levels:after {
@@ -6172,7 +6277,12 @@ html.flexbox .upsell-modal--body {
 .share-block:last-child .mobile-center {
   border-bottom: none;
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 619px) {
+  .share-block {
+    padding: 30px 0;
+  }
+}
+@media screen and (min-width: 620px) and (max-width: 991px) {
   .share-block {
     padding: 20px;
   }
@@ -6190,7 +6300,7 @@ html.flexbox .upsell-modal--body {
     padding: 34px 29px 30px;
     min-height: 200px;
     vertical-align: top;
-    width: 30%;
+    width: 35%;
   }
 }
 .share-block img {
@@ -6404,7 +6514,7 @@ html.flexbox .upsell-modal--body {
 
 .post-action .campaign .word-bubble.twitter-text {
   color: #737373;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .post-action .campaign .word-bubble.twitter-text img {
   margin-top: 19px;
@@ -6412,7 +6522,7 @@ html.flexbox .upsell-modal--body {
 
 .post-action .campaign .mail-body {
   color: #737373;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .social-block .caption {
@@ -6480,7 +6590,7 @@ html.flexbox .upsell-modal--body {
 .post-action .campaign p {
   font-size: 1.125rem;
   color: #FFFFFF;
-  max-width: 40em;
+  max-width: 30em;
 }
 .post-action .campaign:after {
   display: none;
@@ -6508,13 +6618,14 @@ html.flexbox .upsell-modal--body {
 @media screen and (max-width: 619px) {
   .post-action .heroTitle {
     font-size: 1.5625rem;
-    padding: 75px 0 2em;
+    padding: 55px 0 20px;
+    color: #B6D86A;
   }
 }
 @media screen and (min-width: 620px) {
   .post-action .heroTitle {
     font-size: 1.875rem;
-    padding: 4em 0 1em;
+    padding: 4em 0 0.5em;
     color: #B6D86A;
   }
 }
@@ -6524,12 +6635,21 @@ html.flexbox .upsell-modal--body {
     margin-bottom: 1rem;
   }
 }
-.post-action .hero p {
-  max-width: 50%;
-  margin-bottom: 1rem;
+@media screen and (min-width: 620px) {
+  .post-action .hero p {
+    max-width: 50%;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 619px) {
+  .post-action .hero p {
+    font-size: 1.5625rem;
+    margin-bottom: .4em;
+  }
 }
 .post-action .heroContent-cta {
   color: #B6D86A;
+  font-style: normal;
 }
 .post-action .mobile-center {
   max-width: 715px;
@@ -6537,40 +6657,67 @@ html.flexbox .upsell-modal--body {
 }
 @media screen and (max-width: 619px) {
   .post-action .mobile-center {
-    padding: 0 20px;
+    padding: 0 11px;
+  }
+}
+@media screen and (max-width: 619px) {
+  .post-action .hero .mobile-center {
+    background: #2D903C;
   }
 }
 .post-action .heroSummary {
   background: #EDEDED;
-  padding: 1em 29px;
-  border-radius: 1em 1em 0 0;
-  margin-top: 5em;
+}
+@media screen and (max-width: 619px) {
+  .post-action .heroSummary {
+    padding: 28px 11px;
+    margin: 28px -11px 0;
+  }
+}
+@media screen and (min-width: 620px) {
+  .post-action .heroSummary {
+    padding: 1em 29px;
+    border-radius: 1em 1em 0 0;
+    margin-top: 5em;
+  }
 }
 .post-action .heroSummary p {
   max-width: 100%;
   margin-bottom: 0;
 }
-.post-action .heroSummary:after {
-  content: " ";
-  display: block;
-  height: 13px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NmQ3NiIgc3RvcC1vcGFjaXR5PSIwLjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2NzZkNzYiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(103, 109, 118, 0.5)), color-stop(100%, rgba(103, 109, 118, 0)));
-  background: -moz-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
-  background: -webkit-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
-  background: linear-gradient(to top, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+@media screen and (min-width: 620px) {
+  .post-action .heroSummary:after {
+    content: " ";
+    display: block;
+    height: 13px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzY3NmQ3NiIgc3RvcC1vcGFjaXR5PSIwLjUiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2NzZkNzYiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+    background: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, rgba(103, 109, 118, 0.5)), color-stop(100%, rgba(103, 109, 118, 0)));
+    background: -moz-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+    background: -webkit-linear-gradient(bottom, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+    background: linear-gradient(to top, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
+  }
 }
 .post-action .campaign p.heroSummary-details {
   color: #545a63;
-  font-size: 0.75rem;
+  font-size: 1.5625rem;
+}
+@media screen and (min-width: 620px) {
+  .post-action .campaign p.heroSummary-details {
+    font-size: 0.875rem;
+  }
 }
 .post-action .campaign p.heroSummary-message {
   color: #000;
-  font-size: 0.75rem;
+  font-size: 1.5625rem;
+}
+@media screen and (min-width: 620px) {
+  .post-action .campaign p.heroSummary-message {
+    font-size: 0.875rem;
+  }
 }
 .post-action .sharingSection-title {
   max-width: 700px;
@@ -6610,24 +6757,30 @@ html.flexbox .upsell-modal--body {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1450368915') no-repeat center;
+  background: url('../img/fb-2015.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1450368915') no-repeat center;
+  background: url('../img/tw-2015.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1450368915') no-repeat center;
+  background: url('../img/gp.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1450368915') no-repeat center;
+  background: url('../img/in.png?1455030460') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1450368915') no-repeat center;
+  background: url('../img/ml.png?1455030460') no-repeat center;
 }
 .post-action .sharing-title {
   color: #2D903C;
   line-height: 1.1;
+  font-size: 1.875rem;
+}
+@media screen and (max-width: 619px) {
+  .post-action .sharing-title {
+    margin-bottom: 30px;
+  }
 }
 .post-action .social-title {
   color: #FFFFFF;

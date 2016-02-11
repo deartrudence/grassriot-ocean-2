@@ -82,7 +82,7 @@ $campaign-height-md: 250px;
 $campaign-shadow-width: 30px;
 $campaign-paddingleft-md: 29px; 
 $campaign-paddingleft-xxs: 11px; 
-$page-max-width: 1400px;
+$page-max-width: 1175px;
 
 //Hero
 $hero-background: $white;
@@ -149,7 +149,7 @@ $stepsActive_advancedBackground: linear-gradient($medium-green 40%, $dark-green 
 $stepsActive_border: none;
 $stepsActive_colour: $white;
 $stepsActive_arrowBackground: $dark-green;
-$stepsComplete_colour: $light-green;
+$stepsComplete_colour: $black;
 
 $amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-green,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
