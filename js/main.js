@@ -914,7 +914,7 @@ function setupAction(){
             ],
             processorFields: { 
                 'Paypal': {
-                    hide: ccFields.concat(ddFields);
+                    hide: ccFields.concat(ddFields)
                 },
                 'Visa': {
                     show: ccFields,

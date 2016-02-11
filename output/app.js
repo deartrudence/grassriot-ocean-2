@@ -75,6 +75,10 @@ webpackJsonp([0],[
 	    cc_num:     'Credit Card Number',
 	    cc_cvv:     'CVV Code',
 	    cc_exp:     'Credit Card Expiration',
+	    bank_name:  'DD Bank Name',
+	    bank_acct:  'DD Bank Account Number',
+	    bank_branch:'DD Branch Number',
+	    bank_inst:  'DD Institution Number',
 	    amt:        'Donation Amount',
 	    currency:   'Currency',
 	    recur_pay:  'Recurring Payment',
@@ -216,6 +220,10 @@ webpackJsonp([0],[
 	    '#'+fields.cc_num.nameNoSpace+'Div', 
 	    '#'+fields.cc_cvv.nameNoSpace+'Div', 
 	    '#'+fields.cc_exp.nameNoSpace+'Div',
+	    '#'+fields.bank_name.nameNoSpace+'Div', 
+	    '#'+fields.bank_acct.nameNoSpace+'Div', 
+	    '#'+fields.bank_branch.nameNoSpace+'Div', 
+	    '#'+fields.bank_inst.nameNoSpace+'Div',
 	    '.js-donationSummary',
 	    '.js-instructionsAndComment',
 	    '#'+fields.comments.nameNoSpace+'Div'
@@ -696,6 +704,12 @@ webpackJsonp([0],[
 	function setupAction(){
 
 		try{
+	        //payment processor-related fields
+	        var paymentTypeOptions = $(fields.pay_type.selector).children('option');
+	        var ccFields = ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field'];
+	        var ddFields = ['#'+fields.bank_name.nameNoSpace+'Div', '#'+fields.bank_acct.nameNoSpace+'Div', '#'+fields.bank_branch.nameNoSpace+'Div', '#'+fields.bank_inst.nameNoSpace+'Div'];
+
+
 	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
 	        $(cta).css('background-image', 'url('+$(ctaImage).attr('src')+')');
 	        if ( $('#slider #slides').length ) {
@@ -724,7 +738,6 @@ webpackJsonp([0],[
 	        selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
 	        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaQuestionCheckboxFormFieldContainer"};
 	        enbeautifier.addClasses(selectorClasses);
-
 
 	        $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
 	                    return h.replace(/&nbsp;/g,'');
@@ -769,6 +782,31 @@ webpackJsonp([0],[
 	                handleErrors(formErrors);
 	                return false;
 	              } else {
+	                if(grGiving.isRecurring()) {
+	                    $form
+	                      .find(fields.pay_type.selector)
+	                      .children('option')
+	                      .replaceWith(
+	                        paymentTypeOptions
+	                          .filter(
+	                            function() {
+	                              return this.value.toLowerCase() != 'paypal';
+	                            }
+	                          )
+	                      );
+	                } else {
+	                  $form
+	                    .find(fields.pay_type.selector)
+	                    .children('option')
+	                    .replaceWith(
+	                      paymentTypeOptions
+	                        .filter(
+	                          function() {
+	                            return this.value.toLowerCase() != 'dd';
+	                          }
+	                        )
+	                    );
+	                }
 	                grAnalytics.analyticsReport( 'payment/page2-complete' );
 	                return true;
 	              }
@@ -879,19 +917,21 @@ webpackJsonp([0],[
 	                {label: 'Give monthly', 'value': 'Y'}
 	            ],
 	            processorFields: { 
-	                'PayPal': {
-	                    hide: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+	                'Paypal': {
+	                    hide: ccFields.concat(ddFields)
 	                },
 	                'Visa': {
-	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+	                    show: ccFields,
+	                    hide: ddFields
 	                },
 	                'MasterCard': {
-	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+	                    show: ccFields,
+	                    hide: ddFields
 	                },
-	                'AMEX': {
-	                    show: ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field']
+	                'DirectDebit': {
+	                    show: ddFields,
+	                    hide: ccFields
 	                }
-
 	            }
 
 	        });
