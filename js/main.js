@@ -1715,6 +1715,14 @@ function init_validation(){
         validation_rules[fields.pay_type.name] = "required";
 
         //credit card fields
+        validation_rules[fields.cardholder.name] = {
+            required: function(element) {
+              return (
+                $(fields.pay_type.selector).val().toLowerCase() != 'paypal' 
+                && $(fields.pay_type.selector).val().toLowerCase() != 'bank direct deposit'
+              ) 
+            }
+        };
         validation_rules[fields.cc_num.name] = {
             required: function(element) {
               return (
