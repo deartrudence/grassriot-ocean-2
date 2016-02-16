@@ -236,6 +236,8 @@ label{
     position: fixed;
     top: 0;
     bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .form-navbar {

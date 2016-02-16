@@ -3862,11 +3862,11 @@ html.csstransforms {
   position: absolute;
   content: ' ';
   top: 0;
-  right: 356px;
+  right: 362px;
   -webkit-box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
   box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
   height: 100%;
-  width: 30px;
+  width: 24px;
   z-index: 900;
 }
 @media screen and (max-width: 767px) {
@@ -3929,7 +3929,7 @@ html.csstransforms {
 .ctaAskText-wrapper.wrapper {
   padding: 0px;
   padding-right: 256px;
-  background: url('../img/CTA-cow_elk.jpg?1455030460') no-repeat right bottom;
+  background: url('../img/CTA-cow_elk.jpg?1455259688') no-repeat right bottom;
   background-size: 256px auto;
 }
 @media screen and (max-width: 991px) {
@@ -4213,13 +4213,13 @@ html.csstransforms {
   left: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-previous.png?1455030460') no-repeat left center;
+  background: url('../img/icon-previous.png?1455259688') no-repeat left center;
   background-size: cover;
   z-index: 150;
 }
 @media screen and (max-width: 619px) {
   #slider .nav .prev {
-    background: url('../img/icon-previous-mobile.png?1455122991') no-repeat right center;
+    background: url('../img/icon-previous-mobile.png?1455259688') no-repeat right center;
     background-color: #FFFFFF;
   }
 }
@@ -4230,13 +4230,13 @@ html.csstransforms {
   right: 12px;
   width: 35px;
   height: 68px;
-  background: url('../img/icon-next.png?1455030460') no-repeat right center;
+  background: url('../img/icon-next.png?1455259688') no-repeat right center;
   background-size: cover;
   z-index: 150;
 }
 @media screen and (max-width: 619px) {
   #slider .nav .next {
-    background: url('../img/icon-next-mobile.png?1455122991') no-repeat right center;
+    background: url('../img/icon-next-mobile.png?1455259688') no-repeat right center;
     background-color: #FFFFFF;
   }
 }
@@ -4785,7 +4785,7 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #C8102E url('../img/arrow-open.png?1455030460') center center no-repeat;
+    background: #C8102E url('../img/arrow-open.png?1452170872') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
@@ -4833,6 +4833,8 @@ label {
     position: fixed;
     top: 0;
     bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .form-navbar {
@@ -4938,10 +4940,14 @@ label {
   font-style: normal;
   color: #A5CF46;
   display: block;
+  clear: both;
   padding-left: 10px;
 }
 #grdonation .page label, #grdonation .page .eaFormElementLabel {
   padding-left: 10px;
+}
+#grdonation .page .eaFormElementLabel > label {
+  padding-left: 0;
 }
 #grdonation .page h1 {
   text-align: center;
@@ -5051,6 +5057,7 @@ label {
 
 .donationSummary {
   font-size: 16px;
+  display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 20px;
@@ -5969,7 +5976,7 @@ select.error, textarea.error {
   top: 0 !important;
 }
 
-.upsell-modal--body p {
+.upsell-modal--body p, .upsell-modal--body ul {
   margin-bottom: 1em;
 }
 
@@ -5985,7 +5992,7 @@ select.error, textarea.error {
   width: 40%;
   font-size: 3.6em;
   line-height: .8;
-  background-image: url('../img/upsell.jpg?1455164785');
+  background-image: url('../img/upsell.jpg?1455259688');
   background-size: cover;
 }
 
@@ -6007,6 +6014,9 @@ select.error, textarea.error {
   position: relative;
   color: #000;
   font-size: 16px;
+}
+.upsell-copy ul {
+  list-style: disc inside;
 }
 
 .upsell-copy--cta {
@@ -6762,20 +6772,20 @@ html.flexbox .upsell-modal--body {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1455030460') no-repeat center;
+  background: url('../img/fb-2015.png?1450368915') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1455030460') no-repeat center;
+  background: url('../img/tw-2015.png?1450368915') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1455030460') no-repeat center;
+  background: url('../img/gp.png?1450368915') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1455030460') no-repeat center;
+  background: url('../img/in.png?1450368915') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1455030460') no-repeat center;
+  background: url('../img/ml.png?1450368915') no-repeat center;
 }
 .post-action .sharing-title {
   color: #2D903C;

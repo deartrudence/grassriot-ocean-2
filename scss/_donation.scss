@@ -10,10 +10,14 @@
     h3{
     	@include formSectionHeader;
     	display: block;
+        clear: both;
       padding-left: $form-text-padding;
     }
     label, .eaFormElementLabel {
         padding-left: $form-text-padding
+    }
+    .eaFormElementLabel > label {
+        padding-left: 0;
     }
     h1 {
         text-align: center;
@@ -131,6 +135,7 @@
 
 .donationSummary{
   @include fontSize-base;
+  display: inline-block;
   padding-left: $form-text-padding;
   padding-right: $form-text-padding;
   margin-bottom: 20px;

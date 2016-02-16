@@ -104,7 +104,7 @@
 <input type='hidden' name='ea.submitted.page' value='1' />
 <input type='hidden' name='sessionId' value='54672692-0fce-431e-afea-a4a035ffc6c3' />
 
-<div id='[GR]_Campaign_HeaderDiv' class='eaLeftColumnContent'>
+<div id='[GR]_Campaign_HeaderDiv' class='eaFullWidthContent'>
 <div class="js-languageToggle">
   <a class="js-languageToggleLink languageToggleLink" href="#">Français</a>
 </div>
@@ -117,14 +117,14 @@
 </div>
 </div>
 
-<div id='[GR]_Form_HeaderDiv' class='eaRightColumnContent'><div class="form-navbar steps-list">
+<div id='[GR]_Form_HeadDiv' class='eaFullWidthContent'><div class="form-navbar steps-list">
   
 <ul>
 </ul><div class="security">
-<p class="security-text" data-toggle="popover" title="Secured By Rapid SSL 256-Bit" data-content="This page is hosted on Engaging Networks using 256bit SSL technology to secure your contributions. The same technology used by banks. This means that all your details are encrypted and secure." data-placement="bottom"><span class="security-image glyphicon glyphicon-lock"></span>secure form</p>
+<p class="security-text" data-toggle="popover" title="Secured By Rapid SSL 256-Bit" data-content="This page is hosted on Engaging Networks using 256bit SSL technology to secure your contributions. The same technology used by banks. This means that all your details are encrypted and secure." data-placement="bottom"><span class="security-image glyphicon glyphicon-lock"></span>secure</p>
 </div>
 </div></div>
-<div id='[GR]_Campaign_ContentDiv' class='eaLeftColumnContent'><div class="js-campaignText section">
+<div id='[GR]_Campaign_ContentDiv' class='eaFullWidthContent'><div class="js-campaignText section">
 <div class="campaignText-wrapper wrapper">
 <h2>If we don't act now to protect our important natural landscapes, they may be lost forever.</h2>
 <h3>A donation to NCC will help ensure that the Canadian wilderness remains wild and free.</h3>
@@ -285,11 +285,16 @@
 <div class="js-step2-labelText hide">Billing</div>
 <div class="js-step3-labelText hide">Options</div>
 <div class="js-step4-labelText hide">Payment</div>
+<ul class="hide">
+  <li class="hide">Canada Campaign: <span class="js-campaignId-CA">46495</span></li>
+  <li class="hide">US/International Campaign: <span class="js-campaignId-USINT">46497</span></li>
+  <li class="hide">Bank Direct Deposit Campaign: <span class="js-campaignId-BANK">46499</span></li>
+</ul>
+</ul>
 </div>
 <div id='[GR]_Form_HeaderDiv' class='eaFullWidthContent'><h1 class="js-formHeader"><strong>Yes,</strong> I want to help conserve Canada's natural spaces.</h1>
-</div>
-<div id='Recurring_PaymentDiv' class='eaFullWidthContent'><div id='Recurring_PaymentError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'><p>This donation is a:</p></a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+</div><div id='Recurring_PaymentDiv' class='eaFullWidthContent'><div id='Recurring_PaymentError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'><p>This donation is a:</p></a></label></span>
 <div id='Recurring_PaymentField' class='eaFormField'>
    <input id='Recurring_Payment' type='text' class='eaFormTextfield' name='Recurring Payment' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
@@ -313,11 +318,11 @@
 <div id='Recurring_DayDiv' style='display:none' class='eaFullWidthContent'><div id='Recurring_DayError' class='eaErrorMessage'></div>
 <span class='eaLabelSpacer'>&nbsp;</span>
 
-<span class='eaFormElementLabel'><label for='Recurring_Day'><a name='Recurring_Day' style='text-decoration:none; color: inherit;'>Recurring Day</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Recurring_Day'><a name='Recurring_Day' style='text-decoration:none; color: inherit;'>Recurring Day</a></label></span>
 <br clear='all' />
 <span class='eaLabelSpacer'>&nbsp;</span>
 <div id='Recurring_DayField' class='eaFormField'>
-   <input id='Recurring_Day' type='text' style='width:200px' class='eaFormTextfield' name='Recurring Day' value='999' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Recurring_Day' type='text' style='width:200px' class='eaFormTextfield' name='Recurring Day' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
@@ -328,57 +333,54 @@
 </div>
 
 </div>
-
-<div id='[GR]_ExplainerDiv' class='eaFullWidthContent'><p class="js-form-explainer">To make a tribute or in memoriam donation, use this form.</p></div>
-
 <div id='[GR]_Donor_InformationDiv' class='eaFullWidthContent'><h1 class="js-donorInformation">Donor Information</h1>
 </div>
 <div id='First_NameDiv' class='eaFullWidthContent'><div id='First_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='First_Name'><a name='First_Name' style='text-decoration:none; color: inherit;'>First Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='First_NameField' class='eaFormField'>
-   <input id='First_Name' type='text' class='eaFormTextfield' name='First_Name' value='Testy' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='First_Name' type='text' class='eaFormTextfield' name='First_Name' value='i' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Last_NameDiv' class='eaFullWidthContent'><div id='Last_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Last_Name'><a name='Last_Name' style='text-decoration:none; color: inherit;'>Last Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Last_NameField' class='eaFormField'>
-   <input id='Last_Name' type='text' class='eaFormTextfield' name='Last_Name' value='Tester' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Last_Name' type='text' class='eaFormTextfield' name='Last_Name' value='i' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Addrline1Div' class='eaFullWidthContent'><div id='Addrline1Error' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Addrline1'><a name='Addrline1' style='text-decoration:none; color: inherit;'>Street 1</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Addrline1Field' class='eaFormField'>
-   <input id='Addrline1' type='text' class='eaFormTextfield' name='Addrline1' value='111 Fake St.' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Addrline1' type='text' class='eaFormTextfield' name='Addrline1' value='i' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Addrline2Div' class='eaFullWidthContent'><div id='Addrline2Error' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Addrline2'><a name='Addrline2' style='text-decoration:none; color: inherit;'>Unit</a></label></span>
 <div id='Addrline2Field' class='eaFormField'>
-   <input id='Addrline2' type='text' class='eaFormTextfield' name='Addrline2' value='5' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Addrline2' type='text' class='eaFormTextfield' name='Addrline2' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='CityDiv' class='eaFullWidthContent'><div id='CityError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='City'><a name='City' style='text-decoration:none; color: inherit;'>City</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CityField' class='eaFormField'>
-   <input id='City' type='text' class='eaFormTextfield' name='City' value='Testville' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='City' type='text' class='eaFormTextfield' name='City' value='i' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Postal_CodeDiv' class='eaFullWidthContent'><div id='Postal_CodeError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Postal_Code'><a name='Postal_Code' style='text-decoration:none; color: inherit;'>Zip/Postal Code</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Postal_CodeField' class='eaFormField'>
-   <input id='Postal_Code' type='text' class='eaFormTextfield' name='Postal_Code' value='M5T 1T1' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Postal_Code' type='text' class='eaFormTextfield' name='Postal_Code' value='i8i 8i8' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='CountryDiv' class='eaFullWidthContent'><div id='CountryError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Country'><a name='Country' style='text-decoration:none; color: inherit;'>Country</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='CountryField' class='eaFormField'>
-   <select id='Country' class='eaFormSelect' name='Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada' selected="selected">Canada</option>
+   <select id='Country' class='eaFormSelect' name='Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
       <option value='United States of America'>United States of America</option>
       <option value='Afghanistan'>Afghanistan</option>
       <option value='Alland Islands'>Alland Islands</option>
@@ -630,7 +632,7 @@
 <div id='ProvinceField' class='eaFormField'>
    <select id='Province' class='eaFormSelect' name='Province' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
       <option value='AB'>Alberta</option>
-      <option value='BC'>British Columbia</option>
+      <option value='BC' selected>British Columbia</option>
       <option value='MB'>Manitoba</option>
       <option value='NB'>New Brunswick</option>
       <option value='NL'>Newfoundland and Labrador</option>
@@ -638,7 +640,7 @@
       <option value='NS'>Nova Scotia</option>
       <option value='NT'>Northwest Territories</option>
       <option value='NU'>Nunavut</option>
-      <option value='ON' selected="selected">Ontario</option>
+      <option value='ON'>Ontario</option>
       <option value='PE'>Prince Edward Island</option>
       <option value='QC'>Quebec</option>
       <option value='SK'>Saskatchewan</option>
@@ -703,7 +705,7 @@
 <div id='Primary_EmailDiv' class='eaFullWidthContent'><div id='Primary_EmailError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Primary_Email'><a name='Primary_Email' style='text-decoration:none; color: inherit;'>Email Address</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Primary_EmailField' class='eaFormField'>
-   <input id='Primary_Email' type='text' class='eaFormTextfield' name='Primary_Email' value='test@grassriots.com' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Primary_Email' type='text' class='eaFormTextfield' name='Primary_Email' value='i@i.com' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
@@ -825,7 +827,8 @@
 <div id='Other_CountryDiv' class='eaFullWidthContent'><div id='Other_CountryError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Other_Country'><a name='Other_Country' style='text-decoration:none; color: inherit;'>Country</a></label></span>
 <div id='Other_CountryField' class='eaFormField'>
-   <select id='Other_Country' class='eaFormSelect' name='Other Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
+   <select id='Other_Country' class='eaFormSelect' name='Other Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' /><option value=''>Country</option>      
+      <option value='Canada'>Canada</option>
       <option value='United States of America'>United States of America</option>
       <option value='Afghanistan'>Afghanistan</option>
       <option value='Alland Islands'>Alland Islands</option>
@@ -1230,7 +1233,8 @@
 <div id='Inform_CountryDiv' class='eaFullWidthContent'><div id='Inform_CountryError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Inform_Country'><a name='Inform_Country' style='text-decoration:none; color: inherit;'>Country</a></label></span>
 <div id='Inform_CountryField' class='eaFormField'>
-   <select id='Inform_Country' class='eaFormSelect' name='Inform Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='Canada'>Canada</option>
+   <select id='Inform_Country' class='eaFormSelect' name='Inform Country' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>Select Country</option>
+      <option value='Canada'>Canada</option>
       <option value='United States of America'>United States of America</option>
       <option value='Afghanistan'>Afghanistan</option>
       <option value='Alland Islands'>Alland Islands</option>
@@ -1582,10 +1586,11 @@
 <span class='eaFormElementLabel'><label for='Payment_Type'><a name='Payment_Type' style='text-decoration:none; color: inherit;'>Payment Type</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Payment_TypeField' class='eaFormField'>
    <select id='Payment_Type' class='eaFormSelect' name='Payment Type' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value=''>-please select-</option>
-      <option value='Visa' selected>Visa</option>
+      <option value='Visa'>Visa</option>
       <option value='MasterCard'>MasterCard</option>
-      <option value='Paypal'>PayPal</option>
       <option value='AMEX'>American Express</option>
+      <option value='Paypal'>PayPal</option>
+      <option value='Bank Direct Deposit'>Bank Direct Deposit</option>
    </select>
 </div>
 
@@ -1593,19 +1598,19 @@
 <div id='Card_Holder_NameDiv' class='eaFullWidthContent'><div id='Card_Holder_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Card_Holder_Name'><a name='Card_Holder_Name' style='text-decoration:none; color: inherit;'>Credit Card Holder Name</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Card_Holder_NameField' class='eaFormField'>
-   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='j' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Card_Holder_Name' type='text' class='eaFormTextfield' name='Card Holder Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Credit_Card_NumberDiv' class='eaFullWidthContent'><div id='Credit_Card_NumberError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Credit Card Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Credit_Card_Number'><a name='Credit_Card_Number' style='text-decoration:none; color: inherit;'>Credit Card Number</a></label></span>
 <div id='Credit_Card_NumberField' class='eaFormField'>
-   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='4111111111111111' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='Credit_Card_Number' type='text' class='eaFormTextfield' name='Credit Card Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
 <div id='Credit_Card_ExpirationDiv' class='eaFullWidthContent'><div id='Credit_Card_ExpirationError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Credit_Card_Expiration'><a name='Credit_Card_Expiration' style='text-decoration:none; color: inherit;'>Expiration Date</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Credit_Card_Expiration'><a name='Credit_Card_Expiration' style='text-decoration:none; color: inherit;'>Expiration Date</a></label></span>
 <div id='Credit_Card_ExpirationField' class='eaFormField'>
    <select id='Credit_Card_Expiration1' class='eaSplitSelectfield' name='Credit Card Expiration1'>
    <option value='01'>01</option>
@@ -1628,7 +1633,7 @@
    <option value='/18'>2018</option>
    <option value='/19'>2019</option>
    <option value='/20'>2020</option>
-   <option value='/21' selected>2021</option>
+   <option value='/21'>2021</option>
    <option value='/22'>2022</option>
 </select>
 
@@ -1636,48 +1641,116 @@
 
 </div>
 <div id='CVV_CodeDiv' class='eaFullWidthContent'><div id='CVV_CodeError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Number</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='CVV_Code'><a name='CVV_Code' style='text-decoration:none; color: inherit;'>CVV Number</a></label></span>
 <div id='CVV_CodeField' class='eaFormField'>
-   <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='111' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+   <input id='CVV_Code' type='text' class='eaFormTextfield' name='CVV Code' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
 </div>
-<div id='[GR]_Main_Donation_SummaryDiv' class='eaFullWidthContent'>
+<div id='DD_Pref_Processing_DateDiv' class='eaFullWidthContent'><div id='DD_Pref_Processing_DateError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Pref_Processing_Date'><a name='DD_Pref_Processing_Date' style='text-decoration:none; color: inherit;'>Process my gift on the</a></label></span>
+<div id='DD_Pref_Processing_DateField' class='eaFormField'>
+   <select id='DD_Pref_Processing_Date' class='eaFormSelect' name='DD Pref Processing Date' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />      <option value='1st of each month'>1st of each month</option>
+      <option value='15th of each month'>15th of each month</option>
+   </select>
+</div>
+<div id='DD_Bank_NameDiv' class='eaFullWidthContent'><div id='DD_Bank_NameError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Bank_Name'><a name='DD_Bank_Name' style='text-decoration:none; color: inherit;'>Bank Name</a></label></span>
+<div id='DD_Bank_NameField' class='eaFormField'>
+   <input id='DD_Bank_Name' type='text' class='eaFormTextfield' name='DD Bank Name' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
 
-<div class="js-donationSummary">
+</div>
+<div id='DD_Bank_Account_NumberDiv' class='eaFullWidthContent'><div id='DD_Bank_Account_NumberError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Bank_Account_Number'><a name='DD_Bank_Account_Number' style='text-decoration:none; color: inherit;'>Bank Account Number</a></label></span>
+<div id='DD_Bank_Account_NumberField' class='eaFormField'>
+   <input id='DD_Bank_Account_Number' type='text' class='eaFormTextfield' name='DD Bank Account Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='DD_Branch_NumberDiv' class='eaFullWidthContent'><div id='DD_Branch_NumberError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Branch_Number'><a name='DD_Branch_Number' style='text-decoration:none; color: inherit;'>Branch Number</a></label></span>
+<div id='DD_Branch_NumberField' class='eaFormField'>
+   <input id='DD_Branch_Number' type='text' class='eaFormTextfield' name='DD Branch Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='DD_Institution_NumberDiv' class='eaFullWidthContent'><div id='DD_Institution_NumberError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Institution_Number'><a name='DD_Institution_Number' style='text-decoration:none; color: inherit;'>Institution Number</a></label></span>
+<div id='DD_Institution_NumberField' class='eaFormField'>
+   <input id='DD_Institution_Number' type='text' class='eaFormTextfield' name='DD Institution Number' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Accept_TermsDiv' class='eaFullWidthContent'><div id='Accept_TermsError' class='eaErrorMessage'></div>
+<span class='eaLabelSpacer'>&nbsp;</span>
+
+<span class='eaFormElementLabel'><a name='Accept_Terms' style='text-decoration:none; color: inherit;'><p>Use these numbers from the bottom of your cheque:<br /><br /><img src="//www.e-activist.com/ea-campaign/action.retrievefile.do?ea.client.id=1803&amp;ea_filename=gift_chq_sm.gif" border="0" alt="gift_chq_sm.gif" title="gift_chq_sm.gif" width="270" height="60" />&nbsp;</p>
+<p>Please read NCC&rsquo;s Pre-authorized Debit Agreement by&nbsp;<a href="http://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=2620" target="_blank" title="NCC's PAD agreement" onclick="window.open('http://netdonor.net/ea-campaign/action.retrievestaticpage.do?ea_static_page_id=2620','NCC's PAD agreement','scrollbars=yes,resizable=yes,dependent=yes,width=500,height=400,left='+(screen.availWidth/2-250)+',top='+(screen.availHeight/2-200)+'');return false;">clicking here</a>.</p></a></span>
+<br clear='all' />
+<span class='eaLabelSpacer'>&nbsp;</span>
+<div id='Accept_TermsField' class='eaFormField'>
+   
+<span class='eaFormCheckbox'><input id='Accept_TermsYes' type='checkbox' name='Accept Terms' value='Yes, I accept the terms of NCC&#39;s Pre-authorized Debit Agreement which is meant to protect my rights as a donor.' onblur='validatefield(this, true, false, false);' onclick='checkdep(this);' /><label for="Accept_TermsYes">Yes, I accept the terms of NCC's Pre-authorized Debit Agreement which is meant to protect my rights as a donor.</label></span>&nbsp;&nbsp;&nbsp;
+</div>
+
+</div>
+<div id='[GR]_Main_Donation_SummaryDiv' class='eaFullWidthContent'><div class="js-donationSummary donationSummary">
 <h3>Summary</h3>
-<p class="donationSummary">
-<span class="js-personalGift">`user_data~First_Name` `user_data~Last_Name`</span><span class="js-orgGift">`user_data~Organization Name`</span> is making a<span class="js-frequency"></span> donation of <span class="js-amount"></span><span class="js-memorialGift"> in memory of `user_data~Memoriam Name`</span><span class="js-honourGift"> in honour of `user_data~Honoree Name`</span>.</p></div>
+<span class="js-personalGift">`user_data~First_Name` `user_data~Last_Name`</span><span class="js-orgGift">`user_data~Organization Name`</span> is making a<span class="js-frequency"></span> donation of <span class="js-amount"></span><span class="js-memorialGift"> in memory of `user_data~Memoriam Name`</span><span class="js-honourGift"> in honour of `user_data~Honoree Name`</span>.</div>
 </div>
 <div id='[GR]_Instructions_and_Comments_ToggleDiv' class='eaFullWidthContent'><div class="js-instructionsAndComment">
 <p><em>Use the navigation below to make edits to the information you've submitted. If you would like to add a comment to your donation -</em> <a href="#" class="js-toggleComments">click here</a>.</p>
 </div>
 </div>
-<div id='Additional_CommentsDiv' class='eaFullWidthContent' style="display: none"><div id='Additional_CommentsError' class='eaErrorMessage'></div>
+<div id='Additional_CommentsDiv' style='display:none' class='eaFullWidthContent'><div id='Additional_CommentsError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='Additional_Comments'><a name='Additional_Comments' style='text-decoration:none; color: inherit;'>Additional Comments</a></label></span>
 <div id='Additional_CommentsField' class='eaFormField'>
-   <textarea id='Additional_Comments' class='eaFormTextArea' name='Additional Comments' onblur='validatefield(this);' onchange='checkdep(this);' >Blerg</textarea>
+   <textarea id='Additional_Comments' class='eaFormTextArea' name='Additional Comments' onblur='validatefield(this);' onchange='checkdep(this);' ></textarea>
 </div>
 
 </div>
 <div id='Spam_TrapDiv' class='eaFullWidthContent'><div id='Spam_TrapError' class='eaErrorMessage'></div>
-<span class='eaFormElementLabel'><label for='Spam_Trap'><a name='Spam_Trap' style='text-decoration:none; color: inherit;'>Spam Trap </a></label></span>
+<span class='eaFormElementLabel'><label for='Spam_Trap'><a name='Spam_Trap' style='text-decoration:none; color: inherit;'>Spam Trap&nbsp;</a></label></span>
 <div id='Spam_TrapField' class='eaFormField'>
    <input id='Spam_Trap' type='text' class='eaFormTextfield' name='Spam Trap' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
 </div>
 
+</div>
+<div id='DD_Donation_AmountDiv' style='display:none' class='eaFullWidthContent'><div id='DD_Donation_AmountError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Donation_Amount'><a name='DD_Donation_Amount' style='text-decoration:none; color: inherit;'>DD Amount</a></label></span>
+<div id='DD_Donation_AmountField' class='eaFormField'>
+   <input id='DD_Donation_Amount' type='text' class='eaFormTextfield' name='DD Donation Amount' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='DD_Direct_GiftDiv' style='display:none' class='eaFullWidthContent'><div id='DD_Direct_GiftError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='DD_Direct_Gift'><a name='DD_Direct_Gift' style='text-decoration:none; color: inherit;'>DD Direct Gift</a></label></span>
+<div id='DD_Direct_GiftField' class='eaFormField'>
+   <input id='DD_Direct_Gift' type='text' class='eaFormTextfield' name='DD Direct Gift' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='Upsell_StatusDiv' class='eaFullWidthContent'><div id='Upsell_StatusError' class='eaErrorMessage'></div>
+<span class='eaFormElementLabel'><label for='Upsell_Status'><a name='Upsell_Status' style='text-decoration:none; color: inherit;'>Upsell Status</a></label></span>
+<div id='Upsell_StatusField' class='eaFormField'>
+   <input id='Upsell_Status' type='text' class='eaFormTextfield' name='Upsell Status' value='' onblur='validatefield(this, true, false, false);' onchange='checkdep(this);' />
+</div>
+
+</div>
+<div id='[GR]_Form_ExplainerDiv' class='eaFullWidthContent'><p class="js-form-explainer">To make a tribute or in memoriam donation, use this form.</p>
 </div><div id='[GR]_Upsell_ModalDiv' class='eaFullWidthContent'>
   <div id="upsell-modal" class="modal fade">
     <div class="modal-dialog modal-body modal-content upsell-modal--body">
       <div class="upsell-container">
         <div class="upsell-panel upsell-cta">
           <h3 class="upsell-title js-licContent">Make your gift go further</h3>
-          <h3 class="upsell-title js-monthlyContent">Be a hero for a child in crisis.</h3>
+          <h3 class="upsell-title js-monthlyContent">Make your gift go further</h3>
         </div>
-        <div class="upsell-panel upsell-copy"><h3 class="upsell-subtitle js-monthlyContent">Give Monthly</h3><h3 class="upsell-subtitle js-licContent">Give More Monthly</h3><p class="js-licContent"><strong>By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</strong></p><p class="js-monthlyContent"><strong>A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</strong></p><p class="js-licContent">By covering your transaction fee of 3%, you can ensure that 100% of your gift goes where it's needed most: helping children in crisis.</p><p class="js-monthlyContent">A monthly gift ensure that we can provide vulnerable children with constant reliable care and the building blocks for a brigher future.</p>
+        <div class="upsell-panel upsell-copy"><h3 class="upsell-subtitle js-licContent">Join a special group of people dedicated to protecting Canada's precious places.</h3><h3 class="upsell-subtitle js-monthlyContent">Becoming a monthly donor makes you a partner in Nature Conservancy of Canada's (NCC's) important land conservation work.</h3><p class="js-licContent"><strong>`user_data~First_Name`, did you know that by donating another <span class="symbol">$</span><span class="js-licDifference"></span> more per month, you'll become a Leader in Conservation.</strong></p><p class="js-monthlyContent"><strong>Join thousands of Canadians who are dedicated to conserving Canada's ecologically significant areas.</strong></p><p class="js-licContent">As part of this community of like-minded people committed to conservation, you will have the opportunity to personally experience the spectacular landscapes and wildlife we've protected in your area and receive these other great benefits:</p><ul  class="js-licContent"><li>Three issues of The Ark newsletter per year</li><li>A copy of our Annual Report</li><li>Recognition in our online Annual Report (if desired)</li></ul><p class="js-monthlyContent">This cost-effective and paper-free way to give ensures that your contributions make the maximum impact for threatened habitats and the wildlife that depend on them.</p>
           <div class="upsell-recommendation">
-            <a href="#" class="js-monthly-donation upsell-confirm js-licContent"><strong>Donate <span class="symbol">$</span><span class="js-monthly-donation-amount"></span> now.</strong></a>
-            <a href="#" class="js-monthly-donation upsell-confirm js-monthlyContent"><strong>Donate <span class="symbol">$</span><span class="js-monthly-donation-amount"></span> monthly.</strong></a>
+            <a href="#" class="js-monthly-donation upsell-confirm js-licContent"><strong>YES! Increase my monthly donation to <span class="symbol">$</span><span class="js-monthly-donation-amount"></span>/month now.</strong></a>
+            <a href="#" class="js-monthly-donation upsell-confirm js-monthlyContent"><strong>YES! I want to contribute <span class="symbol">$</span><span class="js-monthly-donation-amount"></span>/month.</strong></a>
           </div>
           <p class="upsell-deny">&gt;<a href="#" class="js-single-donation js-licContent"><strong>No thanks,</strong> complete my donation as-is.</a><a href="#" class="js-single-donation js-monthlyContent"><strong>No thanks,</strong> complete my one-time gift.</a></p>
         </div>
