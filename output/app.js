@@ -37,13 +37,14 @@ webpackJsonp([0],[
 	var $firstStepForm = $('#firstStepForm');
 	var formOpenButton = ".js-formOpen";
 	var formOpenButtonLabel = ".js-formOpen-label";
+	var formLanguage = $('html').attr('lang');
 	var windowSize;
 
 	//Upsell
 	var GRUpsell = __webpack_require__(5);
 	var grupsell;
 	var upsellContentSelector = '#upsell-modal';
-	var $upsellTrackingField = $("#Other_1");
+	var $upsellOfferCeiling = $('.js-offerUpsellBelow');
 
 	//Donation form
 	var GRSteps = __webpack_require__(6);
@@ -80,6 +81,7 @@ webpackJsonp([0],[
 	    bank_branch:'DD Branch Number',
 	    bank_inst:  'DD Institution Number',
 	    bank_day:   'DD Pref Processing Date',
+	    bank_amt:   'DD Donation Amount',
 	    bank_restrict: 'DD Direct Gift',
 	    bank_auth:  'Accept Terms',
 	    amt:        'Donation Amount',
@@ -88,6 +90,7 @@ webpackJsonp([0],[
 	    recur_freq: 'Recurring Frequency',
 	    recur_day:  'Recurring Day',
 	    optin:      'Opt-In_English',
+	    optin_fr:   'Opt-In French',
 	    restrict:   'Direct Gift',
 	    comments:   'Additional Comments',
 	    upsell_track: 'Upsell Status',
@@ -173,7 +176,8 @@ webpackJsonp([0],[
 	    '#'+fields.country.nameNoSpace+'Div', 
 	    '#'+fields.region.nameNoSpace+'Div', 
 	    '#'+fields.phone.nameNoSpace+'Div',
-	    '#'+fields.optin.nameNoSpace+'Div'
+	    '#'+fields.optin.nameNoSpace+'Div',
+	    '#'+fields.optin_fr.nameNoSpace+'Div'
 	  ],
 	  '#gr_options': [
 	    '#'+fields.restrict.nameNoSpace+'Div',
@@ -730,6 +734,16 @@ webpackJsonp([0],[
 	        var paymentTypeOptions = $(fields.pay_type.selector).children('option');
 	        var ccFields = ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field'];
 	        var ddFields = ['#'+fields.bank_name.nameNoSpace+'Div', '#'+fields.bank_auth.nameNoSpace+'Div', '#'+fields.bank_day.nameNoSpace+'Div', '#'+fields.bank_acct.nameNoSpace+'Div', '#'+fields.bank_branch.nameNoSpace+'Div', '#'+fields.bank_inst.nameNoSpace+'Div'];
+
+	        //set recurring day automatically when form loads
+	        var recurringDay = 1;
+	        var todaysDay = new Date().getDate();
+	        if(todaysDay > 1 && todaysDay <=15) {
+	          recurringDay = 15;
+	        } else if(todaysDay > 15) {
+	          recurringDay = 30;
+	        }
+	        $(fields.recur_day.selector).val(recurringDay);
 	        
 
 	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
@@ -747,10 +761,11 @@ webpackJsonp([0],[
 	          });
 	        }
 
-	        //Swap fields on post-back - this moves the 
+	        //Swap fields on post-back
 	        if(
 	          typeof fields.sec_billing != "undefined"
 	          && $(fields.sec_billing.selector).length 
+	          && !$(fields.sec_billing.selector).prop('disabled')
 	          && $(fields.sec_billing.selector).is(":checked")) {
 	          swapFields();
 	        }
@@ -771,9 +786,18 @@ webpackJsonp([0],[
 	          useCSSAnimation: false,
 	          indicatorTarget: '.steps-list ul',
 	          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
-	          stepLabels: ['Amount', 'Billing', 'Options', '', '', 'Payment'],
+	          stepLabels: [
+	            ($('.js-step1-labelText').length ? $('.js-step1-labelText').text() : 'Amount'), 
+	            ($('.js-step2-labelText').length ? $('.js-step2-labelText').text() : 'Billing'), 
+	            ($('.js-step3-labelText').length ? $('.js-step3-labelText').text() : 'Options'), 
+	            ($('.js-step4-labelText').length ? $('.js-step4-labelText').text() : ''), 
+	            ($('.js-step5-labelText').length ? $('.js-step5-labelText').text() : ''), 
+	            ($('.js-step6-labelText').length ? $('.js-step6-labelText').text() : 'Payment')
+	          ],
 	          addButtons: true,
-	          backButton: 'go back',
+	          backButton: ($('.js-backButton-labelHTML').length ? $('.js-backButton-labelHTML').html() : 'go back'),
+	          stepButton: ($('.js-nextButton-labelHTML').length ? $('.js-nextButton-labelHTML').html() : 'Next'),
+	          //actionButton: ($('.js-actionButton-labelText').length ? $('.js-actionButton-labelText').html() : 'Donate'),
 	          target: "#window",
 	          stepPreSwitchCallback: [
 	            null,
@@ -880,6 +904,7 @@ webpackJsonp([0],[
 	                if(
 	                  typeof fields.sec_billing != "undefined"
 	                  && $(fields.sec_billing.selector).length 
+	                  && !$(fields.sec_billing.selector).prop('disabled')
 	                  && $(fields.sec_billing.selector).is(":checked")) {
 	                  swapFields();
 	                }
@@ -962,12 +987,15 @@ webpackJsonp([0],[
 	            }
 
 	        });
+	        //bank payment option
 	        $(fields.pay_type.selector).on('change', function() {
 	          if($(this).val() == 'Bank Direct Deposit') {
 	            $(fields.bank_restrict.selector).val($(fields.restrict.selector).val());
-	            $('input[name="ea.campaign.id"]').val()
+	            $(fields.bank_amt.selector).val(grGiving.getAmount());
+	            $('input[name="ea.campaign.id"]').val(campaignIdMap.DD);
 	          } else {
 	            $(fields.bank_restrict.selector).val('');
+	            $(fields.bank_amt.selector).val('');
 	            updateCampaignId();
 	          }
 	        }).trigger('change');
@@ -979,7 +1007,8 @@ webpackJsonp([0],[
 	            'change',
 	            'input[name="'+fields.amt.name+'"], input[name="Donation Amount Other"], input[name="'+fields.recur_pay.name+'"]',
 	            function(e) {
-	                $submit.text("Donate " + grGiving.getAmount(true) + (grGiving.isRecurring() ? ' Monthly' : ''));
+	                var monthly = (formLanguage == 'fr-ca' ? ' chaque&nbsp;mois' : ' Monthly');
+	                $submit.html(($('.js-actionButton-labelText').length ? $('.js-actionButton-labelText').text() : 'Donate')+" " + grGiving.getAmount(true, formLanguage) + (grGiving.isRecurring() ? monthly : ''));
 	            })
 	          /*.on(
 	            'change',
@@ -1002,7 +1031,7 @@ webpackJsonp([0],[
 	            donationAmountFieldSelector: fields.amt.selector,
 	            upsellContentSelector: upsellContentSelector,
 	            upsellMethod: 'function',
-	            maxGift: 500,
+	            maxGift: ($upsellOfferCeiling.length && !isNaN(parseFloat($upsellOfferCeiling.text())) ? parseFloat($upsellOfferCeiling.text()) : 500),
 	            calcFunction: function( amount ) {
 	              if(grGiving.isRecurring()) {
 	                return 85;
@@ -1020,21 +1049,25 @@ webpackJsonp([0],[
 	            },
 	            declineCallback: function(){
 	                $(fields.upsell_track.selector).val('N-'+this.upsellType+'-'+this.initialAmount);
-	                //grAnalytics.analyticsReport( 'payment/upsell-declined' );
+	                grAnalytics.analyticsReport( 'payment/upsell-declined/'+this.upsellType );
 	            },
 	            upsellCallback: function(){
 	                $(fields.upsell_track.selector).val('Y-'+this.upsellType+'-'+this.initialAmount);
-	                //grAnalytics.analyticsReport( 'payment/upsell-accepted' );
+	                grAnalytics.analyticsReport( 'payment/upsell-accepted/'+this.upsellType );
 	            },
 	            preventLaunch: function() {
 	              return (
-	                (grGiving.isRecurring() && (this.initialAmount < 50 || this.initialAmount >= 85))
+	                (grGiving.isRecurring() && $('.js-licUpsellToggle').val().toLowerCase()=="on"  && (this.initialAmount < 50 || this.initialAmount >= 85))
+	                || (grGiving.isRecurring() && ($('.js-licUpsellToggle').length == 0 || $('.js-licUpsellToggle').val().toLowerCase()!="on"))
 	                || $(fields.pay_type.selector).val().toLowerCase() == 'paypal'
 	              );
 	            },
 	            onUpsellFormUpdates: function() {
 	                if(grGiving.isRecurring()) { 
 	                    this.options.donationAmountField.filter(':checked').val(this.upsellAmount.toFixed(2));
+	                    if($(fields.bank_amt.selector).val() != '') { //check if bank donation amount has a value, and update
+	                      $(fields.bank_amt.selector).val(this.upsellAmount.toFixed(2));
+	                    }
 	                } else {
 	                    this.options.recurringField.filter(':checked').val('Y');
 	                    this.options.donationAmountField.val(this.upsellAmount);
@@ -1114,9 +1147,11 @@ webpackJsonp([0],[
 
 	  $donationSummary.after($donationSummaryRaw);
 
+	  $('#'+fields.comments.nameNoSpace+'Div').find('textarea').prop('disabled', true);
 	  $form.on('click', '.js-toggleComments', function(e) {
 	    e.preventDefault();
 	    $('#'+fields.comments.nameNoSpace+'Div').slideToggle();
+	    $('#'+fields.comments.nameNoSpace+'Div').find('textarea').prop('disabled', !$('#'+fields.comments.nameNoSpace+'Div').find('textarea').prop('disabled'));
 	  });
 	  if($(fields.comments.selector).val() != '') {
 	    $('.js-toggleComments').click();
@@ -1157,13 +1192,13 @@ webpackJsonp([0],[
 	  $form.on('change', fields.inmem.selector+","+fields.inhonor.selector, function(e) {
 	      switch($(this).attr('name')) {
 	          case fields.inmem.name:
-	              $('.js-memorialGift').show();
-	              $('.js-honourGift').hide();
+	              $('.js-memorialGift').show().find('input, select, textarea').prop('disabled', false);
+	              $('.js-honourGift').hide().find('input, select, textarea').prop('disabled', true);
 
 	          break;
 	          case fields.inhonor.name:
-	              $('.js-memorialGift').hide();
-	              $('.js-honourGift').show();
+	              $('.js-memorialGift').hide().find('input, select, textarea').prop('disabled', true);
+	              $('.js-honourGift').show().find('input, select, textarea').prop('disabled', false);
 	          break;
 	      }
 
@@ -1175,11 +1210,11 @@ webpackJsonp([0],[
 	  $form.on('change', fields.inform.selector+":checked", function() {
 	    switch($(this).filter(':checked').val()) {
 	      case 'mail':
-	        $('.js-informMail').removeClass('hide');
+	        $('.js-informMail').removeClass('hide').find('input, select, textarea').prop('disabled', false);
 	      break;
 
 	      case 'no': 
-	        $('.js-informMail').addClass('hide');
+	        $('.js-informMail').addClass('hide').find('input, select, textarea').prop('disabled', true);
 	      break;
 	    }
 
@@ -1483,7 +1518,7 @@ webpackJsonp([0],[
 	 */
 	function sendDonation(e) {
 	  
-	    grAnalytics.analyticsReport( 'payment/donate-'+grGiving.getProcessor().toLowerCase() );
+	    grAnalytics.analyticsReport( 'payment/donate-'+grGiving.getProcessor().toLowerCase().replace(/\s/g, '') );
 	    // if (payment == "PayPal") {
 	    //     $paypalForm = $('.js-paypal-'+donation_type+'-form');
 	    //     for(var i=0; i < paypal_field_map.length; i++) {
@@ -1682,24 +1717,74 @@ webpackJsonp([0],[
 	          }
 	        };
 	        validation_rules[fields.pay_type.name] = "required";
+
+	        //credit card fields
 	        validation_rules[fields.cc_num.name] = {
-	            required: true,
+	            required: function(element) {
+	              return (
+	                $(fields.pay_type.selector).val().toLowerCase() != 'paypal' 
+	                && $(fields.pay_type.selector).val().toLowerCase() != 'bank direct deposit'
+	              ) 
+	            },
 	            stripspaces: true,
 	            creditcard: true
 	        };
 	        validation_rules[fields.cc_cvv.name] = {
-	            required: true,
+	            required: function(element) {
+	              return (
+	                $(fields.pay_type.selector).val().toLowerCase() != 'paypal' 
+	                && $(fields.pay_type.selector).val().toLowerCase() != 'bank direct deposit'
+	              ) 
+	            },
 	            isCVV: true //note: AMEX CVVs are 4 digits but currently handled through PayPal
 	        };
 	        validation_rules[fields.cc_exp.name+"1"] = {
-	            required: true,
+	            required: function(element) {
+	              return (
+	                $(fields.pay_type.selector).val().toLowerCase() != 'paypal' 
+	                && $(fields.pay_type.selector).val().toLowerCase() != 'bank direct deposit'
+	              ) 
+	            },
 	            isMonth: true
 	        };
 	        validation_rules[fields.cc_exp.name+"2"] = {
-	            required: true,
+	            required: function(element) {
+	              return (
+	                $(fields.pay_type.selector).val().toLowerCase() != 'paypal' 
+	                && $(fields.pay_type.selector).val().toLowerCase() != 'bank direct deposit'
+	              ) 
+	            },
 	            isNowOrFutureYear: true,
 	            isFuture: true
 	        };
+
+	        //bank fields
+	        validation_rules[fields.bank_name.name] = {
+	            required: function(element) {
+	              return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
+	            }
+	        };
+	        validation_rules[fields.bank_acct.name] = {
+	            required: function(element) {
+	              return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
+	            }
+	        };
+	        validation_rules[fields.bank_branch.name] = {
+	            required: function(element) {
+	              return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
+	            }
+	        };
+	        validation_rules[fields.bank_inst.name] = {
+	            required: function(element) {
+	              return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
+	            }
+	        };
+	        validation_rules[fields.bank_auth.name] = {
+	            required: function(element) {
+	              return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
+	            }
+	        };
+
 	        validation_rules[fields.amt.name] = {
 	            required: true,
 	            isValidDonation: true
@@ -1915,12 +2000,14 @@ webpackJsonp([0],[
 	    inputNamesMapper[fields.cc_cvv.name] = 'CVV2 Code';
 
 	    //donation option fields
-	    inputNamesMapper[fields.inmem.name] = 'In Honour/in Memoriam selection';
+	    inputNamesMapper[fields.inmem.name] = 'In honour/in memoriam selection';
+
+	    //bank payment
+	    inputNamesMapper[fields.bank_auth.name] = 'Accepting NCC\'s Pre-authorized Debit Agreement';
 
 	    for (var i in errors) {
 	        var inputName = $(errors[i].element)
-	                .attr('id')
-	                .replace(/_/g, ' '),
+	                .attr('name'),
 	            errorType = errors[i].method,
 	            errorMessage = '';
 
@@ -2009,7 +2096,7 @@ webpackJsonp([0],[
 	    classes[fields.region.selector] = {classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.phone.selector] = {classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 	    
-	    //Payment fields
+	    //Credit card payment fields
 	    classes[fields.pay_type.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.cc_num.selector] = { classes: "inline-block-field-wrap three-fifths-wrap", targetElement: "div.eaFullWidthContent"};
 	    classes[fields.cc_cvv.selector] = { classes: "inline-block-field-wrap two-fifths-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
@@ -3002,7 +3089,7 @@ webpackJsonp([0],[
 	GRSteps.prototype.hideStep = function(index) {
 	  if(this.disabledSteps.indexOf(index) === -1) {
 	    this.disabledSteps.push(index);
-	    $(this.options.steps[index]).children().css('visibility', 'hidden');
+	    $(this.options.steps[index]).children().css('visibility', 'hidden').find('input,select,textarea').prop('disabled', true);
 	    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
 	      this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
 	    }
@@ -3018,7 +3105,7 @@ webpackJsonp([0],[
 	GRSteps.prototype.showStep = function(index) {
 	  if(this.disabledSteps.indexOf(index) !== -1){
 	    this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
-	    $(this.options.steps[index]).children().css('visibility', '');
+	    $(this.options.steps[index]).children().css('visibility', '').find('input,select,textarea').prop('disabled', false);
 	    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
 	      this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
 	    }
@@ -3531,10 +3618,10 @@ webpackJsonp([0],[
 	        $form.find(options.components.processor.selector).on('change', function(e) {
 	            if(typeof processorFields[$(this).val()] != "undefined") {
 	                if(processorFields[$(this).val()]['hide']) {
-	                    $(processorFields[$(this).val()]['hide'].join(', ')).hide();
+	                    $(processorFields[$(this).val()]['hide'].join(', ')).hide().find('input, select, textarea').prop('disabled', true);
 	                }
 	                if(processorFields[$(this).val()]['show']) {
-	                    $(processorFields[$(this).val()]['show'].join(', ')).show();
+	                    $(processorFields[$(this).val()]['show'].join(', ')).show().find('input, select, textarea').prop('disabled', false);
 	                }
 	            }
 	        });
@@ -3691,8 +3778,13 @@ webpackJsonp([0],[
 	    }
 	}
 
-	GRGivingSupport.prototype.getAmount = function(formatted) {
+	/** [getAmount description] 
+	    @param boolean formatted denotes whether the 
+	    @param string @since __ locale a string defining the locale the format should follow
+	*/
+	GRGivingSupport.prototype.getAmount = function(formatted, locale) {
 	    if(typeof formatted == "undefined") formatted = false;
+	    if(typeof locale == "undefined") locale = "en-ca";
 
 	    var amt = 0;
 	    var symbol = options.currencySymbol;
@@ -3711,10 +3803,19 @@ webpackJsonp([0],[
 	            symbol = currencySymbols[currency];
 	    }
 
-	    if(formatted)
-	        return symbol + amt.toString();
-	    else
+	    if(formatted) {
+	        switch(locale) {
+	            case 'fr-ca':
+	                return amt.toString()+" "+symbol;
+	            break;
+	            default: 
+	                return symbol + amt.toString();
+	            break;
+	        }
+	    }
+	    else {
 	        return amt;
+	    }
 	    
 	}
 

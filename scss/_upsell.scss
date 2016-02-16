@@ -260,11 +260,12 @@ button.upsell-modal--close{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 0;
-    @include fontSize-small;
+    @include fontSize-base;
   }
 
   .upsell-subtitle{
-    display: none;
+    //display: none;
+    @include fontSize-base;
   }
   .upsell-recommendation{
     margin-top: 5px;

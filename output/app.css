@@ -5319,6 +5319,13 @@ label {
   position: relative;
   padding-top: 35px;
 }
+@media screen and (max-width: 767px) {
+  .steps-list {
+    height: auto;
+    border-bottom: none;
+    padding-top: 0;
+  }
+}
 .steps-list ul {
   list-style: none;
   margin: 0;
@@ -5640,6 +5647,7 @@ label {
 }
 #grdonation .btn-next {
   margin-top: 17px;
+  white-space: normal;
   border-radius: 0;
   border: 1px solid #FFFFFF;
   color: #FFFFFF;
@@ -6201,11 +6209,11 @@ button.upsell-modal--close:active {
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 0;
-    font-size: 0.5rem;
+    font-size: 16px;
   }
 
   .upsell-subtitle {
-    display: none;
+    font-size: 16px;
   }
 
   .upsell-recommendation {

@@ -443,6 +443,11 @@
   @include thickBlueLine;
   position: relative;
   padding-top: 35px;
+  @include mobileAndTablet {
+    height: auto;
+    border-bottom: none;
+    padding-top: 0;
+  }
   ul {
 	list-style: none;
 	margin: 0;
@@ -786,6 +791,7 @@
 
   .btn-next {
 	margin-top: 17px;
+    white-space: normal;
 	@include cta-button--red;
 
 	.glyphicon-chevron-right {

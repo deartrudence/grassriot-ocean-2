@@ -152,7 +152,7 @@ GRSteps.prototype.hasRequiredOptions = function(options, req) {
 GRSteps.prototype.hideStep = function(index) {
   if(this.disabledSteps.indexOf(index) === -1) {
     this.disabledSteps.push(index);
-    $(this.options.steps[index]).children().css('visibility', 'hidden');
+    $(this.options.steps[index]).children().css('visibility', 'hidden').find('input,select,textarea').prop('disabled', true);
     if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
       this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
     }
@@ -168,7 +168,7 @@ GRSteps.prototype.hideStep = function(index) {
 GRSteps.prototype.showStep = function(index) {
   if(this.disabledSteps.indexOf(index) !== -1){
     this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
-    $(this.options.steps[index]).children().css('visibility', '');
+    $(this.options.steps[index]).children().css('visibility', '').find('input,select,textarea').prop('disabled', false);
     if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
       this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
     }

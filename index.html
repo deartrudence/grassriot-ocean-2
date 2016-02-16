@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en-ca">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,15 +17,20 @@
   <link rel="stylesheet" href="output/app.css">
 	<!--script src="http://cdn.raygun.io/raygun4js/raygun.min.js"></script-->
   
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script type="text/javascript">
 
-    // ga('create', 'UA-2854575-1', 'auto');
-    // ga('send', 'pageview');
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2430383-17']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
   </script>
+
   <script>
     /*Raygun.init('uiv4Ngo9EFGKmmfVfksyaA==', {
       excludedHostnames: [],
@@ -37,6 +42,30 @@
   
   </head>
   <body>
+    <!-- Data Layer for GTM -->
+    <script>
+    dataLayer = [];
+    </script>
+    <!-- End Data Layer for GTM -->
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMN9D7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMN9D7');</script>
+    <!-- End Google Tag Manager -->
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <!-- Error Modal -->
     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -280,11 +309,11 @@
 <div class="js-formOpen-labelText hide">Donate</div>
 <div class="js-backButton-labelHTML hide">Go Back</div>
 <div class="js-nextButton-labelHTML hide">Next<span class="glyphicon glyphicon-chevron-right"></span></div>
-<div class="js-donateButton-labelText hide">Donate</div>
+<div class="js-actionButton-labelText hide">Donate</div>
 <div class="js-step1-labelText hide">Amount</div>
 <div class="js-step2-labelText hide">Billing</div>
 <div class="js-step3-labelText hide">Options</div>
-<div class="js-step4-labelText hide">Payment</div>
+<div class="js-step6-labelText hide">Payment</div>
 <ul class="hide">
   <li class="hide">Canada Campaign: <span class="js-campaignId-CA">46495</span></li>
   <li class="hide">US/International Campaign: <span class="js-campaignId-USINT">46497</span></li>
@@ -748,7 +777,7 @@
 
 </div>
 <div id='In_honour_or_in_memoriamDiv' class='eaFullWidthContent'><div class="eaQuestionLabel">&nbsp;</div><div class="eaQuestionCheckboxFormFieldContainer">
-<span class='eaQuestionCheckbox'><input id='In_honour_or_in_memoriamY' type='checkbox' name='In honour or in memoriam' value='Y' onblur='validatefield(this, false, false, false);' /><label for="In_honour_or_in_memoriamY">In honour or in memorium</label></span>&nbsp;&nbsp;&nbsp;</div>
+<span class='eaQuestionCheckbox'><input id='In_honour_or_in_memoriamY' type='checkbox' name='In honour or in memoriam' value='Y' onblur='validatefield(this, false, false, false);' /><label for="In_honour_or_in_memoriamY">In honour or in memoriam</label></span>&nbsp;&nbsp;&nbsp;</div>
 </div>
 <div id='Tribute_OptionsDiv' class='eaFullWidthContent'><div id='Tribute_OptionsError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><a name='Tribute_Options' style='text-decoration:none; color: inherit;'>In honour</a></span>
@@ -1654,6 +1683,7 @@
       <option value='15th of each month'>15th of each month</option>
    </select>
 </div>
+</div>
 <div id='DD_Bank_NameDiv' class='eaFullWidthContent'><div id='DD_Bank_NameError' class='eaErrorMessage'></div>
 <span class='eaFormElementLabel'><label for='DD_Bank_Name'><a name='DD_Bank_Name' style='text-decoration:none; color: inherit;'>Bank Name</a></label></span>
 <div id='DD_Bank_NameField' class='eaFormField'>
@@ -1740,10 +1770,14 @@
 </div>
 <div id='[GR]_Form_ExplainerDiv' class='eaFullWidthContent'><p class="js-form-explainer">To make a tribute or in memoriam donation, use this form.</p>
 </div><div id='[GR]_Upsell_ModalDiv' class='eaFullWidthContent'>
+  <input type="hidden" name="LIC Upsell" class="js-licUpsellToggle" value="on" />
+  <div class="hide js-offerUpsellBelow">500</div>
   <div id="upsell-modal" class="modal fade">
     <div class="modal-dialog modal-body modal-content upsell-modal--body">
       <div class="upsell-container">
         <div class="upsell-panel upsell-cta">
+          <img class="hide js-licContent" src="img/upsell.jpg"/>
+          <img class="hide js-monthlyContent" src="img/upsell.jpg"/>
           <h3 class="upsell-title js-licContent">Make your gift go further</h3>
           <h3 class="upsell-title js-monthlyContent">Make your gift go further</h3>
         </div>

@@ -249,10 +249,10 @@ GRGivingSupport.prototype.init = function() {
         $form.find(options.components.processor.selector).on('change', function(e) {
             if(typeof processorFields[$(this).val()] != "undefined") {
                 if(processorFields[$(this).val()]['hide']) {
-                    $(processorFields[$(this).val()]['hide'].join(', ')).hide();
+                    $(processorFields[$(this).val()]['hide'].join(', ')).hide().find('input, select, textarea').prop('disabled', true);
                 }
                 if(processorFields[$(this).val()]['show']) {
-                    $(processorFields[$(this).val()]['show'].join(', ')).show();
+                    $(processorFields[$(this).val()]['show'].join(', ')).show().find('input, select, textarea').prop('disabled', false);
                 }
             }
         });
@@ -409,8 +409,13 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
     }
 }
 
-GRGivingSupport.prototype.getAmount = function(formatted) {
+/** [getAmount description] 
+    @param boolean formatted denotes whether the 
+    @param string @since __ locale a string defining the locale the format should follow
+*/
+GRGivingSupport.prototype.getAmount = function(formatted, locale) {
     if(typeof formatted == "undefined") formatted = false;
+    if(typeof locale == "undefined") locale = "en-ca";
 
     var amt = 0;
     var symbol = options.currencySymbol;
@@ -429,10 +434,19 @@ GRGivingSupport.prototype.getAmount = function(formatted) {
             symbol = currencySymbols[currency];
     }
 
-    if(formatted)
-        return symbol + amt.toString();
-    else
+    if(formatted) {
+        switch(locale) {
+            case 'fr-ca':
+                return amt.toString()+" "+symbol;
+            break;
+            default: 
+                return symbol + amt.toString();
+            break;
+        }
+    }
+    else {
         return amt;
+    }
     
 }
 
