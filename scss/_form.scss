@@ -31,8 +31,8 @@ label{
 }
 
 .form{
-  background: $form-background;
-  background-repeat: repeat-y;
+  //background: $form-background;
+  //background-repeat: repeat-y;
   background-color: white;
   @include formContainer;
   @include z-extraHighest;
@@ -65,8 +65,8 @@ label{
 
 #grdonation form {
 	
-    background: $form-background;
-    background-repeat: repeat-y;
+    //background: $form-background;
+    //background-repeat: repeat-y;
     background-color: white;
 
   &.is-active{
@@ -241,8 +241,8 @@ label{
   }
 
   .form-navbar {
-    background: $form-background;
-    background-repeat: repeat-y;
+    //background: $form-background;
+    //background-repeat: repeat-y;
     background-color: white;  // overflow-y: auto;
     width: 100%;
     //height: $form-navbar-height;
