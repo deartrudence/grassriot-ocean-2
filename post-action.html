@@ -136,93 +136,127 @@
         <input type='hidden' name='ea.form.id' value='11256' />
         <input type='hidden' name='ea.submitted.page' value='2' />
         <input type='hidden' name='sessionId' value='e26f28c4-2690-4e98-b249-e0f66b228c0d' />
+        <div id='[GR]_Transaction_DetailsDiv' class='eaFullWidthContent'>
+          <ul class="transaction_details js-transactionDetails hide">
+            <li>Campaign Name: <span class="campaign_name">test-campaign</span></li>
+            <li>Transaction ID: <span class="transaction_id">{receipt_data~id}</span></li>
+            <li>Amount: <span class="donation_amount">{receipt_data~amount}</span></li>
+            <li>Currency: <span class="currency">{receipt_data~currency}</span></li>
+            <li>Campaign Id: <span class="campaign_id">{receipt_data~campaignId}</span></li>
+            <li>Recurring Status: <span class="frequency">{receipt_data~recurringStatus}</span></li>
+            <!--li>Company Name: <span class="organization_name">{user_data~Organization Name}</span></li>
+            <li>Memoriam Name: <span class="memoriam_name">{user_data~Memoriam Name}</span></li>
+            <li>Honouree Name: <span class="honouree_name">{receipt_data~inMemhonoreeName}</span></li>
+            <li>First Name: <span class="first_name">{user_data~First_Name}</span></li>
+            <li>Last Name: <span class="last_name">{user_data~Last_Name}</span></li-->
+          </ul>
+        </div>
           
-          <div id='Canada:Site_C_-_July2015_Mexico:_Yecenia_Graciano_-_July2015_Grassriots_Draft_Mexico:_Yecenia_Graciano_-_July2015_Grassriots_Post-Action_HeaderDiv' class='eaLeftColumnContent'>
-
-            <div class="js-heroContent">
-              <div class="heroImageContainer">
-                <img class="js-hero-image heroImage" src="img/hero-postaction.jpg" />
+          <div id='[GR]_Post-Action_HeaderDiv' class='eaFullWidthContent'><div class="js-heroContent">
+<div class="heroImageContainer">
+                <img class="js-hero-image heroImage" src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1803/hero-postaction.jpg" border="0" />
                 <span class="js-heroCaption photoCaption">Photo credit goes here</span>
               </div>
-              <div class="mobile-center">
-                <h1 class="heroTitle">Thank you {user_data~First Name}</h1>
-                <p>With your help we're poised to do even more to preserve a natural future.</p>
-                <p>Learn more about our work across Canada, including how you can get involved at natureconservancy.ca</p>
-                <p><em class="heroContent-cta">Do even more by letting people know you've donated to us.</em></p>
-              
-                <div class="heroSummary">
-                  <p class="heroSummary-details">Your donation details: `recurring` `amount` `memorial` `company name` `honoree`</p>
-                  <p class="heroSummary-message">You will receive a charitable tax receipt for the full amount of your gifts via email shortly.</p>
-                </div>
-              </div>
-            </div>
-            <!-- <img class="js-postaction-heroBg hidden" src="img/postaction-header.jpg"/> -->
-          </div>
-
-          <div id='Canada:Site_C_Post-Action_Right_HeaderDiv' class='eaLeftColumnContent'>
-          <div class="share-block clearfix facebook"><div class="mobile-center"><h3 class="sharing-title">SHARE THIS IMPORTANT ASK WITH YOUR FRIENDS</h3><div class="share-content-container">
-            <div class="share-content-padding">
-              <div class="share-content">
-                <div class="fb-block-wrap">
-                  <div class="fb-block">
-                    <div class="facebook-image">
-                    </div><div class="fb-content-container">
-                      <div class="fb-content">
-                        <strong class="facebook-title"></strong>
-                        <p class="facebook-description"></p>
-                      </div>
+<div class="mobile-center">
+<h1 class="heroTitle">Thank you {user_data~First Name}</h1>
+<p>With your help we're poised to do even more to preserve a natural future.</p>
+<p>Learn more about our work across Canada, including how you can get involved at natureconservancy.ca</p>
+<p><em class="heroContent-cta">Do even more by letting people know you've donated to us.</em></p>
+<div class="heroSummary">
+<p class="heroSummary-details js-heroSummary">Your donation details: <span class="js-personalGift">{user_data~First_Name} {user_data~Last_Name}</span><span class="js-orgGift js-dynamicField js-dynamicFieldContainer">{user_data~Organization Name}</span> donated <span class="js-amount">{receipt_data~amount}</span><span class="js-frequency"></span><span class="js-memorialGift js-dynamicFieldContainer"> in memory of <span class="js-dynamicField">{user_data~Memoriam Name}</span></span><span class="js-honourGift js-dynamicFieldContainer"> in honour of <span class="js-dynamicField">{user_data~Honoree Name}</span></span>.</p>
+<p class="heroSummary-message">You will receive a charitable tax receipt for the full amount of your gifts via email shortly.</p>
+</div>
+</div>
+</div>
+</div>
+<div id='[GR]_Post-Action_Share_FacebookDiv' class='eaFullWidthContent'><div class="share-block clearfix facebook">
+<div class="mobile-center">
+<h3 class="sharing-title">SHARE THIS IMPORTANT ASK WITH YOUR FRIENDS</h3>
+<div class="share-content-container">
+<div class="share-content-padding">
+<div class="share-content">
+<div class="fb-block-wrap">
+<div class="fb-block">
+<div class="facebook-image">
                     </div>
-                  </div>
-                </div>
-              </div>
-              <a href="#" class="share-button facebook"><span class="socialicon socialicon-facebook"></span><span>SHARE NOW</span></a>
+<div class="fb-content-container">
+<div class="fb-content">
+                        <strong class="facebook-title"> </strong>
+<p class="facebook-description"> </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a href="#" class="share-button facebook"><span class="socialicon socialicon-facebook"> </span><span>SHARE NOW</span></a>
             </div>
-          </div></div></div>
-          </div><div id='Canada:Site_C_Post-Action_Right_HeaderDiv' class='eaLeftColumnContent'>
-          <div class="share-block clearfix twitter"><div class="mobile-center"><h3 class="sharing-title">GET THE WORD OUT ON TWITTER</h3><div class="share-content-container">
-            <div class="share-content-padding">
-              <div class="share-content"><p class="word-bubble twitter-text"></p>
-              </div>
-              <a href="#" class="share-button twitter"><span class="socialicon socialicon-twitter"></span><span>TWEET NOW</span></a>
+</div>
+</div>
+</div>
+</div>
+<div id='[GR]_Post-Action_Share_TwitterDiv' class='eaFullWidthContent'><div class="share-block clearfix twitter">
+<div class="mobile-center">
+<h3 class="sharing-title">GET THE WORD OUT ON TWITTER</h3>
+<div class="share-content-container">
+<div class="share-content-padding">
+<div class="share-content">
+<p class="word-bubble twitter-text"> </p>
+</div>
+<a href="#" class="share-button twitter"><span class="socialicon socialicon-twitter"> </span><span>TWEET NOW</span></a>
             </div>
-          </div></div>
-          </div>
-          </div><div id='Canada:Site_C_Post-Action_Right_HeaderDiv' class='eaLeftColumnContent'>
-          <div class="share-block clearfix email"><div class="mobile-center"><h3 class="sharing-title">EMAIL THIS ASK TO THE PEOPLE YOU CARE MOST ABOUT.</h3><div class="share-content-container">
-            <div class="share-content-padding"><div class="share-content"><div class="email-box"><div class="mail-container"><p class="mail-body"><strong class="mail-subject"></strong><br/></p></div></div></div>
-              <a href="#" class="share-button mail"><span class="socialicon socialicon-email"></span><span>EMAIL NOW</span></a>
+</div>
+</div>
+</div>
+</div>
+<div id='[GR]_Post-Action_Share_EmailDiv' class='eaFullWidthContent'><div class="share-block clearfix email">
+<div class="mobile-center">
+<h3 class="sharing-title">EMAIL THIS ASK TO THE PEOPLE YOU CARE MOST ABOUT.</h3>
+<div class="share-content-container">
+<div class="share-content-padding">
+<div class="share-content">
+<div class="email-box">
+<div class="mail-container">
+<p class="mail-body"><strong class="mail-subject"> </strong></p>
+</div>
+</div>
+</div>
+<a href="#" class="share-button mail"><span class="socialicon socialicon-email"></span><span>EMAIL NOW</span></a>
             </div>
-            </div>
-          </div>
-          </div>
-          </div>
-          <div id='Canada:Site_C_Post-Action_Social_ShareDiv' class='eaRightColumnContent'>
-          <div class="social-block">
-          <h2>Now, you can make an even greater impact.</h2>
-          <ul class="social">
-          <li class="facebook">Facebook
-            <ul>
-              <li class="u">http://actionpage.here</li>
-              <!--li class="image">img/fb-image.png</li-->
+</div>
+</div>
+</div>
+</div>
+<div id='[GR]_Post-Action_Share_ContentDiv' class='eaFullWidthContent'><div class="social-block hide">
+<h2>Now, you can make an even greater impact.</h2>
+<ul class="social">
+<li class="facebook">Facebook
+            
+<ul>
+<li class="u">http://actionpage.here</li>
+<!--li class="image">https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1803/fb-image.png</li-->
               <!--li class="title">Site c dam violates rights</li-->
               <!--li class="description">Tell the British Colombia government it cannot ignore the human rights of indigenous peoples. The construction of the dam, and the flooding of more than 80</li-->
-            </ul>
-          </li>
-          <li class="twitter">
-            <ul>
-              <li class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod #LOREMIPSUM</li>
-              <li class="url">http://bit.ly/1Pp3HLo</li>
-              <li class="img"><img src="http://localhost/ncc-giving/img/sharing.jpg"></li>
-            </ul>
-          </li>
-          <li class="mail">
-            <ul>
-              <li class="subject">Donate to our Lorem Ipsum Fund.</li>
-              <li class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</li>
-            </ul>
-          </li>
-          </ul>
-          </div></div>
+            
+</ul>
+</li>
+<li class="twitter">
+            
+<ul>
+<li class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod #LOREMIPSUM</li>
+<li class="url">http://bit.ly/1Pp3HLo</li>
+<li class="img"><img src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1803/sharing.jpg" border="0" /></li>
+</ul>
+</li>
+<li class="mail">
+            
+<ul>
+<li class="subject">Donate to our Lorem Ipsum Fund.</li>
+<li class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
           <span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_2"></span>
 
 </form>

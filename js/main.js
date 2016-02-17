@@ -34,6 +34,7 @@ var $firstStepForm = $('#firstStepForm');
 var formOpenButton = ".js-formOpen";
 var formOpenButtonLabel = ".js-formOpen-label";
 var formLanguage = $('html').attr('lang');
+var monthlyText = (formLanguage == 'fr-ca' ? ' Chaque&nbsp;mois' : ' Monthly');
 var windowSize;
 
 //Upsell
@@ -159,6 +160,7 @@ var ENBeautifierFillersContainers = {
     '.js-formHeader',
     '#'+fields.recur_pay.nameNoSpace+'Div', 
     '#'+fields.amt.nameNoSpace+'Div',
+    '#'+fields.bank_amt.nameNoSpace+'Div',
   ],
   '#gr_details': [
     '.js-donorInformation', 
@@ -248,7 +250,7 @@ require("modal");
 require("tooltip");
 require("popover");
 
-// var $submit = $(".eaSubmitButton");
+var $submit;
 var $error_modal = $("#error-modal");
 var $validErrModal = $("#validErrModal");
 var formErrors = [ ];
@@ -737,7 +739,7 @@ function setupAction(){
         if(todaysDay > 1 && todaysDay <=15) {
           recurringDay = 15;
         } else if(todaysDay > 15) {
-          recurringDay = 30;
+          recurringDay = 29;
         }
         $(fields.recur_day.selector).val(recurringDay);
         
@@ -1002,16 +1004,15 @@ function setupAction(){
           .on(
             'change',
             'input[name="'+fields.amt.name+'"], input[name="Donation Amount Other"], input[name="'+fields.recur_pay.name+'"]',
-            function(e) {
-                var monthly = (formLanguage == 'fr-ca' ? ' chaque&nbsp;mois' : ' Monthly');
-                $submit.html(($('.js-actionButton-labelText').length ? $('.js-actionButton-labelText').text() : 'Donate')+" " + grGiving.getAmount(true, formLanguage) + (grGiving.isRecurring() ? monthly : ''));
+            function(e) { 
+                updateButtonText();
             })
           /*.on(
             'change',
             fields.country.selector,
             handleCountryChange)*/
           .on('submit', sendDonation);
-        $form.find(fields.amt.selector).trigger('change');
+        updateButtonText();
 
         //add name to submit button for EN
         $submit.attr("name", "submitter");
@@ -1019,7 +1020,6 @@ function setupAction(){
         //Remove the original donate input
         //TODO: integrate this in to the actual form code
         $('input[name="'+fields.amt.name+'"][type="text"]').remove();
-
 
         grupsell = new GRUpsell({
             form: $form,
@@ -1058,6 +1058,11 @@ function setupAction(){
                 || $(fields.pay_type.selector).val().toLowerCase() == 'paypal'
               );
             },
+            'onDeclineFormUpdates': function() { 
+                if(!grGiving.isRecurring()) {
+                  this.options.recurringField.filter(':checked').val('');
+                }
+            },
             onUpsellFormUpdates: function() {
                 if(grGiving.isRecurring()) { 
                     this.options.donationAmountField.filter(':checked').val(this.upsellAmount.toFixed(2));
@@ -1074,9 +1079,15 @@ function setupAction(){
                     $('.js-monthlyContent').hide();
                     $('.js-licDifference').text(this.upsellAmount-this.initialAmount);
                     gr.replaceENTemplateTags($form, $('.upsell-copy'), fields, {start: "`", end: "`"});
+                    if($('.upsell-cta').find('img.js-licContent').length) {
+                      $('.upsell-cta').css('background-image', 'url('+$('.upsell-cta').find('img.js-licContent').attr('src')+')');
+                    }
                     this.upsellType = 'LIC';
                 } else if(!grGiving.isRecurring()) {
                     $('.js-licContent').hide();
+                    if($('.upsell-cta').find('img.js-monthlyContent').length) {
+                      $('.upsell-cta').css('background-image', 'url('+$('.upsell-cta').find('img.js-monthlyContent').attr('src')+')');
+                    }
                     this.upsellType = 'MON';
                 }
             }
@@ -1137,6 +1148,10 @@ function setupAction(){
 	} catch(error) {
 		graygunner.sendError(error);
 	}
+}
+
+function updateButtonText() {
+  $submit.html(($('.js-actionButton-labelText').length ? $('.js-actionButton-labelText').text() : 'Donate')+" " + grGiving.getAmount(true, formLanguage) + (grGiving.isRecurring() ? monthlyText : ''));
 }
 
 function setupDonationOptions() {
@@ -1295,6 +1310,20 @@ function setupTY(){
         $("body").addClass("post-action");
         $transaction_details = $(".js-transactionDetails");
 
+        //handle post action summary text
+        var $heroSummary = $('.js-heroSummary');
+        $heroSummary.find('.js-dynamicField').each(function() {
+          if($.trim($(this).text()).length === 0) {
+            $(this).closest('.js-dynamicFieldContainer').hide();
+          }
+        });
+        if($.trim($heroSummary.find('.js-orgGift').text()).length) {
+          $heroSummary.find('.js-personalGift').hide();
+        }
+        if($transaction_details.find(".frequency").text() === "ACTIVE") {
+          $('.js-heroSummary').find('.js-frequency').text(' '+monthlyText.toLowerCase());
+        }
+
 
         var transactionData = {
             'id': $transaction_details.find(".transaction_id").text(),
@@ -1336,8 +1365,8 @@ function setupTY(){
 
         enbeautifier.moveToTargets({
           '.js-campaign': '.sharingSection-title',
-          '.js-campaign': '.eaFullWidthColumnContent',
-          '.js-campaign': '.eaLeftColumnContent',
+          '.js-campaign': '.eaFullWidthContent',
+          //'.js-campaign': '.eaLeftColumnContent',
           // '.js-campaign': '.social-block',
           '.share-block .twitter-text': ['.social .twitter .text', '.social .twitter .img'],
           '.share-block .mail-subject': '.social .mail .subject',
@@ -1571,7 +1600,9 @@ function init_validation(){
                 invalidDate: 'Date is invalid',
                 invalidEmail: 'Please enter a valid email address.',
                 invalidPcode: 'Please enter a valid postcode',
-                invalidPhone: 'Please specify a valid phone number'
+                invalidPhone: 'Please specify a valid phone number',
+                invalidBranch: 'Invalid branch number',
+                invalidInstitution: 'Invalid institution number'
             },
             nowDate = new Date();
 
@@ -1654,6 +1685,16 @@ function init_validation(){
             var regexCVV = /^\d{3,4}$/;
             return regexCVV.test(value);
         }, errorMessages.invalidCVV);
+
+        $.validator.addMethod('isBankBranch', function (value, element) {
+            var regexBranch = /^\d{5}$/;
+            return regexBranch.test(value);
+        }, errorMessages.invalidBranch);
+
+        $.validator.addMethod('isBankInstitution', function (value, element) {
+            var regexInstitution = /^\d{3}$/;
+            return regexInstitution.test(value);
+        }, errorMessages.invalidInstitution);
 
         $.validator.addMethod('isPhone', function (value, element) {
             phone_number = phone_number.replace( /\s+/g, "" );
@@ -1771,17 +1812,20 @@ function init_validation(){
         validation_rules[fields.bank_acct.name] = {
             required: function(element) {
               return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
-            }
+            },
+            number: true
         };
         validation_rules[fields.bank_branch.name] = {
             required: function(element) {
               return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
-            }
+            },
+            isBankBranch: true
         };
         validation_rules[fields.bank_inst.name] = {
             required: function(element) {
               return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
-            }
+            },
+            isBankInstitution: true
         };
         validation_rules[fields.bank_auth.name] = {
             required: function(element) {
