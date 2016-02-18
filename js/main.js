@@ -832,7 +832,7 @@ function setupAction(){
             //step 1 handler
             function(){
               formErrors = [ ];
-              $("#gr_donation").find("input,select,textarea").valid();
+              $("#gr_donation").find("input,select,textarea").not(':disabled').valid();
               if(formErrors.length) {
                 handleErrors(formErrors);
                 return false;
@@ -844,7 +844,7 @@ function setupAction(){
             //step 2 handler
             function(){
               formErrors = [ ];
-              $("#gr_details").find("input,select,textarea").valid();
+              $("#gr_details").find("input,select,textarea").not(':disabled').valid();
               if(formErrors.length) {
                 handleErrors(formErrors);
                 return false;
@@ -856,7 +856,7 @@ function setupAction(){
             //step 3 handler
             function(){
               formErrors = [ ];
-              $("#gr_options").find("input,select,textarea").valid();
+              $("#gr_options").find("input,select,textarea").not(':disabled').valid();
               if(formErrors.length) {
                 handleErrors(formErrors);
                 return false;
@@ -868,7 +868,7 @@ function setupAction(){
             //step 4 handler
             function(){
               formErrors = [ ];
-              $("#gr_inmem").find("input,select,textarea").valid();
+              $("#gr_inmem").find("input,select,textarea").not(':disabled').valid();
               if(formErrors.length) {
                 handleErrors(formErrors);
                 return false;
@@ -880,7 +880,7 @@ function setupAction(){
             //step 5 handler
             function(){
               formErrors = [ ];
-              $("#gr_company").find("input,select,textarea").valid();
+              $("#gr_company").find("input,select,textarea").not(':disabled').valid();
               if(formErrors.length) {
                 handleErrors(formErrors);
                 return false;
@@ -893,7 +893,7 @@ function setupAction(){
             function(){
               formErrors = [ ];
               //let the stepper handle any errors
-              if( !$("#gr_payment").find("input,select,textarea").valid() ){
+              if( !$("#gr_payment").find("input,select,textarea").not(':disabled').valid() ){
                 handleErrors(formErrors);
                 return false;
               } 

@@ -4,7 +4,7 @@
   @include contentContainer;
   
   h1 {
-  	@include font-headN6;
+  	@include font-headN7;
   	@include fontSize-largerish;
   	padding: 20% 8% 20% 6%;
     text-transform: uppercase;
@@ -12,7 +12,7 @@
   }
   	    
   h2 {
-    @include font-headN4;
+    @include font-headN7;
     @include fontSize-large;
     color: $dark-green;
     @include line-hero;
@@ -20,7 +20,7 @@
   }
 
   h3 {
-    @include font-headN3;
+    @include font-headN4;
     @include fontSize-large;
     color: $light-green;
     @include line-hero;
@@ -37,7 +37,7 @@
   }
 
   h5 {
-    @include font-headN6;
+    @include font-headN7;
     @include fontSize-large;
    	@include line-tighter;
    	color: $dark-green;
@@ -94,12 +94,15 @@
   }
   padding-left: 10.2%;
   padding-right: 10.2%;
-  @include mobile {
-    p {
+  p {
+    @include line-base;
+    @include mobile {
       margin-bottom: 0;
       @include line-nearBase;
       @include fontSize-mediumLarge;
     }
+  }
+  @include mobile {
     h3, h2 {
       display: inline;
       @include fontSize-largerish;
@@ -135,7 +138,7 @@
     background-color: $light-green;
     border-left: 6px solid $dark-green;
     color: $white;
-    @include font-bodyN3;
+    @include font-bodyN4;
     @include fontSize-mediumSmall;
     @include line-loose;
     &:after {
@@ -770,7 +773,7 @@ screen and (max-device-width:$screen-sm) {
 		padding-top: 20%;		
 		p {
 			color: $white;
-			@include font-bodyN6;
+			@include font-bodyN7;
 			@include fontSize-base;
 			@include line-base;
 		}
