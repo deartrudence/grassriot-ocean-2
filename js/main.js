@@ -742,6 +742,11 @@ function setupAction(){
           recurringDay = 29;
         }
         $(fields.recur_day.selector).val(recurringDay);
+
+        if(formLanguage == 'fr-ca') {
+          $(fields.sec_billing.selector).sibling('label').text('Utiliser cette adresse pour la facturation');
+          $(fields.inmem_inhon.selector).sibling('label').text('En l’honneur de ou In memoriam');
+        }
         
 
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
@@ -752,7 +757,7 @@ function setupAction(){
             prev: $('#slider .nav .prev'),
             slides: $('#slides > li'),
             timeout: 5000,
-            pager: '#pager',
+            pager: '.pager',
             pagerActiveClass: 'activeSlide',
             pagerTemplate: '<a href="#" class="dot"></a>',
             pauseOnHover: true
@@ -1046,10 +1051,12 @@ function setupAction(){
             declineCallback: function(){
                 $(fields.upsell_track.selector).val('N-'+this.upsellType+'-'+this.initialAmount);
                 grAnalytics.analyticsReport( 'payment/upsell-declined/'+this.upsellType );
+                $(".se-pre-con").fadeIn("slow");
             },
             upsellCallback: function(){
                 $(fields.upsell_track.selector).val('Y-'+this.upsellType+'-'+this.initialAmount);
                 grAnalytics.analyticsReport( 'payment/upsell-accepted/'+this.upsellType );
+                $(".se-pre-con").fadeIn("slow");
             },
             preventLaunch: function() {
               return (
@@ -1568,6 +1575,7 @@ function sendDonation(e) {
         return false;
     }
     else/* if(validated)*/ {
+        $(".se-pre-con").fadeIn("slow");
         $form.submit();
     }
     return false;
@@ -1606,13 +1614,28 @@ function init_validation(){
             },
             nowDate = new Date();
 
+        if(formLanguage=='fr-ca') {
+          errorMessages = {
+                invalidMonth: 'Mois invalide',
+                invalidCVV: 'Numéro de vérification invalide',
+                invalidAmount: 'Seulement les dons de 5 à 10 000 $ sont acceptés en ligne',
+                invalidDate: 'Date invalide',
+                invalidEmail: 'Veuillez saisir une adresse courriel valide',
+                invalidPcode: 'Veuillez saisir un code postal valide',
+                invalidPhone: 'Veuillez saisir un numéro de téléphone valide',
+                invalidBranch: 'Invalid branch number',
+                invalidInstitution: 'Invalid institution number'
+            };
+
+        }
+
         $.validator.addMethod('isValidDonation', function (value, element) {
             // Converts to string for processing.
             value += '';
 
             // Only numbers or digits. 
             // Allows use currency symbol in the start of line or in the end.
-            var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s,]+\.?\d+|\d+)|(\d+[\d\s,]+\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
+            var regExp = /^\s?([$£€]?\s{0,1}(\d+[\d\s,]*\.?\d+|\d+)|(\d+[\d\s,]*\.?\d+|\d+)\s{0,1}[$£€]?)\s?$/g;
 
             if (!regExp.test(value)) {
                 return false;
@@ -2036,6 +2059,7 @@ function handleErrors(errors, validator) {
 
     // Used for customization of input names in error message.
     var inputNamesMapper = { };
+    var isRequired = ' is required.';
 
     //standard fields
     /*inputNamesMapper[fields.postal.name] = 'Postal Code';
@@ -2052,6 +2076,15 @@ function handleErrors(errors, validator) {
 
     //bank payment
     inputNamesMapper[fields.bank_auth.name] = 'Accepting NCC\'s Pre-authorized Debit Agreement';
+
+    if(formLanguage=='fr-ca') {
+      inputNamesMapper[fields.cc_exp.name+'1'] = 'Le mois d’expiration de la carte de crédit est';
+      inputNamesMapper[fields.cc_exp.name+'2'] = 'L’année d’expiration de la carte de crédit est';
+      inputNamesMapper[fields.cc_cvv.name] = 'Le code CVV2 de la carte de crédit est';
+      inputNamesMapper[fields.inmem.name] = 'Veuillez sélectionner En l’honneur de ou In memoriam';
+      inputNamesMapper[fields.bank_auth.name] = 'Veuillez accepter les conditions du prélèvement automatique par CNC';
+      isRequired = ' requis';
+    }
 
     for (var i in errors) {
         var inputName = $(errors[i].element)
@@ -2072,7 +2105,7 @@ function handleErrors(errors, validator) {
         // Checking and replacing standard error message.
         if (errorType === 'required'
             && errors[i].message === 'This field is required.') {
-            errorMessage = inputName + ' is required.';
+            errorMessage = inputName + isRequired;
         } else {
             errorMessage = errors[i].message;
         }

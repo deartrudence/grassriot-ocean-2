@@ -305,8 +305,8 @@ GRGivingSupport.prototype.init = function() {
             })
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
-
-                $(this).closest("label").siblings("input[type=radio]").val($(this).val());
+                //@since __  parse out non-numbers
+                $(this).closest("label").siblings("input[type=radio]").val(filterAmount($(this).val()).toFixed(2));
             });
     }
 
@@ -423,7 +423,7 @@ GRGivingSupport.prototype.getAmount = function(formatted, locale) {
         amt = $form.find(options.components.amount.selector).filter(':checked').val();
 
     if(amt == 'other' || (!exists(options.components.amount) && exists(options.components.other))) 
-        amt = $form.find(options.components.other.selector).val().replace(/[^0-9\.]/g, '');
+        amt = filterAmount($form.find(options.components.other.selector).val());
 
     if(isNaN(parseFloat(amt)))
         amt = 0;
@@ -451,7 +451,7 @@ GRGivingSupport.prototype.getAmount = function(formatted, locale) {
 }
 
 GRGivingSupport.prototype.setAmount = function(amt, currency) {
-    amt = amt.replace(/[^0-9\.]/g, '');
+    amt = filterAmount(amt);
 
     var ask = options.components.amount;
     var other = options.components.other;
@@ -474,6 +474,18 @@ GRGivingSupport.prototype.setAmount = function(amt, currency) {
     
 }
 
+/**
+ * [filterAmount description]
+ * @param  {string} amt [description]
+ * @return {float}     [description]
+ * @since  __
+ */
+function filterAmount(amt) {
+    amt = amt.replace(/[^0-9\.]/g, '');
+    amt = parseFloat(amt);
+    if(isNaN(amt)) amt = 0;
+    return amt;
+}
 
 
 GRGivingSupport.prototype.updateAskString = function() {

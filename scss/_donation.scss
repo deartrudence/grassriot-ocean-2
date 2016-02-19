@@ -121,10 +121,6 @@
         }
     }
 
-    select{
-      margin-bottom: 25px;
-    }
-
   }
   #gr_options {
         .radiobutton label {
@@ -139,6 +135,9 @@
   padding-left: $form-text-padding;
   padding-right: $form-text-padding;
   margin-bottom: 20px;
+  h3 {
+    padding-left: 0px;
+  }
 }
 
 .js-form-explainer{
@@ -168,10 +167,10 @@
   color: $medium-light-grey;
 }
 
-.js-additional-comments{
+/*.js-additional-comments{
   margin-left: $form-text-padding;
   margin-right: $form-text-padding;
-}
+}*/
   
   // div.radiobutton {
   //   label {

@@ -13,7 +13,7 @@
   	    
   h2 {
     @include font-headN7;
-    @include fontSize-large;
+    @include fontSize-largerish;
     color: $dark-green;
     @include line-hero;
     margin: 0em 0em .5em;
@@ -91,6 +91,10 @@
 .campaignText-wrapper.wrapper {
   h2 {
     margin-bottom: 0;
+  }
+  h3 {
+    @include fontSize-largerish;
+    @include line-hero;
   }
   padding-left: 10.2%;
   padding-right: 10.2%;
@@ -420,7 +424,7 @@
       }
     }
   }
-  #pager {
+  .pager {
     position: absolute;
     bottom: 25px;
     left: 45.2%;
