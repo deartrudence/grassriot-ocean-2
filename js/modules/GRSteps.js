@@ -23,7 +23,8 @@ var defaults = {
     'startStep': 0,
     'useCSSAnimation': true,
     'addButtons': false,
-    'backButtons': true
+    'backButtons': true,
+    'enterAdvances': true  //@since __
 };
 
 var protect = {
@@ -81,6 +82,7 @@ GRSteps.prototype.init = function(){
 
   this.switchTo(this.options.startStep);
 
+  var self = this;
   //handle tabbing issue
   $(this.options.steps).on('keydown', 'input, select, textarea, button', function(e) {
       if(e.which == 9) {
@@ -96,6 +98,12 @@ GRSteps.prototype.init = function(){
               $lastTabbable.focus();
               //formSteps.previousStep();
           }
+      } else if(e.which == 13 && self.options.enterAdvances) { //@since __
+        e.preventDefault(); 
+        e.stopPropagation(); 
+
+        $(this).trigger('change');
+        self.nextStep();
       }
   });
   
