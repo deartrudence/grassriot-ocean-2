@@ -149,7 +149,9 @@ $stepsActive_advancedBackground: linear-gradient($medium-green 40%, $dark-green 
 $stepsActive_border: none;
 $stepsActive_colour: $white;
 $stepsActive_arrowBackground: $dark-green;
-$stepsComplete_colour: $black;
+$stepsComplete_colour: $charcoal;
+$stepsComplete_background: $indicator-light-grey;
+$stepsComplete_advancedBackground: linear-gradient($indicator-light-grey 40%, $indicator-dark-grey 60%);
 
 $amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-green,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
