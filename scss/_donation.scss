@@ -40,7 +40,7 @@
         }
         margin: 0 0 25px 0px;
         display: block;
-        width: 46.5%;
+        width: 48.5%;
 
         label {
           display: block;
@@ -53,6 +53,7 @@
           box-shadow: 1px 1px 2px rgba($black, 0.3);
           margin-bottom: 0;
           padding-right: 3em;
+          white-space: nowrap;
         }
         *:focus {
           outline: 0;
@@ -72,14 +73,18 @@
         input[type='radio']:empty ~ label, input[type='checkbox']:empty ~ label {
           position: relative;
           padding-left: 3.5em;
-          padding-top: .2em;
-          padding-bottom: .2em;
+          // padding-top: .2em;
+          // padding-bottom: .2em;
           min-height: 3em;
           cursor: pointer;
           -webkit-user-select: none;
           -moz-user-select: none;
           -ms-user-select: none;
           user-select: none;
+          padding-top: 6px;
+          padding-bottom: 6px;
+          @include fontSize-base;
+          @include line-tighter;
         }
         input[type='radio']:empty ~ label:before, input[type='checkbox']:empty ~ label:before {
           position: absolute;
@@ -98,6 +103,7 @@
         input[type='radio']:not(:checked) ~ label:hover:before, input[type='checkbox']:not(:checked) ~ label:hover:before {
           content: '\2714';
           text-indent: .9em;
+
         }
         input[type='radio']:not(:checked) ~ label:hover, input[type='checkbox']:not(:checked) ~ label:hover {
           background-color: lighten($lightest-grey, 5%);
@@ -122,12 +128,39 @@
     }
 
   }
+
+  #gr_donation {
+    div.radiobutton{
+      width: 46.5%;
+    }
+  }
   #gr_options {
         .radiobutton label {
             padding-right: 3%;
         }
+
+        .page div.eaQuestionCheckboxFormFieldContainer{
+          padding: 0;
+        }
+  }
+
+  #gr_payment h3{
+    padding-left: 0;
+    margin: 0;
   }
 }
+
+#In_MemoriamDiv{
+  margin-bottom: 20px;
+}
+#Tribute_OptionsDiv{
+  margin-bottom: 8px;
+}
+
+#Additional_CommentsDiv{
+  padding-top: 25px;
+}
+
 
 .donationSummary{
   @include fontSize-base;
@@ -135,6 +168,9 @@
   padding-left: $form-text-padding;
   padding-right: $form-text-padding;
   margin-bottom: 20px;
+  padding-top: 10px;
+  color: $medium-light-grey;
+
   h3 {
     padding-left: 0px;
   }
@@ -336,6 +372,7 @@
 
   label{
     @include fontSize-base;
+    @include line-nearBase;
     color: $medium-light-grey;
   }
 }
@@ -345,7 +382,9 @@
     display: block;
     clear: both;
     padding-left: 0;
+    padding-top: 10px;
     @include formSectionHeader;
+    margin-bottom: 15px;
   }
 
   .eaFormElementLabel .label-note{
@@ -361,6 +400,7 @@
   margin-left: 0;
   float: left;
   width: 32%;
+  padding-bottom: 25px;
 }
 
 .no-padding {
@@ -476,6 +516,8 @@
 
 	  &.is-complete {
 		color: $stepsComplete_colour;
+    background: $stepsComplete_background;
+    @include background($stepsComplete_advancedBackground);
 	  }
 
 	  &.active:after{

@@ -961,8 +961,8 @@ function setupAction(){
             askStringSelector: '#donation-ranges',
             askStringContainerClass: 'levels',
             recurrenceOptions: [
-                {label: 'One-time Donation', 'value': ''},
-                {label: 'Give monthly', 'value': 'Y'}
+                {label: 'One-time<br /> Donation', 'value': ''},
+                {label: 'Give<br /> monthly', 'value': 'Y'}
             ],
             processorFields: { 
                 'Paypal': {

@@ -235,7 +235,7 @@
   .colleft {
     @include font-headN4;
     float: left;
-    width: 40%;
+    width: 43%;
     padding-right: 31px;
     border-right: 6px solid $light-green;
 
@@ -246,7 +246,7 @@
     @include mobile {
       @include fontSize-xlarge;
       @include line-tight;
-      padding-bottom: 32px;
+      padding-bottom: 12px;
       padding-top: 0px;
     }
 
@@ -254,21 +254,25 @@
 
   .colright {
     float: left;
-    width: 60%;
+    width: 57%;
     list-style: disc outside;
     padding-left: 31px;
     margin-left: -6px;
     border-left: 6px solid $light-green;
     @include fontSize-base;
 
+    @include mobile{
+      margin-bottom: 54px;
+    }
+
     li {
       margin-bottom: 1em;
       margin-left: 15px;
 
       @include mobile {
-        margin-bottom: 32px;
+        margin-bottom: 12px;
         margin-left: 28px;
-        @include line-loosest;
+        @include line-nearBase;
         @include fontSize-mediumLarge;
       }
 
