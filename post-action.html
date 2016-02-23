@@ -15,7 +15,7 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="output/app.css">
-  <!--script src="http://cdn.raygun.io/raygun4js/raygun.min.js"></script-->
+  <script src="//cdn.raygun.io/raygun4js/raygun.min.js"></script>
   
   <script type="text/javascript">
 
@@ -31,12 +31,14 @@
 
   </script>
   <script>
-    /*Raygun.init('uiv4Ngo9EFGKmmfVfksyaA==', {
-      excludedHostnames: [],
-      ignore3rdPartyErrors: false
+    Raygun.init('84loGgXh0JfJ8zTwasecSQ==', {
+      excludedHostnames: ['matter','localhost'],
+      ignore3rdPartyErrors: false,
+      disableErrorTracking: false,
+      disablePulse: false
     }).attach();
     Raygun.setFilterScope('all');
-    Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
+    /*Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
   </script>
 
   <meta property="og:title" content="Donate to our Lorem Ipsum Fund."/>
