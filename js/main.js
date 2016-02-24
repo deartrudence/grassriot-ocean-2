@@ -144,7 +144,7 @@ var fieldsToSwap = {
 //Key:Value :: Target:Content
 var ENBeautifierFillers = {
   ".js-page-header": ".js-languageToggle", 
-  ".js-hero": ".js-heroContent",
+  ".js-hero": [".js-heroContent",".js-raygunMonthlyDDError"],
   ".js-campaign": ".js-campaignText",
   ".js-impact": ".js-impactText",
   ".js-cta-ask": ".js-ctaAskText",
@@ -332,24 +332,18 @@ function init() {
  * @return {[type]} [description]
  */
 function setupTracking(){
+    var trackerName = false;
+    //this doesn't work due to asynchronous loading - not necessary because regular google analytics is installed
+    /*if(typeof ga !== "undefined" && ga.getAll().length) {
+      trackerName = ga.getAll()[0].get('name');
+    }
+    console.log(trackerName);*/
     grAnalytics = new GRAnalytics({
         form: $form,
+        ignoreGTM: true,
+        gtmTrackerName: trackerName,
         'events': [ 
-            // {   
-            //     'selector': '[name="Payment Currency"]:not(a)', 
-            //     'event': 'change',
-            //     'virtualPageview': 'payment/currency-changed'
-            // },
-            // {   
-            //     'selector': '[name="Donation Amount"]:not(a)', 
-            //     'event': 'change',
-            //     'virtualPageview': 'payment/donation-changed'
-            // },
-            // {   
-            //     'selector': '[name="Recurring Payment"]:not(a)', 
-            //     'event': 'change',
-            //     'virtualPageview': 'payment/recurrence-changed'
-            // }
+            
         ]
     });
 
@@ -714,6 +708,21 @@ function setupPage(){
 function setupAction(){
 
 	try{
+        //NCC only - throw error if class denoting the Bank Direct Debit page 1 is present [users should never land on this page]
+        if($('.js-raygunMonthlyDDError').length) {
+          try {
+              throw new Error("Direct Debit Page 1");
+          }
+          catch (error) {
+            graygunner.sendError(error, {
+                data: {
+                    errors: ($('#eaerrors').length ? $('#eaerrors').text() : 'none reported')
+                },
+                forms: [ENFormSelector]
+            });
+          }
+        }
+
         //look for campaign id settings, if missing, assign a default value
         campaignIdMap = {
           CA: ($('.js-campaignId-CA').length ? $('.js-campaignId-CA').text() : $('input[name="ea.campaign.id"]').val()),
@@ -1162,6 +1171,7 @@ function updateButtonText() {
 }
 
 function setupDonationOptions() {
+  var initialState = true;
 
   $donationSummary.after($donationSummaryRaw);
 
@@ -1184,24 +1194,36 @@ function setupDonationOptions() {
 
   //show/hide optional steps based on user selections
   $form.on('change', fields.inmem_inhon.selector, function(e) {
+    var actionName;
     if($(this).is(":checked")) {
         formSteps.showStep(3);
         $(fields.inmem.selector+','+fields.inhonor.selector).closest('.'+formFieldContainerClass).show();
+        actionName = 'payment/selected-in-memorial-in-honour';
     } else {
         formSteps.hideStep(3);
         $(fields.inmem.selector+','+fields.inhonor.selector).prop('checked', false).closest('.'+formFieldContainerClass).hide();
         $('.js-honourGift,.js-memorialGift').hide();
+        actionName = 'payment/unselected-in-memorial-in-honour';
+    }
+    if(!initialState) {
+      grAnalytics.analyticsReport( actionName );
     }
   });
   $form.on('change', fields.from_org.selector, function(e) {
+    var actionName;
     if($(this).is(":checked")) {
         formSteps.showStep(4);
         $('.js-personalGift').hide();
         $('.js-orgGift').show();
+        actionName = 'payment/selected-company-gift';
     } else {
         formSteps.hideStep(4);
         $('.js-orgGift').hide();
         $('.js-personalGift').show();
+        actionName = 'payment/unselected-company-gift';
+    }
+    if(!initialState) {
+      grAnalytics.analyticsReport( actionName );
     }
   });
 
@@ -1237,8 +1259,10 @@ function setupDonationOptions() {
     }
 
   });
+
   $form.find(fields.inmem_inhon.selector+','+fields.from_org.selector).trigger('change');
   $form.find(fields.inmem.selector+','+fields.inhonor.selector+','+fields.inform.selector).filter(':checked').trigger('change');
+  initialState = false;
 }
 
 /**
@@ -1356,7 +1380,7 @@ function setupTY(){
         var section = gr.getURLParameter('s');
         grAnalytics.analyticsReport('action-complete/'+$('input[name="ea.campaign.id"]').val()+ (section ? '/' + section : ''))
         //Ecommerce not installed on client's analytics
-        // grAnalytics.eCommerceReport(transactionData, itemData);
+        grAnalytics.eCommerceReport(transactionData, itemData);
 
 
         //init social links

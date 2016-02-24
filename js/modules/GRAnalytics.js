@@ -3,7 +3,7 @@
  * 
  * Used for interaction whith Google Analytics service.
  *
- * @version  0.4
+ * @version  0.4 !!MODIFIED20160224!!
  * @requires jQuery
  */
 var requiredOptions = [ ];
@@ -12,6 +12,8 @@ var defaults = {
     'prefix': '/virtual',
     'events': [ ],
     'trackingPixels': { },
+    'ignoreGTM': false, //@since __
+    'gtmTrackerName': false, //@since __
     'gtm': {
         'socialAction': 'socialAction',
         'socialNetwork': 'socialNetwork',
@@ -69,6 +71,13 @@ GRAnalytics.prototype.hasRequiredOptions = function(options, req) {
 
 GRAnalytics.prototype.init = function() {
     setPrefix(options.prefix);
+
+    //@since __ - add a dot to the tracker name for easier usage without a bunch of conditionals
+    if(options.gtmTrackerName !== false) {
+        options.gtmTrackerName = options.gtmTrackerName + '.';
+    } else {
+        options.gtmTrackerName = '';
+    }
     
     //activate all event-based analytics reports passed on initialization
     if(options.events.length)
@@ -127,7 +136,7 @@ GRAnalytics.prototype.addToPrefix = function( toAdd ) {
 GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
     //@since 0.4
     //GTM
-    if(typeof dataLayer !== 'undefined') {
+    if(typeof dataLayer !== 'undefined' && !options.ignoreGTM) {
         dataLayer.push({
             'transactionId': transactionData.id,
             'transactionAffiliation': transactionData.affiliation,
@@ -143,15 +152,15 @@ GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
 
     // Universal GA
     if (typeof ga !== 'undefined') {
-        ga('require','ecommerce');
+        ga(options.gtmTrackerName+'require','ecommerce');
         
-        ga('ecommerce:addTransaction', transactionData);
+        ga(options.gtmTrackerName+'ecommerce:addTransaction', transactionData);
 
         for (var i = 0; i < itemData.length; i++) {
-            ga('ecommerce:addItem', itemData[i]);
+            ga(options.gtmTrackerName+'ecommerce:addItem', itemData[i]);
         }
 
-        ga('ecommerce:send');
+        ga(options.gtmTrackerName+'ecommerce:send');
     }
 
     // Traditional GA
@@ -201,7 +210,7 @@ GRAnalytics.prototype.analyticsReport = function(viewName, title) {
 
     //@since 0.4
     //GTM
-    if(typeof dataLayer !== 'undefined') {
+    if(typeof dataLayer !== 'undefined' && !options.ignoreGTM) {
         var gtmData = {
             'event': options.gtm.virtualPageviewEvent
         };
@@ -215,7 +224,7 @@ GRAnalytics.prototype.analyticsReport = function(viewName, title) {
     // Universal GA
     if( typeof ga !== 'undefined' ) {
         
-        ga( 'send', 'pageview', data );
+        ga( options.gtmTrackerName+'send', 'pageview', data );
     }
 
     // Traditional GA
@@ -234,7 +243,7 @@ GRAnalytics.prototype.analyticsReport = function(viewName, title) {
 GRAnalytics.prototype.socialReport = function(networkDetails) {
     //@since 0.4
     //GTM
-    if(typeof dataLayer !== 'undefined') {
+    if(typeof dataLayer !== 'undefined' && !options.ignoreGTM) {
          var gtmData = {
             'event': options.gtm.socialActivityEvent
         };
@@ -249,7 +258,7 @@ GRAnalytics.prototype.socialReport = function(networkDetails) {
 
     // Universal GA only
     if( typeof ga !== 'undefined' ) {
-        ga( 'send', 'social', networkDetails.socialNetwork, networkDetails.socialAction, networkDetails.socialTarget);
+        ga( options.gtmTrackerName+'send', 'social', networkDetails.socialNetwork, networkDetails.socialAction, networkDetails.socialTarget);
     }
 }
 
