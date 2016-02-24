@@ -1106,6 +1106,7 @@ function setupAction(){
                     }
                     this.upsellType = 'MON';
                 }
+                grAnalytics.analyticsReport( 'payment/upsell-launched/'+this.upsellType );
             }
             /*range: [ //min is inclusive, max is not inclusive
                 {min: 0, max: 20, amount: 6},
