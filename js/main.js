@@ -99,12 +99,11 @@ var fields = gr.buildFieldNameObject({
     org_lname:  'Contact Last Name',
     org_email:  'Other Email',
     employer:   'Organization Name',
-    inmem:      'In Memoriam',
-    inmem_inhon: 'In honour or in memoriam',
+    inmem_type:  'Tribute Options',    //'In honour or in memoriam',
+    inmem_inhon: 'In Memoriam',
     inmem_name:     'Memoriam Name',
     inmem_msg:      'Memoriam Message',
     inmem_from:     'Memoriam Sender',
-    inhonor:        'Tribute Options',
     inhonor_name:   'Honoree Name',
     inhonor_occ:    'Occasion',
     inhonor_msg:    'Honoree Message',
@@ -182,8 +181,7 @@ var ENBeautifierFillersContainers = {
     '.js-donationOptions',
     '#'+fields.from_org.nameNoSpace+'Div',
     '#'+fields.inmem_inhon.nameNoSpace+'Div',
-    '#'+fields.inmem.nameNoSpace+'Div',
-    '#'+fields.inhonor.nameNoSpace+'Div'
+    '#'+fields.inmem_type.nameNoSpace+'Div'
   ],
   '#gr_inmem': [
     '.js-honourMemorialInformation', 
@@ -785,7 +783,7 @@ function setupAction(){
         enbeautifier.addClasses(getFormClasses());
         var selectorClasses = {};
         selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
-        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaQuestionCheckboxFormFieldContainer"};
+        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
         enbeautifier.addClasses(selectorClasses);
 
         $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
@@ -913,6 +911,7 @@ function setupAction(){
               } 
               //If there are no errors, send the form
               else {
+                //swap fields if company address should be the billing address
                 if(
                   typeof fields.sec_billing != "undefined"
                   && $(fields.sec_billing.selector).length 
@@ -920,6 +919,13 @@ function setupAction(){
                   && $(fields.sec_billing.selector).is(":checked")) {
                   swapFields();
                 }
+                //Always send a value for Company Gift
+                if($(fields.from_org.selector).filter(":checked").length == 0
+                  && $(fields.from_org.selector).first().val() == "Organization"
+                ) {
+                  $(fields.from_org.selector).first().val("Individual").prop('checked', true);
+                }
+
                 $form.submit();
               }
 
@@ -1186,23 +1192,23 @@ function setupDonationOptions() {
     $('.js-toggleComments').click();
   }
 
-  $(fields.inmem.selector).data('deselect',fields.inhonor.selector);
+  /*$(fields.inmem.selector).data('deselect',fields.inhonor.selector);
   $(fields.inhonor.selector).data('deselect',fields.inmem.selector);
 
   if($(fields.inmem.selector+','+fields.inhonor.selector).filter(':checked').length == 0) {
     $(fields.inmem.selector).prop('checked',true).change();
-  }
+  }*/
 
   //show/hide optional steps based on user selections
   $form.on('change', fields.inmem_inhon.selector, function(e) {
     var actionName;
     if($(this).is(":checked")) {
         formSteps.showStep(3);
-        $(fields.inmem.selector+','+fields.inhonor.selector).closest('.'+formFieldContainerClass).show();
+        $(fields.inmem_type.selector).closest('.'+formFieldContainerClass).show();
         actionName = 'payment/selected-in-memorial-in-honour';
     } else {
         formSteps.hideStep(3);
-        $(fields.inmem.selector+','+fields.inhonor.selector).prop('checked', false).closest('.'+formFieldContainerClass).hide();
+        $(fields.inmem_type.selector).prop('checked', false).closest('.'+formFieldContainerClass).hide();
         $('.js-honourGift,.js-memorialGift').hide();
         actionName = 'payment/unselected-in-memorial-in-honour';
     }
@@ -1230,22 +1236,22 @@ function setupDonationOptions() {
 
   //
 
-  $form.on('change', fields.inmem.selector+","+fields.inhonor.selector, function(e) {
-      switch($(this).attr('name')) {
-          case fields.inmem.name:
+  $form.on('change', fields.inmem_type.selector, function(e) {
+      switch($(this).filter(':checked').val()) {
+          case 'inmemoriam':
               $('.js-memorialGift').show().find('input, select, textarea').prop('disabled', false);
               $('.js-honourGift').hide().find('input, select, textarea').prop('disabled', true);
 
           break;
-          case fields.inhonor.name:
+          case 'inhonour':
               $('.js-memorialGift').hide().find('input, select, textarea').prop('disabled', true);
               $('.js-honourGift').show().find('input, select, textarea').prop('disabled', false);
           break;
       }
 
-      if($(this).is(':checked')) {
+      /*if($(this).is(':checked')) {
           $($(this).data('deselect')).prop("checked", false);
-      }
+      }*/
   });
 
   $form.on('change', fields.inform.selector+":checked", function() {
@@ -1262,7 +1268,7 @@ function setupDonationOptions() {
   });
 
   $form.find(fields.inmem_inhon.selector+','+fields.from_org.selector).trigger('change');
-  $form.find(fields.inmem.selector+','+fields.inhonor.selector+','+fields.inform.selector).filter(':checked').trigger('change');
+  $form.find(fields.inmem_type.selector+','+fields.inform.selector).filter(':checked').trigger('change');
   initialState = false;
 }
 
@@ -1934,9 +1940,9 @@ function init_validation(){
                 return $(fields.sec_billing.selector).is(':checked');
             }
         }
-        validation_rules[fields.inmem.name] = {
+        validation_rules[fields.inmem_type.name] = {
             required: function(element) {
-                return $(fields.inmem_inhon.selector).is(':checked') && !$(fields.inhonor.selector).is(':checked');
+                return $(fields.inmem_inhon.selector).is(':checked');
             }
         }
         /*validation_rules[fields.inhonor.name] = {
@@ -1946,7 +1952,7 @@ function init_validation(){
         }*/
         validation_rules[fields.inmem_name.name] = {
             required: function(element) {
-                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem.selector).is(':checked');
+                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem_type.selector).filter(':checked').val() == 'inmemoriam';
             }
         }
         validation_rules[fields.inmem_msg.name] = {
@@ -1961,12 +1967,12 @@ function init_validation(){
         }
         validation_rules[fields.inhonor_name.name] = {
             required: function(element) {
-                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inhonor.selector).is(':checked');
+                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem_type.selector).filter(':checked').val() == 'inhonour';
             }
         }
         validation_rules[fields.inhonor_occ.name] = {
             required: function(element) {
-                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inhonor.selector).is(':checked');
+                return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem_type.selector).filter(':checked').val() == 'inhonour';
             }
         }
         validation_rules[fields.inhonor_msg.name] = {
@@ -2097,7 +2103,7 @@ function handleErrors(errors, validator) {
     inputNamesMapper[fields.cc_cvv.name] = 'CVV2 Code';
 
     //donation option fields
-    inputNamesMapper[fields.inmem.name] = 'In honour/in memoriam selection';
+    inputNamesMapper[fields.inmem_type.name] = 'In honour/in memoriam selection';
 
     //bank payment
     inputNamesMapper[fields.bank_auth.name] = 'Accepting NCC\'s Pre-authorized Debit Agreement';
@@ -2106,7 +2112,7 @@ function handleErrors(errors, validator) {
       inputNamesMapper[fields.cc_exp.name+'1'] = 'Le mois d’expiration de la carte de crédit est';
       inputNamesMapper[fields.cc_exp.name+'2'] = 'L’année d’expiration de la carte de crédit est';
       inputNamesMapper[fields.cc_cvv.name] = 'Le code CVV2 de la carte de crédit est';
-      inputNamesMapper[fields.inmem.name] = 'Veuillez sélectionner En l’honneur de ou In memoriam';
+      inputNamesMapper[fields.inmem_type.name] = 'Veuillez sélectionner En l’honneur de ou In memoriam';
       inputNamesMapper[fields.bank_auth.name] = 'Veuillez accepter les conditions du prélèvement automatique par CNC';
       isRequired = ' requis';
     }
@@ -2222,15 +2228,15 @@ function getFormClasses() {
     //Donation option fields
     classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label label-100", targetElement: "div.eaFullWidthContent"};
     classes[fields.from_org.selector] = { classes: "show-label", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inmem_inhon.selector] = { classes: "hide-label ", targetElement: "div.eaFullWidthContent"};
 
     //In memorial fields
-    classes[fields.inmem.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inmem_type.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
     classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inmem_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
     classes[fields.inmem_from.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
 
     //In honour fields
-    classes[fields.inhonor.selector] = { classes: "inline-block-field-wrap full-wrap hide-label ", targetElement: "div.eaFullWidthContent"};
     classes[fields.inhonor_name.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inhonor_occ.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inhonor_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
