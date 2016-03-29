@@ -3,7 +3,7 @@
  * 
  * Creates and handles a multi-step form
  * 
- * @version  0.4 !!!MODIFIED20160119!!
+ * @version  0.5
  * @requires jQuery
  */
 var requiredOptions = [ 'steps' ];
@@ -14,7 +14,7 @@ var defaults = {
     'completeClass': "is-complete",
     'target': '.js-formSteps',
     'stepHandler': [],
-    'stepPreSwitchCallback': [], //@since __
+    'stepPreSwitchCallback': [], //@since 0.5
     'stepLabels': [],
     'stepButton': 'Next<span class="glyphicon glyphicon-chevron-right"></span>',
     'actionButton': 'Donate<span class="glyphicon glyphicon-chevron-right"></span>',
@@ -24,7 +24,7 @@ var defaults = {
     'useCSSAnimation': true,
     'addButtons': false,
     'backButtons': true,
-    'enterAdvances': true  //@since __
+    'enterAdvances': true  //@since 0.5
 };
 
 var protect = {
@@ -98,7 +98,7 @@ GRSteps.prototype.init = function(){
               $lastTabbable.focus();
               //formSteps.previousStep();
           }
-      } else if(e.which == 13 && self.options.enterAdvances) { //@since __
+      } else if(e.which == 13 && self.options.enterAdvances) { //@since 0.5
         e.preventDefault(); 
         e.stopPropagation(); 
 
@@ -161,7 +161,7 @@ GRSteps.prototype.hideStep = function(index) {
   if(this.disabledSteps.indexOf(index) === -1) {
     this.disabledSteps.push(index);
     $(this.options.steps[index]).children().css('visibility', 'hidden').find('input,select,textarea').prop('disabled', true);
-    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  0.5 
       this.stepIndicators.filter('.step'+index).animate({width:'hide', paddingLeft: 'hide', paddingRight: 'hide'},400);
     }
   }
@@ -177,7 +177,7 @@ GRSteps.prototype.showStep = function(index) {
   if(this.disabledSteps.indexOf(index) !== -1){
     this.disabledSteps.splice(this.disabledSteps.indexOf(index),1);
     $(this.options.steps[index]).children().css('visibility', '').find('input,select,textarea').prop('disabled', false);
-    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  __ 
+    if(!this.stepIndicators.filter('.step'+index).hasClass("hidden-step")) { //@since  0.5 
       this.stepIndicators.filter('.step'+index).animate({width:'show', paddingLeft: 'show', paddingRight: 'show'},400);
     }
   }
@@ -219,7 +219,7 @@ GRSteps.prototype.addSteps = function(newSteps){
     ){
 
     //set the indicator label as either an integer or the indicated label
-    //@since  __ - hidden classes and empty label support
+    //@since  0.5 - hidden classes and empty label support
     var label = ""; //i+1;
     var hiddenClasses = " hide hidden-step"; 
     if(typeof this.options.stepLabels[i] !== 'undefined' && this.options.stepLabels[i].length){
@@ -267,7 +267,7 @@ GRSteps.prototype.switchTo = function(stepNumber){
   this.options.currentStep = stepNumber;
   this.updateIndicators();
   
-  //@since __ - create a pre-panel load callback which can help with ensuring code fires before a panel loads especially in cases where there are hidden panels. There is no return value to stop the panel switch.
+  //@since 0.5 - create a pre-panel load callback which can help with ensuring code fires before a panel loads especially in cases where there are hidden panels. There is no return value to stop the panel switch.
   if(
     typeof this.options.stepPreSwitchCallback[this.options.currentStep] === "function"
     && this.options.currentStep > 0
@@ -332,7 +332,7 @@ GRSteps.prototype.switchTo = function(stepNumber){
 /**
  * Updates indicators by handling the varying logic needed to determine which should be 'active' and which should be 'complete' to support panels without their own indicators
  *
- * @since __
+ * @since 0.5
  */
 GRSteps.prototype.updateIndicators = function(){
   var currentClass = '', previousClass = '';
@@ -387,7 +387,7 @@ GRSteps.prototype.buttonify = function(self){
         '<p class="pull-left back-button"> \
           <button type="button" class="go-back btn-prev">'+self.options.backButton+'</button> \
         </p>'
-      ); //@since __ - allow passing of back button text
+      ); //@since 0.5 - allow passing of back button text
     }
   });
 }
