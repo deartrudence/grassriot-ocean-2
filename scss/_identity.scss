@@ -1,9 +1,9 @@
 .page-header {
+  position: absolute;
   width: 100%;
   height: $header-height-md;
   overflow: hidden;
-  position: relative;
-  @include thickBlueLine;
+  @include z-highest;
   @include mobile {
     height: $header-height-sm;
   }
@@ -26,7 +26,10 @@
     }
   }
 }
-
+.heroLogo {
+  padding-top: 30px;
+  padding-left: 33px;
+}
 .page-logo{
   overflow: hidden;
   text-indent: -9999px;

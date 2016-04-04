@@ -1,7 +1,7 @@
 .hero {
   position: relative; //for the overflow control
   overflow: hidden;
-  height: 455px;
+  height: 560px;
 //background: $hero-bgimage;
   background-size: cover;
   background-position: center;
@@ -50,13 +50,17 @@
     }
   }
   .heroTitle {
-    @include font-headN4;
-    @include fontSize-largerish;
+    @include font-headN7;
+    @include fontSize-titleLarge;
     @include line-hero;
+    text-transform: uppercase;
     position: relative;
     color: $white;
     padding: $heroTitle-padding;
     padding-left: $campaign-paddingleft-md;
+    max-width: 60%;
+    text-align: center;
+    margin: 0 auto;
 
     strong,
     em {

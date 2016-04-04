@@ -12,15 +12,15 @@
   }
   	    
   h2 {
-    @include font-headN7;
+    @include font-bodyN4;
     @include fontSize-largerish;
-    color: $dark-green;
+    color: $brand-secondary;
     @include line-hero;
     margin: 0em 0em .5em;
   }
 
   h3 {
-    @include font-headN4;
+    @include font-bodyN4;
     @include fontSize-large;
     color: $light-green;
     @include line-hero;
@@ -90,7 +90,11 @@
 
 .campaignText-wrapper.wrapper {
   h2 {
+    @include fontSize-medium;
+    @include line-loose;
+    text-align: center;
     margin-bottom: 0;
+    text-transform: uppercase;
   }
   h3 {
     @include fontSize-largerish;
@@ -126,55 +130,36 @@
 
 .ctaAskText-wrapper.wrapper {
   padding: 0px;
-  padding-right: 256px;
-  background: image-url('CTA-cow_elk.jpg') no-repeat right bottom;
-  background-size: 256px auto;
+  height: 205px;
+  background-color: $brand-primary;
   @include smallDesktopMax {
     background-image: none;
     padding-right: 0px;
   }
   .ctaAskText-text {
-    margin: 0;
+    position: relative;
+    top: 50%;
+    max-width: 85%;
+    transform: translateY(-50%);
+    margin: 0 auto;
     display: block;
     position: relative;
+    text-transform: uppercase;
     width: 100%;
     padding: 23px $campaign-paddingleft-md;
-    background-color: $light-green;
-    border-left: 6px solid $dark-green;
     color: $white;
-    @include font-bodyN4;
-    @include fontSize-mediumSmall;
-    @include line-loose;
-    &:after {
-      left: 100%;
-      top: 50%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-left-color: $light-green;
-      border-width: 32px;
-      margin-top: -32px;
+    strong {
+      color: $black;
+    }
+    @include font-headN7;
+    @include fontSize-large;
+    @include line-tight;
+    img {
+      display: none;
       @include smallDesktopMax {
-        left: 50%;
-        top: 100%;
-        margin-top: 0px;
-        margin-left: -32px;
-        border-left-color: transparent;
-        border-top-color: $light-green;
+        display: block;
+        width: 100%;
       }
-    }
-    @include smallDesktopMax {
-      border-left: none;
-    }
-  }
-  img {
-    display: none;
-    @include smallDesktopMax {
-      display: block;
-      width: 100%;
     }
   }
 
@@ -228,9 +213,22 @@
 
 .impactText-wrapper.wrapper {
   padding-left: 68px;
+  height: 452px;
   padding-right: 68px;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: url(../img/rethink/impact-bg.jpg);
+
+  h2 {
+    @include fontSize-medium;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 60%;
+    @include line-loose;
+    text-align: center;
+    color: $brand-primary;
+  }
 
   .colleft {
     @include font-headN4;
@@ -312,12 +310,30 @@
 	overflow: hidden;
 }
 
-
+.responseText-heading-wrapper {
+  height: 186px;
+}
+.improvement {
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  h4 {
+    font-size: 1.31rem;
+    margin-bottom: 5px;
+    @include font-bodyN4;
+  }
+  p {
+    @include font-headN3;
+    color: #636466;
+  }
+}
 .responseText-wrapper.wrapper {
-    background-color: $vlight-grey;
+    background-color: $white;
     position: relative;
     @include z-extraHighest;
-    padding: 4% $campaign-paddingleft-md;
+    padding: 0px 0px;
     &:after {
       top: 100%;
       left: 50%;
@@ -332,19 +348,49 @@
       margin-left: -37px;
     }
   	h3 {
-  		color: $dark-green;
+  		color: $brand-primary;
       margin-bottom: 0;
       font-weight: 700;
       text-transform: uppercase;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
       @include line-loose;
-  		@include fontSize-mediumSmall;
+  		@include fontSize-largerish;
+      @include font-bodyN4;
+      max-width: 75%;
+      margin: 0 auto;
       @include mobile {
         @include fontSize-mediumLarge;
         @include line-nearBase;
         font-weight: 400;
       }
   	}
-  	
+  	ul {
+      margin-bottom: 0;
+      li {
+        &:nth-of-type(1) {
+          background-color: #fbd5e3;
+          height: 120px;
+        }
+        &:nth-of-type(2) {
+          background-color: #f9b5ce;
+          height: 100px;
+        }
+        &:nth-of-type(3) {
+          background-color: #f695b9;
+          height: 125px;
+        }
+        &:nth-of-type(4) {
+          background-color: #f375a5;
+          height: 125px;
+        }
+        &:nth-of-type(5) {
+          height: 135px;
+          background-color: #f15590;
+        }
+      }
+    }
   	p {
       margin-top: 0;
       margin-bottom: 0;
@@ -478,8 +524,23 @@
     }
   }
 }
+.accountableText-innerwrapper {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 
+  p {
+    @include fontSize-biggerBase;
+    @include font-headN3;
+    @include line-loose;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
 .accountableText-wrapper.wrapper {
+  height: 395px;
+  padding: 0;
+  text-align: center;
   padding-left: $campaign-paddingleft-md;
   padding-right: $campaign-paddingleft-md;
   padding-bottom: 0;
@@ -498,7 +559,10 @@
   }
   h3 {
     text-transform: uppercase;
-    @include fontSize-mediumLarge;
+    max-width: 76%;
+    color: $brand-secondary;
+    margin: 0 auto 40px auto;
+    @include fontSize-medium;
     @include mobile {
       @include fontSize-biggerBase;
       @include line-loose;
@@ -540,57 +604,28 @@
 .policyText-wrapper.wrapper {
   padding-left: 6%;
   padding-right: 6%;
-  .colleft {
-    float: left;
-    width: 50%;
-    padding-right: 6.25%;
-    h3 {
-      @include fontSize-medium;
-      @include line-nearBase;
-      margin-bottom: 1em;
-      @include smallDesktopMax {
-        margin-bottom: 47px;
-      }
-    }
-    img {
-      max-width: 257px;
-      width: 100%;
-    }
+  height: 435px;
+  background: url(../img/rethink/policy.jpg);
+  background-size: cover;
+  h3 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    color: $brand-primary;
+    @include fontSize-huge;
+    @include font-headN7;
+    margin-bottom: 1em;
+    max-width: 64%;
+    margin-left: auto;
+    @include line-tight;
     @include smallDesktopMax {
-      width: 100%;
-      clear: both;
-      margin-bottom: 80px;
+      margin-bottom: 47px;
     }
   }
-  .colright {
-    float: left;
-    width: 50%;
-    padding-left: 12.5%;
-    p {
-      @include fontSize-base;
-      @include line-base;
-    }
-    a {
-      color: $charcoal;
-      text-decoration: underline;
-      &:hover {
-        text-decoration: none;
-      }
-      &:active, &:visited {
-        text-decoration: underline;
-        color: $charcoal;
-      }
-    }
-  }
-  @include smallDesktopMax {
-    .colright, .colleft {
-      float: none;
-      width: 100%;
-      padding-left: 0;
-    }
-  }
-  @include mobile {
-    @include mobileGutter;
+  img {
+    max-width: 257px;
+    width: 100%;
   }
 }
 

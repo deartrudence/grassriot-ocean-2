@@ -1,126 +1,15 @@
-.page-footer {
-  @include footer-font;
-  padding: $footer-padding-md;
-  background-color: $vdark-grey;
-  color: $charcoal;
-}
-
-.footer-legal {
-  float: left;
-  width: 50%;
-  text-transform: uppercase;
-}
-.accreditation {
-  margin-top: 20px;
-}
-.logo {
-  width: $footer-logowidth-base;
-  height: auto;
-  padding-bottom: 10px;
-}
-
-.footer-links {
-  float: left;
-  width: 50%;
-  margin-top: 27px;
-
-  a {
-    text-decoration: none;
-
-    &:visited {
-      color: $light-green;
-    }
+.wrapper.footerText-wrapper {
+  background-color: $brand-tertiary;
+  color: $white;
+  @include font-headN3;
+  .row {
+  	@include fontSize-base;
   }
 }
-
-.footer-links--main {
-  @include fontSize-small;
-  display: inline-block;
-  color: $light-green;
-  text-transform: uppercase;
-
-  li {
-    display: inline-block;
-    margin-right: 11px;
-  }
-
-  a{
-    color: $light-green;
-  }
-}
-
-.footer-links--secondary {
-  a {
-    text-transform: uppercase;
-    color: $charcoal;
-
-    &:visited {
-      color: $charcoal;
-    }
-  }
-
-  li {
-    display: inline-block;
-    margin-right: 20px;
-  }
-}
-
-@media screen and (max-width: $screen-xs-max) {
-  .page-footer {
-    padding: $footer-padding-xs;
-  }
-
-  .footer-legal {
-    width: 100%;
-  }
-
-  .footer-links {
-    float: left;
-    width: 50%;
-    margin-top: 27px;
-
-    li {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    a:visited {
-      color: $charcoal;
-    }
-  }
-}
-
-@media screen and (max-width: $screen-xs-max) {
-  .footer-legal {
-    float: none;
-    margin-bottom: 10%;
-  }
-
-  .footer-links {
-    float: none;
-  }
-}
-
-@media screen and (min-width: $screen-sm){
-  .page-footer{
-    position: relative;
-    @include z-highest;
-  }
-}
-
-@media screen and (min-width: $screen-lg) {
-  .page-footer {
-    @include fontSize-responsive-smaller;
-  }
-
-  .footer-links--main {
-    @include fontSize-responsive-small;
-  }
-}
-
-@media screen and (min-width: $screen-xl) {
-  .logo {
-    width: $footer-logowidth-xl;
-    height: auto;
-  }
+.row.footer-logo {
+	margin-bottom: 20px;
+	img {
+		display: block;
+		margin-bottom: 25px;
+	}
 }

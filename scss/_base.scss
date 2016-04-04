@@ -9,6 +9,11 @@ $maroon: #a6223c;
 $menu-red: #C5272D;
 
 
+//rethink colors
+$brand-primary: #f45e90; // pink
+$brand-secondary: #b1a99e; // light gray
+$brand-tertiary: #231f20; // dark brown
+
 //ncc colors
 $vlight-green: #B6D86A;
 $light-green: #A5CF46;
@@ -92,7 +97,7 @@ $hero-background: $white;
 //$hero-bgimage-sea: image-url('hero_sea.jpg');
 //$hero-bgimage-delivery: image-url('hero_delivery.jpg');
 
-$heroTitle-padding: 18% 5% 0% 5%;
+$heroTitle-padding: 49% 5% 0% 5%;
 //$heroSubtitle-padding: 0% 12% 20% 12%;
 $heroTitle-padding-sm: $heroTitle-padding; //16% 20% 23%;
 $heroTitle-padding-xxs: 55px $campaign-paddingleft-xxs;

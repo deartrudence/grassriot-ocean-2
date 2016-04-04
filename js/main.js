@@ -152,6 +152,7 @@ var ENBeautifierFillers = {
   ".js-accountable": ".js-accountableText",
   ".js-gift": ".js-giftText",
   ".js-policy": ".js-policyText",
+  ".js-footer": ".js-footerText",
   '.js-formOpen-label': '.js-formOpen-labelText'
 };
 var ENBeautifierFillersContainers = {

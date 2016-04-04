@@ -1,17 +1,27 @@
 //CDN
 
 //local
-// TODO: these are imaginary - need to be replaced when we receive actual files
-// @font-face {
-//     font-family: 'FrutigerLTStd Bold';
-//     src: url(FrutigerLTStdBold.woff);
-//     font-weight: 700;
-// }
-// @font-face {
-//     font-family: 'FrutigerLTStd Roman';
-//     src: url(FrutigerLTStdRoman.woff);
-//     font-weight: 400;
-// }
+//TODO: these are imaginary - need to be replaced when we receive actual files
+@font-face {
+    font-family: 'Gotham';
+    src: url(../fonts/Gotham-Bold.otf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url(../fonts/Gotham-Medium.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Gotham';
+    src: url(../fonts/Gotham-Book.otf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'Chronicle Text';
+    src: url(../fonts/ChronicleTextG4-Roman-Pro.otf);
+    font-weight: 400;
+}
 
 //Fonts
 // @mixin dagny-heavy{
@@ -65,37 +75,37 @@ em{
 //Body font
 //
 @mixin font-bodyN3{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 @mixin font-bodyN4{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyN6{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 
 @mixin font-bodyN7{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-bodyI4{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyI7{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -104,38 +114,38 @@ em{
 //Title font
 //
 @mixin font-headN3{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
 
 @mixin font-headN4{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headN6{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 @mixin font-headN7{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-headI4{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headI7{
-  font-family: "myriad-pro", "Myriad Pro Regular", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -285,7 +295,7 @@ $line-loosest: 1.58;
   font-size: (32 / 16) * 1rem;
 }
 @mixin fontSize-huge{
-  font-size: (30 / 16) * 1rem;
+  font-size: (55 / 16) * 1rem;
 }
 
 
