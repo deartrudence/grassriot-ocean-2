@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main {
   height: 100%;
 }
@@ -27,23 +28,38 @@
  */
 @font-face {
   font-family: 'Gotham';
-  src: url(../fonts/Gotham-Bold.otf);
+  src: url("../fonts/Gotham-Bold.eot");
+  src: local("Ã¢ËœÂº"), url("../fonts/Gotham-Bold.woff") format("woff"), url("../fonts/Gotham-Bold.ttf") format("truetype"), url("../fonts/Gotham-Bold.svg") format("svg");
   font-weight: 700;
+  font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url(../fonts/Gotham-Medium.otf);
+  src: url("../fonts/ufonts.com_gotham-medium.eot");
+  src: local("Ã¢ËœÂº"), url("../fonts/ufonts.com_gotham-medium.woff") format("woff"), url("../fonts/ufonts.com_gotham-medium.ttf") format("truetype"), url("../fonts/ufonts.com_gotham-medium.svg") format("svg");
   font-weight: 400;
+  font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url(../fonts/Gotham-Book.otf);
+  src: url("../fonts/Gotham-Book.eot");
+  src: local("Ã¢ËœÂº"), url("../fonts/Gotham-Book.woff") format("woff"), url("../fonts/Gotham-Book.ttf") format("truetype"), url("../fonts/Gotham-Book.svg") format("svg");
   font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url("../fonts/Gotham-Thin.eot");
+  src: local("Ã¢ËœÂº"), url("../fonts/Gotham-Light.woff") format("woff"), url("../fonts/Gotham-Light.ttf") format("truetype"), url("../fonts/Gotham-Light.svg") format("svg");
+  font-weight: 200;
+  font-style: normal;
 }
 @font-face {
   font-family: 'Chronicle Text';
-  src: url(../fonts/ChronicleTextG4-Roman-Pro.otf);
+  src: url("../fonts/Chronicle Display Roman.woff");
+  src: local("Ã¢ËœÂº"), url("../fonts/Chronicle Display Roman.woff") format("woff"), url("../fonts/Chronicle Display Roman.ttf") format("truetype"), url("../fonts/Chronicle Display Roman.svg") format("svg");
   font-weight: 400;
+  font-style: normal;
 }
 html {
   font-size: 16px;
@@ -61,7 +77,7 @@ em {
   background-color: #FFFFFF;
 }
 .share-block .mobile-center {
-  border-bottom: 5px solid #0181C8;
+  border-bottom: 5px solid #f04e91;
 }
 @media screen and (min-width: 620px) {
   .share-block.facebook .sharing-title,
@@ -85,7 +101,7 @@ em {
 @media screen and (min-width: 620px) and (max-width: 991px) {
   .share-block h3 {
     padding: 0 0 .5em;
-    font-size: 1.875rem;
+    font-size: 1.71875rem;
   }
 }
 @media screen and (min-width: 620px) {
@@ -309,7 +325,7 @@ em {
 
 .post-action .campaign .word-bubble.twitter-text {
   color: #737373;
-  font-size: 0.875rem;
+  font-size: 0.80208rem;
 }
 .post-action .campaign .word-bubble.twitter-text img {
   margin-top: 19px;
@@ -317,7 +333,7 @@ em {
 
 .post-action .campaign .mail-body {
   color: #737373;
-  font-size: 0.875rem;
+  font-size: 0.80208rem;
 }
 
 .social-block .caption {
@@ -390,38 +406,51 @@ em {
 .post-action .campaign:after {
   display: none;
 }
+.post-action .page-logo {
+  margin-left: 0;
+}
 @media screen and (max-width: 619px) {
   .post-action .page-logo {
-    left: 50px;
     width: 150px;
-  }
-}
-@media screen and (min-width: 620px) {
-  .post-action .page-logo {
-    left: 140px;
   }
 }
 .post-action .page-header {
   position: relative;
 }
-.post-action .heroTitle {
+.post-action .post-action-titlewrapper {
+  padding-top: 30%;
+  padding-left: 29px;
+  padding-right: 29px;
+}
+.post-action .post-action-titlewrapper h1 {
+  padding-bottom: 0;
+}
+.post-action .post-action-titlewrapper p {
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  margin-bottom: 0;
+}
+.post-action .post-action-title {
+  color: #FFFFFF;
   text-transform: uppercase;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  position: static;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 @media screen and (max-width: 619px) {
-  .post-action .heroTitle {
-    font-size: 1.5625rem;
+  .post-action .post-action-title {
+    font-size: 1.43229rem;
     padding: 55px 0 20px;
-    color: #B6D86A;
+    color: #FFFFFF;
   }
 }
 @media screen and (min-width: 620px) {
-  .post-action .heroTitle {
-    font-size: 1.875rem;
+  .post-action .post-action-title {
+    font-size: 1.71875rem;
     padding: 4em 0 0.5em;
-    color: #B6D86A;
+    color: #FFFFFF;
   }
 }
 @media screen and (min-width: 620px) {
@@ -438,7 +467,7 @@ em {
 }
 @media screen and (max-width: 619px) {
   .post-action .hero p {
-    font-size: 1.5625rem;
+    font-size: 1.43229rem;
     margin-bottom: .4em;
   }
 }
@@ -457,11 +486,12 @@ em {
 }
 @media screen and (max-width: 619px) {
   .post-action .hero .mobile-center {
-    background: #2D903C;
+    background: #ed2b74;
+    color: #FFFFFF;
   }
 }
 .post-action .heroSummary {
-  background: #EDEDED;
+  background: rgba(255, 255, 255, 0.7);
 }
 @media screen and (max-width: 619px) {
   .post-action .heroSummary {
@@ -473,7 +503,6 @@ em {
   .post-action .heroSummary {
     padding: 1em 29px;
     border-radius: 1em 1em 0 0;
-    margin-top: 5em;
   }
 }
 .post-action .heroSummary p {
@@ -496,22 +525,44 @@ em {
     background: linear-gradient(to top, rgba(103, 109, 118, 0.5), rgba(103, 109, 118, 0));
   }
 }
+.post-action .learn-more {
+  border-bottom: 5px solid #f04e91;
+}
+.post-action .learn-more .sharing-title {
+  padding-top: 20px;
+  padding-bottom: 57px;
+}
+.post-action .learn-more p {
+  color: #6d6e71;
+  text-transform: uppercase;
+  padding-top: 63px;
+  padding-left: 29px;
+  padding-right: 29px;
+  padding-bottom: 0;
+}
+.post-action .learn-more a {
+  color: #ed2b74;
+  text-transform: lowercase;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
 .post-action .campaign p.heroSummary-details {
   color: #545a63;
-  font-size: 1.5625rem;
+  font-size: 1.43229rem;
 }
 @media screen and (min-width: 620px) {
   .post-action .campaign p.heroSummary-details {
-    font-size: 0.875rem;
+    font-size: 0.80208rem;
   }
 }
 .post-action .campaign p.heroSummary-message {
   color: #000;
-  font-size: 1.5625rem;
+  font-size: 1.43229rem;
 }
 @media screen and (min-width: 620px) {
   .post-action .campaign p.heroSummary-message {
-    font-size: 0.875rem;
+    font-size: 0.80208rem;
   }
 }
 .post-action .sharingSection-title {
@@ -522,7 +573,7 @@ em {
   font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 1.5625rem;
+  font-size: 1.43229rem;
 }
 .post-action .social-block {
   margin-top: 2em;
@@ -552,25 +603,28 @@ em {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1459782414') no-repeat center;
+  background: url('../img/fb-2015.png?1459816188') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1459782414') no-repeat center;
+  background: url('../img/tw-2015.png?1459816188') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1459782414') no-repeat center;
+  background: url('../img/gp.png?1459816188') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1459782414') no-repeat center;
+  background: url('../img/in.png?1459816188') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1459782414') no-repeat center;
+  background: url('../img/ml.png?1459816188') no-repeat center;
 }
 .post-action .sharing-title {
-  color: #2D903C;
+  color: #f04e91;
   line-height: 1.1;
-  font-size: 1.875rem;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5rem;
 }
 @media screen and (max-width: 619px) {
   .post-action .sharing-title {
@@ -579,10 +633,10 @@ em {
 }
 .post-action .social-title {
   color: #FFFFFF;
-  font-size: 1.375rem;
+  font-size: 1.26042rem;
   text-align: center;
 }
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1200px) {
   .post-action .social-title {
     font-size: 1.8vw;
   }

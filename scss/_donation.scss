@@ -1,8 +1,8 @@
 @mixin formSectionHeader{
   margin: 1.5em 0 1em;
-  @include fontSize-biggerBase;
-  @include font-headN4;
-  color: $light-green;
+  @include fontSize-base;
+  @include font-headN3;
+  color: $rethink-form-grey;
 }
 
 #grdonation{
@@ -13,6 +13,9 @@
         clear: both;
       padding-left: $form-text-padding;
     }
+    #Donation_AmountDiv .eaFormElementLabel > label {
+      margin-bottom: 8px;
+    } 
     label, .eaFormElementLabel {
         padding-left: $form-text-padding
     }
@@ -21,15 +24,14 @@
     }
     h1 {
         text-align: center;
-        color: $dark-green;
+        color: $brand-primary-alternate;
         @include fontSize-large;
         @include font-headN4;
         @include line-tight;
         margin-top: 25px;
-        margin-bottom: 19px - 5px; //<label> has the 5px taken from here
+        margin-bottom: 22px; //<label> has the 5px taken from here
         strong {
-            color: $light-green;
-            @include font-headN4;
+            @include font-headN7;
         }
     }
     div.radiobutton {
@@ -114,11 +116,11 @@
           content: '\2714';
           text-indent: .9em;
           color: $white;
-          background-color: $light-green;
+          background-color: $brand-primary-lighter;
         }
         input[type='radio']:checked ~ label, input[type='checkbox']:checked ~ label {
           color: $white;
-          background-color: $dark-green;
+          background-color: $brand-primary-alternate;
         }
 
         /* radio focus */
@@ -478,8 +480,7 @@
   width: 85%;
 }
 .steps-list {
-  height: $header-height-md;
-  @include thickBlueLine;
+  height: 63px;
   position: relative;
   padding-top: 35px;
   @include mobileAndTablet {
@@ -503,7 +504,7 @@
 	  border: $steps_border;	  
 	  @include text-indicator;
 	  @include fontSize-smallish;
-      @include font-bodyN4;
+    font-family: sans-serif;
 	  &.current,
 	  &.is-complete,
 	  &.active {
@@ -511,7 +512,7 @@
 		@include background($stepsActive_advancedBackground);
 		border: $stepsActive_border;
 		color: $white;
-        @include font-bodyN4;
+    font-family: sans-serif;
 	  }
 
 	  &.is-complete {
@@ -637,7 +638,8 @@
 	border: none;
 	margin-top: 30px;
 	@include fontSize-base;
-    @include font-bodyN4;
+    // @include font-bodyN4;
+    font-family: sans-serif;
 	text-transform: lowercase;
     text-decoration: underline;
 
@@ -883,8 +885,9 @@
 	  // box-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px 0px;
 	  box-sizing: border-box;
 	  color: $donation-amount-button-text-color;
-	  @include font-decoN4;
-	  font-weight: bold;
+	  // @include font-decoN4;
+    font-family: sans-serif;
+	  // font-weight: bold;
 
 
 	  @include mobileAndTablet {
@@ -972,6 +975,7 @@ select, textarea {
 }
 
 #grdonation .page {
+  font-family: sans-serif;
   div.eaQuestionCheckboxFormFieldContainer {
 	height: auto;
 	padding: 1em 0;
@@ -1001,7 +1005,8 @@ select, textarea {
 	display: inline-block;
 	width: 90%;
 	@include fontSize-smallish;
-	@include font-bodyN4;
+	// @include font-bodyN4;
+  font-family: sans-serif;
 	@include lineHeight-tight;
 	font-weight: 400;
 	top: 0px;

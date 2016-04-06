@@ -11,8 +11,15 @@ $menu-red: #C5272D;
 
 //rethink colors
 $brand-primary: #f45e90; // pink
+$brand-primary-lighter: #fac0d5;
+$brand-primary-light: #f695b9; // light pink
+$brand-primary-alternate: #ed2b74; // deep pink
 $brand-secondary: #b1a99e; // light gray
 $brand-tertiary: #231f20; // dark brown
+$rethink-form-grey: #636466; 
+$rethink-close-grey: #bdbec0;
+$rethink-post-action-text: #f04e91;
+$rethink-post-action-grey: #6d6e71;
 
 //ncc colors
 $vlight-green: #B6D86A;
@@ -149,11 +156,11 @@ $steps_colour: $charcoal;
 $steps_background: $indicator-light-grey;
 $steps_advancedBackground: linear-gradient($indicator-light-grey 40%, $indicator-dark-grey 60%);
 $steps_border: none;
-$stepsActive_background: $dark-green;
-$stepsActive_advancedBackground: linear-gradient($medium-green 40%, $dark-green 60%);
+$stepsActive_background: $brand-primary-alternate;
+$stepsActive_advancedBackground: linear-gradient($brand-primary-light 40%, $brand-primary-alternate 60%);
 $stepsActive_border: none;
 $stepsActive_colour: $white;
-$stepsActive_arrowBackground: $dark-green;
+$stepsActive_arrowBackground: $brand-primary-alternate;
 $stepsComplete_colour: $charcoal;
 $stepsComplete_background: $indicator-light-grey;
 $stepsComplete_advancedBackground: linear-gradient($indicator-light-grey 40%, $indicator-dark-grey 60%);
@@ -161,7 +168,7 @@ $stepsComplete_advancedBackground: linear-gradient($indicator-light-grey 40%, $i
 $amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-green,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
 $amount-normal-advancedBackground: linear-gradient($lightest-grey 0%, darken($lightest-grey, 5%) 100%);
-$amount-active-background: $dark-green;
+$amount-active-background: $brand-primary-alternate;
 $amount-hover-background: lighten($lightest-grey, 5%);
 $amount-normal-background: $lightest-grey;
 
@@ -180,10 +187,10 @@ $upsell-background: $white;
 $upsell-cta-colour: $yellow;
 $upsell-colour: $white;
 $upsell-overlay-background: rgba($charcoal, $modal-overlay-opacity);
-$upsell-highlight-colour: $light-green;
+$upsell-highlight-colour: $brand-primary-alternate;
 $upsell-action-background: $dark-red;
 $upsell-close-colour: $black;
-$upsell-close-background: $light-grey;
+$upsell-close-background: $rethink-close-grey;
 
 //Postaction
 $share-borderColour: #E6E6E6;
@@ -195,7 +202,7 @@ $sharing-text-grey: #5B5B5B;
 //-----------
 $screen-sm: 768px;
 $screen-md: 992px;
-$screen-lg: 1300px;
+$screen-lg: 1200px;
 $screen-xl: 2100px;
 
 $screen-xxs-max: 619px;

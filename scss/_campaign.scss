@@ -1,4 +1,19 @@
-// Every row on the left starting from the turquoise
+// $container-padding-default: 100px;
+
+// @mixin rethink-container($size) {
+//   @if $size == 'auto' {
+//     padding-left: $container-padding-default;
+//     padding-right: $container-padding-default;
+//   }
+// }
+
+// .modal {
+//   display: block;
+// }
+// .modal.fade .modal-dialog {
+//   transform: translate(0, 25px) !important;
+// }
+
 .campaign {
   overflow: hidden;
   @include contentContainer;
@@ -72,7 +87,7 @@
 .wrapper {
 	background-color: $white;
 	color: $text-colour;
-	padding: 8% 8% 8% 5%;
+	padding: 8% 11.5%;
 	position: relative;
 	
 	p {
@@ -89,19 +104,24 @@
 }*/
 
 .campaignText-wrapper.wrapper {
+  padding-top: 11%;
+  padding-bottom: 10%;
   h2 {
     @include fontSize-medium;
     @include line-loose;
+    @include font-bodyN4;
     text-align: center;
     margin-bottom: 0;
     text-transform: uppercase;
+    max-width: 90%;
+    margin: 0 auto;
   }
   h3 {
     @include fontSize-largerish;
     @include line-hero;
   }
-  padding-left: 10.2%;
-  padding-right: 10.2%;
+  // padding-left: 10.2%;
+  // padding-right: 10.2%;
   p {
     @include line-base;
     @include mobile {
@@ -111,14 +131,14 @@
     }
   }
   @include mobile {
-    h3, h2 {
-      display: inline;
-      @include fontSize-largerish;
-      @include line-hero;
-    }
-    padding-top: 32px;
-    padding-bottom: 25px;
-    @include mobileGutter;
+    // h3, h2 {
+    //   display: inline;
+    //   @include fontSize-largerish;
+    //   @include line-hero;
+    // }
+    // padding-top: 32px;
+    // padding-bottom: 25px;
+    // @include mobileGutter;
   }
 }
 
@@ -129,31 +149,30 @@
 }
 
 .ctaAskText-wrapper.wrapper {
-  padding: 0px;
-  height: 205px;
-  background-color: $brand-primary;
+  padding-top: 3%;
+  padding-bottom: 3.5%;
+  background-color: $brand-primary-alternate;
   @include smallDesktopMax {
     background-image: none;
-    padding-right: 0px;
   }
   .ctaAskText-text {
     position: relative;
-    top: 50%;
-    max-width: 85%;
-    transform: translateY(-50%);
-    margin: 0 auto;
     display: block;
     position: relative;
     text-transform: uppercase;
     width: 100%;
-    padding: 23px $campaign-paddingleft-md;
+    padding: 23px 0;
     color: $white;
     strong {
       color: $black;
     }
-    @include font-headN7;
-    @include fontSize-large;
+    @include font-headN4;
+    @include gotham-fontSize-large;
     @include line-tight;
+    @include smallDesktopMax {
+      transform: none;
+      top: auto;
+    }
     img {
       display: none;
       @include smallDesktopMax {
@@ -210,24 +229,40 @@
 }
 
 
-
+.impactText-wrapper--mobile-only {
+  background-size: contain;
+  background-position: center center;
+  padding: 0;
+  img {
+    max-width: 100%;
+  }
+}
 .impactText-wrapper.wrapper {
-  padding-left: 68px;
-  height: 452px;
-  padding-right: 68px;
-  padding-top: 0;
-  padding-bottom: 0;
-  background: url(../img/rethink/impact-bg.jpg);
-
+  // padding-left: 68px;
+  // padding-right: 68px;
+  padding-top: 14%;
+  padding-bottom: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  @include smallDesktopMax {
+    height: auto;
+    background-image: none !important;
+  }
   h2 {
     @include fontSize-medium;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     max-width: 60%;
+    margin-top: 8%;
+    margin-bottom: 8%;
     @include line-loose;
     text-align: center;
-    color: $brand-primary;
+    color: $brand-primary-alternate;
+    @include smallDesktopMax {
+      max-width: 100%;
+      transform: none;
+      top: auto;
+    }
   }
 
   .colleft {
@@ -287,8 +322,8 @@
     }
   }
   @include smallDesktopMax {
-    padding-left: $campaign-paddingleft-md;
-    padding-right: $campaign-paddingleft-md;
+    // padding-left: $campaign-paddingleft-md;
+    // padding-right: $campaign-paddingleft-md;
     .colright, .colleft {
       float: none;
       width: 100%;
@@ -311,25 +346,29 @@
 }
 
 .responseText-heading-wrapper {
-  height: 186px;
+  padding-top: 8.5%;
+  padding-bottom: 3.5%;
 }
 .improvement {
-  margin: 0 auto;
-  width: 80%;
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+  padding-top: 0;
+  padding-bottom: 0;
+  @include smallDesktopMax {
+    top: auto;
+    transform: none; 
+  }
   h4 {
-    font-size: 1.31rem;
+    font-size: 1.203125rem;
     margin-bottom: 5px;
     @include font-bodyN4;
   }
   p {
     @include font-headN3;
+    @include gotham-fontSize-base;
     color: #636466;
   }
 }
-.responseText-wrapper.wrapper {
+.responseText-wrapper {
     background-color: $white;
     position: relative;
     @include z-extraHighest;
@@ -348,18 +387,19 @@
       margin-left: -37px;
     }
   	h3 {
-  		color: $brand-primary;
+  		color: $brand-primary-alternate;
       margin-bottom: 0;
       font-weight: 700;
       text-transform: uppercase;
       position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      @include line-loose;
+      @include line-tight;
   		@include fontSize-largerish;
       @include font-bodyN4;
-      max-width: 75%;
-      margin: 0 auto;
+      // max-width: 76%;
+      @include smallDesktopMax {
+        top: auto;
+        transform: none;
+      }
       @include mobile {
         @include fontSize-mediumLarge;
         @include line-nearBase;
@@ -368,26 +408,50 @@
   	}
   	ul {
       margin-bottom: 0;
+      margin-left: 0;
+      padding-left: 0;
+      height: auto;
       li {
-        &:nth-of-type(1) {
+        &:nth-of-type(1) .improvement {
+          padding-top: 25px;
           background-color: #fbd5e3;
-          height: 120px;
+          padding-bottom: 25px;
+          p {
+            color: #636466;
+            max-width: 100%;
+          }
         }
-        &:nth-of-type(2) {
+        &:nth-of-type(2) .improvement {
+          padding-top: 32px;
           background-color: #f9b5ce;
-          height: 100px;
+          padding-bottom: 20px;
+          p {
+            color: #636466;
+          }
         }
-        &:nth-of-type(3) {
+        &:nth-of-type(3) .improvement {
+          padding-top: 30px;
           background-color: #f695b9;
-          height: 125px;
+          padding-bottom: 26px;
+          p {
+            color: #58595b;
+          }
         }
-        &:nth-of-type(4) {
+        &:nth-of-type(4) .improvement {
+          padding-top: 31px;
           background-color: #f375a5;
-          height: 125px;
+          padding-bottom: 23px;
+          p {
+            color: #3c4346;            
+          }
         }
-        &:nth-of-type(5) {
-          height: 135px;
+        &:nth-of-type(5) .improvement {
+          padding-top: 30px;
           background-color: #f15590;
+          p {
+            color: #000;
+          }
+          padding-bottom: 36px;
         }
       }
     }
@@ -395,20 +459,19 @@
       margin-top: 0;
       margin-bottom: 0;
       @include line-loose;
-  		@include fontSize-biggerBase;
       @include mobile {
-        @include fontSize-mediumLarge;
-        @include line-nearBase;
+        // @include fontSize-mediumLarge;
+        // @include line-nearBase;
       }
 
       @include tabletPlus{
-        max-width: 35em;
+        // max-width: 35em;
       }
   	}
     @include mobile {
-      padding-top: 27px;
-      padding-bottom: 27px;
-      @include mobileGutter;
+      // padding-top: 27px;
+      // padding-bottom: 27px;
+      // @include mobileGutter;
     }
 }
 
@@ -526,19 +589,18 @@
 }
 .accountableText-innerwrapper {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-
+  padding-top: 11.5%;
+  padding-bottom: 7.5%;
   p {
-    @include fontSize-biggerBase;
+    @include gotham-fontSize-biggerBase;
     @include font-headN3;
     @include line-loose;
-    max-width: 90%;
+    line-height: 1.4em;
+    max-width: 75%;
     margin: 0 auto;
   }
 }
 .accountableText-wrapper.wrapper {
-  height: 395px;
   padding: 0;
   text-align: center;
   padding-left: $campaign-paddingleft-md;
@@ -561,11 +623,12 @@
     text-transform: uppercase;
     max-width: 76%;
     color: $brand-secondary;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 23px auto;
     @include fontSize-medium;
+    @include line-loose;
     @include mobile {
-      @include fontSize-biggerBase;
-      @include line-loose;
+      // @include fontSize-biggerBase;
+      // @include line-loose;
     }
   }
   img {
@@ -602,30 +665,37 @@
 }
 
 .policyText-wrapper.wrapper {
-  padding-left: 6%;
-  padding-right: 6%;
-  height: 435px;
-  background: url(../img/rethink/policy.jpg);
+  // padding-left: 6%;
+  // padding-right: 6%;
+  padding-top: 12.5%;
+  padding-bottom: 6%;
+  height: auto;
   background-size: cover;
+  border-bottom: 8px solid $white;
   h3 {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     text-transform: uppercase;
-    color: $brand-primary;
+    color: $brand-primary-alternate;
     @include fontSize-huge;
     @include font-headN7;
     margin-bottom: 1em;
     max-width: 64%;
     margin-left: auto;
     @include line-tight;
-    @include smallDesktopMax {
+    @media screen and (max-width: $screen-lg) { 
       margin-bottom: 47px;
+      max-width: 100%;
+      color: $white;
     }
+
   }
   img {
     max-width: 257px;
     width: 100%;
+  }
+  @media screen and (max-width: $screen-lg) {
+    background-image: none !important;
+    background-color: $brand-primary-alternate;
   }
 }
 

@@ -50,18 +50,23 @@
     }
   }
   .heroTitle {
-    @include font-headN7;
-    @include fontSize-titleLarge;
+    @include font-headN4;
+    @include gotham-fontSize-titleLarge;
     @include line-hero;
     text-transform: uppercase;
-    position: relative;
     color: $white;
-    padding: $heroTitle-padding;
-    padding-left: $campaign-paddingleft-md;
     max-width: 60%;
     text-align: center;
     margin: 0 auto;
-
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 70px;
+    padding: 0;
+    @media screen and (max-width: $screen-sm-max) {
+      max-width: 80%;
+      bottom: 20px;
+    }
     strong,
     em {
       @include font-headN7;
@@ -72,13 +77,10 @@
       color: $light-green;
     }
 
-    @include smallDesktopMax {
-      padding: $heroTitle-padding-sm;
-    }
     @include mobile {
-      display: block;
-      background-color: $dark-green;
-      padding: $heroTitle-padding-xxs;
+      // display: block;
+      // background-color: $dark-green;
+      // padding: $heroTitle-padding-xxs;
     }
   }
 }

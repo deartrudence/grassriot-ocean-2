@@ -1,26 +1,40 @@
 //CDN
 
 //local
-//TODO: these are imaginary - need to be replaced when we receive actual files
 @font-face {
-    font-family: 'Gotham';
-    src: url(../fonts/Gotham-Bold.otf);
-    font-weight: 700;
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Bold.eot');
+  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Bold.woff') format('woff'), url('../fonts/Gotham-Bold.ttf') format('truetype'), url('../fonts/Gotham-Bold.svg') format('svg');
+  font-weight: 700;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Gotham';
-    src: url(../fonts/Gotham-Medium.otf);
-    font-weight: 400;
+  font-family: 'Gotham';
+  src: url('../fonts/ufonts.com_gotham-medium.eot');
+  src: local('Ã¢ËœÂº'), url('../fonts/ufonts.com_gotham-medium.woff') format('woff'), url('../fonts/ufonts.com_gotham-medium.ttf') format('truetype'), url('../fonts/ufonts.com_gotham-medium.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Gotham';
-    src: url(../fonts/Gotham-Book.otf);
-    font-weight: 300;
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Book.eot');
+  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Book.woff') format('woff'), url('../fonts/Gotham-Book.ttf') format('truetype'), url('../fonts/Gotham-Book.svg') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotham';
+  src: url('../fonts/Gotham-Thin.eot');
+  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Light.woff') format('woff'), url('../fonts/Gotham-Light.ttf') format('truetype'), url('../fonts/Gotham-Light.svg') format('svg');
+  font-weight: 200;
+  font-style: normal;
 }
 @font-face {
     font-family: 'Chronicle Text';
-    src: url(../fonts/ChronicleTextG4-Roman-Pro.otf);
+    src: url('../fonts/Chronicle Display Roman.woff');
+    src: local('Ã¢ËœÂº'), url('../fonts/Chronicle Display Roman.woff') format('woff'), url('../fonts/Chronicle Display Roman.ttf') format('truetype'), url('../fonts/Chronicle Display Roman.svg') format('svg');
     font-weight: 400;
+    font-style: normal;
 }
 
 //Fonts
@@ -74,6 +88,7 @@ em{
 //
 //Body font
 //
+
 @mixin font-bodyN3{
   font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 300;
@@ -113,6 +128,12 @@ em{
 //
 //Title font
 //
+@mixin font-headN2{
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
 @mixin font-headN3{
   font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -257,47 +278,89 @@ $line-loosest: 1.58;
   line-height: $line-loosest;
 }
 
+$adjustment: 16.5 / 18;
+
 //font size
 @mixin fontSize-small{
-  font-size: 0.5rem;
+  font-size: $adjustment * 0.5rem;
 }
 @mixin fontSize-smallish{
-  font-size: (12 / 16) * 1rem;
+  font-size: $adjustment * (12 / 16) * 1rem;
 }
 @mixin fontSize-smaller{
-  font-size: (14 / 16) * 1rem;
+  font-size: $adjustment * (14 / 16) * 1rem;
 }
 @mixin fontSize-base{
-  font-size: 16px;
+  font-size: $adjustment * 16px;
 }
 @mixin fontSize-biggerBase {
-  font-size: (18 / 16) * 1rem;
+  font-size: $adjustment * (18 / 16) * 1rem;
 }
 @mixin fontSize-mediumSmall{
-  font-size: (20 / 16) * 1rem;
+  font-size: $adjustment * (20 / 16) * 1rem;
 }
 @mixin fontSize-medium{
-  font-size: (22 / 16) * 1rem;
+  font-size: $adjustment * (22 / 16) * 1rem;
 }
 @mixin fontSize-mediumLarge{
-  font-size: (24 / 16) * 1rem;
+  font-size: $adjustment * (24 / 16) * 1rem;
 }
 @mixin fontSize-large{
-  font-size: (25 / 16) * 1rem;
+  font-size: $adjustment * (25 / 16) * 1rem;
 }
 @mixin fontSize-largerish{
-  font-size: (30 / 16) * 1rem;
+  font-size: $adjustment * (30 / 16) * 1rem;
 }
 @mixin fontSize-titleLarge{
-  font-size: (30 / 16) * 1rem;
+  font-size: $adjustment * (30 / 16) * 1rem;
 }
 @mixin fontSize-xlarge{
-  font-size: (32 / 16) * 1rem;
+  font-size: $adjustment * (32 / 16) * 1rem;
 }
 @mixin fontSize-huge{
-  font-size: (55 / 16) * 1rem;
+  font-size: $adjustment * (55 / 16) * 1rem;
 }
 
+//font size without addjustment
+@mixin gotham-fontSize-small{
+  font-size: 0.5rem;
+}
+@mixin gotham-fontSize-smallish{
+  font-size: (12 / 16) * 1rem;
+}
+@mixin gotham-fontSize-smaller{
+  font-size: (14 / 16) * 1rem;
+}
+@mixin gotham-fontSize-base{
+  font-size: 16px;
+}
+@mixin gotham-fontSize-biggerBase {
+  font-size: (18 / 16) * 1rem;
+}
+@mixin gotham-fontSize-mediumSmall{
+  font-size: (20 / 16) * 1rem;
+}
+@mixin gotham-fontSize-medium{
+  font-size: (22 / 16) * 1rem;
+}
+@mixin gotham-fontSize-mediumLarge{
+  font-size: (24 / 16) * 1rem;
+}
+@mixin gotham-fontSize-large{
+  font-size: (25 / 16) * 1rem;
+}
+@mixin gotham-fontSize-largerish{
+  font-size: (30 / 16) * 1rem;
+}
+@mixin gotham-fontSize-titleLarge{
+  font-size: (30 / 16) * 1rem;
+}
+@mixin gotham-fontSize-xlarge{
+  font-size: (32 / 16) * 1rem;
+}
+@mixin gotham-fontSize-huge{
+  font-size: (55 / 16) * 1rem;
+}
 
 @mixin fontSize-responsive-smaller {
   font-size: 0.8vw;

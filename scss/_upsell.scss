@@ -23,28 +23,35 @@
 
 .upsell-modal--body p, .upsell-modal--body ul{
   margin-bottom: 1em;
+  @include gotham-fontSize-base;
+  @include line-loose;  
+  @include font-headN3;
+  color: $white;
 }
 
 .upsell-panel{
   display: table-cell;
-  vertical-align: middle;
-  padding: 45px 35px 25px;
+  vertical-align: top;
+  padding: 33px 35px 25px;
 }
 
 .upsell-cta{
   color: $upsell-cta-colour;
-  text-transform: uppercase;
-  width: 40%;
+  // text-transform: uppercase;
+  width: 45%;
   font-size: 2.6em;
   line-height: .8;
-  background-image: image-url('upsell.jpg');
-  background-size: cover;
+  // background-image: image-url('upsell.jpg');
+  // background-size: cover;
+  background-color: #ee4a8f;
 }
 
 .upsell-title{
   font-size: 1em; //override bootstrap's sizes
   color: $upsell-colour;
-  @include font-headN7;
+  text-transform: uppercase;
+  margin-bottom: 17px;
+  @include font-bodyN7;
   @include lineHeight-hero;
 }
 
@@ -53,10 +60,11 @@
 }
 
 .upsell-copy{
-  width: 60%;
+  width: 55%;
   position: relative;
   color: $black;
-  @include fontSize-base;
+  background: #f9c0d8;
+  @include font-headN3;
   ul {
     list-style: disc inside;
   }
@@ -70,8 +78,9 @@
 .upsell-subtitle{
   font-size: 2em;
   margin-bottom: 0.5em;
-  color: $dark-green;
-  @include fontSize-medium;
+  color: $black;
+  @include gotham-fontSize-base;
+  @include line-base;
 }
 
 $upsell-recommendation-padding: 5px;
@@ -83,6 +92,9 @@ $upsell-recommendation-padding: 5px;
   overflow: hidden;
   // font-size: 1.2em;
   margin-top: .6em;
+  p strong {
+    color: #cb2f71;
+  }
 }
 
 .upsell-recommendation--amount{
@@ -103,7 +115,7 @@ $upsell-recommendation-padding: 5px;
 
 .upsell-recommendation--label{
   @include background($upsell-cta-colour);
-  padding: 10px 4em;
+  padding: 0px 4em;
   @include lineHeight-hero;
 
   @media screen and (max-width: $screen-xxs-max){
@@ -169,11 +181,13 @@ button.upsell-modal--close{
 .upsell-deny{
   margin: 1.5em 0 1em;
   text-align: right;
+  color: #cb2f71 !important;
 
-  a{
+  a {
     color: $charcoal;
     text-decoration: underline;
-    @include font-bodyN7;
+    color: #cb2f71;
+    @include font-headN3;
   }
 }
 
@@ -212,6 +226,10 @@ button.upsell-modal--close{
     font-size: 3em;
     padding-top: 25px;
     padding-top: 25px;
+    p {
+      @include gotham-fontSize-base;
+      @include font-headN4;
+    }
   }
 
   .upsell-copy{
@@ -271,6 +289,9 @@ button.upsell-modal--close{
   .upsell-recommendation{
     margin-top: 5px;
     font-size: 1em;
+    strong {
+      color: $brand-primary-alternate;
+    }
   }
   .upsell-recommendation--label{
     padding-bottom: 5px;

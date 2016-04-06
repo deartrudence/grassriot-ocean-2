@@ -21,7 +21,7 @@
     margin: 0;
 
     p{
-      @include fontSize-biggerBase;
+      @include gotham-fontSize-biggerBase;
       color: $white;
       max-width: 30em;
       // margin: 0 auto;
@@ -33,30 +33,43 @@
   }
 
   .page-logo{
-
+    margin-left: 0;
     @include mobile{
-      left: 50px;
+      // left: 50px;
       width: 150px;
     }
 
     @include tabletPlus{
-      left: 140px;
+      // left: 140px;
     }
   }
 
   .page-header{
     position: relative;
   }
-
-  .heroTitle{
+  .post-action-titlewrapper {
+    padding-top: 30%;
+    padding-left: 29px;
+    padding-right: 29px;
+    h1 {
+      padding-bottom: 0;
+    }
+    p {
+      @include font-headN2;
+      margin-bottom: 0;
+    }
+  }
+  .post-action-title {
+    color: $white;
     text-transform: uppercase;
-    @include font-bodyN4;
+    position: static;
+    @include font-headN4;
 
     @include mobile{
       // text-align: center;
       @include fontSize-large;
       padding: 55px 0 20px;
-      color: $vlight-green;
+      color: $white;
     }
     @include tabletPlus{
       // left: 50%;
@@ -64,7 +77,7 @@
       @include fontSize-largerish;
       // padding: 2em 0;
       padding: 4em 0 0.5em;
-      color: $vlight-green;
+      color: $white;
     }
   }
 
@@ -77,7 +90,6 @@
   .heroTitle{
     @include heroContent;
   }
-
   .hero p{
     @include heroContent;
 
@@ -111,12 +123,13 @@
 
   .hero .mobile-center{
     @include mobile{
-      background: $dark-green;
+      background: $brand-primary-alternate;
+      color: $white;
     }
   }
 
   .heroSummary{
-    background: $vlight-grey;
+    background: rgba(255, 255, 255, 0.7);
 
     @include mobile{
       padding: 28px 11px;
@@ -125,7 +138,7 @@
     @include tabletPlus{
       padding: 1em 29px;
       border-radius: 1em 1em 0 0;
-      margin-top: 5em; 
+      // margin-top: 5em; 
     }
 
     p{
@@ -146,6 +159,27 @@
       }
     }
   }
+  .learn-more {
+    border-bottom: 5px solid $rethink-post-action-text; 
+    .sharing-title {
+      padding-top: 20px;
+      padding-bottom: 57px;
+    } 
+    p {
+        color: $rethink-post-action-grey;
+        text-transform: uppercase;
+        padding-top: 63px;
+        padding-left: 29px;
+        padding-right: 29px;
+        padding-bottom: 0;
+    }
+    a {
+      color: $brand-primary-alternate;
+      text-transform: lowercase;
+      @include font-headN3;
+    }
+  }
+
 
   .campaign p.heroSummary-details{
     color: $light-grey;
@@ -231,10 +265,10 @@
   }
 
   .sharing-title{
-    color: $dark-green;
+    color: $rethink-post-action-text;;
     @include lineHeight-hero;
-    @include fontSize-titleLarge;
-
+    @include font-headN7;
+    @include gotham-fontSize-mediumLarge;
     @include mobile{
       margin-bottom: 30px;
     }
