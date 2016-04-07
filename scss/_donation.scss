@@ -25,8 +25,8 @@
     h1 {
         text-align: center;
         color: $brand-primary-alternate;
-        @include fontSize-large;
-        @include font-headN4;
+        @include gotham-fontSize-large;
+        @include font-headN3;
         @include line-tight;
         margin-top: 25px;
         margin-bottom: 22px; //<label> has the 5px taken from here
@@ -86,7 +86,7 @@
           padding-top: 6px;
           padding-bottom: 6px;
           @include fontSize-base;
-          @include line-tighter;
+          line-height: 1.25;
         }
         input[type='radio']:empty ~ label:before, input[type='checkbox']:empty ~ label:before {
           position: absolute;
@@ -242,8 +242,9 @@
     .security-text {
         background: none;
         border: none;
+        font-family: sans-serif;
         color: #000;
-        font-size: 11px;
+        font-size: 10px;
         font-style: normal;
         z-index: 10;
         border-radius: 4px;
@@ -258,7 +259,7 @@
 
     .security-image {
         display: inline-block;
-        margin-right: 4px;
+        margin-right: 3px;
       }
 }
 
@@ -424,7 +425,7 @@
 }
 
 @mixin text-indicator{
-  padding: 5px 15px;
+  padding: 6px 30px;
   font-size: 10px;
   line-height: 16px;
   display: inline-block;
@@ -491,7 +492,7 @@
   ul {
 	list-style: none;
 	margin: 0;
-	padding: 0px 10px 0px 17px;
+	padding: 0px 6px 0px 15px;
 	text-align: left;
 	font-size: 0;
     display: inline-block;
@@ -836,7 +837,7 @@
 	margin-top: 17px;
     white-space: normal;
 	@include cta-button--red;
-
+  font-family: sans-serif;
 	.glyphicon-chevron-right {
 	  font-size: 80%;
 	  position: relative;
@@ -1007,7 +1008,6 @@ select, textarea {
 	@include fontSize-smallish;
 	// @include font-bodyN4;
   font-family: sans-serif;
-	@include lineHeight-tight;
 	font-weight: 400;
 	top: 0px;
 	left: 4px;

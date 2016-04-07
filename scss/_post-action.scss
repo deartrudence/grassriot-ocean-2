@@ -130,6 +130,7 @@
 
   .heroSummary{
     background: rgba(255, 255, 255, 0.7);
+    @include font-headN2;
 
     @include mobile{
       padding: 28px 11px;
@@ -183,19 +184,19 @@
 
   .campaign p.heroSummary-details{
     color: $light-grey;
-    @include fontSize-large;
+    @include gotham-fontSize-large;
 
     @include tabletPlus{
-      @include fontSize-smaller;
+      @include gotham-fontSize-smaller;
     }
   }
 
   .campaign p.heroSummary-message{
     color: $black;
-    @include fontSize-large;
+    @include gotham-fontSize-large;
 
     @include tabletPlus{
-      @include fontSize-smaller;
+      @include gotham-fontSize-smaller;
     }
   }
   

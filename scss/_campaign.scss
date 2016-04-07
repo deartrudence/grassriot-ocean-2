@@ -95,6 +95,9 @@
     @include lineHeight-campaigntext-main;
 		margin: 15px 0;
 	}
+  @include mobile {
+    padding: 8% 20px;
+  }
 }
 
 /*.js-hero {
@@ -104,11 +107,11 @@
 }*/
 
 .campaignText-wrapper.wrapper {
-  padding-top: 11%;
+  padding-top: 11.2%;
   padding-bottom: 10%;
   h2 {
     @include fontSize-medium;
-    @include line-loose;
+    line-height: 1.37;
     @include font-bodyN4;
     text-align: center;
     margin-bottom: 0;
@@ -149,8 +152,8 @@
 }
 
 .ctaAskText-wrapper.wrapper {
-  padding-top: 3%;
-  padding-bottom: 3.5%;
+  padding-top: 2.88%;
+  padding-bottom: 2.9%;
   background-color: $brand-primary-alternate;
   @include smallDesktopMax {
     background-image: none;
@@ -164,7 +167,7 @@
     padding: 23px 0;
     color: $white;
     strong {
-      color: $black;
+      color: #231f20;
     }
     @include font-headN4;
     @include gotham-fontSize-large;
@@ -229,13 +232,9 @@
 }
 
 
-.impactText-wrapper--mobile-only {
-  background-size: contain;
-  background-position: center center;
-  padding: 0;
-  img {
-    max-width: 100%;
-  }
+.impactText-divider {
+  padding-top: 0px;
+  border-bottom: 5px solid $brand-primary-alternate;
 }
 .impactText-wrapper.wrapper {
   // padding-left: 68px;
@@ -252,12 +251,12 @@
   h2 {
     @include fontSize-medium;
     position: relative;
-    max-width: 60%;
-    margin-top: 8%;
+    max-width: 58%;
+    margin-top: 7.5%;
     margin-bottom: 8%;
-    @include line-loose;
+    line-height: 1.43;
     text-align: center;
-    color: $brand-primary-alternate;
+    color: #ed2b74;
     @include smallDesktopMax {
       max-width: 100%;
       transform: none;
@@ -361,6 +360,7 @@
     font-size: 1.203125rem;
     margin-bottom: 5px;
     @include font-bodyN4;
+    font-weight: 600;
   }
   p {
     @include font-headN3;
@@ -390,6 +390,7 @@
   		color: $brand-primary-alternate;
       margin-bottom: 0;
       font-weight: 700;
+      max-width: 90%;
       text-transform: uppercase;
       position: relative;
       @include line-tight;
@@ -589,8 +590,6 @@
 }
 .accountableText-innerwrapper {
   position: relative;
-  padding-top: 11.5%;
-  padding-bottom: 7.5%;
   p {
     @include gotham-fontSize-biggerBase;
     @include font-headN3;
@@ -598,6 +597,7 @@
     line-height: 1.4em;
     max-width: 75%;
     margin: 0 auto;
+    color: #4d4d4f;
   }
 }
 .accountableText-wrapper.wrapper {
@@ -605,7 +605,8 @@
   text-align: center;
   padding-left: $campaign-paddingleft-md;
   padding-right: $campaign-paddingleft-md;
-  padding-bottom: 0;
+  padding-top: 11.5%;
+  padding-bottom: 11.5%;
   .colleft {
     float: left;
     width: 50%;
@@ -621,7 +622,7 @@
   }
   h3 {
     text-transform: uppercase;
-    max-width: 76%;
+    max-width: 73%;
     color: $brand-secondary;
     margin: 0 auto 23px auto;
     @include fontSize-medium;
@@ -672,16 +673,18 @@
   height: auto;
   background-size: cover;
   border-bottom: 8px solid $white;
+  @include desktop {
+    padding-right: 0;
+  }
   h3 {
     position: relative;
     text-transform: uppercase;
     color: $brand-primary-alternate;
-    @include fontSize-huge;
+    @include gotham-fontSize-huge;
     @include font-headN7;
     margin-bottom: 1em;
-    max-width: 64%;
+    max-width: 72%;
     margin-left: auto;
-    @include line-tight;
     @media screen and (max-width: $screen-lg) { 
       margin-bottom: 47px;
       max-width: 100%;

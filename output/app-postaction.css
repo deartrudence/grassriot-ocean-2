@@ -492,6 +492,9 @@ em {
 }
 .post-action .heroSummary {
   background: rgba(255, 255, 255, 0.7);
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-style: normal;
 }
 @media screen and (max-width: 619px) {
   .post-action .heroSummary {
@@ -549,20 +552,20 @@ em {
 }
 .post-action .campaign p.heroSummary-details {
   color: #545a63;
-  font-size: 1.43229rem;
+  font-size: 1.5625rem;
 }
 @media screen and (min-width: 620px) {
   .post-action .campaign p.heroSummary-details {
-    font-size: 0.80208rem;
+    font-size: 0.875rem;
   }
 }
 .post-action .campaign p.heroSummary-message {
   color: #000;
-  font-size: 1.43229rem;
+  font-size: 1.5625rem;
 }
 @media screen and (min-width: 620px) {
   .post-action .campaign p.heroSummary-message {
-    font-size: 0.80208rem;
+    font-size: 0.875rem;
   }
 }
 .post-action .sharingSection-title {

@@ -3698,6 +3698,7 @@ body:after {
   .campaign .heroTitle {
     max-width: 80%;
     bottom: 20px;
+    font-size: 23px;
   }
 }
 .campaign .heroTitle strong,
@@ -3921,6 +3922,11 @@ html.csstransforms {
   line-height: 1em;
   margin: 15px 0;
 }
+@media screen and (max-width: 619px) {
+  .wrapper {
+    padding: 8% 20px;
+  }
+}
 
 /*.js-hero {
   position: relative; //for the overflow control
@@ -3928,12 +3934,12 @@ html.csstransforms {
   height: 545px;
 }*/
 .campaignText-wrapper.wrapper {
-  padding-top: 11%;
+  padding-top: 11.2%;
   padding-bottom: 10%;
 }
 .campaignText-wrapper.wrapper h2 {
   font-size: 1.26042rem;
-  line-height: 1.33;
+  line-height: 1.37;
   font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -3967,8 +3973,8 @@ html.csstransforms {
 }
 
 .ctaAskText-wrapper.wrapper {
-  padding-top: 3%;
-  padding-bottom: 3.5%;
+  padding-top: 2.88%;
+  padding-bottom: 2.9%;
   background-color: #ed2b74;
 }
 @media screen and (max-width: 991px) {
@@ -3991,7 +3997,7 @@ html.csstransforms {
   line-height: 1.12;
 }
 .ctaAskText-wrapper.wrapper .ctaAskText-text strong {
-  color: #000;
+  color: #231f20;
 }
 @media screen and (max-width: 991px) {
   .ctaAskText-wrapper.wrapper .ctaAskText-text {
@@ -4063,13 +4069,9 @@ html.csstransforms {
   }
 }
 
-.impactText-wrapper--mobile-only {
-  background-size: contain;
-  background-position: center center;
-  padding: 0;
-}
-.impactText-wrapper--mobile-only img {
-  max-width: 100%;
+.impactText-divider {
+  padding-top: 0px;
+  border-bottom: 5px solid #ed2b74;
 }
 
 .impactText-wrapper.wrapper {
@@ -4088,10 +4090,10 @@ html.csstransforms {
 .impactText-wrapper.wrapper h2 {
   font-size: 1.26042rem;
   position: relative;
-  max-width: 60%;
-  margin-top: 8%;
+  max-width: 58%;
+  margin-top: 7.5%;
   margin-bottom: 8%;
-  line-height: 1.33;
+  line-height: 1.43;
   text-align: center;
   color: #ed2b74;
 }
@@ -4208,6 +4210,7 @@ html.csstransforms {
   font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 400;
   font-style: normal;
+  font-weight: 600;
 }
 .improvement p {
   font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
@@ -4240,6 +4243,7 @@ html.csstransforms {
   color: #ed2b74;
   margin-bottom: 0;
   font-weight: 700;
+  max-width: 90%;
   text-transform: uppercase;
   position: relative;
   line-height: 1.12;
@@ -4444,8 +4448,6 @@ html.csstransforms {
 
 .accountableText-innerwrapper {
   position: relative;
-  padding-top: 11.5%;
-  padding-bottom: 7.5%;
 }
 .accountableText-innerwrapper p {
   font-size: 1.125rem;
@@ -4456,6 +4458,7 @@ html.csstransforms {
   line-height: 1.4em;
   max-width: 75%;
   margin: 0 auto;
+  color: #4d4d4f;
 }
 
 .accountableText-wrapper.wrapper {
@@ -4463,7 +4466,8 @@ html.csstransforms {
   text-align: center;
   padding-left: 29px;
   padding-right: 29px;
-  padding-bottom: 0;
+  padding-top: 11.5%;
+  padding-bottom: 11.5%;
 }
 .accountableText-wrapper.wrapper .colleft {
   float: left;
@@ -4482,7 +4486,7 @@ html.csstransforms {
 }
 .accountableText-wrapper.wrapper h3 {
   text-transform: uppercase;
-  max-width: 76%;
+  max-width: 73%;
   color: #b1a99e;
   margin: 0 auto 23px auto;
   font-size: 1.26042rem;
@@ -4532,18 +4536,22 @@ html.csstransforms {
   background-size: cover;
   border-bottom: 8px solid #FFFFFF;
 }
+@media screen and (min-width: 1200px) {
+  .policyText-wrapper.wrapper {
+    padding-right: 0;
+  }
+}
 .policyText-wrapper.wrapper h3 {
   position: relative;
   text-transform: uppercase;
   color: #ed2b74;
-  font-size: 3.15104rem;
+  font-size: 3.4375rem;
   font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
   margin-bottom: 1em;
-  max-width: 64%;
+  max-width: 72%;
   margin-left: auto;
-  line-height: 1.12;
 }
 @media screen and (max-width: 1200px) {
   .policyText-wrapper.wrapper h3 {
@@ -5059,9 +5067,9 @@ label {
 #grdonation .page h1 {
   text-align: center;
   color: #ed2b74;
-  font-size: 1.43229rem;
+  font-size: 1.5625rem;
   font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   font-style: normal;
   line-height: 1.12;
   margin-top: 25px;
@@ -5123,7 +5131,7 @@ label {
   padding-top: 6px;
   padding-bottom: 6px;
   font-size: 14.66667px;
-  line-height: 1;
+  line-height: 1.25;
 }
 #grdonation .page div.radiobutton input[type='radio']:empty ~ label:before, #grdonation .page div.radiobutton input[type='checkbox']:empty ~ label:before {
   position: absolute;
@@ -5247,8 +5255,9 @@ label {
 .security .security-text {
   background: none;
   border: none;
+  font-family: sans-serif;
   color: #000;
-  font-size: 11px;
+  font-size: 10px;
   font-style: normal;
   z-index: 10;
   border-radius: 4px;
@@ -5261,7 +5270,7 @@ label {
 }
 .security .security-image {
   display: inline-block;
-  margin-right: 4px;
+  margin-right: 3px;
 }
 
 .popover {
@@ -5464,7 +5473,7 @@ label {
 .steps-list ul {
   list-style: none;
   margin: 0;
-  padding: 0px 10px 0px 17px;
+  padding: 0px 6px 0px 15px;
   text-align: left;
   font-size: 0;
   display: inline-block;
@@ -5480,7 +5489,7 @@ label {
   background: -webkit-linear-gradient(#dddfde 40%, #d7d8d9 60%);
   background: linear-gradient(#dddfde 40%, #d7d8d9 60%);
   border: none;
-  padding: 5px 15px;
+  padding: 6px 30px;
   font-size: 10px;
   line-height: 16px;
   display: inline-block;
@@ -5500,7 +5509,7 @@ label {
   font-family: sans-serif;
 }
 .steps-list ul li.is-complete {
-  color: #252525;
+  color: linear-gradient(#f695b9 40%, #ed2b74 60%);
   background: #dddfde;
   background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkZGRmZGUiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2Q3ZDhkOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #dddfde), color-stop(60%, #d7d8d9));
@@ -5794,6 +5803,7 @@ label {
   font-size: 1.26042rem;
   border-radius: 5px;
   padding: 10px 30px;
+  font-family: sans-serif;
 }
 #grdonation .btn-next:hover {
   opacity: 0.9;
@@ -5971,7 +5981,6 @@ select.error, textarea.error {
   width: 90%;
   font-size: 0.6875rem;
   font-family: sans-serif;
-  line-height: 1.4;
   font-weight: 400;
   top: 0px;
   left: 4px;
@@ -6144,8 +6153,10 @@ select.error, textarea.error {
 .upsell-title {
   font-size: 1em;
   color: #FFFFFF;
+  letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 17px;
+  font-size: 2.5rem;
   font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -6248,9 +6259,7 @@ button.upsell-modal--close:active {
   text-align: center;
   padding: 1em;
   color: #FFFFFF;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: sans-serif;
   border-radius: 10px;
   border: none;
   background: linear-gradient(to top, #ad1b20, #c31e24 20px);
@@ -6327,6 +6336,7 @@ button.upsell-modal--close:active {
 
   .upsell-title {
     margin-top: 0;
+    font-size: 1.43229rem;
   }
 
   .upsell-subtitle {

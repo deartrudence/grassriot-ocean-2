@@ -804,7 +804,7 @@ webpackJsonp([0],[
 	          stepLabels: [
 	            ($('.js-step1-labelText').length ? $('.js-step1-labelText').text() : 'Amount'), 
 	            ($('.js-step2-labelText').length ? $('.js-step2-labelText').text() : 'Billing'), 
-	            ($('.js-step3-labelText').length ? $('.js-step3-labelText').text() : 'Options'), 
+	            ($('.js-step3-labelText').length ? $('.js-step3-labelText').text() : ''), 
 	            ($('.js-step4-labelText').length ? $('.js-step4-labelText').text() : ''), 
 	            ($('.js-step5-labelText').length ? $('.js-step5-labelText').text() : ''), 
 	            ($('.js-step6-labelText').length ? $('.js-step6-labelText').text() : 'Payment')
