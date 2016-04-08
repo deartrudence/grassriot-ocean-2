@@ -3631,8 +3631,7 @@ body:after {
 }
 @media screen and (max-width: 619px) {
   .hero {
-    background-image: none !important;
-    height: auto;
+    height: 70vh;
   }
 }
 
@@ -3663,9 +3662,12 @@ body:after {
   .campaign .heroImageContainer {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 70vh;
     top: auto;
     left: auto;
+  }
+  .campaign .heroImageContainer img {
+    display: none;
   }
 }
 .campaign .heroImage {
@@ -3674,7 +3676,7 @@ body:after {
 @media screen and (max-width: 619px) {
   .campaign .heroImage {
     display: block;
-    width: 100%;
+    height: 100%;
   }
 }
 .campaign .heroTitle {
@@ -3698,7 +3700,7 @@ body:after {
   .campaign .heroTitle {
     max-width: 80%;
     bottom: 20px;
-    font-size: 23px;
+    font-size: 30px;
   }
 }
 .campaign .heroTitle strong,
@@ -4071,6 +4073,9 @@ html.csstransforms {
 
 .impactText-divider {
   padding-top: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
   border-bottom: 5px solid #ed2b74;
 }
 
@@ -4085,6 +4090,8 @@ html.csstransforms {
   .impactText-wrapper.wrapper {
     height: auto;
     background-image: none !important;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
 }
 .impactText-wrapper.wrapper h2 {
@@ -4172,14 +4179,6 @@ html.csstransforms {
     border: none;
     padding-left: 0;
     padding-right: 0;
-  }
-}
-@media screen and (max-width: 619px) {
-  .impactText-wrapper.wrapper {
-    padding-top: 40px;
-    padding-bottom: 0;
-    padding-left: 11px;
-    padding-right: 11px;
   }
 }
 
@@ -4558,6 +4557,11 @@ html.csstransforms {
     margin-bottom: 47px;
     max-width: 100%;
     color: #FFFFFF;
+  }
+}
+@media screen and (max-width: 619px) {
+  .policyText-wrapper.wrapper h3 {
+    font-size: 40px;
   }
 }
 .policyText-wrapper.wrapper img {
@@ -5266,7 +5270,7 @@ label {
 .security .security-text:hover {
   cursor: pointer;
   opacity: 0.7;
-  color: green;
+  color: #ed2b74;
 }
 .security .security-image {
   display: inline-block;
@@ -5804,6 +5808,7 @@ label {
   border-radius: 5px;
   padding: 10px 30px;
   font-family: sans-serif;
+  background-color: #D8256A;
 }
 #grdonation .btn-next:hover {
   opacity: 0.9;
@@ -6139,7 +6144,7 @@ select.error, textarea.error {
 .upsell-panel {
   display: table-cell;
   vertical-align: top;
-  padding: 33px 35px 25px;
+  padding: 33px 35px 10px;
 }
 
 .upsell-cta {
@@ -6197,7 +6202,10 @@ select.error, textarea.error {
   color: #FFFFFF;
   border-radius: 5px;
   overflow: hidden;
-  margin-top: .6em;
+  margin-top: 1.3em;
+}
+.upsell-recommendation p {
+  margin-bottom: 0.8em;
 }
 .upsell-recommendation p strong {
   color: #cb2f71;
@@ -6239,7 +6247,11 @@ button.upsell-modal--close {
   margin-right: -19px;
   opacity: 1;
   overflow: hidden;
+  padding-bottom: 5px;
   border-radius: 50%;
+  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
   background: #bdbec0;
   color: #000;
   font-size: 30px;
@@ -6254,7 +6266,7 @@ button.upsell-modal--close:active {
 
 .upsell-confirm {
   display: block;
-  background: #c31e24;
+  background: #D8256A;
   margin-top: -2px;
   text-align: center;
   padding: 1em;
@@ -6262,7 +6274,7 @@ button.upsell-modal--close:active {
   font-family: sans-serif;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(to top, #ad1b20, #c31e24 20px);
+  background: linear-gradient(to top, #c2215f, #d8256a 20px);
   box-shadow: 1px 1px 2px #000;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -6378,13 +6390,15 @@ button.upsell-modal--close:active {
   .upsell-subtitle {
     font-size: 14.66667px;
     margin-top: 0.5em;
+    padding-top: 20px;
   }
 
   .upsell-recommendation {
-    margin-top: 5px;
+    margin-top: 15px;
     font-size: 1em;
+    text-align: center;
   }
-  .upsell-recommendation strong {
+  .upsell-recommendation > strong {
     color: #ed2b74;
   }
 
@@ -6475,6 +6489,11 @@ html.flexbox .upsell-modal--body {
 .row.footer-logo img {
   display: block;
   margin-bottom: 25px;
+}
+
+footer a {
+  color: #FFFFFF;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=app.css.map */

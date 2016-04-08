@@ -253,7 +253,7 @@
         &:hover {
             cursor: pointer;
             opacity: 0.7;
-            color: green;
+            color: $brand-primary-alternate;
         }
     }
 
@@ -838,6 +838,7 @@
     white-space: normal;
 	@include cta-button--red;
   font-family: sans-serif;
+  background-color: #D8256A;
 	.glyphicon-chevron-right {
 	  font-size: 80%;
 	  position: relative;

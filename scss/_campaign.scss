@@ -234,6 +234,9 @@
 
 .impactText-divider {
   padding-top: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
   border-bottom: 5px solid $brand-primary-alternate;
 }
 .impactText-wrapper.wrapper {
@@ -247,6 +250,8 @@
   @include smallDesktopMax {
     height: auto;
     background-image: none !important;
+    padding-top: 5%;
+    padding-bottom: 5%;
   }
   h2 {
     @include fontSize-medium;
@@ -332,9 +337,7 @@
     }
   }
   @include mobile {
-    padding-top: 40px;
-    padding-bottom: 0;
-    @include mobileGutter;
+    // @include mobileGutter;
   }
 
 }
@@ -689,6 +692,9 @@
       margin-bottom: 47px;
       max-width: 100%;
       color: $white;
+    }
+    @include mobile {
+      font-size: 40px;
     }
 
   }

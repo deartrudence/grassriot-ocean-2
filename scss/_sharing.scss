@@ -6,6 +6,10 @@
   
   .mobile-center{
     border-bottom: 5px solid $rethink-post-action-text;  
+
+  }
+  @include mobile {
+    margin: 0 20px;
   }
 
   // &:after{
@@ -19,7 +23,7 @@
     .sharing-title,
     .share-content-container{
       @include tabletPlus{
-        padding-top: 60px; 
+        // padding-top: 60px; 
       }
     }
   }
@@ -28,11 +32,11 @@
     border-bottom: none;
   }
   
-  @include mobile{
-    padding: 30px 0;
+  @include tabletAndSmallDesktop{
+    padding: 0x 20px;
   }
   @include tablet{
-    padding: 20px;
+    // padding: 20px;
   }
   
   h3 {
@@ -53,10 +57,11 @@
     @include tabletPlus{
       display: table-cell;
       background: none;
-      padding: 34px 29px 30px;
+      padding: 38px 80px 30px 29px;
       min-height: 200px;
       vertical-align: top;
-      width: 35%;
+      width: 40%;
+      font-size: 1.4em;
     }
   }
 
@@ -84,7 +89,9 @@
     padding: 35px 29px 30px 20px;    
   }
 }
-
+.share-content {
+  font-family: sans-serif;
+}
 .share-content-padding {
   max-width: 475px;
 }
@@ -185,7 +192,7 @@
 } 
 
 .mail-body{
-  @include font-bodyN4;
+  // @include font-bodyN4;
   color: $sharing-text-grey;
 }
 .mail-subject{
@@ -223,14 +230,14 @@
       background-position-y: center;
       background-repeat: no-repeat;
       text-align: center;
-      width: 30%;
+      width: 40%;
       vertical-align: middle;
       font-size: 0;
       padding: 0;       
     }
     .fb-content-container {
       border-left: 1px solid #E2E2E2;
-      width: 68%;
+      width: 58%;
       vertical-align: top;
       padding: 13px;
       .fb-content {
@@ -289,7 +296,6 @@
 .post-action .campaign .word-bubble.twitter-text{
   color: $medium-light-grey;
   @include fontSize-smaller;
-
   img{
     margin-top: 19px;
   }

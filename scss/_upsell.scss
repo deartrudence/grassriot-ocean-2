@@ -32,7 +32,7 @@
 .upsell-panel{
   display: table-cell;
   vertical-align: top;
-  padding: 33px 35px 25px;
+  padding: 33px 35px 10px;
 }
 
 .upsell-cta{
@@ -93,7 +93,10 @@ $upsell-recommendation-padding: 5px;
   border-radius: $upsell-recommendation-padding;
   overflow: hidden;
   // font-size: 1.2em;
-  margin-top: .6em;
+  margin-top: 1.3em;
+  p {
+    margin-bottom: 0.8em;
+  }
   p strong {
     color: #cb2f71;
   }
@@ -138,7 +141,9 @@ button.upsell-modal--close{
   opacity: 1;
   // text-indent: -99px;
   overflow: hidden;
+  padding-bottom: 5px;
   border-radius: 50%;
+  @include font-headN7;
   @include background($upsell-close-background);
   color: $upsell-close-colour;
   font-size: 30px;
@@ -181,6 +186,7 @@ button.upsell-modal--close{
 
 .upsell-deny{
   margin: 1.5em 0 1em;
+ 
   text-align: right;
   color: #cb2f71 !important;
 
@@ -287,11 +293,13 @@ button.upsell-modal--close{
     //display: none;
     @include fontSize-base;
     margin-top: 0.5em;
+    padding-top: 20px;
   }
   .upsell-recommendation{
-    margin-top: 5px;
+    margin-top: 15px;
     font-size: 1em;
-    strong {
+    text-align: center;
+    & > strong {
       color: $brand-primary-alternate;
     }
   }

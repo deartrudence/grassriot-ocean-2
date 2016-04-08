@@ -3,6 +3,9 @@
   .row{
     margin: 0;
   }
+  .formClose, .formOpen {
+    display: none;
+  }
 
   .col-text{
     float: none;
@@ -19,7 +22,7 @@
   .campaign{
     padding: 0;
     margin: 0;
-
+  
     p{
       @include gotham-fontSize-biggerBase;
       color: $white;
@@ -32,15 +35,26 @@
     }
   }
 
+  .campaign .heroImageContainer {
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
   .page-logo{
+    padding-left: 29px;
     margin-left: 0;
     @include mobile{
-      // left: 50px;
-      width: 150px;
+      left: 0px;
+      padding-left: 20px;
+      position: relative;
+      // width: 150px;
     }
 
     @include tabletPlus{
       // left: 140px;
+      height: auto;
     }
   }
 
@@ -58,6 +72,12 @@
       @include font-headN2;
       margin-bottom: 0;
     }
+    @include mobile {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 7%;
+      padding-bottom: 5%;
+    }
   }
   .post-action-title {
     color: $white;
@@ -68,7 +88,7 @@
     @include mobile{
       // text-align: center;
       @include fontSize-large;
-      padding: 55px 0 20px;
+      padding: 0 0 20px;
       color: $white;
     }
     @include tabletPlus{
@@ -94,8 +114,8 @@
     @include heroContent;
 
     @include mobile{
-      @include fontSize-large;
-      margin-bottom: .4em;
+      // @include fontSize-large;
+      margin-top: .4em;
     }
   }
 
@@ -117,7 +137,7 @@
     margin: 0 auto;
 
     @include mobile{
-      padding: 0 11px;
+      padding: 0 0px;
     }
   }
 
@@ -129,12 +149,13 @@
   }
 
   .heroSummary{
-    background: rgba(255, 255, 255, 0.7);
+    background-color: $brand-primary-alternate;
     @include font-headN2;
-
+    color: $white;
     @include mobile{
-      padding: 28px 11px;
-      margin: 28px -11px 0;
+      padding: 28px 20px;
+      // margin: 28px -11px 0;
+      background-color: $white;
     }
     @include tabletPlus{
       padding: 1em 29px;
@@ -145,6 +166,12 @@
     p{
       max-width: 100%;
       margin-bottom: 0;
+      @include mobile {
+        padding-bottom: 15px;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
     }
     
     &:after{
@@ -156,37 +183,59 @@
         bottom: 0;
         left: 0;
         right: 0;
-        @include background(linear-gradient(to top, rgba($dark-grey, 0.5), rgba($dark-grey, 0)));        
+        @include background(linear-gradient(to top, rgba($black, 0.5), rgba($black, 0)));        
       }
     }
   }
   .learn-more {
     border-bottom: 5px solid $rethink-post-action-text; 
     .sharing-title {
-      padding-top: 20px;
-      padding-bottom: 57px;
+      padding-top: 59px;
+      padding-bottom: 59px;
+      @include mobile {
+        padding-top: 0;
+        margin-top: 0;
+      }
     } 
+    @include mobile {
+      // margin: 0 20px;
+    }
     p {
         color: $rethink-post-action-grey;
         text-transform: uppercase;
-        padding-top: 63px;
+        font-size: 1.2em;
+        padding-top: 60px;
         padding-left: 29px;
-        padding-right: 29px;
+        padding-right: 23px;
         padding-bottom: 0;
+        @include mobile {
+          padding-top: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          @include gotham-fontSize-large;
+          @include font-headN3;
+          font-weight: 200;
+          text-transform: none;
+          color: $black;
+        }
     }
     a {
       color: $brand-primary-alternate;
       text-transform: lowercase;
+      text-decoration: underline;
       @include font-headN3;
+      @include gotham-fontSize-biggerBase;
     }
   }
 
 
   .campaign p.heroSummary-details{
-    color: $light-grey;
+    // color: $light-grey;
+    color: $black;
     @include gotham-fontSize-large;
 
     @include tabletPlus{
+      color: $white;
       @include gotham-fontSize-smaller;
     }
   }
@@ -196,6 +245,7 @@
     @include gotham-fontSize-large;
 
     @include tabletPlus{
+      color: $white;
       @include gotham-fontSize-smaller;
     }
   }
@@ -261,16 +311,25 @@
       .email {
         width: 51px;
         background: image-url("ml.png") no-repeat center;
+        .mobile-center {
+          border-bottom: 0px;          
+        }
       }
     }
   }
-
+  .email .mobile-center {
+    border-bottom: 0px;          
+  }
   .sharing-title{
-    color: $rethink-post-action-text;;
-    @include lineHeight-hero;
-    @include font-headN7;
+    color: $rethink-post-action-text;
+    // @include lineHeight-hero;
+    line-height: 1.0;
+    @include font-headN4;
     @include gotham-fontSize-mediumLarge;
+    max-width: 90%;
     @include mobile{
+      margin-top: 30px;
+      padding-bottom: 0px !important;
       margin-bottom: 30px;
     }
   }
