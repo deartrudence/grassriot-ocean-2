@@ -73,14 +73,14 @@ var fields = gr.buildFieldNameObject({
     cc_num:     'Credit Card Number',
     cc_cvv:     'CVV Code',
     cc_exp:     'Credit Card Expiration',
-    bank_name:  'DD Bank Name',
+    /*bank_name:  'DD Bank Name',
     bank_acct:  'DD Bank Account Number',
     bank_branch:'DD Branch Number',
     bank_inst:  'DD Institution Number',
     bank_day:   'DD Pref Processing Date',
     bank_amt:   'DD Donation Amount',
     bank_restrict: 'DD Direct Gift',
-    bank_auth:  'Accept Terms',
+    bank_auth:  'Accept Terms',*/
     amt:        'Donation Amount',
     currency:   'Currency',
     recur_pay:  'Recurring Payment',
@@ -88,13 +88,13 @@ var fields = gr.buildFieldNameObject({
     recur_day:  'Recurring Day',
     optin:      'Opt-In_English',
     optin_fr:   'Opt-In French',
-    restrict:   'Direct Gift',
-    comments:   'Additional Comments',
+    /*restrict:   'Direct Gift',
+    comments:   'Additional Comments',*/
     upsell_track: 'Upsell Status',
     /*giftaid:    'Gift Aid',
     ref_camp_id:'Referring Campaign Id',
     matching:   'Matching Gift', */
-    from_org:   'Company Gift',
+    /*from_org:   'Company Gift',
     org_fname:  'Contact Persons Name',
     org_lname:  'Contact Last Name',
     org_email:  'Other Email',
@@ -124,7 +124,7 @@ var fields = gr.buildFieldNameObject({
     sec_country:    'Other Country',
     sec_billing:    'Use as billing address',
     sec_addrtype:   'Other Address Type',
-    addrtype:       'Addr_Type'
+    addrtype:       'Addr_Type'*/
 });
 
 var fieldsToSwap = {
@@ -160,7 +160,7 @@ var ENBeautifierFillersContainers = {
     '.js-formHeader',
     '#'+fields.recur_pay.nameNoSpace+'Div', 
     '#'+fields.amt.nameNoSpace+'Div',
-    '#'+fields.bank_amt.nameNoSpace+'Div',
+    //'#'+fields.bank_amt.nameNoSpace+'Div',
   ],
   '#gr_details': [
     '.js-donorInformation', 
@@ -177,7 +177,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.optin.nameNoSpace+'Div',
     '#'+fields.optin_fr.nameNoSpace+'Div'
   ],
-  '#gr_options': [
+  /*'#gr_options': [
     '#'+fields.restrict.nameNoSpace+'Div',
     '.js-donationOptions',
     '#'+fields.from_org.nameNoSpace+'Div',
@@ -216,7 +216,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.sec_country.nameNoSpace+'Div', 
     '#'+fields.sec_region.nameNoSpace+'Div', 
     '#'+fields.sec_billing.nameNoSpace+'Div',
-  ],
+  ],*/
   '#gr_payment': [
     '.js-paymentInformation', 
     '#'+fields.pay_type.nameNoSpace+'Div', 
@@ -225,7 +225,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.cc_num.nameNoSpace+'Div', 
     '#'+fields.cc_cvv.nameNoSpace+'Div', 
     '#'+fields.cc_exp.nameNoSpace+'Div',
-    '#'+fields.bank_name.nameNoSpace+'Div', 
+    /*'#'+fields.bank_name.nameNoSpace+'Div', 
     '#'+fields.bank_acct.nameNoSpace+'Div', 
     '#'+fields.bank_branch.nameNoSpace+'Div', 
     '#'+fields.bank_inst.nameNoSpace+'Div',
@@ -233,7 +233,7 @@ var ENBeautifierFillersContainers = {
     '#'+fields.bank_auth.nameNoSpace+'Div',
     '.js-donationSummary',
     '.js-instructionsAndComment',
-    '#'+fields.comments.nameNoSpace+'Div'
+    '#'+fields.comments.nameNoSpace+'Div'*/
   ],
 };
 
@@ -708,7 +708,7 @@ function setupAction(){
 
 	try{
         //NCC only - throw error if class denoting the Bank Direct Debit page 1 is present [users should never land on this page]
-        if($('.js-raygunMonthlyDDError').length) {
+        /*if($('.js-raygunMonthlyDDError').length) {
           try {
               throw new Error("Direct Debit Page 1");
           }
@@ -720,26 +720,26 @@ function setupAction(){
                 forms: [ENFormSelector]
             });
           }
-        }
+        }*/
 
         //look for campaign id settings, if missing, assign a default value
-        campaignIdMap = {
+        /*campaignIdMap = {
           CA: ($('.js-campaignId-CA').length ? $('.js-campaignId-CA').text() : $('input[name="ea.campaign.id"]').val()),
           US: ($('.js-campaignId-USINT').length ? $('.js-campaignId-USINT').text() : $('input[name="ea.campaign.id"]').val()),
           DD: ($('.js-campaignId-BANK').length ? $('.js-campaignId-BANK').text() : null)
-        }
+        }*/
 
         //complete remove bank direct deposit as a payment option if no campaign id is set
-        if(campaignIdMap.DD === null) {
+        /*if(campaignIdMap.DD === null) {
           $(fields.pay_type.selector).children().filter( function() {
             return this.value.toLowerCase() == 'bank direct deposit';
           }).remove();
-        }
+        }*/
 
         //payment processor-related fields
         var paymentTypeOptions = $(fields.pay_type.selector).children('option');
         var ccFields = ['#'+fields.cardholder.nameNoSpace+'Div','#'+fields.cc_num.nameNoSpace+'Div', '#'+fields.cc_cvv.nameNoSpace+'Div', '#'+fields.cc_exp.nameNoSpace+'Field'];
-        var ddFields = ['#'+fields.bank_name.nameNoSpace+'Div', '#'+fields.bank_auth.nameNoSpace+'Div', '#'+fields.bank_day.nameNoSpace+'Div', '#'+fields.bank_acct.nameNoSpace+'Div', '#'+fields.bank_branch.nameNoSpace+'Div', '#'+fields.bank_inst.nameNoSpace+'Div'];
+        /*var ddFields = ['#'+fields.bank_name.nameNoSpace+'Div', '#'+fields.bank_auth.nameNoSpace+'Div', '#'+fields.bank_day.nameNoSpace+'Div', '#'+fields.bank_acct.nameNoSpace+'Div', '#'+fields.bank_branch.nameNoSpace+'Div', '#'+fields.bank_inst.nameNoSpace+'Div'];*/
 
         //set recurring day automatically when form loads
         var recurringDay = 1;
@@ -751,10 +751,10 @@ function setupAction(){
         }
         $(fields.recur_day.selector).val(recurringDay);
 
-        if(formLanguage == 'fr-ca') {
+        /*if(formLanguage == 'fr-ca') {
           $(fields.sec_billing.selector).sibling('label').text('Utiliser cette adresse pour la facturation');
           $(fields.inmem_inhon.selector).sibling('label').text('En l’honneur de ou In memoriam');
-        }
+        }*/
         
 
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
@@ -773,19 +773,19 @@ function setupAction(){
         }
 
         //Swap fields on post-back
-        if(
+        /*if(
           typeof fields.sec_billing != "undefined"
           && $(fields.sec_billing.selector).length 
           && !$(fields.sec_billing.selector).prop('disabled')
           && $(fields.sec_billing.selector).is(":checked")) {
           swapFields();
-        }
+        }*/
 
         enbeautifier.addClasses(getFormClasses());
-        var selectorClasses = {};
-        selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
-        selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
-        enbeautifier.addClasses(selectorClasses);
+        //var selectorClasses = {};
+        //selectorClasses[fields.from_org.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
+        //selectorClasses[fields.inmem_inhon.selector] = { classes: "radiobutton", targetElement: "div.eaFormField"};
+        //enbeautifier.addClasses(selectorClasses);
 
         $("#"+fields.cc_exp.nameNoSpace+"Div").html( function(i,h) { 
                     return h.replace(/&nbsp;/g,'');
@@ -796,51 +796,17 @@ function setupAction(){
           activeClass: 'active',
           useCSSAnimation: false,
           indicatorTarget: '.steps-list ul',
-          steps: $("#gr_donation,#gr_details,#gr_options,#gr_inmem,#gr_company,#gr_payment"),
+          steps: $("#gr_donation,#gr_details,#gr_payment"),
           stepLabels: [
             ($('.js-step1-labelText').length ? $('.js-step1-labelText').text() : 'Amount'), 
             ($('.js-step2-labelText').length ? $('.js-step2-labelText').text() : 'Billing'), 
-            ($('.js-step3-labelText').length ? $('.js-step3-labelText').text() : ''), 
-            ($('.js-step4-labelText').length ? $('.js-step4-labelText').text() : ''), 
-            ($('.js-step5-labelText').length ? $('.js-step5-labelText').text() : ''), 
-            ($('.js-step6-labelText').length ? $('.js-step6-labelText').text() : 'Payment')
+            ($('.js-step3-labelText').length ? $('.js-step3-labelText').text() : 'Payment')
           ],
           addButtons: true,
           backButton: ($('.js-backButton-labelHTML').length ? $('.js-backButton-labelHTML').html() : 'go back'),
           stepButton: ($('.js-nextButton-labelHTML').length ? $('.js-nextButton-labelHTML').html() : 'Next'),
           //actionButton: ($('.js-actionButton-labelText').length ? $('.js-actionButton-labelText').html() : 'Donate'),
           target: "#window",
-          stepPreSwitchCallback: [
-            null,
-            null,
-            null,
-            null,
-            null,
-            function() {
-              buildDonationSummary();
-              updateCampaignId();
-              var updatedPaymentOptions = paymentTypeOptions.clone();
-              
-              if(!grGiving.isRecurring() || getBillingCountry() != "Canada") {
-                  updatedPaymentOptions = updatedPaymentOptions.filter(
-                        function() {
-                          return this.value.toLowerCase() != 'bank direct deposit';
-                        }
-                      );
-              }
-              if(grGiving.isRecurring()) {
-                updatedPaymentOptions = updatedPaymentOptions.filter(
-                        function() {
-                          return this.value.toLowerCase() != 'paypal';
-                        }
-                      );
-              }
-              var currentPaymentType = $(fields.pay_type.selector).val();
-              $(fields.pay_type.selector).html(updatedPaymentOptions).find('[value="'+currentPaymentType+'"]').prop('selected', true);
-              $(fields.pay_type.selector).trigger('change');
-            }
-            
-          ],
           stepHandler:[
             //step 1 handler
             function(){
@@ -866,42 +832,6 @@ function setupAction(){
                 return true;
               }
             },
-            //step 3 handler
-            function(){
-              formErrors = [ ];
-              $("#gr_options").find("input,select,textarea").not(':disabled').valid();
-              if(formErrors.length) {
-                handleErrors(formErrors);
-                return false;
-              } else {
-                grAnalytics.analyticsReport( 'payment/page3-complete' );
-                return true;
-              }
-            },
-            //step 4 handler
-            function(){
-              formErrors = [ ];
-              $("#gr_inmem").find("input,select,textarea").not(':disabled').valid();
-              if(formErrors.length) {
-                handleErrors(formErrors);
-                return false;
-              } else {
-                grAnalytics.analyticsReport( 'payment/page4-complete' );
-                return true;
-              }
-            },
-            //step 5 handler
-            function(){
-              formErrors = [ ];
-              $("#gr_company").find("input,select,textarea").not(':disabled').valid();
-              if(formErrors.length) {
-                handleErrors(formErrors);
-                return false;
-              } else {
-                grAnalytics.analyticsReport( 'payment/page5-complete' );
-                return true;
-              }
-            },
             //step 6 handler
             function(){
               formErrors = [ ];
@@ -912,21 +842,6 @@ function setupAction(){
               } 
               //If there are no errors, send the form
               else {
-                //swap fields if company address should be the billing address
-                if(
-                  typeof fields.sec_billing != "undefined"
-                  && $(fields.sec_billing.selector).length 
-                  && !$(fields.sec_billing.selector).prop('disabled')
-                  && $(fields.sec_billing.selector).is(":checked")) {
-                  swapFields();
-                }
-                //Always send a value for Company Gift
-                if($(fields.from_org.selector).filter(":checked").length == 0
-                  && $(fields.from_org.selector).first().val() == "Organization"
-                ) {
-                  $(fields.from_org.selector).first().val("Individual").prop('checked', true);
-                }
-
                 $form.submit();
               }
 
@@ -935,7 +850,7 @@ function setupAction(){
         });
 
         //add the message
-        $("#gr_donation").append($(".js-form-explainer"));
+        //$("#gr_donation").append($(".js-form-explainer"));
 
         // Setup Campaign Page
         grGiving = new GRGivingSupport({
@@ -982,32 +897,32 @@ function setupAction(){
             ],
             processorFields: { 
                 'Paypal': {
-                    hide: ccFields.concat(ddFields)
+                    hide: ccFields//.concat(ddFields)
                 },
                 'Visa': {
                     show: ccFields,
-                    hide: ddFields
+                    //hide: ddFields
                 },
                 'MasterCard': {
                     show: ccFields,
-                    hide: ddFields
+                    //hide: ddFields
                 },
                 'AMEX': {
                     show: ccFields,
-                    hide: ddFields
+                    //hide: ddFields
                 },
-                'Bank Direct Deposit': {
+                /*'Bank Direct Deposit': {
                     show: ddFields,
                     hide: ccFields
-                },
+                },*/
                 '': { //hide fields if no payment type is selected
-                  hide: ccFields.concat(ddFields)
+                  hide: ccFields//.concat(ddFields)
                 }
             }
 
         });
         //bank payment option
-        $(fields.pay_type.selector).on('change', function() {
+        /*$(fields.pay_type.selector).on('change', function() {
           if($(this).val() == 'Bank Direct Deposit') {
             $(fields.bank_restrict.selector).val($(fields.restrict.selector).val());
             $(fields.bank_amt.selector).val(grGiving.getAmount());
@@ -1017,7 +932,7 @@ function setupAction(){
             $(fields.bank_amt.selector).val('');
             updateCampaignId();
           }
-        }).trigger('change');
+        }).trigger('change');*/
 
         //change the submit button when the amount changes
         $submit = $("#gr_payment").find(".btn-next").addClass("button-submit");    
@@ -1050,9 +965,6 @@ function setupAction(){
             upsellMethod: 'function',
             maxGift: ($upsellOfferCeiling.length && !isNaN(parseFloat($upsellOfferCeiling.text())) ? parseFloat($upsellOfferCeiling.text()) : 500),
             calcFunction: function( amount ) {
-              if(grGiving.isRecurring()) {
-                return 85;
-              } else {
                 var amount = Math.floor(amount);
                 var ret = amount;
                 var mlt = 1.2;
@@ -1062,58 +974,32 @@ function setupAction(){
                 ret = Math.min(Math.round(ret*4.33),amount);        
 
                 return ret;
-              }
             },
             declineCallback: function(){
-                $(fields.upsell_track.selector).val('N-'+this.upsellType+'-'+this.initialAmount);
-                grAnalytics.analyticsReport( 'payment/upsell-declined/'+this.upsellType );
+                $(fields.upsell_track.selector).val('N-'+this.initialAmount);
+                grAnalytics.analyticsReport( 'payment/upsell-declined/' );
                 $(".se-pre-con").fadeIn("slow");
             },
             upsellCallback: function(){
-                $(fields.upsell_track.selector).val('Y-'+this.upsellType+'-'+this.initialAmount);
-                grAnalytics.analyticsReport( 'payment/upsell-accepted/'+this.upsellType );
+                $(fields.upsell_track.selector).val('Y-'+this.initialAmount);
+                grAnalytics.analyticsReport( 'payment/upsell-accepted/' );
                 $(".se-pre-con").fadeIn("slow");
             },
             preventLaunch: function() {
               return (
-                (grGiving.isRecurring() && $('.js-licUpsellToggle').val().toLowerCase()=="on"  && (this.initialAmount < 50 || this.initialAmount >= 85))
-                || (grGiving.isRecurring() && ($('.js-licUpsellToggle').length == 0 || $('.js-licUpsellToggle').val().toLowerCase()!="on"))
+                grGiving.isRecurring() 
                 || $(fields.pay_type.selector).val().toLowerCase() == 'paypal'
               );
             },
-            'onDeclineFormUpdates': function() { 
-                if(!grGiving.isRecurring()) {
-                  this.options.recurringField.filter(':checked').val('');
-                }
+            onDeclineFormUpdates: function() { 
+                this.options.recurringField.filter(':checked').val('');
             },
             onUpsellFormUpdates: function() {
-                if(grGiving.isRecurring()) { 
-                    this.options.donationAmountField.filter(':checked').val(this.upsellAmount.toFixed(2));
-                    if($(fields.bank_amt.selector).val() != '') { //check if bank donation amount has a value, and update
-                      $(fields.bank_amt.selector).val(this.upsellAmount.toFixed(2));
-                    }
-                } else {
-                    this.options.recurringField.filter(':checked').val('Y');
-                    this.options.donationAmountField.val(this.upsellAmount);
-                }
+                this.options.recurringField.filter(':checked').val('Y');
+                this.options.donationAmountField.val(this.upsellAmount);
             },
             preLaunchCallback: function() {
-                if(grGiving.isRecurring() && this.initialAmount >= 50 && this.initialAmount < 85) {
-                    $('.js-monthlyContent').hide();
-                    $('.js-licDifference').text(this.upsellAmount-this.initialAmount);
-                    gr.replaceENTemplateTags($form, $('.upsell-copy'), fields, {start: "`", end: "`"});
-                    if($('.upsell-cta').find('img.js-licContent').length) {
-                      $('.upsell-cta').css('background-image', 'url('+$('.upsell-cta').find('img.js-licContent').attr('src')+')');
-                    }
-                    this.upsellType = 'LIC';
-                } else if(!grGiving.isRecurring()) {
-                    $('.js-licContent').hide();
-                    if($('.upsell-cta').find('img.js-monthlyContent').length) {
-                      $('.upsell-cta').css('background-image', 'url('+$('.upsell-cta').find('img.js-monthlyContent').attr('src')+')');
-                    }
-                    this.upsellType = 'MON';
-                }
-                grAnalytics.analyticsReport( 'payment/upsell-launched/'+this.upsellType );
+                grAnalytics.analyticsReport( 'payment/upsell-launched/' );
             }
             /*range: [ //min is inclusive, max is not inclusive
                 {min: 0, max: 20, amount: 6},
@@ -1128,7 +1014,7 @@ function setupAction(){
     $form.removeAttr('onsubmit');
     $('[data-toggle="popover"]').popover();
 
-    setupDonationOptions();
+    //setupDonationOptions();
 
 		setupMobileButton();
 
@@ -1179,7 +1065,7 @@ function updateButtonText() {
 }
 
 function setupDonationOptions() {
-  var initialState = true;
+  /*var initialState = true;
 
   $donationSummary.after($donationSummaryRaw);
 
@@ -1191,7 +1077,7 @@ function setupDonationOptions() {
   });
   if($(fields.comments.selector).val() != '') {
     $('.js-toggleComments').click();
-  }
+  }*/
 
   /*$(fields.inmem.selector).data('deselect',fields.inhonor.selector);
   $(fields.inhonor.selector).data('deselect',fields.inmem.selector);
@@ -1201,7 +1087,7 @@ function setupDonationOptions() {
   }*/
 
   //show/hide optional steps based on user selections
-  $form.on('change', fields.inmem_inhon.selector, function(e) {
+  /*$form.on('change', fields.inmem_inhon.selector, function(e) {
     var actionName;
     if($(this).is(":checked")) {
         formSteps.showStep(3);
@@ -1253,7 +1139,7 @@ function setupDonationOptions() {
       /*if($(this).is(':checked')) {
           $($(this).data('deselect')).prop("checked", false);
       }*/
-  });
+  /*});
 
   $form.on('change', fields.inform.selector+":checked", function() {
     switch($(this).filter(':checked').val()) {
@@ -1270,13 +1156,13 @@ function setupDonationOptions() {
 
   $form.find(fields.inmem_inhon.selector+','+fields.from_org.selector).trigger('change');
   $form.find(fields.inmem_type.selector+','+fields.inform.selector).filter(':checked').trigger('change');
-  initialState = false;
+  initialState = false;*/
 }
 
 /**
  * Swaps the values of a set of fields to another.  The fieldsToSwap is an Object with only key/value pairs where the keys are one field indentifier and the values are the other field identifier [both strings].
  */
-function swapFields() {
+/*function swapFields() {
   var field1Value;
 
   for(var field1 in fieldsToSwap) {
@@ -1312,7 +1198,7 @@ function getBillingCountry() {
   }
 
   return $(billingCountryField.selector).val();
-}
+}*/
 
 function handleCountryChange(e){
     var countryField = $(e.target);
@@ -1445,7 +1331,7 @@ function setupTY(){
 
 }
 
-function buildDonationSummary() {
+/*function buildDonationSummary() {
   $donationSummary.html($donationSummaryRaw.html());
   gr.replaceENTemplateTags($form, $donationSummary,fields,{start: "`", end: "`"});
   $donationSummary.find('.js-amount').text(grGiving.getAmount(true));
@@ -1456,7 +1342,7 @@ function buildDonationSummary() {
     $donationSummary.find('.js-frequency').text('');
   }
 
-}
+}*/
 
 /**
  * [setupMobileButton description]
@@ -1546,7 +1432,7 @@ function init_devtools(){
  * [addStringerStat description]
  * @param {[type]} response [description]
  */
-function addStringerStat(response){
+/*function addStringerStat(response){
 	if(response.status == "success") {
 		try {
 			var actions = parseInt(response.data);
@@ -1569,7 +1455,7 @@ function addStringerStat(response){
 			});
 		}
 	}
-}
+}*/
 
 //////////////////////////////
 // Everything else goes here
@@ -1859,7 +1745,7 @@ function init_validation(){
         };
 
         //bank fields
-        validation_rules[fields.bank_name.name] = {
+        /*validation_rules[fields.bank_name.name] = {
             required: function(element) {
               return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
             }
@@ -1886,13 +1772,13 @@ function init_validation(){
             required: function(element) {
               return ($(fields.pay_type.selector).val().toLowerCase() == 'bank direct deposit') 
             }
-        };
+        };*/
 
         validation_rules[fields.amt.name] = {
             required: true,
             isValidDonation: true
         };
-        validation_rules[fields.employer.name] = {
+        /*validation_rules[fields.employer.name] = {
             required: function(element) {
                 return $(fields.from_org.selector).is(':checked');
             }
@@ -1946,11 +1832,11 @@ function init_validation(){
                 return $(fields.inmem_inhon.selector).is(':checked');
             }
         }
-        /*validation_rules[fields.inhonor.name] = {
+        validation_rules[fields.inhonor.name] = {
             required: function(element) {
                 return $(fields.inmem_inhon.selector).is(':checked') && !$(fields.inmem.selector).is(':checked');
             }
-        }*/
+        }
         validation_rules[fields.inmem_name.name] = {
             required: function(element) {
                 return $(fields.inmem_inhon.selector).is(':checked') && $(fields.inmem_type.selector).filter(':checked').val() == 'inmemoriam';
@@ -2021,7 +1907,7 @@ function init_validation(){
             required: function(element) {
                 return $(fields.inform.selector).filter(':checked').val() == "mail";
             }
-        }
+        }*/
         
         $form.validate({
             rules: validation_rules,
@@ -2104,10 +1990,10 @@ function handleErrors(errors, validator) {
     inputNamesMapper[fields.cc_cvv.name] = 'CVV2 Code';
 
     //donation option fields
-    inputNamesMapper[fields.inmem_type.name] = 'In honour/in memoriam selection';
+    //inputNamesMapper[fields.inmem_type.name] = 'In honour/in memoriam selection';
 
     //bank payment
-    inputNamesMapper[fields.bank_auth.name] = 'Accepting NCC\'s Pre-authorized Debit Agreement';
+    //inputNamesMapper[fields.bank_auth.name] = 'Accepting NCC\'s Pre-authorized Debit Agreement';
 
     if(formLanguage=='fr-ca') {
       inputNamesMapper[fields.cc_exp.name+'1'] = 'Le mois d’expiration de la carte de crédit est';
@@ -2219,41 +2105,41 @@ function getFormClasses() {
     classes['#'+fields.cc_exp.nameNoSpace+'1'] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
 
     //Bank fields
-    classes[fields.bank_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.bank_name.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.bank_day.selector] = { classes: "inline-block-field-wrap full-wrap show-label", targetElement: "div.eaFullWidthContent"};
     classes[fields.bank_acct.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.bank_branch.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.bank_inst.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
-    classes[fields.bank_auth.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.bank_auth.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};*/
 
     //Donation option fields
-    classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label label-100", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.restrict.selector] = { classes: "inline-block-field-wrap full-wrap show-label label-100", targetElement: "div.eaFullWidthContent"};
     classes[fields.from_org.selector] = { classes: "show-label", targetElement: "div.eaFullWidthContent"};
-    classes[fields.inmem_inhon.selector] = { classes: "hide-label ", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inmem_inhon.selector] = { classes: "hide-label ", targetElement: "div.eaFullWidthContent"};*/
 
     //In memorial fields
-    classes[fields.inmem_type.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.inmem_type.selector] = { classes: "inline-block-field-wrap full-wrap hide-label", targetElement: "div.eaFullWidthContent"};
     classes[fields.inmem_name.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inmem_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
-    classes[fields.inmem_from.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inmem_from.selector] = { classes: "inline-block-field-wrap full-wrap js-memorialGift hide js-informMail", targetElement: "div.eaFullWidthContent"};*/
 
     //In honour fields
-    classes[fields.inhonor_name.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.inhonor_name.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inhonor_occ.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift", targetElement: "div.eaFullWidthContent"};
     classes[fields.inhonor_msg.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
-    classes[fields.inhonor_from.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inhonor_from.selector] = { classes: "inline-block-field-wrap full-wrap js-honourGift hide js-informMail", targetElement: "div.eaFullWidthContent"};*/
 
     //Inform fields
-    classes[fields.inform_recip.selector] = { classes: "inline-block-field-wrap full-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.inform_recip.selector] = { classes: "inline-block-field-wrap full-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
     classes[fields.inform_street1.selector] = { classes: "inline-block-field-wrap hide js-informMail three-quarter-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.inform_street2.selector] = { classes: "inline-block-field-wrap last-wrap hide js-informMail one-quarter-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.inform_city.selector] = { classes: "inline-block-field-wrap half-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
     classes[fields.inform_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
     classes[fields.inform_country.selector] = { classes: "inline-block-field-wrap half-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
-    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};
+    classes[fields.inform_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap hide js-informMail", targetElement: "div.eaFullWidthContent"};*/
 
     //Company fields
-    classes[fields.org_fname.selector] = { classes: "inline-block-field-wrap half-wrap ", targetElement: "div.eaFullWidthContent"};
+    /*classes[fields.org_fname.selector] = { classes: "inline-block-field-wrap half-wrap ", targetElement: "div.eaFullWidthContent"};
     classes[fields.org_lname.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.org_email.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.sec_street1.selector] = { classes: "inline-block-field-wrap three-quarter-wrap", targetElement: "div.eaFullWidthContent"};
@@ -2261,7 +2147,7 @@ function getFormClasses() {
     classes[fields.sec_city.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.sec_postal.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.sec_country.selector] = { classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
-    classes[fields.sec_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};
+    classes[fields.sec_region.selector] = { classes: "inline-block-field-wrap half-wrap last-wrap", targetElement: "div.eaFullWidthContent"};*/
     
 
     return classes;
