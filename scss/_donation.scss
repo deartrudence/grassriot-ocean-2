@@ -506,21 +506,21 @@
 	  @include text-indicator;
 	  @include fontSize-smallish;
     font-family: sans-serif;
-	  &.current,
-	  &.is-complete,
-	  &.active {
-		background: $stepsActive_background;
-		@include background($stepsActive_advancedBackground);
-		border: $stepsActive_border;
-		color: $white;
-    font-family: sans-serif;
-	  }
-
+	  
 	  &.is-complete {
 		color: $stepsComplete_colour;
     background: $stepsComplete_background;
     @include background($stepsComplete_advancedBackground);
 	  }
+
+    &.current,
+    &.active {
+    background: $stepsActive_background;
+    @include background($stepsActive_advancedBackground);
+    border: $stepsActive_border;
+    color: $white;
+    font-family: sans-serif;
+    }
 
 	  &.active:after{
 		$triangle-height: 10px;
