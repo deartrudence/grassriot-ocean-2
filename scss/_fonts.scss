@@ -3,36 +3,36 @@
 //local
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/Gotham-Bold.eot');
-  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Bold.woff') format('woff'), url('../fonts/Gotham-Bold.ttf') format('truetype'), url('../fonts/Gotham-Bold.svg') format('svg');
+  src: font-url('Gotham-Bold.eot');
+  src: local('Ã¢ËœÂº'), font-url('Gotham-Bold.woff') format('woff'), font-url('Gotham-Bold.ttf') format('truetype'), font-url('Gotham-Bold.svg') format('svg');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/ufonts.com_gotham-medium.eot');
-  src: local('Ã¢ËœÂº'), url('../fonts/ufonts.com_gotham-medium.woff') format('woff'), url('../fonts/ufonts.com_gotham-medium.ttf') format('truetype'), url('../fonts/ufonts.com_gotham-medium.svg') format('svg');
+  src: font-url('ufonts.com_gotham-medium.eot');
+  src: local('Ã¢ËœÂº'), font-url('ufonts.com_gotham-medium.woff') format('woff'), font-url('ufonts.com_gotham-medium.ttf') format('truetype'), font-url('ufonts.com_gotham-medium.svg') format('svg');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/Gotham-Book.eot');
-  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Book.woff') format('woff'), url('../fonts/Gotham-Book.ttf') format('truetype'), url('../fonts/Gotham-Book.svg') format('svg');
+  src: font-url('Gotham-Book.eot');
+  src: local('Ã¢ËœÂº'), font-url('Gotham-Book.woff') format('woff'), font-url('Gotham-Book.ttf') format('truetype'), font-url('Gotham-Book.svg') format('svg');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/Gotham-Thin.eot');
-  src: local('Ã¢ËœÂº'), url('../fonts/Gotham-Light.woff') format('woff'), url('../fonts/Gotham-Light.ttf') format('truetype'), url('../fonts/Gotham-Light.svg') format('svg');
+  src: font-url('Gotham-Thin.eot');
+  src: local('Ã¢ËœÂº'), font-url('Gotham-Light.woff') format('woff'), font-url('Gotham-Light.ttf') format('truetype'), font-url('Gotham-Light.svg') format('svg');
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
     font-family: 'Chronicle Text';
-    src: url('../fonts/Chronicle Display Roman.woff');
-    src: local('Ã¢ËœÂº'), url('../fonts/Chronicle Display Roman.woff') format('woff'), url('../fonts/Chronicle Display Roman.ttf') format('truetype'), url('../fonts/Chronicle Display Roman.svg') format('svg');
+    src: font-url('Chronicle+Display+Roman.woff');
+    src: local('Ã¢ËœÂº'), font-url('Chronicle+Display+Roman.woff') format('woff'), font-url('Chronicle+Display+Roman.ttf') format('truetype'), font-url('Chronicle+Display+Roman.svg') format('svg');
     font-weight: 400;
     font-style: normal;
 }
