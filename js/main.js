@@ -1233,6 +1233,8 @@ function setupTY(){
         //add the post-action class
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
         $("body").addClass("post-action");
+        $('.heroLogo img').addClass('page-logo').attr('src', $('.page-logo').attr('src').replace('logo', 'logo-post-action') ).wrap('<a href="http://rethinkbreastcancer.com/"></a>');
+        $('.heroLogo').addClass('mobile-center').removeClass('heroLogo');
         $transaction_details = $(".js-transactionDetails");
 
         //handle post action summary text
