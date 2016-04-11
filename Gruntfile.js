@@ -76,7 +76,7 @@ module.exports = function(grunt) {
             })
           ],
           output: {
-            publicPath: "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1688/",
+            publicPath: "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1982/",
           }
         }
       },

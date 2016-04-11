@@ -1,7 +1,7 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = (environment == :production) ? "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1803/" : "./" 
+http_path = (environment == :production) ? "https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1982/" : "./" 
 css_dir = (environment == :production) ? "output" : "output"
 sass_dir = (environment == :production) ? "scss" : "scss"
 images_dir = (environment == :production) ? "img" : "img"

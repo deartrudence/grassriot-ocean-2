@@ -57,17 +57,17 @@ var gr = require('./modules/GRHelpers');
 
 var fields = gr.buildFieldNameObject({
     title:      'Title', 
-    email:      'Primary_Email',
-    fname:      'First_Name',
-    mname:      'Middle_Name', 
-    lname:      'Last_Name',
-    street1:    'Addrline1',
-    street2:    'Addrline2',
+    email:      'Email Address',
+    fname:      'First Name',
+    //mname:      'Middle_Name', 
+    lname:      'Last Name',
+    street1:    'Address 1',
+    street2:    'Address 2',
     city:       'City',
     region:     'Province',
-    postal:     'Postal_Code',
+    postal:     'Postal Code',
     country:    'Country',
-    phone:      'Home_Phone',
+    phone:      'Mobile Phone',
     pay_type:   'Payment Type',
     cardholder: 'Card Holder Name',
     cc_num:     'Credit Card Number',
@@ -1691,7 +1691,7 @@ function init_validation(){
         validation_rules[fields.postal.name] = { 
           required: true,
           isPostcodeCA: function(element) {
-            return $(fields.country.selector).val() == "Canada";
+            return $(fields.country.selector).val() == "CA";
           }
         };
         validation_rules[fields.pay_type.name] = "required";
@@ -1929,8 +1929,8 @@ function init_validation(){
                 var $el = $(element);
             },
             groups: {
-                demoGroup: "First Name",
-                ccExpiryDate: "Credit Card Expiration 1 "
+                //demoGroup: "First Name",
+                //ccExpiryDate: "Credit Card Expiration 1 "
             },
             invalidHandler: function(e, validator) {
                 var errors = validator.errorList;
