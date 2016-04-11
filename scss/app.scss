@@ -6,7 +6,7 @@
 //@import "slick";
 
 //bootstrap donation imports
-@import "bootstrap/glyphicons";
+// @import "bootstrap/glyphicons";
 @import "bootstrap/mixins";
 @import "bootstrap/scaffolding";
 @import 'bootstrap/modals';
@@ -23,21 +23,17 @@
 @import "base";
 @import "buttons";
 @import "grids";
-// @import "eco_fonts";
 @import "fonts";
 @import "zindex";
 
 //styles
-// @import "upsell";
 @import "global";
 @import "hero";
 @import "campaign";
 @import "form";
-// @import "mh_form";
 @import "donation";
 @import "upsell";
-@import "media";
 @import "identity";
 @import "footer";
-//@import "sharing";
-//@import "post-action";
+@import "sharing";
+@import "post-action";
