@@ -3,7 +3,7 @@
  *
  * Manages common aspects required for building a donation form
  *
- * @version  0.5 !!MODIFIED20160119!!
+ * @version  0.6
  * @requires jQuery
  */
 var requiredOptions = [ 'form' ];
@@ -305,7 +305,7 @@ GRGivingSupport.prototype.init = function() {
             })
             .on('change','[name="'+options.components.other.name+'"]', function(e){
                 e.stopPropagation();
-                //@since __  parse out non-numbers
+                //@since 0.6  parse out non-numbers
                 $(this).closest("label").siblings("input[type=radio]").val(filterAmount($(this).val()).toFixed(2));
             });
     }
@@ -411,7 +411,7 @@ GRGivingSupport.prototype.activateCountryRegions = function(countries) {
 
 /** [getAmount description] 
     @param boolean formatted denotes whether the 
-    @param string @since __ locale a string defining the locale the format should follow
+    @param string @since 0.6 locale a string defining the locale the format should follow
 */
 GRGivingSupport.prototype.getAmount = function(formatted, locale) {
     if(typeof formatted == "undefined") formatted = false;
@@ -478,7 +478,7 @@ GRGivingSupport.prototype.setAmount = function(amt, currency) {
  * [filterAmount description]
  * @param  {string} amt [description]
  * @return {float}     [description]
- * @since  __
+ * @since  0.6
  */
 function filterAmount(amt) {
     amt = amt.replace(/[^0-9\.]/g, '');
@@ -523,7 +523,7 @@ function getAskStringIndex() {
     }
 
     //@since 0.2 - updated to handle a single checkbox properly
-    //@since __ - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
+    //@since 0.6 - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
     if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase().replace(/[^a-z0-9]/g,"_"))) {
         index.push(recurrence);
     }
