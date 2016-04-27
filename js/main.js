@@ -21,6 +21,7 @@ var enbeautifier;
 var hero = ".js-hero";
 var heroImage = ".js-hero-image";
 var heroText = ".js-hero-text";
+var heroVideo = ".js-hero-video";
 var heroImageRatio = false;
 
 //cta configuration
@@ -86,7 +87,7 @@ var fields = gr.buildFieldNameObject({
     recur_pay:  'Recurring Payment',
     recur_freq: 'Recurring Frequency',
     recur_day:  'Recurring Day',
-    optin:      'Opt-In_English',
+    optin:      'opt-in-cem',
     optin_fr:   'Opt-In French',
     /*restrict:   'Direct Gift',
     comments:   'Additional Comments',*/
@@ -1020,41 +1021,37 @@ function setupAction(){
 
     //if the video is requested, show it
     
-    /*require.ensure([],function(require){
+    require.ensure([],function(require){
       var browser = require("bowser");
 
-      if(gr.getURLParameter("showVideo") === "true"){
+      if($(heroVideo).length && $.trim($(heroVideo).text()) != "") {
 
-        var $video = $(".js-hero-video");
-        if($video.length){
+        var $video = $(heroVideo);
+        var $container = $video.parent();
+        $container.addClass("is-videoPlaceholder");
+        //$container.find(".heroTitle").prepend('<span class="glyphicon glyphicon-play"></span><br />');
+        var videoURL = $video.text();
 
-          var $container = $video.parent();
-          $container.addClass("is-videoPlaceholder");
-          $container.find(".heroTitle").prepend('<span class="glyphicon glyphicon-play"></span><br />');
-          var videoURL = $video.text();
+        $container.on("click",function(e){
 
-          $container.on("click",function(e){
+          //for iOS 7 and older, treat the video as a link rather than an embed location
+          if(browser.ios && browser.version <= 7){
+            window.location = videoURL;
+          }
 
-            //for iOS 7 and older, treat the video as a link rather than an embed location
-            if(browser.ios && browser.version <= 7){
-              window.location = videoURL;
-            }
+          //for browsers that can handle embedded video, do it!
+          else{
+            $video
+              .html("<iframe src='"+videoURL+"?wmode=opaque&enablejsapi=1&autoplay=1' frameborder='0' allowfullscreen></iframe>")
+              .removeClass("hide");
 
-            //for browsers that can handle embedded video, do it!
-            else{
-              $video
-                .html("<iframe src='"+videoURL+"?wmode=opaque&enablejsapi=1&autoplay=1' frameborder='0' allowfullscreen></iframe>")
-                .removeClass("hidden");
-
-              $container.addClass("is-videoContainer");
-              $(".page-header").hide();
-            }
-          });
-
-        }
+            $container.addClass("is-videoContainer");
+            $(".page-header").hide();
+          }
+        });
         
       }
-    })*/
+    }, 'app-video');
 	} catch(error) {
 		graygunner.sendError(error);
 	}
