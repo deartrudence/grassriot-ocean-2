@@ -121,6 +121,20 @@ html.csstransforms {
 //add hero video support
 
 .is-videoPlaceholder{
+  cursor: pointer;
+
+  &.hero {
+    @include mobile {
+      height: 100vh;
+    }
+  }
+
+  .heroImageContainer {
+    @include mobile {
+      height: 100vh;
+    }
+  }
+
   //on .hero
   .heroTitle{
     padding-top: 20%;
@@ -147,6 +161,9 @@ html.csstransforms {
   height: auto;
 
   .heroTitle{
+    display: none;
+  }
+  .heroImageContainer {
     display: none;
   }
 }

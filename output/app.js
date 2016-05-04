@@ -25,6 +25,7 @@ webpackJsonp([0],[
 	var hero = ".js-hero";
 	var heroImage = ".js-hero-image";
 	var heroText = ".js-hero-text";
+	var heroVideo = ".js-hero-video";
 	var heroImageRatio = false;
 
 	//cta configuration
@@ -90,7 +91,7 @@ webpackJsonp([0],[
 	    recur_pay:  'Recurring Payment',
 	    recur_freq: 'Recurring Frequency',
 	    recur_day:  'Recurring Day',
-	    optin:      'Opt-In_English',
+	    optin:      'opt-in-cem',
 	    optin_fr:   'Opt-In French',
 	    /*restrict:   'Direct Gift',
 	    comments:   'Additional Comments',*/
@@ -1024,41 +1025,37 @@ webpackJsonp([0],[
 
 	    //if the video is requested, show it
 	    
-	    /*require.ensure([],function(require){
-	      var browser = require("bowser");
+	    !/* require.ensure */(function(require){
+	      var browser = __webpack_require__(21);
 
-	      if(gr.getURLParameter("showVideo") === "true"){
+	      if($(heroVideo).length && $.trim($(heroVideo).text()) != "") {
 
-	        var $video = $(".js-hero-video");
-	        if($video.length){
+	        var $video = $(heroVideo);
+	        var $container = $video.parent();
+	        $container.addClass("is-videoPlaceholder");
+	        //$container.find(".heroTitle").prepend('<span class="glyphicon glyphicon-play"></span><br />');
+	        var videoURL = $video.text();
 
-	          var $container = $video.parent();
-	          $container.addClass("is-videoPlaceholder");
-	          $container.find(".heroTitle").prepend('<span class="glyphicon glyphicon-play"></span><br />');
-	          var videoURL = $video.text();
+	        $container.on("click",function(e){
 
-	          $container.on("click",function(e){
+	          //for iOS 7 and older, treat the video as a link rather than an embed location
+	          if(browser.ios && browser.version <= 7){
+	            window.location = videoURL;
+	          }
 
-	            //for iOS 7 and older, treat the video as a link rather than an embed location
-	            if(browser.ios && browser.version <= 7){
-	              window.location = videoURL;
-	            }
+	          //for browsers that can handle embedded video, do it!
+	          else{
+	            $video
+	              .html("<iframe src='"+videoURL+"?wmode=opaque&enablejsapi=1&autoplay=1' frameborder='0' allowfullscreen></iframe>")
+	              .removeClass("hide");
 
-	            //for browsers that can handle embedded video, do it!
-	            else{
-	              $video
-	                .html("<iframe src='"+videoURL+"?wmode=opaque&enablejsapi=1&autoplay=1' frameborder='0' allowfullscreen></iframe>")
-	                .removeClass("hidden");
-
-	              $container.addClass("is-videoContainer");
-	              $(".page-header").hide();
-	            }
-	          });
-
-	        }
+	            $container.addClass("is-videoContainer");
+	            $(".page-header").hide();
+	          }
+	        });
 	        
 	      }
-	    })*/
+	    }(__webpack_require__));
 		} catch(error) {
 			graygunner.sendError(error);
 		}
@@ -1237,6 +1234,8 @@ webpackJsonp([0],[
 	        //add the post-action class
 	        $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
 	        $("body").addClass("post-action");
+	        $('.heroLogo img').addClass('page-logo').attr('src', $('.page-logo').attr('src').replace('logo', 'logo-post-action') ).wrap('<a href="http://rethinkbreastcancer.com/"></a>');
+	        $('.heroLogo').addClass('mobile-center').removeClass('heroLogo');
 	        $transaction_details = $(".js-transactionDetails");
 
 	        //handle post action summary text
@@ -3383,7 +3382,7 @@ webpackJsonp([0],[
 	 *
 	 * Manages common aspects required for building a donation form
 	 *
-	 * @version  0.5 !!MODIFIED20160119!!
+	 * @version  0.6
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ 'form' ];
@@ -3685,7 +3684,7 @@ webpackJsonp([0],[
 	            })
 	            .on('change','[name="'+options.components.other.name+'"]', function(e){
 	                e.stopPropagation();
-	                //@since __  parse out non-numbers
+	                //@since 0.6  parse out non-numbers
 	                $(this).closest("label").siblings("input[type=radio]").val(filterAmount($(this).val()).toFixed(2));
 	            });
 	    }
@@ -3791,7 +3790,7 @@ webpackJsonp([0],[
 
 	/** [getAmount description] 
 	    @param boolean formatted denotes whether the 
-	    @param string @since __ locale a string defining the locale the format should follow
+	    @param string @since 0.6 locale a string defining the locale the format should follow
 	*/
 	GRGivingSupport.prototype.getAmount = function(formatted, locale) {
 	    if(typeof formatted == "undefined") formatted = false;
@@ -3858,7 +3857,7 @@ webpackJsonp([0],[
 	 * [filterAmount description]
 	 * @param  {string} amt [description]
 	 * @return {float}     [description]
-	 * @since  __
+	 * @since  0.6
 	 */
 	function filterAmount(amt) {
 	    amt = amt.replace(/[^0-9\.]/g, '');
@@ -3903,7 +3902,7 @@ webpackJsonp([0],[
 	    }
 
 	    //@since 0.2 - updated to handle a single checkbox properly
-	    //@since __ - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
+	    //@since 0.6 - updated recurrence variable to always be alphanumerics and underscores to allow for more complex labeling of the recurrence selector buttons
 	    if(isActive(options.components.recurrence) && $form.find(options.components.recurrence.selector).length > 1 && (recurrence = $form.find(options.components.recurrence.selector+':checked').siblings('label:eq(0)').text().toLowerCase().replace(/[^a-z0-9]/g,"_"))) {
 	        index.push(recurrence);
 	    }
@@ -4758,7 +4757,7 @@ webpackJsonp([0],[
 	 * 
 	 * Used for interaction whith Google Analytics service.
 	 *
-	 * @version  0.4 !!MODIFIED20160224!!
+	 * @version  0.6
 	 * @requires jQuery
 	 */
 	var requiredOptions = [ ];
@@ -4767,8 +4766,8 @@ webpackJsonp([0],[
 	    'prefix': '/virtual',
 	    'events': [ ],
 	    'trackingPixels': { },
-	    'ignoreGTM': false, //@since __
-	    'gtmTrackerName': false, //@since __
+	    'ignoreGTM': false, //@since 0.6
+	    'gtmTrackerName': false, //@since 0.6
 	    'gtm': {
 	        'socialAction': 'socialAction',
 	        'socialNetwork': 'socialNetwork',
@@ -4827,7 +4826,7 @@ webpackJsonp([0],[
 	GRAnalytics.prototype.init = function() {
 	    setPrefix(options.prefix);
 
-	    //@since __ - add a dot to the tracker name for easier usage without a bunch of conditionals
+	    //@since 0.6 - add a dot to the tracker name for easier usage without a bunch of conditionals
 	    if(options.gtmTrackerName !== false) {
 	        options.gtmTrackerName = options.gtmTrackerName + '.';
 	    } else {
@@ -4892,6 +4891,10 @@ webpackJsonp([0],[
 	    //@since 0.4
 	    //GTM
 	    if(typeof dataLayer !== 'undefined' && !options.ignoreGTM) {
+	        //@since 0.5 - remove the id property from all items as it breaks eCommerce tracking in GA
+	        for(var i = 0; i < itemData.length; i++) {
+	            delete itemData[i].id;
+	        }
 	        dataLayer.push({
 	            'transactionId': transactionData.id,
 	            'transactionAffiliation': transactionData.affiliation,

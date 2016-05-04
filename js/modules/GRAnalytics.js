@@ -3,7 +3,7 @@
  * 
  * Used for interaction whith Google Analytics service.
  *
- * @version  0.4 !!MODIFIED20160224!!
+ * @version  0.6
  * @requires jQuery
  */
 var requiredOptions = [ ];
@@ -12,8 +12,8 @@ var defaults = {
     'prefix': '/virtual',
     'events': [ ],
     'trackingPixels': { },
-    'ignoreGTM': false, //@since __
-    'gtmTrackerName': false, //@since __
+    'ignoreGTM': false, //@since 0.6
+    'gtmTrackerName': false, //@since 0.6
     'gtm': {
         'socialAction': 'socialAction',
         'socialNetwork': 'socialNetwork',
@@ -72,7 +72,7 @@ GRAnalytics.prototype.hasRequiredOptions = function(options, req) {
 GRAnalytics.prototype.init = function() {
     setPrefix(options.prefix);
 
-    //@since __ - add a dot to the tracker name for easier usage without a bunch of conditionals
+    //@since 0.6 - add a dot to the tracker name for easier usage without a bunch of conditionals
     if(options.gtmTrackerName !== false) {
         options.gtmTrackerName = options.gtmTrackerName + '.';
     } else {
@@ -137,6 +137,10 @@ GRAnalytics.prototype.eCommerceReport = function(transactionData, itemData) {
     //@since 0.4
     //GTM
     if(typeof dataLayer !== 'undefined' && !options.ignoreGTM) {
+        //@since 0.5 - remove the id property from all items as it breaks eCommerce tracking in GA
+        for(var i = 0; i < itemData.length; i++) {
+            delete itemData[i].id;
+        }
         dataLayer.push({
             'transactionId': transactionData.id,
             'transactionAffiliation': transactionData.affiliation,
