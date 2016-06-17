@@ -1,78 +1,4 @@
 //CDN
-
-//local
-@font-face {
-  font-family: 'Gotham';
-  src: font-url('Gotham-Bold.eot');
-  src: local('Ã¢ËœÂº'), font-url('Gotham-Bold.woff') format('woff'), font-url('Gotham-Bold.ttf') format('truetype'), font-url('Gotham-Bold.svg') format('svg');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: font-url('ufonts.com_gotham-medium.eot');
-  src: local('Ã¢ËœÂº'), font-url('ufonts.com_gotham-medium.woff') format('woff'), font-url('ufonts.com_gotham-medium.ttf') format('truetype'), font-url('ufonts.com_gotham-medium.svg') format('svg');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: font-url('Gotham-Book.eot');
-  src: local('Ã¢ËœÂº'), font-url('Gotham-Book.woff') format('woff'), font-url('Gotham-Book.ttf') format('truetype'), font-url('Gotham-Book.svg') format('svg');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: font-url('Gotham-Thin.eot');
-  src: local('Ã¢ËœÂº'), font-url('Gotham-Light.woff') format('woff'), font-url('Gotham-Light.ttf') format('truetype'), font-url('Gotham-Light.svg') format('svg');
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-    font-family: 'Chronicle Text';
-    src: font-url('Chronicle+Display+Roman.woff');
-    src: local('Ã¢ËœÂº'), font-url('Chronicle+Display+Roman.woff') format('woff'), font-url('Chronicle+Display+Roman.ttf') format('truetype'), font-url('Chronicle+Display+Roman.svg') format('svg');
-    font-weight: 400;
-    font-style: normal;
-}
-
-//Fonts
-// @mixin dagny-heavy{
-//   font-family: "DagnyOT-Bold";
-//   font-weight: 400;
-//   font-style: normal;
-// }
-// @mixin dagny{
-//   font-family: 'DagnyOT';
-//   font-weight: 400;
-//   font-style: normal;
-// }
-// @mixin dagny-light{
-//   font-family: "DagnyOT-light";
-//   font-weight: 400;
-//   font-style: normal;
-// }
-// @mixin footer-font {
-//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-//   font-size: 13px;
-//   line-height: 2em;
-//   font-weight: bolder;
-// }
-
-// @mixin font-headN4{
-//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-//   font-weight: 400;
-// }
-
-// @mixin font-headN7{
-//   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
-//   font-weight: 700;
-// }
-
-// @mixin font-primaryN7{
-//   @mixin dagny-heavy;
-// }
 html {
   font-size: 16px;
 }
@@ -90,83 +16,83 @@ em{
 //
 
 @mixin font-bodyN3{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
-  font-weight: 300;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 @mixin font-bodyN4{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-bodyN6{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
-  font-weight: 600;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
   font-style: normal;
 }
 
 
 @mixin font-bodyN7{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-bodyI4{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: italic;
 }
 
 @mixin font-bodyI7{
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: italic;
 }
 
 //
 //Title font
 //
 @mixin font-headN2{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 200;
   font-style: normal;
 }
 
 @mixin font-headN3{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
 
 @mixin font-headN4{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headN6{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 600;
   font-style: normal;
 }
 
 @mixin font-headN7{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-headI4{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-headI7{
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -175,25 +101,25 @@ em{
 //Decorative font
 //
 @mixin font-decoN4{
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoN7{
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
 @mixin font-decoI4{
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 @mixin font-decoI7{
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
