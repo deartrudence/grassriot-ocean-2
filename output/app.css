@@ -2463,14 +2463,14 @@ button.close {
 @font-face {
   font-family: 'Gotham';
   src: url('../fonts/Gotham-Bold.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Bold.woff?1466189372') format("woff"), url('../fonts/Gotham-Bold.ttf?1466189372') format("truetype"), url('../fonts/Gotham-Bold.svg?1466189372') format("svg");
+  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Bold.woff') format("woff"), url('../fonts/Gotham-Bold.ttf') format("truetype"), url('../fonts/Gotham-Bold.svg') format("svg");
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../fonts/ufonts.com_gotham-medium.eot?1466189372');
-  src: local("Ã¢ËœÂº"), url('../fonts/ufonts.com_gotham-medium.woff?1466189372') format("woff"), url('../fonts/ufonts.com_gotham-medium.ttf?1466189372') format("truetype"), url('../fonts/ufonts.com_gotham-medium.svg?1466189372') format("svg");
+  src: url('../fonts/ufonts.com_gotham-medium.eot');
+  src: local("Ã¢ËœÂº"), url('../fonts/ufonts.com_gotham-medium.woff') format("woff"), url('../fonts/ufonts.com_gotham-medium.ttf') format("truetype"), url('../fonts/ufonts.com_gotham-medium.svg') format("svg");
   font-weight: 400;
   font-style: normal;
 }
@@ -2484,14 +2484,14 @@ button.close {
 @font-face {
   font-family: 'Gotham';
   src: url('../fonts/Gotham-Thin.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Light.woff?1466189372') format("woff"), url('../fonts/Gotham-Light.ttf?1466189372') format("truetype"), url('../fonts/Gotham-Light.svg?1466189372') format("svg");
+  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Light.woff') format("woff"), url('../fonts/Gotham-Light.ttf') format("truetype"), url('../fonts/Gotham-Light.svg') format("svg");
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: 'Chronicle Text';
-  src: url('../fonts/Chronicle+Display+Roman.woff?1466189372');
-  src: local("Ã¢ËœÂº"), url('../fonts/Chronicle+Display+Roman.woff?1466189372') format("woff"), url('../fonts/Chronicle+Display+Roman.ttf') format("truetype"), url('../fonts/Chronicle+Display+Roman.svg?1466189372') format("svg");
+  src: url('../fonts/Chronicle+Display+Roman.woff');
+  src: local("Ã¢ËœÂº"), url('../fonts/Chronicle+Display+Roman.woff') format("woff"), url('../fonts/Chronicle+Display+Roman.ttf') format("truetype"), url('../fonts/Chronicle+Display+Roman.svg') format("svg");
   font-weight: 400;
   font-style: normal;
 }
@@ -2559,7 +2559,6 @@ body:after {
 .hero {
   position: relative;
   overflow: hidden;
-  height: 560px;
   background-size: cover;
   background-position: center;
 }
@@ -2585,27 +2584,27 @@ body:after {
   max-width: 600px;
 }
 
-.campaign .heroImageContainer {
-  position: absolute;
+.campaign .hero {
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
 }
 @media screen and (max-width: 619px) {
-  .campaign .heroImageContainer {
+  .campaign .hero {
     position: relative;
     width: 100%;
     height: 70vh;
     top: auto;
     left: auto;
   }
-  .campaign .heroImageContainer img {
+  .campaign .hero img {
     display: none;
   }
 }
 .campaign .heroImage {
-  display: none;
+  width: 100%;
+  height: auto;
 }
 @media screen and (max-width: 619px) {
   .campaign .heroImage {

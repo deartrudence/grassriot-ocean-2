@@ -1,7 +1,7 @@
 .hero {
   position: relative; //for the overflow control
   overflow: hidden;
-  height: 560px;
+  // height: 560px;
 //background: $hero-bgimage;
   background-size: cover;
   background-position: center;
@@ -29,8 +29,8 @@
 }
 
 .campaign {
-  .heroImageContainer {
-    position: absolute;
+  .hero {
+    // position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -47,7 +47,8 @@
     }
   }
   .heroImage {
-    display: none;
+    width: 100%;
+    height: auto;
     @include mobile {
       display: block;
       height: 100%;
