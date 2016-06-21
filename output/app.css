@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -2442,6 +2441,7 @@ button.close {
   background: #ffffff;
   overflow: hidden;
   position: relative;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .donation-form-wrapper {
@@ -2460,41 +2460,6 @@ button.close {
 /*
  * Mobile Padding
  */
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/Gotham-Bold.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Bold.woff') format("woff"), url('../fonts/Gotham-Bold.ttf') format("truetype"), url('../fonts/Gotham-Bold.svg') format("svg");
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/ufonts.com_gotham-medium.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/ufonts.com_gotham-medium.woff') format("woff"), url('../fonts/ufonts.com_gotham-medium.ttf') format("truetype"), url('../fonts/ufonts.com_gotham-medium.svg') format("svg");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/Gotham-Book.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Book.woff') format("woff"), url('../fonts/Gotham-Book.ttf') format("truetype"), url('../fonts/Gotham-Book.svg') format("svg");
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Gotham';
-  src: url('../fonts/Gotham-Thin.eot');
-  src: local("Ã¢ËœÂº"), url('../fonts/Gotham-Light.woff') format("woff"), url('../fonts/Gotham-Light.ttf') format("truetype"), url('../fonts/Gotham-Light.svg') format("svg");
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Chronicle Text';
-  src: url('../fonts/Chronicle+Display+Roman.woff');
-  src: local("Ã¢ËœÂº"), url('../fonts/Chronicle+Display+Roman.woff') format("woff"), url('../fonts/Chronicle+Display+Roman.ttf') format("truetype"), url('../fonts/Chronicle+Display+Roman.svg') format("svg");
-  font-weight: 400;
-  font-style: normal;
-}
 html {
   font-size: 16px;
 }
@@ -2509,10 +2474,10 @@ em {
 
 body {
   overflow-x: hidden;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #E5E6E7;
+  background-color: #f9f4e8;
 }
 body:after {
   display: none;
@@ -2586,7 +2551,7 @@ body:after {
 
 .campaign .hero {
   width: 100%;
-  height: 100%;
+  height: 516px;
   top: 0;
   left: 0;
 }
@@ -2603,8 +2568,11 @@ body:after {
   }
 }
 .campaign .heroImage {
-  width: 100%;
+  width: 790px;
   height: auto;
+  position: absolute;
+  top: -49px;
+  right: 0;
 }
 @media screen and (max-width: 619px) {
   .campaign .heroImage {
@@ -2613,32 +2581,33 @@ body:after {
   }
 }
 .campaign .heroTitle {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
-  font-weight: 400;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
+  font-weight: 700;
   font-style: normal;
-  font-size: 1.875rem;
-  line-height: 1.06;
-  text-transform: uppercase;
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+  line-height: 1.25;
   color: #FFFFFF;
-  max-width: 60%;
+  max-width: 82%;
   text-align: center;
   margin: 0 auto;
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 70px;
+  bottom: 35px;
   padding: 0;
+  letter-spacing: 1.2px;
 }
 @media screen and (max-width: 991px) {
   .campaign .heroTitle {
     max-width: 80%;
-    bottom: 20px;
+    bottom: 40px;
     font-size: 30px;
   }
 }
 .campaign .heroTitle strong,
 .campaign .heroTitle em {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   text-transform: uppercase;
@@ -2646,10 +2615,13 @@ body:after {
 .campaign .heroTitle em {
   color: #A5CF46;
 }
+.campaign .heroTitle span {
+  color: #b6d1d3;
+}
 
 .photoCaption {
   font-size: 0.6875rem;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   position: absolute;
@@ -2697,7 +2669,7 @@ html.csstransforms {
 }
 .is-videoPlaceholder .glyphicon {
   margin-bottom: 0.5em;
-  color: #D8256A;
+  color: #e11e33;
   font-size: 1.5em;
   background: #FFFFFF;
   border-radius: 50%;
@@ -2784,6 +2756,284 @@ html.csstransforms {
   content: "\e033";
 }
 
+.intro {
+  padding: 73px 40px;
+  font-size: 1rem;
+}
+.intro span {
+  color: #009bc5;
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+
+.issue {
+  height: 350px;
+  background-image: url("../img/water-texture.jpeg");
+}
+
+.issueWrapper--left {
+  float: left;
+  padding: 0 30px;
+  width: 70%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.issueWrapper--left h1 {
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1.3px;
+  color: #FFFFFF;
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+.issueWrapper--left p {
+  color: #FFFFFF;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.33;
+  font-size: 1rem;
+  text-align: center;
+}
+@media screen and (max-width: 1022px) {
+  .issueWrapper--left {
+    width: 100%;
+    float: none;
+  }
+}
+
+.issueWrapper--right {
+  width: 165px;
+  float: right;
+  background: #9fbd3b;
+  height: 350px;
+  position: relative;
+  right: 30px;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.issueWrapper--right p {
+  color: #FFFFFF;
+  padding: 0 20px;
+  font-size: 1.3rem;
+  height: 95px;
+  text-align: center;
+  margin-top: 126px;
+}
+.issueWrapper--right span {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+@media screen and (min-width: 1023px) {
+  .issueWrapper--right:before {
+    content: " ";
+    height: 350px;
+    border-left: 1.5px solid #e3e9cb;
+    position: absolute;
+    left: 5px;
+  }
+  .issueWrapper--right:after {
+    content: " ";
+    height: 350px;
+    border-left: 1.5px solid #e3e9cb;
+    position: absolute;
+    right: 5px;
+    top: 0;
+  }
+}
+@media screen and (max-width: 1022px) {
+  .issueWrapper--right {
+    display: none;
+  }
+}
+
+.issueWrapper--under {
+  display: none;
+}
+@media screen and (max-width: 1022px) {
+  .issueWrapper--under {
+    display: block;
+    background: #9fbd3b;
+    height: 95px;
+    position: relative;
+    color: #FFFFFF;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+.issueWrapper--under p {
+  font-size: 1.3rem;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.issueWrapper--under span {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.section-heading {
+  color: #004b8d;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 25px;
+  font-size: 2.9rem;
+  margin: 0 20%;
+  line-height: 1.12;
+}
+
+.join-us p {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.join-us span {
+  color: #004b8d;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.join-us--row p {
+  padding-top: 26px;
+}
+.join-us--row img {
+  border-radius: 50%;
+  margin: auto;
+  width: 150px;
+  height: 150px;
+}
+
+.half-width {
+  width: 50%;
+  padding: 40px 50px;
+  text-align: center;
+  float: left;
+}
+@media screen and (max-width: 1022px) {
+  .half-width {
+    float: none;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.cta-banner {
+  background: #9fbd3b;
+  height: 77px;
+  clear: both;
+}
+.cta-banner h2 {
+  padding: 20px 0;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.impact p {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+}
+.impact span {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.6rem;
+  color: #009bc5;
+}
+.impact div:last-of-type {
+  padding-bottom: 40px;
+}
+
+.impact--row {
+  float: left;
+}
+@media screen and (max-width: 1022px) {
+  .impact--row {
+    float: none;
+  }
+}
+
+.fund-info {
+  background-image: url(../img/jellyfish.jpg);
+  height: 329px;
+  clear: both;
+}
+.fund-info .wrapper--left, .fund-info .wrapper--right {
+  width: 50%;
+  float: left;
+  padding-top: 62px;
+}
+@media screen and (max-width: 1050px) {
+  .fund-info .wrapper--left, .fund-info .wrapper--right {
+    width: 90%;
+    float: center;
+    padding-top: 40px;
+  }
+}
+.fund-info .wrapper--left {
+  padding-left: 100px;
+  color: #FFFFFF;
+}
+.fund-info .wrapper--left h1 {
+  font-size: 2.2rem;
+  width: 400px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.fund-info .wrapper--left p {
+  padding-top: 20px;
+  font-size: 1rem;
+}
+@media screen and (max-width: 1100px) {
+  .fund-info .wrapper--left {
+    padding-left: 80px;
+  }
+}
+.fund-info .wrapper--right img {
+  width: 290px;
+  padding-top: 69px;
+  margin-left: 30px;
+}
+@media screen and (max-width: 1100px) {
+  .fund-info .wrapper--right img {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .fund-info .wrapper--right img {
+    padding-top: 0;
+    margin-left: 80px;
+  }
+}
+
+.last-row div {
+  padding-bottom: 80px;
+}
+@media screen and (max-width: 1022px) {
+  .last-row div {
+    padding-bottom: 40px;
+  }
+}
+
+.last-item {
+  margin-bottom: 40px;
+}
+
 .campaign {
   overflow: hidden;
   width: 100%;
@@ -2820,34 +3070,29 @@ html.csstransforms {
   }
 }
 .campaign h1 {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 1.71875rem;
-  padding: 20% 8% 20% 6%;
-  text-transform: uppercase;
-  line-height: .9em;
 }
 .campaign h2 {
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.71875rem;
-  color: #b1a99e;
-  line-height: 1.06;
+  color: #FFFFFF;
   margin: 0em 0em .5em;
 }
 .campaign h3 {
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.43229rem;
   color: #A5CF46;
-  line-height: 1.06;
+  line-height: 1.25;
   margin: 0em 0em .5em;
 }
 .campaign h4 {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.03125rem;
@@ -2863,11 +3108,12 @@ html.csstransforms {
   position: absolute;
   content: ' ';
   top: 0;
-  right: 362px;
-  -webkit-box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
-  box-shadow: inset 10px 0px 15px -5px rgba(210, 210, 210, 0.5);
+  right: 360px;
+  margin-right: 1px;
+  -webkit-box-shadow: inset 10px 0px 15px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 10px 0px 15px -5px rgba(0, 0, 0, 0.2);
   height: 100%;
-  width: 24px;
+  width: 26px;
   z-index: 900;
 }
 @media screen and (max-width: 767px) {
@@ -2905,7 +3151,7 @@ html.csstransforms {
 .campaignText-wrapper.wrapper h2 {
   font-size: 1.26042rem;
   line-height: 1.37;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   text-align: center;
@@ -2918,7 +3164,7 @@ html.csstransforms {
 .ctaAskText-wrapper {
   padding-top: 2.88%;
   padding-bottom: 2.9%;
-  background-color: #ed2b74;
+  background-color: #0096af;
 }
 @media screen and (max-width: 991px) {
   .ctaAskText-wrapper {
@@ -2933,7 +3179,7 @@ html.csstransforms {
   width: 100%;
   padding: 23px 0;
   color: #FFFFFF;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.5625rem;
@@ -2954,7 +3200,7 @@ html.csstransforms {
   margin-top: 0;
   margin-bottom: 0;
   padding-bottom: 0;
-  border-bottom: 5px solid #ed2b74;
+  border-bottom: 5px solid #0096af;
 }
 
 .impactText-wrapper {
@@ -3014,13 +3260,13 @@ html.csstransforms {
 .improvement h4 {
   font-size: 1.203125rem;
   margin-bottom: 5px;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-weight: 600;
 }
 .improvement p {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-size: 16px;
@@ -3047,7 +3293,7 @@ html.csstransforms {
   margin-left: -37px;
 }
 .responseText-wrapper h3 {
-  color: #ed2b74;
+  color: #0096af;
   margin-bottom: 0;
   font-weight: 700;
   max-width: 90%;
@@ -3055,7 +3301,7 @@ html.csstransforms {
   position: relative;
   line-height: 1.12;
   font-size: 1.71875rem;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -3130,7 +3376,7 @@ html.csstransforms {
 }
 .accountableText-innerwrapper p {
   font-size: 1.125rem;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   line-height: 1.33;
@@ -3209,9 +3455,9 @@ html.csstransforms {
 .policyText-wrapper.wrapper h3 {
   position: relative;
   text-transform: uppercase;
-  color: #ed2b74;
+  color: #0096af;
   font-size: 3.4375rem;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   margin-bottom: 1em;
@@ -3237,7 +3483,7 @@ html.csstransforms {
 @media screen and (max-width: 1200px) {
   .policyText-wrapper.wrapper {
     background-image: none !important;
-    background-color: #ed2b74;
+    background-color: #0096af;
   }
 }
 
@@ -3280,7 +3526,7 @@ html.csstransforms {
 }
 @media screen and (max-width: 768px), screen and (max-device-width: 768px) {
   .campaign h1 {
-    font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.5rem;
@@ -3290,7 +3536,7 @@ html.csstransforms {
   }
 
   .js-campaign h2 {
-    font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 1.43229rem;
@@ -3323,7 +3569,7 @@ label {
 }
 
 .form {
-  background-color: white;
+  background-color: #82bdc7;
   z-index: 150;
 }
 @media screen and (max-width: 768px) {
@@ -3392,7 +3638,7 @@ label {
 }
 
 #grdonation form {
-  background-color: white;
+  background-color: #82bdc7;
 }
 #grdonation form.is-active {
   top: 0;
@@ -3403,30 +3649,31 @@ label {
 }
 
 .form-header {
-  background-color: #FFFFFF;
+  background-color: #82bdc7;
   padding-top: 24px;
   padding-bottom: 0;
+  text-transform: uppercase;
 }
 @media screen and (max-width: 767px) {
   .form-header {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 769px) {
   .form-header {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 992px) {
   .form-header {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 .form-header h3 {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
   color: #245e36;
@@ -3435,12 +3682,12 @@ label {
   text-transform: uppercase;
 }
 .form-header strong {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 .form-header em {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -3457,7 +3704,7 @@ label {
 
 @media screen and (max-width: 768px) {
   .form {
-    background-color: #FFFFFF;
+    background-color: #82bdc7;
   }
   .form.is-active {
     overflow-x: hidden;
@@ -3469,7 +3716,7 @@ label {
   }
 
   .form-navbar {
-    background-color: #FFFFFF;
+    background-color: #82bdc7;
   }
 
   .form-header {
@@ -3490,14 +3737,14 @@ label {
     color: #FFFFFF;
     height: 100px;
     border: 0;
-    background: #D8256A;
+    background: #e11e33;
     z-index: 900;
   }
 
   .js-formOpen-label {
     display: block;
     line-height: 100px;
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 700;
     font-style: normal;
   }
@@ -3510,13 +3757,13 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #D8256A url('../img/arrow-open.png?1466189372') center center no-repeat;
+    background: #e11e33 url('../img/arrow-open.png?1466192993') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
 
   .formClose {
-    font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 700;
     font-style: normal;
     font-size: 0.45833rem;
@@ -3563,7 +3810,7 @@ label {
   }
 
   .form-navbar {
-    background-color: white;
+    background-color: #82bdc7;
     width: 100%;
     z-index: 90;
   }
@@ -3575,20 +3822,20 @@ label {
 }
 @media screen and (max-width: 767px) {
   #grdonation .page {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 769px) {
   #grdonation .page {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 992px) {
   #grdonation .page {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 
@@ -3655,10 +3902,19 @@ label {
   text-indent: -99999;
 }
 
+.form {
+  right: auto;
+}
+
+.js-col-form {
+  float: left;
+  margin-left: -386px;
+}
+
 #grdonation .page h3 {
   margin: 1.5em 0 1em;
   font-size: 14.66667px;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #636466;
@@ -3669,25 +3925,22 @@ label {
 #grdonation .page #Donation_AmountDiv .eaFormElementLabel > label {
   margin-bottom: 8px;
 }
-#grdonation .page label, #grdonation .page .eaFormElementLabel {
-  padding-left: 10px;
-}
 #grdonation .page .eaFormElementLabel > label {
   padding-left: 0;
 }
 #grdonation .page h1 {
   text-align: center;
-  color: #ed2b74;
-  font-size: 1.5625rem;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   font-style: normal;
   line-height: 1.12;
   margin-top: 25px;
   margin-bottom: 22px;
 }
 #grdonation .page h1 strong {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
@@ -3710,7 +3963,6 @@ label {
   display: block;
   float: none;
   border-radius: 1px;
-  border-top: 1px solid #EDEDED;
   background: #F0F1F1;
   color: #737373;
   box-shadow: 1px 1px 2px #000;
@@ -3752,7 +4004,7 @@ label {
   left: 0;
   content: '';
   width: 2.5em;
-  background: #d7d8d9;
+  background: #b9dbe1;
   border-radius: 1px 0 0 1px;
   padding-top: 13px;
 }
@@ -3761,17 +4013,17 @@ label {
   text-indent: .9em;
 }
 #grdonation .page div.radiobutton input[type='radio']:not(:checked) ~ label:hover, #grdonation .page div.radiobutton input[type='checkbox']:not(:checked) ~ label:hover {
-  background-color: #fdfdfd;
+  background-color: #f4f9fa;
 }
 #grdonation .page div.radiobutton input[type='radio']:checked ~ label:before, #grdonation .page div.radiobutton input[type='checkbox']:checked ~ label:before {
   content: '\2714';
   text-indent: .9em;
   color: #FFFFFF;
-  background-color: #fac0d5;
+  background-color: #0096af;
 }
 #grdonation .page div.radiobutton input[type='radio']:checked ~ label, #grdonation .page div.radiobutton input[type='checkbox']:checked ~ label {
-  color: #FFFFFF;
-  background-color: #ed2b74;
+  color: #000;
+  background-color: #FFFFFF;
 }
 #grdonation .page div.radiobutton input[type='radio']:focus ~ label:before, #grdonation .page div.radiobutton input[type='checkbox']:focus ~ label:before {
   box-shadow: 0 0 0 3px #999;
@@ -3849,7 +4101,7 @@ label {
 #gr_donation .eaFormElementLabel {
   margin: 1.5em 0 1em;
   font-size: 14.66667px;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #636466;
@@ -3862,12 +4114,15 @@ label {
 .security {
   display: inline-block;
   vertical-align: middle;
+  position: absolute;
+  right: 28px;
+  bottom: 7px;
 }
 .security .security-text {
   background: none;
   border: none;
   font-family: sans-serif;
-  color: #000;
+  color: #FFFFFF;
   font-size: 10px;
   font-style: normal;
   z-index: 10;
@@ -3877,7 +4132,7 @@ label {
 .security .security-text:hover {
   cursor: pointer;
   opacity: 0.7;
-  color: #ed2b74;
+  color: #0096af;
 }
 .security .security-image {
   display: inline-block;
@@ -3994,7 +4249,7 @@ label {
   padding-top: 10px;
   margin: 1.5em 0 1em;
   font-size: 14.66667px;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #636466;
@@ -4033,7 +4288,7 @@ label {
 
 .seconds-container {
   color: #FFFFFF;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 0.6875rem;
@@ -4045,7 +4300,7 @@ label {
 }
 
 .js-seconds-counter {
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.83333rem;
@@ -4058,7 +4313,7 @@ label {
 }
 
 .form-header-counter + h3 {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   line-height: 1;
@@ -4084,7 +4339,7 @@ label {
 .steps-list ul {
   list-style: none;
   margin: 0;
-  padding: 0px 6px 0px 15px;
+  padding: 0px 6px 0px 24px;
   text-align: left;
   font-size: 0;
   display: inline-block;
@@ -4092,15 +4347,10 @@ label {
 }
 .steps-list ul li {
   vertical-align: middle;
-  color: #444;
-  background: #dddfde;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkZGRmZGUiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2Q3ZDhkOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #dddfde), color-stop(60%, #d7d8d9));
-  background: -moz-linear-gradient(#dddfde 40%, #d7d8d9 60%);
-  background: -webkit-linear-gradient(#dddfde 40%, #d7d8d9 60%);
-  background: linear-gradient(#dddfde 40%, #d7d8d9 60%);
+  color: #FFFFFF;
+  background: #78b0b9;
   border: none;
-  padding: 6px 30px;
+  padding: 6px 12px;
   font-size: 10px;
   line-height: 16px;
   display: inline-block;
@@ -4109,21 +4359,11 @@ label {
   font-family: sans-serif;
 }
 .steps-list ul li.is-complete {
-  color: linear-gradient(#f695b9 40%, #ed2b74 60%);
-  background: #dddfde;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNkZGRmZGUiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2Q3ZDhkOSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #dddfde), color-stop(60%, #d7d8d9));
-  background: -moz-linear-gradient(#dddfde 40%, #d7d8d9 60%);
-  background: -webkit-linear-gradient(#dddfde 40%, #d7d8d9 60%);
-  background: linear-gradient(#dddfde 40%, #d7d8d9 60%);
+  color: #FFFFFF;
+  background: #a3d0d3;
 }
 .steps-list ul li.current, .steps-list ul li.active {
-  background: #ed2b74;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNmNjk1YjkiLz48c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2VkMmI3NCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, #f695b9), color-stop(60%, #ed2b74));
-  background: -moz-linear-gradient(#f695b9 40%, #ed2b74 60%);
-  background: -webkit-linear-gradient(#f695b9 40%, #ed2b74 60%);
-  background: linear-gradient(#f695b9 40%, #ed2b74 60%);
+  background: #a3d0d3;
   border: none;
   color: #FFFFFF;
   font-family: sans-serif;
@@ -4134,7 +4374,7 @@ label {
   height: 0;
   display: block;
   border-width: 10px;
-  border-color: #ed2b74 transparent transparent;
+  border-color: #a3d0d3 transparent transparent;
   border-style: solid;
   position: absolute;
   bottom: -20px;
@@ -4395,6 +4635,11 @@ label {
   display: inline-block;
   vertical-align: top;
 }
+#grdonation .amount-header {
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 #grdonation #setcurrency {
   width: 100%;
   margin: 0;
@@ -4404,18 +4649,17 @@ label {
   margin-top: 17px;
   white-space: normal;
   border-radius: 0;
-  border: 1px solid #FFFFFF;
   color: #FFFFFF;
   text-transform: uppercase;
-  background-color: #D8256A;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  background-color: #e11e33;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.26042rem;
   border-radius: 5px;
   padding: 10px 30px;
   font-family: sans-serif;
-  background-color: #D8256A;
+  background-color: #e11e33;
 }
 #grdonation .btn-next:hover {
   opacity: 0.9;
@@ -4443,7 +4687,7 @@ label {
 }
 #grdonation .levels .amountbutton {
   display: block;
-  width: 46.5%;
+  width: 48.4%;
   float: left;
 }
 #grdonation .levels .amountbutton:nth-child(even) {
@@ -4455,13 +4699,13 @@ label {
   }
 }
 #grdonation .levels label {
-  background: #F0F1F1;
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YwZjFmMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2UzZTVlNSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f1f1), color-stop(100%, #e3e5e5));
-  background: -moz-linear-gradient(#f0f1f1 0%, #e3e5e5 100%);
-  background: -webkit-linear-gradient(#f0f1f1 0%, #e3e5e5 100%);
-  background: linear-gradient(#f0f1f1 0%, #e3e5e5 100%);
-  border: 2px solid #d4d4d2;
+  background: #e2f0f2;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2UyZjBmMiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2QwZTdlYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e2f0f2), color-stop(100%, #d0e7ea));
+  background: -moz-linear-gradient(#e2f0f2 0%, #d0e7ea 100%);
+  background: -webkit-linear-gradient(#e2f0f2 0%, #d0e7ea 100%);
+  background: linear-gradient(#e2f0f2 0%, #d0e7ea 100%);
+  border: 2px solid #c8e3e8;
   display: block;
   width: 100%;
   font-size: 18px;
@@ -4507,8 +4751,8 @@ label {
   left: 0;
 }
 #grdonation .levels input[type="radio"]:checked + label {
-  background: #ed2b74;
-  border: 2px solid #ed2b74;
+  background: #0096af;
+  border: 2px solid #0096af;
   color: #fff;
   cursor: default;
 }
@@ -4524,7 +4768,7 @@ label {
   font-size: 14.66667px;
   padding: 0px 0px 0px 10px;
   font-size: 15px;
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
   outline: none;
@@ -4667,20 +4911,20 @@ select.error, textarea.error {
 }
 @media screen and (max-width: 767px) {
   .grdonation-contact {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 769px) {
   .grdonation-contact {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 @media screen and (min-width: 992px) {
   .grdonation-contact {
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 19px;
+    padding-right: 19px;
   }
 }
 
@@ -4742,7 +4986,7 @@ select.error, textarea.error {
   margin-bottom: 1em;
   font-size: 16px;
   line-height: 1.33;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   color: #FFFFFF;
@@ -4769,14 +5013,14 @@ select.error, textarea.error {
   text-transform: uppercase;
   margin-bottom: 17px;
   font-size: 2.5rem;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
   line-height: 1.1;
 }
 
 .upsell-title--highlight {
-  color: #ed2b74;
+  color: #0096af;
 }
 
 .upsell-copy {
@@ -4784,7 +5028,7 @@ select.error, textarea.error {
   position: relative;
   color: #000;
   background: #f9c0d8;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -4793,7 +5037,7 @@ select.error, textarea.error {
 }
 
 .upsell-copy--cta {
-  color: #ed2b74;
+  color: #0096af;
   margin-top: 1.2em;
 }
 
@@ -4856,7 +5100,7 @@ button.upsell-modal--close {
   overflow: hidden;
   padding-bottom: 5px;
   border-radius: 50%;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
   background: #bdbec0;
@@ -4902,7 +5146,7 @@ button.upsell-modal--close:active {
   color: #252525;
   text-decoration: underline;
   color: #cb2f71;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -4941,7 +5185,7 @@ button.upsell-modal--close:active {
   }
   .upsell-cta p {
     font-size: 16px;
-    font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
@@ -5006,7 +5250,7 @@ button.upsell-modal--close:active {
     text-align: center;
   }
   .upsell-recommendation > strong {
-    color: #ed2b74;
+    color: #0096af;
   }
 
   .upsell-recommendation--label {
@@ -5064,6 +5308,10 @@ html.flexbox .upsell-modal--body {
   padding-left: 33px;
 }
 
+.logo-image {
+  height: 60px;
+}
+
 .page-logo {
   overflow: hidden;
   text-indent: -9999px;
@@ -5082,7 +5330,7 @@ html.flexbox .upsell-modal--body {
 .wrapper.footerText-wrapper {
   background-color: #231f20;
   color: #FFFFFF;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
@@ -5470,7 +5718,7 @@ footer a {
   padding-bottom: 0;
 }
 .post-action .post-action-titlewrapper p {
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 200;
   font-style: normal;
   margin-bottom: 0;
@@ -5487,7 +5735,7 @@ footer a {
   color: #FFFFFF;
   text-transform: uppercase;
   position: static;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -5537,13 +5785,13 @@ footer a {
 }
 @media screen and (max-width: 619px) {
   .post-action .hero .mobile-center {
-    background: #ed2b74;
+    background: #0096af;
     color: #FFFFFF;
   }
 }
 .post-action .heroSummary {
-  background-color: #ed2b74;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  background-color: #0096af;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 200;
   font-style: normal;
   color: #FFFFFF;
@@ -5616,7 +5864,7 @@ footer a {
     padding-left: 0px;
     padding-right: 0px;
     font-size: 1.5625rem;
-    font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 300;
     font-style: normal;
     font-weight: 200;
@@ -5625,10 +5873,10 @@ footer a {
   }
 }
 .post-action .learn-more a {
-  color: #ed2b74;
+  color: #0096af;
   text-transform: lowercase;
   text-decoration: underline;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 300;
   font-style: normal;
   font-size: 1.125rem;
@@ -5658,7 +5906,7 @@ footer a {
   margin: 0 auto;
   text-transform: uppercase;
   padding: 20px 20px 0;
-  font-family: "Chronicle Text", "Lucida Grande", Verdana, Helvetica, sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 1.43229rem;
@@ -5691,20 +5939,20 @@ footer a {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1466189372') no-repeat center;
+  background: url('../img/fb-2015.png?1466192993') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1466189372') no-repeat center;
+  background: url('../img/tw-2015.png?1466192993') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1466189372') no-repeat center;
+  background: url('../img/gp.png?1466192993') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1466189372') no-repeat center;
+  background: url('../img/in.png?1466192993') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1466189372') no-repeat center;
+  background: url('../img/ml.png?1466192993') no-repeat center;
 }
 .post-action .social-block .social .email .mobile-center {
   border-bottom: 0px;
@@ -5715,7 +5963,7 @@ footer a {
 .post-action .sharing-title {
   color: #f04e91;
   line-height: 1.0;
-  font-family: Gotham, “Helvetica Neue”, Helvetica, Arial, sans-serif;
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.5rem;

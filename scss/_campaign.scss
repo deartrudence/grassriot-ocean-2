@@ -27,6 +27,317 @@
 .glyphicon-chevron-right          { &:before { content: "\e080"; } }
 .glyphicon-lock                   { &:before { content: "\e033"; } }
 
+.intro{
+  padding: 73px 40px;
+  @include fontSize(base);
+  
+  span {
+    color: $brand-primary-teal;
+    @include fontSize(medium);
+    line-height: $line-hero;
+  }
+}
+
+.issue{
+  height: 350px;
+  background-image: url("../img/water-texture.jpeg");
+}
+
+.issueWrapper--left{
+  float: left;
+  padding: 0 30px;
+  width: 70%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  h1{
+    @include font-headN7;
+    letter-spacing: 1.3px;
+    color: $white;
+    text-align: center;
+    padding-bottom: 15px;
+    @include fontSize(larger);
+    text-transform: uppercase;
+  }
+  
+  p{
+    color: $white;
+    @include font-bodyN3;
+    line-height: $line-loose;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 1022px) { 
+    width:100%;
+    float:none;
+  }
+}
+
+.issueWrapper--right{
+  width: 165px;
+  float: right;
+  background: $brand-tertiary-green;
+  height: 350px;
+  position: relative;
+  right: 30px;
+  @include font-bodyN4;
+  
+  p {
+    color: $white;
+    padding: 0 20px;
+    font-size: 1.3rem;
+    height: 95px;
+    text-align: center;
+    margin-top: 126px;
+  }
+  
+  span {
+    @include font-bodyI7;
+  }
+  
+  @media screen and (min-width: 1023px) {
+    &:before {
+      content: " ";
+      height: 350px;
+      border-left: 1.5px solid $brand-tertiary-faded-green;
+      position: absolute;
+      left: 5px;
+    }
+    
+    &:after {
+      content: " ";
+      height: 350px;
+      border-left: 1.5px solid $brand-tertiary-faded-green;
+      position: absolute;
+      right: 5px;
+      top: 0;
+    }
+  }
+  
+  @media screen and (max-width: 1022px) { 
+    display: none;
+  }
+}
+
+.issueWrapper--under {
+  display: none;
+  
+  @media screen and (max-width: 1022px) { 
+    display: block;
+    background: $brand-tertiary-green;
+    height: 95px;
+    position: relative;
+    color: $white;
+    @include font-bodyN4;
+  }
+  
+  p {
+    font-size: 1.3rem;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  span {
+    @include font-bodyI7;
+  }
+}
+
+.section-heading {
+    color: $brand-primary-navy;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 25px;
+    @include fontSize(titleLarge);
+    margin: 0 20%;
+    line-height: $line-tight;
+}
+
+.join-us {
+  
+  p {
+    @include font-bodyN4;
+  }
+  
+  span {
+    color: $brand-primary-navy;
+    @include font-bodyN7;
+  }
+  
+  
+} 
+
+.join-us--row {
+  
+  p {
+    padding-top: 26px;
+  }
+  
+  img {
+    border-radius: 50%;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.half-width {
+  width: 50%;
+  padding: 40px 50px;
+  text-align: center;
+  float: left;
+  
+  @media screen and (max-width: 1022px) { 
+    float: none;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.cta-banner {
+  background: $brand-tertiary-green;
+  height: 77px;
+  clear: both;
+  
+  h2 {
+    padding: 20px 0;
+    @include font-bodyN7;
+    color: $white;
+    text-align: center;
+  }
+}
+
+.impact {
+  p {
+    @include font-bodyN4;
+    @include fontSize(base);
+  }
+  
+  span {
+    @include font-bodyN7;
+    @include fontSize(large);
+    color: $brand-primary-teal;
+  }
+  
+  div:last-of-type {
+    padding-bottom: 40px;
+  }
+} 
+
+.impact--row {
+  float: left;
+  
+  @media screen and (max-width: 1022px) { 
+    float: none;
+  }
+}
+
+.fund-info {
+  background-image: url(../img/jellyfish.jpg);
+  height: 329px;
+  clear: both;
+  
+  .wrapper--left, .wrapper--right {
+    width: 50%;
+    float: left;
+    padding-top: 62px;
+    
+    @media screen and (max-width: 1050px) { 
+      width: 90%;
+      float: center;
+      padding-top: 40px;
+    }
+  }
+  
+  .wrapper--left {
+    padding-left: 100px;
+    color: $white;
+    
+    h1 {
+      @include fontSize(larger);
+      width: 400px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    p {
+      padding-top: 20px;
+      @include fontSize(base);
+    }
+    
+    @media screen and (max-width: 1100px) { 
+      padding-left: 80px;
+    }
+  }
+  
+  .wrapper--right {
+    img {
+      width: 290px;
+      padding-top: 69px;
+      margin-left: 30px;
+      
+      @media screen and (max-width: 1100px) { 
+        margin-left: 10px;
+      }
+      @media screen and (max-width: 1050px) { 
+        padding-top: 0;
+        margin-left: 80px;
+      }
+    }
+  }
+}
+
+.last-row div {
+  padding-bottom: 80px;
+  
+  @media screen and (max-width: 1022px) { 
+    padding-bottom: 40px;
+  }
+}
+
+.last-item {
+  margin-bottom: 40px;
+}
+
+//.fund-info {
+//  min-height: 330px;
+//  position:absolute;
+//  z-index: 2;
+//  
+//   h1{
+//      @include font-headN7;
+//      letter-spacing: 1.3px;
+//      color: $white;
+//      padding-bottom: 30px;
+//      @include fontSize-largerish;
+//    }
+//  
+//  .fundWrapper--left{
+//    position:absolute;
+//    z-index: 2;
+//    
+//    p{
+//      color: $white;
+//      @include font-bodyN3;
+//      line-height: $line-loose;
+//      font-size: 1rem;
+//    }
+//  }
+//
+//  .fund-chart{
+//    position: relative;
+//    z-index: 2;
+//  }
+//}
+
+//.fund-bg {
+//  position:absolute;
+//  z-index: 1;
+//}
 
 .campaign {
   overflow: hidden;
@@ -34,17 +345,16 @@
   
   h1 {
   	@include font-headN7;
-  	@include fontSize-largerish;
-  	padding: 20% 8% 20% 6%;
-    text-transform: uppercase;
-    line-height: .9em;
+//  	@include fontSize-largerish;
+//  	padding: 20% 8% 20% 6%;
+    
   }
   	    
   h2 {
     @include font-bodyN4;
     @include fontSize-largerish;
-    color: $brand-secondary;
-    @include line-hero;
+    color: $white;
+//    @include line-hero;
     margin: 0em 0em .5em;
   }
 
@@ -89,7 +399,8 @@
     content: ' ';
     top: 0;
     right: $form-width-md - ($campaign-shadow-width) ;
-    @include box-shadow(inset 10px 0px 15px -5px rgba(210,210,210, 0.5));
+    margin-right: 1px;
+    @include box-shadow(inset 10px 0px 15px -5px rgba(0,0,0, 0.2));
     height: 100%;
     width: $campaign-shadow-width;
     @include z-superHighest;

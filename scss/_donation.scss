@@ -17,16 +17,16 @@
       margin-bottom: 8px;
     } 
     label, .eaFormElementLabel {
-        padding-left: $form-text-padding
+//        padding-left: $form-text-padding
     }
     .eaFormElementLabel > label {
         padding-left: 0;
     }
     h1 {
         text-align: center;
-        color: $brand-primary-alternate;
-        @include gotham-fontSize-large;
-        @include font-headN3;
+        color: $white;
+        @include fontSize(large);
+        @include font-bodyN3;
         @include line-tight;
         margin-top: 25px;
         margin-bottom: 22px; //<label> has the 5px taken from here
@@ -48,7 +48,7 @@
           display: block;
           float: none;
           border-radius: 1px;
-          border-top: 1px solid $vlight-grey;
+//          border-top: 1px solid $vlight-grey;
           background: $background-grey;
           color: $medium-light-grey;
           box-shadow: 1px 1px 2px $black;
@@ -96,7 +96,7 @@
           left: 0;
           content: '';
           width: 2.5em;
-          background: $indicator-dark-grey;
+          background: $form-inactive;
           border-radius: 1px 0 0 1px;
           padding-top: 13px;
         }
@@ -108,7 +108,7 @@
 
         }
         input[type='radio']:not(:checked) ~ label:hover, input[type='checkbox']:not(:checked) ~ label:hover {
-          background-color: lighten($lightest-grey, 5%);
+          background-color: lighten($form-inactive-light, 5%);
         }
 
         /* toggle on */
@@ -116,11 +116,11 @@
           content: '\2714';
           text-indent: .9em;
           color: $white;
-          background-color: $brand-primary-lighter;
+          background-color: $brand-primary-alternate;
         }
         input[type='radio']:checked ~ label, input[type='checkbox']:checked ~ label {
-          color: $white;
-          background-color: $brand-primary-alternate;
+          color: $black;
+          background-color: $white;
         }
 
         /* radio focus */
@@ -128,7 +128,6 @@
           box-shadow: 0 0 0 3px #999;
         }
     }
-
   }
 
   #gr_donation {
@@ -237,13 +236,17 @@
 }
 
 .security {
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  right: 28px;
+        bottom: 7px;
+  
     .security-text {
         background: none;
         border: none;
         font-family: sans-serif;
-        color: #000;
+        color: $white;
         font-size: 10px;
         font-style: normal;
         z-index: 10;
@@ -425,7 +428,7 @@
 }
 
 @mixin text-indicator{
-  padding: 6px 30px;
+  padding: 6px 12px;
   font-size: 10px;
   line-height: 16px;
   display: inline-block;
@@ -492,31 +495,29 @@
   ul {
 	list-style: none;
 	margin: 0;
-	padding: 0px 6px 0px 15px;
+	padding: 0px 6px 0px 24px;
 	text-align: left;
 	font-size: 0;
-    display: inline-block;
-    vertical-align: middle;
+  display: inline-block;
+  vertical-align: middle;
 	li {
 	  vertical-align: middle;
-	  color: #444;
-	  background: $steps_background;
-	  @include background($steps_advancedBackground);
+	  color: $white;
+	  background: $form-nav-inactive;
 	  border: $steps_border;	  
 	  @include text-indicator;
 	  @include fontSize-smallish;
     font-family: sans-serif;
 	  
 	  &.is-complete {
-		color: $stepsComplete_colour;
-    background: $stepsComplete_background;
-    @include background($stepsComplete_advancedBackground);
+		color: $white;
+    background: $form-nav-active;
+//    @include background($stepsComplete_advancedBackground);
 	  }
 
     &.current,
     &.active {
-    background: $stepsActive_background;
-    @include background($stepsActive_advancedBackground);
+    background: $form-nav-active;
     border: $stepsActive_border;
     color: $white;
     font-family: sans-serif;
@@ -529,7 +530,7 @@
 		height: 0;
 		display: block;
 		border-width: $triangle-height;
-		border-color: $stepsActive_arrowBackground transparent transparent;
+		border-color: $form-nav-active transparent transparent;
 		border-style: solid;
 		position: absolute;
 		bottom: -2 * $triangle-height;
@@ -821,11 +822,15 @@
 
   label[for="Donation-Amountother"] {
 	background-image: none;
-	input[type="text"] {
-	  display: inline-block;
-	  vertical-align: top;
-	}
+    input[type="text"] {
+      display: inline-block;
+      vertical-align: top;
+    }
   }
+  
+.amount-header {
+  @include font-bodyN3;
+}
 
   #setcurrency {
 	width: 100%;
@@ -838,7 +843,7 @@
     white-space: normal;
 	@include cta-button--red;
   font-family: sans-serif;
-  background-color: #D8256A;
+  background-color: $cta-red;
 	.glyphicon-chevron-right {
 	  font-size: 80%;
 	  position: relative;
@@ -860,7 +865,7 @@
 	}
 	.amountbutton {
 	  display: block;
-	  width: 46.5%;
+	  width: 48.4%;
 	  float: left;
 	  &:nth-child(even) {
 		float: right;
@@ -871,9 +876,9 @@
 	  }
 	}
 	label {
-	  background: $amount-normal-background;
+	  background: $form-inactive-light;
       @include background($amount-normal-advancedBackground);
-	  border: 2px solid $donation-amount-border-color;
+	  border: 2px solid $form-inactive-border;
 	  display: block;
 	  width: 100%;
 	  font-size: 18px;
@@ -1127,3 +1132,4 @@ select, textarea {
 	font-size: 14px;
   }
 }
+

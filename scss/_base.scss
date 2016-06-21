@@ -8,12 +8,45 @@ $magenta: #792266;
 $maroon: #a6223c;
 $menu-red: #C5272D;
 
+//oceans colors
+$brand-primary-seagreen: #5ea4ae;
+$brand-primary-surfgreen: #0096af;
+$brand-primary-teal: #009bc5;
+$brand-primary-navy: #004b8d;
+
+
+$brand-secondary-grey: #a7b1b7;
+$brand-secondary-blue: #007ab2;
+$brand-secondary-blue-light: #b6d1d3;
+$brand-secondary-salmon: #f58220;
+
+$brand-tertiary-coral: #cda9bb;
+$brand-tertiary-green: #9fbd3b;
+$brand-tertiary-faded-green: #e3e9cb;
+$brand-tertiary-sand: #e6daaf;
+$brand-tertiary-sand-light: #f9f4e8;
+
+$cta-red: #e11e33;
+
+$form-bg: #82bdc7;
+$brand-primary-alternate: #0096af;
+$brand-primary-light: #02a4b5;
+$form-inactive: #b9dbe1;
+$form-inactive-light: #e2f0f2;
+$form-inactive-text: #aad4da;
+$form-inactive-border: #c8e3e8;
+$form-nav-active: #a3d0d3;
+$form-nav-inactive: #78b0b9;
+
+
+
+
 
 //rethink colors
 $brand-primary: #f45e90; // pink
 $brand-primary-lighter: #fac0d5;
-$brand-primary-light: #f695b9; // light pink
-$brand-primary-alternate: #ed2b74; // deep pink
+//$brand-primary-light: #f695b9; // light pink
+//$brand-primary-alternate: #ed2b74; // deep pink
 $brand-secondary: #b1a99e; // light gray
 $brand-tertiary: #231f20; // dark brown
 $rethink-form-grey: #636466; 
@@ -28,7 +61,6 @@ $medium-green: #58A966;
 $dark-green: #2D903C;
 $blue: #01B6D1;
 $dark-blue: #0181C8;
-$cta-red: #D8256A;
 
 $charcoal: #252525;
 
@@ -51,7 +83,7 @@ $indicator-dark-grey: #d7d8d9;
 $donation-amount-button-text-color: $medium-light-grey;
 $donation-amount-border-color: #d4d4d2;
 
-$body-background: #E5E6E7;
+$body-background: $brand-tertiary-sand-light;
 $white: #FFFFFF; 
 $black: #000;
 
@@ -91,7 +123,7 @@ $stripe: image-url('stripe.png');
 $campaignText-wrapper: 13% 15%;
 $campaign-paddingtop-md: 30px;
 $campaign-height-md: 250px;
-$campaign-shadow-width: 24px;
+$campaign-shadow-width: 26px;
 $campaign-paddingleft-md: 29px; 
 $campaign-paddingleft-xxs: 11px; 
 $page-max-width: 1175px;
@@ -149,6 +181,7 @@ $form-width-sm: 386px;
 $form-width-md: 386px;
 $form-width-xl: 386px;
 $form-padding: 24px;
+$form-header-padding: 19px;
 $form-navbar-height: 52px;
 $form-text-padding: 10px;
 
@@ -167,7 +200,7 @@ $stepsComplete_advancedBackground: linear-gradient($indicator-light-grey 40%, $i
 
 $amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-green,5%) 100%);
 $amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
-$amount-normal-advancedBackground: linear-gradient($lightest-grey 0%, darken($lightest-grey, 5%) 100%);
+$amount-normal-advancedBackground: linear-gradient($form-inactive-light 0%, darken($form-inactive-light, 5%) 100%);
 $amount-active-background: $brand-primary-alternate;
 $amount-hover-background: lighten($lightest-grey, 5%);
 $amount-normal-background: $lightest-grey;

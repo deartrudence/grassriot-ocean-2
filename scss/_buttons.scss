@@ -22,7 +22,6 @@ $calltoaction-buttonpadding-md: 20px 20px;
 
 @mixin cta-button--red {
   border-radius: 0;
-  border: 1px solid $white;
   color: $white;
   text-transform: uppercase;
   background-color: $cta-red;

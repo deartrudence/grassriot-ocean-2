@@ -42,6 +42,8 @@
     Raygun.setFilterScope('all');*/
     /*Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
   </script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i|Roboto:400,400i,500,700" rel="stylesheet">
   </head>
   <body>
     <!-- Data Layer for GTM -->
@@ -71,7 +73,9 @@
 	<div class="donation-form-wrapper">
     	<div class="col-text campaign">
         <header class="page-header js-page-header">
-          <div class="heroLogo">Ocean Conservancy</div>
+          <div class="heroLogo">
+            <img class="logo-image" src="img/logo-oc-170KO.png" />
+          </div>
         </header>
         <section class="js-campaign row">
   
@@ -101,14 +105,94 @@ Generic Payment Error
 <div id='[GR]_Campaign_Content_-_TemplateDiv' class='eaFullWidthContent'>
   <div class="js-campaignText">
     <div class="hero section">
-      <img class="js-hero-image heroImage" src="https://aaf1a18515da0e792f78-c27fdabe952dfc357fe25ebf5c8897ee.ssl.cf5.rackcdn.com/1982/steps-webpage-vid-rethink-1920x1080.jpg?v=1461736170000" border="0" alt="Two young women smiling at each other" />
+      <img class="js-hero-image heroImage" src="img/tripodGreenSeaturtle_RoyNiswanger-MarinePhotobank.jpg" />
 
-      <h1 class="js-heroTitle heroTitle">Give now to support young women dealing with breast cancer.</h1>
+      <h1 class="js-heroTitle heroTitle"><span>The problem is as big as the sea is&nbsp;deep.</span><br>
+The solution is crystal clear. You.</h1>
     </div>
-    <div class="feature section">
-      <p>Lorem ipsum</p>
+    
+    <div class="intro section">
+      <p><span>For more than 40 years, the Ocean Conservancy has worked to protect the world’s oceans.</span> We’re people like you, who care about the ocean, its inhabitants and the livelihoods that rely on it. Some of us are scientists, some of us ordinary folks, all of us want to ensure the health of the earth’s waters for our children and our children’s children. Help us do that by donating now.</p>
+    </div>
+    
+    <div class="issue section">
+      <div class='issueWrapper--left'>
+        <h1>The Ocean Matters</h1>
+        <p>The ocean supplies the food we eat, the air we breath, the water we drink. It’s our planet’s life support system. And it’s at risk. Pollution is changing the basic chemistry of the ocean. Overfishing is damaging fish stocks. The trickle down effect is huge: people’s livelihoods, the food on our plates, the health of our planet, and the entire eco-system, all in danger. But you can make a difference.</p>
+      </div>
+      <div class='issueWrapper--right'>
+        <p>The ocean supplies <span>half&nbsp;of the air</span> we breathe.</p>
+      </div>
+    </div>
+    
+    <div class='issueWrapper--under'>
+      <p>The ocean supplies <span>half of the air</span> we breathe.</p>
+    </div>
+    
+    <div class="join-us section">
+      <h1 class="section-heading">Become a voice for the ocean</h1>
+      <div class="join-us--row">
+        <div class="half-width">
+          <img src="img/q1.jpg">
+          <p>Help us as we <span>lobby governments</span> to reduce carbon emissions and do more to protect our waterways.</p>
+        </div>
+        <div class="half-width">
+          <img src="img/q2.jpg">
+          <p>Join us as we <span>work with fishermen</span> to ensure a future for the people who make their living from the ocean and the animals and fish who live below its waves.</p>
+        </div>
+      </div>
+      <div class="join-us--row last-row">
+        <div class="half-width">
+          <img src="img/q3.jpg">
+          <p>Walk with us to <span>keep the coast clear</span> of trash during our annual International Coastal Clean-up and get the word out about protecting the ocean for generations to come.</p>
+        </div>
+        <div class="half-width last-item">
+          <img src="img/q4.jpg">
+          <p>Partner with us as we <span>work alongside scientists</span> to develop clear solutions for keeping the ocean clean and thriving. </p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-banner">
+      <h2>Donate now to speak for the seas.</h2>
+    </div>
+    
+    <div class="impact section">
+      <h1 class="section-heading">How your support helps</h1>
+      <div class="impact--row">
+        <div class="half-width">
+          <p><span>144,606,491 pounds</span><br> of trash picked up over 25 years because of our International 
+Coastal Cleanup</p>
+        </div>
+        <div class="half-width">
+          <p><span>2.3 million jobs</span><br> created by America’s ocean and coastal economy</p>
+        </div>
+      </div>
+      <div class="impact--row">
+        <div class="half-width">
+          <p><span>2.6 billion people </span><br> rely on the ocean as a primary source of protein</p>
+        </div>
+        <div class="half-width">
+          <p><span>500,000 </span><br> Ocean Conservancy volunteers and members </p>
+        </div>
+      </div>
     </div>
 
+    <div class="fund-info section">
+<!--      <img src="img/jellyfish.jpg" class="fund-bg">-->
+      <div class='wrapper--left'>
+        <h1>How we use your funds</h1>
+        <p>Ocean Conservancy is an accredited charity with the Better Business Bureau and holds high ratings with charity watchdogs. Your support is cleaning up the seas, and helping our oceans flourish.</p>
+      </div>
+      <div class='wrapper--right'>
+        <img class="fund-chart" src="img/Funding_graph.png">
+      </div>
+    </div>
+    
+    <div class="cta-banner">
+      <h2>Donate now to take a stand for the ocean.</h2>
+    </div>
+    
     <div class="footerText-wrapper clearfix wrapper">
       <div class="row footer-logo">
         Footer content
@@ -124,7 +208,8 @@ Generic Payment Error
 </div>
 </div>
 </div>
-<div id='[GR]_Form_HeaderDiv' class='eaFullWidthContent'><h1 class="js-formHeader"><strong>Yes,</strong> I want to support Rethink Breast Cancer.</h1>
+<div id='[GR]_Form_HeaderDiv' class='eaFullWidthContent'><h1 class="js-formHeader form-header">Yes, I want to protect 
+the world’s oceans. </h1>
 </div>
 <div id='[GR]_Donation_PanelsDiv' class='eaFullWidthContent'><div id="window">
 <div id="gr_donation" class="page page-1">
@@ -155,12 +240,12 @@ Generic Payment Error
 <div class="js-backButton-labelHTML hide">Go Back</div>
 <div class="js-nextButton-labelHTML hide">Next<span class="glyphicon glyphicon-chevron-right"></span></div>
 <div class="js-actionButton-labelText hide">Donate</div>
-<div class="js-step1-labelText hide">Amount</div>
-<div class="js-step2-labelText hide">Billing</div>
+<div class="js-step1-labelText hide">1. Donate</div>
+<div class="js-step2-labelText hide">2. Details</div>
 <!--
 <div class="js-step3-labelText hide">Options</div>
 -->
-<div class="js-step3-labelText hide">Payment</div>
+<div class="js-step3-labelText hide">3. Payment</div>
 </div>
 <div id='Recurring_PaymentDiv' class='eaFullWidthContent'>
 <span class='eaFormElementLabel'><label for='Recurring_Payment'><a name='Recurring_Payment' style='text-decoration:none; color: inherit;'>Recurring Payment</a></label></span>
@@ -170,7 +255,7 @@ Generic Payment Error
 
 </div>
 <div id='Donation_AmountDiv' class='eaFullWidthContent'>
-<span class='eaFormElementLabel'><label for='Donation_Amount'><a name='Donation_Amount' style='text-decoration:none; color: inherit;'>Please select your donation amount</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
+<span class='eaFormElementLabel'><label for='Donation_Amount'><a name='Donation_Amount' style='text-decoration:none; color: white;' class='amount-header'>Please select your donation amount</a><span class='eaMandatoryFieldMarker'> *</span></label></span>
 <div id='Donation_AmountField' class='eaFormField'>
    <input id='Donation_Amount' type='text' class='eaFormTextfield' name='Donation Amount' value='' onblur='validatefield(this, true, false, false);' />
 </div>

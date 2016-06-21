@@ -1,17 +1,17 @@
 @mixin formPadding{
   @include mobileAndTablet {
-    padding-left: 20px;  
-    padding-right: 20px;
+    padding-left: 19px;  
+    padding-right: 19px;
   }
 
   @media screen and (min-width: $screen-sm-min){
-    padding-left: $form-padding;  
-    padding-right: $form-padding;
+    padding-left: $form-header-padding;  
+    padding-right: $form-header-padding;
   }
 
   @media screen and (min-width: $screen-md-min){
-    padding-left: $form-padding;  
-    padding-right: $form-padding;
+    padding-left: $form-header-padding;  
+    padding-right: $form-header-padding;
 
   }
 } 
@@ -33,7 +33,7 @@ label{
 .form{
   //background: $form-background;
   //background-repeat: repeat-y;
-  background-color: white;
+  background-color: $form-bg;
   @include formContainer;
   @include z-extraHighest;
 }
@@ -67,7 +67,7 @@ label{
 	
     //background: $form-background;
     //background-repeat: repeat-y;
-    background-color: white;
+    background-color: $form-bg;
 
   &.is-active{
     top: 0;
@@ -79,10 +79,11 @@ label{
 }
 
 .form-header{
-  background-color: $white;
+  background-color: $form-bg;
   padding-top: $form-padding;
   padding-bottom: 0;
   @include formPadding;
+  text-transform: uppercase;
 
   h3 {
     @include font-headN4;
@@ -115,7 +116,7 @@ label{
 
 @media screen and (max-width: $screen-sm) {
   .form {
-    background-color: $white;
+    background-color: $form-bg;
 
     &.is-active{
       overflow-x: hidden;
@@ -128,7 +129,7 @@ label{
     }
   }
   .form-navbar{
-    background-color: $white;
+    background-color: $form-bg;
   }
   
   .form-header{
@@ -243,7 +244,7 @@ label{
   .form-navbar {
     //background: $form-background;
     //background-repeat: repeat-y;
-    background-color: white;  // overflow-y: auto;
+    background-color: $form-bg;  // overflow-y: auto;
     width: 100%;
     //height: $form-navbar-height;
     @include z-highest;
@@ -335,4 +336,13 @@ label{
   height: 0;
   overflow: hidden;
   text-indent: -99999;
+}
+
+.form {
+  right: auto;
+}
+
+.js-col-form {
+  float: left;
+  margin-left: -386px;
 }
