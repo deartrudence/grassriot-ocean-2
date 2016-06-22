@@ -2563,16 +2563,13 @@ body:after {
     top: auto;
     left: auto;
   }
-  .campaign .hero img {
-    display: none;
-  }
 }
 .campaign .heroImage {
-  width: 790px;
+  width: 841px;
   height: auto;
   position: absolute;
-  top: -49px;
-  right: 0;
+  top: -58px;
+  right: -52px;
 }
 @media screen and (max-width: 619px) {
   .campaign .heroImage {
@@ -2584,11 +2581,11 @@ body:after {
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
-  line-height: 1.25;
+  line-height: 1.2;
   color: #FFFFFF;
-  max-width: 82%;
+  max-width: 90%;
   text-align: center;
   margin: 0 auto;
   position: absolute;
@@ -2617,6 +2614,7 @@ body:after {
 }
 .campaign .heroTitle span {
   color: #b6d1d3;
+  font-size: 2.2rem;
 }
 
 .photoCaption {
@@ -2758,11 +2756,11 @@ html.csstransforms {
 
 .intro {
   padding: 73px 40px;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 .intro span {
   color: #009bc5;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   line-height: 1.25;
 }
 
@@ -2790,13 +2788,25 @@ html.csstransforms {
   font-size: 2.2rem;
   text-transform: uppercase;
 }
+@media screen and (max-width: 767px) {
+  .issueWrapper--left h1 {
+    position: relative;
+    top: 0;
+    transform: none;
+  }
+}
+@media screen and (max-width: 805px) {
+  .issueWrapper--left h1 {
+    font-size: 2rem;
+  }
+}
 .issueWrapper--left p {
   color: #FFFFFF;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
-  line-height: 1.33;
-  font-size: 1rem;
+  line-height: 1.4;
+  font-size: 1.1rem;
   text-align: center;
 }
 @media screen and (max-width: 1022px) {
@@ -2874,6 +2884,7 @@ html.csstransforms {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0 20px;
 }
 .issueWrapper--under span {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -2887,9 +2898,14 @@ html.csstransforms {
   text-align: center;
   padding-top: 80px;
   padding-bottom: 25px;
-  font-size: 2.9rem;
+  font-size: 3rem;
   margin: 0 20%;
   line-height: 1.12;
+}
+@media screen and (max-width: 767px) {
+  .section-heading {
+    margin: 0 5%;
+  }
 }
 
 .join-us p {
@@ -2906,6 +2922,7 @@ html.csstransforms {
 
 .join-us--row p {
   padding-top: 26px;
+  font-size: 0.9rem;
 }
 .join-us--row img {
   border-radius: 50%;
@@ -2916,7 +2933,7 @@ html.csstransforms {
 
 .half-width {
   width: 50%;
-  padding: 40px 50px;
+  padding: 25px 50px;
   text-align: center;
   float: left;
 }
@@ -2930,16 +2947,27 @@ html.csstransforms {
 
 .cta-banner {
   background: #9fbd3b;
-  height: 77px;
   clear: both;
 }
+@media screen and (min-width: 620px) and (max-width: 991px) {
+  .cta-banner {
+    position: relative;
+    top: 84px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .cta-banner {
+    margin-bottom: 84px;
+  }
+}
 .cta-banner h2 {
-  padding: 20px 0;
+  padding: 20px 30px;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #FFFFFF;
   text-align: center;
+  margin: 0;
 }
 
 .impact p {
@@ -2958,6 +2986,11 @@ html.csstransforms {
 .impact div:last-of-type {
   padding-bottom: 40px;
 }
+@media screen and (max-width: 619px) {
+  .impact h1 {
+    padding-top: 0;
+  }
+}
 
 .impact--row {
   float: left;
@@ -2969,25 +3002,32 @@ html.csstransforms {
 }
 
 .fund-info {
-  background-image: url(../img/jellyfish.jpg);
-  height: 329px;
+  height: 328px;
   clear: both;
 }
 .fund-info .wrapper--left, .fund-info .wrapper--right {
   width: 50%;
   float: left;
   padding-top: 62px;
+  position: relative;
+  z-index: 2;
 }
-@media screen and (max-width: 1050px) {
+@media screen and (min-width: 620px) and (max-width: 991px) {
   .fund-info .wrapper--left, .fund-info .wrapper--right {
-    width: 90%;
-    float: center;
-    padding-top: 40px;
+    width: 100%;
+    float: none;
+    padding-top: 20px;
   }
 }
 .fund-info .wrapper--left {
   padding-left: 100px;
   color: #FFFFFF;
+}
+@media screen and (min-width: 620px) and (max-width: 991px) {
+  .fund-info .wrapper--left {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 .fund-info .wrapper--left h1 {
   font-size: 2.2rem;
@@ -2995,13 +3035,18 @@ html.csstransforms {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+@media screen and (min-width: 620px) and (max-width: 991px) {
+  .fund-info .wrapper--left h1 {
+    width: auto;
+  }
+}
 .fund-info .wrapper--left p {
   padding-top: 20px;
   font-size: 1rem;
 }
-@media screen and (max-width: 1100px) {
-  .fund-info .wrapper--left {
-    padding-left: 80px;
+@media screen and (max-width: 1022px) {
+  .fund-info .wrapper--left p {
+    padding-top: 10px;
   }
 }
 .fund-info .wrapper--right img {
@@ -3014,10 +3059,33 @@ html.csstransforms {
     margin-left: 10px;
   }
 }
-@media screen and (max-width: 1050px) {
+@media screen and (min-width: 620px) and (max-width: 991px) {
   .fund-info .wrapper--right img {
-    padding-top: 0;
-    margin-left: 80px;
+    position: relative;
+    padding-top: 0px;
+    left: 30px;
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .fund-info {
+    padding-top: 20px;
+  }
+}
+
+@media screen and (min-width: 620px) and (max-width: 991px) {
+  .fund-outer-wrapper {
+    position: relative;
+  }
+}
+
+.fund-bg {
+  position: absolute;
+}
+@media screen and (min-width: 620px) and (max-width: 991px) {
+  .fund-bg {
+    height: 412px;
+    left: -100px;
   }
 }
 
@@ -3044,7 +3112,7 @@ html.csstransforms {
     padding-bottom: 100px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .campaign {
     padding-right: 386px;
   }
@@ -3080,7 +3148,6 @@ html.csstransforms {
   font-style: normal;
   font-size: 1.71875rem;
   color: #FFFFFF;
-  margin: 0em 0em .5em;
 }
 .campaign h3 {
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -3499,7 +3566,7 @@ html.csstransforms {
     padding-bottom: 100px;
   }
 }
-@media screen and (max-width: 768px) and (min-width: 769px), screen and (max-device-width: 768px) and (min-width: 769px) {
+@media screen and (max-width: 768px) and (min-width: 768px), screen and (max-device-width: 768px) and (min-width: 768px) {
   .campaign {
     padding-right: 386px;
   }
@@ -3529,17 +3596,9 @@ html.csstransforms {
     font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 1.5rem;
-    position: absolute;
+    font-size: 2.2rem;
+    position: relative;
     bottom: 0;
-    padding: 0 6% 50%;
-  }
-
-  .js-campaign h2 {
-    font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 1.43229rem;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -3584,7 +3643,7 @@ label {
     translate: transform3d(0, 0, 0);
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .form {
     position: absolute;
     right: 0;
@@ -3660,7 +3719,7 @@ label {
     padding-right: 19px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .form-header {
     padding-left: 19px;
     padding-right: 19px;
@@ -3719,9 +3778,6 @@ label {
     background-color: #82bdc7;
   }
 
-  .form-header {
-    padding-right: 54px;
-  }
   .form-header h3 {
     font-size: 0.45833rem;
   }
@@ -3795,7 +3851,7 @@ label {
     opacity: 1;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   #grdonation,
   .form form {
     height: 100%;
@@ -3826,7 +3882,7 @@ label {
     padding-right: 19px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   #grdonation .page {
     padding-left: 19px;
     padding-right: 19px;
@@ -3909,6 +3965,10 @@ label {
 .js-col-form {
   float: left;
   margin-left: -386px;
+}
+
+.radiobutton {
+  font-weight: bold;
 }
 
 #grdonation .page h3 {
@@ -4124,7 +4184,7 @@ label {
   font-family: sans-serif;
   color: #FFFFFF;
   font-size: 10px;
-  font-style: normal;
+  font-style: italic;
   z-index: 10;
   border-radius: 4px;
   transition: all 0.5s ease;
@@ -4133,6 +4193,19 @@ label {
   cursor: pointer;
   opacity: 0.7;
   color: #0096af;
+}
+@media screen and (max-width: 767px) {
+  .security .security-text {
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 352px) {
+  .security .security-text {
+    position: relative;
+    top: 37px;
+    left: 19px;
+    margin-right: 0;
+  }
 }
 .security .security-image {
   display: inline-block;
@@ -4915,7 +4988,7 @@ select.error, textarea.error {
     padding-right: 19px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .grdonation-contact {
     padding-left: 19px;
     padding-right: 19px;
@@ -5309,7 +5382,7 @@ html.flexbox .upsell-modal--body {
 }
 
 .logo-image {
-  height: 60px;
+  height: 55px;
 }
 
 .page-logo {

@@ -130,11 +130,11 @@ em{
   $font-to-em: map-get((
     small: 0.5rem,
     base: 1rem,
-    medium: 1.3rem,
+    medium: 1.1rem,
     large: 1.6rem,
     largerish: 2rem,
     larger: 2.2rem,
-    titleLarge: 2.9rem,
+    titleLarge: 2.5rem,
     xlarge: 3rem,
     huge: 3.6rem,
     titleHuge: 4.3rem
@@ -150,6 +150,7 @@ $line-tight: 1.12;
 $line-nearBase: 1.18;
 $line-base: 1.26;
 $line-loose: 1.33;
+$line-looser: 1.4;
 $line-loosest: 1.58;
 
 //Line Heights

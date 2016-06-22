@@ -248,7 +248,7 @@
         font-family: sans-serif;
         color: $white;
         font-size: 10px;
-        font-style: normal;
+        font-style: italic;
         z-index: 10;
         border-radius: 4px;
         transition: all 0.5s ease;
@@ -258,6 +258,17 @@
             opacity: 0.7;
             color: $brand-primary-alternate;
         }
+      
+      @include mobileAndTablet {
+        margin-right: 20px;
+      }
+      
+      @media screen and (max-width: 352px) {
+        position: relative;
+        top: 37px;
+        left: 19px;
+        margin-right: 0;
+      }
     }
 
     .security-image {

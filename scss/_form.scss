@@ -133,7 +133,7 @@ label{
   }
   
   .form-header{
-    padding-right: $form-padding + 30px; //for the close button
+//    padding-right: $form-padding + 30px; //for the close button
 
     h3{
       @include fontSize-small;
@@ -345,4 +345,8 @@ label{
 .js-col-form {
   float: left;
   margin-left: -386px;
+}
+
+.radiobutton {
+  font-weight: bold;
 }
