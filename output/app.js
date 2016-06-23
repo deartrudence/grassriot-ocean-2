@@ -1017,7 +1017,7 @@ webpackJsonp([0],[
 	        });
 
 	    $form.removeAttr('onsubmit');
-	    $('[data-toggle="popover"]').popover();
+	    setupSecurityNotice();
 
 	    //setupDonationOptions();
 
@@ -1346,6 +1346,22 @@ webpackJsonp([0],[
 	  }
 
 	}*/
+
+	/**
+	 * [setupSecurityNotice description]
+	 * @return {[type]} [description]
+	 */
+	function setupSecurityNotice(){
+	  var $security = $(".security");
+	  var $text = $security.find(".security-fulltext");
+	  var text = $text.text();
+	  $text.remove();
+
+	  $security.find(".security-text").popover({
+	      content: text,
+	      placement: 'bottom'
+	    })
+	}
 
 	/**
 	 * [setupMobileButton description]
