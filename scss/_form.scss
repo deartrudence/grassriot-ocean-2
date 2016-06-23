@@ -233,7 +233,8 @@ label{
     //margin-top: -1 * $form-navbar-height;
   }
 
-  .affix {
+  .affix,
+  .affix-top {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -343,8 +344,10 @@ label{
 }
 
 .js-col-form {
-  float: left;
-  margin-left: -386px;
+  @include tabletPlus{
+    float: left;
+    margin-left: -386px;    
+  }
 }
 
 .radiobutton {

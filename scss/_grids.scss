@@ -95,10 +95,10 @@
 
 @mixin formContainer{
 
-  @media screen and (max-width: $screen-sm) {
+  @include mobile{
     position: fixed;
     bottom: -100%;
-    left: 0;
+    // left: 0;
     height: 100%;
     width: 100%;
     // padding: 20px;
@@ -108,27 +108,27 @@
     translate: transform3d(0,0,0);
   }
 
-  @media screen and (min-width: $screen-sm-min){
-    position: absolute;
-    //top: $header-height-xs;
-    right: 0;
-    height: 100%;
-    width: $form-width-xs;
-  }
+  // @include smallDesktopPlus{
+  //   position: absolute;
+  //   //top: $header-height-xs;
+  //   // right: 0;
+  //   height: 100%;
+  //   width: $form-width-xs;
+  // }
 
-  @media screen and (min-width: $screen-sm){
-    position: absolute;
-    width: 100%;
+  @include tablet{
+    position: fixed;
+    // width: 100%;
     //top: $header-height-sm;
-    right: 0;
+    // right: 0;
     height: 100%;
     width: $form-width-sm;
   }
 
-  @media screen and (min-width: $screen-md){
+  @include smallDesktopPlus{
     position: fixed;
     //top: $header-height-md;
-    right: 0;
+    // right: 0;
     width: $form-width-md;
     height: 100%;
 

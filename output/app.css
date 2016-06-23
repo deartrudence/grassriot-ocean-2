@@ -3631,11 +3631,10 @@ label {
   background-color: #82bdc7;
   z-index: 150;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 619px) {
   .form {
     position: fixed;
     bottom: -100%;
-    left: 0;
     height: 100%;
     width: 100%;
     z-index: 150;
@@ -3643,19 +3642,9 @@ label {
     translate: transform3d(0, 0, 0);
   }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 620px) and (max-width: 991px) {
   .form {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    width: 386px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .form {
-    position: absolute;
-    width: 100%;
-    right: 0;
+    position: fixed;
     height: 100%;
     width: 386px;
   }
@@ -3663,7 +3652,6 @@ label {
 @media screen and (min-width: 992px) {
   .form {
     position: fixed;
-    right: 0;
     width: 386px;
     height: 100%;
   }
@@ -3813,7 +3801,7 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #e11e33 url('../img/arrow-open.png?1466192993') center center no-repeat;
+    background: #e11e33 url('../img/arrow-open.png?1466189372') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
@@ -3857,7 +3845,8 @@ label {
     height: 100%;
   }
 
-  .affix {
+  .affix,
+  .affix-top {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -3962,9 +3951,11 @@ label {
   right: auto;
 }
 
-.js-col-form {
-  float: left;
-  margin-left: -386px;
+@media screen and (min-width: 620px) {
+  .js-col-form {
+    float: left;
+    margin-left: -386px;
+  }
 }
 
 .radiobutton {
@@ -6012,20 +6003,20 @@ footer a {
   height: 45px;
 }
 .post-action .social-block .social .facebook {
-  background: url('../img/fb-2015.png?1466192993') no-repeat center;
+  background: url('../img/fb-2015.png?1466189372') no-repeat center;
 }
 .post-action .social-block .social .twitter {
-  background: url('../img/tw-2015.png?1466192993') no-repeat center;
+  background: url('../img/tw-2015.png?1466189372') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1466192993') no-repeat center;
+  background: url('../img/gp.png?1466189372') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1466192993') no-repeat center;
+  background: url('../img/in.png?1466189372') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1466192993') no-repeat center;
+  background: url('../img/ml.png?1466189372') no-repeat center;
 }
 .post-action .social-block .social .email .mobile-center {
   border-bottom: 0px;

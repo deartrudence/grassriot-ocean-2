@@ -1362,7 +1362,7 @@ function setupMobileButton(){
 		.on("mousedown touchstart", handleDrag);
 
 	$(".formClose").on("click",function(){
-		$(this).parent().removeClass("is-active");
+		$(this).closest(".is-active").removeClass("is-active");
 	});
 }
 
