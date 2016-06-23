@@ -20,6 +20,8 @@ em{
   font-weight: 400;
   font-style: normal;
 }
+
+//  Google font
 @mixin font-bodyN4{
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
@@ -39,12 +41,14 @@ em{
   font-style: normal;
 }
 
+//  Google font
 @mixin font-bodyI4{
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
+//  Google font
 @mixin font-bodyI7{
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -54,6 +58,7 @@ em{
 //
 //Title font
 //
+
 @mixin font-headN2{
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 200;
@@ -79,21 +84,24 @@ em{
   font-style: normal;
 }
 
+//  Google font
 @mixin font-headN7{
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 700;
   font-style: normal;
 }
 
+//  Google font
 @mixin font-headI4{
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
+//  Google font
 @mixin font-headI7{
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
 }
 

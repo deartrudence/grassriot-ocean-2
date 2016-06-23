@@ -1010,7 +1010,7 @@ function setupAction(){
                 {min: 120, max: 200, amount: 25},
                 {min: 200, max: 300, amount: 30}
             ]*/
-        });
+        });  
     grupsell.launch();
 
     $form.removeAttr('onsubmit');

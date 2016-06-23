@@ -140,7 +140,7 @@ GRUpsell.prototype.launch = function() {
     $(this.options.upsellContentSelector).find("."+this.options.donationAmountClass).text(this.initialAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
     //@since 0.3 assumes upsell amount is an input, not a span, updates upsellAmount based on input
     $(this.options.upsellContentSelector).find("."+this.options.upsellAmountClass)
-        .val(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+        .val(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 0, maximumFractionDigits: 0}))
         .on("change", function(e){
             var $target = $(e.target);
             var customValue = $target.val();

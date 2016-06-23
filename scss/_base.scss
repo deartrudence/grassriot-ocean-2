@@ -220,16 +220,16 @@ $footer-logowidth-xl: ($footer-logowidth-base * 2);
 
 //upsell
 $upsell-background: $white;
-$upsell-cta-colour: $black;
+$upsell-cta-colour: $form-bg;
 $upsellTitle-colour: $black;
 $upsellTitle-highlightColour: $black;
 $upsellCopy-background:$white;
 $upsellCopy-colour: $black;
 $upsellRecommendation-colour: $white;
-$upsellConfirm-colour: $black;
+$upsellConfirm-colour: $white;
 $upsell-overlay-background: rgba($charcoal, $modal-overlay-opacity);
 $upsell-highlight-colour: $brand-primary-alternate;
-$upsell-action-background: $white;
+$upsell-action-background: $cta-red;
 $upsell-close-colour: $black;
 $upsell-close-background: $white;
 
