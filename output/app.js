@@ -1015,6 +1015,7 @@ webpackJsonp([0],[
 	                {min: 200, max: 300, amount: 30}
 	            ]*/
 	        });
+	    grupsell.launch();
 
 	    $form.removeAttr('onsubmit');
 	    setupSecurityNotice();
@@ -2743,7 +2744,7 @@ webpackJsonp([0],[
 	 *
 	 * Managed functionality relating to upsell modals
 	 *
-	 * @version  0.3  !!MODIFIED20160211-MAJOR!!
+	 * @version  0.3  !!MODIFIED20160211-MAJOR!! !!MODIFIED20160623-MAJOR!!
 	 * @requires jQuery, Bootstrap
 	 */
 	var requiredOptions = [
@@ -2842,6 +2843,7 @@ webpackJsonp([0],[
 	    this.refreshFields();
 	    
 	    var field = this.options.donationAmountField;
+	    var self = this;
 
 	    //get the active field
 	    if( field.length > 1){
@@ -2849,7 +2851,7 @@ webpackJsonp([0],[
 	        if(checkedField.length === 1){
 	            field = checkedField;
 	        }
-	    } console.log(field);
+	    }
 
 	    this.initialAmount = parseFloat(field.val().replace(/[^0-9\.]/g, ''));
 	    //@since 0.3 handle 'other' field [in EN way - we already handle GRGivingSupport way]
@@ -2877,7 +2879,15 @@ webpackJsonp([0],[
 	    }
 
 	    $(this.options.upsellContentSelector).find("."+this.options.donationAmountClass).text(this.initialAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
-	    $(this.options.upsellContentSelector).find("."+this.options.upsellAmountClass).text(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+	    //@since 0.3 assumes upsell amount is an input, not a span, updates upsellAmount based on input
+	    $(this.options.upsellContentSelector).find("."+this.options.upsellAmountClass)
+	        .val(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}))
+	        .on("change", function(e){
+	            var $target = $(e.target);
+	            var customValue = $target.val();
+	            this.upsellAmount = parseFloat(customValue);
+	            $target.val(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+	        });
 
 	    $(this.options.upsellContentSelector).modal({
 	        backdrop: 'static',

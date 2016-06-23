@@ -205,6 +205,9 @@ $amount-active-background: $brand-primary-alternate;
 $amount-hover-background: lighten($lightest-grey, 5%);
 $amount-normal-background: $lightest-grey;
 
+$formInput-border: $input-border-grey;
+$formInput-activeBorder: $brand-primary-alternate;
+
 //footer
 $footer-padding-xs: 40px;
 $footer-padding-md: 80px;
@@ -217,13 +220,18 @@ $footer-logowidth-xl: ($footer-logowidth-base * 2);
 
 //upsell
 $upsell-background: $white;
-$upsell-cta-colour: $yellow;
-$upsell-colour: $white;
+$upsell-cta-colour: $black;
+$upsellTitle-colour: $black;
+$upsellTitle-highlightColour: $black;
+$upsellCopy-background:$white;
+$upsellCopy-colour: $black;
+$upsellRecommendation-colour: $white;
+$upsellConfirm-colour: $black;
 $upsell-overlay-background: rgba($charcoal, $modal-overlay-opacity);
 $upsell-highlight-colour: $brand-primary-alternate;
-$upsell-action-background: #D8256A;
+$upsell-action-background: $white;
 $upsell-close-colour: $black;
-$upsell-close-background: $rethink-close-grey;
+$upsell-close-background: $white;
 
 //Postaction
 $share-borderColour: #E6E6E6;

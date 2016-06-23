@@ -26,12 +26,12 @@
   @include gotham-fontSize-base;
   @include line-loose;  
   @include font-headN3;
-  color: $white;
+  color: $upsellCopy-colour;
 }
 
 .upsell-panel{
   display: table-cell;
-  vertical-align: top;
+  vertical-align: middle;
   padding: 33px 35px 10px;
 }
 
@@ -43,29 +43,30 @@
   line-height: .8;
   // background-image: image-url('upsell.jpg');
   // background-size: cover;
-  background-color: #ee4a8f;
+  // background-color: #ee4a8f;
 }
 
 .upsell-title{
   font-size: 1em; //override bootstrap's sizes
-  color: $upsell-colour;
+  color: $upsellTitle-colour;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 17px;
   font-size: 2.5rem;
-  @include font-bodyN7;
+  text-align: center;
+  @include font-headN7;
   @include lineHeight-hero;
 }
 
 .upsell-title--highlight{
-  color: $upsell-highlight-colour;
+  color: $upsellTitle-highlightColour;
 }
 
 .upsell-copy{
   width: 55%;
   position: relative;
   color: $black;
-  background: #f9c0d8;
+  background: $upsellCopy-background;
   @include font-headN3;
   ul {
     list-style: disc inside;
@@ -75,6 +76,8 @@
 .upsell-copy--cta{
   color: $upsell-highlight-colour;
   margin-top: 1.2em;
+
+  @include font-bodyN7;
 }
 
 .upsell-subtitle{
@@ -88,7 +91,7 @@
 $upsell-recommendation-padding: 5px;
 .upsell-recommendation{
   // background: lighten($colour_purple, 20%);
-  color: $upsell-colour;
+  color: $upsellRecommendation-colour;
   // padding: $upsell-recommendation-padding;
   border-radius: $upsell-recommendation-padding;
   overflow: hidden;
@@ -102,7 +105,12 @@ $upsell-recommendation-padding: 5px;
   }
 }
 
-.upsell-recommendation--amount{
+.upsell-recommendation--symbol{
+  float: left;
+  line-height: 2.4em;
+}
+
+.js-monthly-donation-amount{
   background: $white;
   color: $black;
   padding: 0 10px;
@@ -112,10 +120,8 @@ $upsell-recommendation-padding: 5px;
   min-height: 2.4em;
   // font-size: 1.5em;
   line-height: 2.4em;
-
-  em{
-    font-style: normal;
-  }
+  width: 3.8em;
+  border: 2px solid $formInput-border;
 }
 
 .upsell-recommendation--label{
@@ -166,7 +172,7 @@ button.upsell-modal--close{
   // @include cta-button--magenta;
   text-align: center;
   padding: 1em;
-  color: $upsell-colour;
+  color: $upsellConfirm-colour;
   font-family: sans-serif;
   border-radius: 10px;
   border: none;
@@ -177,7 +183,7 @@ button.upsell-modal--close{
 
   &:hover{
     opacity: 0.8;
-    color: $upsell-colour;
+    // color: $upsell-colour;
   }
   &:active{
     opacity: 0.7;
@@ -264,7 +270,7 @@ button.upsell-modal--close{
     margin: 0;
     text-indent: 0;
     background: none;
-    color: $upsell-colour;
+    color: $black;
     text-shadow: 0 -2px 0 $black;
     opacity: 0.4;
 
