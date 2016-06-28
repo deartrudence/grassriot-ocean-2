@@ -28,7 +28,7 @@
 .glyphicon-lock                   { &:before { content: "\e033"; } }
 
 .intro{
-  padding: 73px 40px;
+  padding: 76px 40px;
   @include fontSize(medium);
   
   span {
@@ -36,385 +36,15 @@
     font-size: 1.4rem;
     line-height: $line-hero;
   }
-}
-
-.issue{
-  height: 350px;
-  background-image: url("../img/water-texture.jpeg");
-}
-
-.issueWrapper--left{
-  float: left;
-  padding: 0 30px;
-  width: 70%;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   
-  h1{
-    @include font-headN7;
-    letter-spacing: 1.3px;
-    color: $white;
-    text-align: center;
-    padding-bottom: 15px;
-    @include fontSize(larger);
-    text-transform: uppercase;
-    
-    @include mobileAndTablet {
-      position: relative;
-      top: 0;
-      transform: none;
-    }
-    
-    @media screen and (max-width: 805px) {
-       @include fontSize(largerish);
-    }
+  @media screen and (max-width: 538px) {
+    padding: 45px 15px;
   }
   
-  p{ 
-    color: $white;
-    @include font-bodyN3;
-    line-height: $line-looser;
-    @include fontSize(medium);
-    text-align: center;
-  }
-  
-  @media screen and (max-width: 1022px) { 
-    width:100%;
-    float:none;
+  @media (min-width: 768px) and (max-width: 1000px) {
+    padding: 45px 15px;
   }
 }
-
-.issueWrapper--right{
-  width: 165px;
-  float: right;
-  background: $brand-tertiary-green;
-  height: 350px;
-  position: relative;
-  right: 30px;
-  @include font-bodyN4;
-  
-  p {
-    color: $white;
-    padding: 0 20px;
-    font-size: 1.3rem;
-    height: 95px;
-    text-align: center;
-    margin-top: 126px;
-  }
-  
-  span {
-    @include font-bodyI7;
-  }
-  
-  @media screen and (min-width: 1023px) {
-    &:before {
-      content: " ";
-      height: 350px;
-      border-left: 1.5px solid $brand-tertiary-faded-green;
-      position: absolute;
-      left: 5px;
-    }
-    
-    &:after {
-      content: " ";
-      height: 350px;
-      border-left: 1.5px solid $brand-tertiary-faded-green;
-      position: absolute;
-      right: 5px;
-      top: 0;
-    }
-  }
-  
-  @media screen and (max-width: 1022px) { 
-    display: none;
-  }
-}
-
-.issueWrapper--under {
-  display: none;
-  
-  @media screen and (max-width: 1022px) { 
-    display: block;
-    background: $brand-tertiary-green;
-    height: 95px;
-    position: relative;
-    color: $white;
-    @include font-bodyN4;
-  }
-  
-  p {
-    font-size: 1.3rem;
-    text-align: center;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 20px;
-  }
-  
-  span {
-    @include font-bodyI7;
-  }
-}
-
-.section-heading {
-    color: $brand-primary-navy;
-    text-transform: uppercase;
-    text-align: center;
-    padding-top: 80px;
-    padding-bottom: 25px;
-    @include fontSize(xlarge);
-    margin: 0 20%;
-    line-height: $line-tight;
-  
-  @include mobileAndTablet {
-    margin: 0 5%;
-  }
-}
-
-.join-us {
-  
-  p {
-    @include font-bodyN4;
-  }
-  
-  span {
-    color: $brand-primary-navy;
-    @include font-bodyN7;
-  }
-  
-  
-} 
-
-.join-us--row {
-  
-  p {
-    padding-top: 26px;
-    font-size: 0.9rem;
-  }
-  
-  img {
-    border-radius: 50%;
-    margin: auto;
-    width: 150px;
-    height: 150px;
-  }
-}
-
-.half-width {
-  width: 50%;
-  padding: 25px 50px;
-  text-align: center;
-  float: left;
-  
-  @media screen and (max-width: 1022px) { 
-    float: none;
-    margin: auto;
-    width: 80%;
-  }
-}
-
-.cta-banner {
-  background: $brand-tertiary-green;
-  clear: both;
-  
-  @include tablet {
-    position: relative;
-    top: 84px;
-  }
-  
-  @media screen and (max-width: 990px) { 
-    margin-bottom: 84px;
-  }
-  
-  h2 {
-    padding: 20px 30px;
-    @include font-bodyN7;
-    color: $white;
-    text-align: center;
-    margin: 0;
-    
-    
-  }
-}
-
-.impact {
-  p {
-    @include font-bodyN4;
-    @include fontSize(base);
-  }
-  
-  span {
-    @include font-bodyN7;
-    @include fontSize(large);
-    color: $brand-primary-teal;
-  }
-  
-  div:last-of-type {
-    padding-bottom: 40px;
-  }
-  
-  h1 {
-    @include mobile {
-      padding-top: 0;
-    }
-  }
-} 
-
-.impact--row {
-  float: left;
-  
-  @media screen and (max-width: 1022px) { 
-    float: none;
-  }
-}
-
-.fund-info {
-  height: 328px;
-  clear: both;
-  
-  .wrapper--left, .wrapper--right {
-    width: 50%;
-    float: left;
-    padding-top: 62px;
-    position:relative;
-    z-index: 2;
-    
-    @include tablet {
-      width: 100%;
-      float: none;
-      padding-top: 20px;
-    }
-  }
-  
-  .wrapper--left {
-    padding-left: 100px;
-    color: $white;
-    
-    @include tablet {
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-    
-    h1 {
-      @include fontSize(larger);
-      width: 400px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      
-      @include tablet {
-        width: auto;
-      }
-    }
-    
-    p {
-      padding-top: 20px;
-      @include fontSize(base);
-      
-      @media screen and (max-width: 1022px) { 
-        padding-top: 10px;
-      }
-    }
-    
-    @media screen and (max-width: 1100px) { 
-//      padding-left: 80px;
-    }
-  }
-  
-  .wrapper--right {
-    
-//    @media screen and (max-width: 1050px) { 
-//      padding-top: 10px;
-//    }
-    
-    img {
-      width: 290px;
-      padding-top: 69px;
-      margin-left: 30px;
-      
-      @media screen and (max-width: 1100px) { 
-        margin-left: 10px;
-      }
-      
-      @include tablet {
-        position: relative;
-        padding-top: 0px;
-        left: 30px;
-        margin-left: 0px;
-      }
-    }
-  }
-  
-  @include mobileAndTablet {
-    padding-top: 20px;
-  }
-}
-
-.fund-outer-wrapper {
-  @include tablet {
-    position: relative;
-//    top: 50%;
-//    transform: translateY(-50%);
-  }
-  
-}
-
-.fund-bg {
-  position: absolute;
-  
-  @include tablet {
-    height: 412px;
-    left: -100px;
-  }
-}
-
-.last-row div {
-  padding-bottom: 80px;
-  
-  @media screen and (max-width: 1022px) { 
-    padding-bottom: 40px;
-  }
-}
-
-.last-item {
-  margin-bottom: 40px;
-}
-
-//.fund-info {
-//  min-height: 330px;
-//  position:absolute;
-//  z-index: 2;
-//  
-//   h1{
-//      @include font-headN7;
-//      letter-spacing: 1.3px;
-//      color: $white;
-//      padding-bottom: 30px;
-//      @include fontSize-largerish;
-//    }
-//  
-//  .fundWrapper--left{
-//    position:absolute;
-//    z-index: 2;
-//    
-//    p{
-//      color: $white;
-//      @include font-bodyN3;
-//      line-height: $line-loose;
-//      font-size: 1rem;
-//    }
-//  }
-//
-//  .fund-chart{
-//    position: relative;
-//    z-index: 2;
-//  }
-//}
-
-//.fund-bg {
-//  position:absolute;
-//  z-index: 1;
-//}
 
 .campaign {
   overflow: hidden;
@@ -487,17 +117,616 @@
   }
 }
 
+.issue{
+  height: 382px;
+  background-image: url("../img/water-texture.jpeg");
+  
+  @media screen and (max-width: 320px) {
+    height: 450px;
+  }
+}
+
+.issueWrapper--left{
+  float: left;
+  padding: 0 30px;
+  width: 70%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  h1{
+    @include font-headN4;
+    letter-spacing: 1.3px;
+    color: $white;
+    text-align: center;
+    padding-bottom: 15px;
+    @include fontSize(larger);
+    text-transform: uppercase;
+    
+    @include mobileAndTablet {
+      position: relative;
+      top: 0;
+      transform: none;
+    }
+    
+    @media screen and (max-width: 805px) {
+       @include fontSize(largerish);
+    }
+    
+     @media screen and (max-width: 340px) {
+       font-size: 1.8rem;
+    }
+  }
+  
+  p{ 
+    color: $white;
+    @include font-bodyN3;
+    line-height: $line-looser;
+    @include fontSize(medium);
+    text-align: left;
+  }
+  
+  @media screen and (max-width: 1022px) { 
+    width:100%;
+    float:none;
+  }
+  
+  @media screen and (max-width: 538px) { 
+    padding: 0 15px;
+  }
+  
+  @media (min-width: 768px) and (max-width: 1000px) {
+    padding: 45px 15px;
+  }
+}
+
+.issueWrapper--right{
+  width: 165px;
+  float: right;
+  background: $brand-tertiary-green;
+  height: 382px;
+  position: relative;
+  right: 30px;
+  @include font-bodyN4;
+  
+  p {
+    color: $white;
+    padding: 0 20px;
+    font-size: 1.3rem;
+    height: 95px;
+    text-align: center;
+    margin-top: 126px;
+    @include font-bodyI7;
+  }
+  
+  span {
+    @include font-bodyI7;
+  }
+  
+  @media screen and (min-width: 1023px) {
+    &:before {
+      content: " ";
+      height: 382px;
+      border-left: 1.5px solid $brand-tertiary-faded-green;
+      position: absolute;
+      left: 5px;
+    }
+    
+    &:after {
+      content: " ";
+      height: 382px;
+      border-left: 1.5px solid $brand-tertiary-faded-green;
+      position: absolute;
+      right: 5px;
+      top: 0;
+    }
+  }
+  
+  @media screen and (max-width: 1022px) { 
+    display: none;
+  }
+}
+
+.issueWrapper--under {
+  display: none;
+  background: $brand-primary-teal;
+  
+  @media screen and (max-width: 1022px) { 
+    display: block;
+    height: auto;
+    position: relative;
+    color: $white;
+    @include font-bodyI4;
+  }
+  
+  p {
+    font-size: 1.3rem;
+    text-align: center;
+    position: relative;
+//    top: 50%;
+//    transform: translateY(-50%);
+    padding: 40px 20px;
+  }
+  
+  span {
+    @include font-bodyI7;
+  }
+}
+
+.section-heading {
+  color: $brand-primary-navy;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 25px;
+  font-size: 2.8rem;
+  margin: 0 20%;
+  line-height: $line-tighter;
+  
+//  @include mobileAndTablet {
+//    margin: 0 5%;
+//  }
+  @include mobile {
+    padding-top: 45px;
+    @include fontSize(largerish);
+  }
+  
+  @media (min-width: 768px) and (max-width: 1022px) {
+    margin: 0 10%;
+  }
+  
+  @media (min-width: 768px) and (max-width: 995px) {
+    @include fontSize(larger);
+  }
+  
+  @media (min-width: 320px) and (max-width: 425px) {
+    margin: 0 10%;
+  }
+  
+}
+
+.join-us {
+  
+  p {
+    @include font-bodyN4;
+  }
+  
+  span {
+    color: $brand-primary-navy;
+    @include font-bodyN7;
+  }
+  
+  
+} 
+
+.join-us--row {
+  
+  p {
+    padding-top: 26px;
+    font-size: 0.95rem;
+    
+    @media screen and (max-width: 1022px) {
+      @include fontSize(medium);
+    }
+  }
+  
+  img {
+    border-radius: 50%;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.half-width {
+  width: 50%;
+  padding: 25px 50px;
+  text-align: center;
+  float: left;
+  
+  @media screen and (max-width: 1022px) { 
+    float: none;
+    margin: auto;
+    width: 80%;
+    padding: 25px 0;
+  }
+  
+  @media screen and (max-width: 538px) { 
+    width: 100%;
+    padding: 25px 15px;
+  }
+  
+  @media (min-width: 1022px) and (max-width: 1060px) {
+    padding: 25px 35px;
+  }
+}
+
+.cta-banner {
+  background: $brand-tertiary-green;
+  clear: both;
+  
+  h2 {
+    padding: 20px 15px;
+    @include font-bodyN4;
+    color: $white;
+    text-align: center;
+    margin: 0;  
+  }
+}
+
+.banner--first {
+  h2 {
+    @media screen and (max-width: 445px) {
+      padding: 11px 15px;
+      line-height: 1.1;
+    }
+    
+    @media (min-width: 768px) and (max-width: 838px) {
+      padding: 11px 15px;
+      line-height: 1.1;
+    }
+    
+//    @media (min-width: 837px) and (max-width: 939px) {
+//      padding: 11px 15px;
+//      line-height: 1.1;
+//    }
+  }  
+}
+
+.banner--last {
+  @media screen and (max-width: $screen-xxs-max) {
+    margin-bottom: 0;
+    margin-top: 64px;
+  }
+  
+   @media screen and (max-width: 425px) {
+    margin-top: 143px;
+    position: relative;
+  }
+  
+  @media screen and (max-width: 320px) {
+    margin-top: 90px;
+  }
+  
+  @media screen and (max-width: 950px) { 
+    margin-top: 64px;   
+  }
+  
+  @media (min-width: 950px) and (max-width: 992px) { 
+    margin-top: 0;   
+    top: 0;
+    position: relative;
+  }
+  
+  @media (min-width: 321px) and (max-width: 425px) {
+    margin-top: 143px;
+  }
+  
+  h2 {
+    @media screen and (max-width: 538px) {
+      padding: 11px 15px;
+      line-height: 1.1;
+    }
+    
+    @media (min-width: 768px) and (max-width: 931px) {
+      padding: 11px 15px;
+      line-height: 1.1;
+    }
+  }  
+}
+
+.impact {
+  p {
+    @include font-bodyN4;
+    @include fontSize(medium);
+  }
+  
+  span {
+    @include font-bodyN7;
+    font-size: 1.8rem;
+    color: $brand-primary-teal;
+    
+    @media screen and (max-width: 1118px) {
+      font-size: 1.6rem;
+    }
+    
+    @media screen and (max-width: 1022px) {
+      font-size: 1.8rem;
+    }
+  }
+  
+  div:last-of-type {
+    padding-bottom: 40px;
+    
+//    @media screen and (max-width: 1022px) {
+//      padding-bottom: 25px;
+//    }
+  }
+
+  h1 {
+    
+    @media screen and (max-width: 402px) {
+      margin: 0 10%;
+    }
+//    @include mobile {
+//      padding-top: 0;
+//    }
+  }
+} 
+
+.impact--row {
+  float: left;
+  
+  @media screen and (max-width: 1022px) { 
+    float: none;
+  }
+}
+
+.fund-info {
+  height: 328px;
+  clear: both;
+  
+  @media screen and (max-width: 538px) {
+    padding: 0;
+  }
+  
+  .wrapper--left, .wrapper--right {
+    width: 50%;
+    float: left;
+    padding-top: 62px;
+    position:relative;
+    z-index: 2;
+    
+    @media (min-width: 768px)  and (max-width: 992px) {
+      width: 100%;
+      float: none;
+      padding-top: 20px;
+    }
+    
+     @media screen  and (max-width: 610px) {
+      width: 100%;
+      float: none;
+      padding-top: 20px;
+    }
+    
+    @media (min-width: 610px)  and (max-width: 767px) {
+      width: 50%;
+      float: left;
+      padding-top: 80px;
+    }
+  }
+  
+  .wrapper--left {
+    padding-left: 100px;
+    color: $white;
+    
+    @media screen and (max-width: 992px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    
+     @media screen and (max-width: 538px) {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+    
+    @media (min-width: 610px)  and (max-width: 767px) {
+      padding-left: 30px;
+    }
+    
+    h1 {
+      @include fontSize(larger);
+      width: 400px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      
+      @media screen and (max-width: 992px) {
+        width: auto;
+      }
+      
+      @media screen and (max-width: 427px) {
+        font-size: 1.7rem;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        @include font-headN3;
+        letter-spacing: 0px;
+      }
+      
+      @media (min-width: 768px) and (max-width: 813px) {
+        font-size: 1.6rem;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        @include font-headN3;
+        letter-spacing: 0px;
+      }
+      
+      @media (min-width: 610px)  and (max-width: 767px) {
+        width: 400px;
+      }
+    }
+    
+    p {
+      padding-top: 20px;
+      @include fontSize(base);
+      
+      @media screen and (max-width: 1022px) { 
+        padding-top: 10px;
+      }
+      
+      @media screen and (max-width: 992px) { 
+         @include fontSize(medium);
+      }
+    }
+    
+    @media screen and (max-width: 1100px) { 
+//      padding-left: 80px;
+    }
+  }
+  
+  .wrapper--right {
+    
+//    @media screen and (max-width: 1050px) { 
+//      padding-top: 10px;
+//    }
+    
+    img {
+      width: 290px;
+      padding-top: 69px;
+      margin-left: 30px;
+      
+      @media screen and (max-width: 1100px) { 
+        margin-left: 10px;
+      }
+      
+      @include mobileAndTablet {
+        position: relative;
+        padding-top: 0px;
+        left: 0px;
+        margin-left: 0px;
+        padding-left: 15px;
+      }
+      
+       @media screen and (max-width: 992px) {
+        padding-top: 0px;
+      }
+      
+      @media screen and (max-width: 538px) {
+        left:0;
+        padding-left: 15px;
+      }
+      
+      @media screen and (max-width: 325px) {
+        padding-top: 0px;
+      }
+      
+      @media screen and (max-width: 425px) {
+        padding-left: 10px;
+        width: 95%;
+      }
+      
+      @media (min-width: 816px) and (max-width: 949px) {
+        padding-top: 20px;
+        width: 300px;
+      }
+      
+      @media (min-width: 610px)  and (max-width: 767px) {
+        padding-top: 60px;
+      }
+    }
+    
+    @media (min-width: 768px) and (max-width: 804px) {
+      padding-top: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    height: 348px;
+  }
+  
+  @media screen and (max-width: 538px) {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  
+   @media (min-width: 610px)  and (max-width: 767px) {
+      padding-right: 30px;
+    }
+  
+//  @media (min-width: 430px) and (max-width: 767px) {
+//    height: 264px;
+//  }
+}
+
+.fund-outer-wrapper {
+  @media screen and (max-width: 992px) {
+    position: relative;
+//    top: 50%;
+//    transform: translateY(-50%);
+  }
+  
+}
+
+.fund-bg {
+  position: absolute;
+  
+  @media screen and (max-width: 992px) {
+    height: 412px;
+    left: -100px;
+  }
+  
+  @media screen and (max-width: 425px) {
+    height: 491px;
+    left: -126px;
+  }
+  
+  @media (min-width: 950px) and (max-width: 992px) {
+    height: 354px;
+  }
+  
+  
+}
+
+.last-row div {
+  padding-bottom: 80px;
+  
+  @media screen and (max-width: 1022px) { 
+    padding-bottom: 25px;
+  }
+}
+
+.last-item {
+  margin-bottom: 40px;
+}
+
+//.fund-info {
+//  min-height: 330px;
+//  position:absolute;
+//  z-index: 2;
+//  
+//   h1{
+//      @include font-headN7;
+//      letter-spacing: 1.3px;
+//      color: $white;
+//      padding-bottom: 30px;
+//      @include fontSize-largerish;
+//    }
+//  
+//  .fundWrapper--left{
+//    position:absolute;
+//    z-index: 2;
+//    
+//    p{
+//      color: $white;
+//      @include font-bodyN3;
+//      line-height: $line-loose;
+//      font-size: 1rem;
+//    }
+//  }
+//
+//  .fund-chart{
+//    position: relative;
+//    z-index: 2;
+//  }
+//}
+
+//.fund-bg {
+//  position:absolute;
+//  z-index: 1;
+//}
+
+
+
 .wrapper {
 	background-color: $white;
 	color: $text-colour;
 	padding: 8% 11.5%;
 	position: relative;
 	
-	p {
-		@include fontSize-base;
-    @include lineHeight-campaigntext-main;
-		margin: 15px 0;
-	}
+//	p {
+//		@include fontSize-base;
+//    @include lineHeight-campaigntext-main;
+//		margin: 15px 0;
+//	}
   @include mobile {
     padding: 8% 20px;
   }
@@ -1136,10 +1365,12 @@ screen and (max-device-width:$screen-sm) {
 	  
 	  h1 {
 	  	@include font-headN7;
-			@include fontSize(larger);
+//			@include fontSize(larger);
 	    position: relative;
 	    bottom: 0;
 //			padding: 0 6% 50%;
+      
+      
 	  }
 	  	  	    	  
 	}

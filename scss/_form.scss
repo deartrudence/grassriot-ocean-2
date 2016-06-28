@@ -261,6 +261,11 @@ label{
 
 #grdonation .page{
   @include formPadding;
+  
+  @media screen and (max-width: 425px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 .eaErrorMessage{
@@ -341,6 +346,10 @@ label{
 
 .form {
   right: auto;
+  
+  @media screen and (max-width: 767px) {
+    right: 0;
+  }
 }
 
 .js-col-form {

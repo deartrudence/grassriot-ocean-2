@@ -5,7 +5,7 @@
   // @include background(linear-gradient(to bottom, $white 90%, #f6f6f6 ));
   
   .mobile-center{
-    border-bottom: 5px solid $rethink-post-action-text;  
+    border-bottom: 2px solid rgba(204,204,204,0.2);  
 
   }
   @include mobile {
@@ -22,18 +22,50 @@
   &.facebook{
     .sharing-title,
     .share-content-container{
+      padding-bottom: 14px;
+      
       @include tabletPlus{
         // padding-top: 60px; 
       }
+      
+      @media screen and (max-width: $screen-xxs-max) {
+        padding-bottom: 52px;
+      }
     }
   }
+  
+  .share-content-container--email {
+    padding-top: 0;
+
+//    &:before {
+//      content: "TO:";
+//      position: relative;
+//      display: inline-block;
+//      top: 27px;
+//      left: -28px;
+//      color: grey;
+//      
+//      @media screen and (max-width: $screen-xxs-max) {
+//        top: -5px;
+//        left: 4px;
+//      }
+//    }
+    
+    @media screen and (max-width: $screen-xxs-max) {
+      padding-top: 16px;
+    }
+  }
+  
+.sharing-title {
+  padding-top: 22px;
+}
 
   &:last-child .mobile-center{
-    border-bottom: none;
+//    border-bottom: none;
   }
   
   @include tabletAndSmallDesktop{
-    padding: 0x 20px;
+    padding: 0 20px;
   }
   @include tablet{
     // padding: 20px;
@@ -57,7 +89,7 @@
     @include tabletPlus{
       display: table-cell;
       background: none;
-      padding: 38px 80px 30px 29px;
+      padding: 38px 80px 30px 0px;
       min-height: 200px;
       vertical-align: top;
       width: 40%;
@@ -74,6 +106,7 @@
   // background-color: $white;
   // display: inline-block;
   
+  
   @include mobile{
     padding-top: 0px;
     padding-bottom: 52px;
@@ -86,14 +119,34 @@
     min-height: 200px;
     color: $black;
     vertical-align: top;
-    padding: 35px 29px 30px 20px;    
+    padding: 35px 0px 30px 20px;    
+  }
+  
+  @include desktop {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-top: 11px;
+    width: 51%;
+  }
+  
+  @media screen and (max-width: $screen-lg) {
+    padding-top: 13px;
   }
 }
+
+.share-content--twitter {
+  height:204px;
+}
+
 .share-content {
   font-family: sans-serif;
 }
 .share-content-padding {
   max-width: 475px;
+  
+  @media screen and (max-width: $screen-xxs-max) {
+    max-width: none;
+  }
 }
 
 .word-bubble, .gradient-box {
@@ -132,12 +185,24 @@
   }
 }
 
+.email-recipient {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(204,204,204,0.5);
+  box-shadow: none;
+  margin-bottom: 7px;
+  height: 34px;
+  padding: 0 12px;
+  font-size: 0.8rem;
+}
+
 .email-box{
   position: relative;
   padding: 20px 25px 20px;
   margin-bottom: 12px;
   border: 1px solid #e8e8e8;
   border-radius: 3px;
+  padding-left: 15px;
 
   @include tablet{
     padding-left: 40px;
@@ -154,7 +219,7 @@
 .share-button {
   display: block;
   float: right;
-  padding: 5px 10px 5px 5px;
+  padding: 2px 10px 2px 5px;
   min-width: 130px;
   border-radius: 3px;
   text-transform: uppercase;
@@ -168,6 +233,10 @@
   }
   &:hover {
     opacity: .9;
+  }
+  
+  img {
+    width: 29px;
   }
   img, span {
     display: inline-block;
@@ -223,7 +292,7 @@
     background-color: #F6F7F8;
     .facebook-image, .fb-content-container {
       display: inline-block;
-      min-height: 100px;
+      min-height: 97px;
     }
     .facebook-image {
       background-size: 100% auto;
@@ -233,7 +302,12 @@
       width: 40%;
       vertical-align: middle;
       font-size: 0;
-      padding: 0;       
+      padding: 0;     
+      
+      img {
+        width: 103%;
+         height: 97px;
+      }
     }
     .fb-content-container {
       border-left: 1px solid #E2E2E2;
@@ -281,6 +355,10 @@
   position: relative;
   margin-bottom: 25px;
   color: $sharing-text-grey;
+  height: 197px;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  padding-top: 15px;  
   // &:after {
   //   content: ' ';
   //   position: absolute;
@@ -291,6 +369,40 @@
   //   border: 10px solid;
   //   border-color: #E4E4E4 #E4E4E4 transparent transparent;
   // }
+  
+  span {
+    color: $brand-primary-navy;
+  }
+}
+
+.twitter-mobile-center {
+  height: 260px;
+  
+  @media screen and (max-width: $screen-xxs-max) {
+    height: 318px;
+  }
+}
+
+.twitter-image-wrapper {
+  height: 113px;
+  overflow: hidden;
+  position: relative;
+  top: -156px;
+  width: 90%;
+  margin: auto;
+  
+  img {
+    top: -77px;
+    position: relative;
+    
+    @media screen and (max-width: 375px) {
+      top: -42px;
+    }
+  }
+}
+
+.twitter-bubble-image {
+  
 }
 
 .post-action .campaign .word-bubble.twitter-text{
@@ -299,6 +411,17 @@
   img{
     margin-top: 19px;
   }
+}
+
+.twitter-text:after{
+  content: "";
+  position: absolute;
+  top: 47px;
+  height: 18px;
+  width: 90%;
+  z-index: 10000000;
+  background: linear-gradient(to bottom, rgba(246, 247, 248, 0) 0%, #f6f7f8 100%);
+  right: 14px;
 }
 
 .post-action .campaign .mail-body{

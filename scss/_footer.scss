@@ -1,5 +1,5 @@
 .wrapper.footerText-wrapper {
-  background-color: $brand-tertiary;
+  background-color: #031824;
   color: $white;
   @include font-headN3;
   .row {
@@ -14,8 +14,57 @@
 	}
 }
 footer {
+  @include font-bodyN3;
+  color: $white;
+  
   a {
-    color: $white;
+    color: $brand-secondary-grey !important;
+    line-height: 3;
+    
+     &:active {
+      text-decoration: underline;
+    }
+  }
+  
+  hr {
+    
+  }
+}
+
+.footer-links {
+  font-size: 0.75rem;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
+  font-weight: 100;
+  color: $white;
+  padding-left: 10px;
+  padding-top: 10px;
+  
+  a {
+    font-size: 0.75rem;
+    font-family: sans-serif;
+    font-weight: 400;
+  }
+  
+  li {
+    padding-bottom: 10px;
+  }
+} 
+
+.logo-image--footer {
+  height: 55px;
+}
+
+.copy {
+  clear: both;
+  border-top: 1px solid #6fa0ad;
+  color: #b3b3b3;
+  font-size: 0.7rem;
+  text-align: center;
+  padding: 20px 0;
+  font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
+  margin-top: 50px;
+  
+  a {
     text-decoration: underline;
   }
 }

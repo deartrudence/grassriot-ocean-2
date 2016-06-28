@@ -1015,7 +1015,7 @@ webpackJsonp([0],[
 	                {min: 200, max: 300, amount: 30}
 	            ]*/
 	        });  
-	    grupsell.launch();
+	//    grupsell.launch();
 
 	    $form.removeAttr('onsubmit');
 	    setupSecurityNotice();

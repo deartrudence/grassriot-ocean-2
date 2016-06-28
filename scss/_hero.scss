@@ -35,6 +35,7 @@
     height: 516px;
     top: 0;
     left: 0;
+    
     @include mobile {
       position: relative;
       width: 100%;
@@ -44,6 +45,30 @@
       img {
 //        display: none;
       }
+      
+      @media screen and (max-width: $screen-xxs-max) {
+        height: 588px;
+      }
+      
+      @media (min-width: 538px) and (max-width: $screen-xxs-max) {
+        height: 517px;
+      }
+      
+      @media screen and (max-width: 538px) {
+        height: 300px;
+      }
+      
+      @media screen and (max-width: 412px) {
+        height: 290px;
+      }
+    }
+    
+    @media screen and (min-width: 852px) and (max-width: 1036px){
+      height:400px;
+    }
+    
+     @media screen and (min-width: 768px) and (max-width: 852px){
+      height: 380px;
     }
   }
   .heroImage {
@@ -53,10 +78,47 @@
     top: -58px;
     right: -52px;
     
-    @include mobile {
+    @media screen and (max-width: 412px) {
       display: block;
-      height: 100%;
+      height: auto;
+      width: 411px;
+      top: 0;
+      left: 0px;
     }
+    
+    @media screen and (min-width: 852px) and (max-width: 1036px){
+      left: 0px;
+      width: 650px;
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 852px){
+      left: 0px;
+      width: 542px;
+      top: 0;
+    }
+    
+    @media screen and (min-width: 539px) and (max-width: 754px){
+      left: -88px;
+    }
+    
+    @media screen and (min-width: 412px) and (max-width: 538px){
+      width: 100%;
+      top: 0;
+      right: 0;
+    }
+    
+    @media screen and (min-width: 754px) and (max-width: 767px){
+      left: 0;
+    }
+    
+//    @media screen and (min-width: 620px) and (max-width: 872px){
+//      right: -220px;
+//      width: 820px;
+//    }
+//    
+//    @media screen and (min-width: 408) and (max-width: 620){
+//      right: -217px;
+//    }
   }
   .heroTitle {
     @include font-headN7;
@@ -70,22 +132,29 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 35px;
+    bottom: 28px;
     padding: 0;
     letter-spacing: 1.2px;
+    
     @media screen and (max-width: $screen-sm-max) {
       max-width: 80%;
-      bottom: 40px;
-      font-size: 30px;
+      font-size: 34px;
     }
-    strong,
-    em {
-      @include font-headN7;
-      text-transform: uppercase;
+    
+    @media screen and (max-width: $screen-xxs-max) {
+//      bottom: 95px;
     }
-
-    em {
-      color: $light-green;
+    
+    @media screen and (max-width: 425px) {
+      bottom: 16px;
+      font-size: 34px;
+      max-width: none;
+      padding: 0 15px;
+    }
+    
+    strong {
+      @include font-headI7;
+      font-style: italic;
     }
 
     @include mobile {
@@ -97,6 +166,22 @@
     span {
       color: $brand-secondary-blue-light;
       @include fontSize(larger);
+
+      @media screen and (max-width: $screen-sm-max) {
+        max-width: 80%;
+        font-size: 30px;
+      }
+      
+      @media screen and (max-width: 425px) {
+        bottom: 16px;
+        font-size: 30px;
+      }
+    }
+    
+    br {
+      @media screen and (max-width: 425px) {
+        line-height: 1.4;
+      }
     }
   }
   
@@ -143,7 +228,7 @@ html.csstransforms {
   }
 
   .heroImageContainer {
-    @include mobile {
+    @media screen and (max-width: $screen-xxs-max) {
       height: 100vh;
     }
   }
@@ -151,6 +236,8 @@ html.csstransforms {
   //on .hero
   .heroTitle{
     padding-top: 20%;
+    
+    
   }
 
   .glyphicon{

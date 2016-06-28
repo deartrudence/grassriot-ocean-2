@@ -15,9 +15,9 @@ $brand-primary-teal: #009bc5;
 $brand-primary-navy: #004b8d;
 
 
-$brand-secondary-grey: #a7b1b7;
+$brand-secondary-grey: #c1c1c1;
 $brand-secondary-blue: #007ab2;
-$brand-secondary-blue-light: #b6d1d3;
+$brand-secondary-blue-light: #bfdcde;
 $brand-secondary-salmon: #f58220;
 
 $brand-tertiary-coral: #cda9bb;
@@ -80,7 +80,7 @@ $input-border-grey: #767271;
 $indicator-light-grey: #dddfde;
 $indicator-dark-grey: #d7d8d9;
 
-$donation-amount-button-text-color: $medium-light-grey;
+$donation-amount-button-text-color: #8ca4a9;
 $donation-amount-border-color: #d4d4d2;
 
 $body-background: $brand-tertiary-sand-light;
@@ -202,6 +202,7 @@ $amount-active-advancedBackground: linear-gradient($dark-green 0%, darken($dark-
 $amount-hover-advancedBackground: linear-gradient(lighten($lightest-grey,5%) 0%, $lightest-grey 100%);
 $amount-normal-advancedBackground: linear-gradient($form-inactive-light 0%, darken($form-inactive-light, 5%) 100%);
 $amount-active-background: $brand-primary-alternate;
+$amount-active-border: darken($amount-active-background, 2.5%);
 $amount-hover-background: lighten($lightest-grey, 5%);
 $amount-normal-background: $lightest-grey;
 
@@ -257,6 +258,7 @@ $screen-md-max: ($screen-lg - 1);
 $screen-lg-max: ($screen-xl - 1);
 
 //spacing
+$post-action-content-width: 662px;
 $page-padding-xs: 80px 40px;
 $page-left-padding-md: 80px;
 $page-right-padding-md: 80px;

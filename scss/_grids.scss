@@ -95,7 +95,7 @@
 
 @mixin formContainer{
 
-  @include mobile{
+  @include mobileAndTablet{
     position: fixed;
     bottom: -100%;
     // left: 0;
@@ -116,14 +116,14 @@
   //   width: $form-width-xs;
   // }
 
-  @include tablet{
-    position: fixed;
-    // width: 100%;
-    //top: $header-height-sm;
-    // right: 0;
-    height: 100%;
-    width: $form-width-sm;
-  }
+//  @include tablet{
+//    position: fixed;
+//    // width: 100%;
+//    //top: $header-height-sm;
+//    // right: 0;
+//    height: 100%;
+//    width: $form-width-sm;
+//  }
 
   @include smallDesktopPlus{
     position: fixed;

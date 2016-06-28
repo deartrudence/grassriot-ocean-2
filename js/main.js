@@ -1011,7 +1011,7 @@ function setupAction(){
                 {min: 200, max: 300, amount: 30}
             ]*/
         });  
-    grupsell.launch();
+//    grupsell.launch();
 
     $form.removeAttr('onsubmit');
     setupSecurityNotice();

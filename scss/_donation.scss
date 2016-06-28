@@ -50,7 +50,7 @@
           border-radius: 1px;
 //          border-top: 1px solid $vlight-grey;
           background: $background-grey;
-          color: $medium-light-grey;
+          color: #5e6968;
           box-shadow: 1px 1px 2px $black;
           box-shadow: 1px 1px 2px rgba($black, 0.3);
           margin-bottom: 0;
@@ -87,6 +87,7 @@
           padding-bottom: 6px;
           @include fontSize-base;
           line-height: 1.25;
+          background: #e2f0f2;
         }
         input[type='radio']:empty ~ label:before, input[type='checkbox']:empty ~ label:before {
           position: absolute;
@@ -131,8 +132,16 @@
   }
 
   #gr_donation {
-    div.radiobutton{
+    div.radiobutton {
       width: 46.5%;
+      
+      @media (min-width: 543px) and (max-width: 767px) {
+        width: 49%;
+      }
+
+      @media screen and (max-width: 543px) {
+        width: 48.5%;
+      }
     }
   }
   #gr_options {
@@ -240,7 +249,7 @@
   vertical-align: middle;
   position: absolute;
   right: 28px;
-        bottom: 7px;
+  bottom: 7px;
   
     .security-text {
         background: none;
@@ -256,25 +265,29 @@
         &:hover {
             cursor: pointer;
             opacity: 0.7;
-            color: $brand-primary-alternate;
+            color: #f4f4f4;
         }
       
-      @include mobileAndTablet {
-        margin-right: 20px;
-      }
+//      @include mobileAndTablet {
+//        margin-right: 20px;
+//      }
       
-      @media screen and (max-width: 352px) {
-        position: relative;
-        top: 37px;
-        left: 19px;
-        margin-right: 0;
-      }
+//      @media screen and (max-width: 352px) {
+//        position: relative;
+//        top: 37px;
+//        left: 19px;
+//        margin-right: 0;
+//      }
     }
 
     .security-image {
         display: inline-block;
         margin-right: 3px;
       }
+  
+  @media screen and (max-width: 325px) {
+    right: 9px;
+  }
 }
 
 .popover {
@@ -729,6 +742,10 @@
 	  ul {
 			margin: 0;
 			padding: 0px 10px 0 0;
+      
+      @media screen and (max-width: 768px) {
+        padding: 25px 0 0 15px;
+      }
 		}
 	}
 	
@@ -885,6 +902,14 @@
 	  @include mobileAndTablet {
 		width: 46.5%;
 	  }
+    
+    @media (min-width: 543px) and (max-width: 767px) {
+      width: 49%;
+    }
+    
+    @media screen and (max-width: 543px) {
+      width: 48.5%;
+    }
 	}
 	label {
 	  background: $form-inactive-light;
@@ -894,7 +919,7 @@
 	  width: 100%;
 	  font-size: 18px;
 	  color: $white;
-	  border-radius: 3px;
+	  border-radius: 2px;
 	  margin-bottom: 10px;
       padding-left: 0px;
 	  text-align: center;
@@ -906,10 +931,10 @@
 	  // @include font-decoN4;
     font-family: sans-serif;
 	  // font-weight: bold;
-
+    
 
 	  @include mobileAndTablet {
-		line-height: 34px;
+		  line-height: 34px;
 	  }
 
 	  &:hover {
@@ -941,7 +966,7 @@
 
 	  &:checked + label {
     	background: $amount-active-background;
-    	border: 2px solid $amount-active-background;
+    	border: 2px solid $amount-active-border;
     	color: #fff;
     	cursor: default;
 	  }
@@ -951,20 +976,21 @@
 	  width: 100%;
 	  margin: 0;
 	  height: 40px;
-	  background: white;
-	  color: #555;
+	  background: #dfeff2;
 	  padding-left: 5px;
 	  border-radius: 1px;
 	  box-shadow: none;
 	  @include fontSize-base;
-	  padding: 0px 0px 0px 10px;
-	  font-size: 15px;
-	  @include font-decoN4;
+	  padding: 0px 0px 1px 13px;
+	  font-size: 16px;
+	  @include font-bodyN4;
 	  outline: none;
 	  outline-offset: -2px;
+    font-style: italic;
+    color: #a9cad7;
 
 	  @include mobileAndTablet {
-		height: 34px;
+		  height: 34px;
 	  }
 
 	}
@@ -1144,3 +1170,6 @@ select, textarea {
   }
 }
 
+#Donation-Amountother label{
+  color: #82bdc7;
+}

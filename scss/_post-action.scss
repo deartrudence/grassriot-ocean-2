@@ -1,5 +1,6 @@
 //clear out everything we don't need
 .post-action {
+  
   .row{
     margin: 0;
   }
@@ -18,6 +19,11 @@
   .js-hero{
     height: auto;
   }
+  
+  .hero--post-action {
+    height: 430px;
+  }
+  
 
   .campaign{
     padding: 0;
@@ -32,6 +38,16 @@
 
     &:after{
       display:none;
+    }
+  }
+  
+  .heroImage {
+    right: 0;
+  }
+  
+  .js-hero-image {
+    @media screen and (max-width: 753px) {
+      display: none;
     }
   }
 
@@ -58,48 +74,86 @@
     }
   }
 
-  .page-header{
+  .page-header--post-action{
     position: relative;
+    background: transparent;
   }
+  
+  .post-action-subtitle--container {
+    max-width: $post-action-content-width;
+    margin: 0 auto;
+  }
+  
+  .post-action-subtitle {
+    color: $black;
+    max-width: $post-action-content-width;
+    margin: 0 auto;
+    @include fontSize(medium);
+    line-height: 1.4;
+//    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 31px;
+//    padding-left: 20px;
+    
+    @media screen and (max-width: 690px) {
+      padding-right: 0;
+    }
+  }
+  
   .post-action-titlewrapper {
-    padding-top: 30%;
-    padding-left: 29px;
-    padding-right: 29px;
-    h1 {
-      padding-bottom: 0;
+    width: 100%;
+    margin:auto;
+    bottom: 17px;
+    position: absolute;
+    
+    .title--top {
+      padding-bottom: 10px;
+      @include fontSize(larger);
+      color: $brand-secondary-blue-light;
+      font-weight: 700;
+      position: relative;
     }
-    p {
-      @include font-headN2;
-      margin-bottom: 0;
-    }
-    @include mobile {
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 7%;
-      padding-bottom: 5%;
+    
+    .title--bottom {
+      position: relative;
+      line-height: 1.2;
+      font-weight: 400;
+      font-size: 1.7rem;
+      letter-spacing: 1px;
+      
+      @media screen and (max-width: 421px) {
+        @include fontSize(large);
+      }
     }
   }
-  .post-action-title {
-    color: $white;
-    text-transform: uppercase;
-    position: static;
-    @include font-headN4;
 
-    @include mobile{
-      // text-align: center;
-      @include fontSize-large;
-      padding: 0 0 20px;
-      color: $white;
+  .hero--post-action h1{
+    max-width: $post-action-content-width;
+    margin: 0 auto;
+//    padding: 0 30px;
+    position: absolute;
+    color: $white;
+    z-index: 100;
+//    padding-left: 38px;
+    
+    @media screen and (max-width: 690px) {
+      padding-left: 20px;
     }
-    @include tabletPlus{
-      // left: 50%;
-      // width: 50%;
-      @include fontSize-largerish;
-      // padding: 2em 0;
-      padding: 4em 0 0.5em;
-      color: $white;
-    }
+    
+    @include fontSize(large);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    
+      
   }
+  
+//  .post-action-hero-title {
+//    position:absolute;
+//    bottom: 30px;
+//    
+//    @include tabletPlus {
+//      @include fontSize(titleLarge);
+//    }
+//  }
 
   @mixin heroContent{
     @include tabletPlus{
@@ -133,7 +187,7 @@
 
 
   .mobile-center{
-    max-width: 715px;
+    max-width: $post-action-content-width;
     margin: 0 auto;
 
     @include mobile{
@@ -187,58 +241,60 @@
       }
     }
   }
-  .learn-more {
-    border-bottom: 5px solid $rethink-post-action-text; 
-    .sharing-title {
-      padding-top: 59px;
-      padding-bottom: 59px;
-      @include mobile {
-        padding-top: 0;
-        margin-top: 0;
-      }
-    } 
-    @include mobile {
-      // margin: 0 20px;
-    }
-    p {
-        color: $rethink-post-action-grey;
-        text-transform: uppercase;
-        font-size: 1.2em;
-        padding-top: 60px;
-        padding-left: 29px;
-        padding-right: 23px;
-        padding-bottom: 0;
-        @include mobile {
-          padding-top: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          @include gotham-fontSize-large;
-          @include font-headN3;
-          font-weight: 200;
-          text-transform: none;
-          color: $black;
-        }
-    }
-    a {
-      color: $brand-primary-alternate;
-      text-transform: lowercase;
-      text-decoration: underline;
-      @include font-headN3;
-      @include gotham-fontSize-biggerBase;
-    }
-  }
-
-
-  .campaign p.heroSummary-details{
-    // color: $light-grey;
-    color: $black;
-    @include gotham-fontSize-large;
-
-    @include tabletPlus{
-      color: $white;
-      @include gotham-fontSize-smaller;
-    }
-  }
+  
+//  .learn-more {
+////    border-bottom: 5px solid $rethink-post-action-text; 
+//    .sharing-title {
+//      text-transform: uppercase;
+//      padding-top: 59px;
+//      padding-bottom: 59px;
+//      @include mobile {
+//        padding-top: 0;
+//        margin-top: 0;
+//      }
+//    } 
+//    @include mobile {
+//      // margin: 0 20px;
+//    }
+//    p {
+//        color: $rethink-post-action-grey;
+//        text-transform: uppercase;
+//        font-size: 1.2em;
+//        padding-top: 60px;
+//        padding-left: 29px;
+//        padding-right: 23px;
+//        padding-bottom: 0;
+//        @include mobile {
+//          padding-top: 0px;
+//          padding-left: 0px;
+//          padding-right: 0px;
+//          @include gotham-fontSize-large;
+//          @include font-headN3;
+//          font-weight: 200;
+//          text-transform: none;
+//          color: $black;
+//        }
+//    }
+//    a {
+//      color: $brand-primary-alternate;
+//      text-transform: lowercase;
+//      text-decoration: underline;
+//      @include font-headN3;
+//      @include gotham-fontSize-biggerBase;
+//    }
+//  }
+//
+//
+//  .campaign p.heroSummary-details{
+//    // color: $light-grey;
+//    color: $black;
+//    @include gotham-fontSize-large;
+//
+//    @include tabletPlus{
+//      color: $white;
+//      @include gotham-fontSize-smaller;
+//    }
+//  }
 
   .campaign p.heroSummary-message{
     color: $black;
@@ -251,7 +307,7 @@
   }
   
   .sharingSection-title{
-    max-width: 700px;
+    max-width: $post-action-content-width;
     margin: 0 auto;
     text-transform: uppercase;
     padding: 20px 20px 0;
@@ -296,11 +352,11 @@
         }
       }
 
-      .facebook {
-        background: image-url("fb-2015.png") no-repeat center;
+      .facebook-image {
+        background: image-url("./img/social-img.jpg") no-repeat center;
       }
-      .twitter {
-        background: image-url("tw-2015.png") no-repeat center;
+      .twitter-image {
+        background: image-url("./img/social-img.jpg") no-repeat center;
       }
       .googleplus {
         background: image-url("gp.png") no-repeat center;
@@ -321,16 +377,19 @@
     border-bottom: 0px;          
   }
   .sharing-title{
-    color: $rethink-post-action-text;
-    // @include lineHeight-hero;
-    line-height: 1.0;
-    @include font-headN4;
-    @include gotham-fontSize-mediumLarge;
+    text-transform: uppercase;
+    color: $brand-tertiary-green;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    @include font-bodyN6;
+    font-size: 1.4rem;
+    font-weight: 500;
     max-width: 90%;
+    
     @include mobile{
-      margin-top: 30px;
+      margin-top: 0px;
       padding-bottom: 0px !important;
-      margin-bottom: 30px;
+//      margin-bottom: 30px;
     }
   }
 
@@ -354,4 +413,17 @@
   // .js-policy{
   //   display: none;
   // }
+}
+
+.share-block--last {
+  padding-bottom: 50px;
+}
+
+.post-action-logo-container {
+  position: relative;
+  top: 25px;
+  width: $post-action-content-width;
+  margin:auto;
+  z-index: 1000;
+  padding-left: 30px;
 }
