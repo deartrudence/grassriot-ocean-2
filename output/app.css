@@ -4948,7 +4948,7 @@ label {
     font-size: 11px;
     font-style: normal;
     z-index: 10;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: all 0.5s ease;
   }
 
@@ -5878,7 +5878,7 @@ html.flexbox .upsell-modal--body {
 }
 .row.footer-logo img {
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 
 footer {
@@ -5924,7 +5924,7 @@ footer a:active {
   text-align: center;
   padding: 20px 0;
   font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Verdana, sans-serif;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .copy a {
   text-decoration: underline;
@@ -5952,7 +5952,7 @@ footer a:active {
   }
 }
 .share-block .share-content-container--email {
-  padding-top: 0;
+  padding-top: 14px;
 }
 @media screen and (max-width: 619px) {
   .share-block .share-content-container--email {
@@ -5960,7 +5960,7 @@ footer a:active {
   }
 }
 .share-block .sharing-title {
-  padding-top: 22px;
+  padding-top: 14px;
 }
 @media screen and (min-width: 620px) and (max-width: 1199px) {
   .share-block {
@@ -6009,7 +6009,7 @@ footer a:active {
   .share-content-container {
     padding-bottom: 0;
     padding-left: 0;
-    padding-top: 11px;
+    padding-top: 14px;
     width: 51%;
   }
 }
@@ -6020,7 +6020,7 @@ footer a:active {
 }
 
 .share-content--twitter {
-  height: 204px;
+  height: 210px;
 }
 
 .share-content {
@@ -6243,7 +6243,7 @@ footer a:active {
 }
 
 .twitter-mobile-center {
-  height: 260px;
+  height: 273px;
 }
 @media screen and (max-width: 619px) {
   .twitter-mobile-center {

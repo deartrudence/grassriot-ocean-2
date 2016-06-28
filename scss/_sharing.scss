@@ -35,7 +35,7 @@
   }
   
   .share-content-container--email {
-    padding-top: 0;
+        padding-top: 14px;
 
 //    &:before {
 //      content: "TO:";
@@ -57,7 +57,7 @@
   }
   
 .sharing-title {
-  padding-top: 22px;
+  padding-top: 14px;
 }
 
   &:last-child .mobile-center{
@@ -125,7 +125,7 @@
   @include desktop {
     padding-bottom: 0;
     padding-left: 0;
-    padding-top: 11px;
+    padding-top: 14px;
     width: 51%;
   }
   
@@ -135,7 +135,7 @@
 }
 
 .share-content--twitter {
-  height:204px;
+  height:210px;
 }
 
 .share-content {
@@ -376,7 +376,7 @@
 }
 
 .twitter-mobile-center {
-  height: 260px;
+  height: 273px;
   
   @media screen and (max-width: $screen-xxs-max) {
     height: 318px;
