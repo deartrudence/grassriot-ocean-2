@@ -16,13 +16,9 @@
     display: none;
   }
 
-  .js-hero{
-    height: auto;
-  }
-  
-  .hero--post-action {
-    height: 430px;
-  }
+  // .js-hero{
+  //   height: auto;
+  // }
   
 
   .campaign{
@@ -98,52 +94,6 @@
     @media screen and (max-width: 690px) {
       padding-right: 0;
     }
-  }
-  
-  .post-action-titlewrapper {
-    width: 100%;
-    margin:auto;
-    bottom: 17px;
-    position: absolute;
-    
-    .title--top {
-      padding-bottom: 10px;
-      @include fontSize(larger);
-      color: $brand-secondary-blue-light;
-      font-weight: 700;
-      position: relative;
-    }
-    
-    .title--bottom {
-      position: relative;
-      line-height: 1.2;
-      font-weight: 400;
-      font-size: 1.7rem;
-      letter-spacing: 1px;
-      
-      @media screen and (max-width: 421px) {
-        @include fontSize(large);
-      }
-    }
-  }
-
-  .hero--post-action h1{
-    max-width: $post-action-content-width;
-    margin: 0 auto;
-//    padding: 0 30px;
-    position: absolute;
-    color: $white;
-    z-index: 100;
-//    padding-left: 38px;
-    
-    @media screen and (max-width: 690px) {
-      padding-left: 20px;
-    }
-    
-    @include fontSize(large);
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-    
-      
   }
   
 //  .post-action-hero-title {
@@ -413,6 +363,69 @@
   // .js-policy{
   //   display: none;
   // }
+}
+
+
+.post-action-titlewrapper {
+  width: 100%;
+  margin:auto;
+  bottom: 17px;
+  @include fontSize(large);
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);  
+
+  h1{
+    max-width: $post-action-content-width;
+    margin: 0 auto;
+    color: $white;
+    z-index: 100;    
+  }
+  
+  .title--top {
+    padding-bottom: 10px;
+    @include fontSize(larger);
+    color: $brand-secondary-blue-light;
+    font-weight: 700;
+    position: relative;
+  }
+  
+  .title--bottom {
+    position: relative;
+    line-height: 1.2;
+    font-weight: 400;
+    font-size: 1.7rem;
+    letter-spacing: 1px;
+    
+    @media screen and (max-width: 421px) {
+      @include fontSize(large);
+    }
+  }
+
+  @media screen and (max-width: 690px) {
+    padding-left: 20px;
+  }
+
+  @include mobileAndTablet{
+    padding-top: 100px;
+    padding-bottom: 20px;
+  }
+
+  @include smallDesktopPlus{
+    position: absolute;
+  }
+  
+}
+
+
+.post-action .hero {
+
+  @include mobileAndTablet{
+    background-position: center top;
+    height: auto;
+  }
+  
+  @include smallDesktopPlus{
+    height: 430px;
+  }
 }
 
 .share-block--last {

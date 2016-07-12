@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <!--link rel="shortcut icon" href="" type="image/vnd.microsoft.icon"-->
     
+  <script src="https://use.typekit.net/xop2rnd.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- Place favicon.ico in the root directory -->
 
@@ -17,38 +20,58 @@
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
-    // _gaq.push(['_setAccount', 'UA-18181808-1']);
+    _gaq.push(['_setAccount', 'UA-2430383-17']);
     _gaq.push(['_trackPageview']);
-    
-    (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 
-     })();
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
 
   </script>
-
   <script>
-    /*Raygun.init('fFUR3f6R8QDaJiJUWpkEKg==', {
+    Raygun.init('fFUR3f6R8QDaJiJUWpkEKg==', {
       excludedHostnames: ['matter','localhost'],
       ignore3rdPartyErrors: false,
       disableErrorTracking: false,
       disablePulse: false
     }).attach();
-    Raygun.setFilterScope('all');*/
+    Raygun.setFilterScope('all');
     /*Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
   </script>
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i|Roboto:400,400i,500,700" rel="stylesheet">
+
+  <meta property="og:title" content="Donate to our Lorem Ipsum Fund."/>
+<meta property="og:description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor."/>
+<meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolor."/>
+<meta property="og:image" content="http://localhost/ncc-giving/img/sharing.jpg"/>
+<link rel="canonical" href="http://e-activist.com/ea-action/action?ea.client.id=1770&ea.campaign.id=40607&ea.campaign.mode=DEMO"/>
+<meta property="og:url" content="http://e-activist.com/ea-action/action?ea.client.id=1770&ea.campaign.id=40607&ea.campaign.mode=DEMO"/>
+<link rel="image_src" href="http://localhost/ncc-giving/img/sharing.jpg"/>
   </head>
   <body>
-    <!-- Data Layer for GTM -->
     <script>
     dataLayer = [];
     </script>
     <!-- End Data Layer for GTM -->
-    
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NMN9D7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NMN9D7');</script>
+    <!-- End Google Tag Manager -->
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <!-- Error Modal -->
     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -65,19 +88,39 @@
       </div>
     </div>
     <!-- End Error Modal -->
-
+    <div class="se-pre-con" style="display: none"></div> 
+    
   <div class="main">
-  <div class="donation-form-wrapper">
-      <div class="col-text campaign">
-        <header class="page-header js-page-header">
-          <div class="heroLogo">
-            <img class="logo-image" src="img/logo-oc-170KO.png" />
-          </div>
-        </header>
-        <section class="js-campaign row">
-  
-        </section>
-      </div>
+  <div class="donation-form-wrapper">   
+
+    <div class="col-text campaign">
+
+      <section class="js-hero row hero hero--post-action">
+       
+      </section>
+
+      <section class="js-campaign row">
+
+      </section>
+      <section class="js-impact row">
+
+      </section>
+      <section class="js-quote row">
+
+      </section>
+      <section class="js-response row">
+
+      </section>
+      <section class="js-accountable row">
+
+      </section>
+      <section class="js-gift row">
+
+      </section>
+      <section class="js-policy row">
+
+      </section>
+    </div>
 
       <div class="col-form js-col-form">
         <section class="form js-right-column">
@@ -101,11 +144,19 @@
             <li>Currency: <span class="currency">{receipt_data~currency}</span></li>
             <li>Campaign Id: <span class="campaign_id">{receipt_data~campaignId}</span></li>
             <li>Recurring Status: <span class="frequency">{receipt_data~recurringStatus}</span></li>
+            <!--li>Company Name: <span class="organization_name">{user_data~Organization Name}</span></li>
+            <li>Memoriam Name: <span class="memoriam_name">{user_data~Memoriam Name}</span></li>
+            <li>Honouree Name: <span class="honouree_name">{receipt_data~inMemhonoreeName}</span></li>
+            <li>First Name: <span class="first_name">{user_data~First_Name}</span></li>
+            <li>Last Name: <span class="last_name">{user_data~Last_Name}</span></li-->
           </ul>
         </div>
           
         <div id='[GR]_Post-Action_HeaderDiv' class='eaFullWidthContent'>
-          <div class="hero js-hero">
+          <div class="js-heroContent">
+            <div class="post-action-logo-container">
+                 <img class="logo-image" src="img/logo-oc-170KO.png" />
+              </div>
             <div class="heroImageContainer">
                
               <img class="js-hero-image heroImage" src="./img/post-action-hero.jpg" border="0" />
@@ -114,47 +165,40 @@
                 <h1 class="post-action-hero-title title--top">Thank you, {user_data~First Name}.</h1>
                 <h1 class="title--bottom">It's not just a drop in the ocean. Your support goes a long way in making real change happen.</h1>
               </div>
+<!--
+              <div class="post-action-titlewrapper">
+              <h1 class="post-action-title">Thank you {user_data~First Name}</h1>
+              <p>It's not just a drop in the ocean. Your support goes a long way in making real change happen.</p>
             </div>
-          </div>
-        </div>
-
-<div id='[GR]_Post-Action_Share_ContentDiv' class='eaFullWidthContent'>
-  <div class="share-block clearfix">
-    <div class="post-action-subtitle--container">
-      <h3 class="post-action-subtitle">Make a greater impact. Spread the word and get more people involved in taking a stand for the ocean.</h3>
-    </div>
-  </div>
-  <ul class="social hide">
-    <li class="facebook">Facebook
-              
-      <ul>
-        <li class="u">http://actionpage.here</li>
-        <li class="image">img/social-img.jpg</li>
-        <li class="title">The ocean matters.</li>
-        <li class="description">It's our life support system and it needs a helping hand. Find out what you can do to help.</li>
-      </ul>
-    </li>
-    <li class="twitter">Twitter      
-      <ul>
-      <li class="text">The <span>#ocean</span> is our life support system and it needs a helping hand. Click here to dive in.</li>
-      <li class="url">http://bit.ly/1Pp3HLo</li>
-      <li class="img"><img src="./img/social-img.jpg" class="twitter-bubble-image"></li>
-      </ul>
-    </li>
-    <li class="mail">Email
-      <ul>
-        <li class="subject">The ocean matters</li>
-        <li class="body">It's our life support system and its in trouble. Find out how you can help.</li>
-      </ul>
-    </li>
-  </ul>  
+-->
+            </div>
+<!--
+<div class="mobile-center">
+<div class="post-action-titlewrapper">
+  <h1 class="post-action-title">Thank you {user_data~First Name}</h1>
+  <p>It's not just a drop in the ocean. Your support goes a long way in making real change happen.</p>
 </div>
+<div class="heroSummary">
+<p class="heroSummary-details js-heroSummary">You made a <span class="js-frequency"></span> donation of <span class="js-amount">{receipt_data~amount}</span> to Rethink Breast Cancer.</p>
+<p class="heroSummary-message">You will receive a charitable tax receipt for the full amount of your gifts via email shortly.</p>
 
+</div>
+</div>
+-->
+</div>
+</div>
+<div class='eaFullWidthContent'><div class="share-block clearfix">
+<div class="learn-more mobile-center">
 
-
-
-
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id='[GR]_Post-Action_Share_FacebookDiv' class='eaFullWidthContent'><div class="share-block clearfix facebook">
+<div class="post-action-subtitle--container">
+  <h3 class="post-action-subtitle">Make a greater impact. Spread the word and get more people involved in taking a stand for the ocean.</h3>
+</div>
 <div class="mobile-center">
 <h3 class="sharing-title">Share on Facebook</h3>
 <div class="share-content-container">
@@ -162,11 +206,13 @@
 <div class="share-content">
 <div class="fb-block-wrap">
 <div class="fb-block">
-<div class="facebook-image"> </div>
+<div class="facebook-image">
+<img src="./img/social-img.jpg">
+  </div>
 <div class="fb-content-container">
 <div class="fb-content">
-<strong class="facebook-title"></strong>
-<p class="facebook-description"></p>
+<strong class="facebook-title">The ocean matters.</strong>
+<p class="facebook-description">It's our life support system and it needs a helping hand. Find out what you can do to help.</p>
 </div>
 </div>
 </div>
@@ -178,14 +224,17 @@
 </div>
 </div>
 </div>
-
 <div id='[GR]_Post-Action_Share_TwitterDiv' class='eaFullWidthContent'><div class="share-block clearfix twitter">
 <div class="mobile-center twitter-mobile-center">
 <h3 class="sharing-title">Share on Twitter</h3>
 <div class="share-content-container">
 <div class="share-content-padding">
 <div class="share-content share-content--twitter">
-<p class="word-bubble twitter-text"></p>  
+<p class="word-bubble twitter-text">The <span>#ocean</span> is our life support system and it needs a helping hand. Click here to dive in.</p>
+  <div class="twitter-image-wrapper">
+    <img src="./img/social-img.jpg" class="twitter-bubble-image">
+  </div>
+  
 </div>
 <a href="#" class="share-button twitter"><img src="./img/tw-white.png" class="twitter-icon"> </span><span>TWEET NOW</span></a>
             </div>
@@ -193,7 +242,6 @@
 </div>
 </div>
 </div>
-
 <div id='[GR]_Post-Action_Share_EmailDiv' class='eaFullWidthContent'><div class="share-block clearfix email share-block--last">
 <div class="mobile-center">
 <h3 class="sharing-title">Email this to the people you most care about</h3>
@@ -202,7 +250,7 @@
 <div class="share-content">
 <div class="email-box">
 <div class="mail-container">
-<p class="mail-body"><strong class="mail-subject"> </strong></p>
+<p class="mail-body"><strong class="mail-subject">The ocean matters</strong><br>It's our life support system and its in trouble. Find out how you can help.</p>
 </div>
 </div>
 </div>
@@ -231,9 +279,41 @@
     </div>
         
         
-    <span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_2"></span>
+<div id='[GR]_Post-Action_Share_ContentDiv' class='eaFullWidthContent'><div class="share-block clearfix facebook hide">
+<h2>Now, you can make an even greater impact.</h2>
+<ul class="social">
+<li class="facebook">Facebook
+            
+<ul>
+<li class="u">http://actionpage.here</li>
+<li class="image">img/rethink/fb-image.jpg</li>
+              <li class="title">Site C Dam Violates Rights</li>
+              <li class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium animi incidunt voluptatum dolorem repellat, ab eos dolorum repellendus adipisci enim, deleniti unde non sunt suscipit corporis, aspernatur illo nisi velit!</li>
+            
+</ul>
+</li>
+<li class="twitter">
+            
+<ul>
+<li class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <a href="#">#LOREMIPSUM</a></li>
+<li class="url">http://bit.ly/1Pp3HLo</li>
+<li class="img"><img src="img/rethink/sharing.jpg" border="0" /></li>
+</ul>
+</li>
+<li class="mail">
+            
+<ul>
+<li class="subject">Donate to our Lorem Ipsum Fund.</li>
+<li class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+          <span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_2"></span>
 
-</form><!-- END OF HTML OUTPUT FROM EN -->
+</form>
+          <!-- END OF HTML OUTPUT FROM EN -->
         </div>
 
         <button class="formOpen js-formOpen">
@@ -247,6 +327,7 @@
 
   </div>
   </div>
+
 
     <div class="modal fade" id="validErrModal" tabindex='-1'>
         <div class="modal-dialog">
@@ -265,7 +346,7 @@
 
     <script type="text/javascript" src="output/vendors.js"></script>
     <script type="text/javascript" src="output/app.js"></script>
-    <!--link rel="stylesheet" href="output/app-postaction.css" /-->
+    <link rel="stylesheet" href="output/app-postaction.css" />
     <script type="text/javascript">
     validatefield =
       ( typeof validatefield === "undefined" )
@@ -282,18 +363,6 @@
       ( typeof checkdep === "undefined" )
       ? function(){}
       : checkdep;
-    </script>
-    <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-18181808-1']);
-      _gaq.push(['_trackPageview']);
-      
-      (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-
-       })(); 
     </script>
   </body>
 </html>

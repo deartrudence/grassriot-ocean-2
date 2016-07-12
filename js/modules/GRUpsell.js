@@ -3,7 +3,7 @@
  *
  * Managed functionality relating to upsell modals
  *
- * @version  0.3  !!MODIFIED20160211-MAJOR!! !!MODIFIED20160623-MAJOR!!
+ * @version  0.3  !!MODIFIED20160211-MAJOR!! !!MODIFIED20160623-MAJOR!! !!MODIFIED20160711-FIX!!
  * @requires jQuery, Bootstrap
  */
 var requiredOptions = [
@@ -144,8 +144,8 @@ GRUpsell.prototype.launch = function() {
         .on("change", function(e){
             var $target = $(e.target);
             var customValue = $target.val();
-            this.upsellAmount = parseFloat(customValue);
-            $target.val(this.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+            self.upsellAmount = parseFloat(customValue);
+            $target.val(self.upsellAmount.toLocaleString([], {minimumFractionDigits: 2, maximumFractionDigits: 2}));
         });
 
     $(this.options.upsellContentSelector).modal({
@@ -202,6 +202,7 @@ function handleDecline(e) {
 }
 
 function handleUpsell(e) {
+    console.log("accepted amount", this.upsellAmount);
     e.preventDefault();
     this.options.onUpsellFormUpdates.call(this);
     this.options.form.trigger("grupsell.upsold", [this.initialAmount, this.upsellAmount]);

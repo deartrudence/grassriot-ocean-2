@@ -58,21 +58,21 @@ var gr = require('./modules/GRHelpers');
 
 var fields = gr.buildFieldNameObject({
     title:      'Title', 
-    email:      'Email Address',
+    email:      'Email',
     fname:      'First Name',
     //mname:      'Middle_Name', 
     lname:      'Last Name',
-    street1:    'Address 1',
-    street2:    'Address 2',
+    street1:    'Street 1',
+    street2:    'Street 2',
     city:       'City',
-    region:     'Province',
-    postal:     'Postal Code',
+    region:     'State',
+    postal:     'ZIP Code',
     country:    'Country',
-    phone:      'Mobile Phone',
+    phone:      'Phone',
     pay_type:   'Payment Type',
     cardholder: 'Card Holder Name',
     cc_num:     'Credit Card Number',
-    cc_cvv:     'CVV Code',
+    cc_cvv:     'Credit Card CVV',
     cc_exp:     'Credit Card Expiration',
     /*bank_name:  'DD Bank Name',
     bank_acct:  'DD Bank Account Number',
@@ -760,6 +760,12 @@ function setupAction(){
 
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
         $(cta).css('background-image', 'url('+$(ctaImage).attr('src')+')');
+        $(".js-elementBackground").each(function(){
+          var $this = $(this);
+          $this.parent()
+            .css('background-image', 'url('+$this.attr('src')+')');
+          $this.hide();
+        })
         if ( $('#slider #slides').length ) {
           $('#slider #slides').cycle({
             next: $('#slider .nav .next'),
@@ -1202,7 +1208,7 @@ function handleCountryChange(e){
     var countryField = $(e.target);
     var countryCode = countryField.val();
     var regionField = $form.find(fields.region.selector);
-    var countriesRequiringRegion = ['US'];
+    var countriesRequiringRegion = ['US','CA'];
 
     /*if(countryCode == 'CA'){
         $form.find(fields.postal.selector).rules("add","isPostcodeCA");
@@ -1231,8 +1237,8 @@ function setupTY(){
         //add the post-action class
         $(hero).css('background-image', 'url('+$(heroImage).attr('src')+')');
         $("body").addClass("post-action");
-        $('.heroLogo img').addClass('page-logo').attr('src', $('.page-logo').attr('src').replace('logo', 'logo-post-action') ).wrap('<a href="http://rethinkbreastcancer.com/"></a>');
-        $('.heroLogo').addClass('mobile-center').removeClass('heroLogo');
+        // $('.heroLogo img').addClass('page-logo').attr('src', $('.page-logo').attr('src').replace('logo', 'logo-post-action') ).wrap('<a href="http://rethinkbreastcancer.com/"></a>');
+        // $('.heroLogo').addClass('mobile-center').removeClass('heroLogo');
         $transaction_details = $(".js-transactionDetails");
 
         //handle post action summary text
@@ -2091,7 +2097,7 @@ function getFormClasses() {
         '#paypal': { classes: "inline-block-field half last", targetElement: "div.eaFormField"},
         'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea': {classes: 'form-control', targetElement: 'input.eaFormTextfield, select.eaFormSelect, select.eaSplitSelectfield, input.eaQuestionTextfield, .eaQuestionSelect, textarea.eaFormTextArea'}
     };
-    
+        
     //Gift fields
     classes[fields.currency.selector] = {classes: "inline-block-field-wrap half-wrap", targetElement: "div.eaFullWidthContent"};
     classes[fields.amt.selector] = { classes: "inline-block-field-wrap full-wrap", targetElement: "div.eaFullWidthContent"};
