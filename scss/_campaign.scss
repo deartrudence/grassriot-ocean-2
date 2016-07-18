@@ -27,10 +27,9 @@
 .glyphicon-chevron-right          { &:before { content: "\e080"; } }
 .glyphicon-lock                   { &:before { content: "\e033"; } }
 
-.intro{
+.intro, .impact {
   padding: 76px 40px;
-  @include fontSize(medium);
-  
+
   span {
     color: $brand-primary-teal;
     font-size: 1.4rem;
@@ -44,6 +43,10 @@
   @media (min-width: 768px) and (max-width: 1000px) {
     padding: 45px 15px;
   }
+}
+
+.intro {
+  @include fontSize(medium);
 }
 
 .campaign {
@@ -416,9 +419,14 @@
 }
 
 .impact {
+  overflow: auto;
   p {
     @include font-bodyN4;
     @include fontSize(medium);
+  }
+  .half-width-text {
+    padding: 0px;
+    text-align: left;
   }
   
   span {
@@ -436,7 +444,7 @@
   }
   
   div:last-of-type {
-    padding-bottom: 40px;
+    // padding-bottom: 40px;
     
 //    @media screen and (max-width: 1022px) {
 //      padding-bottom: 25px;
@@ -454,14 +462,38 @@
   }
 } 
 
+.impact-secondary {
+  background: $brand-secondary-blue-light;
+}
+
 .impact--row {
-  float: left;
+  // float: left;
+  .section-heading {
+    padding-top: 0;
+  }
   
   @media screen and (max-width: 1022px) { 
     float: none;
   }
 }
 
+.section-image {
+  background-size: cover;
+  padding: 140px 40px;
+  h3 {
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+    width: 40%;
+  }
+}
+
+.section-image.image-smoke {
+  background: url(../img/smoke.jpg) no-repeat right;
+}
+
+.section-image.image-beach {
+  background: url(../img/baby-stacks.jpg) no-repeat center;
+}
 .fund-info {
   height: 328px;
   clear: both;
