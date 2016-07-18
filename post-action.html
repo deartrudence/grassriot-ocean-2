@@ -1,253 +1,229 @@
 <!doctype html>
 <html class="no-js" lang="en-ca">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Ocean Conservancy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <!--link rel="shortcut icon" href="" type="image/vnd.microsoft.icon"-->
-    
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <link rel="stylesheet" href="output/app.css">
-  <script src="//cdn.raygun.io/raygun4js/raygun.min.js"></script>
-  
-  <script type="text/javascript">
-
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="output/app.css">
+    <script src="//cdn.raygun.io/raygun4js/raygun.min.js"></script>
+    <script type="text/javascript">
     var _gaq = _gaq || [];
     // _gaq.push(['_setAccount', 'UA-18181808-1']);
     _gaq.push(['_trackPageview']);
-    
+
     (function() {
-     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
 
-     })();
-
-  </script>
-
-  <script>
+    })();
+    </script>
+    <script>
     /*Raygun.init('fFUR3f6R8QDaJiJUWpkEKg==', {
-      excludedHostnames: ['matter','localhost'],
-      ignore3rdPartyErrors: false,
-      disableErrorTracking: false,
-      disablePulse: false
-    }).attach();
-    Raygun.setFilterScope('all');*/
+          excludedHostnames: ['matter','localhost'],
+          ignore3rdPartyErrors: false,
+          disableErrorTracking: false,
+          disablePulse: false
+        }).attach();
+        Raygun.setFilterScope('all');*/
     /*Raygun.filterSensitiveData(['password', 'credit_card', 'credit Card Number', 'Credit Card Number', 'card CVV', 'Card CVV']);*/
-  </script>
-    
+    </script>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,700i|Roboto:400,400i,500,700" rel="stylesheet">
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- Data Layer for GTM -->
     <script>
     dataLayer = [];
     </script>
     <!-- End Data Layer for GTM -->
-    
     <!-- Error Modal -->
     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h5 class="modal-title">Error processing donation</h5>
-          </div>
-          <div class="modal-body">
-              <p>The following error occurred while trying to process your gift:</p>
-              <blockquote class='modalErrorMessage'></blockquote>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title">Error processing donation</h5>
+                </div>
+                <div class="modal-body">
+                    <p>The following error occurred while trying to process your gift:</p>
+                    <blockquote class='modalErrorMessage'></blockquote>
+                </div>
             </div>
         </div>
-      </div>
     </div>
     <!-- End Error Modal -->
-
-  <div class="main">
-  <div class="donation-form-wrapper">
-      <div class="col-text campaign">
-        <header class="page-header js-page-header">
-          <div class="heroLogo">
-            <img class="logo-image" src="img/logo-oc-170KO.png" />
-          </div>
-        </header>
-        <section class="js-campaign row">
-  
-        </section>
-      </div>
-
-      <div class="col-form js-col-form">
-        <section class="form js-right-column">
-        <div id="grdonation" class="slider-wrap js-form-container">
-        <!-- START CAMPAIGN CONTENT -->
-
-        <form method='POST' name='[GR] Form 2015_1' id='ea11256id' class='eaform ea11256class' action='/ea-action/action' autocomplete='off' onsubmit='return validateEAform(this, false, false, false )'>
-        <input type='hidden' name='ea_requested_action' value='ea_submit_user_form' />
-        <input type='hidden' name='ea_javascript_enabled' id='ea_javascript_enabled' value='false' />
-        <input type='hidden' name='ea.AJAX.submit' value='false' />
-        <input type='hidden' name='ea.client.id' value='1943' />
-        <input type='hidden' name='ea.campaign.id' value='42200' />
-        <input type='hidden' name='ea.form.id' value='11256' />
-        <input type='hidden' name='ea.submitted.page' value='2' />
-        <input type='hidden' name='sessionId' value='e26f28c4-2690-4e98-b249-e0f66b228c0d' />
-        <div id='[GR]_Transaction_DetailsDiv' class='eaFullWidthContent'>
-          <ul class="transaction_details js-transactionDetails hide">
-            <li>Campaign Name: <span class="campaign_name">test-campaign</span></li>
-            <li>Transaction ID: <span class="transaction_id">{receipt_data~id}</span></li>
-            <li>Amount: <span class="donation_amount">{receipt_data~amount}</span></li>
-            <li>Currency: <span class="currency">{receipt_data~currency}</span></li>
-            <li>Campaign Id: <span class="campaign_id">{receipt_data~campaignId}</span></li>
-            <li>Recurring Status: <span class="frequency">{receipt_data~recurringStatus}</span></li>
-          </ul>
-        </div>
-          
-        <div id='[GR]_Post-Action_HeaderDiv' class='eaFullWidthContent'>
-          <div class="hero js-hero">
-            <div class="heroImageContainer">
-               
-              <img class="js-hero-image heroImage" src="./img/post-action-hero.jpg" border="0" />
-             
-              <div class="post-action-titlewrapper">
-                <h1 class="post-action-hero-title title--top">Thank you, {user_data~First Name}.</h1>
-                <h1 class="title--bottom">It's not just a drop in the ocean. Your support goes a long way in making real change happen.</h1>
-              </div>
+    <div class="main">
+        <div class="donation-form-wrapper">
+            <div class="col-text campaign">
+                <header class="page-header js-page-header">
+                    <div class="heroLogo">
+                        <img class="logo-image" src="img/logo-oc-170KO.png" />
+                    </div>
+                </header>
+                <section class="js-campaign row">
+                </section>
             </div>
-          </div>
+            <div class="col-form js-col-form">
+                <section class="form js-right-column">
+                    <div id="grdonation" class="slider-wrap js-form-container">
+                        <!-- START CAMPAIGN CONTENT -->
+                        <form method='POST' name='[GR] Form 2015_1' id='ea11256id' class='eaform ea11256class' action='/ea-action/action' autocomplete='off' onsubmit='return validateEAform(this, false, false, false )'>
+                            <input type='hidden' name='ea_requested_action' value='ea_submit_user_form' />
+                            <input type='hidden' name='ea_javascript_enabled' id='ea_javascript_enabled' value='false' />
+                            <input type='hidden' name='ea.AJAX.submit' value='false' />
+                            <input type='hidden' name='ea.client.id' value='1943' />
+                            <input type='hidden' name='ea.campaign.id' value='42200' />
+                            <input type='hidden' name='ea.form.id' value='11256' />
+                            <input type='hidden' name='ea.submitted.page' value='2' />
+                            <input type='hidden' name='sessionId' value='e26f28c4-2690-4e98-b249-e0f66b228c0d' />
+                            <div id='[GR]_Transaction_DetailsDiv' class='eaFullWidthContent'>
+                                <ul class="transaction_details js-transactionDetails hide">
+                                    <li>Campaign Name: <span class="campaign_name">test-campaign</span></li>
+                                    <li>Transaction ID: <span class="transaction_id">{receipt_data~id}</span></li>
+                                    <li>Amount: <span class="donation_amount">{receipt_data~amount}</span></li>
+                                    <li>Currency: <span class="currency">{receipt_data~currency}</span></li>
+                                    <li>Campaign Id: <span class="campaign_id">{receipt_data~campaignId}</span></li>
+                                    <li>Recurring Status: <span class="frequency">{receipt_data~recurringStatus}</span></li>
+                                </ul>
+                            </div>
+                            <div id='[GR]_Post-Action_HeaderDiv' class='eaFullWidthContent'>
+                                <div class="hero js-hero">
+                                    <div class="heroImageContainer">
+                                        <img class="js-hero-image heroImage" src="./img/post-action-hero.jpg" border="0" />
+                                        <div class="post-action-titlewrapper">
+                                            <h1 class="post-action-hero-title title--top">Thank you, {user_data~First Name}.</h1>
+                                            <h1 class="title--bottom">It's not just a drop in the ocean. Your support goes a long way in making real change happen.</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='[GR]_Post-Action_Share_ContentDiv' class='eaFullWidthContent'>
+                                <div class="share-block clearfix">
+                                    <div class="post-action-subtitle--container">
+                                        <h3 class="post-action-subtitle">Make a greater impact. Spread the word and get more people involved in taking a stand for the ocean.</h3>
+                                    </div>
+                                </div>
+                                <ul class="social hide">
+                                    <li class="facebook">Facebook
+                                        <ul>
+                                            <li class="u">http://actionpage.here</li>
+                                            <li class="image">img/social-img.jpg</li>
+                                            <li class="title">The ocean matters.</li>
+                                            <li class="description">It's our life support system and it needs a helping hand. Find out what you can do to help.</li>
+                                        </ul>
+                                    </li>
+                                    <li class="twitter">Twitter
+                                        <ul>
+                                            <li class="text">The <span>#ocean</span> is our life support system and it needs a helping hand. Click here to dive in.</li>
+                                            <li class="url">http://bit.ly/1Pp3HLo</li>
+                                            <li class="img"><img src="./img/social-img.jpg" class="twitter-bubble-image"></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mail">Email
+                                        <ul>
+                                            <li class="subject">The ocean matters</li>
+                                            <li class="body">It's our life support system and its in trouble. Find out how you can help.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id='[GR]_Post-Action_Share_FacebookDiv' class='eaFullWidthContent'>
+                                <div class="share-block clearfix facebook">
+                                    <div class="mobile-center">
+                                        <h3 class="sharing-title">Share on Facebook</h3>
+                                        <div class="share-content-container">
+                                            <div class="share-content-padding">
+                                                <div class="share-content">
+                                                    <div class="fb-block-wrap">
+                                                        <div class="fb-block">
+                                                            <div class="facebook-image"> </div>
+                                                            <div class="fb-content-container">
+                                                                <div class="fb-content">
+                                                                    <strong class="facebook-title"></strong>
+                                                                    <p class="facebook-description"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="share-button facebook"><img src="./img/fb.png" class="facebook-icon"><span>SHARE NOW</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='[GR]_Post-Action_Share_TwitterDiv' class='eaFullWidthContent'>
+                                <div class="share-block clearfix twitter">
+                                    <div class="mobile-center twitter-mobile-center">
+                                        <h3 class="sharing-title">Share on Twitter</h3>
+                                        <div class="share-content-container">
+                                            <div class="share-content-padding">
+                                                <div class="share-content share-content--twitter">
+                                                    <p class="word-bubble twitter-text"></p>
+                                                </div>
+                                                <a href="#" class="share-button twitter"><img src="./img/tw-white.png" class="twitter-icon"> </span><span>TWEET NOW</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id='[GR]_Post-Action_Share_EmailDiv' class='eaFullWidthContent'>
+                                <div class="share-block clearfix email share-block--last">
+                                    <div class="mobile-center">
+                                        <h3 class="sharing-title">Email this to the people you most care about</h3>
+                                        <div class="share-content-container share-content-container--email">
+                                            <div class="share-content-padding">
+                                                <div class="share-content">
+                                                    <div class="email-box">
+                                                        <div class="mail-container">
+                                                            <p class="mail-body"><strong class="mail-subject"> </strong></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="share-button mail"><img src="./img/mail.png" class="mail-icon"><span>EMAIL NOW</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footerText-wrapper clearfix wrapper">
+                                <div class="row footer-logo">
+                                    <img class="logo-image--footer" src="img/logo-oc-170KO.png" />
+                                    <ul class="footer-links">
+                                        <li>1300 19th Street NW
+                                            <br> 8th Floor
+                                            <br> Washington, DC 20036</li>
+                                        <li><a href="http://www.oceanconservancy.org/who-we-are/about-financials.html">View past annual reports</a></li>
+                                    </ul>
+                                    <div class="copy">
+                                        <p>&copy; Copyright 2016 Ocean Conservancy &bull; Ocean Conservancy, International Coastal Cleanup, Ocean Action Network, Trash Free Seas, Trash Free Seas Alliance and Rippl are registered trademarks of Ocean Conservancy.</p>
+                                        <p>Ocean Conservancy is a 501(c)3 &mdash; Donations are 100% tax-deductible as allowed by law. &bull; <a href="mailto:membership@oceanconservancy.org">membership@oceanconservancy.org</a> &bull; 800-519-1541 &bull; <a href="http://www.oceanconservancy.org/who-we-are/privacy-policy.html">Privacy Policy</a> &bull; <a href="http://www.oceanconservancy.org/who-we-are/legal-information.html">Legal Information</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_2"></span>
+                        </form>
+                        <!-- END OF HTML OUTPUT FROM EN -->
+                    </div>
+                    <button class="formOpen js-formOpen">
+                        <span class="js-formOpen-label"></span>
+                        <span class="formOpen-arrow" role="presentation"></span>
+                    </button>
+                    <button class="formClose js-formClose">&times;</button>
+                </section>
+            </div>
         </div>
-
-<div id='[GR]_Post-Action_Share_ContentDiv' class='eaFullWidthContent'>
-  <div class="share-block clearfix">
-    <div class="post-action-subtitle--container">
-      <h3 class="post-action-subtitle">Make a greater impact. Spread the word and get more people involved in taking a stand for the ocean.</h3>
     </div>
-  </div>
-  <ul class="social hide">
-    <li class="facebook">Facebook
-              
-      <ul>
-        <li class="u">http://actionpage.here</li>
-        <li class="image">img/social-img.jpg</li>
-        <li class="title">The ocean matters.</li>
-        <li class="description">It's our life support system and it needs a helping hand. Find out what you can do to help.</li>
-      </ul>
-    </li>
-    <li class="twitter">Twitter      
-      <ul>
-      <li class="text">The <span>#ocean</span> is our life support system and it needs a helping hand. Click here to dive in.</li>
-      <li class="url">http://bit.ly/1Pp3HLo</li>
-      <li class="img"><img src="./img/social-img.jpg" class="twitter-bubble-image"></li>
-      </ul>
-    </li>
-    <li class="mail">Email
-      <ul>
-        <li class="subject">The ocean matters</li>
-        <li class="body">It's our life support system and its in trouble. Find out how you can help.</li>
-      </ul>
-    </li>
-  </ul>  
-</div>
-
-
-
-
-
-<div id='[GR]_Post-Action_Share_FacebookDiv' class='eaFullWidthContent'><div class="share-block clearfix facebook">
-<div class="mobile-center">
-<h3 class="sharing-title">Share on Facebook</h3>
-<div class="share-content-container">
-<div class="share-content-padding">
-<div class="share-content">
-<div class="fb-block-wrap">
-<div class="fb-block">
-<div class="facebook-image"> </div>
-<div class="fb-content-container">
-<div class="fb-content">
-<strong class="facebook-title"></strong>
-<p class="facebook-description"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<a href="#" class="share-button facebook"><img src="./img/fb.png" class="facebook-icon"><span>SHARE NOW</span></a>
-            </div>
-</div>
-</div>
-</div>
-</div>
-
-<div id='[GR]_Post-Action_Share_TwitterDiv' class='eaFullWidthContent'><div class="share-block clearfix twitter">
-<div class="mobile-center twitter-mobile-center">
-<h3 class="sharing-title">Share on Twitter</h3>
-<div class="share-content-container">
-<div class="share-content-padding">
-<div class="share-content share-content--twitter">
-<p class="word-bubble twitter-text"></p>  
-</div>
-<a href="#" class="share-button twitter"><img src="./img/tw-white.png" class="twitter-icon"> </span><span>TWEET NOW</span></a>
-            </div>
-</div>
-</div>
-</div>
-</div>
-
-<div id='[GR]_Post-Action_Share_EmailDiv' class='eaFullWidthContent'><div class="share-block clearfix email share-block--last">
-<div class="mobile-center">
-<h3 class="sharing-title">Email this to the people you most care about</h3>
-<div class="share-content-container share-content-container--email">
-<div class="share-content-padding">
-<div class="share-content">
-<div class="email-box">
-<div class="mail-container">
-<p class="mail-body"><strong class="mail-subject"> </strong></p>
-</div>
-</div>
-</div>
-<a href="#" class="share-button mail"><img src="./img/mail.png" class="mail-icon"><span>EMAIL NOW</span></a>
-            </div>
-</div>
-</div>
-</div>
-</div>
-        
-    <div class="footerText-wrapper clearfix wrapper">
-      <div class="row footer-logo">
-        <img class="logo-image--footer" src="img/logo-oc-170KO.png" />
-        <ul class="footer-links">
-          <li>1300 19th Street NW <br>
-              8th Floor <br>
-              Washington, DC 20036</li>
-          <li><a href="http://www.oceanconservancy.org/who-we-are/about-financials.html">View past annual reports</a></li>
-        </ul>
-        
-        <div class="copy">
-          <p>&copy; Copyright 2016 Ocean Conservancy &bull; Ocean Conservancy, International Coastal Cleanup, Ocean Action Network, Trash Free Seas, Trash Free Seas Alliance and Rippl are registered trademarks of Ocean Conservancy.</p>
-          <p>Ocean Conservancy is a 501(c)3 &mdash; Donations are 100% tax-deductible as allowed by law. &bull; <a href="mailto:membership@oceanconservancy.org">membership@oceanconservancy.org</a> &bull; 800-519-1541 &bull; <a href="http://www.oceanconservancy.org/who-we-are/privacy-policy.html">Privacy Policy</a> &bull; <a href="http://www.oceanconservancy.org/who-we-are/legal-information.html">Legal Information</a></p>
-        </div>
-      </div>
-    </div>
-        
-        
-    <span class="eaSubmitResetButtonGroup" id="eaFormButtonGroup_2"></span>
-
-</form><!-- END OF HTML OUTPUT FROM EN -->
-        </div>
-
-        <button class="formOpen js-formOpen">
-          <span class="js-formOpen-label"></span>
-          <span class="formOpen-arrow" role="presentation"></span>
-        </button>
-        <button class="formClose js-formClose">&times;</button>
-
-        </section>
-      </div>
-
-  </div>
-  </div>
-
     <div class="modal fade" id="validErrModal" tabindex='-1'>
         <div class="modal-dialog">
             <div class="modal-content">
@@ -255,45 +231,44 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Please correct the errors indicated below.</h4>
                 </div>
-                <div class="modal-body error-list"><!-- dynamic content --></div>
+                <div class="modal-body error-list">
+                    <!-- dynamic content -->
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
     <script type="text/javascript" src="output/vendors.js"></script>
     <script type="text/javascript" src="output/app.js"></script>
     <!--link rel="stylesheet" href="output/app-postaction.css" /-->
     <script type="text/javascript">
     validatefield =
-      ( typeof validatefield === "undefined" )
-      ? function(){}
-      : validatefield;
+        (typeof validatefield === "undefined") ? function() {} : validatefield;
 
 
     validateEAform =
-      ( typeof validateEAform === "undefined" )
-      ? function(){}
-      : validateEAform;
+        (typeof validateEAform === "undefined") ? function() {} : validateEAform;
 
     checkdep =
-      ( typeof checkdep === "undefined" )
-      ? function(){}
-      : checkdep;
+        (typeof checkdep === "undefined") ? function() {} : checkdep;
     </script>
     <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-18181808-1']);
-      _gaq.push(['_trackPageview']);
-      
-      (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-18181808-1']);
+    _gaq.push(['_trackPageview']);
 
-       })(); 
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+
+    })();
     </script>
-  </body>
+</body>
+
 </html>
