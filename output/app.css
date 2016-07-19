@@ -6171,6 +6171,7 @@ footer a:active {
 .mail-subject {
   text-transform: uppercase;
   font-weight: normal;
+  display: block;
   color: #3C5A99;
 }
 
@@ -6559,10 +6560,10 @@ footer a:active {
   height: 45px;
 }
 .post-action .social-block .social .facebook-image {
-  background: url('../img/social-img.jpg?1468509985') no-repeat center;
+  background: url('../img/../img/Hero_Donation.jpg?1468904147') no-repeat center;
 }
 .post-action .social-block .social .twitter-image {
-  background: url('../img/social-img.jpg?1468509985') no-repeat center;
+  background: url('../img/Hero_Donation.jpg?1468904147') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
   background: url('../img/gp.png?1468509985') no-repeat center;
