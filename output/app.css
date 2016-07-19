@@ -5459,7 +5459,7 @@ select.error, textarea.error {
   border-radius: 0;
   border: 0;
   padding: 0;
-  top: 100px;
+  top: 150px;
 }
 
 .upsell-modal--body {
@@ -5467,7 +5467,6 @@ select.error, textarea.error {
   -ms-transform: translate(0, 0);
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
-  top: 0 !important;
 }
 
 .upsell-modal--body p, .upsell-modal--body ul {

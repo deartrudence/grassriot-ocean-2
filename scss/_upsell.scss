@@ -13,12 +13,11 @@
   border-radius: 0;
   border: 0;
   padding: 0;
-  top: 100px;
+  top: 150px;
 }
 
 .upsell-modal--body{
   @include transform(translate(0,0));
-  top: 0 !important;
 }
 
 .upsell-modal--body p, .upsell-modal--body ul{
