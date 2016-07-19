@@ -3104,7 +3104,7 @@ html.csstransforms {
   padding-top: 80px;
   padding-bottom: 25px;
   font-size: 2.8rem;
-  margin: 0 20%;
+  margin: 0 10%;
   line-height: 1;
 }
 @media screen and (max-width: 619px) {
@@ -3317,11 +3317,13 @@ html.csstransforms {
 }
 
 .section-image.image-smoke {
-  background: url(../img/smoke.jpg) no-repeat right;
+  background: url(../img/smoke-stacks.jpg) no-repeat right;
+  background-size: cover;
 }
 
 .section-image.image-beach {
-  background: url(../img/baby-stacks.jpg) no-repeat center;
+  background: url(../img/baby-stacks.jpg) no-repeat bottom;
+  background-size: cover;
 }
 
 .fund-info {
@@ -4147,7 +4149,7 @@ label {
     top: -10px;
     left: 50%;
     margin-left: -15%;
-    background: #e11e33 url('../img/arrow-open.png?1468509565') center center no-repeat;
+    background: #e11e33 url('../img/arrow-open.png?1468509985') center center no-repeat;
     background-size: 12.5%;
     border-radius: 10px 10px 0 0;
   }
@@ -6557,20 +6559,20 @@ footer a:active {
   height: 45px;
 }
 .post-action .social-block .social .facebook-image {
-  background: url('../img/social-img.jpg?1468509565') no-repeat center;
+  background: url('../img/social-img.jpg?1468509985') no-repeat center;
 }
 .post-action .social-block .social .twitter-image {
-  background: url('../img/social-img.jpg?1468509565') no-repeat center;
+  background: url('../img/social-img.jpg?1468509985') no-repeat center;
 }
 .post-action .social-block .social .googleplus {
-  background: url('../img/gp.png?1468509565') no-repeat center;
+  background: url('../img/gp.png?1468509985') no-repeat center;
 }
 .post-action .social-block .social .linkedin {
-  background: url('../img/in.png?1468509565') no-repeat center;
+  background: url('../img/in.png?1468509985') no-repeat center;
 }
 .post-action .social-block .social .email {
   width: 51px;
-  background: url('../img/ml.png?1468509565') no-repeat center;
+  background: url('../img/ml.png?1468509985') no-repeat center;
 }
 .post-action .social-block .social .email .mobile-center {
   border-bottom: 0px;
