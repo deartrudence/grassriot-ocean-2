@@ -3349,6 +3349,10 @@ html.csstransforms {
   }
 }
 
+.business_accred img {
+  max-width: 100%;
+}
+
 .give--space {
   margin-top: 30px;
 }
