@@ -3308,12 +3308,22 @@ html.csstransforms {
 
 .section-image {
   background-size: cover;
-  padding: 140px 40px;
+  padding: 150px 40px;
+}
+@media screen and (max-width: 500px) {
+  .section-image {
+    padding: 100px 30px 30px 30px;
+  }
 }
 .section-image h3 {
   color: white;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
-  width: 40%;
+  width: 42%;
+}
+@media screen and (max-width: 500px) {
+  .section-image h3 {
+    width: 80%;
+  }
 }
 
 .section-image.image-smoke {
@@ -3321,8 +3331,30 @@ html.csstransforms {
   background-size: cover;
 }
 
+.image-smoke span {
+  font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+@media screen and (max-width: 500px) {
+  .uppercase {
+    display: inline-block;
+  }
+}
+
+.give--space {
+  margin-top: 30px;
+}
+
 .section-image.image-beach {
-  background: url(../img/baby-stacks.jpg) no-repeat bottom;
+  background: url(../img/beach_baby.jpg) no-repeat bottom;
   background-size: cover;
 }
 
@@ -4321,6 +4353,14 @@ label {
   font-weight: bold;
 }
 
+#Donation_AmountDiv label {
+  color: #FFFFFF;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.1rem;
+}
+
 #grdonation .page h3 {
   margin: 1.5em 0 1em;
   font-size: 14.66667px;
@@ -4347,7 +4387,7 @@ label {
   font-style: normal;
   line-height: 1.12;
   margin-top: 25px;
-  margin-bottom: 22px;
+  margin-bottom: 60px;
 }
 #grdonation .page h1 strong {
   font-family: "Roboto Condensed", "Arial Narrow", "Impact", sans-serif;

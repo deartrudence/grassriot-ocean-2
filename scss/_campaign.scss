@@ -479,11 +479,17 @@
 
 .section-image {
   background-size: cover;
-  padding: 140px 40px;
+  padding: 150px 40px;
+  @media screen and (max-width: 500px) {
+    padding: 100px 30px 30px 30px;
+  }
   h3 {
     color: white;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
-    width: 40%;
+    width: 42%;
+    @media screen and (max-width: 500px) {
+      width: 80%;
+    }
   }
 }
 
@@ -492,8 +498,25 @@
   background-size: cover;
 }
 
+.image-smoke span {
+  @include font-headN6;
+  font-size: 2.6rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.uppercase {
+  text-transform: uppercase;
+  @media screen and (max-width: 500px) {
+    display: inline-block;
+  }
+}
+
+.give--space {
+  margin-top: 30px;
+}
 .section-image.image-beach {
-  background: url(../img/baby-stacks.jpg) no-repeat bottom;
+  background: url(../img/beach_baby.jpg) no-repeat bottom;
   background-size: cover;
 }
 .fund-info {

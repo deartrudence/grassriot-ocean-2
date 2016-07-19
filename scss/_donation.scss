@@ -5,6 +5,13 @@
   color: $rethink-form-grey;
 }
 
+
+#Donation_AmountDiv label {
+  color: $white;
+  @include font-bodyN4;
+  font-size: 1.1rem;
+}
+
 #grdonation{
   .page {
     h3{
@@ -29,7 +36,7 @@
         @include font-bodyN3;
         @include line-tight;
         margin-top: 25px;
-        margin-bottom: 22px; //<label> has the 5px taken from here
+        margin-bottom: 60px; //<label> has the 5px taken from here
         strong {
             @include font-headN7;
         }
